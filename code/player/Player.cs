@@ -7,7 +7,7 @@ namespace SpeedDial.Player {
 
 			Camera = new SpeedDialCamera();
 			Controller = new SpeedDialController();
-			Animator = new StandardPlayerAnimator();
+			Animator = new PlayerAnimator();
 
 			EnableAllCollisions = true;
 			EnableDrawing = true;

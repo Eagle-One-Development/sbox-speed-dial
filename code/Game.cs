@@ -1,5 +1,6 @@
 using Sandbox;
 using SpeedDial.Player;
+using SpeedDial.UI;
 
 namespace SpeedDial {
 	[Library("speed-dial")]
@@ -7,7 +8,7 @@ namespace SpeedDial {
 		public SpeedDialGame() {
 			if(IsServer) {
 				Log.Info("[SV] Gamemode created!");
-				//new SpeedDialHud();
+				new SpeedDialHud();
 			}
 
 			if(IsClient) {

@@ -3,12 +3,51 @@ using Sandbox;
 
 namespace SpeedDial.Player
 {
+
+
+
 	public partial class SpeedDialCamera : Camera
 	{
 
 		public virtual float CameraHeight => 400;
 
 		public virtual float CameraAngle => 75;
+
+		public Angles ang;
+		public Angles tarAng;
+
+		public override void BuildInput( InputBuilder input )
+		{
+			SpeedDialPlayer client = Local.Pawn as SpeedDialPlayer; 
+			if(client == null){
+				return;
+			}
+
+			Vector2 screenCenter = Screen.Size * (Vector2)client.WorldPos.ToScreen();
+			Vector3 mouseDir = (Vector3)(screenCenter - Mouse.Position);
+			var angles = new Vector3(mouseDir.y, mouseDir.x).EulerAngles;
+
+			if ( (Math.Abs( input.AnalogLook.pitch ) + Math.Abs( input.AnalogLook.yaw )) > 0.0f )
+			{
+				if ( (input.AnalogLook.Length > 0.25f)){
+					Angles newDir = new Vector3( (input.AnalogLook.pitch / 1.5f) * -1.0f, input.AnalogLook.yaw / 1.5f, 0 ).EulerAngles;
+
+
+					tarAng.yaw = newDir.yaw;
+				}
+
+
+
+			}
+
+			ang = Angles.Lerp( ang, tarAng, 10 * Time.Delta );
+
+			input.ViewAngles = angles;
+			input.InputDirection = input.AnalogMove;
+
+
+
+		}
 
 		public override void Update()
 		{
