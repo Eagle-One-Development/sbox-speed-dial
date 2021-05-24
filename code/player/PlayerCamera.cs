@@ -8,11 +8,10 @@ namespace SpeedDial.Player {
 	public partial class SpeedDialCamera : Camera {
 
 		public virtual float CameraHeight => 400;
+		public virtual float CameraAngle => 65;
 
-		public virtual float CameraAngle => 75;
-
-		public Angles ang;
-		public Angles tarAng;
+		//public Angles ang;
+		//public Angles tarAng;
 
 		public override void BuildInput(InputBuilder input) {
 			var client = Local.Pawn;
@@ -38,7 +37,6 @@ namespace SpeedDial.Player {
 
 			input.ViewAngles = angles;
 			input.InputDirection = input.AnalogMove;
-
 		}
 
 		public override void Update() {
@@ -49,12 +47,13 @@ namespace SpeedDial.Player {
 
 			//DebugOverlay.Sphere(pawn.Position, 5, Color.Green, false);
 
-			Pos = pawn.Position + (Vector3.Up * CameraHeight) - Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle)));
-
+			Pos = pawn.EyePos; // relative to pawn eyepos
+			Pos += Vector3.Up * CameraHeight; // add camera height
+			Pos += -Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle))); // move camera back
 
 			Rot = Rotation.FromAxis(Vector3.Left, CameraAngle);
 
-			FieldOfView = 70;
+			FieldOfView = 90;
 
 			Viewer = null;
 		}
