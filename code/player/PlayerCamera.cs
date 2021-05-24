@@ -4,9 +4,11 @@ using Sandbox;
 namespace SpeedDial.Player {
 	public partial class SpeedDialCamera : Camera {
 
-		private readonly float CameraHeight = 200;
+		public virtual float CameraHeight => 350;
 
-		private readonly float CameraAngle = 60;
+		public virtual float CameraAngle => 60;
+
+		public virtual float CameraForwardOffset => 48; //my trigonometry might be fucked, but right now this makes it work nicely
 
 		public override void Update() {
 			var pawn = Local.Pawn;
@@ -14,7 +16,9 @@ namespace SpeedDial.Player {
 			if(pawn == null)
 				return;
 
-			Pos = pawn.Position + Vector3.Up * CameraHeight + (Vector3.Forward * -(float)(CameraHeight * Math.Tan(CameraAngle)));
+			//DebugOverlay.Sphere(pawn.Position, 5, Color.Green, false);
+
+			Pos = pawn.Position + Vector3.Up * CameraHeight + (Vector3.Forward * -(float)(CameraHeight * Math.Tan(CameraAngle) + CameraForwardOffset));
 
 			Rot = Rotation.FromAxis(Vector3.Left, CameraAngle);
 
