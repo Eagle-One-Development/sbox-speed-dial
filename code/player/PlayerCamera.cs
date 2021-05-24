@@ -49,7 +49,8 @@ namespace SpeedDial.Player {
 
 			//DebugOverlay.Sphere(pawn.Position, 5, Color.Green, false);
 
-			Pos = pawn.Position + (Vector3.Up * CameraHeight) - (Vector3.Forward * (-(float)(CameraHeight * Math.Tan(CameraAngle))) / 2f);
+			Pos = pawn.Position + (Vector3.Up * CameraHeight) - Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle)));
+
 
 			Rot = Rotation.FromAxis(Vector3.Left, CameraAngle);
 
