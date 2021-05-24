@@ -3,7 +3,7 @@ using SpeedDial.Player;
 
 namespace SpeedDial {
 	[Library("speed-dial")]
-	public partial class SpeedDialGame : Sandbox.Game {
+	public partial class SpeedDialGame : Game {
 		public SpeedDialGame() {
 			if(IsServer) {
 				Log.Info("[SV] Gamemode created!");

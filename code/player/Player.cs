@@ -5,9 +5,9 @@ namespace SpeedDial.Player {
 		public override void Respawn() {
 			SetModel("models/citizen/citizen.vmdl");
 
-			Controller = new WalkController();
+			Camera = new SpeedDialCamera();
+			Controller = new SpeedDialController();
 			Animator = new StandardPlayerAnimator();
-			Camera = new ThirdPersonCamera();
 
 			EnableAllCollisions = true;
 			EnableDrawing = true;
