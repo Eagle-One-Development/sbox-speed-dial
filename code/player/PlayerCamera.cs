@@ -13,7 +13,7 @@ namespace SpeedDial.Player {
 		private Angles ang;
 		private Angles tarAng;
 		private Vector3 camOffset;
-
+		private Vector3 camOffsetTarget;
 
 
 		public bool CameraShift { get; set; }
@@ -64,11 +64,18 @@ namespace SpeedDial.Player {
 			Pos += Vector3.Up * CameraHeight; // add camera height
 			Pos += -Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle))); // move camera back
 			if(CameraShift) {
-				camOffset = Vector3.Left * -((Mouse.Position.x - Screen.Size.x / 2) * 0.3f) + Vector3.Forward * -((Mouse.Position.y - Screen.Size.y / 2) * 0.3f);
+				camOffsetTarget = Vector3.Left * -((Mouse.Position.x - Screen.Size.x / 2) * 0.3f) + Vector3.Forward * -((Mouse.Position.y - Screen.Size.y / 2) * 0.3f);
 				//Pos = Vector3.Lerp(Pos, Pos + camOffset, 8 * Time.Delta);
 				// idk how to lerp this apparently, so fuck that
-				Pos += camOffset;
+				//Pos += camOffset;
+			}else{
+				camOffsetTarget = Vector3.Zero;
 			}
+
+			camOffset = Vector3.Lerp(camOffset,camOffsetTarget, Time.Delta * 8f);
+
+			Pos += camOffset;
+
 			//TODO make a factor based on the screen size?
 
 			//DebugOverlay.ScreenText(new Vector2(500, 500), 1, Color.Green, $"Shift {CameraShift}");
