@@ -86,28 +86,7 @@ namespace SpeedDial.Player {
 			var moveDir = WishVelocity;
 			var forward = idealRotation.Forward.Dot(moveDir.Normal);
 			var sideward = idealRotation.Right.Dot(moveDir.Normal);
-
-			Log.Info(forward.ToString());
-			//if(MathF.Abs(forward) < 30 )
-			//{
-			//	forward = 0;
-			//}
-	//
-			//if ( MathF.Abs( forward ) > 70 )
-			//{
-			//	forward = 100 * (int)MathF.Sign( forward );
-			//}
-	//
-			//if (MathF.Abs(sideward) < 30 )
-			//{
-			//	sideward = 0;
-			//}
-	//
-			//if ( MathF.Abs( sideward ) > 70 )
-			//{
-			//	sideward = 100 * (int)MathF.Sign(sideward);
-			//}
-
+			
 			//
 			// Set our speeds on the animgraph
 			//
