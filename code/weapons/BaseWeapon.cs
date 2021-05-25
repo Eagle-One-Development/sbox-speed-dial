@@ -7,7 +7,7 @@ using System.Linq;
 using System.Numerics;
 using System.Threading.Tasks;
 using SpeedDial.Player;
-
+using SpeedDial.UI;
 namespace SpeedDial.Weapons
 {
     public partial class BaseSpeedDialWeapon : BaseWeapon
@@ -185,6 +185,8 @@ namespace SpeedDial.Weapons
 		var forward = Owner.EyeRot.Forward;
 		forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
 		forward = forward.Normal;
+
+		AmmoPanel.Current?.Bump();
 
 		//
 		// ShootBullet is coded in a way where we can have bullets pass through shit

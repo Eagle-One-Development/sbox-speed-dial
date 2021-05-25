@@ -25,11 +25,13 @@ namespace SpeedDial{
 		public List<SpeedDialPlayer> Players = new();
 
 		//When the end of the round occurs relative to the Time.Now of the start of the round
+		[Net,Predicted]
 		public float RoundEndTime { get; set; }
 
 		/// <summary>
 		/// Time left in the round
 		/// </summary>
+		[Net, Predicted]
 		public float TimeLeft {
 			get {
 				return RoundEndTime - Sandbox.Time.Now;
@@ -40,7 +42,7 @@ namespace SpeedDial{
 		/// <summary>
 		/// Formatted version of the time left in the round in seconds
 		/// </summary>
-		[Net]
+		[Net, Predicted]
 		public string TimeLeftFormatted { get; set; } = "";
 
 

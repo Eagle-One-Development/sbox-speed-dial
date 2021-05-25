@@ -13,15 +13,23 @@ namespace SpeedDial.UI{
 		public Label clipLabel;
 
 		private TimeSince aTime;
+
+		public static AmmoPanel Current;
+
+
+		private float scale;
         public AmmoPanel(){
 			StyleSheet.Load("/ui/AmmoPanel.scss");
 			ammoCounter = Add.Panel("counter");
 			clipLabel = ammoCounter.Add.Label("000","ammoLabel");
-			//ammoLabel = ammoCounter.Add.Label("/000", "ammoLabel");
-			//ammoLabel.SetClass("ammoLeft",true);
-			//
 			
-			//ammoLabel.Style.TextShadow = 
+			Current = this;
+			scale = 0;
+
+		}
+
+		public void Bump(){
+			scale = 0.7f;
 		}
 
 		public override void Tick()
@@ -45,7 +53,10 @@ namespace SpeedDial.UI{
 			float anim = (MathF.Sin(aTime * 2f) + 1)/2;
 			float anim2 = (MathF.Sin(aTime * 1f));
 			var transform = new PanelTransform();
-			transform.AddScale(  0.8f + anim * 0.2f   );
+
+			scale = scale.LerpTo(0,Time.Delta * 8f);
+
+			transform.AddScale(  0.8f + anim * 0.2f + scale);
 			transform.AddRotation(0f,0f,anim2 * 5f);
 
 			clipLabel.Style.TextShadow = shadows;
