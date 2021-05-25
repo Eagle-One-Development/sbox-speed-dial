@@ -9,6 +9,8 @@ using SpeedDial.Weapons;
 
 namespace SpeedDial.UI{
     public class CharacterSelect : Panel{
-        
+        public CharacterSelect(){
+			StyleSheet.Load("/ui/CharacterSelect.scss"); 
+		}
     }
 }

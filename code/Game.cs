@@ -40,6 +40,7 @@ namespace SpeedDial {
 
 
 		private void PopulateData(){
+			characters = new();
 			characters.Add(new SpeedDialPlayerCharacter("sd_pistol","Jack","This is Jack."        ,"ui/portraits/default.png","ui/head/default.png"));
 			characters.Add(new SpeedDialPlayerCharacter("sd_pistol","Maria","This is Maria."      ,"ui/portraits/default.png","ui/head/default.png"));
 			characters.Add(new SpeedDialPlayerCharacter("sd_pistol","Dial-Up","This is Dial-Up."  ,"ui/portraits/default.png","ui/head/default.png"));
