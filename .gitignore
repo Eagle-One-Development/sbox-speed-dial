@@ -5,6 +5,8 @@
 *.vmdl_c
 *.vpcf_c
 *.vpk
+!sd_test.vpk
+!sd_test.los
 *.zip
 .codegen/
 .editorconfig

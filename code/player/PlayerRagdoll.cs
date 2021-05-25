@@ -1,3 +1,4 @@
+using System.Numerics;
 using Sandbox;
 
 namespace SpeedDial.Player {
@@ -35,6 +36,20 @@ namespace SpeedDial.Player {
 			// 		clothing.SetParent(ent, true);
 			// 	}
 			// }
+
+			var tr = Trace.Ray(Position, Vector3.Down * 50)
+					.UseHitboxes()
+					.Ignore(Owner)
+					.Ignore(this)
+					.Size(1)
+					.Run();
+
+			var decalPath = "materials/decals/blood1.vmat";
+			if(decalPath != null) {
+				if(DecalDefinition.ByPath.TryGetValue(decalPath, out var decal)) {
+					decal.PlaceUsingTrace(tr);
+				}
+			}
 
 			ent.PhysicsGroup.AddVelocity(force);
 
