@@ -323,6 +323,30 @@
 				}
 				m_identifierString = ""
 			},
+			{
+				_class = "CStringAnimTag"
+				m_name = "shotgun"
+				m_tagID = 
+				{
+					m_id = 1547268115
+				}
+			},
+			{
+				_class = "CStringAnimTag"
+				m_name = "rifle"
+				m_tagID = 
+				{
+					m_id = 1785330807
+				}
+			},
+			{
+				_class = "CStringAnimTag"
+				m_name = "pistol"
+				m_tagID = 
+				{
+					m_id = 122456278
+				}
+			},
 		]
 	}
 	m_pMovementManager = 
@@ -396,7 +420,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -55.0, 585.0 ]
+				m_vecPosition = [ 570.0, 515.0 ]
 				m_nNodeID = 
 				{
 					m_id = 34716411
@@ -417,7 +441,7 @@
 			{
 				_class = "CSpeedScaleAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -159.123459, 1282.242554 ]
+				m_vecPosition = [ -298.0, 933.0 ]
 				m_nNodeID = 
 				{
 					m_id = 43047625
@@ -426,6 +450,31 @@
 				m_childID = 
 				{
 					m_id = 1202866230
+				}
+				m_param = 
+				{
+					m_id = 1652014548
+				}
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 69810200
+			}
+			value = 
+			{
+				_class = "CSpeedScaleAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -414.0, 329.0 ]
+				m_nNodeID = 
+				{
+					m_id = 69810200
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_childID = 
+				{
+					m_id = 2097131087
 				}
 				m_param = 
 				{
@@ -467,7 +516,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 231.0, 324.0 ]
+				m_vecPosition = [ 856.0, 254.0 ]
 				m_nNodeID = 
 				{
 					m_id = 173944915
@@ -666,7 +715,7 @@
 			{
 				_class = "CSpeedScaleAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 450.0, 852.0 ]
+				m_vecPosition = [ 1080.0, 462.0 ]
 				m_nNodeID = 
 				{
 					m_id = 277536928
@@ -1183,7 +1232,7 @@
 								[
 									{
 										_class = "CParameterAnimCondition"
-										m_comparisonOp = 0
+										m_comparisonOp = 1
 										m_paramID = 
 										{
 											m_id = 72339625
@@ -1217,7 +1266,7 @@
 						m_name = "Shotgun"
 						m_childNodeID = 
 						{
-							m_id = 1859365194
+							m_id = 1827302082
 						}
 						m_stateID = 
 						{
@@ -1684,7 +1733,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -84.0, 679.0 ]
+				m_vecPosition = [ 541.0, 609.0 ]
 				m_nNodeID = 
 				{
 					m_id = 389152289
@@ -1694,6 +1743,37 @@
 				m_sequenceName = "rifle_walk_idle"
 				m_playbackSpeed = 1.0
 				m_bLoop = true
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 395637519
+			}
+			value = 
+			{
+				_class = "CAddAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -602.0, 584.0 ]
+				m_nNodeID = 
+				{
+					m_id = 395637519
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_baseChildID = 
+				{
+					m_id = 2097131087
+				}
+				m_additiveChildID = 
+				{
+					m_id = 1799344448
+				}
+				m_timingBehavior = "UseChild2"
+				m_flTimingBlend = 0.5
+				m_footMotionTiming = "Child1"
+				m_bResetBase = true
+				m_bResetAdditive = true
+				m_bApplyChannelsSeparately = true
 			}
 		},
 		{
@@ -1827,13 +1907,91 @@
 		{
 			key = 
 			{
+				m_id = 510701759
+			}
+			value = 
+			{
+				_class = "CBoneMaskAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ 133.0, 2184.0 ]
+				m_nNodeID = 
+				{
+					m_id = 510701759
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_weightListName = "shotgun_fire"
+				m_child1ID = 
+				{
+					m_id = 236076305
+				}
+				m_child2ID = 
+				{
+					m_id = 1691432854
+				}
+				m_blendSpace = "BlendSpace_Parent"
+				m_bUseBlendScale = false
+				m_blendValueSource = "Parameter"
+				m_blendParameter = 
+				{
+					m_id = 4294967295
+				}
+				m_timingBehavior = "UseChild2"
+				m_flTimingBlend = 0.5
+				m_flRootMotionBlend = 0.0
+				m_footMotionTiming = "Child1"
+				m_bResetChild1 = false
+				m_bResetChild2 = true
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 553081857
+			}
+			value = 
+			{
+				_class = "CBoneMaskAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -143.0, 552.0 ]
+				m_nNodeID = 
+				{
+					m_id = 553081857
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_weightListName = "firing"
+				m_child1ID = 
+				{
+					m_id = 4294967295
+				}
+				m_child2ID = 
+				{
+					m_id = 4294967295
+				}
+				m_blendSpace = "BlendSpace_Model"
+				m_bUseBlendScale = false
+				m_blendValueSource = "Parameter"
+				m_blendParameter = 
+				{
+					m_id = 4294967295
+				}
+				m_timingBehavior = "UseChild2"
+				m_flTimingBlend = 0.5
+				m_flRootMotionBlend = 0.0
+				m_footMotionTiming = "Child1"
+				m_bResetChild1 = false
+				m_bResetChild2 = true
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 555617305
 			}
 			value = 
 			{
 				_class = "CBlend2DAnimNode"
 				m_sName = "pistol_walk"
-				m_vecPosition = [ -382.0, 1381.0 ]
+				m_vecPosition = [ -494.0, 1163.0 ]
 				m_nNodeID = 
 				{
 					m_id = 555617305
@@ -1892,7 +2050,7 @@
 					{
 						_class = "CBlend2DItem"
 						m_tagSpans = [  ]
-						m_sequenceName = ""
+						m_sequenceName = "pistol_idle"
 						m_blendValue = [ 0.0, 0.0 ]
 					},
 				]
@@ -1976,6 +2134,27 @@
 		{
 			key = 
 			{
+				m_id = 607154964
+			}
+			value = 
+			{
+				_class = "CSequenceAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -783.0, 2573.0 ]
+				m_nNodeID = 
+				{
+					m_id = 607154964
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_tagSpans = [  ]
+				m_sequenceName = "shotgun_fire"
+				m_playbackSpeed = 1.0
+				m_bLoop = true
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 621495693
 			}
 			value = 
@@ -2023,6 +2202,300 @@
 		{
 			key = 
 			{
+				m_id = 710538036
+			}
+			value = 
+			{
+				_class = "CStateMachineAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ 387.0, 2378.0 ]
+				m_nNodeID = 
+				{
+					m_id = 710538036
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_states = 
+				[
+					{
+						_class = "CAnimState"
+						m_transitions = 
+						[
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CTagCondition"
+										m_comparisonOp = 0
+										m_tagID = 
+										{
+											m_id = 1547268115
+										}
+										m_comparisonValue = false
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 582262650
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
+						]
+						m_tags = [  ]
+						m_tagBehaviors = [  ]
+						m_name = "shotgun"
+						m_childNodeID = 
+						{
+							m_id = 510701759
+						}
+						m_stateID = 
+						{
+							m_id = 713356244
+						}
+						m_position = [ -167.0, 76.0 ]
+						m_bIsStartState = false
+						m_bIsEndtState = false
+						m_bIsPassthrough = false
+						m_bIsRootMotionExclusive = false
+						m_bAlwaysEvaluate = false
+					},
+					{
+						_class = "CAnimState"
+						m_transitions = 
+						[
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CTagCondition"
+										m_comparisonOp = 0
+										m_tagID = 
+										{
+											m_id = 1785330807
+										}
+										m_comparisonValue = false
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 582262650
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
+						]
+						m_tags = [  ]
+						m_tagBehaviors = [  ]
+						m_name = "rifle"
+						m_childNodeID = 
+						{
+							m_id = 1084477314
+						}
+						m_stateID = 
+						{
+							m_id = 2024127770
+						}
+						m_position = [ -29.0, 89.0 ]
+						m_bIsStartState = false
+						m_bIsEndtState = false
+						m_bIsPassthrough = false
+						m_bIsRootMotionExclusive = false
+						m_bAlwaysEvaluate = false
+					},
+					{
+						_class = "CAnimState"
+						m_transitions = 
+						[
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CTagCondition"
+										m_comparisonOp = 0
+										m_tagID = 
+										{
+											m_id = 1547268115
+										}
+										m_comparisonValue = true
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 713356244
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CTagCondition"
+										m_comparisonOp = 0
+										m_tagID = 
+										{
+											m_id = 1785330807
+										}
+										m_comparisonValue = true
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 2024127770
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CTagCondition"
+										m_comparisonOp = 0
+										m_tagID = 
+										{
+											m_id = 122456278
+										}
+										m_comparisonValue = true
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 2036822249
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
+						]
+						m_tags = [  ]
+						m_tagBehaviors = [  ]
+						m_name = "Unnamed"
+						m_childNodeID = 
+						{
+							m_id = 4294967295
+						}
+						m_stateID = 
+						{
+							m_id = 582262650
+						}
+						m_position = [ -76.0, -54.0 ]
+						m_bIsStartState = true
+						m_bIsEndtState = false
+						m_bIsPassthrough = true
+						m_bIsRootMotionExclusive = false
+						m_bAlwaysEvaluate = false
+					},
+					{
+						_class = "CAnimState"
+						m_transitions = 
+						[
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CTagCondition"
+										m_comparisonOp = 0
+										m_tagID = 
+										{
+											m_id = 122456278
+										}
+										m_comparisonValue = false
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 582262650
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
+						]
+						m_tags = [  ]
+						m_tagBehaviors = [  ]
+						m_name = "pistol"
+						m_childNodeID = 
+						{
+							m_id = 4294967295
+						}
+						m_stateID = 
+						{
+							m_id = 2036822249
+						}
+						m_position = [ 108.0, 23.0 ]
+						m_bIsStartState = false
+						m_bIsEndtState = false
+						m_bIsPassthrough = false
+						m_bIsRootMotionExclusive = false
+						m_bAlwaysEvaluate = false
+					},
+				]
+				m_bBlockWaningTags = false
+				m_bLockStateWhenWaning = false
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 722187793
 			}
 			value = 
@@ -2056,7 +2529,7 @@
 			{
 				_class = "CSpeedScaleAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 426.0, 691.0 ]
+				m_vecPosition = [ 1051.0, 621.0 ]
 				m_nNodeID = 
 				{
 					m_id = 732957981
@@ -2895,13 +3368,38 @@
 		{
 			key = 
 			{
+				m_id = 852961211
+			}
+			value = 
+			{
+				_class = "CSpeedScaleAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -63.0, 309.0 ]
+				m_nNodeID = 
+				{
+					m_id = 852961211
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_childID = 
+				{
+					m_id = 69810200
+				}
+				m_param = 
+				{
+					m_id = 1583933958
+				}
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 905804277
 			}
 			value = 
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 258.0, 1897.0 ]
+				m_vecPosition = [ 346.0, 1890.0 ]
 				m_nNodeID = 
 				{
 					m_id = 905804277
@@ -3044,7 +3542,7 @@
 						m_name = "firing"
 						m_childNodeID = 
 						{
-							m_id = 1084477314
+							m_id = 710538036
 						}
 						m_stateID = 
 						{
@@ -3193,13 +3691,32 @@
 		{
 			key = 
 			{
+				m_id = 990600827
+			}
+			value = 
+			{
+				_class = "CSingleFrameAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -980.0, 722.0 ]
+				m_nNodeID = 
+				{
+					m_id = 990600827
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_sequenceName = "shotgun"
+				m_nFrameIndex = 0
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 994428825
 			}
 			value = 
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -454.0, 1940.0 ]
+				m_vecPosition = [ -398.0, 1965.0 ]
 				m_nNodeID = 
 				{
 					m_id = 994428825
@@ -3473,8 +3990,13 @@
 								m_bDisabled = false
 							},
 						]
-						m_tags = [  ]
-						m_tagBehaviors = [  ]
+						m_tags = 
+						[
+							{
+								m_id = 122456278
+							},
+						]
+						m_tagBehaviors = [ 0 ]
 						m_name = "pistol"
 						m_childNodeID = 
 						{
@@ -3558,7 +4080,7 @@
 								[
 									{
 										_class = "CParameterAnimCondition"
-										m_comparisonOp = 0
+										m_comparisonOp = 1
 										m_paramID = 
 										{
 											m_id = 72339625
@@ -3587,18 +4109,23 @@
 								m_bDisabled = false
 							},
 						]
-						m_tags = [  ]
-						m_tagBehaviors = [  ]
+						m_tags = 
+						[
+							{
+								m_id = 1547268115
+							},
+						]
+						m_tagBehaviors = [ 0 ]
 						m_name = "Shotgun"
 						m_childNodeID = 
 						{
-							m_id = 770770966
+							m_id = 2028981333
 						}
 						m_stateID = 
 						{
 							m_id = 532172741
 						}
-						m_position = [ 109.0, 163.0 ]
+						m_position = [ 108.0, 162.0 ]
 						m_bIsStartState = false
 						m_bIsEndtState = false
 						m_bIsPassthrough = false
@@ -3644,8 +4171,13 @@
 								m_bDisabled = false
 							},
 						]
-						m_tags = [  ]
-						m_tagBehaviors = [  ]
+						m_tags = 
+						[
+							{
+								m_id = 1785330807
+							},
+						]
+						m_tagBehaviors = [ 0 ]
 						m_name = "Rifle"
 						m_childNodeID = 
 						{
@@ -3790,7 +4322,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 264.0, 271.0 ]
+				m_vecPosition = [ 889.0, 201.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1049985592
@@ -4187,7 +4719,7 @@
 			{
 				_class = "CBoneMaskAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 141.0, 2270.0 ]
+				m_vecPosition = [ 108.0, 2283.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1084477314
@@ -4226,7 +4758,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 619.0, 92.0 ]
+				m_vecPosition = [ 1244.0, 22.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1101044716
@@ -5121,7 +5653,7 @@
 			{
 				_class = "CBlend2DAnimNode"
 				m_sName = "walk"
-				m_vecPosition = [ -387.0, 1491.0 ]
+				m_vecPosition = [ -567.0, 1006.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1202866230
@@ -5180,7 +5712,7 @@
 					{
 						_class = "CBlend2DItem"
 						m_tagSpans = [  ]
-						m_sequenceName = ""
+						m_sequenceName = "idle"
 						m_blendValue = [ 0.0, 0.0 ]
 					},
 				]
@@ -5341,7 +5873,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -59.0, 519.0 ]
+				m_vecPosition = [ 566.0, 449.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1363470567
@@ -5383,7 +5915,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -570.0, 2422.0 ]
+				m_vecPosition = [ -761.0, 2474.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1427589181
@@ -5494,7 +6026,7 @@
 			{
 				_class = "CAddAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -103.0, 2313.0 ]
+				m_vecPosition = [ -124.0, 2314.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1691432854
@@ -5560,6 +6092,37 @@
 				{
 					m_id = 1652014548
 				}
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 1799344448
+			}
+			value = 
+			{
+				_class = "CSubtractAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -751.0, 686.0 ]
+				m_nNodeID = 
+				{
+					m_id = 1799344448
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_baseChildID = 
+				{
+					m_id = 2097131087
+				}
+				m_subtractChildID = 
+				{
+					m_id = 990600827
+				}
+				m_timingBehavior = "UseChild2"
+				m_flTimingBlend = 0.5
+				m_footMotionTiming = "Child1"
+				m_bResetBase = true
+				m_bResetSubtract = true
+				m_bApplyChannelsSeparately = true
 			}
 		},
 		{
@@ -5742,7 +6305,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -26.0, 472.0 ]
+				m_vecPosition = [ 599.0, 402.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1804893927
@@ -5752,6 +6315,45 @@
 				m_sequenceName = "rifle_walk_ne"
 				m_playbackSpeed = 1.0
 				m_bLoop = false
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 1827302082
+			}
+			value = 
+			{
+				_class = "CBoneMaskAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -348.0, 604.0 ]
+				m_nNodeID = 
+				{
+					m_id = 1827302082
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_weightListName = "shotgun"
+				m_child1ID = 
+				{
+					m_id = 2097131087
+				}
+				m_child2ID = 
+				{
+					m_id = 395637519
+				}
+				m_blendSpace = "BlendSpace_Model"
+				m_bUseBlendScale = false
+				m_blendValueSource = "Parameter"
+				m_blendParameter = 
+				{
+					m_id = 4294967295
+				}
+				m_timingBehavior = "UseChild2"
+				m_flTimingBlend = 0.5
+				m_flRootMotionBlend = 0.0
+				m_footMotionTiming = "Child1"
+				m_bResetChild1 = false
+				m_bResetChild2 = true
 			}
 		},
 		{
@@ -5872,7 +6474,7 @@
 			{
 				_class = "CBlend2DAnimNode"
 				m_sName = "rifle_walk"
-				m_vecPosition = [ -376.0, 1435.0 ]
+				m_vecPosition = [ -532.0, 1278.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1859365194
@@ -5931,7 +6533,7 @@
 					{
 						_class = "CBlend2DItem"
 						m_tagSpans = [  ]
-						m_sequenceName = ""
+						m_sequenceName = "rifle_walk_idle"
 						m_blendValue = [ 0.0, 0.0 ]
 					},
 				]
@@ -5968,7 +6570,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 151.0, 382.0 ]
+				m_vecPosition = [ 776.0, 312.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1871275068
@@ -6016,7 +6618,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 324.0, 210.0 ]
+				m_vecPosition = [ 949.0, 140.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1926175993
@@ -6037,7 +6639,7 @@
 			{
 				_class = "CSpeedScaleAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 124.876541, 1217.242554 ]
+				m_vecPosition = [ -31.0, 885.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1957814626
@@ -6269,6 +6871,321 @@
 		{
 			key = 
 			{
+				m_id = 2007043503
+			}
+			value = 
+			{
+				_class = "CStateMachineAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -531.0, 2445.0 ]
+				m_nNodeID = 
+				{
+					m_id = 2007043503
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_states = 
+				[
+					{
+						_class = "CAnimState"
+						m_transitions = 
+						[
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CTagCondition"
+										m_comparisonOp = 0
+										m_tagID = 
+										{
+											m_id = 1547268115
+										}
+										m_comparisonValue = false
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 582262650
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
+						]
+						m_tags = [  ]
+						m_tagBehaviors = [  ]
+						m_name = "shotgun"
+						m_childNodeID = 
+						{
+							m_id = 607154964
+						}
+						m_stateID = 
+						{
+							m_id = 713356244
+						}
+						m_position = [ -167.0, 76.0 ]
+						m_bIsStartState = false
+						m_bIsEndtState = false
+						m_bIsPassthrough = false
+						m_bIsRootMotionExclusive = false
+						m_bAlwaysEvaluate = false
+					},
+					{
+						_class = "CAnimState"
+						m_transitions = 
+						[
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CTagCondition"
+										m_comparisonOp = 0
+										m_tagID = 
+										{
+											m_id = 1785330807
+										}
+										m_comparisonValue = false
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 582262650
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
+						]
+						m_tags = [  ]
+						m_tagBehaviors = [  ]
+						m_name = "rifle"
+						m_childNodeID = 
+						{
+							m_id = 1427589181
+						}
+						m_stateID = 
+						{
+							m_id = 2024127770
+						}
+						m_position = [ -29.0, 89.0 ]
+						m_bIsStartState = false
+						m_bIsEndtState = false
+						m_bIsPassthrough = false
+						m_bIsRootMotionExclusive = false
+						m_bAlwaysEvaluate = false
+					},
+					{
+						_class = "CAnimState"
+						m_transitions = 
+						[
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CTagCondition"
+										m_comparisonOp = 0
+										m_tagID = 
+										{
+											m_id = 1547268115
+										}
+										m_comparisonValue = true
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 713356244
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CTagCondition"
+										m_comparisonOp = 0
+										m_tagID = 
+										{
+											m_id = 1785330807
+										}
+										m_comparisonValue = true
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 2024127770
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CTagCondition"
+										m_comparisonOp = 0
+										m_tagID = 
+										{
+											m_id = 122456278
+										}
+										m_comparisonValue = true
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 2036822249
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
+						]
+						m_tags = [  ]
+						m_tagBehaviors = [  ]
+						m_name = "Unnamed"
+						m_childNodeID = 
+						{
+							m_id = 4294967295
+						}
+						m_stateID = 
+						{
+							m_id = 582262650
+						}
+						m_position = [ -76.0, -54.0 ]
+						m_bIsStartState = true
+						m_bIsEndtState = false
+						m_bIsPassthrough = true
+						m_bIsRootMotionExclusive = false
+						m_bAlwaysEvaluate = false
+					},
+					{
+						_class = "CAnimState"
+						m_transitions = 
+						[
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CTagCondition"
+										m_comparisonOp = 0
+										m_tagID = 
+										{
+											m_id = 122456278
+										}
+										m_comparisonValue = false
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 582262650
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
+						]
+						m_tags = [  ]
+						m_tagBehaviors = [  ]
+						m_name = "pistol"
+						m_childNodeID = 
+						{
+							m_id = 4294967295
+						}
+						m_stateID = 
+						{
+							m_id = 2036822249
+						}
+						m_position = [ 108.0, 23.0 ]
+						m_bIsStartState = false
+						m_bIsEndtState = false
+						m_bIsPassthrough = false
+						m_bIsRootMotionExclusive = false
+						m_bAlwaysEvaluate = false
+					},
+				]
+				m_bBlockWaningTags = false
+				m_bLockStateWhenWaning = true
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 2028981333
+			}
+			value = 
+			{
+				_class = "CSequenceAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -718.0, 1931.0 ]
+				m_nNodeID = 
+				{
+					m_id = 2028981333
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_tagSpans = [  ]
+				m_sequenceName = "shotgun"
+				m_playbackSpeed = 1.0
+				m_bLoop = true
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 2046860959
 			}
 			value = 
@@ -6358,6 +7275,102 @@
 		{
 			key = 
 			{
+				m_id = 2097131087
+			}
+			value = 
+			{
+				_class = "CBlend2DAnimNode"
+				m_sName = "rifle_walk"
+				m_vecPosition = [ -877.0, 541.0 ]
+				m_nNodeID = 
+				{
+					m_id = 2097131087
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_items = 
+				[
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_walk_e"
+						m_blendValue = [ 1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_walk_n"
+						m_blendValue = [ 0.0, 2.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_walk_ne"
+						m_blendValue = [ 1.0, 1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_walk_nw"
+						m_blendValue = [ 2.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_walk_s"
+						m_blendValue = [ 0.0, -2.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_walk_se"
+						m_blendValue = [ 2.0, -2.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_walk_sw"
+						m_blendValue = [ -2.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_walk_w"
+						m_blendValue = [ -2.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_walk_idle"
+						m_blendValue = [ 0.0, 0.0 ]
+					},
+				]
+				m_blendSourceX = "Parameter"
+				m_paramX = 
+				{
+					m_id = 1307562239
+				}
+				m_blendSourceY = "Parameter"
+				m_paramY = 
+				{
+					m_id = 940853046
+				}
+				m_bLoop = true
+				m_bLockBlendOnReset = false
+				m_bLockWhenWaning = true
+				m_playbackSpeed = 1.0
+				m_damping = 
+				{
+					_class = "CAnimInputDamping"
+					m_speedFunction = "Spring"
+					m_fSpeedScale = 5.0
+					m_fMinSpeed = 10.0
+					m_fMaxTension = 1000.0
+				}
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 2106747085
 			}
 			value = 
@@ -6376,7 +7389,7 @@
 				}
 				m_subtractChildID = 
 				{
-					m_id = 1427589181
+					m_id = 2007043503
 				}
 				m_timingBehavior = "UseChild2"
 				m_flTimingBlend = 0.5
@@ -6395,7 +7408,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 57.0, 435.0 ]
+				m_vecPosition = [ 682.0, 365.0 ]
 				m_nNodeID = 
 				{
 					m_id = 2107665036

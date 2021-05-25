@@ -2613,6 +2613,54 @@
 							},
 						]
 					},
+					{
+						_class = "AnimFile"
+						name = "shotgun"
+						children = 
+						[
+							{
+								_class = "AnimSmoothLoop"
+								frames_from_start = 9
+								frames_from_end = 9
+							},
+						]
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/biped_standard/anims/shotgun.dmx"
+						start_frame = 160
+						end_frame = 169
+						framerate = 24.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "shotgun_fire"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/biped_standard/anims/shotgun.dmx"
+						start_frame = 84
+						end_frame = 160
+						framerate = -1.0
+						reverse = false
+					},
 				]
 				default_root_bone_name = ""
 			},
@@ -2822,6 +2870,106 @@
 							{
 								bone = "spine_3"
 								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "shotgun"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "clavicle_L"
+								weight = 0.155477
+							},
+							{
+								bone = "clavicle_R"
+								weight = 0.134276
+							},
+							{
+								bone = "neck_0"
+								weight = 0.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.0
+							},
+							{
+								bone = "spine_0"
+								weight = 0.0
+							},
+							{
+								bone = "spine_1"
+								weight = 0.0
+							},
+							{
+								bone = "spine_2"
+								weight = 0.0
+							},
+							{
+								bone = "spine_3"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "shotgun_fire"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "clavicle_L"
+								weight = 0.5
+							},
+							{
+								bone = "clavicle_R"
+								weight = 0.5
+							},
+							{
+								bone = "leg_lower_R"
+								weight = 0.5
+							},
+							{
+								bone = "leg_upper_L"
+								weight = 0.5
+							},
+							{
+								bone = "leg_upper_R"
+								weight = 0.5
+							},
+							{
+								bone = "neck_0"
+								weight = 0.5
+							},
+							{
+								bone = "pelvis"
+								weight = 0.5
+							},
+							{
+								bone = "root_motion"
+								weight = 0.5
+							},
+							{
+								bone = "spine_0"
+								weight = 0.5
+							},
+							{
+								bone = "spine_1"
+								weight = 0.5
+							},
+							{
+								bone = "spine_2"
+								weight = 0.5
+							},
+							{
+								bone = "spine_3"
+								weight = 0.5
 							},
 						]
 						master_morph_weight = -1.0
