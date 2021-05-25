@@ -1,0 +1,28 @@
+gameroundpanel{
+    position: absolute;
+    width:100%;
+    height:100%;
+
+    .container{
+        position: absolute;
+        width:100%;
+        height:100%;
+
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 2s ease-in-out;
+
+       &.active{
+           opacity: 1;
+       }
+
+       .timer{
+           font-family: VCR OSD Mono;
+           color: #fff;
+           font-size: 72px;
+           text-align: center;
+           top:0px;
+       }
+    }
+
+}
