@@ -11,7 +11,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/biped_standard/dmx/mesh/biped_standard_model.dmx"
+						filename = "models/biped_standard/biped_standard_model.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -2226,6 +2226,393 @@
 							},
 						]
 					},
+					{
+						_class = "Folder"
+						name = "pistol"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "pistol_arc_e"
+								children = 
+								[
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 90.0 ]
+									},
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+									{
+										_class = "AnimSmoothLoop"
+										frames_from_start = 5
+										frames_from_end = 5
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/pistol_arc_e.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = 24.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_arc_n"
+								children = 
+								[
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 90.0 ]
+									},
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+									{
+										_class = "AnimSmoothLoop"
+										frames_from_start = 5
+										frames_from_end = 5
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/pistol_arc_n.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = 24.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_arc_ne"
+								children = 
+								[
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 90.0 ]
+									},
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+									{
+										_class = "AnimSmoothLoop"
+										frames_from_start = 5
+										frames_from_end = 5
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/pistol_arc_ne.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = 24.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_arc_nw"
+								children = 
+								[
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 90.0 ]
+									},
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+									{
+										_class = "AnimSmoothLoop"
+										frames_from_start = 5
+										frames_from_end = 5
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/pistol_arc_nw.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = 24.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_arc_s"
+								children = 
+								[
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 90.0 ]
+									},
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+									{
+										_class = "AnimSmoothLoop"
+										frames_from_start = 5
+										frames_from_end = 5
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/pistol_arc_s.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = 24.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_arc_se"
+								children = 
+								[
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 90.0 ]
+									},
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+									{
+										_class = "AnimSmoothLoop"
+										frames_from_start = 5
+										frames_from_end = 5
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/pistol_arc_se.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = 24.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_arc_sw"
+								children = 
+								[
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 90.0 ]
+									},
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+									{
+										_class = "AnimSmoothLoop"
+										frames_from_start = 5
+										frames_from_end = 5
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/pistol_arc_sw.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = 24.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_arc_w"
+								children = 
+								[
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 90.0 ]
+									},
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+									{
+										_class = "AnimSmoothLoop"
+										frames_from_start = 5
+										frames_from_end = 5
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/pistol_arc_w.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = 24.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_idle"
+								children = 
+								[
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 90.0 ]
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/pistol_idle.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+						]
+					},
 				]
 				default_root_bone_name = ""
 			},
@@ -2713,7 +3100,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "pelvis"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 5.405184
 						point0 = [ -2.805105, 0.927527, 1.993394 ]
@@ -2731,7 +3118,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "spine_2"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 6.0
 						point0 = [ 0.571935, 0.723189, 0.0 ]
@@ -2740,7 +3127,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "neck_0"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 2.8
 						point0 = [ 1.834593, 0.159425, 0.0 ]
@@ -2749,7 +3136,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "head"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 4.0
 						point0 = [ 0.137518, 1.110987, 0.0 ]
@@ -2758,7 +3145,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "arm_upper_L"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 2.2
 						point0 = [ 3.07092, 0.101982, -0.419772 ]
@@ -2767,7 +3154,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "arm_lower_L"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 2.2
 						point0 = [ 0.779721, 0.0, 0.0 ]
@@ -2776,7 +3163,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "leg_upper_L"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 3.2
 						point0 = [ 3.823403, -0.404825, -0.589013 ]
@@ -2785,7 +3172,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "leg_lower_L"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 2.2
 						point0 = [ 1.759624, 0.683827, 0.101829 ]
@@ -2794,7 +3181,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "arm_upper_R"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 2.2
 						point0 = [ -2.940807, -0.09661, 0.290651 ]
@@ -2803,7 +3190,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "arm_lower_R"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 2.2
 						point0 = [ -0.981427, 0.0, 0.0 ]
@@ -2812,7 +3199,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "leg_upper_R"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 3.2
 						point0 = [ -3.796616, 0.288326, 0.569778 ]
@@ -2821,7 +3208,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "leg_lower_R"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 2.2
 						point0 = [ -1.969846, -0.732311, -0.110404 ]
@@ -2830,7 +3217,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "hand_L"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 2.5
 						point0 = [ -0.0, 0.0, -0.0 ]
@@ -2839,7 +3226,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "ankle_L"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 2.425187
 						point0 = [ 1.329381, -2.072794, 0.000599 ]
@@ -2848,7 +3235,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "hand_R"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 2.5
 						point0 = [ 0.0, 0.0, -0.0 ]
@@ -2857,7 +3244,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "ankle_R"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 2.365405
 						point0 = [ -1.352253, 2.059729, 0.000007 ]
@@ -2866,7 +3253,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "clavicle_L"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 3.0
 						point0 = [ 4.50063, -0.44032, 0.342261 ]
@@ -2875,7 +3262,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "clavicle_R"
-						surface_prop = "npc_combine_soldier"
+						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 3.0
 						point0 = [ -4.484322, 0.445906, -0.161212 ]
