@@ -3,7 +3,7 @@ using SpeedDial.Player;
 
 namespace SpeedDial.Weapons
 {
-	[Library( "dm_pistol", Title = "Pistol" )]
+	[Library( "sd_pistol", Title = "Pistol" )]
 	partial class Pistol : BaseSpeedDialWeapon
 	{ 
 	
