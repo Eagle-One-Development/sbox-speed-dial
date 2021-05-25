@@ -10,8 +10,11 @@ namespace SpeedDial.Player {
 		public virtual float CameraHeight => 400;
 		public virtual float CameraAngle => 65;
 
-		public Angles ang;
-		public Angles tarAng;
+		private Angles ang;
+		private Angles tarAng;
+		private Vector3 camOffset;
+
+
 
 		public bool CameraShift { get; set; }
 
@@ -24,7 +27,6 @@ namespace SpeedDial.Player {
 
 			if(input.Down(InputButton.Run)) {
 				CameraShift = true;
-				Log.Info($"run {Time.Delta}");
 			} else {
 				CameraShift = false;
 			}
@@ -61,13 +63,17 @@ namespace SpeedDial.Player {
 			Pos = pawn.EyePos; // relative to pawn eyepos
 			Pos += Vector3.Up * CameraHeight; // add camera height
 			Pos += -Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle))); // move camera back
-			if(CameraShift)
-				Pos += Vector3.Left * -(Mouse.Position.x * 0.1f) + Vector3.Forward * -(Mouse.Position.y * 0.1f);
+			if(CameraShift) {
+				camOffset = Vector3.Left * -((Mouse.Position.x - Screen.Size.x / 2) * 0.3f) + Vector3.Forward * -((Mouse.Position.y - Screen.Size.y / 2) * 0.3f);
+				//Pos = Vector3.Lerp(Pos, Pos + camOffset, 8 * Time.Delta);
+				// idk how to lerp this apparently, so fuck that
+				Pos += camOffset;
+			}
+			//TODO make a factor based on the screen size?
 
-			//Pos = Vector3.Lerp(Pos, Pos + Vector3.Left * -(Mouse.Position.x * 0.1f) + Vector3.Forward * -(Mouse.Position.y * 0.1f), 8 * Time.Delta);
-
-			DebugOverlay.ScreenText(new Vector2(500, 500), 1, Color.Green, CameraShift.ToString());
-			DebugOverlay.ScreenText(new Vector2(500, 500), 2, Color.Green, Pos.ToString());
+			//DebugOverlay.ScreenText(new Vector2(500, 500), 1, Color.Green, $"Shift {CameraShift}");
+			//DebugOverlay.ScreenText(new Vector2(500, 500), 2, Color.Green, $"Pos {Pos}");
+			//DebugOverlay.ScreenText(new Vector2(500, 500), 3, Color.Green, $"Offset {camOffset}");
 
 			Rot = Rotation.FromAxis(Vector3.Left, CameraAngle);
 
