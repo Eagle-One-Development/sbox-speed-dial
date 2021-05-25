@@ -10,8 +10,8 @@ namespace SpeedDial.Player {
 		public virtual float CameraHeight => 400;
 		public virtual float CameraAngle => 65;
 
-		//public Angles ang;
-		//public Angles tarAng;
+		public Angles ang;
+		public Angles tarAng;
 
 		public override void BuildInput(InputBuilder input) {
 			var client = Local.Pawn;
@@ -33,9 +33,10 @@ namespace SpeedDial.Player {
 			// 		tarAng.yaw = newDir.yaw;
 			// 	}
 			// }
-			//ang = Angles.Lerp(ang, tarAng, 10 * Time.Delta);
+			tarAng = angles;
+			ang = Angles.Lerp(ang, tarAng, 8 * Time.Delta);
 
-			input.ViewAngles = angles;
+			input.ViewAngles = ang;
 			input.InputDirection = input.AnalogMove;
 		}
 

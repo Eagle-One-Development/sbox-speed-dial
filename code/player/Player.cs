@@ -5,13 +5,16 @@ namespace SpeedDial.Player {
 
 		private TimeSince timeSinceDied = 0;
 
+		[Net, Local, Predicted]
+		public float RespawnTime { get; set; } = 1;
+
 		public void InitialSpawn() {
 			Respawn();
 			//more initial spawn stuff maybe
 		}
 
 		public override void Respawn() {
-			SetModel("models/biped_standard/biped_standard.vmdl");
+			SetModel("models/citizen/citizen.vmdl");
 
 			Camera = new SpeedDialCamera();
 			Controller = new SpeedDialController();
@@ -35,7 +38,7 @@ namespace SpeedDial.Player {
 		public override void OnKilled() {
 			Game.Current?.OnKilled(this);
 
-			BecomeRagdollOnClient(new Vector3(0, 0, 300), GetHitboxBone(0)); //force and bone, fix later with damage stuff in place
+			BecomeRagdollOnClient(new Vector3(Velocity.x, Velocity.y, 300), GetHitboxBone(0)); //force and bone, fix later with damage stuff in place
 
 			timeSinceDied = 0;
 			LifeState = LifeState.Dead;
@@ -48,7 +51,7 @@ namespace SpeedDial.Player {
 
 		public override void Simulate(Client cl) {
 			if(LifeState == LifeState.Dead) {
-				if(timeSinceDied > 1 && IsServer) {
+				if(timeSinceDied > RespawnTime && IsServer) {
 					Respawn();
 				}
 				return;

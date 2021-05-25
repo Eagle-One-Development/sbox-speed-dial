@@ -2,9 +2,7 @@ using Sandbox;
 
 namespace SpeedDial.Player {
 	public partial class SpeedDialController : BasePlayerController {
-		public float SprintSpeed { get; set; } = 320.0f;
-		public float WalkSpeed { get; set; } = 150.0f;
-		public float DefaultSpeed { get; set; } = 190.0f;
+		public float DefaultSpeed { get; set; } = 300.0f;
 		public float Acceleration { get; set; } = 10.0f;
 		public float AirAcceleration { get; set; } = 50.0f;
 		public float FallSoundZ { get; set; } = -30.0f;
@@ -161,7 +159,7 @@ namespace SpeedDial.Player {
 			}
 
 			WishVelocity = WishVelocity.Normal * inSpeed;
-			WishVelocity *= GetWishSpeed();
+			WishVelocity *= DefaultSpeed;
 
 
 			bool bStayOnGround = false;
@@ -211,14 +209,6 @@ namespace SpeedDial.Player {
 				DebugOverlay.ScreenText(lineOffset + 5, $"    WishVelocity: {WishVelocity}");
 			}
 
-		}
-
-		public virtual float GetWishSpeed() {
-
-			if(Input.Down(InputButton.Run)) return SprintSpeed;
-			if(Input.Down(InputButton.Walk)) return WalkSpeed;
-
-			return DefaultSpeed;
 		}
 
 		void WalkMove() {
