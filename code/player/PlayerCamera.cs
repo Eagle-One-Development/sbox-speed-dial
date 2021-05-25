@@ -13,11 +13,20 @@ namespace SpeedDial.Player {
 		public Angles ang;
 		public Angles tarAng;
 
+		public bool CameraShift { get; set; }
+
 		public override void BuildInput(InputBuilder input) {
 			var client = Local.Pawn;
 
 			if(client == null) {
 				return;
+			}
+
+			if(input.Down(InputButton.Run)) {
+				CameraShift = true;
+				Log.Info($"run {Time.Delta}");
+			} else {
+				CameraShift = false;
 			}
 
 			Vector2 screenCenter = Screen.Size * (Vector2)client.Position.ToScreen();
@@ -48,9 +57,17 @@ namespace SpeedDial.Player {
 
 			//DebugOverlay.Sphere(pawn.Position, 5, Color.Green, false);
 
+
 			Pos = pawn.EyePos; // relative to pawn eyepos
 			Pos += Vector3.Up * CameraHeight; // add camera height
 			Pos += -Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle))); // move camera back
+			if(CameraShift)
+				Pos += Vector3.Left * -(Mouse.Position.x * 0.1f) + Vector3.Forward * -(Mouse.Position.y * 0.1f);
+
+			//Pos = Vector3.Lerp(Pos, Pos + Vector3.Left * -(Mouse.Position.x * 0.1f) + Vector3.Forward * -(Mouse.Position.y * 0.1f), 8 * Time.Delta);
+
+			DebugOverlay.ScreenText(new Vector2(500, 500), 1, Color.Green, CameraShift.ToString());
+			DebugOverlay.ScreenText(new Vector2(500, 500), 2, Color.Green, Pos.ToString());
 
 			Rot = Rotation.FromAxis(Vector3.Left, CameraAngle);
 
