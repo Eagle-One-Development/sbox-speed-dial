@@ -88,6 +88,7 @@ namespace SpeedDial.Weapons
 
 	public override void Simulate( Client owner ) 
 	{
+
 		if ( TimeSinceDeployed < 0.6f )
 			return;
 

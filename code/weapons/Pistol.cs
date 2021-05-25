@@ -36,7 +36,7 @@ namespace SpeedDial.Weapons
 				DryFire();
 				return;
 			}
-	
+			
 	
 			//
 			// Tell the clients to play the shoot effects

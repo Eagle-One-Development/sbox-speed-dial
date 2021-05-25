@@ -1,4 +1,5 @@
 using Sandbox;
+using SpeedDial.Weapons;
 
 namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer : Sandbox.Player {
@@ -8,9 +9,14 @@ namespace SpeedDial.Player {
 		[Net, Local, Predicted]
 		public float RespawnTime { get; set; } = 1;
 
+		public SpeedDialPlayer(){
+			Inventory = new SpeedDialInventory( this );
+		}
+
 		public void InitialSpawn() {
 			Respawn();
 			//more initial spawn stuff maybe
+			
 		}
 
 		public override void Respawn() {
@@ -27,6 +33,11 @@ namespace SpeedDial.Player {
 
 			Host.AssertServer();
 
+			Inventory.Add( new Pistol(), true );
+			Log.Info("BIPPO");
+
+			GiveAmmo( AmmoType.Pistol, 100 );
+
 			LifeState = LifeState.Alive;
 			Health = 100;
 			Velocity = Vector3.Zero;
@@ -39,6 +50,8 @@ namespace SpeedDial.Player {
 			Game.Current?.OnKilled(this);
 
 			BecomeRagdollOnClient(new Vector3(Velocity.x, Velocity.y, 300), GetHitboxBone(0)); //force and bone, fix later with damage stuff in place
+			
+			Inventory.DeleteContents();
 
 			timeSinceDied = 0;
 			LifeState = LifeState.Dead;
@@ -56,6 +69,13 @@ namespace SpeedDial.Player {
 				}
 				return;
 			}
+
+			if ( Input.ActiveChild != null )
+				{
+					ActiveChild = Input.ActiveChild;
+				}
+		
+			SimulateActiveChild( cl, ActiveChild );
 
 			var controller = GetActiveController();
 			controller?.Simulate(cl, this, GetActiveAnimator());
