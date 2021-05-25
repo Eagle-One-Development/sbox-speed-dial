@@ -1,4 +1,4 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc28:version{fb63b6ca-f435-4aa0-a2c7-c66ddc651dca} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
 {
 	rootNode = 
 	{
@@ -12,7 +12,13 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "models/biped_standard/dmx/mesh/biped_standard_model.dmx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
 						import_filter = 
 						{
 							exclude_by_default = false
@@ -31,8 +37,8 @@
 						{
 							name = ""
 							speeds = [  ]
-							runspeed = 220.0
-							walkspeed = 84.0
+							runspeed = 320.0
+							walkspeed = 190.0
 							maxSpringTension = 100.0
 							springConstant = 10.0
 							useSmoothPaths = true
@@ -143,6 +149,48 @@
 							npc_foot_sweep_enabled = true
 						}
 					},
+					{
+						_class = "LookAtChain"
+						name = "AimAt"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "spine_2"
+									weight = 1.0
+								},
+								{
+									name = "spine_1"
+									weight = 0.75
+								},
+								{
+									name = "spine_0"
+									weight = 0.5
+								},
+								{
+									name = "pelvis"
+									weight = 0.25
+								},
+							]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "HandRAim"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "hand_R"
+									weight = 1.0
+								},
+							]
+						}
+					},
 				]
 			},
 			{
@@ -160,7 +208,7 @@
 						[
 							{
 								_class = "AnimFile"
-								name = "walke"
+								name = "walk_e"
 								children = 
 								[
 									{
@@ -189,7 +237,7 @@
 										align_rz = false
 										align_frame_type = "Number"
 										frame = 0
-										align_to_anim = "walkn"
+										align_to_anim = "walk_n"
 										align_to_frame_type = "Number"
 										align_to_frame = 0
 										bone = "root_motion"
@@ -214,7 +262,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "walkn"
+								name = "walk_n"
 								children = 
 								[
 									{
@@ -258,7 +306,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "walkne"
+								name = "walk_ne"
 								children = 
 								[
 									{
@@ -287,7 +335,7 @@
 										align_rz = false
 										align_frame_type = "Number"
 										frame = 0
-										align_to_anim = "walkn"
+										align_to_anim = "walk_n"
 										align_to_frame_type = "Number"
 										align_to_frame = 0
 										bone = "root_motion"
@@ -312,7 +360,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "walknw"
+								name = "walk_nw"
 								children = 
 								[
 									{
@@ -341,7 +389,7 @@
 										align_rz = false
 										align_frame_type = "Number"
 										frame = 0
-										align_to_anim = "walkn"
+										align_to_anim = "walk_n"
 										align_to_frame_type = "Number"
 										align_to_frame = 0
 										bone = "root_motion"
@@ -366,7 +414,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "walks"
+								name = "walk_s"
 								children = 
 								[
 									{
@@ -395,7 +443,7 @@
 										align_rz = false
 										align_frame_type = "Number"
 										frame = 0
-										align_to_anim = "walkn"
+										align_to_anim = "walk_n"
 										align_to_frame_type = "Number"
 										align_to_frame = 0
 										bone = "root_motion"
@@ -420,7 +468,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "walkse"
+								name = "walk_se"
 								children = 
 								[
 									{
@@ -449,7 +497,7 @@
 										align_rz = false
 										align_frame_type = "Number"
 										frame = 0
-										align_to_anim = "walkn"
+										align_to_anim = "walk_n"
 										align_to_frame_type = "Number"
 										align_to_frame = 0
 										bone = "root_motion"
@@ -474,7 +522,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "walksw"
+								name = "walk_sw"
 								children = 
 								[
 									{
@@ -503,7 +551,7 @@
 										align_rz = false
 										align_frame_type = "Number"
 										frame = 0
-										align_to_anim = "walkn"
+										align_to_anim = "walk_n"
 										align_to_frame_type = "Number"
 										align_to_frame = 0
 										bone = "root_motion"
@@ -528,7 +576,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "walkw"
+								name = "walk_w"
 								children = 
 								[
 									{
@@ -557,7 +605,7 @@
 										align_rz = false
 										align_frame_type = "Number"
 										frame = 0
-										align_to_anim = "walkn"
+										align_to_anim = "walk_n"
 										align_to_frame_type = "Number"
 										align_to_frame = 0
 										bone = "root_motion"
@@ -1203,7 +1251,7 @@
 						[
 							{
 								_class = "AnimFile"
-								name = "rune"
+								name = "run_e"
 								children = 
 								[
 									{
@@ -1242,7 +1290,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "runn"
+								name = "run_n"
 								children = 
 								[
 									{
@@ -1281,7 +1329,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "runne"
+								name = "run_ne"
 								children = 
 								[
 									{
@@ -1320,7 +1368,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "runnw"
+								name = "run_nw"
 								children = 
 								[
 									{
@@ -1359,7 +1407,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "runs"
+								name = "run_s"
 								children = 
 								[
 									{
@@ -1398,7 +1446,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "runse"
+								name = "run_se"
 								children = 
 								[
 									{
@@ -1437,7 +1485,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "runsw"
+								name = "run_sw"
 								children = 
 								[
 									{
@@ -1476,7 +1524,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "runw"
+								name = "run_w"
 								children = 
 								[
 									{
@@ -1535,6 +1583,649 @@
 						framerate = -1.0
 						reverse = false
 					},
+					{
+						_class = "Folder"
+						name = "temp"
+					},
+					{
+						_class = "Folder"
+						name = "rifle"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "rifle_idle"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/rifle_idle.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_walk_e"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/rifle_walk_e.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_walk_idle"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/rifle_walk_idle.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_walk_n"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/rifle_walk_n.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_walk_ne"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/rifle_walk_ne.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_walk_nw"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/rifle_walk_nw.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_walk_s"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/rifle_walk_s.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_walk_se"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/rifle_walk_se.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_walk_sw"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/rifle_walk_sw.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_walk_w"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/rifle_walk_w.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "Folder"
+								name = "rifle_turns"
+								children = 
+								[
+									{
+										_class = "AnimFile"
+										name = "rifle_turn_90R"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = false
+												extract_ty = false
+												extract_tz = false
+												extract_rz = true
+												linear = false
+												quadratic = false
+												root_bone_name = ""
+												motion_type = "Uniform"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/biped_standard/anims/rifle_turn_90R.dmx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "rifle_turn_135R"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = false
+												extract_ty = false
+												extract_tz = false
+												extract_rz = true
+												linear = false
+												quadratic = false
+												root_bone_name = ""
+												motion_type = "Uniform"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/biped_standard/anims/rifle_turn_135R.dmx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "rifle_turn_180L"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = false
+												extract_ty = false
+												extract_tz = false
+												extract_rz = true
+												linear = false
+												quadratic = false
+												root_bone_name = ""
+												motion_type = "Uniform"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/biped_standard/anims/rifle_turn_180L.dmx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "rifle_turn90L"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = false
+												extract_ty = false
+												extract_tz = false
+												extract_rz = true
+												linear = false
+												quadratic = false
+												root_bone_name = ""
+												motion_type = "Uniform"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/biped_standard/anims/rifle_turn90L.dmx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "rifle_turn_45L"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = false
+												extract_ty = false
+												extract_tz = false
+												extract_rz = true
+												linear = false
+												quadratic = false
+												root_bone_name = ""
+												motion_type = "Uniform"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/biped_standard/anims/rifle_turn_45L.dmx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "rifle_turn_45R"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = false
+												extract_ty = false
+												extract_tz = false
+												extract_rz = true
+												linear = false
+												quadratic = false
+												root_bone_name = ""
+												motion_type = "Uniform"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/biped_standard/anims/rifle_turn_45R.dmx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "rifle_turn_180R"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = false
+												extract_ty = false
+												extract_tz = false
+												extract_rz = true
+												linear = false
+												quadratic = false
+												root_bone_name = ""
+												motion_type = "Uniform"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/biped_standard/anims/rifle_turn_180R.dmx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+								]
+							},
+							{
+								_class = "Folder"
+								name = "rifle_aim"
+								children = 
+								[
+									{
+										_class = "AnimFile"
+										name = "rifle_aim_idle"
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/biped_standard/anims/rifle_aiming_idle.dmx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+								]
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_fire"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/rifle_fire.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+						]
+					},
 				]
 				default_root_bone_name = ""
 			},
@@ -1548,6 +2239,24 @@
 						parent_bone = "head"
 						relative_origin = [ 1.895531, 3.499232, -0.027622 ]
 						relative_angles = [ 0.0, 90.0, 90.000076 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "forward"
+						parent_bone = ""
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "aim_R"
+						parent_bone = "hand_R"
+						relative_origin = [ -8.003757, 0.804641, 0.194546 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -1695,6 +2404,36 @@
 							},
 							{
 								bone = "root_motion"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "firing"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "pelvis"
+								weight = 0.0
+							},
+							{
+								bone = "spine_0"
+								weight = 0.0
+							},
+							{
+								bone = "spine_1"
+								weight = 0.0
+							},
+							{
+								bone = "spine_2"
+								weight = 0.0
+							},
+							{
+								bone = "spine_3"
 								weight = 1.0
 							},
 						]
@@ -2145,8 +2884,8 @@
 				]
 			},
 		]
-		model_archetype = "generic_actor_model"
-		primary_associated_entity = "generic_actor"
+		model_archetype = ""
+		primary_associated_entity = ""
 		anim_graph_name = "animgraphs/biped_standard.vanmgrph"
 	}
 }
