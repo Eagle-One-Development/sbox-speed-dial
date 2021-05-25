@@ -6,12 +6,9 @@
     "depends": 
     [
         "base",
-        "citizen" // Optional if you already have a model and animations, etc.
+        "citizen"
     ],
 
-    //
-    // Addons can contain multiple addons, describe them here
-    //
     "gamemodes":
     [
         {
@@ -19,8 +16,8 @@
             // They will not show on the gamemode list! To do that make an organization
             // and fill the proper information on gamemode creation.
             "name": "speed-dial",
-            "title": "speed-dial",
-            "description": "speed-dial"
+            "title": "Speed-Dial",
+            "description": "Speed-Dial is a high octane top down deathmatch shooter taking place in a series of maps centered around the seedy California drug ring iconography."
         }
     ]
 }
