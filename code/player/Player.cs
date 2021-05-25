@@ -9,14 +9,14 @@ namespace SpeedDial.Player {
 		[Net, Local, Predicted]
 		public float RespawnTime { get; set; } = 1;
 
-		public SpeedDialPlayer(){
-			Inventory = new SpeedDialInventory( this );
+		public SpeedDialPlayer() {
+			Inventory = new SpeedDialInventory(this);
 		}
 
 		public void InitialSpawn() {
 			Respawn();
 			//more initial spawn stuff maybe
-			
+
 		}
 
 		public override void Respawn() {
@@ -33,10 +33,10 @@ namespace SpeedDial.Player {
 
 			Host.AssertServer();
 
-			Inventory.Add( new Pistol(), true );
+			Inventory.Add(new Pistol(), true);
 			Log.Info("BIPPO");
 
-			GiveAmmo( AmmoType.Pistol, 100 );
+			GiveAmmo(AmmoType.Pistol, 100);
 
 			LifeState = LifeState.Alive;
 			Health = 100;
@@ -49,8 +49,8 @@ namespace SpeedDial.Player {
 		public override void OnKilled() {
 			Game.Current?.OnKilled(this);
 
-			BecomeRagdollOnClient(new Vector3(Velocity.x, Velocity.y, 300), GetHitboxBone(0)); //force and bone, fix later with damage stuff in place
-			
+			BecomeRagdollOnClient(new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0)); //force and bone, fix later with damage stuff in place
+
 			Inventory.DeleteContents();
 
 			timeSinceDied = 0;
@@ -70,12 +70,11 @@ namespace SpeedDial.Player {
 				return;
 			}
 
-			if ( Input.ActiveChild != null )
-				{
-					ActiveChild = Input.ActiveChild;
-				}
-		
-			SimulateActiveChild( cl, ActiveChild );
+			if(Input.ActiveChild != null) {
+				ActiveChild = Input.ActiveChild;
+			}
+
+			SimulateActiveChild(cl, ActiveChild);
 
 			var controller = GetActiveController();
 			controller?.Simulate(cl, this, GetActiveAnimator());

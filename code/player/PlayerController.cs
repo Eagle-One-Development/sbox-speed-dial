@@ -83,64 +83,24 @@ namespace SpeedDial.Player {
 
 			RestoreGroundPos();
 
-			//Velocity += BaseVelocity * ( 1 + Time.Delta * 0.5f );
-			//BaseVelocity = Vector3.Zero;
-
-			//Rot = Rotation.LookAt( Input.Rotation.Forward.WithZ( 0 ), Vector3.Up );
-
 			if(Unstuck.TestAndFix())
 				return;
 
-			// Check Stuck
-			// Unstuck - or return if stuck
-
-			// Set Ground Entity to null if  falling faster then 250
-
-			// store water level to compare later
-
-			// if not on ground, store fall velocity
-
-			// player->UpdateStepSound( player->m_pSurfaceData, mv->GetAbsOrigin(), mv->m_vecVelocity )
-
-
-			// RunLadderMode
-
-			CheckLadder();
-			Swimming = Pawn.WaterLevel.Fraction > 0.6f;
 
 			//
 			// Start Gravity
 			//
-			if(!Swimming && !IsTouchingLadder) {
-				Velocity -= new Vector3(0, 0, Gravity * 0.5f) * Time.Delta;
-				Velocity += new Vector3(0, 0, BaseVelocity.z) * Time.Delta;
-
-				BaseVelocity = BaseVelocity.WithZ(0);
-			}
-
-
-			/*
-             if (player->m_flWaterJumpTime)
-	            {
-		            WaterJump();
-		            TryPlayerMove();
-		            // See if we are still in water?
-		            CheckWater();
-		            return;
-	            }
-            */
-
-			// if ( underwater ) do underwater movement
+			Velocity -= new Vector3(0, 0, Gravity * 0.5f) * Time.Delta;
+			Velocity += new Vector3(0, 0, BaseVelocity.z) * Time.Delta;
+			BaseVelocity = BaseVelocity.WithZ(0);
 
 			// Fricion is handled before we add in any base velocity. That way, if we are on a conveyor, 
 			//  we don't slow when standing still, relative to the conveyor.
 			bool bStartOnGround = GroundEntity != null;
 			//bool bDropSound = false;
 			if(bStartOnGround) {
-				//if ( Velocity.z < FallSoundZ ) bDropSound = true;
 
 				Velocity = Velocity.WithZ(0);
-				//player->m_Local.m_flFallVelocity = 0.0f;
 
 				if(GroundEntity != null) {
 					ApplyFriction(GroundFriction * SurfaceFriction);
@@ -152,23 +112,15 @@ namespace SpeedDial.Player {
 			//
 			WishVelocity = new Vector3(Input.Forward, Input.Left, 0);
 			var inSpeed = WishVelocity.Length.Clamp(0, 1);
-			//WishVelocity *= Input.Rotation;
 
-			if(!Swimming && !IsTouchingLadder) {
-				WishVelocity = WishVelocity.WithZ(0);
-			}
+			WishVelocity = WishVelocity.WithZ(0);
 
 			WishVelocity = WishVelocity.Normal * inSpeed;
 			WishVelocity *= DefaultSpeed;
 
 
 			bool bStayOnGround = false;
-			if(Swimming) {
-				ApplyFriction(1);
-				WaterMove();
-			} else if(IsTouchingLadder) {
-				LadderMove();
-			} else if(GroundEntity != null) {
+			if(GroundEntity != null) {
 				bStayOnGround = true;
 				WalkMove();
 			} else {
@@ -178,19 +130,13 @@ namespace SpeedDial.Player {
 			CategorizePosition(bStayOnGround);
 
 			// FinishGravity
-			if(!Swimming && !IsTouchingLadder) {
-				Velocity -= new Vector3(0, 0, Gravity * 0.5f) * Time.Delta;
-			}
+			Velocity -= new Vector3(0, 0, Gravity * 0.5f) * Time.Delta;
+
 
 
 			if(GroundEntity != null) {
 				Velocity = Velocity.WithZ(0);
 			}
-
-			// CheckFalling(); // fall damage etc
-
-			// Land Sound
-			// Swim Sounds
 
 			SaveGroundPos();
 
@@ -343,12 +289,6 @@ namespace SpeedDial.Player {
 		/// Remove ground friction from velocity
 		/// </summary>
 		public virtual void ApplyFriction(float frictionAmount = 1.0f) {
-			// If we are in water jump cycle, don't apply friction
-			//if ( player->m_flWaterJumpTime )
-			//   return;
-
-			// Not on ground - no friction
-
 
 			// Calculate speed
 			var speed = Velocity.Length;
@@ -370,7 +310,6 @@ namespace SpeedDial.Player {
 				Velocity *= newspeed;
 			}
 
-			// mv->m_outWishVel -= (1.f-newspeed) * mv->m_vecVelocity;
 		}
 
 		public virtual void AirMove() {
@@ -384,60 +323,6 @@ namespace SpeedDial.Player {
 			TryPlayerMove();
 
 			Velocity -= BaseVelocity;
-		}
-
-		public virtual void WaterMove() {
-			var wishdir = WishVelocity.Normal;
-			var wishspeed = WishVelocity.Length;
-
-			wishspeed *= 0.8f;
-
-			Accelerate(wishdir, wishspeed, 100, Acceleration);
-
-			Velocity += BaseVelocity;
-
-			TryPlayerMove();
-
-			Velocity -= BaseVelocity;
-		}
-
-		bool IsTouchingLadder = false;
-		Vector3 LadderNormal;
-
-		public virtual void CheckLadder() {
-			if(IsTouchingLadder && Input.Pressed(InputButton.Jump)) {
-				Velocity = LadderNormal * 100.0f;
-				IsTouchingLadder = false;
-
-				return;
-			}
-
-			const float ladderDistance = 1.0f;
-			var start = Position;
-			Vector3 end = start + (IsTouchingLadder ? (LadderNormal * -1.0f) : WishVelocity.Normal) * ladderDistance;
-
-			var pm = Trace.Ray(start, end)
-						.Size(mins, maxs)
-						.HitLayer(CollisionLayer.All, false)
-						.HitLayer(CollisionLayer.LADDER, true)
-						.Ignore(Pawn)
-						.Run();
-
-			IsTouchingLadder = false;
-
-			if(pm.Hit) {
-				IsTouchingLadder = true;
-				LadderNormal = pm.Normal;
-			}
-		}
-
-		public virtual void LadderMove() {
-			var velocity = WishVelocity;
-			float normalDot = velocity.Dot(LadderNormal);
-			var cross = LadderNormal * normalDot;
-			Velocity = (velocity - cross) + (-normalDot * LadderNormal.Cross(Vector3.Up.Cross(LadderNormal).Normal));
-
-			TryPlayerMove();
 		}
 
 		public virtual void TryPlayerMove() {
@@ -517,28 +402,12 @@ namespace SpeedDial.Player {
 			SurfaceFriction = tr.Surface.Friction * 1.25f;
 			if(SurfaceFriction > 1) SurfaceFriction = 1;
 
-			//if ( tr.Entity == GroundEntity ) return;
-
-			Vector3 oldGroundVelocity = default;
-			if(GroundEntity != null) oldGroundVelocity = GroundEntity.Velocity;
-
-			bool wasOffGround = GroundEntity == null;
-
 			GroundEntity = tr.Entity;
 
 			if(GroundEntity != null) {
 				BaseVelocity = GroundEntity.Velocity;
 			}
 
-			/*
-              	m_vecGroundUp = pm.m_vHitNormal;
-	            player->m_surfaceProps = pm.m_pSurfaceProperties->GetNameHash();
-	            player->m_pSurfaceData = pm.m_pSurfaceProperties;
-	            const CPhysSurfaceProperties *pProp = pm.m_pSurfaceProperties;
-
-	            const CGameSurfaceProperties *pGameProps = g_pPhysicsQuery->GetGameSurfaceproperties( pProp );
-	            player->m_chTextureType = (int8)pGameProps->m_nLegacyGameMaterial;
-            */
 		}
 
 		/// <summary>
@@ -590,16 +459,11 @@ namespace SpeedDial.Player {
 		void RestoreGroundPos() {
 			if(GroundEntity == null || GroundEntity.IsWorld)
 				return;
-
-			//var Position = GroundEntity.Transform.ToWorld( GroundTransform );
-			//Pos = Position.Position;
 		}
 
 		void SaveGroundPos() {
 			if(GroundEntity == null || GroundEntity.IsWorld)
 				return;
-
-			//GroundTransform = GroundEntity.Transform.ToLocal( new Transform( Pos, Rot ) );
 		}
 	}
 }
