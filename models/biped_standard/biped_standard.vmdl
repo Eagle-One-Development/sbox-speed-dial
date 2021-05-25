@@ -1890,6 +1890,251 @@
 								framerate = -1.0
 								reverse = false
 							},
+							{
+								_class = "Folder"
+								name = "turns"
+								children = 
+								[
+									{
+										_class = "AnimFile"
+										name = "rifle_turn_90R"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = false
+												extract_ty = false
+												extract_tz = false
+												extract_rz = true
+												linear = false
+												quadratic = false
+												root_bone_name = ""
+												motion_type = "Uniform"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/biped_standard/anims/rifle_turn_90R.dmx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "rifle_turn_135R"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = false
+												extract_ty = false
+												extract_tz = false
+												extract_rz = true
+												linear = false
+												quadratic = false
+												root_bone_name = ""
+												motion_type = "Uniform"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/biped_standard/anims/rifle_turn_135R.dmx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "rifle_turn_180L"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = false
+												extract_ty = false
+												extract_tz = false
+												extract_rz = true
+												linear = false
+												quadratic = false
+												root_bone_name = ""
+												motion_type = "Uniform"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/biped_standard/anims/rifle_turn_180L.dmx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "rifle_turn90L"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = false
+												extract_ty = false
+												extract_tz = false
+												extract_rz = true
+												linear = false
+												quadratic = false
+												root_bone_name = ""
+												motion_type = "Uniform"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/biped_standard/anims/rifle_turn90L.dmx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "rifle_turn_45L"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = false
+												extract_ty = false
+												extract_tz = false
+												extract_rz = true
+												linear = false
+												quadratic = false
+												root_bone_name = ""
+												motion_type = "Uniform"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/biped_standard/anims/rifle_turn_45L.dmx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "rifle_turn_45R"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = false
+												extract_ty = false
+												extract_tz = false
+												extract_rz = true
+												linear = false
+												quadratic = false
+												root_bone_name = ""
+												motion_type = "Uniform"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/biped_standard/anims/rifle_turn_45R.dmx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "rifle_turn_180R"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = false
+												extract_ty = false
+												extract_tz = false
+												extract_rz = true
+												linear = false
+												quadratic = false
+												root_bone_name = ""
+												motion_type = "Uniform"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/biped_standard/anims/rifle_turn_180R.dmx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+								]
+							},
 						]
 					},
 				]
