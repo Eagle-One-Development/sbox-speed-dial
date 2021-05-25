@@ -25,7 +25,22 @@ namespace SpeedDial {
 			var player = new SpeedDialPlayer();
 			client.Pawn = player;
 
-			player.Respawn();
+			player.InitialSpawn();
+		}
+
+		public override void DoPlayerNoclip(Client player) {
+			if(!player.HasPermission("noclip"))
+				return;
+
+			if(player.Pawn is SpeedDialPlayer basePlayer) {
+				if(basePlayer.DevController is NoclipController) {
+					Log.Info("Noclip Mode Off");
+					basePlayer.DevController = null;
+				} else {
+					Log.Info("Noclip Mode On");
+					basePlayer.DevController = new SpeedDialController();
+				}
+			}
 		}
 
 		public static void MoveToSpawn(SpeedDialPlayer player) {

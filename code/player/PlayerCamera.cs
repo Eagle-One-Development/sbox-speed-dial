@@ -53,7 +53,7 @@ namespace SpeedDial.Player {
 
 			Rot = Rotation.FromAxis(Vector3.Left, CameraAngle);
 
-			FieldOfView = 90;
+			FieldOfView = 70;
 
 			Viewer = null;
 		}
