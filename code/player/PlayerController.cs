@@ -449,10 +449,6 @@ namespace SpeedDial.Player {
 			if(trace.StartedSolid) return;
 			if(Vector3.GetAngle(Vector3.Up, trace.Normal) > GroundAngle) return;
 
-			// This is incredibly hacky. The real problem is that trace returning that strange value we can't network over.
-			// float flDelta = fabs( mv->GetAbsOrigin().z - trace.m_vEndPos.z );
-			// if ( flDelta > 0.5f * DIST_EPSILON )
-
 			Position = trace.EndPos;
 		}
 
