@@ -149,6 +149,48 @@
 							npc_foot_sweep_enabled = true
 						}
 					},
+					{
+						_class = "LookAtChain"
+						name = "AimAt"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "spine_2"
+									weight = 1.0
+								},
+								{
+									name = "spine_1"
+									weight = 0.75
+								},
+								{
+									name = "spine_0"
+									weight = 0.5
+								},
+								{
+									name = "pelvis"
+									weight = 0.25
+								},
+							]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "HandRAim"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "hand_R"
+									weight = 1.0
+								},
+							]
+						}
+					},
 				]
 			},
 			{
@@ -1892,7 +1934,7 @@
 							},
 							{
 								_class = "Folder"
-								name = "turns"
+								name = "rifle_turns"
 								children = 
 								[
 									{
@@ -2135,6 +2177,53 @@
 									},
 								]
 							},
+							{
+								_class = "Folder"
+								name = "rifle_aim"
+								children = 
+								[
+									{
+										_class = "AnimFile"
+										name = "rifle_aim_idle"
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/biped_standard/anims/rifle_aiming_idle.dmx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+								]
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_fire"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/biped_standard/anims/rifle_fire.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
 						]
 					},
 				]
@@ -2158,6 +2247,15 @@
 						name = "forward"
 						parent_bone = ""
 						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "aim_R"
+						parent_bone = "hand_R"
+						relative_origin = [ -8.003757, 0.804641, 0.194546 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
@@ -2306,6 +2404,36 @@
 							},
 							{
 								bone = "root_motion"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "firing"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "pelvis"
+								weight = 0.0
+							},
+							{
+								bone = "spine_0"
+								weight = 0.0
+							},
+							{
+								bone = "spine_1"
+								weight = 0.0
+							},
+							{
+								bone = "spine_2"
+								weight = 0.0
+							},
+							{
+								bone = "spine_3"
 								weight = 1.0
 							},
 						]

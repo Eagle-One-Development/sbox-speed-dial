@@ -148,6 +148,83 @@
 				m_bPredicted = false
 				m_bDefaultValue = false
 			},
+			{
+				_class = "CVectorAnimParameter"
+				m_name = "aimat_pos"
+				m_id = 
+				{
+					m_id = 234233196
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = false
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = false
+				m_defaultValue = [ 0.0, 0.0, 0.0 ]
+				m_bInterpolate = false
+			},
+			{
+				_class = "CFloatAnimParameter"
+				m_name = "lookat_weight"
+				m_id = 
+				{
+					m_id = 822089343
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = false
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = true
+				m_fDefaultValue = 1.0
+				m_fMinValue = 0.0
+				m_fMaxValue = 1.0
+				m_bInterpolate = true
+			},
+			{
+				_class = "CFloatAnimParameter"
+				m_name = "aimat_weight"
+				m_id = 
+				{
+					m_id = 418183141
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = false
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = true
+				m_fDefaultValue = 1.0
+				m_fMinValue = 0.0
+				m_fMaxValue = 1.0
+				m_bInterpolate = true
+			},
+			{
+				_class = "CBoolAnimParameter"
+				m_name = "firing"
+				m_id = 
+				{
+					m_id = 1373865373
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = false
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = false
+				m_bDefaultValue = false
+			},
+			{
+				_class = "CBoolAnimParameter"
+				m_name = "melee"
+				m_id = 
+				{
+					m_id = 175265371
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = false
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = false
+				m_bDefaultValue = false
+			},
 		]
 	}
 	m_pTagManager = 
@@ -309,7 +386,7 @@
 			{
 				_class = "CSpeedScaleAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -86.0, 1741.0 ]
+				m_vecPosition = [ 296.0, 903.0 ]
 				m_nNodeID = 
 				{
 					m_id = 78561993
@@ -334,7 +411,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 82.0, 1829.0 ]
+				m_vecPosition = [ 594.0, 1123.0 ]
 				m_nNodeID = 
 				{
 					m_id = 162940320
@@ -522,7 +599,7 @@
 			{
 				_class = "CBlend2DAnimNode"
 				m_sName = "walk"
-				m_vecPosition = [ -460.0, 1775.0 ]
+				m_vecPosition = [ -19.0, 944.0 ]
 				m_nNodeID = 
 				{
 					m_id = 234278097
@@ -618,7 +695,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Movement"
-				m_vecPosition = [ 461.0, 1876.0 ]
+				m_vecPosition = [ -202.0, 1907.0 ]
 				m_nNodeID = 
 				{
 					m_id = 236076305
@@ -754,7 +831,7 @@
 			{
 				_class = "CSpeedScaleAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 67.394913, 1689.926514 ]
+				m_vecPosition = [ 450.0, 852.0 ]
 				m_nNodeID = 
 				{
 					m_id = 277536928
@@ -800,7 +877,7 @@
 			{
 				_class = "CTwoBoneIKAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 1105.0, 1826.0 ]
+				m_vecPosition = [ 730.0, 2050.0 ]
 				m_nNodeID = 
 				{
 					m_id = 289694236
@@ -825,26 +902,6 @@
 				{
 					m_id = 4294967295
 				}
-			}
-		},
-		{
-			key = 
-			{
-				m_id = 338948331
-			}
-			value = 
-			{
-				_class = "CCommentAnimNode"
-				m_sName = "StrideR Node"
-				m_vecPosition = [ 1308.0, 1189.0 ]
-				m_nNodeID = 
-				{
-					m_id = 338948331
-				}
-				m_networkMode = "ServerAuthoritative"
-				m_commentText = "The StriderR node replaces the Solve IK node from the previous example because it handles the IK solve now.  \n\nIt receives information about the current state of the feet from the other nodes in the graph, including the current phase of the foot cycle and how much time remains before the end of the cycle, their trajectory, and the predicted location of where they will next land.  \n\nThe node uses this information, along with the location of the previous footstep, to calculate where the foot should be now.  \n\nSelect this node while running this graph in the editor to see the predicted foot positions in the Preview window.  "
-				m_size = [ 375.0, 595.0 ]
-				m_color = [ 30, 107, 135, 255 ]
 			}
 		},
 		{
@@ -1083,21 +1140,48 @@
 		{
 			key = 
 			{
-				m_id = 389286787
+				m_id = 459618477
 			}
 			value = 
 			{
-				_class = "CCommentAnimNode"
-				m_sName = "Read Me (Select and Press F to zoom)"
-				m_vecPosition = [ 1768.0, 1083.0 ]
+				_class = "CLookAtAnimNode"
+				m_sName = "AimAt"
+				m_vecPosition = [ 861.770203, 1733.480347 ]
 				m_nNodeID = 
 				{
-					m_id = 389286787
+					m_id = 459618477
 				}
 				m_networkMode = "ServerAuthoritative"
-				m_commentText = "This graph steps through the process of building a progressively more advanced AnimGraph.  \nIt starts with the simplest version necessary to make the character walk around, and progressively \nadds more features with each step.  \n\nClick the Preview button, then change the Active Example parameter to try out each of the examples.  \n\nThe \"custom_character\" example map has an entity running this graph for you to try it out.  \n"
-				m_size = [ 2130.0, 219.0 ]
-				m_color = [ 139, 0, 0, 255 ]
+				m_childID = 
+				{
+					m_id = 2047231774
+				}
+				m_target = "VectorParameter"
+				m_param = 
+				{
+					m_id = 234233196
+				}
+				m_weightParam = 
+				{
+					m_id = 418183141
+				}
+				m_lookatChainName = "AimAt"
+				m_attachmentName = "forward"
+				m_flYawLimit = 180.0
+				m_flPitchLimit = 180.0
+				m_bResetBase = false
+				m_bLockWhenWaning = false
+				m_bUseHysteresis = false
+				m_flHysteresisInnerAngle = 1.0
+				m_flHysteresisOuterAngle = 20.0
+				m_damping = 
+				{
+					_class = "CAnimInputDamping"
+					m_speedFunction = "NoDamping"
+					m_fSpeedScale = 5.0
+					m_fMinSpeed = 10.0
+					m_fMaxTension = 1000.0
+				}
 			}
 		},
 		{
@@ -1190,7 +1274,7 @@
 			{
 				_class = "CSelectorAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -7.0, 2026.0 ]
+				m_vecPosition = [ -1306.0, 2326.0 ]
 				m_nNodeID = 
 				{
 					m_id = 598238023
@@ -1237,6 +1321,26 @@
 		{
 			key = 
 			{
+				m_id = 621495693
+			}
+			value = 
+			{
+				_class = "CCommentAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ 722.0, 1955.0 ]
+				m_nNodeID = 
+				{
+					m_id = 621495693
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_commentText = "Fix Leg Ik bones to reimplement\n"
+				m_size = [ 375.0, 286.0 ]
+				m_color = [ 49, 139, 146, 255 ]
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 659910173
 			}
 			value = 
@@ -1259,26 +1363,6 @@
 				m_bMatchChildDuration = true
 				m_bUseManualTurnOffset = false
 				m_manualTurnOffset = 0.0
-			}
-		},
-		{
-			key = 
-			{
-				m_id = 699961189
-			}
-			value = 
-			{
-				_class = "CCommentAnimNode"
-				m_sName = "Speed Scaling"
-				m_vecPosition = [ -788.0, 2017.0 ]
-				m_nNodeID = 
-				{
-					m_id = 699961189
-				}
-				m_networkMode = "ServerAuthoritative"
-				m_commentText = "Sometimes when the strides of an animation are retargeted to a location that is very different from the original animation stretches the legs out in an unnatural way.  To help avoid this, the Follow Path nodes support reducing the root motion speed of the animation based on how different the animation\'s movement direction is from the direction of the path.  Slowing the character down in corners like this keeps the feet targets closer to the character and results in more natural poses.  "
-				m_size = [ 375.0, 446.0 ]
-				m_color = [ 30, 107, 135, 255 ]
 			}
 		},
 		{
@@ -1317,7 +1401,7 @@
 			{
 				_class = "CSpeedScaleAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -199.0, 1676.0 ]
+				m_vecPosition = [ 426.0, 691.0 ]
 				m_nNodeID = 
 				{
 					m_id = 732957981
@@ -1342,7 +1426,7 @@
 			{
 				_class = "CMotionMatchingAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -385.0, 2203.0 ]
+				m_vecPosition = [ -1684.0, 2503.0 ]
 				m_nNodeID = 
 				{
 					m_id = 734525575
@@ -1968,202 +2052,13 @@
 		{
 			key = 
 			{
-				m_id = 772624619
-			}
-			value = 
-			{
-				_class = "CCommentAnimNode"
-				m_sName = "Parking the Feet"
-				m_vecPosition = [ 343.0, 1527.0 ]
-				m_nNodeID = 
-				{
-					m_id = 772624619
-				}
-				m_networkMode = "ServerAuthoritative"
-				m_commentText = "Sometimes when transitioning between animations with very different movements, we want to disable any locks on the feet and just let them slide into the right position.  This is the case here when transitioning from Walking back to the Idle pose, as the feet can be in very different positions when the character reaches the end of the path, and the idle does not have any foot steps that would adjust the feet to the right place.  So here we enabled the \"Park Feet\" option on the transition from  Move to Idle to signal to the StrideR system  that should set both the previous and next foot positions to the position defined by the Idle animation, and blend the feet to that location"
-				m_size = [ 375.0, 446.0 ]
-				m_color = [ 30, 107, 135, 255 ]
-			}
-		},
-		{
-			key = 
-			{
-				m_id = 793283725
-			}
-			value = 
-			{
-				_class = "CStateMachineAnimNode"
-				m_sName = "Unnamed"
-				m_vecPosition = [ 1085.0, 1949.0 ]
-				m_nNodeID = 
-				{
-					m_id = 793283725
-				}
-				m_networkMode = "ServerAuthoritative"
-				m_states = 
-				[
-					{
-						_class = "CAnimState"
-						m_transitions = 
-						[
-							{
-								_class = "CAnimStateTransition"
-								m_conditions = 
-								[
-									{
-										_class = "CPathStatusCondition"
-										m_comparisonOp = 0
-										m_optionToCheck = "PathStatus_HasPath"
-										m_bComparisonValue = true
-									},
-									{
-										_class = "CParameterAnimCondition"
-										m_comparisonOp = 0
-										m_paramID = 
-										{
-											m_id = 689965241
-										}
-										m_comparisonValue = 
-										{
-											m_nType = 1
-											m_data = false
-										}
-									},
-								]
-								m_blendDuration = 0.6
-								m_destState = 
-								{
-									m_id = 2022229165
-								}
-								m_bReset = false
-								m_resetCycleOption = "Beginning"
-								m_flFixedCycleValue = 0.0
-								m_blendCurve = 
-								{
-									m_vControlPoint1 = [ 0.5, 0.0 ]
-									m_vControlPoint2 = [ 0.5, 1.0 ]
-								}
-								m_bForceFootPlant = false
-								m_bDisabled = false
-							},
-						]
-						m_tags = [  ]
-						m_tagBehaviors = [  ]
-						m_name = "LookAt On"
-						m_childNodeID = 
-						{
-							m_id = 4294967295
-						}
-						m_stateID = 
-						{
-							m_id = 1193635441
-						}
-						m_position = [ 121.0, -26.0 ]
-						m_bIsStartState = false
-						m_bIsEndtState = false
-						m_bIsPassthrough = false
-						m_bIsRootMotionExclusive = false
-						m_bAlwaysEvaluate = false
-					},
-					{
-						_class = "CAnimState"
-						m_transitions = 
-						[
-							{
-								_class = "CAnimStateTransition"
-								m_conditions = 
-								[
-									{
-										_class = "CPathStatusCondition"
-										m_comparisonOp = 0
-										m_optionToCheck = "PathStatus_HasPath"
-										m_bComparisonValue = false
-									},
-								]
-								m_blendDuration = 0.6
-								m_destState = 
-								{
-									m_id = 1193635441
-								}
-								m_bReset = true
-								m_resetCycleOption = "Beginning"
-								m_flFixedCycleValue = 0.0
-								m_blendCurve = 
-								{
-									m_vControlPoint1 = [ 0.0, 0.0 ]
-									m_vControlPoint2 = [ 0.25, 1.0 ]
-								}
-								m_bForceFootPlant = false
-								m_bDisabled = false
-							},
-							{
-								_class = "CAnimStateTransition"
-								m_conditions = 
-								[
-									{
-										_class = "CParameterAnimCondition"
-										m_comparisonOp = 0
-										m_paramID = 
-										{
-											m_id = 689965241
-										}
-										m_comparisonValue = 
-										{
-											m_nType = 1
-											m_data = true
-										}
-									},
-								]
-								m_blendDuration = 0.2
-								m_destState = 
-								{
-									m_id = 1193635441
-								}
-								m_bReset = true
-								m_resetCycleOption = "Beginning"
-								m_flFixedCycleValue = 0.0
-								m_blendCurve = 
-								{
-									m_vControlPoint1 = [ 0.5, 0.0 ]
-									m_vControlPoint2 = [ 0.5, 1.0 ]
-								}
-								m_bForceFootPlant = false
-								m_bDisabled = false
-							},
-						]
-						m_tags = [  ]
-						m_tagBehaviors = [  ]
-						m_name = "LookAt Off"
-						m_childNodeID = 
-						{
-							m_id = 4294967295
-						}
-						m_stateID = 
-						{
-							m_id = 2022229165
-						}
-						m_position = [ -138.0, -27.0 ]
-						m_bIsStartState = true
-						m_bIsEndtState = false
-						m_bIsPassthrough = false
-						m_bIsRootMotionExclusive = false
-						m_bAlwaysEvaluate = false
-					},
-				]
-				m_bBlockWaningTags = false
-				m_bLockStateWhenWaning = false
-			}
-		},
-		{
-			key = 
-			{
 				m_id = 848144266
 			}
 			value = 
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 208.0, 2049.0 ]
+				m_vecPosition = [ -1091.0, 2349.0 ]
 				m_nNodeID = 
 				{
 					m_id = 848144266
@@ -2324,13 +2219,240 @@
 		{
 			key = 
 			{
+				m_id = 905804277
+			}
+			value = 
+			{
+				_class = "CStateMachineAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ 258.0, 1897.0 ]
+				m_nNodeID = 
+				{
+					m_id = 905804277
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_states = 
+				[
+					{
+						_class = "CAnimState"
+						m_transitions = 
+						[
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CParameterAnimCondition"
+										m_comparisonOp = 0
+										m_paramID = 
+										{
+											m_id = 1373865373
+										}
+										m_comparisonValue = 
+										{
+											m_nType = 1
+											m_data = true
+										}
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 1694428481
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CParameterAnimCondition"
+										m_comparisonOp = 0
+										m_paramID = 
+										{
+											m_id = 175265371
+										}
+										m_comparisonValue = 
+										{
+											m_nType = 1
+											m_data = true
+										}
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 2105931310
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
+						]
+						m_tags = [  ]
+						m_tagBehaviors = [  ]
+						m_name = "Idle"
+						m_childNodeID = 
+						{
+							m_id = 236076305
+						}
+						m_stateID = 
+						{
+							m_id = 679003862
+						}
+						m_position = [ -30.0, 100.0 ]
+						m_bIsStartState = true
+						m_bIsEndtState = false
+						m_bIsPassthrough = false
+						m_bIsRootMotionExclusive = false
+						m_bAlwaysEvaluate = false
+					},
+					{
+						_class = "CAnimState"
+						m_transitions = 
+						[
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CParameterAnimCondition"
+										m_comparisonOp = 0
+										m_paramID = 
+										{
+											m_id = 1373865373
+										}
+										m_comparisonValue = 
+										{
+											m_nType = 1
+											m_data = false
+										}
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 679003862
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
+						]
+						m_tags = [  ]
+						m_tagBehaviors = [  ]
+						m_name = "firing"
+						m_childNodeID = 
+						{
+							m_id = 1084477314
+						}
+						m_stateID = 
+						{
+							m_id = 1694428481
+						}
+						m_position = [ 52.0, -57.0 ]
+						m_bIsStartState = false
+						m_bIsEndtState = false
+						m_bIsPassthrough = false
+						m_bIsRootMotionExclusive = false
+						m_bAlwaysEvaluate = false
+					},
+					{
+						_class = "CAnimState"
+						m_transitions = 
+						[
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CParameterAnimCondition"
+										m_comparisonOp = 0
+										m_paramID = 
+										{
+											m_id = 175265371
+										}
+										m_comparisonValue = 
+										{
+											m_nType = 1
+											m_data = false
+										}
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 679003862
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
+						]
+						m_tags = [  ]
+						m_tagBehaviors = [  ]
+						m_name = "Melee"
+						m_childNodeID = 
+						{
+							m_id = 4294967295
+						}
+						m_stateID = 
+						{
+							m_id = 2105931310
+						}
+						m_position = [ -131.0, -150.0 ]
+						m_bIsStartState = false
+						m_bIsEndtState = false
+						m_bIsPassthrough = false
+						m_bIsRootMotionExclusive = false
+						m_bAlwaysEvaluate = false
+					},
+				]
+				m_bBlockWaningTags = false
+				m_bLockStateWhenWaning = false
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 909451985
 			}
 			value = 
 			{
 				_class = "CDirectPlaybackAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 1753.0, 1876.0 ]
+				m_vecPosition = [ 1785.0, 1809.0 ]
 				m_nNodeID = 
 				{
 					m_id = 909451985
@@ -2338,10 +2460,31 @@
 				m_networkMode = "ServerAuthoritative"
 				m_childID = 
 				{
-					m_id = 2047231774
+					m_id = 459618477
 				}
 				m_bFinishEarly = false
 				m_bResetOnFinish = true
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 986242409
+			}
+			value = 
+			{
+				_class = "CSequenceAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -1179.0, 1075.0 ]
+				m_nNodeID = 
+				{
+					m_id = 986242409
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_tagSpans = [  ]
+				m_sequenceName = "rifle_aim_idle"
+				m_playbackSpeed = 1.0
+				m_bLoop = true
 			}
 		},
 		{
@@ -2369,26 +2512,6 @@
 				m_bMatchChildDuration = true
 				m_bUseManualTurnOffset = false
 				m_manualTurnOffset = 0.0
-			}
-		},
-		{
-			key = 
-			{
-				m_id = 1025939976
-			}
-			value = 
-			{
-				_class = "CCommentAnimNode"
-				m_sName = "New Metrics"
-				m_vecPosition = [ -1225.0, 2016.0 ]
-				m_nNodeID = 
-				{
-					m_id = 1025939976
-				}
-				m_networkMode = "ServerAuthoritative"
-				m_commentText = "Since this version of the graph uses StrideR data, we can take advantage of this in the motion matching node using different metrics.  \n\nThe Bone Position metric, which compared the position of the ankle bones in the animations, has been replaced with the Foot Position metric.  This new metric uses the calculated position of the feet from the StrideR system, so it can compare the data set to the modified, planted positions of the feet.\n\nWe also added the Foot Cycle metric, which tries to find a clip sample that matches how far the foot is through its current step"
-				m_size = [ 375.0, 446.0 ]
-				m_color = [ 30, 107, 135, 255 ]
 			}
 		},
 		{
@@ -2770,21 +2893,40 @@
 		{
 			key = 
 			{
-				m_id = 1104370089
+				m_id = 1084477314
 			}
 			value = 
 			{
-				_class = "CCommentAnimNode"
-				m_sName = "Death"
-				m_vecPosition = [ 2439.0, 1770.0 ]
+				_class = "CBoneMaskAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ 141.0, 2270.0 ]
 				m_nNodeID = 
 				{
-					m_id = 1104370089
+					m_id = 1084477314
 				}
 				m_networkMode = "ServerAuthoritative"
-				m_commentText = "This animgraph tells the engine that it will handle death via the existence of parameter b_animate_death.\n\nOn NPC death, the engine sets this paramter true.  The state machine below then switches to a state that sets the Ragdoll tag to tell the engine to switch to a ragdoll."
-				m_size = [ 471.0, 366.0 ]
-				m_color = [ 160, 82, 45, 255 ]
+				m_weightListName = "firing"
+				m_child1ID = 
+				{
+					m_id = 236076305
+				}
+				m_child2ID = 
+				{
+					m_id = 1691432854
+				}
+				m_blendSpace = "BlendSpace_Model"
+				m_bUseBlendScale = false
+				m_blendValueSource = "Parameter"
+				m_blendParameter = 
+				{
+					m_id = 4294967295
+				}
+				m_timingBehavior = "UseChild2"
+				m_flTimingBlend = 0.5
+				m_flRootMotionBlend = 0.0
+				m_footMotionTiming = "Child1"
+				m_bResetChild1 = false
+				m_bResetChild2 = true
 			}
 		},
 		{
@@ -2796,7 +2938,7 @@
 			{
 				_class = "CBlend2DAnimNode"
 				m_sName = "run"
-				m_vecPosition = [ -373.0, 1896.0 ]
+				m_vecPosition = [ -62.0, 844.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1127017349
@@ -2892,7 +3034,7 @@
 			{
 				_class = "CRootAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 3419.0, 1949.0 ]
+				m_vecPosition = [ 2849.0, 1870.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1144694180
@@ -2934,7 +3076,7 @@
 			{
 				_class = "CSelectorAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -291.0, 2367.0 ]
+				m_vecPosition = [ -1590.0, 2667.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1190919314
@@ -2981,21 +3123,48 @@
 		{
 			key = 
 			{
-				m_id = 1213495264
+				m_id = 1197182447
 			}
 			value = 
 			{
-				_class = "CCommentAnimNode"
-				m_sName = "Final Pose Node"
-				m_vecPosition = [ 3206.0, 1775.0 ]
+				_class = "CLookAtAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ 1117.0, 1709.0 ]
 				m_nNodeID = 
 				{
-					m_id = 1213495264
+					m_id = 1197182447
 				}
 				m_networkMode = "ServerAuthoritative"
-				m_commentText = "This node is the root of the graph.  Each node can only have one Final Pose, and only nodes connected to this one will get used.  "
-				m_size = [ 588.0, 362.0 ]
-				m_color = [ 49, 139, 146, 255 ]
+				m_childID = 
+				{
+					m_id = 459618477
+				}
+				m_target = "VectorParameter"
+				m_param = 
+				{
+					m_id = 234233196
+				}
+				m_weightParam = 
+				{
+					m_id = 418183141
+				}
+				m_lookatChainName = "HandRAim"
+				m_attachmentName = "aim_R"
+				m_flYawLimit = 180.0
+				m_flPitchLimit = 180.0
+				m_bResetBase = false
+				m_bLockWhenWaning = false
+				m_bUseHysteresis = false
+				m_flHysteresisInnerAngle = 1.0
+				m_flHysteresisOuterAngle = 20.0
+				m_damping = 
+				{
+					_class = "CAnimInputDamping"
+					m_speedFunction = "NoDamping"
+					m_fSpeedScale = 5.0
+					m_fMinSpeed = 10.0
+					m_fMaxTension = 1000.0
+				}
 			}
 		},
 		{
@@ -3034,7 +3203,7 @@
 			{
 				_class = "CSpeedScaleAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 180.0, 1756.0 ]
+				m_vecPosition = [ 562.0, 918.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1252706675
@@ -3086,7 +3255,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -1229.0, 1146.0 ]
+				m_vecPosition = [ -1123.0, 982.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1425890235
@@ -3094,6 +3263,27 @@
 				m_networkMode = "ServerAuthoritative"
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_walk_idle"
+				m_playbackSpeed = 1.0
+				m_bLoop = true
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 1427589181
+			}
+			value = 
+			{
+				_class = "CSequenceAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -570.0, 2422.0 ]
+				m_nNodeID = 
+				{
+					m_id = 1427589181
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_tagSpans = [  ]
+				m_sequenceName = "rifle_fire"
 				m_playbackSpeed = 1.0
 				m_bLoop = true
 			}
@@ -3134,7 +3324,7 @@
 			{
 				_class = "CBlend2DAnimNode"
 				m_sName = "rifle_walk"
-				m_vecPosition = [ -217.0, 1944.0 ]
+				m_vecPosition = [ 224.0, 1113.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1495403121
@@ -3251,101 +3441,13 @@
 		{
 			key = 
 			{
-				m_id = 1506499308
-			}
-			value = 
-			{
-				_class = "CFollowPathAnimNode"
-				m_sName = "Follow Path - Face Look Target"
-				m_vecPosition = [ -695.0, 2404.0 ]
-				m_nNodeID = 
-				{
-					m_id = 1506499308
-				}
-				m_networkMode = "ServerAuthoritative"
-				m_childID = 
-				{
-					m_id = 4294967295
-				}
-				m_flBlendOutTime = 0.3
-				m_bBlockNonPathMovement = false
-				m_bStopFeetAtGoal = false
-				m_bScaleSpeed = true
-				m_flScale = 0.5
-				m_flMinAngle = 0.0
-				m_flMaxAngle = 45.0
-				m_flSpeedScaleBlending = 0.2
-				m_bTurnToFace = true
-				m_facingTarget = "LookHeading"
-				m_param = 
-				{
-					m_id = 4294967295
-				}
-				m_flTurnToFaceOffset = 0.0
-				m_damping = 
-				{
-					_class = "CAnimInputDamping"
-					m_speedFunction = "Spring"
-					m_fSpeedScale = 4.0
-					m_fMinSpeed = 2.0
-					m_fMaxTension = 30.0
-				}
-			}
-		},
-		{
-			key = 
-			{
-				m_id = 1518031746
-			}
-			value = 
-			{
-				_class = "CFollowPathAnimNode"
-				m_sName = "Follow Path - Face Path"
-				m_vecPosition = [ -683.0, 2351.0 ]
-				m_nNodeID = 
-				{
-					m_id = 1518031746
-				}
-				m_networkMode = "ServerAuthoritative"
-				m_childID = 
-				{
-					m_id = 4294967295
-				}
-				m_flBlendOutTime = 0.3
-				m_bBlockNonPathMovement = false
-				m_bStopFeetAtGoal = false
-				m_bScaleSpeed = true
-				m_flScale = 0.5
-				m_flMinAngle = 0.0
-				m_flMaxAngle = 90.0
-				m_flSpeedScaleBlending = 0.2
-				m_bTurnToFace = true
-				m_facingTarget = "MoveHeading"
-				m_param = 
-				{
-					m_id = 4294967295
-				}
-				m_flTurnToFaceOffset = 0.0
-				m_damping = 
-				{
-					_class = "CAnimInputDamping"
-					m_speedFunction = "Spring"
-					m_fSpeedScale = 12.0
-					m_fMinSpeed = 10.0
-					m_fMaxTension = 30.0
-				}
-			}
-		},
-		{
-			key = 
-			{
 				m_id = 1615485554
 			}
 			value = 
 			{
 				_class = "CTwoBoneIKAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 1284.076416, 1863.812866 ]
+				m_vecPosition = [ 735.0, 2085.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1615485554
@@ -3375,21 +3477,32 @@
 		{
 			key = 
 			{
-				m_id = 1705861051
+				m_id = 1691432854
 			}
 			value = 
 			{
-				_class = "CCommentAnimNode"
-				m_sName = "Direct Playback Node"
-				m_vecPosition = [ 1743.0, 1716.0 ]
+				_class = "CAddAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -103.0, 2313.0 ]
 				m_nNodeID = 
 				{
-					m_id = 1705861051
+					m_id = 1691432854
 				}
 				m_networkMode = "ServerAuthoritative"
-				m_commentText = "This node provides access to the game code to temporarily play a specific animation, skipping all of this node\'s children.  A graph needs to include a Direct Playback Node in order for Scripted Sequences to work"
-				m_size = [ 588.0, 333.0 ]
-				m_color = [ 49, 139, 146, 255 ]
+				m_baseChildID = 
+				{
+					m_id = 236076305
+				}
+				m_additiveChildID = 
+				{
+					m_id = 2106747085
+				}
+				m_timingBehavior = "UseChild2"
+				m_flTimingBlend = 0.5
+				m_footMotionTiming = "Child1"
+				m_bResetBase = true
+				m_bResetAdditive = true
+				m_bApplyChannelsSeparately = true
 			}
 		},
 		{
@@ -3593,7 +3706,7 @@
 			{
 				_class = "CFootLockAnimNode"
 				m_sName = "StrideR"
-				m_vecPosition = [ 1513.0, 1837.0 ]
+				m_vecPosition = [ 907.0, 2132.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1851828504
@@ -3729,7 +3842,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Movement"
-				m_vecPosition = [ -1043.0, 1179.0 ]
+				m_vecPosition = [ -937.0, 1097.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1959136241
@@ -3823,7 +3936,7 @@
 						m_name = "Idle"
 						m_childNodeID = 
 						{
-							m_id = 1425890235
+							m_id = 986242409
 						}
 						m_stateID = 
 						{
@@ -3963,7 +4076,7 @@
 			{
 				_class = "CLookAtAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 837.0, 1841.0 ]
+				m_vecPosition = [ 695.0, 1834.0 ]
 				m_nNodeID = 
 				{
 					m_id = 2047231774
@@ -3971,7 +4084,7 @@
 				m_networkMode = "ServerAuthoritative"
 				m_childID = 
 				{
-					m_id = 236076305
+					m_id = 905804277
 				}
 				m_target = "VectorParameter"
 				m_param = 
@@ -3980,7 +4093,7 @@
 				}
 				m_weightParam = 
 				{
-					m_id = 4294967295
+					m_id = 822089343
 				}
 				m_lookatChainName = "Head_LookAt_Chain"
 				m_attachmentName = "Head_LookAt_Attachment"
@@ -4020,6 +4133,37 @@
 				m_sequenceName = "rifle_turn90L"
 				m_playbackSpeed = 1.0
 				m_bLoop = false
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 2106747085
+			}
+			value = 
+			{
+				_class = "CSubtractAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -354.0, 2373.0 ]
+				m_nNodeID = 
+				{
+					m_id = 2106747085
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_baseChildID = 
+				{
+					m_id = 236076305
+				}
+				m_subtractChildID = 
+				{
+					m_id = 1427589181
+				}
+				m_timingBehavior = "UseChild2"
+				m_flTimingBlend = 0.5
+				m_footMotionTiming = "Child1"
+				m_bResetBase = true
+				m_bResetSubtract = true
+				m_bApplyChannelsSeparately = true
 			}
 		},
 	]
