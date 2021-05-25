@@ -87,6 +87,26 @@ namespace SpeedDial.Player {
 			var forward = idealRotation.Forward.Dot(moveDir);
 			var sideward = idealRotation.Right.Dot(moveDir);
 
+			if(MathF.Abs(forward) < 15 )
+			{
+				forward = 0;
+			}
+	
+			if ( MathF.Abs( forward ) > 85 )
+			{
+				forward = 100 * (int)MathF.Sign( forward );
+			}
+	
+			if (MathF.Abs(sideward) < 15 )
+			{
+				sideward = 0;
+			}
+	
+			if ( MathF.Abs( sideward ) > 85 )
+			{
+				sideward = 100 * (int)MathF.Sign(sideward);
+			}
+
 			//
 			// Set our speeds on the animgraph
 			//
