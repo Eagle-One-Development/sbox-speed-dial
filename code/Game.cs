@@ -2,6 +2,7 @@ using Sandbox;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using SpeedDial.Player;
 using SpeedDial.UI;
 
@@ -9,6 +10,7 @@ namespace SpeedDial {
 	[Library("speed-dial")]
 	public partial class SpeedDialGame : Game {
 
+		public List<SpeedDialPlayerCharacter> characters;
 
 		[Net]
 		public BaseRound Round { get; private set; }
@@ -29,9 +31,20 @@ namespace SpeedDial {
 				new SpeedDialHud();
 			}
 
+			PopulateData();
+
 			if(IsClient) {
 				Log.Info("[CL] Gamemode created!");
 			}
+		}
+
+
+		private void PopulateData(){
+			characters = new();
+			characters.Add(new SpeedDialPlayerCharacter("sd_pistol","Jack","This is Jack."        ,"ui/portraits/default.png","ui/head/default.png"));
+			characters.Add(new SpeedDialPlayerCharacter("sd_pistol","Maria","This is Maria."      ,"ui/portraits/default.png","ui/head/default.png"));
+			characters.Add(new SpeedDialPlayerCharacter("sd_pistol","Dial-Up","This is Dial-Up."  ,"ui/portraits/default.png","ui/head/default.png"));
+			characters.Add(new SpeedDialPlayerCharacter("sd_pistol","Highway","This is Highway."  ,"ui/portraits/default.png","ui/head/default.png"));
 		}
 
 		public override void ClientJoined(Client client) {

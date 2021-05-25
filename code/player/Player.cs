@@ -20,7 +20,7 @@ namespace SpeedDial.Player {
 		}
 
 		public override void Respawn() {
-			SetModel("models/citizen/citizen.vmdl");
+			SetModel("models/biped_standard/biped_standard.vmdl");
 
 			Camera = new SpeedDialCamera();
 			Controller = new SpeedDialController();
@@ -34,7 +34,6 @@ namespace SpeedDial.Player {
 			Host.AssertServer();
 
 			Inventory.Add(new Pistol(), true);
-			Log.Info("BIPPO");
 
 			GiveAmmo(AmmoType.Pistol, 100);
 
@@ -57,18 +56,12 @@ namespace SpeedDial.Player {
 					.Size(1)
 					.Run();
 
-			DebugOverlay.Line(Position + Vector3.Up * 48, Position + Vector3.Down * 500, Color.Green, 10);
+			Log.Info("DECAL");
+			var rot = Rotation.LookAt(tr.Normal) * Rotation.FromAxis(Vector3.Forward, 5);
+			var pos = tr.EndPos;
+			if(Host.IsClient)
+				Decals.Place(Material.Load("materials/decals/blood1.vmat"), tr.Entity, tr.Bone, pos, 5, rot);
 
-			if(tr.Hit)
-				DebugOverlay.Sphere(tr.EndPos, 3, Color.Green, false, 10);
-
-			var decalPath = "materials/decals/blood1.vmat";
-			if(decalPath != null) {
-				if(DecalDefinition.ByPath.TryGetValue(decalPath, out var decal)) {
-					Log.Info("DECAL");
-					decal.PlaceUsingTrace(tr);
-				}
-			}
 
 			Inventory.DeleteContents();
 
