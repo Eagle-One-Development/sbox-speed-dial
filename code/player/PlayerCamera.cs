@@ -45,7 +45,7 @@ namespace SpeedDial.Player {
 			// 	}
 			// }
 			tarAng = angles;
-			ang = Angles.Lerp(ang, tarAng, 8 * Time.Delta);
+			ang = Angles.Lerp(ang, tarAng, 10 * Time.Delta);
 
 			input.ViewAngles = ang;
 			input.InputDirection = input.AnalogMove;
@@ -68,11 +68,11 @@ namespace SpeedDial.Player {
 				//Pos = Vector3.Lerp(Pos, Pos + camOffset, 8 * Time.Delta);
 				// idk how to lerp this apparently, so fuck that
 				//Pos += camOffset;
-			}else{
+			} else {
 				camOffsetTarget = Vector3.Zero;
 			}
 
-			camOffset = Vector3.Lerp(camOffset,camOffsetTarget, Time.Delta * 8f);
+			camOffset = Vector3.Lerp(camOffset, camOffsetTarget, Time.Delta * 8f);
 
 			Pos += camOffset;
 

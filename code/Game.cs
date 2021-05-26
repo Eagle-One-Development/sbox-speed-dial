@@ -39,16 +39,16 @@ namespace SpeedDial {
 		}
 
 
-		private void PopulateData(){
+		private void PopulateData() {
 			characters = new();
 			string str = "Addicted to polvo, with a vendetta to settle, Jack is a rogue violent vigilante making his way through L.A. one crimeboss at a time.";
-			characters.Add(new SpeedDialPlayerCharacter("sd_pistol","Jack"   ,str,"ui/portraits/default.png","ui/head/default.png"));
+			characters.Add(new SpeedDialPlayerCharacter("sd_pistol", "Jack", str, "ui/portraits/default.png", "ui/head/default.png"));
 			str = "The former right hand of an L.A. crime gang, Maria now spends her days as muscle available to the highest bidder.";
-			characters.Add(new SpeedDialPlayerCharacter("sd_pistol","Maria"  ,str,"ui/portraits/default.png","ui/head/default.png"));
+			characters.Add(new SpeedDialPlayerCharacter("sd_pistol", "Maria", str, "ui/portraits/default.png", "ui/head/default.png"));
 			str = "Dial-Up assisted many L.A. crime gangs on various counts of cyber-crime. Now he specializes in 'violent corporate cyber espionage'.";
-			characters.Add(new SpeedDialPlayerCharacter("sd_pistol","Dial-Up",str,"ui/portraits/default.png","ui/head/default.png"));
+			characters.Add(new SpeedDialPlayerCharacter("sd_pistol", "Dial-Up", str, "ui/portraits/default.png", "ui/head/default.png"));
 			str = "Nobody knows who Highway is or what their goal is. Stories tell of a drifter who comes in and out of towns, leaving bodies in their wake.";
-			characters.Add(new SpeedDialPlayerCharacter("sd_pistol","Highway",str,"ui/portraits/default.png","ui/head/default.png"));
+			characters.Add(new SpeedDialPlayerCharacter("sd_pistol", "Highway", str, "ui/portraits/default.png", "ui/head/default.png"));
 		}
 
 		public override void ClientJoined(Client client) {

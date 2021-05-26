@@ -18,6 +18,8 @@ namespace SpeedDial.Player {
 			ent.SetInteractsWith(CollisionLayer.WORLD_GEOMETRY);
 			ent.SetInteractsExclude(CollisionLayer.Player | CollisionLayer.Debris);
 
+			ent.RenderColor = playerColor;
+
 			ent.SetModel(GetModelName());
 			ent.CopyBonesFrom(this);
 			ent.TakeDecalsFrom(this);
@@ -37,19 +39,7 @@ namespace SpeedDial.Player {
 			// 	}
 			// }
 
-			var tr = Trace.Ray(Position, Vector3.Down * 50)
-					.UseHitboxes()
-					.Ignore(Owner)
-					.Ignore(this)
-					.Size(1)
-					.Run();
 
-			var decalPath = "materials/decals/blood1.vmat";
-			if(decalPath != null) {
-				if(DecalDefinition.ByPath.TryGetValue(decalPath, out var decal)) {
-					decal.PlaceUsingTrace(tr);
-				}
-			}
 
 			ent.PhysicsGroup.AddVelocity(force);
 

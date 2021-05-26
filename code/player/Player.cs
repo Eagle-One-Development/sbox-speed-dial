@@ -9,18 +9,32 @@ namespace SpeedDial.Player {
 		[Net, Local, Predicted]
 		public float RespawnTime { get; set; } = 1;
 
+		[Net]
+		public Color32 playerColor { get; set; }
+
 		public SpeedDialPlayer() {
 			Inventory = new SpeedDialInventory(this);
 		}
 
 		public void InitialSpawn() {
-			Respawn();
-			//more initial spawn stuff maybe
 
+			if(GetClientOwner().SteamId == 76561198000823482) {
+				playerColor = new Color32(250, 176, 3); // bak
+			} else if(GetClientOwner().SteamId == 76561198203314521) { // gurke 76561198203314521
+				playerColor = new Color32(70, 0, 70);
+			} else if(GetClientOwner().SteamId == 76561198095231052) { // generic
+				playerColor = new Color32(27, 49, 63);
+			} else {
+				playerColor = Color.Random;
+			}
+			Respawn();
 		}
+
 
 		public override void Respawn() {
 			SetModel("models/biped_standard/biped_standard.vmdl");
+
+			RenderColor = playerColor;
 
 			Camera = new SpeedDialCamera();
 			Controller = new SpeedDialController();
@@ -35,7 +49,7 @@ namespace SpeedDial.Player {
 
 			Inventory.Add(new Pistol(), true);
 
-			GiveAmmo(AmmoType.Pistol, 100);
+			GiveAmmo(AmmoType.Pistol, 1000);
 
 			LifeState = LifeState.Alive;
 			Health = 100;
@@ -56,12 +70,12 @@ namespace SpeedDial.Player {
 					.Size(1)
 					.Run();
 
-			Log.Info("DECAL");
+			// fuck the current decal stuff, this doesn't work
+			//Log.Info("DECAL");
 			var rot = Rotation.LookAt(tr.Normal) * Rotation.FromAxis(Vector3.Forward, 5);
 			var pos = tr.EndPos;
 			if(Host.IsClient)
 				Decals.Place(Material.Load("materials/decals/blood1.vmat"), tr.Entity, tr.Bone, pos, 5, rot);
-
 
 			Inventory.DeleteContents();
 
