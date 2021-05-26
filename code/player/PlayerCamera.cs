@@ -94,6 +94,7 @@ namespace SpeedDial.Player {
 			Viewer = null;
 		}
 
+		// THIS SHALL NOT BE TOUCHED FOR AS LONG AS IT WORKS, UNDERSTOOD?!?!?
 		public static Vector3 LinePlaneIntersectionWithHeight(Vector3 pos, Vector3 dir, float z) {
 			float px, py, pz;
 
