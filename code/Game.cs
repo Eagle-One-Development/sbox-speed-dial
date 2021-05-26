@@ -26,6 +26,9 @@ namespace SpeedDial {
 		[ServerVar("sdial_score_base", Help = "Set the base value for score calculations.")]
 		public static int ScoreBase { get; set; } = 100;
 
+		[ServerVar("sdial_combo_time", Help = "Set the combo time window in seconds.")]
+		public static float ComboTime { get; set; } = 3f;
+
 		public static SpeedDialGame Instance => (SpeedDialGame)Current;
 
 		public SpeedDialGame() {

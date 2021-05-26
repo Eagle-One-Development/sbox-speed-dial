@@ -12,13 +12,11 @@ namespace SpeedDial.Player {
 		[Net, Local]
 		public TimeSince TimeSinceMurdered { get; set; }
 
-		[Net, Local] //this should probably be a static of the game itself, oh well
-		public int ScoreBase { get; set; } = 500;
 
 		[Event("tick")]
 		public void OnTick() {
 			if(IsServer) {
-				if(TimeSinceMurdered >= 3)
+				if(TimeSinceMurdered >= SpeedDialGame.ComboTime)
 					KillCombo = 0;
 			}
 		}
