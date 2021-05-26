@@ -18,6 +18,7 @@ namespace SpeedDial.UI{
 
 		public Label startLoad;
 
+		
 		private int currentIndex;
 
 		private float translate;
@@ -38,11 +39,13 @@ namespace SpeedDial.UI{
 
 			SpeedDialPlayerCharacter character = SpeedDialGame.Instance.characters[currentIndex];
 
-			title.Text = character.name + " " + currentIndex.ToString();
+			title.Text = character.name;
 			description.Text = character.description;
 			portrait.SetTexture(character.portrait);
 
-
+		    string wep = Library.GetAttribute(character.weapon).Title;
+			startLoad.Text = $"Weapon: {wep}\nAbility: NONE";
+			
 			var transform = new PanelTransform();
 			transform.AddTranslateY( Length.Percent( translate ) );
 
@@ -51,31 +54,44 @@ namespace SpeedDial.UI{
 			portrait.Style.Transform = transform;
 			portrait.Style.Dirty();
 
-			if(Local.Client != null){
-				bool Q = Local.Client.Input.Pressed(InputButton.Menu);
-				bool E = Local.Client.Input.Pressed(InputButton.Use);
-
+			if(Host.IsClient){
 				
-
-				if(Q){
-					currentIndex++;
-					translate = 100f;
-					if(currentIndex > SpeedDialGame.Instance.characters.Count - 1){
-						currentIndex = 0;
-					}
-				}
-
-				if(E){
-					currentIndex--;
-					translate = 100f;
-					if(currentIndex < 0){
-						currentIndex = SpeedDialGame.Instance.characters.Count - 1;
-					}
-				}
 			}
+			
 			
 
 		}
-    }
+    
+				   
+		[Event("buildinput")]
+		public void ProcessClientInput( InputBuilder input )
+		{
+			bool Q = input.Pressed(InputButton.Menu);
+			bool E = input.Pressed(InputButton.Use);
+			bool space = input.Pressed(InputButton.Jump);
+			
+
+		
+			if(E){
+				currentIndex++;
+				translate = 100f;
+				
+				if(currentIndex > SpeedDialGame.Instance.characters.Count - 1){
+					currentIndex = 0;	
+				}
+						
+			}
+
+			if(Q){
+				currentIndex--;
+				Log.Info(currentIndex.ToString());
+				translate = 100f;
+				if(currentIndex < 0){
+					currentIndex = SpeedDialGame.Instance.characters.Count - 1;
+				}
+			}
+		}
+	
+	}
 
 }
