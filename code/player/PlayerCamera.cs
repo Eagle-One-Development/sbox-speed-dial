@@ -33,7 +33,13 @@ namespace SpeedDial.Player {
 
 			Vector2 screenCenter = Screen.Size * (Vector2)client.Position.ToScreen();
 			Vector3 mouseDir = screenCenter - Mouse.Position;
-			var angles = new Vector3(mouseDir.y, mouseDir.x).EulerAngles;
+
+			var pawn = Local.Pawn;
+			if(pawn == null) return;
+
+			var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rot, Screen.Size);
+			var HitPosition = LinePlaneIntersectionWithHeight(Pos, direction, pawn.EyePos.z);
+			var angles = (HitPosition - pawn.EyePos).EulerAngles;
 
 			// analog input stuff
 
@@ -57,36 +63,54 @@ namespace SpeedDial.Player {
 			if(pawn == null)
 				return;
 
-			//DebugOverlay.Sphere(pawn.Position, 5, Color.Green, false);
-
-
 			Pos = pawn.EyePos; // relative to pawn eyepos
 			Pos += Vector3.Up * CameraHeight; // add camera height
 			Pos += -Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle))); // move camera back
+
 			if(CameraShift) {
 				camOffsetTarget = Vector3.Left * -((Mouse.Position.x - Screen.Size.x / 2) * 0.3f) + Vector3.Forward * -((Mouse.Position.y - Screen.Size.y / 2) * 0.3f);
-				//Pos = Vector3.Lerp(Pos, Pos + camOffset, 8 * Time.Delta);
-				// idk how to lerp this apparently, so fuck that
-				//Pos += camOffset;
 			} else {
 				camOffsetTarget = Vector3.Zero;
 			}
-
 			camOffset = Vector3.Lerp(camOffset, camOffsetTarget, Time.Delta * 8f);
-
 			Pos += camOffset;
-
-			//TODO make a factor based on the screen size?
-
-			//DebugOverlay.ScreenText(new Vector2(500, 500), 1, Color.Green, $"Shift {CameraShift}");
-			//DebugOverlay.ScreenText(new Vector2(500, 500), 2, Color.Green, $"Pos {Pos}");
-			//DebugOverlay.ScreenText(new Vector2(500, 500), 3, Color.Green, $"Offset {camOffset}");
 
 			Rot = Rotation.FromAxis(Vector3.Left, CameraAngle);
 
-			FieldOfView = 70;
+			var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rot, Screen.Size);
 
+			var HitPosition = LinePlaneIntersectionWithHeight(Pos, direction, pawn.EyePos.z);
+
+			DebugOverlay.ScreenText(new Vector2(300, 300), 2, Color.Green, $"Pos {Pos}");
+			DebugOverlay.ScreenText(new Vector2(300, 300), 3, Color.Green, $"Dir {direction}");
+			DebugOverlay.ScreenText(new Vector2(300, 300), 4, Color.Green, $"HitPos {HitPosition}");
+
+			var Distance = HitPosition - pawn.EyePos;
+			//vectDistance = B - A
+			//vectDirection = vectDistance / lenght(vectDistance)
+
+			DebugOverlay.Line(pawn.EyePos, pawn.EyePos + Distance, Color.Green, 0, false);
+
+
+
+			DebugOverlay.Sphere(HitPosition, 5, Color.Green, false);
+			//DebugOverlay.Line(pawn.EyePos, HitPosition, Color.Green, 0, false);
+
+			FieldOfView = 70;
 			Viewer = null;
+		}
+
+		public static Vector3 LinePlaneIntersectionWithHeight(Vector3 pos, Vector3 dir, float z) {
+			float px, py, pz;
+
+			//solve for temp, zpos = (zdir) * (temp) + (initialZpos)
+			float temp = (z - pos.z) / dir.z;
+
+			//plug in and solve for Px and Py
+			px = dir.x * temp + pos.x;
+			py = dir.y * temp + pos.y;
+			pz = z;
+			return new Vector3(px, py, pz);
 		}
 	}
 }
