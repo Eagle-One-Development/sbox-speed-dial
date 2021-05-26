@@ -3,40 +3,35 @@ using SpeedDial.Weapons;
 using Sandbox.UI;
 
 namespace SpeedDial.Player {
-    public partial class SpeedDialPlayerCharacter
-    {
+	public partial class BaseSpeedDialCharacter {
+
 		/// <summary>
 		/// Name of the library for the weapon this character spawns with
 		/// </summary>
-        public string weapon;
+		public virtual string weapon => "sd_pistol";
 
 		/// <summary>
 		/// The name of the character that shows up on the character select
 		/// </summary>
-		public string name;
+		public virtual string name => "N/A";
 
 		/// <summary>
 		/// The description that shows up on the character select
 		/// </summary>
-		public string description;
+		public virtual string description => "NONE";
 
 		/// <summary>
 		/// The path to the portrait that appears on the character select
 		/// </summary>
-		public string portrait;
+		public virtual string portrait => "ui/portraits/default.png";
 
 		/// <summary>
 		/// The path to the image of the head that appears on the UI
 		/// </summary>
-		public string headImage;
+		public virtual string headImage => "ui/head/default.png";
 
-		public SpeedDialPlayerCharacter(string w, string n, string d, string p, string h){
-			weapon = w;
-			name = n;
-			description = d;
-			portrait = p;
-			headImage = h;
+		public BaseSpeedDialCharacter() {
 		}
 
-    }
+	}
 }
