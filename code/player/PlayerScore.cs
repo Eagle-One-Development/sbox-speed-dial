@@ -28,8 +28,8 @@ namespace SpeedDial.Player {
 
 		[Event("tick")]
 		public void OnTick() {
-			if(Host.IsClient)
-				DebugOverlay.ScreenText(new Vector2(300, 300), 1, Color.Green, $"{KillCombo} {TimeSinceKilled}");
+			//if(Host.IsClient)
+			//DebugOverlay.ScreenText(new Vector2(300, 300), 1, Color.Green, $"{KillCombo} {TimeSinceKilled}");
 		}
 	}
 }

@@ -77,24 +77,17 @@ namespace SpeedDial.Player {
 
 			Rot = Rotation.FromAxis(Vector3.Left, CameraAngle);
 
-			var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rot, Screen.Size);
+			// var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rot, Screen.Size);
+			// var HitPosition = LinePlaneIntersectionWithHeight(Pos, direction, pawn.EyePos.z);
 
-			var HitPosition = LinePlaneIntersectionWithHeight(Pos, direction, pawn.EyePos.z);
+			// DebugOverlay.ScreenText(new Vector2(300, 300), 2, Color.Green, $"Pos {Pos}");
+			// DebugOverlay.ScreenText(new Vector2(300, 300), 3, Color.Green, $"Dir {direction}");
+			// DebugOverlay.ScreenText(new Vector2(300, 300), 4, Color.Green, $"HitPos {HitPosition}");
 
-			DebugOverlay.ScreenText(new Vector2(300, 300), 2, Color.Green, $"Pos {Pos}");
-			DebugOverlay.ScreenText(new Vector2(300, 300), 3, Color.Green, $"Dir {direction}");
-			DebugOverlay.ScreenText(new Vector2(300, 300), 4, Color.Green, $"HitPos {HitPosition}");
+			// var Distance = HitPosition - pawn.EyePos;
 
-			var Distance = HitPosition - pawn.EyePos;
-			//vectDistance = B - A
-			//vectDirection = vectDistance / lenght(vectDistance)
-
-			DebugOverlay.Line(pawn.EyePos, pawn.EyePos + Distance, Color.Green, 0, false);
-
-
-
-			DebugOverlay.Sphere(HitPosition, 5, Color.Green, false);
-			//DebugOverlay.Line(pawn.EyePos, HitPosition, Color.Green, 0, false);
+			// DebugOverlay.Line(pawn.EyePos, pawn.EyePos + Distance, Color.Green, 0, false);
+			// DebugOverlay.Sphere(HitPosition, 5, Color.Green, false);
 
 			FieldOfView = 70;
 			Viewer = null;
