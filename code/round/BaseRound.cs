@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace SpeedDial{
+namespace SpeedDial {
 
 	public abstract partial class BaseRound : NetworkComponent {
 		/// <summary>
@@ -25,7 +25,7 @@ namespace SpeedDial{
 		public List<SpeedDialPlayer> Players = new();
 
 		//When the end of the round occurs relative to the Time.Now of the start of the round
-		[Net,Predicted]
+		[Net, Predicted]
 		public float RoundEndTime { get; set; }
 
 		/// <summary>
@@ -42,7 +42,7 @@ namespace SpeedDial{
 		/// <summary>
 		/// Formatted version of the time left in the round in seconds
 		/// </summary>
-		[Net, Predicted]
+		[Net]
 		public string TimeLeftFormatted { get; set; } = "";
 
 
