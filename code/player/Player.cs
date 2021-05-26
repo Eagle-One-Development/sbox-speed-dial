@@ -115,7 +115,7 @@ namespace SpeedDial.Player {
 			var controller = GetActiveController();
 			controller?.Simulate(cl, this, GetActiveAnimator());
 
-			DebugOverlay.ScreenText(new Vector2(300, 300), 1, Color.Green, $"{KillCombo}x {TimeSinceMurdered}s");
+			DebugOverlay.ScreenText(new Vector2(300, 300), 1, Color.Green, $"{KillCombo}x {KillScore} Score {TimeSinceMurdered}\ts");
 		}
 	}
 }

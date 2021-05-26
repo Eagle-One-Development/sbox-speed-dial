@@ -6,11 +6,14 @@ namespace SpeedDial.Player {
 		[Net, Local]
 		public int KillCombo { get; set; }
 
-		[Net]
-		public int Score { get; set; }
+		[Net, Local]
+		public int KillScore { get; set; }
 
 		[Net, Local]
 		public TimeSince TimeSinceMurdered { get; set; }
+
+		[Net, Local] //this should probably be a static of the game itself, oh well
+		public int ScoreBase { get; set; } = 500;
 
 		[Event("tick")]
 		public void OnTick() {

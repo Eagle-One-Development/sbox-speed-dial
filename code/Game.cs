@@ -20,8 +20,11 @@ namespace SpeedDial {
 		[ServerVar("sdial_min_players", Help = "The minimum players required to start the game.")]
 		public static int MinPlayers { get; set; } = 1;
 
-		[ServerVar("sdial_debug_enable", Help = "Enable JBall Debug mode.")]
+		[ServerVar("sdial_debug_enable", Help = "Enable Speed Dial Debug mode.")]
 		public static bool DebugEnabled { get; set; } = false;
+
+		[ServerVar("sdial_score_base", Help = "Set the base value for score calculations.")]
+		public static int ScoreBase { get; set; } = 100;
 
 		public static SpeedDialGame Instance => (SpeedDialGame)Current;
 
@@ -50,6 +53,7 @@ namespace SpeedDial {
 			if(attackerClient != null) {
 				Log.Info($"{attackerClient.Name} killed {client.Name}");
 				var attacker = attackerClient.Pawn as SpeedDialPlayer;
+				attacker.KillScore += ScoreBase + (ScoreBase * attacker.KillCombo);
 				attacker.KillCombo++;
 				attacker.TimeSinceMurdered = 0;
 			}
