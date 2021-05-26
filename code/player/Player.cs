@@ -4,10 +4,11 @@ using SpeedDial.Weapons;
 namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer : Sandbox.Player {
 
-		private TimeSince timeSinceDied = 0;
+		[Net, Local]
+		private TimeSince timeSinceDied { get; set; } = 0;
 
-		[Net, Local, Predicted]
-		public float RespawnTime { get; set; } = 1;
+		[Net]
+		public float RespawnTime { get; set; } = 5f;
 
 		[Net]
 		public Color32 playerColor { get; set; }
@@ -74,8 +75,11 @@ namespace SpeedDial.Player {
 			//Log.Info("DECAL");
 			var rot = Rotation.LookAt(tr.Normal) * Rotation.FromAxis(Vector3.Forward, 5);
 			var pos = tr.EndPos;
-			if(Host.IsClient)
+			if(Host.IsClient) {
 				Decals.Place(Material.Load("materials/decals/blood1.vmat"), tr.Entity, tr.Bone, pos, 5, rot);
+
+			}
+
 
 			Inventory.DeleteContents();
 
@@ -86,11 +90,15 @@ namespace SpeedDial.Player {
 
 			EnableAllCollisions = false;
 			EnableDrawing = false;
+
+
+
 		}
 
 		public override void Simulate(Client cl) {
 			if(LifeState == LifeState.Dead) {
 				if(timeSinceDied > RespawnTime && IsServer) {
+
 					Respawn();
 				}
 				return;
