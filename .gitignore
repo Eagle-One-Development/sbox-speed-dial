@@ -26,3 +26,4 @@ tools_asset_info.bin
 *.surface_c
 *.surface_c
 .intermediate
+speed-dial.code-workspace
