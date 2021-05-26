@@ -16,6 +16,7 @@ namespace SpeedDial.UI{
 			RootPanel.AddChild<AmmoPanel>();
 			RootPanel.AddChild<GameRoundPanel>();
 			RootPanel.AddChild<CharacterSelect>();
+			RootPanel.AddChild<ComboPanel>();
 
 		}
     }

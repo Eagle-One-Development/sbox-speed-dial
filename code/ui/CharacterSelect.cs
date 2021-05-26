@@ -30,7 +30,7 @@ namespace SpeedDial.UI {
 		public CharacterSelect() {
 			StyleSheet.Load("/ui/CharacterSelect.scss");
 			portrait = Add.Image("/ui/portraits/default.png", "portrait");
-
+			AddClass("active");
 			title = portrait.Add.Label("PLAYER NAME", "title");
 			description = portrait.Add.Label("Default character is so cool. He spent his days doing crime while not doing the time.", "description");
 			startLoad = description.Add.Label("Abilities: NONE\nWeapon: NONE", "loadout");
@@ -60,14 +60,13 @@ namespace SpeedDial.UI {
 
 			if(Host.IsClient) {
 				if(!open) {
-					Style.Opacity = 0f;
+					SetClass("active", false);
 				} else {
-					Style.Opacity = 1f;
-
+					SetClass("active", true );
 
 				}
 			}
-			Style.Dirty();
+			
 
 
 		}
