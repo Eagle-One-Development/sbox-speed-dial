@@ -31,9 +31,6 @@ namespace SpeedDial.Player {
 				CameraShift = false;
 			}
 
-			Vector2 screenCenter = Screen.Size * (Vector2)client.Position.ToScreen();
-			Vector3 mouseDir = screenCenter - Mouse.Position;
-
 			var pawn = Local.Pawn;
 			if(pawn == null) return;
 
@@ -41,7 +38,7 @@ namespace SpeedDial.Player {
 			var HitPosition = LinePlaneIntersectionWithHeight(Pos, direction, pawn.EyePos.z);
 			var angles = (HitPosition - pawn.EyePos).EulerAngles;
 
-			// analog input stuff
+			// analog input stuff for later maybe
 
 			// if ( (Math.Abs( input.AnalogLook.pitch ) + Math.Abs( input.AnalogLook.yaw )) > 0.0f )
 			// {
@@ -50,6 +47,7 @@ namespace SpeedDial.Player {
 			// 		tarAng.yaw = newDir.yaw;
 			// 	}
 			// }
+
 			tarAng = angles;
 			ang = Angles.Lerp(ang, tarAng, 10 * Time.Delta);
 
@@ -76,6 +74,9 @@ namespace SpeedDial.Player {
 			Pos += camOffset;
 
 			Rot = Rotation.FromAxis(Vector3.Left, CameraAngle);
+
+
+			// debug stuff for aim location
 
 			// var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rot, Screen.Size);
 			// var HitPosition = LinePlaneIntersectionWithHeight(Pos, direction, pawn.EyePos.z);
