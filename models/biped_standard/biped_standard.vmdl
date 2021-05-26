@@ -11,7 +11,26 @@
 				[
 					{
 						_class = "RenderMeshFile"
+						name = "default"
 						filename = "models/biped_standard/biped_standard_model.dmx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "gordo"
+						disabled = true
+						filename = "models/biped_standard/body.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -1067,6 +1086,9 @@
 										_class = "AnimSmoothLoop"
 										frames_from_start = -2
 										frames_from_end = 2
+									},
+									{
+										_class = "AnimAutoLayer"
 									},
 								]
 								activity_name = ""
@@ -3668,6 +3690,28 @@
 								hitbox_maxs = [ 2.952621, 1.304594, 1.858996 ]
 							},
 						]
+					},
+				]
+			},
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "gray.vmat"
+								to = "materials/models/editor/player_start_tint.vmat"
+							},
+							{
+								from = "orange.vmat"
+								to = "materials/models/editor/player_start_tint.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
 					},
 				]
 			},
