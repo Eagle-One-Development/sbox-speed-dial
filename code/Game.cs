@@ -44,9 +44,14 @@ namespace SpeedDial {
 		public override void OnKilled(Client client, Entity pawn) {
 			base.OnKilled(client, pawn);
 			var attackerClient = pawn.LastAttacker?.GetClientOwner();
+
+			Host.AssertServer();
+
 			if(attackerClient != null) {
 				Log.Info($"{attackerClient.Name} killed {client.Name}");
-				(attackerClient.Pawn as SpeedDialPlayer).ProcessKill();
+				var attacker = attackerClient.Pawn as SpeedDialPlayer;
+				attacker.KillCombo++;
+				attacker.TimeSinceMurdered = 0;
 			}
 		}
 

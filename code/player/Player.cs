@@ -8,7 +8,7 @@ namespace SpeedDial.Player {
 		private TimeSince timeSinceDied { get; set; } = 0;
 
 		[Net]
-		public float RespawnTime { get; set; } = 5f;
+		public float RespawnTime { get; set; } = 1f;
 
 		[Net]
 		public Color32 playerColor { get; set; }
@@ -47,6 +47,8 @@ namespace SpeedDial.Player {
 			EnableShadowInFirstPerson = true;
 
 			Host.AssertServer();
+
+			KillCombo = 0;
 
 			Inventory.Add(new Pistol(), true);
 
@@ -112,6 +114,8 @@ namespace SpeedDial.Player {
 
 			var controller = GetActiveController();
 			controller?.Simulate(cl, this, GetActiveAnimator());
+
+			DebugOverlay.ScreenText(new Vector2(300, 300), 1, Color.Green, $"{KillCombo}x {TimeSinceMurdered}s");
 		}
 	}
 }

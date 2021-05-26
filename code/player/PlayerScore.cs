@@ -10,26 +10,14 @@ namespace SpeedDial.Player {
 		public int Score { get; set; }
 
 		[Net, Local]
-		public TimeSince TimeSinceKilled { get; set; }
-
-		public void ProcessKill() {
-			if(Host.IsServer) {
-				if(KillCombo >= 1) {
-					if(TimeSinceKilled <= 3) {
-						KillCombo++;
-					} else {
-						KillCombo = 0;
-					}
-				}
-				KillCombo = 1;
-				TimeSinceKilled = 0;
-			}
-		}
+		public TimeSince TimeSinceMurdered { get; set; }
 
 		[Event("tick")]
 		public void OnTick() {
-			//if(Host.IsClient)
-			//DebugOverlay.ScreenText(new Vector2(300, 300), 1, Color.Green, $"{KillCombo} {TimeSinceKilled}");
+			if(IsServer) {
+				if(TimeSinceMurdered >= 3)
+					KillCombo = 0;
+			}
 		}
 	}
 }
