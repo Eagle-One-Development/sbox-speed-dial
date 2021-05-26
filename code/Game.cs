@@ -26,6 +26,9 @@ namespace SpeedDial {
 		public static SpeedDialGame Instance => (SpeedDialGame)Current;
 
 		public SpeedDialGame() {
+
+			PrecacheModels();
+
 			if(IsServer) {
 				Log.Info("[SV] Gamemode created!");
 				new SpeedDialHud();
