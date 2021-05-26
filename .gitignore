@@ -1,9 +1,6 @@
 *.bat
 *.los
 *.py
-*.vanmgrph_c
-*.vmdl_c
-*.vpcf_c
 *.vpk
 !sd_test.vpk
 !sd_test.los
@@ -11,11 +8,8 @@
 .codegen/
 .editorconfig
 accesslist.txt
-build.py
-cache.bat
 code/*.csproj
 code/Properties/
-code/accesslist.txt
 materials/default/*
 obj/
 tools_asset_info.bin
@@ -24,5 +18,7 @@ tools_asset_info.bin
 *.sound_c
 *.vsnd_c
 *.surface_c
-*.surface_c
+*.vanmgrph_c
+*.vmdl_c
+*.vpcf_c
 .intermediate
