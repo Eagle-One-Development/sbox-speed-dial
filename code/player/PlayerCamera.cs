@@ -36,7 +36,7 @@ namespace SpeedDial.Player {
 
 			var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rot, Screen.Size);
 			var HitPosition = LinePlaneIntersectionWithHeight(Pos, direction, pawn.EyePos.z - 20);
-			var angles = (HitPosition - pawn.EyePos).EulerAngles;
+			var angles = (HitPosition - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
 
 			// analog input stuff for later maybe
 
