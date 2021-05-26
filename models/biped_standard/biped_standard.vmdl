@@ -29,7 +29,6 @@
 					{
 						_class = "RenderMeshFile"
 						name = "gordo"
-						disabled = true
 						filename = "models/biped_standard/body.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -1086,9 +1085,6 @@
 										_class = "AnimSmoothLoop"
 										frames_from_start = -2
 										frames_from_end = 2
-									},
-									{
-										_class = "AnimAutoLayer"
 									},
 								]
 								activity_name = ""
@@ -3712,6 +3708,34 @@
 						]
 						use_global_default = false
 						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "BodyGroupList"
+				children = 
+				[
+					{
+						_class = "BodyGroup"
+						name = "player"
+						children = 
+						[
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"gordo",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"default",
+								]
+							},
+						]
+						hidden_in_tools = false
 					},
 				]
 			},
