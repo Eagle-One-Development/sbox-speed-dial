@@ -3832,7 +3832,7 @@
 						placement_bone = "ankle_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -3872,7 +3872,7 @@
 						placement_bone = "ankle_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -3912,7 +3912,7 @@
 						placement_bone = "arm_lower_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -3952,7 +3952,7 @@
 						placement_bone = "arm_upper_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -3992,7 +3992,7 @@
 						placement_bone = "head"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4032,7 +4032,7 @@
 						placement_bone = "hand_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4072,7 +4072,7 @@
 						placement_bone = "head"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4112,7 +4112,7 @@
 						placement_bone = "leg_lower_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4152,7 +4152,7 @@
 						placement_bone = "leg_lower_R"
 						placement_attach = "leg_lower_r"
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4192,7 +4192,7 @@
 						placement_bone = "leg_upper_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4232,7 +4232,7 @@
 						placement_bone = "leg_upper_R"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4272,7 +4272,7 @@
 						placement_bone = "pelvis"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4312,7 +4312,7 @@
 						placement_bone = "arm_lower_R"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4352,7 +4352,7 @@
 						placement_bone = "arm_upper_R"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4392,7 +4392,7 @@
 						placement_bone = "spine_2"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4432,7 +4432,7 @@
 						placement_bone = "hand_R"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
