@@ -7,9 +7,8 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		void BecomeRagdollOnClient(Vector3 force, int forceBone) {
-			// TODO - lets not make everyone write this shit out all the time
-			// maybe a CreateRagdoll<T>() on ModelEntity?
-			var ent = new ModelEntity();
+
+			ModelEntity ent = new();
 			ent.Position = Position;
 			ent.Rotation = Rotation;
 			ent.MoveType = MoveType.Physics;
@@ -18,28 +17,13 @@ namespace SpeedDial.Player {
 			ent.SetInteractsWith(CollisionLayer.WORLD_GEOMETRY);
 			ent.SetInteractsExclude(CollisionLayer.Player | CollisionLayer.Debris);
 
-			ent.RenderColor = playerColor;
+			ent.RenderColor = PlayerColor;
 
 			ent.SetModel(GetModelName());
 			ent.CopyBonesFrom(this);
 			ent.TakeDecalsFrom(this);
 			ent.SetRagdollVelocityFrom(this);
 			ent.DeleteAsync(20.0f);
-
-			// Copy the clothes over
-			// foreach(var child in Children) {
-			// 	if(child is ModelEntity e) {
-			// 		var model = e.GetModelName();
-			// 		if(model != null && !model.Contains("clothes")) // Uck we 're better than this, entity tags, entity type or something?
-			// 			continue;
-
-			// 		var clothing = new ModelEntity();
-			// 		clothing.SetModel(model);
-			// 		clothing.SetParent(ent, true);
-			// 	}
-			// }
-
-
 
 			ent.PhysicsGroup.AddVelocity(force);
 
@@ -51,7 +35,6 @@ namespace SpeedDial.Player {
 					ent.PhysicsGroup.AddVelocity(force);
 				}
 			}
-
 
 			Corpse = ent;
 

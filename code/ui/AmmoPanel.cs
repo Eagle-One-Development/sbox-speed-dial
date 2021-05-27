@@ -37,25 +37,25 @@ namespace SpeedDial.UI {
 		}
 
 		public override void Tick() {
-			Shadow s1 = new Shadow();
+			Shadow s1 = new();
 			s1.OffsetX = 2f + MathF.Sin(aTime * 2f) * 2f;
 			s1.OffsetY = 0f;
 			s1.Color = vhs_green;
 			s1.Blur = 4f;
 
-			Shadow s2 = new Shadow();
+			Shadow s2 = new();
 			s2.OffsetX = -2f + MathF.Sin(aTime * 2f) * 2f;
 			s2.OffsetY = 0;
 			s2.Color = vhs_magenta;
 			s2.Blur = 4f;
 
-			ShadowList shadows = new ShadowList();
+			ShadowList shadows = new();
 			shadows.Add(s1);
 			shadows.Add(s2);
 
 			float anim = (MathF.Sin(aTime * 2f) + 1) / 2;
-			float anim2 = (MathF.Sin(aTime * 1f));
-			var transform = new PanelTransform();
+			float anim2 = MathF.Sin(aTime * 1f);
+			PanelTransform transform = new();
 
 			scale = scale.LerpTo(0, Time.Delta * 8f);
 
@@ -68,12 +68,11 @@ namespace SpeedDial.UI {
 
 			var player = Local.Pawn;
 			if(player == null) return;
-			var weapon = player.ActiveChild as BaseSpeedDialWeapon;
+			if(player.ActiveChild is BaseSpeedDialWeapon weapon) {
+				if(weapon == null) return;
 
-			if(weapon == null) return;
-
-			clipLabel.Text = $"{weapon.AmmoClip}";
-
+				clipLabel.Text = $"{weapon.AmmoClip}";
+			}
 		}
 	}
 

@@ -43,11 +43,11 @@ namespace SpeedDial.UI {
 
 			BaseSpeedDialCharacter character = SpeedDialGame.Instance.characters[currentIndex];
 
-			title.Text = character.name;
-			description.Text = character.description;
-			portrait.SetTexture(character.portrait);
+			title.Text = character.Name;
+			description.Text = character.Description;
+			portrait.SetTexture(character.Portrait);
 
-			string wep = Library.GetAttribute(character.weapon).Title;
+			string wep = Library.GetAttribute(character.Weapon).Title;
 			startLoad.Text = $"Weapon: {wep}\nAbility: NONE";
 
 			var transform = new PanelTransform();
@@ -62,15 +62,11 @@ namespace SpeedDial.UI {
 				if(!open) {
 					SetClass("active", false);
 				} else {
-					SetClass("active", true );
+					SetClass("active", true);
 
 				}
 			}
-			
-
-
 		}
-
 
 		[Event("buildinput")]
 		public void ProcessClientInput(InputBuilder input) {
@@ -82,6 +78,7 @@ namespace SpeedDial.UI {
 				open = !open;
 				Log.Info(open.ToString());
 			}
+
 			if(open) {
 				if(E) {
 					currentIndex++;
@@ -90,7 +87,6 @@ namespace SpeedDial.UI {
 					if(currentIndex > SpeedDialGame.Instance.characters.Count - 1) {
 						currentIndex = 0;
 					}
-
 				}
 
 				if(Q) {
@@ -103,7 +99,5 @@ namespace SpeedDial.UI {
 				}
 			}
 		}
-
 	}
-
 }

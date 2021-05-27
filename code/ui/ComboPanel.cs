@@ -52,24 +52,24 @@ namespace SpeedDial.UI {
 		}
 
 		public override void Tick() {
-			Shadow s1 = new Shadow();
+			Shadow s1 = new();
 			s1.OffsetX = 2f + MathF.Sin(Time.Now * 2f) * 2f;
 			s1.OffsetY = 0f;
 			s1.Color = vhs_green;
 			s1.Blur = 4f;
 
-			Shadow s2 = new Shadow();
+			Shadow s2 = new();
 			s2.OffsetX = -2f + MathF.Sin(Time.Now * 2f) * 2f;
 			s2.OffsetY = 0;
 			s2.Color = vhs_magenta;
 			s2.Blur = 4f;
 
-			ShadowList shadows = new ShadowList();
+			ShadowList shadows = new();
 			shadows.Add(s1);
 			shadows.Add(s2);
 
 			float anim = (MathF.Sin(Time.Now * 2f) + 1) / 2;
-			float anim2 = (MathF.Sin(Time.Now * 1f));
+			float anim2 = MathF.Sin(Time.Now * 1f);
 			var transform = new PanelTransform();
 
 			var comboTransform = new PanelTransform();
@@ -78,7 +78,7 @@ namespace SpeedDial.UI {
 			float k = 0;
 			int c = 0;
 			if(Local.Pawn is SpeedDialPlayer p) {
-				scoreTar = scoreTar.LerpTo((float)p.KillScore, Time.Delta * 5f);
+				scoreTar = scoreTar.LerpTo(p.KillScore, Time.Delta * 5f);
 				scoreLabel.Text = $"{(int)MathF.Round(scoreTar)} pts";
 
 
@@ -86,7 +86,7 @@ namespace SpeedDial.UI {
 
 				c = (int)MathF.Round(comboTar);
 
-				comboLabel.Text = "x" + (c).ToString();
+				comboLabel.Text = $"x{c}";
 
 				if(c <= 0) {
 					endScaleTar = endScaleTar.LerpTo(0,Time.Delta * 8f);
@@ -109,20 +109,13 @@ namespace SpeedDial.UI {
 			comboTransform.AddScale((1 + 0.5f * (1 - f) + k * 1.0f + scalemod) * endScaleTar);
 			comboTransform.AddRotation(0f, 0f, ((1 - f) * 15f) + k * MathF.Sin(Time.Now * 3f) * 20f);
 
-
-
-
 			comboLabel.Style.TextShadow = shadows;
 			scoreLabel.Style.TextShadow = shadows;
 			scoreLabel.Style.Transform = transform;
 			comboLabel.Style.Transform = comboTransform;
 
-
-
 			comboLabel.Style.Dirty();
 			scoreLabel.Style.Dirty();
-
-
 
 		}
 	}
