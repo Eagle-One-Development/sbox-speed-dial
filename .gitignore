@@ -20,6 +20,7 @@ tools_asset_info.bin
 *.vpcf_c
 .intermediate
 epic_pack_eagle_one
-**/materials/*.vmat
-**/models/ported/*.vmdl
-**/models/ported/*.vmat
+*.vtex_c
+*.vmdl_c
+*.vpcf_c
+.intermediate

@@ -1,0 +1,105 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "m_pot_milk.vmat"
+								to = "models/ported/textureset/texture_set25.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsMeshFile"
+						name = "phys_mesh"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						recenter_on_parent_bone = false
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						filename = "epic_pack_eagle_one/mesh/kitchen/sm_milk.fbx"
+						import_scale = 0.3937
+						maxMeshVertices = 0
+						qemError = 0.0
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = 
+							[
+								"SM_centralheater",
+								"SM_coffemaker",
+								"SM_cooker",
+								"SM_cup",
+								"SM_dishwasher_product",
+								"SM_fork",
+								"SM_fridge",
+								"SM_locker_shef",
+								"SM_lockers",
+								"SM_micriwave",
+								"SM_milk",
+							]
+						}
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						name = "mesh"
+						filename = "epic_pack_eagle_one/mesh/kitchen/sm_milk.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.3937
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = 
+							[
+								"UCX_SM_centralheater",
+								"UCX_SM_coffemaker",
+								"UCX_SM_cooker",
+								"UCX_SM_cup",
+								"UCX_SM_dishwasher_product",
+								"UCX_SM_fork",
+								"UCX_SM_fridge",
+								"UCX_SM_locker_shef",
+								"UCX_SM_lockers",
+								"UCX_SM_micriwave",
+								"UCX_SM_milk",
+							]
+						}
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+	}
+}
