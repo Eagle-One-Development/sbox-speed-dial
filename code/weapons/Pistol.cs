@@ -14,7 +14,7 @@ namespace SpeedDial.Weapons {
 		public override void Spawn() {
 			base.Spawn();
 
-			SetModel("weapons/rust_pistol/rust_pistol.vmdl");
+			SetModel("models/weapons/sk_prop_pistol_01.vmdl");
 			AmmoClip = 12;
 		}
 

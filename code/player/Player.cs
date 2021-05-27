@@ -65,23 +65,30 @@ namespace SpeedDial.Player {
 		public override void OnKilled() {
 			Game.Current?.OnKilled(this);
 
-			BecomeRagdollOnClient(new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0)); //force and bone, fix later with damage stuff in place
+			//force and bone, fix later with damage stuff in place
 
-			var tr = Trace.Ray(Position + Vector3.Up * 48, Position + Vector3.Down * 500)
+			var tr = Trace.Ray(Position, Position + Vector3.Down * 500)
 					.UseHitboxes()
 					.Ignore(this)
 					.Size(1)
 					.Run();
 
 			// fuck the current decal stuff, this doesn't work
-			//Log.Info("DECAL");
-			var rot = Rotation.LookAt(tr.Normal) * Rotation.FromAxis(Vector3.Forward, 5);
-			var pos = tr.EndPos;
-			if(Host.IsClient) {
-				Decals.Place(Material.Load("materials/decals/blood1.vmat"), tr.Entity, tr.Bone, pos, 5, rot);
 
+			//DebugOverlay.Sphere(tr.EndPos, 3, Color.Green, false, 10);
+
+			//var decalPath = "decals/bullet-metal.decal";
+			var decalPath = Rand.FromArray(tr.Surface.ImpactEffects.BulletDecal);
+			if(decalPath != null) {
+				if(DecalDefinition.ByPath.TryGetValue(decalPath, out var decal)) {
+					Log.Info("DECAL");
+					decal.PlaceUsingTrace(tr);
+				}
 			}
 
+			//tr.Surface.DoBulletImpact(tr);
+
+			BecomeRagdollOnClient(new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0));
 
 			Inventory.DeleteContents();
 
@@ -92,9 +99,6 @@ namespace SpeedDial.Player {
 
 			EnableAllCollisions = false;
 			EnableDrawing = false;
-
-
-
 		}
 
 		public override void Simulate(Client cl) {
