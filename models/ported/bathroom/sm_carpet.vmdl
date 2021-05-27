@@ -15,7 +15,7 @@
 						[
 							{
 								from = "m_carpet_curtain.vmat"
-								to = "models/bathroom/m_carpet_curtain.vmat"
+								to = "models/ported/bathroom/m_carpet_curtain.vmat"
 							},
 						]
 						use_global_default = false
