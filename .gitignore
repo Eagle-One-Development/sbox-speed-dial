@@ -1,3 +1,4 @@
+*.vmdl_c
 *.bat
 *.los
 *.py
@@ -20,7 +21,4 @@ tools_asset_info.bin
 *.vpcf_c
 .intermediate
 *.vtex_c
-*.vmdl_c
-*.vpcf_c
-.intermediate
-*.vmdl_c
+
