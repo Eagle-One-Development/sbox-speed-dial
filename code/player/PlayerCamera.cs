@@ -15,7 +15,6 @@ namespace SpeedDial.Player {
 		private Vector3 camOffset;
 		private Vector3 camOffsetTarget;
 
-
 		public bool CameraShift { get; set; }
 
 		public override void BuildInput(InputBuilder input) {
@@ -43,9 +42,9 @@ namespace SpeedDial.Player {
 				.Ignore(pawn)
 				.Run();
 
-
 			Angles angles;
 
+			// aim assist when pointing on a player
 			if(targetTrace.Hit && targetTrace.Entity is SpeedDialPlayer player && (targetTrace.EndPos - HitPosition).Length <= 40) {
 				if(SpeedDialGame.DebugEnabled) {
 					DebugOverlay.ScreenText(new Vector2(300, 300), 5, Color.Green, $"HitPlayer {player} {(targetTrace.EndPos - HitPosition).Length}");
@@ -55,8 +54,6 @@ namespace SpeedDial.Player {
 			} else {
 				angles = (HitPosition - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
 			}
-
-
 
 			// analog input stuff for later maybe
 
@@ -94,7 +91,6 @@ namespace SpeedDial.Player {
 			Pos += camOffset;
 
 			Rot = Rotation.FromAxis(Vector3.Left, CameraAngle);
-
 
 			// debug stuff for aim location
 			if(SpeedDialGame.DebugEnabled) {
