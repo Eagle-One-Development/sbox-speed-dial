@@ -36,7 +36,26 @@ namespace SpeedDial.Player {
 
 			var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rot, Screen.Size);
 			var HitPosition = LinePlaneIntersectionWithHeight(Pos, direction, pawn.EyePos.z - 20);
-			var angles = (HitPosition - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
+
+			var targetTrace = Trace.Ray(pawn.EyePos, HitPosition)
+				.Size(10)
+				.EntitiesOnly()
+				.Ignore(pawn)
+				.Run();
+
+
+			Angles angles;
+
+			if(targetTrace.Hit && targetTrace.Entity is SpeedDialPlayer player && (targetTrace.EndPos - HitPosition).Length <= 40) {
+				//DebugOverlay.ScreenText(new Vector2(300, 300), 5, Color.Green, $"HitPlayer {player} {(targetTrace.EndPos - HitPosition).Length}");
+				//DebugOverlay.Line(pawn.EyePos, targetTrace.Entity.EyePos - Vector3.Up * 20, Color.Red, 0, false);
+
+				angles = (player.EyePos - Vector3.Up * 20 - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
+			} else {
+				angles = (HitPosition - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
+			}
+
+
 
 			// analog input stuff for later maybe
 

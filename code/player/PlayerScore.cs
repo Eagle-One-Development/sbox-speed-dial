@@ -13,8 +13,8 @@ namespace SpeedDial.Player {
 		public TimeSince TimeSinceMurdered { get; set; }
 
 		[ClientRpc]
-		public void ComboEvents(){
-			
+		public void ComboEvents() {
+
 			ComboPanel.Current.Bump();
 		}
 
