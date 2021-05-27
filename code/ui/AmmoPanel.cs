@@ -5,9 +5,8 @@ using System;
 using System.Threading.Tasks;
 using SpeedDial.Weapons;
 
-namespace SpeedDial.UI{
-    public class AmmoPanel : Panel
-    {	
+namespace SpeedDial.UI {
+	public class AmmoPanel : Panel {
 		public Panel ammoCounter;
 		public Label ammoLabel;
 		public Label clipLabel;
@@ -16,62 +15,66 @@ namespace SpeedDial.UI{
 
 		public static AmmoPanel Current;
 
+		Color vhs_green;
+		Color vhs_magenta;
+
 
 		private float scale;
-        public AmmoPanel(){
+		public AmmoPanel() {
 			StyleSheet.Load("/ui/AmmoPanel.scss");
 			ammoCounter = Add.Panel("counter");
-			clipLabel = ammoCounter.Add.Label("000","ammoLabel");
-			
+			clipLabel = ammoCounter.Add.Label("000", "ammoLabel");
+
 			Current = this;
 			scale = 0;
 
+			vhs_green = new Color(28f / 255f, 255f / 255f, 176f / 255f, 1.0f);//new Color(173f/255f,255f/255f,226f/255f,1.0f);
+			vhs_magenta = new Color(255f / 255f, 89 / 255f, 255f / 255f, 1.0f);//new Color(255f / 255f, 163f / 255f, 255f / 255f, 1.0f);
 		}
 
-		public void Bump(){
+		public void Bump() {
 			scale = 0.7f;
 		}
 
-		public override void Tick()
-		{
+		public override void Tick() {
 			Shadow s1 = new Shadow();
 			s1.OffsetX = 2f + MathF.Sin(aTime * 2f) * 2f;
 			s1.OffsetY = 0f;
-			s1.Color = new Color(173f/255f,255f/255f,226f/255f,1.0f);
+			s1.Color = vhs_green;
 			s1.Blur = 4f;
 
 			Shadow s2 = new Shadow();
 			s2.OffsetX = -2f + MathF.Sin(aTime * 2f) * 2f;
 			s2.OffsetY = 0;
-			s2.Color = new Color(255f/255f,163f/255f,255f/255f,1.0f);
+			s2.Color = vhs_magenta;
 			s2.Blur = 4f;
 
 			ShadowList shadows = new ShadowList();
 			shadows.Add(s1);
 			shadows.Add(s2);
 
-			float anim = (MathF.Sin(aTime * 2f) + 1)/2;
+			float anim = (MathF.Sin(aTime * 2f) + 1) / 2;
 			float anim2 = (MathF.Sin(aTime * 1f));
 			var transform = new PanelTransform();
 
-			scale = scale.LerpTo(0,Time.Delta * 8f);
+			scale = scale.LerpTo(0, Time.Delta * 8f);
 
-			transform.AddScale(  0.8f + anim * 0.2f + scale);
-			transform.AddRotation(0f,0f,anim2 * 5f);
+			transform.AddScale(0.8f + anim * 0.2f + scale);
+			transform.AddRotation(0f, 0f, anim2 * 5f);
 
 			clipLabel.Style.TextShadow = shadows;
 			clipLabel.Style.Transform = transform;
 			clipLabel.Style.Dirty();
 
 			var player = Local.Pawn;
-			if ( player == null ) return;
+			if(player == null) return;
 			var weapon = player.ActiveChild as BaseSpeedDialWeapon;
 
-			if ( weapon == null ) return;
+			if(weapon == null) return;
 
 			clipLabel.Text = $"{weapon.AmmoClip}";
 
 		}
-    }
+	}
 
 }

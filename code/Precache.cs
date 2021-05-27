@@ -6,7 +6,6 @@ namespace SpeedDial {
 			Log.Info("Precaching models");
 			Precache.Add("models/biped_standard/biped_standard.vmdl");
 			Precache.Add("weapons/rust_pistol/rust_pistol.vmdl");
-			Precache.Add("fonts/VCR_OSD_MONO.ttf");
 		}
 	}
 }

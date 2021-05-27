@@ -47,9 +47,10 @@ namespace SpeedDial.Player {
 			Angles angles;
 
 			if(targetTrace.Hit && targetTrace.Entity is SpeedDialPlayer player && (targetTrace.EndPos - HitPosition).Length <= 40) {
-				//DebugOverlay.ScreenText(new Vector2(300, 300), 5, Color.Green, $"HitPlayer {player} {(targetTrace.EndPos - HitPosition).Length}");
-				//DebugOverlay.Line(pawn.EyePos, targetTrace.Entity.EyePos - Vector3.Up * 20, Color.Red, 0, false);
-
+				if(SpeedDialGame.DebugEnabled) {
+					DebugOverlay.ScreenText(new Vector2(300, 300), 5, Color.Green, $"HitPlayer {player} {(targetTrace.EndPos - HitPosition).Length}");
+					DebugOverlay.Line(pawn.EyePos, targetTrace.Entity.EyePos - Vector3.Up * 20, Color.Red, 0, false);
+				}
 				angles = (player.EyePos - Vector3.Up * 20 - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
 			} else {
 				angles = (HitPosition - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
@@ -68,7 +69,7 @@ namespace SpeedDial.Player {
 			// }
 
 			tarAng = angles;
-			ang = Angles.Lerp(ang, tarAng, 10 * Time.Delta);
+			ang = Angles.Lerp(ang, tarAng, 12 * Time.Delta);
 
 			input.ViewAngles = ang;
 			input.InputDirection = input.AnalogMove;
@@ -96,18 +97,19 @@ namespace SpeedDial.Player {
 
 
 			// debug stuff for aim location
-
-			// var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rot, Screen.Size);
-			// var HitPosition = LinePlaneIntersectionWithHeight(Pos, direction, pawn.EyePos.z);
-
-			// DebugOverlay.ScreenText(new Vector2(300, 300), 2, Color.Green, $"Pos {Pos}");
-			// DebugOverlay.ScreenText(new Vector2(300, 300), 3, Color.Green, $"Dir {direction}");
-			// DebugOverlay.ScreenText(new Vector2(300, 300), 4, Color.Green, $"HitPos {HitPosition}");
-
-			// var Distance = HitPosition - pawn.EyePos;
-
-			// DebugOverlay.Line(pawn.EyePos, pawn.EyePos + Distance, Color.Green, 0, false);
-			// DebugOverlay.Sphere(HitPosition, 5, Color.Green, false);
+			if(SpeedDialGame.DebugEnabled) {
+				var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rot, Screen.Size);
+				var HitPosition = LinePlaneIntersectionWithHeight(Pos, direction, pawn.EyePos.z);
+				// 
+				DebugOverlay.ScreenText(new Vector2(300, 300), 2, Color.Green, $"Pos {Pos}");
+				DebugOverlay.ScreenText(new Vector2(300, 300), 3, Color.Green, $"Dir {direction}");
+				DebugOverlay.ScreenText(new Vector2(300, 300), 4, Color.Green, $"HitPos {HitPosition}");
+				// 
+				var Distance = HitPosition - pawn.EyePos;
+				// 
+				DebugOverlay.Line(pawn.EyePos, pawn.EyePos + Distance, Color.Green, 0, false);
+				DebugOverlay.Sphere(HitPosition, 5, Color.Green, false);
+			}
 
 			FieldOfView = 70;
 			Viewer = null;

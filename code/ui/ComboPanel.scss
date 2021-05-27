@@ -5,7 +5,7 @@ combopanel{
     
     .container{
         position:absolute;
-        width:15%;
+        width:20%;
         height:20%;
         //background-color: rgba(#fff,0.5);
         right:0px;
@@ -25,6 +25,7 @@ combopanel{
             align-items: center;
             padding-top:20px;
             padding-bottom:20px;
+            padding-right: 10px;
         }
 
         .score{
@@ -34,6 +35,7 @@ combopanel{
             text-align: center;
             padding-top:20px;
             padding-bottom:20px;
+           // padding-right: 10px;
         
             justify-content: center;
             align-items: center;
