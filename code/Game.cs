@@ -54,7 +54,6 @@ namespace SpeedDial {
 			if(attackerClient == null) {
 				return;
 			}
-			//Host.AssertServer();
 
 			if(IsServer) {
 
@@ -68,7 +67,6 @@ namespace SpeedDial {
 					attacker.TimeSinceMurdered = 0;
 
 				}
-
 			}
 		}
 
