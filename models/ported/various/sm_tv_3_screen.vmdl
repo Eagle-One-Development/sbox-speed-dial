@@ -15,7 +15,7 @@
 						[
 							{
 								from = "m_emissive_tv.vmat"
-								to = "m_emissive_tv.vmat"
+								to = "models/ported/textureset/texture_set12_screen.vmat"
 							},
 						]
 						use_global_default = false
