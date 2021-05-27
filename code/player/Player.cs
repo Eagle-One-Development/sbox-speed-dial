@@ -5,13 +5,13 @@ namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer : Sandbox.Player {
 
 		[Net, Local]
-		private TimeSince timeSinceDied { get; set; } = 0;
+		private TimeSince TimeSinceDied { get; set; } = 0;
 
 		[Net]
 		public float RespawnTime { get; set; } = 1f;
 
 		[Net]
-		public Color32 playerColor { get; set; }
+		public Color32 PlayerColor { get; set; }
 
 		public SpeedDialPlayer() {
 			Inventory = new SpeedDialInventory(this);
@@ -20,13 +20,13 @@ namespace SpeedDial.Player {
 		public void InitialSpawn() {
 
 			if(GetClientOwner().SteamId == 76561198000823482) {
-				playerColor = new Color32(250, 176, 3); // bak
+				PlayerColor = new Color32(250, 176, 3); // bak
 			} else if(GetClientOwner().SteamId == 76561198203314521) { // gurke 76561198203314521
-				playerColor = new Color32(70, 0, 70);
+				PlayerColor = new Color32(70, 0, 70);
 			} else if(GetClientOwner().SteamId == 76561198095231052) { // generic
-				playerColor = new Color32(27, 49, 63);
+				PlayerColor = new Color32(27, 49, 63);
 			} else {
-				playerColor = Color.Random;
+				PlayerColor = Color.Random;
 			}
 			Respawn();
 		}
@@ -35,7 +35,7 @@ namespace SpeedDial.Player {
 		public override void Respawn() {
 			SetModel("models/biped_standard/biped_standard.vmdl");
 
-			RenderColor = playerColor;
+			RenderColor = PlayerColor;
 
 			Camera = new SpeedDialCamera();
 			Controller = new SpeedDialController();
@@ -85,7 +85,7 @@ namespace SpeedDial.Player {
 
 			Inventory.DeleteContents();
 
-			timeSinceDied = 0;
+			TimeSinceDied = 0;
 			LifeState = LifeState.Dead;
 
 			Controller = null;
@@ -99,7 +99,7 @@ namespace SpeedDial.Player {
 
 		public override void Simulate(Client cl) {
 			if(LifeState == LifeState.Dead) {
-				if(timeSinceDied > RespawnTime && IsServer) {
+				if(TimeSinceDied > RespawnTime && IsServer) {
 
 					Respawn();
 				}

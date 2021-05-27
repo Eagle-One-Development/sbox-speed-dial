@@ -220,6 +220,43 @@
 							parent_bodygroup_value = 0
 						}
 					},
+					{
+						_class = "BreakCommand"
+						game_class = "break_twist_pieces"
+						game_keys = 
+						{
+							offset = [ 0.0, 0.0, 0.0 ]
+							attachment_point = ""
+							center_on_damage_point = false
+							limit_to_piece = ""
+							burst_scale = 441.0
+							burst_randomize = 500.0
+						}
+					},
+					{
+						_class = "BreakCommand"
+						game_class = "break_flip_pieces"
+						game_keys = 
+						{
+							offset = [ 0.0, 0.0, 0.0 ]
+							attachment_point = ""
+							center_on_damage_point = false
+							limit_to_piece = ""
+							burst_scale = 500.0
+							burst_randomize = 500.0
+						}
+					},
+					{
+						_class = "BreakCommand"
+						disabled = true
+						game_class = "break_disable_impact_damage"
+						game_keys = 
+						{
+							limit_to_piece = ""
+							burst_scale = 1.0
+							burst_randomize = 0.0
+						}
+					},
 				]
 			},
 			{
@@ -3792,10 +3829,10 @@
 							},
 						]
 						placement_mode = "default"
-						placement_bone = ""
+						placement_bone = "ankle_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -3832,10 +3869,10 @@
 							},
 						]
 						placement_mode = "default"
-						placement_bone = ""
+						placement_bone = "ankle_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -3872,10 +3909,10 @@
 							},
 						]
 						placement_mode = "default"
-						placement_bone = ""
+						placement_bone = "arm_lower_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -3912,10 +3949,10 @@
 							},
 						]
 						placement_mode = "default"
-						placement_bone = ""
+						placement_bone = "arm_upper_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -3952,10 +3989,10 @@
 							},
 						]
 						placement_mode = "default"
-						placement_bone = ""
+						placement_bone = "head"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -3992,10 +4029,10 @@
 							},
 						]
 						placement_mode = "default"
-						placement_bone = ""
+						placement_bone = "hand_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4032,10 +4069,10 @@
 							},
 						]
 						placement_mode = "default"
-						placement_bone = ""
+						placement_bone = "head"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4072,10 +4109,10 @@
 							},
 						]
 						placement_mode = "default"
-						placement_bone = ""
+						placement_bone = "leg_lower_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4112,10 +4149,10 @@
 							},
 						]
 						placement_mode = "default"
-						placement_bone = ""
-						placement_attach = ""
+						placement_bone = "leg_lower_R"
+						placement_attach = "leg_lower_r"
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4152,10 +4189,10 @@
 							},
 						]
 						placement_mode = "default"
-						placement_bone = ""
+						placement_bone = "leg_upper_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4192,10 +4229,10 @@
 							},
 						]
 						placement_mode = "default"
-						placement_bone = ""
+						placement_bone = "leg_upper_R"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4232,10 +4269,10 @@
 							},
 						]
 						placement_mode = "default"
-						placement_bone = ""
+						placement_bone = "pelvis"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4272,10 +4309,10 @@
 							},
 						]
 						placement_mode = "default"
-						placement_bone = ""
+						placement_bone = "arm_lower_R"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4312,10 +4349,10 @@
 							},
 						]
 						placement_mode = "default"
-						placement_bone = ""
+						placement_bone = "arm_upper_R"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4352,10 +4389,10 @@
 							},
 						]
 						placement_mode = "default"
-						placement_bone = ""
+						placement_bone = "spine_2"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
@@ -4392,10 +4429,10 @@
 							},
 						]
 						placement_mode = "default"
-						placement_bone = ""
+						placement_bone = "hand_R"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "default"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0

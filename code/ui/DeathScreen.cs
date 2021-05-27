@@ -9,6 +9,5 @@ namespace SpeedDial.UI {
 		public DeathScreen() {
 			StyleSheet.Load("/ui/DeathScreen.scss");
 		}
-
 	}
 }

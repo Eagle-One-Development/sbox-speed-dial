@@ -13,12 +13,14 @@ code/Properties/
 materials/default/*
 obj/
 tools_asset_info.bin
-*.vtex_c
-*.vmat_c
 *.sound_c
 *.vsnd_c
 *.surface_c
 *.vanmgrph_c
+*.vpcf_c
+.intermediate
+*.vtex_c
 *.vmdl_c
 *.vpcf_c
 .intermediate
+*.vmdl_c

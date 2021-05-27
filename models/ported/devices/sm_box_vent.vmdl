@@ -1,0 +1,167 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "fbx default material.vmat"
+								to = "fbx default material.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsMeshFile"
+						name = "phys_mesh"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						recenter_on_parent_bone = false
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						filename = "epic_pack_eagle_one/mesh/devices/sm_box_vent.fbx"
+						import_scale = 0.3937
+						maxMeshVertices = 0
+						qemError = 0.0
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = 
+							[
+								"SM_pillow_3",
+								"SM_pillow_4",
+								"SM_Pillow_chair",
+								"SM_Wardrobe",
+								"SM_cable_brotherhood",
+								"SM_cable_cap",
+								"SM_cable_cap_opened",
+								"SM_cable_cap_plastic_smalll",
+								"SM_cable_multi",
+								"SM_cable_protection",
+								"SM_cable_simple_big",
+								"SM_cable_simple_curve",
+								"SM_cable_simple_flat01",
+								"SM_cable_simple_flat02",
+								"SM_cable_simple_metaledge01",
+								"SM_cable_simple_metaledge02",
+								"SM_cable_simple01",
+								"SM_pipe_gas_",
+								"SM_pipe_gas_3ways",
+								"SM_pipe_gas_3wayscap",
+								"SM_pipe_gas_corner",
+								"SM_Pipe01",
+								"SM_Pipe01_curved",
+								"SM_Pipe01_triangle",
+								"SM_Pipe01_wheel",
+								"SM_CardBox_1A",
+								"SM_CardBox_1B",
+								"SM_CardBox_2A",
+								"SM_CardBox_2B",
+								"SM_CardBox_3B",
+								"SM_CardBox_4B",
+								"SM_box_door_eye",
+								"SM_box_door_simple",
+								"SM_box_electricitycounter_complex",
+								"SM_box_electricitycounter_simple",
+								"SM_box_frame_2holes",
+								"SM_box_fuse_2inputs",
+								"SM_box_fuse_4anchor",
+								"SM_box_fuse_plastic",
+								"SM_box_fuse_simpleplain",
+								"SM_box_gas",
+								"SM_box_japanese",
+							]
+						}
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						name = "mesh"
+						filename = "epic_pack_eagle_one/mesh/devices/sm_box_vent.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.3937
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = 
+							[
+								"UCX_SM_pillow_3",
+								"UCX_SM_pillow_4",
+								"UCX_SM_Pillow_chair",
+								"UCX_SM_Wardrobe",
+								"UCX_SM_cable_brotherhood",
+								"UCX_SM_cable_cap",
+								"UCX_SM_cable_cap_opened",
+								"UCX_SM_cable_cap_plastic_smalll",
+								"UCX_SM_cable_multi",
+								"UCX_SM_cable_protection",
+								"UCX_SM_cable_simple_big",
+								"UCX_SM_cable_simple_curve",
+								"UCX_SM_cable_simple_flat01",
+								"UCX_SM_cable_simple_flat02",
+								"UCX_SM_cable_simple_metaledge01",
+								"UCX_SM_cable_simple_metaledge02",
+								"UCX_SM_cable_simple01",
+								"UCX_SM_pipe_gas_",
+								"UCX_SM_pipe_gas_3ways",
+								"UCX_SM_pipe_gas_3wayscap",
+								"UCX_SM_pipe_gas_corner",
+								"UCX_SM_Pipe01",
+								"UCX_SM_Pipe01_curved",
+								"UCX_SM_Pipe01_triangle",
+								"UCX_SM_Pipe01_wheel",
+								"UCX_SM_CardBox_1A",
+								"UCX_SM_CardBox_1B",
+								"UCX_SM_CardBox_2A",
+								"UCX_SM_CardBox_2B",
+								"UCX_SM_CardBox_3B",
+								"UCX_SM_CardBox_4B",
+								"UCX_SM_box_door_eye",
+								"UCX_SM_box_door_simple",
+								"UCX_SM_box_electricitycounter_complex",
+								"UCX_SM_box_electricitycounter_simple",
+								"UCX_SM_box_frame_2holes",
+								"UCX_SM_box_fuse_2inputs",
+								"UCX_SM_box_fuse_4anchor",
+								"UCX_SM_box_fuse_plastic",
+								"UCX_SM_box_fuse_simpleplain",
+								"UCX_SM_box_gas",
+								"UCX_SM_box_japanese",
+							]
+						}
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+	}
+}
