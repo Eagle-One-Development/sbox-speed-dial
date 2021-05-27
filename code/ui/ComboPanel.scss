@@ -15,18 +15,7 @@ combopanel{
         align-items: center;
         flex-direction: column-reverse;
         
-        .combo{
-            
-            color: #fff;
-            text-align: center;
-            font-size: 48px;
-            font-family: VCR_OSD_MONO;
-            justify-content: center;
-            align-items: center;
-            padding-top:20px;
-            padding-bottom:20px;
-            padding-right: 10px;
-        }
+        
 
         .score{
             font-family: VCR_OSD_MONO;
@@ -37,6 +26,32 @@ combopanel{
             padding-bottom:20px;
            // padding-right: 10px;
         
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .comboContainer{
+        position:absolute;
+        width:20%;
+        height:20%;
+        //background-color: rgba(#fff,0.5);
+        left:0px;
+        top:0px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+        
+        .combo{
+            font-family: VCR_OSD_MONO;
+            color: #fff;
+            font-size: 64px;
+            text-align: center;
+            padding-top:20px;
+            padding-bottom:20px;
+           // padding-right: 10px;
+            //background-color: #fff;
             justify-content: center;
             align-items: center;
         }

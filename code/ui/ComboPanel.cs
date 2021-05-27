@@ -14,7 +14,9 @@ namespace SpeedDial.UI {
 		public Label scoreLabel;
 		public Label comboLabel;
 
-		public Panel scoreComboContainer;
+		public Panel scoreContainer;
+
+		public Panel comboContainer;
 
 		Color vhs_green;
 		Color vhs_magenta;
@@ -24,15 +26,19 @@ namespace SpeedDial.UI {
 		private float scalemod;
 
 		private float comboTar;
+
+		private float endScaleTar;
+
 		public static ComboPanel Current;
 
 		public ComboPanel() {
 			StyleSheet.Load("/ui/ComboPanel.scss");
 
-			scoreComboContainer = Add.Panel("container");
+			scoreContainer = Add.Panel("container");
+			comboContainer = Add.Panel("comboContainer");
 
-			comboLabel = scoreComboContainer.Add.Label("x999", "combo");
-			scoreLabel = scoreComboContainer.Add.Label("0000000", "score");
+			comboLabel = comboContainer.Add.Label("x999", "combo");
+			scoreLabel = scoreContainer.Add.Label("0000000", "score");
 			vhs_green = new Color(28f / 255f, 255f / 255f, 176f / 255f, 1.0f);//new Color(173f/255f,255f/255f,226f/255f,1.0f);
 			vhs_magenta = new Color(255f / 255f, 89 / 255f, 255f / 255f, 1.0f);//new Color(255f / 255f, 163f / 255f, 255f / 255f, 1.0f);
 			Current = this;
@@ -83,7 +89,9 @@ namespace SpeedDial.UI {
 				comboLabel.Text = "x" + (c).ToString();
 
 				if(c <= 0) {
-					comboLabel.Text = "";
+					endScaleTar = endScaleTar.LerpTo(0,Time.Delta * 8f);
+				}else{
+					endScaleTar = endScaleTar.LerpTo(1,Time.Delta * 8f);
 				}
 
 				f = p.TimeSinceMurdered / SpeedDialGame.ComboTime;
@@ -98,7 +106,7 @@ namespace SpeedDial.UI {
 
 			scalemod = scalemod.LerpTo(0, Time.Delta * 8f);
 
-			comboTransform.AddScale(1 + 0.5f * (1 - f) + k * 1.0f + scalemod);
+			comboTransform.AddScale((1 + 0.5f * (1 - f) + k * 1.0f + scalemod) * endScaleTar);
 			comboTransform.AddRotation(0f, 0f, ((1 - f) * 15f) + k * MathF.Sin(Time.Now * 3f) * 20f);
 
 
