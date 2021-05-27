@@ -19,7 +19,6 @@ tools_asset_info.bin
 *.vanmgrph_c
 *.vpcf_c
 .intermediate
-epic_pack_eagle_one
 *.vtex_c
 *.vmdl_c
 *.vpcf_c
