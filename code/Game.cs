@@ -63,7 +63,7 @@ namespace SpeedDial {
 					Log.Info($"{attackerClient.Name} killed {client.Name}");
 					var attacker = attackerClient.Pawn as SpeedDialPlayer;
 					attacker.KillScore += ScoreBase + (ScoreBase * attacker.KillCombo);
-					attacker.ComboEvents();
+					attacker.ComboEvents(pawn.EyePos,ScoreBase + (ScoreBase * attacker.KillCombo));
 					attacker.KillCombo++;
 					attacker.TimeSinceMurdered = 0;
 

@@ -5,7 +5,7 @@ using System;
 using System.Threading.Tasks;
 using SpeedDial.Weapons;
 using SpeedDial.Player;
-
+using System.Collections.Generic;
 
 
 namespace SpeedDial.UI {
@@ -31,6 +31,10 @@ namespace SpeedDial.UI {
 
 		public static ComboPanel Current;
 
+		public Panel worldScorePanel;
+
+		private List<WorldScore> scores = new();
+
 		public ComboPanel() {
 			StyleSheet.Load("/ui/ComboPanel.scss");
 
@@ -44,6 +48,34 @@ namespace SpeedDial.UI {
 			Current = this;
 			comboTar = 0f;
 
+			worldScorePanel = Add.Panel("worldscoreparent");
+
+			for(int i = 0; i < 5; i++){
+				WorldScore ws = AddChild<WorldScore>();
+				scores.Add(ws);
+			}
+
+		}
+
+		public void OnKill(Vector3 pos, int amt){
+			WorldScore ws = null;
+			for(int i = 0; i < scores.Count; i++){
+				WorldScore temp = scores[i];
+				if(temp.lifetime > temp.life){
+					ws = temp;
+				}
+			}
+
+			if(ws != null){
+				ws.position = pos;
+				ws.amount = amt;
+				ws.lifetime = 0;
+				ws.ang = 0;
+				
+				ws.tarAng = Rand.Float(-15f,15f); 
+
+			}
+			
 		}
 
 		public void Bump() {
@@ -52,6 +84,11 @@ namespace SpeedDial.UI {
 		}
 
 		public override void Tick() {
+
+			foreach(WorldScore w in scores){
+				w.Tick();
+			}
+
 			Shadow s1 = new Shadow();
 			s1.OffsetX = 2f + MathF.Sin(Time.Now * 2f) * 2f;
 			s1.OffsetY = 0f;
@@ -82,7 +119,7 @@ namespace SpeedDial.UI {
 				scoreLabel.Text = $"{(int)MathF.Round(scoreTar)} pts";
 
 
-				comboTar = comboTar.LerpTo(p.KillCombo, Time.Delta * 6f);
+				comboTar = comboTar.LerpTo(p.KillCombo, Time.Delta * 10f);
 
 				c = (int)MathF.Round(comboTar);
 
@@ -122,8 +159,13 @@ namespace SpeedDial.UI {
 			comboLabel.Style.Dirty();
 			scoreLabel.Style.Dirty();
 
+			
 
 
 		}
+	
+		
+	
 	}
+
 }
