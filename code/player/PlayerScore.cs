@@ -1,5 +1,5 @@
 using Sandbox;
-
+using SpeedDial.UI;
 namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer {
 
@@ -12,6 +12,11 @@ namespace SpeedDial.Player {
 		[Net, Local]
 		public TimeSince TimeSinceMurdered { get; set; }
 
+		[ClientRpc]
+		public void ComboEvents(){
+			
+			ComboPanel.Current.Bump();
+		}
 
 		[Event("tick")]
 		public void OnTick() {

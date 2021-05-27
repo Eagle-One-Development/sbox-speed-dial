@@ -21,6 +21,11 @@ namespace SpeedDial.UI {
 
 		private float scoreTar;
 
+		private float scalemod;
+
+		private float comboTar; 
+		public static ComboPanel Current;
+
         public ComboPanel(){
 			StyleSheet.Load("/ui/ComboPanel.scss");
 
@@ -30,9 +35,15 @@ namespace SpeedDial.UI {
 			scoreLabel = scoreComboContainer.Add.Label("0000000","score");
 			vhs_green =  new Color(173f/255f,255f/255f,226f/255f,1.0f);
 			vhs_magenta = new Color(255f/255f,163f/255f,255f/255f,1.0f);
+			Current = this;
+			comboTar = 0f;
 
 		}
 
+		public void Bump(){
+			scalemod = 2.0f;
+			comboTar++;
+		}
 
 		public override void Tick(){
 			Shadow s1 = new Shadow();
@@ -58,21 +69,37 @@ namespace SpeedDial.UI {
 			var comboTransform = new PanelTransform();
 
 			float f = 0;
-
+			float k = 0;
+			int c = 0;
 			if(Local.Pawn is SpeedDialPlayer p){
 				scoreTar = scoreTar.LerpTo((float)p.KillScore,Time.Delta * 5f);
 				scoreLabel.Text = ((int)MathF.Round(scoreTar)).ToString();
-				comboLabel.Text = "x" + p.KillCombo.ToString();
+				
+				
+				comboTar = comboTar.LerpTo(p.KillCombo, Time.Delta * 6f);
+				
+				c = (int)MathF.Round(comboTar);
+				
+				comboLabel.Text = "x" + (c).ToString();
+				
+				if(c <= 0){
+					comboLabel.Text = "";
+				}
+
 				f = p.TimeSinceMurdered / SpeedDialGame.ComboTime;
 				f = Math.Clamp(f,0,1);
-
+				k = c / 7f;
+				k = Math.Clamp(k,0,1);
+				
 			}
 
 			transform.AddScale(  0.8f + anim * 0.2f);
 			transform.AddRotation(0f,0f,anim2 * 5f);
 
-			comboTransform.AddScale(1 + 0.5f * (1-f));
-			comboTransform.AddRotation(0f,0f,((1-f) * 15f));
+			scalemod = scalemod.LerpTo(0,Time.Delta * 8f);
+
+			comboTransform.AddScale(1 + 0.5f * (1-f) + k * 1.0f + scalemod);
+			comboTransform.AddRotation(0f,0f,((1-f) * 15f)  + k * MathF.Sin(Time.Now * 3f) * 20f);
 
 			
 

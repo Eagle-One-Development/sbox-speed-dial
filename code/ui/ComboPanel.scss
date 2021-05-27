@@ -5,9 +5,9 @@ combopanel{
     
     .container{
         position:absolute;
-        width:200px;
-        height:150px;
-        
+        width:15%;
+        height:20%;
+        //background-color: rgba(#fff,0.5);
         right:0px;
         top:0px;
         display:flex;
@@ -20,7 +20,7 @@ combopanel{
             color: #fff;
             text-align: center;
             font-size: 48px;
-            font-family: VCR OSD Mono;
+            font-family: VCR_OSD_MONO;
             justify-content: center;
             align-items: center;
             padding-top:20px;
@@ -28,7 +28,7 @@ combopanel{
         }
 
         .score{
-            font-family: VCR OSD Mono;
+            font-family: VCR_OSD_MONO;
             color: #fff;
             font-size: 64px;
             text-align: center;

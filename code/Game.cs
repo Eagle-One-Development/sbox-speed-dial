@@ -51,14 +51,24 @@ namespace SpeedDial {
 			base.OnKilled(client, pawn);
 			var attackerClient = pawn.LastAttacker?.GetClientOwner();
 
-			Host.AssertServer();
+			if(attackerClient == null){
+				return;
+			}
+			//Host.AssertServer();
 
-			if(attackerClient != null) {
-				Log.Info($"{attackerClient.Name} killed {client.Name}");
-				var attacker = attackerClient.Pawn as SpeedDialPlayer;
-				attacker.KillScore += ScoreBase + (ScoreBase * attacker.KillCombo);
-				attacker.KillCombo++;
-				attacker.TimeSinceMurdered = 0;
+			if(IsServer){
+			
+				if(attackerClient != null) {
+
+					Log.Info($"{attackerClient.Name} killed {client.Name}");
+					var attacker = attackerClient.Pawn as SpeedDialPlayer;
+					attacker.KillScore += ScoreBase + (ScoreBase * attacker.KillCombo);
+					attacker.ComboEvents();
+					attacker.KillCombo++;
+					attacker.TimeSinceMurdered = 0;
+
+				}
+			
 			}
 		}
 
