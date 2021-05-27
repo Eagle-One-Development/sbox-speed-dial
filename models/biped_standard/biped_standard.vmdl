@@ -227,9 +227,9 @@
 						{
 							offset = [ 0.0, 0.0, 0.0 ]
 							attachment_point = ""
-							center_on_damage_point = true
+							center_on_damage_point = false
 							limit_to_piece = ""
-							burst_scale = 1.0
+							burst_scale = 441.0
 							burst_randomize = 500.0
 						}
 					},
@@ -240,7 +240,7 @@
 						{
 							offset = [ 0.0, 0.0, 0.0 ]
 							attachment_point = ""
-							center_on_damage_point = true
+							center_on_damage_point = false
 							limit_to_piece = ""
 							burst_scale = 500.0
 							burst_randomize = 500.0
@@ -3828,7 +3828,7 @@
 								}
 							},
 						]
-						placement_mode = "bone"
+						placement_mode = "default"
 						placement_bone = "ankle_L"
 						placement_attach = ""
 						is_ragdoll = false
@@ -3868,7 +3868,7 @@
 								}
 							},
 						]
-						placement_mode = "bone"
+						placement_mode = "default"
 						placement_bone = "ankle_L"
 						placement_attach = ""
 						is_ragdoll = false
@@ -3908,7 +3908,7 @@
 								}
 							},
 						]
-						placement_mode = "bone"
+						placement_mode = "default"
 						placement_bone = "arm_lower_L"
 						placement_attach = ""
 						is_ragdoll = false
@@ -3948,7 +3948,7 @@
 								}
 							},
 						]
-						placement_mode = "bone"
+						placement_mode = "default"
 						placement_bone = "arm_upper_L"
 						placement_attach = ""
 						is_ragdoll = false
@@ -3988,7 +3988,7 @@
 								}
 							},
 						]
-						placement_mode = "bone"
+						placement_mode = "default"
 						placement_bone = "head"
 						placement_attach = ""
 						is_ragdoll = false
@@ -4028,7 +4028,7 @@
 								}
 							},
 						]
-						placement_mode = "bone"
+						placement_mode = "default"
 						placement_bone = "hand_L"
 						placement_attach = ""
 						is_ragdoll = false
@@ -4068,7 +4068,7 @@
 								}
 							},
 						]
-						placement_mode = "bone"
+						placement_mode = "default"
 						placement_bone = "head"
 						placement_attach = ""
 						is_ragdoll = false
@@ -4108,7 +4108,7 @@
 								}
 							},
 						]
-						placement_mode = "bone"
+						placement_mode = "default"
 						placement_bone = "leg_lower_L"
 						placement_attach = ""
 						is_ragdoll = false
@@ -4148,7 +4148,7 @@
 								}
 							},
 						]
-						placement_mode = "bone"
+						placement_mode = "default"
 						placement_bone = "leg_lower_R"
 						placement_attach = "leg_lower_r"
 						is_ragdoll = false
@@ -4188,7 +4188,7 @@
 								}
 							},
 						]
-						placement_mode = "bone"
+						placement_mode = "default"
 						placement_bone = "leg_upper_L"
 						placement_attach = ""
 						is_ragdoll = false
@@ -4228,7 +4228,7 @@
 								}
 							},
 						]
-						placement_mode = "bone"
+						placement_mode = "default"
 						placement_bone = "leg_upper_R"
 						placement_attach = ""
 						is_ragdoll = false
@@ -4268,7 +4268,7 @@
 								}
 							},
 						]
-						placement_mode = "bone"
+						placement_mode = "default"
 						placement_bone = "pelvis"
 						placement_attach = ""
 						is_ragdoll = false
@@ -4308,7 +4308,7 @@
 								}
 							},
 						]
-						placement_mode = "bone"
+						placement_mode = "default"
 						placement_bone = "arm_lower_R"
 						placement_attach = ""
 						is_ragdoll = false
@@ -4348,7 +4348,7 @@
 								}
 							},
 						]
-						placement_mode = "bone"
+						placement_mode = "default"
 						placement_bone = "arm_upper_R"
 						placement_attach = ""
 						is_ragdoll = false
@@ -4388,7 +4388,7 @@
 								}
 							},
 						]
-						placement_mode = "bone"
+						placement_mode = "default"
 						placement_bone = "spine_2"
 						placement_attach = ""
 						is_ragdoll = false
@@ -4428,7 +4428,7 @@
 								}
 							},
 						]
-						placement_mode = "bone"
+						placement_mode = "default"
 						placement_bone = "hand_R"
 						placement_attach = ""
 						is_ragdoll = false
