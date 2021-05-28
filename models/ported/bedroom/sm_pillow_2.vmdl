@@ -14,7 +14,7 @@
 						remaps = 
 						[
 							{
-								from = "m_pillows.vmat"
+								from = ""
 								to = "models/ported/textureset/texture_set20.vmat"
 							},
 						]
@@ -28,46 +28,22 @@
 				children = 
 				[
 					{
-						_class = "PhysicsMeshFile"
-						name = "phys_mesh"
-						parent_bone = ""
+						_class = "PhysicsShapeBox"
+						parent_bone = "1"
 						surface_prop = "default"
 						collision_prop = "default"
-						recenter_on_parent_bone = false
-						offset_origin = [ 0.0, 0.0, 0.0 ]
-						offset_angles = [ 0.0, 0.0, 0.0 ]
-						filename = "epic_pack_eagle_one/mesh/bedroom/sm_pillow_2.fbx"
-						import_scale = 0.3937
-						maxMeshVertices = 0
-						qemError = 0.0
-						import_filter = 
-						{
-							exclude_by_default = false
-							exception_list = 
-							[
-								"SM_sink",
-								"SM_spongeweird",
-								"SM_toilet",
-								"SM_toilet_cleaner",
-								"SM_toiletpaper",
-								"SM_tootbrush",
-								"SM_towel",
-								"SM_towel_folled",
-								"SM_tub",
-								"SM_bag",
-								"SM_bed",
-								"SM_book",
-								"SM_chair",
-								"SM_Chair_comfortable",
-								"SM_couch",
-								"SM_folder",
-								"SM_keyboard",
-								"SM_mouse",
-								"SM_PC",
-								"SM_pillow_1",
-								"SM_pillow_2",
-							]
-						}
+						origin = [ -0.702628, 4.513783, -0.066586 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 6.590988, 8.478586, 15.899925 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = "2"
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ -0.559748, 5.199459, 0.429421 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 5.499723, 8.823388, 15.668436 ]
 					},
 				]
 			},
@@ -78,7 +54,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "mesh"
-						filename = "epic_pack_eagle_one/mesh/bedroom/sm_pillow_2.fbx"
+						filename = "epic_pack_eagle_one/mesh/bedroom/pillow2_bones.fbx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.3937
@@ -117,9 +93,74 @@
 					},
 				]
 			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "prop_data"
+						game_keys = 
+						{
+							base = ""
+							allowstatic = false
+							bakelighting = true
+							damage_table = ""
+							"dmg.bullets" = -1.0
+							"dmg.club" = -1.0
+							"dmg.explosive" = -1.0
+							"dmg.fire" = -1.0
+							health = -1.0
+							spawn_motion_disabled = false
+							parent_bodygroup_name = ""
+							parent_bodygroup_value = 0
+						}
+					},
+				]
+			},
+			{
+				_class = "PhysicsBodyMarkupList"
+				children = 
+				[
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "1"
+						mass_override = 0.5
+						inertia_scale = 1.0
+						linear_damping = 0.0
+						angular_damping = 0.0
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "2"
+						mass_override = 0.5
+						inertia_scale = 1.0
+						linear_damping = 0.0
+						angular_damping = 0.0
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+				]
+			},
+			{
+				_class = "PhysicsJointList"
+				children = 
+				[
+					{
+						_class = "PhysicsJointSpherical"
+						parent_body = "1"
+						child_body = "2"
+						anchor_origin = [ 0.0, 0.0, 0.0 ]
+						anchor_angles = [ 0.0, 0.0, 0.0 ]
+						collision_enabled = true
+					},
+				]
+			},
 		]
-		model_archetype = ""
-		primary_associated_entity = ""
+		model_archetype = "jointed_physics_model"
+		primary_associated_entity = "prop_ragdoll"
 		anim_graph_name = ""
 	}
 }

@@ -50,7 +50,7 @@ namespace SpeedDial.Weapons {
 		public override void Spawn() {
 			base.Spawn();
 
-			SetModel("weapons/rust_pistol/rust_pistol.vmdl");
+			SetModel("weapons/sk_prop_rifle_01.vmdl");
 
 			PickupTrigger = new();
 			PickupTrigger.Parent = this;
