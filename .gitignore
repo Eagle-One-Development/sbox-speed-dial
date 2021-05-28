@@ -15,6 +15,7 @@
 *.vsnd_c
 *.vtex_c
 *.zip
+*.vpk
 .codegen/
 .editorconfig
 .intermediate
