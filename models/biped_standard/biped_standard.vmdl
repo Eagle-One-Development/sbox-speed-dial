@@ -3763,20 +3763,8 @@
 						remaps = 
 						[
 							{
-								from = "gray.vmat"
-								to = "materials/models/editor/player_start_tint.vmat"
-							},
-							{
-								from = "orange.vmat"
-								to = "materials/models/editor/player_start_tint.vmat"
-							},
-							{
 								from = "materials/dev/gray_50.vmat"
 								to = "materials/dev/gray_50.vmat"
-							},
-							{
-								from = "materials/dev/materials_models_editor_player_start_vmat.vmat"
-								to = "materials/models/editor/player_start_tint.vmat"
 							},
 							{
 								from = "materials/error.vmat"
