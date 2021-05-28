@@ -86,6 +86,14 @@ namespace SpeedDial.Player {
 				}
 			}
 
+			if ( LastDamage.Attacker is SpeedDialPlayer attacker && attacker != this )
+			{
+				int ScoreBase = SpeedDialGame.ScoreBase;
+				attacker.ComboEvents(EyePos,(ScoreBase * attacker.KillCombo));
+
+			}
+
+
 			//tr.Surface.DoBulletImpact(tr);
 
 			BecomeRagdollOnClient(new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0));
@@ -114,12 +122,56 @@ namespace SpeedDial.Player {
 				ActiveChild = Input.ActiveChild;
 			}
 
+			
 			SimulateActiveChild(cl, ActiveChild);
 
 			var controller = GetActiveController();
 			controller?.Simulate(cl, this, GetActiveAnimator());
 
 			//DebugOverlay.ScreenText(new Vector2(300, 300), 1, Color.Green, $"{KillCombo}x {KillScore} Score {TimeSinceMurdered}\ts");
+		}
+
+		DamageInfo LastDamage;
+
+		public override void TakeDamage( DamageInfo info )
+		{
+			LastDamage = info;
+
+
+			base.TakeDamage( info );
+
+			if ( info.Attacker is SpeedDialPlayer attacker && attacker != this )
+			{
+				// Note - sending this only to the attacker!
+				attacker.DidDamage( To.Single( attacker ), info.Position, info.Damage, ((float)Health).LerpInverse( 100, 0 ) );
+
+				TookDamage( To.Single( this ), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position );
+			}
+		}
+
+
+		/// <summary>
+		/// A client side function for client side effects when the player has done damage
+		/// </summary>
+		/// <param name="pos"></param>
+		/// <param name="amount"></param>
+		/// <param name="healthinv"></param>
+		[ClientRpc]
+		public void DidDamage( Vector3 pos, float amount, float healthinv )
+		{
+			//Sound.FromScreen( "dm.ui_attacker" )
+			//	.SetPitch( 1 + healthinv * 1 );
+	//
+			//HitIndicator.Current?.OnHit( pos, amount );
+		}
+
+
+		[ClientRpc]
+		public void TookDamage( Vector3 pos )
+		{
+			//DebugOverlay.Sphere( pos, 5.0f, Color.Red, false, 50.0f );
+
+			//DamageIndicator.Current?.OnHit( pos );
 		}
 	}
 }

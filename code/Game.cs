@@ -56,18 +56,22 @@ namespace SpeedDial {
 			}
 
 			if(IsServer) {
-
+				
 				if(attackerClient != null) {
 
 					Log.Info($"{attackerClient.Name} killed {client.Name}");
 					var attacker = attackerClient.Pawn as SpeedDialPlayer;
 					attacker.KillScore += ScoreBase + (ScoreBase * attacker.KillCombo);
-					attacker.ComboEvents(pawn.EyePos,ScoreBase + (ScoreBase * attacker.KillCombo));
+					Log.Info($"Attacker {attackerClient}\nLocal {Local.Client}");
+					//attacker.ComboEvents(pawn.EyePos,ScoreBase + (ScoreBase * attacker.KillCombo));
 					attacker.KillCombo++;
 					attacker.TimeSinceMurdered = 0;
 
 				}
 			}
+
+
+			
 		}
 
 		private void PopulateData() {
