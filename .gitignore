@@ -2,6 +2,7 @@
 !sd_test.vpk
 *materials/*/*/*.vmat_c
 *models/*/*/*.vmdl_c
+materials/default
 *.bat
 *.los
 *.py
