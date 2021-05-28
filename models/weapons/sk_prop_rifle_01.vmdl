@@ -17,6 +17,10 @@
 								from = "mat_polygonprototype_01.vmat"
 								to = "material/dev/dev01.vmat"
 							},
+							{
+								from = "materials/error.vmat"
+								to = "material/dev/dev01.vmat"
+							},
 						]
 						use_global_default = false
 						global_default_material = ""
@@ -29,10 +33,10 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "poly/Meshes/Weapons/SK_Prop_Pistol_01.FBX"
+						filename = "models/biped_standard/prop_rifle.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 0.3937
+						import_scale = 1.0
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
@@ -51,12 +55,12 @@
 				[
 					{
 						_class = "PhysicsShapeCapsule"
-						parent_bone = "SK_Prop_Pistol_Slide_01"
+						parent_bone = "SK_Prop_Rifle_Slide_01"
 						surface_prop = "default"
 						collision_prop = "default"
-						radius = 1.0
-						point0 = [ -0.098219, -0.441271, 5.147298 ]
-						point1 = [ 0.050107, -0.441271, -4.448083 ]
+						radius = 1.980615
+						point0 = [ -0.34863, -1.292748, 21.346619 ]
+						point1 = [ 0.11308, -1.292749, -8.521919 ]
 					},
 				]
 			},
