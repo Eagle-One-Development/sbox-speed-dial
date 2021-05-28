@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using SpeedDial.Player;
 using SpeedDial.UI;
+using SpeedDial.Weapons;
 
 namespace SpeedDial {
 	[Library("speed-dial")]
@@ -65,6 +66,14 @@ namespace SpeedDial {
 					Log.Info($"Attacker {attackerClient}\nLocal {Local.Client}");
 					//attacker.ComboEvents(pawn.EyePos,ScoreBase + (ScoreBase * attacker.KillCombo));
 					attacker.KillCombo++;
+
+					using(Prediction.Off()){
+						int clip = (attacker.ActiveChild as BaseSpeedDialWeapon).AmmoClip;
+						int maxClip =  (attacker.ActiveChild as BaseSpeedDialWeapon).ClipSize;
+						clip = Math.Clamp(clip + 5, 0, maxClip);
+						(attacker.ActiveChild as BaseSpeedDialWeapon).AmmoClip = clip;
+					}
+					
 					attacker.TimeSinceMurdered = 0;
 
 				}
@@ -73,6 +82,36 @@ namespace SpeedDial {
 
 			
 		}
+
+		[ServerCmd( "give_weapon" )]
+		public static void GiveWeapon( string entityName)
+		{
+			
+			if ( ConsoleSystem.Caller.Pawn is SpeedDialPlayer player )
+			{
+				BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>( entityName );
+				Log.Info("TEST");
+				player.Inventory.Add( weapon , true );
+
+
+
+			}
+		}
+
+		[ServerCmd( "set_character" )]
+		public static void SetCharacter( int index)
+		{
+			
+			if ( ConsoleSystem.Caller.Pawn is SpeedDialPlayer player )
+			{
+				
+				player.character = SpeedDialGame.Instance.characters[index];
+
+
+
+			}
+		}
+
 
 		private void PopulateData() {
 			characters = new();

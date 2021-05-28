@@ -18,6 +18,8 @@ namespace SpeedDial.Player {
 			Inventory = new SpeedDialInventory(this);
 		}
 
+		public BaseSpeedDialCharacter character;
+
 		public void InitialSpawn() {
 
 			if(GetClientOwner().SteamId == 76561198000823482) {
@@ -29,6 +31,10 @@ namespace SpeedDial.Player {
 			} else {
 				PlayerColor = Color.Random;
 			}
+
+			//Set a default character
+			character = SpeedDialGame.Instance.characters[0];
+
 			Respawn();
 		}
 
@@ -51,9 +57,14 @@ namespace SpeedDial.Player {
 
 			KillCombo = 0;
 
-			Inventory.Add(new Pistol(), true);
+			//Inventory.Add(new Pistol(), true);
+			//string[] s = {character.Weapon};
+			//Log.Info(s[0].ToString());
+			//ConsoleSystem.Run("give_weapon",s);
+			BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>( character.Weapon );
+			Inventory.Add(weapon, true);
 
-			GiveAmmo(AmmoType.Pistol, 1000);
+			//GiveAmmo(AmmoType.Pistol, 1000);
 
 			LifeState = LifeState.Alive;
 			Health = 100;
@@ -114,6 +125,7 @@ namespace SpeedDial.Player {
 			{
 				int ScoreBase = SpeedDialGame.ScoreBase;
 				attacker.ComboEvents(EyePos,(ScoreBase * attacker.KillCombo));
+				
 				BloodSplatter(Position - attacker.Position);
 
 			}
@@ -133,6 +145,11 @@ namespace SpeedDial.Player {
 			EnableAllCollisions = false;
 			EnableDrawing = false;
 		}
+		
+		[ClientRpc]
+		public void GiveLoadout(){
+
+		}
 
 		public override void Simulate(Client cl) {
 			if(LifeState == LifeState.Dead) {
@@ -147,30 +164,7 @@ namespace SpeedDial.Player {
 				ActiveChild = Input.ActiveChild;
 			}
 
-			Vector3 pos = Position + Vector3.Up * 50f;
-			//force and bone, fix later with damage stuff in place
-			if(Input.Pressed(InputButton.Jump) && IsServer){
-			for(int i = 0; i < 100; i++){
-			var tr = Trace.Ray(pos, pos + Vector3.Random * 20000)
-					.UseHitboxes()
-					.Ignore(this)
-					.Size(1)
-					.Run();
 
-			//DebugOverlay.Sphere(tr.EndPos, 3, Color.Green, false, 10);
-			DebugOverlay.Line(pos, tr.EndPos, Color.Red, 10f, false);
-			//DebugOverlay.Sphere(pos, 3, Color.Blue, false, 10);
-				
-			var decalPath = "decals/bullet-metal.decal";
-			//var decalPath = Rand.FromArray(tr.Surface.ImpactEffects.BulletDecal);
-			if(decalPath != null) {
-				if(DecalDefinition.ByPath.TryGetValue(decalPath, out var decal)) {
-					Log.Info("DECAL");
-					decal.PlaceUsingTrace(tr);
-				}
-			}
-			}
-			}
 
 			
 			SimulateActiveChild(cl, ActiveChild);

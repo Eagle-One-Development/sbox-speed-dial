@@ -97,6 +97,14 @@ namespace SpeedDial.UI {
 						currentIndex = SpeedDialGame.Instance.characters.Count - 1;
 					}
 				}
+			
+				if(space){
+					string[] s = {currentIndex.ToString()};
+					Log.Info(s[0].ToString());
+					ConsoleSystem.Run("set_character",s);
+					open = false;
+				}
+			
 			}
 		}
 	}

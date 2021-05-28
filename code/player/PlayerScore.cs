@@ -16,6 +16,7 @@ namespace SpeedDial.Player {
 		public void ComboEvents(Vector3 position, int amt) {
 			ComboPanel.Current.Bump();
 			ComboPanel.Current.OnKill(position, amt);		
+			AmmoPanel.Current?.Bump();
 		}
 
 		[Event("tick")]

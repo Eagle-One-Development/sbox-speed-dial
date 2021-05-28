@@ -5,11 +5,13 @@ namespace SpeedDial.Weapons {
 	[Library("sd_pistol", Title = "Pistol")]
 	partial class Pistol : BaseSpeedDialWeapon {
 
-		public override float PrimaryRate => 15.0f;
+		public override float PrimaryRate => 12.0f;
 		public override float SecondaryRate => 1.0f;
 		public override float ReloadTime => 0.5f;
 
 		public override int Bucket => 1;
+
+		public override int ClipSize => 12;
 
 		public override void Spawn() {
 			base.Spawn();
