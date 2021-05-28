@@ -1,7 +1,7 @@
 !sd_test.los
 !sd_test.vpk
-*materials/**/*.vmat_c
-*models/**/*.vmdl_c
+*materials/*/*/*.vmat_c
+*models/*/*/*.vmdl_c
 *.bat
 *.los
 *.py
