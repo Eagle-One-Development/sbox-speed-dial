@@ -49,26 +49,32 @@ namespace SpeedDial {
 		}
 
 		public override void OnKilled(Client client, Entity pawn) {
-			base.OnKilled(client, pawn);
+			//base.OnKilled(client, pawn);
+
 			var attackerClient = pawn.LastAttacker?.GetClientOwner();
 
 			if(attackerClient == null) {
 				return;
 			}
 
-			if(IsServer) {
-				if(attackerClient != null) {
+			if(attackerClient != null) {
+				var attacker = attackerClient.Pawn as SpeedDialPlayer;
+				if(IsServer) {
 					Log.Info($"{attackerClient.Name} killed {client.Name}");
-					var attacker = attackerClient.Pawn as SpeedDialPlayer;
+
 					attacker.KillScore += ScoreBase + (ScoreBase * attacker.KillCombo);
 					Log.Info($"Attacker {attackerClient}\nLocal {Local.Client}");
 					//attacker.ComboEvents(pawn.EyePos,ScoreBase + (ScoreBase * attacker.KillCombo));
 					attacker.KillCombo++;
 
-					int clip = (attacker.ActiveChild as BaseSpeedDialWeapon).AmmoClip;
-					int maxClip = (attacker.ActiveChild as BaseSpeedDialWeapon).ClipSize;
-					clip = Math.Clamp(clip + 5, 0, maxClip);
-					(attacker.ActiveChild as BaseSpeedDialWeapon).AmmoClip = clip;
+					// int clip = (attacker.ActiveChild as BaseSpeedDialWeapon).AmmoClip;
+					// int maxClip = (attacker.ActiveChild as BaseSpeedDialWeapon).ClipSize;
+					// clip = Math.Clamp(clip + 5, 0, maxClip);
+					//(attacker.ActiveChild as BaseSpeedDialWeapon).AwardAmmo(5);// = clip;
+
+					//(attacker.ActiveChild as BaseSpeedDialWeapon).AwardAmmoClient(5);
+					//(attacker.ActiveChild as BaseSpeedDialWeapon).AwardAmmoServer(5);
+					(attacker.ActiveChild as BaseSpeedDialWeapon).AwardAmmo(5);
 
 					attacker.TimeSinceMurdered = 0;
 				}

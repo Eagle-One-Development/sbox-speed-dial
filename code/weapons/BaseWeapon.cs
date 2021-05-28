@@ -30,6 +30,9 @@ namespace SpeedDial.Weapons {
 
 		public PickupTrigger PickupTrigger { get; protected set; }
 
+		[Net, Local]
+		private int AmmoToAward { get; set; }
+
 
 		public int AvailableAmmo() {
 			if(Owner is SpeedDialPlayer owner) {
@@ -43,6 +46,20 @@ namespace SpeedDial.Weapons {
 			base.ActiveStart(ent);
 
 			TimeSinceDeployed = 0;
+		}
+
+		[ClientRpc]
+		public void AwardAmmoClient(int award) {
+			AmmoClip = Math.Clamp(award, 0, ClipSize);
+			//AmmoToAward = award;
+		}
+
+		public void AwardAmmoServer(int award) {
+			AmmoClip = Math.Clamp(award, 0, ClipSize);
+		}
+
+		public void AwardAmmo(int award) {
+			AmmoToAward = award;
 		}
 
 		public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
@@ -92,6 +109,16 @@ namespace SpeedDial.Weapons {
 			if(IsReloading && TimeSinceReload > ReloadTime) {
 				OnReloadFinish();
 			}
+
+			if(AmmoToAward >= 1) {
+				if(IsClient)
+					ConsoleSystem.Run("echo", $"ECHO {AmmoToAward} on {Owner.GetClientOwner().Name}");
+				Log.Info($"{AmmoToAward} on {Owner.GetClientOwner().Name}");
+				AmmoToAward = 0;
+				// AmmoClip = Math.Clamp(AmmoToAward, 0, ClipSize);
+				// AmmoToAward = 0;
+			}
+
 		}
 
 		public virtual void OnReloadFinish() {
@@ -108,33 +135,25 @@ namespace SpeedDial.Weapons {
 
 		[ClientRpc]
 		public virtual void StartReloadEffects() {
-			ViewModelEntity?.SetAnimParam("reload", true);
-
-			// TODO - player third person model reload
+			// ex viewmodel shit
 		}
 
 		public override void AttackPrimary() {
 			TimeSincePrimaryAttack = 0;
 			TimeSinceSecondaryAttack = 0;
 
-			//
 			// Tell the clients to play the shoot effects
-			//
 			ShootEffects();
 
-			//
 			// ShootBullet is coded in a way where we can have bullets pass through shit
 			// or bounce off shit, in which case it'll return multiple results
-			//
 			foreach(var tr in TraceBullet(Owner.EyePos, Owner.EyePos + Owner.EyeRot.Forward * 5000)) {
 				tr.Surface.DoBulletImpact(tr);
 
 				if(!IsServer) continue;
 				if(!tr.Entity.IsValid()) continue;
 
-				//
 				// We turn predictiuon off for this, so aany exploding effects don't get culled etc
-				//
 				using(Prediction.Off()) {
 					var damage = DamageInfo.FromBullet(tr.EndPos, Owner.EyeRot.Forward * 100, 15)
 						.UsingTraceResult(tr)
@@ -160,9 +179,6 @@ namespace SpeedDial.Weapons {
 			CrosshairPanel?.OnEvent("fire");
 		}
 
-		/// <summary>
-		/// Shoot a single bullet
-		/// </summary>
 		public virtual void ShootBullet(float spread, float force, float damage, float bulletSize) {
 			var forward = Owner.EyeRot.Forward;
 			forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
