@@ -4,6 +4,9 @@ Layer0
 {
 	shader "complex.vfx"
 
+	//---- Color ----
+	F_TINT_MASK 1
+
 	//---- PBR ----
 	F_SPECULAR 1
 
@@ -15,7 +18,8 @@ Layer0
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "epic_pack_eagle_one/textures/tileable_materials/kitchen_tiles/kitchen_tiles_color.TGA"
+	TextureColor "epic_pack_eagle_one/textures/tileable_materials/kitchen_tiles/kitchen_tiles_tint_color.TGA"
+	TextureTintMask "epic_pack_eagle_one/textures/tileable_materials/kitchen_tiles/kitchen_tiles_tint_mask.tga"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"

@@ -22,3 +22,6 @@ tools_asset_info.bin
 .intermediate
 *.vtex_c
 
+models/biped_standard/biped_standard.vmdl_c
+*.rar
+*.vmat_c

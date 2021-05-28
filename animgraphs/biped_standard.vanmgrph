@@ -1991,7 +1991,7 @@
 			{
 				_class = "CBlend2DAnimNode"
 				m_sName = "pistol_walk"
-				m_vecPosition = [ -494.0, 1163.0 ]
+				m_vecPosition = [ -494.0, 1162.0 ]
 				m_nNodeID = 
 				{
 					m_id = 555617305
@@ -6474,7 +6474,7 @@
 			{
 				_class = "CBlend2DAnimNode"
 				m_sName = "rifle_walk"
-				m_vecPosition = [ -532.0, 1278.0 ]
+				m_vecPosition = [ -533.0, 1278.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1859365194
@@ -6486,7 +6486,7 @@
 						_class = "CBlend2DItem"
 						m_tagSpans = [  ]
 						m_sequenceName = "rifle_walk_e"
-						m_blendValue = [ 1.0, 0.0 ]
+						m_blendValue = [ 2.0, 0.0 ]
 					},
 					{
 						_class = "CBlend2DItem"
@@ -6498,13 +6498,13 @@
 						_class = "CBlend2DItem"
 						m_tagSpans = [  ]
 						m_sequenceName = "rifle_walk_ne"
-						m_blendValue = [ 1.0, 1.0 ]
+						m_blendValue = [ 2.0, 2.0 ]
 					},
 					{
 						_class = "CBlend2DItem"
 						m_tagSpans = [  ]
 						m_sequenceName = "rifle_walk_nw"
-						m_blendValue = [ 2.0, 0.0 ]
+						m_blendValue = [ -2.0, 2.0 ]
 					},
 					{
 						_class = "CBlend2DItem"
@@ -6522,7 +6522,7 @@
 						_class = "CBlend2DItem"
 						m_tagSpans = [  ]
 						m_sequenceName = "rifle_walk_sw"
-						m_blendValue = [ -2.0, 0.0 ]
+						m_blendValue = [ -2.0, -2.0 ]
 					},
 					{
 						_class = "CBlend2DItem"
@@ -6533,7 +6533,7 @@
 					{
 						_class = "CBlend2DItem"
 						m_tagSpans = [  ]
-						m_sequenceName = "rifle_walk_idle"
+						m_sequenceName = "rifle_idle"
 						m_blendValue = [ 0.0, 0.0 ]
 					},
 				]
