@@ -12,12 +12,12 @@ Layer0
 	//---- Ambient Occlusion ----
 	g_flAmbientOcclusionDirectDiffuse "0.000"
 	g_flAmbientOcclusionDirectSpecular "0.000"
-	TextureAmbientOcclusion "epic_pack_eagle_one/textures/Texture_set14/Texture_set14_ao.tga"
+	TextureAmbientOcclusion "epic_pack_eagle_one/textures/texture_set14/texture_set14_ao.png"
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "epic_pack_eagle_one/textures/Texture_set14/Texture_set14_color.TGA"
+	TextureColor "epic_pack_eagle_one/textures/texture_set14/texture_set14_color.png"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -30,13 +30,13 @@ Layer0
 	g_flDirectionalLightmapStrength "1.000"
 
 	//---- Metalness ----
-	TextureMetalness "epic_pack_eagle_one/textures/Texture_set14/Texture_set14_metal.tga"
+	TextureMetalness "epic_pack_eagle_one/textures/texture_set14/texture_set14_metal.png"
 
 	//---- Normal ----
-	TextureNormal "epic_pack_eagle_one/textures/Texture_set14/Texture_set14_normal.tga"
+	TextureNormal "epic_pack_eagle_one/textures/texture_set14/texture_set14_normal.png"
 
 	//---- Roughness ----
-	TextureRoughness "epic_pack_eagle_one/textures/Texture_set14/Texture_set14_rough.tga"
+	TextureRoughness "epic_pack_eagle_one/textures/texture_set14/texture_set14_rough.png"
 
 	//---- Self Illum ----
 	g_flSelfIllumAlbedoFactor "1.000"
@@ -44,7 +44,7 @@ Layer0
 	g_flSelfIllumScale "1.000"
 	g_vSelfIllumScrollSpeed "[0.000 0.000]"
 	g_vSelfIllumTint "[0.611765 0.164706 0.164706 0.000000]"
-	TextureSelfIllumMask "epic_pack_eagle_one/textures/Texture_set14/Texture_set14_selfillum.tga"
+	TextureSelfIllumMask "epic_pack_eagle_one/textures/texture_set14/texture_set14_selfillum.png"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"

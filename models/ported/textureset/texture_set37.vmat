@@ -16,7 +16,7 @@ Layer0
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "epic_pack_eagle_one/textures/Texture_set37/Texture_set37_COLOR.TGA"
+	TextureColor "epic_pack_eagle_one/textures/texture_set37/texture_set37_color.png"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -32,10 +32,10 @@ Layer0
 	TextureMetalness "[0.000000 0.000000 0.000000 0.000000]"
 
 	//---- Normal ----
-	TextureNormal "epic_pack_eagle_one/textures/Texture_set37/Texture_set37_normal.tga"
+	TextureNormal "epic_pack_eagle_one/textures/texture_set37/texture_set37_normal.png"
 
 	//---- Roughness ----
-	TextureRoughness "epic_pack_eagle_one/textures/Texture_set37/Texture_set37_rough.tga"
+	TextureRoughness "epic_pack_eagle_one/textures/texture_set37/texture_set37_rough.png"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"

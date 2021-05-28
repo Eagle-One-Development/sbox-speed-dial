@@ -11,12 +11,12 @@ Layer0
 	//---- Ambient Occlusion ----
 	g_flAmbientOcclusionDirectDiffuse "0.000"
 	g_flAmbientOcclusionDirectSpecular "0.000"
-	TextureAmbientOcclusion "epic_pack_eagle_one/textures/Texture_set11/2k/Texture_set11_2k_ao.tga"
+	TextureAmbientOcclusion "epic_pack_eagle_one/textures/texture_set11/2k/texture_set11_2k_ao.png"
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "epic_pack_eagle_one/textures/Texture_set11/2k/Texture_set11_2k_color.TGA"
+	TextureColor "epic_pack_eagle_one/textures/texture_set11/2k/texture_set11_2k_color.png"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -29,13 +29,13 @@ Layer0
 	g_flDirectionalLightmapStrength "1.000"
 
 	//---- Metalness ----
-	TextureMetalness "epic_pack_eagle_one/textures/Texture_set11/2k/Texture_set11_2k_metal.tga"
+	TextureMetalness "epic_pack_eagle_one/textures/texture_set11/2k/texture_set11_2k_metal.png"
 
 	//---- Normal ----
-	TextureNormal "epic_pack_eagle_one/textures/Texture_set11/2k/Texture_set11_2k_normal.tga"
+	TextureNormal "epic_pack_eagle_one/textures/texture_set11/2k/texture_set11_2k_normal.png"
 
 	//---- Roughness ----
-	TextureRoughness "epic_pack_eagle_one/textures/Texture_set11/2k/Texture_set11_2k_rough.tga"
+	TextureRoughness "epic_pack_eagle_one/textures/texture_set11/2k/texture_set11_2k_rough.png"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"
