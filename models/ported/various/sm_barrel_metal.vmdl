@@ -28,37 +28,12 @@
 				children = 
 				[
 					{
-						_class = "PhysicsMeshFile"
-						name = "phys_mesh"
+						_class = "PhysicsHullFromRender"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						recenter_on_parent_bone = false
-						offset_origin = [ 0.0, 0.0, 0.0 ]
-						offset_angles = [ 0.0, 0.0, 0.0 ]
-						filename = "epic_pack_eagle_one/mesh/various/sm_barrel_metal.fbx"
-						import_scale = 0.3937
-						maxMeshVertices = 0
-						qemError = 0.0
-						import_filter = 
-						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"UCX_SM_switcher_1knob_short",
-								"UCX_SM_switcher_1knob_tall",
-								"UCX_SM_switcher_2knob_horizontal",
-								"UCX_SM_switcher_2knob_vertical",
-								"UCX_SM_switcher_2knob_vertical_simple",
-								"UCX_SM_switcher_base",
-								"UCX_SM_switcher_box_plain",
-								"UCX_SM_switcher_box_simple",
-								"UCX_SM_switcher_noknob_curved",
-								"UCX_SM_switcher_noknob_flat",
-								"UCX_SM_switcher_switcher",
-								"UCX_SM_Barrel_metal",
-							]
-						}
+						faceMergeAngle = 5.0
+						maxHullVertices = 54
 					},
 				]
 			},
@@ -99,9 +74,34 @@
 					},
 				]
 			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "prop_data"
+						game_keys = 
+						{
+							base = ""
+							allowstatic = false
+							bakelighting = true
+							damage_table = ""
+							"dmg.bullets" = -1.0
+							"dmg.club" = -1.0
+							"dmg.explosive" = -1.0
+							"dmg.fire" = -1.0
+							health = -1.0
+							spawn_motion_disabled = false
+							parent_bodygroup_name = ""
+							parent_bodygroup_value = 0
+						}
+					},
+				]
+			},
 		]
-		model_archetype = ""
-		primary_associated_entity = ""
+		model_archetype = "physics_prop_model"
+		primary_associated_entity = "prop_physics"
 		anim_graph_name = ""
 	}
 }

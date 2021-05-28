@@ -28,38 +28,13 @@
 				children = 
 				[
 					{
-						_class = "PhysicsMeshFile"
-						name = "phys_mesh"
+						_class = "PhysicsHullFromRender"
+						name = "markup"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						recenter_on_parent_bone = false
-						offset_origin = [ 0.0, 0.0, 0.0 ]
-						offset_angles = [ 0.0, 0.0, 0.0 ]
-						filename = "epic_pack_eagle_one/mesh/bedroom/sm_chair.fbx"
-						import_scale = 0.3937
-						maxMeshVertices = 0
-						qemError = 0.0
-						import_filter = 
-						{
-							exclude_by_default = false
-							exception_list = 
-							[
-								"SM_sink",
-								"SM_spongeweird",
-								"SM_toilet",
-								"SM_toilet_cleaner",
-								"SM_toiletpaper",
-								"SM_tootbrush",
-								"SM_towel",
-								"SM_towel_folled",
-								"SM_tub",
-								"SM_bag",
-								"SM_bed",
-								"SM_book",
-								"SM_chair",
-							]
-						}
+						faceMergeAngle = 5.0
+						maxHullVertices = 64
 					},
 				]
 			},

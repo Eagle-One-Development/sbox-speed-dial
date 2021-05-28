@@ -28,47 +28,12 @@
 				children = 
 				[
 					{
-						_class = "PhysicsMeshFile"
-						name = "phys_mesh"
+						_class = "PhysicsHullFromRender"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						recenter_on_parent_bone = false
-						offset_origin = [ 0.0, 0.0, 0.0 ]
-						offset_angles = [ 0.0, 0.0, 0.0 ]
-						filename = "epic_pack_eagle_one/mesh/various/sm_door_footshield.fbx"
-						import_scale = 0.3937
-						maxMeshVertices = 0
-						qemError = 0.0
-						import_filter = 
-						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"UCX_SM_switcher_1knob_short",
-								"UCX_SM_switcher_1knob_tall",
-								"UCX_SM_switcher_2knob_horizontal",
-								"UCX_SM_switcher_2knob_vertical",
-								"UCX_SM_switcher_2knob_vertical_simple",
-								"UCX_SM_switcher_base",
-								"UCX_SM_switcher_box_plain",
-								"UCX_SM_switcher_box_simple",
-								"UCX_SM_switcher_noknob_curved",
-								"UCX_SM_switcher_noknob_flat",
-								"UCX_SM_switcher_switcher",
-								"UCX_SM_Barrel_metal",
-								"UCX_SM_cable_strecher",
-								"UCX_SM_cable_strecher_knob1",
-								"UCX_SM_cable_strecher_knob2",
-								"UCX_SM_cable_strecher_knob3",
-								"UCX_SM_cable_strecher_knob4",
-								"UCX_SM_camera",
-								"UCX_SM_cilinder_cap",
-								"SM_dingdong",
-								"SM_dingdong2",
-								"UCX_SM_door",
-							]
-						}
+						faceMergeAngle = 5.0
+						maxHullVertices = 54
 					},
 				]
 			},

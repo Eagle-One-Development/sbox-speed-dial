@@ -18,8 +18,8 @@ Layer0
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "epic_pack_eagle_one/textures/tileable_materials/kitchen_tiles/kitchen_tiles_tint_color.TGA"
-	TextureTintMask "epic_pack_eagle_one/textures/tileable_materials/kitchen_tiles/kitchen_tiles_tint_mask.tga"
+	TextureColor "epic_pack_eagle_one/textures/tileable_materials/kitchen_tiles/kitchen_tiles_tint_color.png"
+	TextureTintMask "epic_pack_eagle_one/textures/tileable_materials/kitchen_tiles/kitchen_tiles_tint_mask.png"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -35,10 +35,10 @@ Layer0
 	g_flMetalness "0.000"
 
 	//---- Normal ----
-	TextureNormal "epic_pack_eagle_one/textures/tileable_materials/kitchen_tiles/kitchen_tiles_normal.tga"
+	TextureNormal "epic_pack_eagle_one/textures/tileable_materials/kitchen_tiles/kitchen_tiles_normal.png"
 
 	//---- Roughness ----
-	TextureRoughness "epic_pack_eagle_one/textures/tileable_materials/kitchen_tiles/kitchen_tiles_rough.tga"
+	TextureRoughness "epic_pack_eagle_one/textures/tileable_materials/kitchen_tiles/kitchen_tiles_rough.png"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"

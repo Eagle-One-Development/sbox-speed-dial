@@ -28,40 +28,49 @@
 				children = 
 				[
 					{
-						_class = "PhysicsMeshFile"
-						name = "phys_mesh"
+						_class = "PhysicsShapeBox"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						recenter_on_parent_bone = false
-						offset_origin = [ 0.0, 0.0, 0.0 ]
-						offset_angles = [ 0.0, 0.0, 0.0 ]
-						filename = "epic_pack_eagle_one/mesh/bedroom/sm_couch.fbx"
-						import_scale = 0.3937
-						maxMeshVertices = 0
-						qemError = 0.0
-						import_filter = 
-						{
-							exclude_by_default = false
-							exception_list = 
-							[
-								"SM_sink",
-								"SM_spongeweird",
-								"SM_toilet",
-								"SM_toilet_cleaner",
-								"SM_toiletpaper",
-								"SM_tootbrush",
-								"SM_towel",
-								"SM_towel_folled",
-								"SM_tub",
-								"SM_bag",
-								"SM_bed",
-								"SM_book",
-								"SM_chair",
-								"SM_Chair_comfortable",
-								"SM_couch",
-							]
-						}
+						origin = [ 22.690895, -16.781723, 7.499823 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 41.497185, 66.980957, 15.999645 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ -0.087107, 33.021023, 7.499823 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 87.053169, 36.68293, 15.999645 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ 3.219584, 48.801311, 18.029043 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 80.439781, 5.122368, 15.999645 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ 40.983562, 0.12817, 18.029043 ]
+						angles = [ 0.0, -90.0, 0.0 ]
+						dimensions = [ 103.150528, 5.122368, 15.999645 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ 26.244726, -50.100998, 18.029043 ]
+						angles = [ -0.0, 180.0, -0.0 ]
+						dimensions = [ 32.234486, 5.122368, 15.999645 ]
 					},
 				]
 			},
@@ -102,6 +111,22 @@
 								"UCX_SM_couch",
 							]
 						}
+					},
+				]
+			},
+			{
+				_class = "PhysicsBodyMarkupList"
+				children = 
+				[
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "undefined"
+						mass_override = 500.0
+						inertia_scale = 1.0
+						linear_damping = 0.0
+						angular_damping = 0.0
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
 					},
 				]
 			},

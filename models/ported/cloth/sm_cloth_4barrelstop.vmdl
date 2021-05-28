@@ -28,26 +28,12 @@
 				children = 
 				[
 					{
-						_class = "PhysicsMeshFile"
-						name = "SM_cloth_4barrelstop"
+						_class = "PhysicsHullFromRender"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						recenter_on_parent_bone = false
-						offset_origin = [ 0.0, 0.0, 0.0 ]
-						offset_angles = [ 0.0, 0.0, 0.0 ]
-						filename = "epic_pack_eagle_one/mesh/cloth/SM_cloth_4barrelstop.FBX"
-						import_scale = 0.3937
-						maxMeshVertices = 0
-						qemError = 0.0
-						import_filter = 
-						{
-							exclude_by_default = false
-							exception_list = 
-							[
-								"SM_cloth_4barrelstop",
-							]
-						}
+						faceMergeAngle = 5.0
+						maxHullVertices = 54
 					},
 				]
 			},

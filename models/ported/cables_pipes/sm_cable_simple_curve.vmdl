@@ -15,7 +15,7 @@
 						[
 							{
 								from = "m_staircase_device_2.vmat"
-								to = "models/ported/textureset/textureset01.vmat"
+								to = "models/ported/textureset/texture_set01.vmat"
 							},
 						]
 						use_global_default = false

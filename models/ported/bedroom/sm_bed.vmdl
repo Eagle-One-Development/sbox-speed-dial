@@ -28,36 +28,22 @@
 				children = 
 				[
 					{
-						_class = "PhysicsMeshFile"
-						name = "phys_mesh"
+						_class = "PhysicsShapeBox"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						recenter_on_parent_bone = false
-						offset_origin = [ 0.0, 0.0, 0.0 ]
-						offset_angles = [ 0.0, 0.0, 0.0 ]
-						filename = "epic_pack_eagle_one/mesh/bedroom/sm_bed.fbx"
-						import_scale = 0.3937
-						maxMeshVertices = 0
-						qemError = 0.0
-						import_filter = 
-						{
-							exclude_by_default = false
-							exception_list = 
-							[
-								"SM_sink",
-								"SM_spongeweird",
-								"SM_toilet",
-								"SM_toilet_cleaner",
-								"SM_toiletpaper",
-								"SM_tootbrush",
-								"SM_towel",
-								"SM_towel_folled",
-								"SM_tub",
-								"SM_bag",
-								"SM_bed",
-							]
-						}
+						origin = [ 2.357066, -0.162293, 11.323999 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 91.924744, 76.005501, 23.647999 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ 49.611057, -0.162293, 22.360571 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 3.248857, 76.005501, 45.721142 ]
 					},
 				]
 			},

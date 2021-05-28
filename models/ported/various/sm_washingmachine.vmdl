@@ -28,34 +28,12 @@
 				children = 
 				[
 					{
-						_class = "PhysicsMeshFile"
-						name = "phys_mesh"
+						_class = "PhysicsHullFromRender"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						recenter_on_parent_bone = false
-						offset_origin = [ 0.0, 0.0, 0.0 ]
-						offset_angles = [ 0.0, 0.0, 0.0 ]
-						filename = "epic_pack_eagle_one/mesh/various/sm_washingmachine.fbx"
-						import_scale = 0.3937
-						maxMeshVertices = 0
-						qemError = 0.0
-						import_filter = 
-						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"UCX_SM_TV_monitor_support",
-								"UCX_SM_vacuum",
-								"SM_vacuum_cable",
-								"UCX_SM_vacuum_cable_plastic",
-								"UCX_SM_vacuum_cable_steel",
-								"UCX_SM_vacuum_mouth_01",
-								"UCX_SM_vacuum_mouth_02",
-								"UCX_SM_wall_protection_bottom",
-								"UCX_SM_washingmachine",
-							]
-						}
+						faceMergeAngle = 5.0
+						maxHullVertices = 54
 					},
 				]
 			},

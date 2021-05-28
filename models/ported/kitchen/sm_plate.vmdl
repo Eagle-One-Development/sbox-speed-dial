@@ -15,7 +15,7 @@
 						[
 							{
 								from = "m_pot_milk.vmat"
-								to = "models/ported/textureset/texture_set25.vmat"
+								to = "models/ported/textureset/texture_set26.vmat"
 							},
 						]
 						use_global_default = false
@@ -28,42 +28,12 @@
 				children = 
 				[
 					{
-						_class = "PhysicsMeshFile"
-						name = "phys_mesh"
+						_class = "PhysicsHullFromRender"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						recenter_on_parent_bone = false
-						offset_origin = [ 0.0, 0.0, 0.0 ]
-						offset_angles = [ 0.0, 0.0, 0.0 ]
-						filename = "epic_pack_eagle_one/mesh/kitchen/sm_porcelain_pot.fbx"
-						import_scale = 0.3937
-						maxMeshVertices = 0
-						qemError = 0.0
-						import_filter = 
-						{
-							exclude_by_default = false
-							exception_list = 
-							[
-								"SM_centralheater",
-								"SM_coffemaker",
-								"SM_cooker",
-								"SM_cup",
-								"SM_dishwasher_product",
-								"SM_fork",
-								"SM_fridge",
-								"SM_locker_shef",
-								"SM_lockers",
-								"SM_micriwave",
-								"SM_milk",
-								"SM_milk_bottle",
-								"SM_mixer",
-								"SM_pan",
-								"SM_plastic_cup",
-								"SM_plate",
-								"SM_porcelain_pot",
-							]
-						}
+						faceMergeAngle = 5.0
+						maxHullVertices = 64
 					},
 				]
 			},
@@ -84,34 +54,43 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = false
+							exclude_by_default = true
 							exception_list = 
 							[
-								"UCX_SM_centralheater",
-								"UCX_SM_coffemaker",
-								"UCX_SM_cooker",
-								"UCX_SM_cup",
-								"UCX_SM_dishwasher_product",
-								"UCX_SM_fork",
-								"UCX_SM_fridge",
-								"UCX_SM_locker_shef",
-								"UCX_SM_lockers",
-								"UCX_SM_micriwave",
-								"UCX_SM_milk",
-								"UCX_SM_milk_bottle",
-								"UCX_SM_mixer",
-								"UCX_SM_pan",
-								"UCX_SM_plastic_cup",
-								"UCX_SM_plate",
-								"UCX_SM_porcelain_pot",
+								"SM_porcelain_pot",
 							]
 						}
 					},
 				]
 			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "prop_data"
+						game_keys = 
+						{
+							base = ""
+							allowstatic = false
+							bakelighting = true
+							damage_table = ""
+							"dmg.bullets" = -1.0
+							"dmg.club" = -1.0
+							"dmg.explosive" = -1.0
+							"dmg.fire" = -1.0
+							health = -1.0
+							spawn_motion_disabled = false
+							parent_bodygroup_name = ""
+							parent_bodygroup_value = 0
+						}
+					},
+				]
+			},
 		]
-		model_archetype = ""
-		primary_associated_entity = ""
+		model_archetype = "physics_prop_model"
+		primary_associated_entity = "prop_physics"
 		anim_graph_name = ""
 	}
 }
