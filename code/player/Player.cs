@@ -1,6 +1,7 @@
 using Sandbox;
 using SpeedDial.Weapons;
 
+
 namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer : Sandbox.Player {
 
@@ -62,23 +63,19 @@ namespace SpeedDial.Player {
 			SpeedDialGame.MoveToSpawn(this);
 		}
 
-		public override void OnKilled() {
-			Game.Current?.OnKilled(this);
-
+		[ClientRpc]
+		public void BloodSplatter(Vector3 dir){
+			Vector3 pos = Position + Vector3.Up * 50f;
 			//force and bone, fix later with damage stuff in place
-
-			var tr = Trace.Ray(Position, Position + Vector3.Down * 500)
+			var tr = Trace.Ray(pos, pos + dir.Normal * 85f + Vector3.Random * 0.01f)
 					.UseHitboxes()
 					.Ignore(this)
 					.Size(1)
 					.Run();
 
-			// fuck the current decal stuff, this doesn't work
-
-			//DebugOverlay.Sphere(tr.EndPos, 3, Color.Green, false, 10);
-
-			//var decalPath = "decals/bullet-metal.decal";
-			var decalPath = Rand.FromArray(tr.Surface.ImpactEffects.BulletDecal);
+			//DebugOverlay.Line(pos, tr.EndPos, Color.Red, 3f ,false);
+			var decalPath = "decals/blood_test.decal";
+			//var decalPath = Rand.FromArray(tr.Surface.ImpactEffects.BulletDecal);
 			if(decalPath != null) {
 				if(DecalDefinition.ByPath.TryGetValue(decalPath, out var decal)) {
 					Log.Info("DECAL");
@@ -86,11 +83,38 @@ namespace SpeedDial.Player {
 				}
 			}
 
+			//For blood splatter on the ground
+			tr = Trace.Ray(pos, pos + Vector3.Down * 85f + Vector3.Random * 0.2f)
+					.UseHitboxes()
+					.Ignore(this)
+					.Size(1)
+					.Run();
+
+			//DebugOverlay.Line(pos, tr.EndPos, Color.Red, 3f ,false);
+			decalPath = "decals/blood_test.decal";
+			//var decalPath = Rand.FromArray(tr.Surface.ImpactEffects.BulletDecal);
+			if(decalPath != null) {
+				if(DecalDefinition.ByPath.TryGetValue(decalPath, out var decal)) {
+					Log.Info("DECAL");
+					decal.PlaceUsingTrace(tr);
+				}
+			}
+
+		}
+
+		public override void OnKilled() {
+			Game.Current?.OnKilled(this);
+
+			
+
+			
+
 			//Create the combo score on the client
 			if ( LastDamage.Attacker is SpeedDialPlayer attacker && attacker != this )
 			{
 				int ScoreBase = SpeedDialGame.ScoreBase;
 				attacker.ComboEvents(EyePos,(ScoreBase * attacker.KillCombo));
+				BloodSplatter(Position - attacker.Position);
 
 			}
 
@@ -121,6 +145,31 @@ namespace SpeedDial.Player {
 
 			if(Input.ActiveChild != null) {
 				ActiveChild = Input.ActiveChild;
+			}
+
+			Vector3 pos = Position + Vector3.Up * 50f;
+			//force and bone, fix later with damage stuff in place
+			if(Input.Pressed(InputButton.Jump) && IsServer){
+			for(int i = 0; i < 100; i++){
+			var tr = Trace.Ray(pos, pos + Vector3.Random * 20000)
+					.UseHitboxes()
+					.Ignore(this)
+					.Size(1)
+					.Run();
+
+			//DebugOverlay.Sphere(tr.EndPos, 3, Color.Green, false, 10);
+			DebugOverlay.Line(pos, tr.EndPos, Color.Red, 10f, false);
+			//DebugOverlay.Sphere(pos, 3, Color.Blue, false, 10);
+				
+			var decalPath = "decals/bullet-metal.decal";
+			//var decalPath = Rand.FromArray(tr.Surface.ImpactEffects.BulletDecal);
+			if(decalPath != null) {
+				if(DecalDefinition.ByPath.TryGetValue(decalPath, out var decal)) {
+					Log.Info("DECAL");
+					decal.PlaceUsingTrace(tr);
+				}
+			}
+			}
 			}
 
 			
