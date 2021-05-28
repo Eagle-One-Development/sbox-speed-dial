@@ -86,6 +86,7 @@ namespace SpeedDial.Player {
 				}
 			}
 
+			//Create the combo score on the client
 			if ( LastDamage.Attacker is SpeedDialPlayer attacker && attacker != this )
 			{
 				int ScoreBase = SpeedDialGame.ScoreBase;

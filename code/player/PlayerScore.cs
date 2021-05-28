@@ -14,12 +14,8 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		public void ComboEvents(Vector3 position, int amt) {
-			
-
 			ComboPanel.Current.Bump();
-			ComboPanel.Current.OnKill(position, amt);
-			Log.Info("YELLOW");
-			
+			ComboPanel.Current.OnKill(position, amt);		
 		}
 
 		[Event("tick")]

@@ -57,6 +57,7 @@ namespace SpeedDial.UI {
 
 		}
 
+		
 		public void OnKill(Vector3 pos, int amt){
 			WorldScore ws = null;
 			for(int i = 0; i < scores.Count; i++){
