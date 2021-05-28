@@ -67,12 +67,12 @@ namespace SpeedDial {
 					//attacker.ComboEvents(pawn.EyePos,ScoreBase + (ScoreBase * attacker.KillCombo));
 					attacker.KillCombo++;
 
-					using(Prediction.Off()){
-						int clip = (attacker.ActiveChild as BaseSpeedDialWeapon).AmmoClip;
-						int maxClip =  (attacker.ActiveChild as BaseSpeedDialWeapon).ClipSize;
-						clip = Math.Clamp(clip + 5, 0, maxClip);
-						(attacker.ActiveChild as BaseSpeedDialWeapon).AmmoClip = clip;
-					}
+					
+					int clip = (attacker.ActiveChild as BaseSpeedDialWeapon).AmmoClip;
+					int maxClip =  (attacker.ActiveChild as BaseSpeedDialWeapon).ClipSize;
+					clip = Math.Clamp(clip + 5, 0, maxClip);
+					(attacker.ActiveChild as BaseSpeedDialWeapon).AmmoClip = clip;
+					
 					
 					attacker.TimeSinceMurdered = 0;
 

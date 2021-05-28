@@ -18,7 +18,7 @@ partial class Mac10 : BaseSpeedDialWeapon
 		base.Spawn();
 
 		SetModel( "weapons/rust_smg/rust_smg.vmdl" );
-		AmmoClip = 20;
+		AmmoClip = 30;
 	}
 
 	public override void AttackPrimary()

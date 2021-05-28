@@ -89,7 +89,6 @@ namespace SpeedDial.Player {
 			//var decalPath = Rand.FromArray(tr.Surface.ImpactEffects.BulletDecal);
 			if(decalPath != null) {
 				if(DecalDefinition.ByPath.TryGetValue(decalPath, out var decal)) {
-					Log.Info("DECAL");
 					decal.PlaceUsingTrace(tr);
 				}
 			}
@@ -106,7 +105,7 @@ namespace SpeedDial.Player {
 			//var decalPath = Rand.FromArray(tr.Surface.ImpactEffects.BulletDecal);
 			if(decalPath != null) {
 				if(DecalDefinition.ByPath.TryGetValue(decalPath, out var decal)) {
-					Log.Info("DECAL");
+
 					decal.PlaceUsingTrace(tr);
 				}
 			}
@@ -121,11 +120,11 @@ namespace SpeedDial.Player {
 			
 
 			//Create the combo score on the client
-			if ( LastDamage.Attacker is SpeedDialPlayer attacker && attacker != this )
+			if ( LastDamage.Attacker is SpeedDialPlayer attacker && attacker != this)
 			{
 				int ScoreBase = SpeedDialGame.ScoreBase;
-				attacker.ComboEvents(EyePos,(ScoreBase * attacker.KillCombo));
-				
+				//attacker.ComboEvents(EyePos,(ScoreBase * attacker.KillCombo));
+				Log.Info("TEST");
 				BloodSplatter(Position - attacker.Position);
 
 			}
@@ -187,7 +186,7 @@ namespace SpeedDial.Player {
 			if ( info.Attacker is SpeedDialPlayer attacker && attacker != this )
 			{
 				// Note - sending this only to the attacker!
-				attacker.DidDamage( To.Single( attacker ), info.Position, info.Damage, ((float)Health).LerpInverse( 100, 0 ) );
+				attacker.DidDamage( To.Single( attacker ), info.Position, info.Damage, Health );
 
 				TookDamage( To.Single( this ), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position );
 			}
@@ -205,8 +204,14 @@ namespace SpeedDial.Player {
 		{
 			//Sound.FromScreen( "dm.ui_attacker" )
 			//	.SetPitch( 1 + healthinv * 1 );
-	//
+	//	
 			//HitIndicator.Current?.OnHit( pos, amount );
+			if(healthinv <= 0){
+			
+				int ScoreBase = SpeedDialGame.ScoreBase;
+				ComboEvents(pos,(ScoreBase * KillCombo));
+			
+			}
 		}
 
 

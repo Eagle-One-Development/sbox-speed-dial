@@ -17,6 +17,7 @@ namespace SpeedDial.Player {
 			ComboPanel.Current.Bump();
 			ComboPanel.Current.OnKill(position, amt);		
 			AmmoPanel.Current?.Bump();
+			//Log.Info("TEST");
 		}
 
 		[Event("tick")]
