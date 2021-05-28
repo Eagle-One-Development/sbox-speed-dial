@@ -51,7 +51,7 @@ Layer0
 
 	//---- Texture Animation ----
 	g_flAnimationFrame "1.000"
-	g_flAnimationTimeOffset "1.000"
+	g_flAnimationTimeOffset "2.000"
 	g_flAnimationTimePerFrame "1.000"
 	g_nNumAnimationCells "4"
 	g_vAnimationGrid "[2 2]"
