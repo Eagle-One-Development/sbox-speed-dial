@@ -57,9 +57,7 @@ namespace SpeedDial {
 			}
 
 			if(IsServer) {
-				
 				if(attackerClient != null) {
-
 					Log.Info($"{attackerClient.Name} killed {client.Name}");
 					var attacker = attackerClient.Pawn as SpeedDialPlayer;
 					attacker.KillScore += ScoreBase + (ScoreBase * attacker.KillCombo);
@@ -67,51 +65,32 @@ namespace SpeedDial {
 					//attacker.ComboEvents(pawn.EyePos,ScoreBase + (ScoreBase * attacker.KillCombo));
 					attacker.KillCombo++;
 
-					
 					int clip = (attacker.ActiveChild as BaseSpeedDialWeapon).AmmoClip;
-					int maxClip =  (attacker.ActiveChild as BaseSpeedDialWeapon).ClipSize;
+					int maxClip = (attacker.ActiveChild as BaseSpeedDialWeapon).ClipSize;
 					clip = Math.Clamp(clip + 5, 0, maxClip);
 					(attacker.ActiveChild as BaseSpeedDialWeapon).AmmoClip = clip;
-					
-					
-					attacker.TimeSinceMurdered = 0;
 
+					attacker.TimeSinceMurdered = 0;
 				}
 			}
-
-
-			
 		}
 
-		[ServerCmd( "give_weapon" )]
-		public static void GiveWeapon( string entityName)
-		{
-			
-			if ( ConsoleSystem.Caller.Pawn is SpeedDialPlayer player )
-			{
-				BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>( entityName );
+		[ServerCmd("give_weapon")]
+		public static void GiveWeapon(string entityName) {
+
+			if(ConsoleSystem.Caller.Pawn is SpeedDialPlayer player) {
+				BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>(entityName);
 				Log.Info("TEST");
-				player.Inventory.Add( weapon , true );
-
-
-
+				player.Inventory.Add(weapon, true);
 			}
 		}
 
-		[ServerCmd( "set_character" )]
-		public static void SetCharacter( int index)
-		{
-			
-			if ( ConsoleSystem.Caller.Pawn is SpeedDialPlayer player )
-			{
-				
+		[ServerCmd("set_character")]
+		public static void SetCharacter(int index) {
+			if(ConsoleSystem.Caller.Pawn is SpeedDialPlayer player) {
 				player.character = SpeedDialGame.Instance.characters[index];
-
-
-
 			}
 		}
-
 
 		private void PopulateData() {
 			characters = new();
@@ -139,16 +118,6 @@ namespace SpeedDial {
 
 		private void OnTick() {
 			Round?.OnTick();
-
-			if(IsClient) {
-				// We have to hack around this for now until we can detect changes in net variables.
-				//if ( _lastRound != Round )
-				//{
-				//	_lastRound?.Finish();
-				//	_lastRound = Round;
-				//	_lastRound.Start();
-				//}
-			}
 		}
 
 		public async Task StartSecondTimer() {
@@ -187,20 +156,7 @@ namespace SpeedDial {
 		}
 
 		public override void DoPlayerNoclip(Client player) {
-			return;
-
-			// if(!player.HasPermission("noclip"))
-			// 	return;
-
-			// if(player.Pawn is SpeedDialPlayer basePlayer) {
-			// 	if(basePlayer.DevController is NoclipController) {
-			// 		//Log.Info("Noclip Mode Off");
-			// 		basePlayer.DevController = null;
-			// 	} else {
-			// 		//Log.Info("Noclip Mode On");
-			// 		basePlayer.DevController = new SpeedDialController();
-			// 	}
-			// }
+			// who needs noclip anyways
 		}
 
 		public static void MoveToSpawn(SpeedDialPlayer player) {
