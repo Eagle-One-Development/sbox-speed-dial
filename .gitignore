@@ -1,5 +1,6 @@
 !sd_test.vpk
 !sd_lab_player_shoot_height.vpk
+!sd_height_test.vpk
 *materials/*/*/*.vmat_c
 *models/*/*/*.vmdl_c
 materials/default

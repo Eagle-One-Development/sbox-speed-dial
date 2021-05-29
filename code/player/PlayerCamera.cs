@@ -1,3 +1,4 @@
+using System.Net;
 using System;
 using Sandbox;
 
@@ -33,8 +34,34 @@ namespace SpeedDial.Player {
 			var pawn = Local.Pawn;
 			if(pawn == null) return;
 
+			DebugOverlay.Text(pawn.EyePos, $"{pawn.EyePos.z}", Color.Green);
+
 			var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rot, Screen.Size);
 			var HitPosition = LinePlaneIntersectionWithHeight(Pos, direction, pawn.EyePos.z - 20);
+
+			var hitposTraceDown = Trace.Ray(HitPosition, HitPosition + Vector3.Down * 48)
+				.WorldAndEntities()
+				.Ignore(pawn)
+				.Run();
+
+			var hitposTraceUp = Trace.Ray(HitPosition, HitPosition + Vector3.Up * 48)
+				.WorldAndEntities()
+				.Ignore(pawn)
+				.Run();
+
+			if(hitposTraceDown.Hit) {
+				DebugOverlay.Line(HitPosition, hitposTraceDown.EndPos, Color.Cyan);
+				DebugOverlay.Sphere(hitposTraceDown.EndPos, 2, Color.Cyan, false);
+			}
+			if(hitposTraceUp.Hit) {
+				DebugOverlay.Line(HitPosition, hitposTraceUp.EndPos, Color.Red);
+				DebugOverlay.Sphere(hitposTraceUp.EndPos, 2, Color.Red, false);
+			}
+
+
+			// if(hitposTrace.Hit && (int)(hitposTrace.EndPos - HitPosition).Length != 44) {
+			//Log.Info($"HIGH/LOW GROUND {(hitposTrace.EndPos - HitPosition).Length}");
+			// }
 
 			var targetTrace = Trace.Ray(pawn.EyePos, HitPosition)
 				.Size(25)
