@@ -47,8 +47,6 @@ namespace SpeedDial.Weapons {
 			TimeSinceDeployed = 0;
 		}
 
-		public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
-
 		public override void Spawn() {
 			base.Spawn();
 
@@ -65,7 +63,7 @@ namespace SpeedDial.Weapons {
 
 			if(AmmoClip >= ClipSize)
 				return;
-			
+
 			TimeSinceReload = 0;
 
 			if(Owner is SpeedDialPlayer player) {
@@ -94,18 +92,14 @@ namespace SpeedDial.Weapons {
 			if(IsReloading && TimeSinceReload > ReloadTime) {
 				OnReloadFinish();
 			}
-			
-
 		}
-
-		
 
 		public virtual void OnReloadFinish() {
 			IsReloading = false;
 
 			if(Owner is SpeedDialPlayer player) {
 
-				AmmoClip = Math.Clamp( AmmoClip + AmmoToAward , 0, ClipSize);
+				AmmoClip = Math.Clamp(AmmoClip + AmmoToAward, 0, ClipSize);
 			}
 		}
 
@@ -151,7 +145,6 @@ namespace SpeedDial.Weapons {
 				new Sandbox.ScreenShake.Perlin();
 			}
 
-			ViewModelEntity?.SetAnimParam("fire", true);
 			CrosshairPanel?.OnEvent("fire");
 		}
 

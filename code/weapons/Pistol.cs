@@ -32,18 +32,9 @@ namespace SpeedDial.Weapons {
 				return;
 			}
 
-
-			//
-			// Tell the clients to play the shoot effects
-			//
 			ShootEffects();
 			PlaySound("rust_pistol.shoot");
-
-			//
-			// Shoot the bullets
-			//
 			ShootBullet(0.05f, 1.5f, 100.0f, 3.0f);
-
 		}
 	}
 }
