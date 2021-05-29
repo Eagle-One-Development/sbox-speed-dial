@@ -37,7 +37,7 @@ namespace SpeedDial.Player {
 			var HitPosition = LinePlaneIntersectionWithHeight(Pos, direction, pawn.EyePos.z - 20);
 
 			var targetTrace = Trace.Ray(pawn.EyePos, HitPosition)
-				.Size(10)
+				.Size(25)
 				.EntitiesOnly()
 				.Ignore(pawn)
 				.Run();
