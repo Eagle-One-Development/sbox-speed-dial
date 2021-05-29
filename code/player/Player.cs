@@ -1,3 +1,4 @@
+using System;
 using Sandbox;
 using SpeedDial.Weapons;
 
@@ -18,8 +19,6 @@ namespace SpeedDial.Player {
 			Inventory = new SpeedDialInventory(this);
 		}
 
-		[Net, Local]
-		public bool giveclip { get; set; }
 		public BaseSpeedDialCharacter character;
 
 		public void InitialSpawn() {
@@ -74,6 +73,17 @@ namespace SpeedDial.Player {
 			CreateHull();
 			ResetInterpolation();
 			SpeedDialGame.MoveToSpawn(this);
+		}
+
+		[ClientRpc]
+		public void IncreaseWeaponClip() {
+			if(ActiveChild is BaseSpeedDialWeapon weapon) {
+				if(IsClient)
+					Log.Info("Updated clip on client in rpc");
+				if(IsServer)
+					Log.Info("Updated clip on server in rpc");
+				weapon.AwardAmmo();
+			}
 		}
 
 		[ClientRpc]
@@ -138,8 +148,6 @@ namespace SpeedDial.Player {
 			if(LastDamage.Attacker is SpeedDialPlayer attacker && attacker != this) {
 				//attacker.ComboEvents(EyePos,(SpeedDialGame.ScoreBase * attacker.KillCombo));
 				BloodSplatter(Position - attacker.Position);
-				
-			
 			}
 
 			BecomeRagdollOnClient(new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0));
@@ -172,12 +180,12 @@ namespace SpeedDial.Player {
 			if(Input.ActiveChild != null) {
 				ActiveChild = Input.ActiveChild;
 			}
-			giveclip = true;
-			if(giveclip) {
-				Log.Info("YEYEYEYEYEYEYEYEYEYEYEEYEYEYEY");
-				(ActiveChild as BaseSpeedDialWeapon).OnReloadFinish();
-				giveclip = false;
-			}
+			// giveclip = true;
+			// if(giveclip) {
+			// Log.Info("YEYEYEYEYEYEYEYEYEYEYEEYEYEYEY");
+			// (ActiveChild as BaseSpeedDialWeapon).OnReloadFinish();
+			// giveclip = false;
+			// }
 
 			SimulateActiveChild(cl, ActiveChild);
 
@@ -218,9 +226,6 @@ namespace SpeedDial.Player {
 
 				int ScoreBase = SpeedDialGame.ScoreBase;
 				ComboEvents(pos, ScoreBase * KillCombo);
-				
-
-
 			}
 		}
 

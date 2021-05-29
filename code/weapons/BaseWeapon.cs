@@ -32,7 +32,6 @@ namespace SpeedDial.Weapons {
 
 		public virtual int AmmoToAward => 5;
 
-
 		public int AvailableAmmo() {
 			if(Owner is SpeedDialPlayer owner) {
 				if(owner == null) return 0;
@@ -82,12 +81,30 @@ namespace SpeedDial.Weapons {
 
 		public override void Simulate(Client owner) {
 
-			if(TimeSinceDeployed < 0.6f)
+			if(owner.Input.Down(InputButton.Reload)) {
+				Reload();
+			}
+
+			if(!this.IsValid())
 				return;
 
-			if(!IsReloading) {
-				base.Simulate(owner);
+			if(CanPrimaryAttack()) {
+				TimeSincePrimaryAttack = 0;
+				AttackPrimary();
 			}
+
+			if(!owner.IsValid())
+				return;
+
+			if(CanSecondaryAttack()) {
+				TimeSinceSecondaryAttack = 0;
+				AttackSecondary();
+			}
+
+
+
+			if(TimeSinceDeployed < 0.6f)
+				return;
 
 			if(IsReloading && TimeSinceReload > ReloadTime) {
 				OnReloadFinish();
@@ -96,11 +113,6 @@ namespace SpeedDial.Weapons {
 
 		public virtual void OnReloadFinish() {
 			IsReloading = false;
-
-			if(Owner is SpeedDialPlayer player) {
-
-				AmmoClip = Math.Clamp(AmmoClip + AmmoToAward, 0, ClipSize);
-			}
 		}
 
 		[ClientRpc]
@@ -185,6 +197,14 @@ namespace SpeedDial.Weapons {
 
 			AmmoClip -= amount;
 			return true;
+		}
+
+		public void AwardAmmo() {
+			if(IsClient)
+				Log.Info("Updated clip on client in weapon");
+			if(IsServer)
+				Log.Info("Updated clip on server in weapon");
+			AmmoClip = Math.Clamp(AmmoClip + AmmoToAward, 0, ClipSize);
 		}
 
 		[ClientRpc]
