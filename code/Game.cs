@@ -63,7 +63,7 @@ namespace SpeedDial {
 					Log.Info($"{attackerClient.Name} killed {client.Name}");
 
 					attacker.KillScore += ScoreBase + (ScoreBase * attacker.KillCombo);
-					Log.Info($"Attacker {attackerClient}\nLocal {Local.Client}");
+					//Log.Info($"Attacker {attackerClient}\nLocal {Local.Client}");
 					//attacker.ComboEvents(pawn.EyePos,ScoreBase + (ScoreBase * attacker.KillCombo));
 					attacker.KillCombo++;
 
@@ -85,7 +85,7 @@ namespace SpeedDial {
 
 			if(ConsoleSystem.Caller.Pawn is SpeedDialPlayer player) {
 				BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>(entityName);
-				Log.Info("TEST");
+				//Log.Info("TEST");
 				player.Inventory.Add(weapon, true);
 			}
 		}

@@ -6,81 +6,91 @@
 		[
 			{
 				Material = "materials/decals/blood/blood01.vmat"
-				Width = [ 256.0, 5.0, 0.0 ]
-				Height = [ 256.0, 5.0, 0.0 ]
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
 				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
 			},
 			{
 				Material = "materials/decals/blood/blood02.vmat"
-				Width = [ 256.0, 5.0, 0.0 ]
-				Height = [ 256.0, 5.0, 0.0 ]
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
 				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
 			},
 			{
 				Material = "materials/decals/blood/blood03.vmat"
-				Width = [ 256.0, 5.0, 0.0 ]
-				Height = [ 256.0, 5.0, 0.0 ]
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
 				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
 			},
 			{
 				Material = "materials/decals/blood/blood04.vmat"
-				Width = [ 256.0, 5.0, 0.0 ]
-				Height = [ 256.0, 5.0, 0.0 ]
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
 				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
 			},
 			{
 				Material = "materials/decals/blood/blood05.vmat"
-				Width = [ 256.0, 5.0, 0.0 ]
-				Height = [ 256.0, 5.0, 0.0 ]
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
 				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
 			},
 			{
 				Material = "materials/decals/blood/blood06.vmat"
-				Width = [ 256.0, 5.0, 0.0 ]
-				Height = [ 256.0, 5.0, 0.0 ]
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
 				KeepAspect = true
 			},
 			{
 				Material = "materials/decals/blood/blood07.vmat"
-				Width = [ 256.0, 5.0, 0.0 ]
-				Height = [ 256.0, 5.0, 0.0 ]
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
 				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
 			},
 			{
 				Material = "materials/decals/blood/blood08.vmat"
-				Width = [ 256.0, 5.0, 0.0 ]
-				Height = [ 256.0, 5.0, 0.0 ]
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
 				KeepAspect = true
 			},
 			{
 				Material = "materials/decals/blood/blood09.vmat"
-				Width = [ 256.0, 5.0, 0.0 ]
-				Height = [ 256.0, 5.0, 0.0 ]
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
 				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
 			},
 			{
 				Material = "materials/decals/blood/blood10.vmat"
-				Width = [ 256.0, 5.0, 0.0 ]
-				Height = [ 256.0, 5.0, 0.0 ]
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
 				KeepAspect = true
 			},
 			{
 				Material = "materials/decals/blood/blood11.vmat"
-				Width = [ 256.0, 5.0, 0.0 ]
-				Height = [ 256.0, 5.0, 0.0 ]
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
 				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
 			},
 			{
 				Material = "materials/decals/blood/blood12.vmat"
-				Width = [ 256.0, 5.0, 0.0 ]
-				Height = [ 256.0, 5.0, 0.0 ]
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
 				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
 			},
 			{
 				Material = "materials/decals/blood/blood13.vmat"
-				Width = [ 256.0, 5.0, 0.0 ]
-				Height = [ 256.0, 5.0, 0.0 ]
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
 				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
 			},
 		]
 	}

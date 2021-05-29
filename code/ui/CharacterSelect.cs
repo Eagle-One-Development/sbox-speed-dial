@@ -32,9 +32,9 @@ namespace SpeedDial.UI {
 
 		public CharacterSelect() {
 			StyleSheet.Load("/ui/CharacterSelect.scss");
-			backPortrait = Add.Image( "/ui/portraits/default.png", "backportrait" );
+			backPortrait = Add.Image("/ui/portraits/default.png", "backportrait");
 			portrait = Add.Image("/ui/portraits/default.png", "portrait");
-			
+
 			AddClass("active");
 			title = portrait.Add.Label("PLAYER NAME", "title");
 			description = portrait.Add.Label("Default character is so cool. He spent his days doing crime while not doing the time.", "description");
@@ -56,39 +56,36 @@ namespace SpeedDial.UI {
 			startLoad.Text = $"Weapon: {wep}\nAbility: NONE";
 
 			var transform = new PanelTransform();
-			
 
-			
+
+
 			var transform2 = new PanelTransform();
-			if ( right )
-			{
-				translate = translate.LerpTo( 0f, Time.Delta * 10f );
-				translate2 = translate2.LerpTo( 200f, Time.Delta * 2f );
+			if(right) {
+				translate = translate.LerpTo(0f, Time.Delta * 10f);
+				translate2 = translate2.LerpTo(200f, Time.Delta * 2f);
 
-				transform.AddTranslateX( Length.Percent( -translate ) );
-				transform2.AddTranslateX( Length.Percent( -translate2 ) );
+				transform.AddTranslateX(Length.Percent(-translate));
+				transform2.AddTranslateX(Length.Percent(-translate2));
 				float anim = (1 - (translate / 100f));
-				transform2.AddScale( 1 - 0.1f * anim );
-				transform2.AddTranslateY( Length.Pixels( 190f * anim ) );
-			}
-			else
-			{
-				translate = translate.LerpTo( 200f, Time.Delta * 2f );
-				translate2 = translate2.LerpTo( 0f, Time.Delta * 10f );
+				transform2.AddScale(1 - 0.1f * anim);
+				transform2.AddTranslateY(Length.Pixels(190f * anim));
+			} else {
+				translate = translate.LerpTo(200f, Time.Delta * 2f);
+				translate2 = translate2.LerpTo(0f, Time.Delta * 10f);
 
-				transform.AddTranslateX( Length.Percent( -translate2 ) );
-				transform2.AddTranslateX( Length.Percent( -translate ) );
+				transform.AddTranslateX(Length.Percent(-translate2));
+				transform2.AddTranslateX(Length.Percent(-translate));
 				float anim = (1 - (translate / 100f));
 				float anim2 = (1 - (translate / 200f));
-				transform2.AddScale( 1f );
-				transform.AddTranslateY( Length.Pixels( 190f * (anim2) ) );
-				transform.AddScale( 0.9f + 0.1f * (1 - anim) );
+				transform2.AddScale(1f);
+				transform.AddTranslateY(Length.Pixels(190f * (anim2)));
+				transform.AddScale(0.9f + 0.1f * (1 - anim));
 
 			}
 
 
 			backPortrait.Style.Transform = transform2;
-			portrait.Style.Transform     = transform;
+			portrait.Style.Transform = transform;
 			portrait.Style.Dirty();
 			backPortrait.Style.Dirty();
 
@@ -110,7 +107,7 @@ namespace SpeedDial.UI {
 
 			if(input.Pressed(InputButton.Score)) {
 				open = !open;
-				Log.Info(open.ToString());
+				//Log.Info(open.ToString());
 			}
 
 			if(open) {
@@ -127,7 +124,7 @@ namespace SpeedDial.UI {
 				if(Q) {
 					right = false;
 					currentIndex--;
-					Log.Info(currentIndex.ToString());
+					//Log.Info(currentIndex.ToString());
 					translate2 = 100f;
 					translate = 0f;
 
@@ -135,14 +132,14 @@ namespace SpeedDial.UI {
 						currentIndex = SpeedDialGame.Instance.characters.Count - 1;
 					}
 				}
-			
-				if(space){
-					string[] s = {currentIndex.ToString()};
-					Log.Info(s[0].ToString());
-					ConsoleSystem.Run("set_character",s);
+
+				if(space) {
+					string[] s = { currentIndex.ToString() };
+					//Log.Info(s[0].ToString());
+					ConsoleSystem.Run("set_character", s);
 					open = false;
 				}
-			
+
 			}
 		}
 	}
