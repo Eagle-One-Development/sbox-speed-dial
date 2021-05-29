@@ -18,7 +18,7 @@ namespace SpeedDial.Player {
 			Inventory = new SpeedDialInventory(this);
 		}
 
-		[Net]
+		[Net, Local]
 		public bool giveclip { get; set; }
 		public BaseSpeedDialCharacter character;
 
@@ -138,6 +138,8 @@ namespace SpeedDial.Player {
 			if(LastDamage.Attacker is SpeedDialPlayer attacker && attacker != this) {
 				//attacker.ComboEvents(EyePos,(SpeedDialGame.ScoreBase * attacker.KillCombo));
 				BloodSplatter(Position - attacker.Position);
+				
+			
 			}
 
 			BecomeRagdollOnClient(new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0));
@@ -170,8 +172,9 @@ namespace SpeedDial.Player {
 			if(Input.ActiveChild != null) {
 				ActiveChild = Input.ActiveChild;
 			}
-
+			giveclip = true;
 			if(giveclip) {
+				Log.Info("YEYEYEYEYEYEYEYEYEYEYEEYEYEYEY");
 				(ActiveChild as BaseSpeedDialWeapon).OnReloadFinish();
 				giveclip = false;
 			}
@@ -193,7 +196,6 @@ namespace SpeedDial.Player {
 			if(info.Attacker is SpeedDialPlayer attacker && attacker != this) {
 				// Note - sending this only to the attacker!
 				attacker.DidDamage(To.Single(attacker), info.Position, info.Damage, Health);
-				attacker.giveclip = true;
 
 				TookDamage(To.Single(this), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position);
 			}
@@ -216,6 +218,7 @@ namespace SpeedDial.Player {
 
 				int ScoreBase = SpeedDialGame.ScoreBase;
 				ComboEvents(pos, ScoreBase * KillCombo);
+				
 
 
 			}
