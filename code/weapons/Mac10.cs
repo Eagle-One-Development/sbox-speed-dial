@@ -31,7 +31,7 @@ namespace SpeedDial.Weapons {
 
 			ShootEffects();
 			PlaySound("rust_smg.shoot");
-			ShootBullet(0.05f, 1.5f, 27.0f, 3.0f);
+			ShootBullet(0.05f, 1.5f, 100, 3.0f);
 		}
 
 		public override void AttackSecondary() {

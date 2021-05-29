@@ -31,7 +31,7 @@ namespace SpeedDial.Weapons {
 			ShootEffects();
 			PlaySound("rust_pumpshotgun.shoot");
 			for(int i = 0; i < 10; i++) {
-				ShootBullet(0.5f, 0.3f, 35.0f, 3.0f);
+				ShootBullet(0.5f, 0.3f, 100, 3.0f);
 			}
 		}
 

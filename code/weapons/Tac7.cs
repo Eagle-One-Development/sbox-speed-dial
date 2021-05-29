@@ -40,7 +40,7 @@ namespace SpeedDial.Weapons {
 
 					ShootEffects();
 					PlaySound("rust_smg.shoot");
-					ShootBullet(0.025f * (float)((curBurst * 1.5) + 1), 1.5f, 35f, 3.0f);
+					ShootBullet(0.025f * (float)((curBurst * 1.5) + 1), 1.5f, 100, 3.0f);
 					burstTimer = 0;
 				}
 
