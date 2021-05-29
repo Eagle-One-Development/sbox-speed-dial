@@ -1,27 +1,40 @@
-characterselect{
+characterselect {
     background: rgb(65, 65, 65);
     background: radial-gradient(circle, rgba(145,145,145,0.6026785714285714) 0%, rgba(54, 54, 54, 0.695) 36%, rgba(0,0,0,1) 100%);
     position: absolute;
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     opacity: 0;
     transition: opacity 0.25s ease-in-out;
 
-    &.active{
+    &.active {
         opacity: 1;
     }
 
-    .portrait{
+    .backportrait {
         position: absolute;
         width: 30%px;
-        
         aspect-ratio: 0.6246851385390428;
-
         left: 200px;
-		bottom: 0px;
+        bottom: 0px;
         align-items: center;
-        justify-content: center; 
-        .title{
+        justify-content: center;
+        background-image-tint: #fc0;
+        opacity: 0.5;
+        color: #ff0;
+
+    }
+
+    .portrait {
+        position: absolute;
+        width: 30%px;
+        aspect-ratio: 0.6246851385390428;
+        left: 200px;
+        bottom: 0px;
+        align-items: center;
+        justify-content: center;
+
+        .title {
             position: absolute;
             font-family: VCR OSD Mono;
             color: #fff;
@@ -30,19 +43,18 @@ characterselect{
             top: 25px;
         }
 
-        .description{
+        .description {
             position: absolute;
             font-family: VCR OSD Mono;
             color: #fff;
             font-size: 24px;
             width: 400px;
             text-align: left;
-            right:-325px;
-
+            right: -325px;
             justify-content: center;
             align-items: center;
 
-            .loadout{
+            .loadout {
                 position: absolute;
                 font-family: VCR OSD Mono;
                 color: #fff;
@@ -51,11 +63,7 @@ characterselect{
                 width: 400px;
                 text-align: left;
                 bottom: -120px;
-                
             }
         }
     }
-
-
-
 }

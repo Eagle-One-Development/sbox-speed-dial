@@ -10,7 +10,6 @@ partial class Tac7 : BaseSpeedDialWeapon
 	public override float PrimaryRate => 2.0f;
 	public override float SecondaryRate => 1.0f;
 	public override int ClipSize => 15;
-	public override float ReloadTime => 4.0f;
 	public override int Bucket => 2;
 	
 

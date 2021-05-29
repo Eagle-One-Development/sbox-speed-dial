@@ -74,7 +74,6 @@ namespace SpeedDial {
 
 					//(attacker.ActiveChild as BaseSpeedDialWeapon).AwardAmmoClient(5);
 					//(attacker.ActiveChild as BaseSpeedDialWeapon).AwardAmmoServer(5);
-					(attacker.ActiveChild as BaseSpeedDialWeapon).AwardAmmo(5);
 
 					attacker.TimeSinceMurdered = 0;
 				}

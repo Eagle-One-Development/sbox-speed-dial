@@ -12,7 +12,7 @@ namespace SpeedDial.Weapons {
 	public partial class BaseSpeedDialWeapon : BaseWeapon {
 		public virtual AmmoType AmmoType => AmmoType.Pistol;
 		public virtual int ClipSize => 16;
-		public virtual float ReloadTime => 3.0f;
+		public virtual float ReloadTime => 0.17f;
 		public virtual int Bucket => 1;
 		public virtual int BucketWeight => 100;
 
@@ -30,8 +30,7 @@ namespace SpeedDial.Weapons {
 
 		public PickupTrigger PickupTrigger { get; protected set; }
 
-		[Net, Local]
-		private int AmmoToAward { get; set; }
+		public virtual int AmmoToAward => 5;
 
 
 		public int AvailableAmmo() {
@@ -46,20 +45,6 @@ namespace SpeedDial.Weapons {
 			base.ActiveStart(ent);
 
 			TimeSinceDeployed = 0;
-		}
-
-		[ClientRpc]
-		public void AwardAmmoClient(int award) {
-			AmmoClip = Math.Clamp(award, 0, ClipSize);
-			//AmmoToAward = award;
-		}
-
-		public void AwardAmmoServer(int award) {
-			AmmoClip = Math.Clamp(award, 0, ClipSize);
-		}
-
-		public void AwardAmmo(int award) {
-			AmmoToAward = award;
 		}
 
 		public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
@@ -80,7 +65,7 @@ namespace SpeedDial.Weapons {
 
 			if(AmmoClip >= ClipSize)
 				return;
-
+			
 			TimeSinceReload = 0;
 
 			if(Owner is SpeedDialPlayer player) {
@@ -109,27 +94,18 @@ namespace SpeedDial.Weapons {
 			if(IsReloading && TimeSinceReload > ReloadTime) {
 				OnReloadFinish();
 			}
-
-			if(AmmoToAward >= 1) {
-				if(IsClient)
-					ConsoleSystem.Run("echo", $"ECHO {AmmoToAward} on {Owner.GetClientOwner().Name}");
-				Log.Info($"{AmmoToAward} on {Owner.GetClientOwner().Name}");
-				AmmoToAward = 0;
-				// AmmoClip = Math.Clamp(AmmoToAward, 0, ClipSize);
-				// AmmoToAward = 0;
-			}
+			
 
 		}
+
+		
 
 		public virtual void OnReloadFinish() {
 			IsReloading = false;
 
 			if(Owner is SpeedDialPlayer player) {
-				var ammo = player.TakeAmmo(AmmoType, ClipSize - AmmoClip);
-				if(ammo == 0)
-					return;
 
-				AmmoClip += ammo;
+				AmmoClip = Math.Clamp( AmmoClip + AmmoToAward , 0, ClipSize);
 			}
 		}
 

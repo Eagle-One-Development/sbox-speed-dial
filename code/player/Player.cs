@@ -18,6 +18,8 @@ namespace SpeedDial.Player {
 			Inventory = new SpeedDialInventory(this);
 		}
 
+		[Net]
+		public bool giveclip { get; set; }
 		public BaseSpeedDialCharacter character;
 
 		public void InitialSpawn() {
@@ -163,9 +165,12 @@ namespace SpeedDial.Player {
 				ActiveChild = Input.ActiveChild;
 			}
 
+			if ( giveclip)
+			{
+				(ActiveChild as BaseSpeedDialWeapon).OnReloadFinish();
+				giveclip = false;
+			}
 
-
-			
 			SimulateActiveChild(cl, ActiveChild);
 
 			var controller = GetActiveController();
@@ -187,8 +192,11 @@ namespace SpeedDial.Player {
 			{
 				// Note - sending this only to the attacker!
 				attacker.DidDamage( To.Single( attacker ), info.Position, info.Damage, Health );
+				attacker.giveclip = true;
+				
 
 				TookDamage( To.Single( this ), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position );
+				//
 			}
 		}
 
@@ -210,7 +218,8 @@ namespace SpeedDial.Player {
 			
 				int ScoreBase = SpeedDialGame.ScoreBase;
 				ComboEvents(pos,(ScoreBase * KillCombo));
-			
+				
+				
 			}
 		}
 

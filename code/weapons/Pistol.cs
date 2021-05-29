@@ -7,7 +7,6 @@ namespace SpeedDial.Weapons {
 
 		public override float PrimaryRate => 12.0f;
 		public override float SecondaryRate => 1.0f;
-		public override float ReloadTime => 0.5f;
 
 		public override int Bucket => 1;
 

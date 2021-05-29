@@ -8,7 +8,6 @@ partial class Shotgun : BaseSpeedDialWeapon
 	public override float PrimaryRate => 1;
 	public override float SecondaryRate => 1;
 	public override int ClipSize => 8;
-	public override float ReloadTime => 0.5f;
 	public override int Bucket => 2;
 
 	public override void Spawn()
