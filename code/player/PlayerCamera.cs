@@ -39,13 +39,15 @@ namespace SpeedDial.Player {
 			var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rot, Screen.Size);
 			var HitPosition = LinePlaneIntersectionWithHeight(Pos, direction, pawn.EyePos.z - 20);
 
-			var hitposTraceDown = Trace.Ray(HitPosition, HitPosition + Vector3.Down * 48)
+			var hitposTraceDown = Trace.Ray(HitPosition, HitPosition + Vector3.Down * 100)
 				.WorldAndEntities()
+				.Size(10)
 				.Ignore(pawn)
 				.Run();
 
-			var hitposTraceUp = Trace.Ray(HitPosition, HitPosition + Vector3.Up * 48)
+			var hitposTraceUp = Trace.Ray(HitPosition, HitPosition + Vector3.Up * 100)
 				.WorldAndEntities()
+				.Size(10)
 				.Ignore(pawn)
 				.Run();
 
