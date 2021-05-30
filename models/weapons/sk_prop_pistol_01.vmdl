@@ -50,12 +50,31 @@
 				children = 
 				[
 					{
-						_class = "PhysicsHullFromRender"
-						parent_bone = "SK_Prop_Pistol_01"
+						_class = "PhysicsShapeBox"
+						parent_bone = "SK_Prop_Pistol_Slide_01"
 						surface_prop = "default"
 						collision_prop = "default"
-						faceMergeAngle = 80.0
-						maxHullVertices = 3
+						origin = [ 0.002514, -0.303895, 0.028366 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 1.516273, 2.012978, 10.861658 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ -0.25178, -0.013654, -1.07531 ]
+						angles = [ 16.067108, 0.0, 0.0 ]
+						dimensions = [ 2.528446, 1.564217, 6.435604 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ 2.520583, -0.013654, 0.286569 ]
+						angles = [ 0.570252, 0.0, 0.0 ]
+						dimensions = [ 2.755206, 1.564217, 1.928149 ]
 					},
 				]
 			},
