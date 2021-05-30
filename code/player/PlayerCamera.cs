@@ -39,47 +39,22 @@ namespace SpeedDial.Player {
 			var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rot, Screen.Size);
 			var HitPosition = LinePlaneIntersectionWithHeight(Pos, direction, pawn.EyePos.z - 20);
 
-			var hitposTraceDown = Trace.Ray(HitPosition, HitPosition + Vector3.Down * 100)
-				.WorldAndEntities()
-				.Size(10)
-				.Ignore(pawn)
-				.Run();
-
-			var hitposTraceUp = Trace.Ray(HitPosition, HitPosition + Vector3.Up * 100)
-				.WorldAndEntities()
-				.Size(10)
-				.Ignore(pawn)
-				.Run();
-
-			if(hitposTraceDown.Hit) {
-				DebugOverlay.Line(HitPosition, hitposTraceDown.EndPos, Color.Cyan);
-				DebugOverlay.Sphere(hitposTraceDown.EndPos, 2, Color.Cyan, false);
-			}
-			if(hitposTraceUp.Hit) {
-				DebugOverlay.Line(HitPosition, hitposTraceUp.EndPos, Color.Red);
-				DebugOverlay.Sphere(hitposTraceUp.EndPos, 2, Color.Red, false);
-			}
-
-
-			// if(hitposTrace.Hit && (int)(hitposTrace.EndPos - HitPosition).Length != 44) {
-			//Log.Info($"HIGH/LOW GROUND {(hitposTrace.EndPos - HitPosition).Length}");
-			// }
-
-			var targetTrace = Trace.Ray(pawn.EyePos, HitPosition)
-				.Size(25)
+			//trace from camera into mouse direction, essentially gets the world location of the mouse
+			var targetTrace = Trace.Ray(Pos, Pos + direction * 1000)
+				.UseHitboxes()
 				.EntitiesOnly()
+				.Size(1)
 				.Ignore(pawn)
 				.Run();
 
 			Angles angles;
 
 			// aim assist when pointing on a player
-			if(targetTrace.Hit && targetTrace.Entity is SpeedDialPlayer player && (targetTrace.EndPos - HitPosition).Length <= 40) {
+			if(targetTrace.Hit && targetTrace.Entity is SpeedDialPlayer) {
 				if(SpeedDialGame.DebugEnabled) {
-					DebugOverlay.ScreenText(new Vector2(300, 300), 5, Color.Green, $"HitPlayer {player} {(targetTrace.EndPos - HitPosition).Length}");
-					DebugOverlay.Line(pawn.EyePos, targetTrace.Entity.EyePos - Vector3.Up * 20, Color.Red, 0, false);
+					DebugOverlay.Line(pawn.EyePos, targetTrace.Entity.EyePos + Vector3.Down * 20, Color.Red, 0, true);
 				}
-				angles = (player.EyePos - Vector3.Up * 20 - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
+				angles = (targetTrace.Entity.EyePos + Vector3.Down * 20 - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
 			} else {
 				angles = (HitPosition - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
 			}
