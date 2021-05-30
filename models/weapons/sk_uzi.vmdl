@@ -14,7 +14,7 @@
 						remaps = 
 						[
 							{
-								from = "mi_unlit_military_gear_default.vmat"
+								from = "materials/error.vmat"
 								to = "material/dev/dev01.vmat"
 							},
 						]
@@ -32,9 +32,9 @@
 						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						origin = [ -0.122643, -0.041737, -0.750881 ]
+						origin = [ -0.665398, -0.041737, 0.868765 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 3.536092, 1.912871, 8.922969 ]
+						dimensions = [ 2.450582, 1.912871, 5.683677 ]
 					},
 					{
 						_class = "PhysicsShapeBox"
@@ -53,10 +53,10 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/weapons/sm_uzi.fbx"
+						filename = "models/weapons/smg_weapon.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 0.3937
+						import_scale = 1.0
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
@@ -70,6 +70,21 @@
 								"UCX_SM_Uzi",
 							]
 						}
+					},
+				]
+			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "muzzle"
+						parent_bone = ""
+						relative_origin = [ 9.120423, 0.0, 2.178167 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
 					},
 				]
 			},
