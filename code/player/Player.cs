@@ -1,3 +1,5 @@
+using System.Numerics;
+using System.Diagnostics;
 using System;
 using Sandbox;
 using SpeedDial.Weapons;
@@ -148,10 +150,12 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		public void BloodSplatter(Vector3 dir) {
-			Vector3 pos = Position + Vector3.Up * 50f;
+			Vector3 pos = EyePos + Vector3.Down * 20;
+
+			DebugOverlay.Line(Position, pos + dir, Color.Cyan, 10, false);
 
 			// splatters around and behind the target, mostly from impact
-			for(int i = 0; i < 15; i++) {
+			for(int i = 0; i < 10; i++) {
 
 				// var forward = Owner.EyeRot.Forward;
 				// forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
@@ -159,11 +163,14 @@ namespace SpeedDial.Player {
 
 				// TODO
 				// proper distribution of blood behind and around the target
-				var trSplatter = Trace.Ray(pos, pos + dir.Normal * 85f + Vector3.Random)
+				var trDir = pos + (dir.Normal + (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 0.85f * 0.25f) * 100 + Vector3.Down * i;
+				var trSplatter = Sandbox.Trace.Ray(pos, trDir)
 						.UseHitboxes()
 						.Ignore(this)
 						.Size(1)
 						.Run();
+
+				DebugOverlay.Line(pos, trDir, Color.Green, 10, false);
 
 				// FIXME
 				// oops stupid path
@@ -179,7 +186,7 @@ namespace SpeedDial.Player {
 
 			// UPCOMING
 			// Better and more decals for ground splatter
-			var tr = Trace.Ray(pos, pos + Vector3.Down * 85f + Vector3.Random * 0.2f)
+			var tr = Sandbox.Trace.Ray(pos, pos + Vector3.Down * 85f + Vector3.Random * 0.2f)
 					.UseHitboxes()
 					.Ignore(this)
 					.Size(1)
@@ -212,7 +219,7 @@ namespace SpeedDial.Player {
 			//Create the combo score on the client
 			if(LastDamage.Attacker is SpeedDialPlayer attacker && attacker != this) {
 				//attacker.ComboEvents(EyePos,(SpeedDialGame.ScoreBase * attacker.KillCombo));
-				BloodSplatter(Position - attacker.Position);
+				BloodSplatter(EyePos + Vector3.Down * 20 - (attacker.EyePos + Vector3.Down * 20));
 			}
 
 			BecomeRagdollOnClient(new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0));
