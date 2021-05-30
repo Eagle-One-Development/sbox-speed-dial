@@ -90,7 +90,7 @@ namespace SpeedDial.Player {
 			if(other is PickupTrigger pt) {
 				if(other.Parent is BaseSpeedDialWeapon wep1) {
 					Touch(other.Parent);
-					pickUpEntity = other;
+					
 					pickup = true;
 
 
@@ -98,14 +98,26 @@ namespace SpeedDial.Player {
 				return;
 			}
 
+			pickUpEntity = other;
 
-			
+
+
 		}
 
 		public override void EndTouch(Entity other) {
 			base.EndTouch(other);
-			pickup = false;
-			pickUpEntity = null;
+			if ( other is PickupTrigger pt )
+			{
+				if ( other.Parent is BaseSpeedDialWeapon wep1 )
+				{
+					Touch( other.Parent );
+					pickUpEntity = null;
+					pickup = false;
+
+
+				}
+				return;
+			}
 		}
 
 		public override void Respawn() {
@@ -259,6 +271,10 @@ namespace SpeedDial.Player {
 				}
 			}
 
+			if ( IsClient && pickUpEntity != null)
+			{
+				Log.Info( pickUpEntity.ToString() );
+			}
 			if(Input.Pressed(InputButton.Attack2) && pickup && pickUpEntity != null && Input.ActiveChild == null) {
 				Inventory?.Add(pickUpEntity, Inventory.Active == null);
 				pickup = false;
