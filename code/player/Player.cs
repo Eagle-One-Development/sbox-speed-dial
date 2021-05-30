@@ -62,7 +62,7 @@ namespace SpeedDial.Player {
 					if(magnitude > 450f) {
 
 						wep1.PhysicsBody.EnableAutoSleeping = false;
-
+						Sound.FromEntity( "weaponhit", this );
 						KillMyself(wep1.previousOwner);
 						wep1.Velocity *= -0.5f;
 					}
@@ -78,6 +78,7 @@ namespace SpeedDial.Player {
 			info.Attacker = attacker;
 			info.Position = Position;
 			TakeDamage(info);
+			PlaySound( "weaponhit" );
 		}
 
 		public override void Touch(Entity other) {
@@ -252,9 +253,15 @@ namespace SpeedDial.Player {
 						//dropped.PhysicsGroup.Velocity = Velocity + (EyeRot.Forward) * 500f;
 						//dropped.PhysicsGroup.AngularVelocity = new Vector3( 0, 0, 100f );
 						(dropped as BaseSpeedDialWeapon).ApplyThrowVelocity(EyeRot.Forward);
+						PlaySound( "weaponspin" );
 					}
 
 					timeSinceDropped = 0;
+				}
+				if ( IsClient && ActiveChild != null )
+				{
+
+					PlaySound( "weaponspin" );
 				}
 			}
 
