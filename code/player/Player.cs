@@ -214,8 +214,6 @@ namespace SpeedDial.Player {
 				}
 			}
 
-			//all the particles boii
-
 			var ps = Particles.Create("particles/blood_splash.vpcf", EyePos + Vector3.Down * 20);
 			ps.SetForward(0, dir.Normal);
 

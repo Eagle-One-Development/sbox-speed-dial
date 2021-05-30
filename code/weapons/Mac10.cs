@@ -5,7 +5,6 @@ namespace SpeedDial.Weapons {
 	[Library("sd_mac", Title = "Mac-10")]
 	partial class Mac10 : BaseSpeedDialWeapon {
 
-
 		public override float PrimaryRate => 15.0f;
 		public override float SecondaryRate => 1.0f;
 		public override int ClipSize => 20;

@@ -43,10 +43,6 @@ namespace SpeedDial.UI {
 
 			if(SpeedDialGame.Instance.Round is GameRound gr) {
 				container.SetClass("active", true);
-				//if(gr == null )
-				//{
-				//	return;
-				//}
 				if(gr.TimeLeftFormatted != null) {
 					timer.Text = gr.TimeLeftFormatted.ToString();
 				}

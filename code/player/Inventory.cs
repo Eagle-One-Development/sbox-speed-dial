@@ -29,7 +29,6 @@ namespace SpeedDial.Player {
 					return false;
 				}
 			}
-
 			return base.Add(ent, makeActive);
 		}
 

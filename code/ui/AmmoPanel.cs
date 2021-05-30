@@ -10,14 +10,10 @@ namespace SpeedDial.UI {
 		public Panel ammoCounter;
 		public Label ammoLabel;
 		public Label clipLabel;
-
 		public Panel pickUpPanel;
 		public Label pickUpLabel;
-
 		private TimeSince aTime;
-
 		public static AmmoPanel Current;
-
 
 		Color vhs_green;
 		Color vhs_magenta;
@@ -33,7 +29,7 @@ namespace SpeedDial.UI {
 			clipLabel = ammoCounter.Add.Label("000", "ammoLabel");
 
 			pickUpPanel = Add.Panel("pickuppanel");
-			pickUpLabel = pickUpPanel.Add.Label("Right Click To Pick Up","pickuplabel");
+			pickUpLabel = pickUpPanel.Add.Label("Right Click To Pick Up", "pickuplabel");
 
 			Current = this;
 			scale = 0;
@@ -73,14 +69,14 @@ namespace SpeedDial.UI {
 			transform.AddRotation(0f, 0f, anim2 * 5f);
 
 			PanelTransform transform2 = new();
-			transform2.AddScale( pickeduptar );
-			transform2.AddRotation( 0f, 0f, anim2 * 5f + (360f * 1 - pickeduptar) );
+			transform2.AddScale(pickeduptar);
+			transform2.AddRotation(0f, 0f, anim2 * 5f + (360f * 1 - pickeduptar));
 
 			clipLabel.Style.TextShadow = shadows;
 			clipLabel.Style.Transform = transform;
 			clipLabel.Style.Dirty();
 
-			pickeduptar = pickeduptar.LerpTo( pickedup, Time.Delta * 8f );
+			pickeduptar = pickeduptar.LerpTo(pickedup, Time.Delta * 8f);
 
 			pickUpLabel.Style.Transform = transform2;
 			pickUpLabel.Style.TextShadow = shadows;
@@ -91,15 +87,12 @@ namespace SpeedDial.UI {
 			if(player == null) return;
 			if(player.ActiveChild is BaseSpeedDialWeapon weapon) {
 				if(weapon == null) return;
-				outscale = outscale.LerpTo( 1f, Time.Delta * 4f );
+				outscale = outscale.LerpTo(1f, Time.Delta * 4f);
 				clipLabel.Text = $"{weapon.AmmoClip}";
-			}
-			else
-			{
-				outscale = outscale.LerpTo( 0f, Time.Delta * 8f );
+			} else {
+				outscale = outscale.LerpTo(0f, Time.Delta * 8f);
 				clipLabel.Text = "00";
 			}
 		}
 	}
-
 }

@@ -57,8 +57,6 @@ namespace SpeedDial.UI {
 
 			var transform = new PanelTransform();
 
-
-
 			var transform2 = new PanelTransform();
 			if(right) {
 				translate = translate.LerpTo(0f, Time.Delta * 10f);
@@ -66,7 +64,7 @@ namespace SpeedDial.UI {
 
 				transform.AddTranslateX(Length.Percent(-translate));
 				transform2.AddTranslateX(Length.Percent(-translate2));
-				float anim = (1 - (translate / 100f));
+				float anim = 1 - (translate / 100f);
 				transform2.AddScale(1 - 0.1f * anim);
 				transform2.AddTranslateY(Length.Pixels(190f * anim));
 			} else {
@@ -75,14 +73,12 @@ namespace SpeedDial.UI {
 
 				transform.AddTranslateX(Length.Percent(-translate2));
 				transform2.AddTranslateX(Length.Percent(-translate));
-				float anim = (1 - (translate / 100f));
-				float anim2 = (1 - (translate / 200f));
+				float anim = 1 - (translate / 100f);
+				float anim2 = 1 - (translate / 200f);
 				transform2.AddScale(1f);
-				transform.AddTranslateY(Length.Pixels(190f * (anim2)));
+				transform.AddTranslateY(Length.Pixels(190f * anim2));
 				transform.AddScale(0.9f + 0.1f * (1 - anim));
-
 			}
-
 
 			backPortrait.Style.Transform = transform2;
 			portrait.Style.Transform = transform;
@@ -94,7 +90,6 @@ namespace SpeedDial.UI {
 					SetClass("active", false);
 				} else {
 					SetClass("active", true);
-
 				}
 			}
 		}
@@ -107,7 +102,6 @@ namespace SpeedDial.UI {
 
 			if(input.Pressed(InputButton.Score)) {
 				open = !open;
-				//Log.Info(open.ToString());
 			}
 
 			if(open) {
@@ -139,7 +133,6 @@ namespace SpeedDial.UI {
 					ConsoleSystem.Run("set_character", s);
 					open = false;
 				}
-
 			}
 		}
 	}

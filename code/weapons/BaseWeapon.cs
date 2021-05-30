@@ -67,7 +67,6 @@ namespace SpeedDial.Weapons {
 			PhysicsBody.AngularVelocity = new Vector3(0, 0, 100f);
 			PhysicsBody.GravityScale = 0.0f;
 			_ = SetGravity();
-
 		}
 
 		[Event("server.tick")]
@@ -110,16 +109,8 @@ namespace SpeedDial.Weapons {
 
 			lifetime = 0;
 
-
 			if(TimeSinceDeployed < 0.6f)
 				return;
-
-			//if(owner.Input.Down(InputButton.Reload)) {
-			//	Reload();
-			//}
-
-
-
 
 			if(!this.IsValid())
 				return;
@@ -129,9 +120,6 @@ namespace SpeedDial.Weapons {
 				AttackPrimary();
 			}
 
-			//if(!owner.IsValid())
-			//	return;
-
 			if(CanSecondaryAttack()) {
 				TimeSinceSecondaryAttack = 0;
 				AttackSecondary();
@@ -140,8 +128,6 @@ namespace SpeedDial.Weapons {
 			if(Owner != null) {
 				previousOwner = Owner;
 			}
-
-
 
 			if(TimeSinceDeployed < 0.6f)
 				return;
@@ -251,7 +237,6 @@ namespace SpeedDial.Weapons {
 		public virtual void DryFire() {
 			// CLICK
 		}
-
 
 		public bool IsUsable() {
 			if(AmmoClip > 0) return true;
