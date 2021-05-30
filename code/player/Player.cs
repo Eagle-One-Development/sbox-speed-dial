@@ -62,7 +62,7 @@ namespace SpeedDial.Player {
 					if(magnitude > 450f) {
 
 						wep1.PhysicsBody.EnableAutoSleeping = false;
-						
+
 						KillMyself(wep1.previousOwner);
 						wep1.Velocity *= -0.5f;
 					}
@@ -78,7 +78,6 @@ namespace SpeedDial.Player {
 			info.Attacker = attacker;
 			info.Position = Position;
 			TakeDamage(info);
-			PlaySound( "weaponhit" );
 		}
 
 		public override void Touch(Entity other) {
@@ -153,8 +152,6 @@ namespace SpeedDial.Player {
 		public void BloodSplatter(Vector3 dir) {
 			Vector3 pos = EyePos + Vector3.Down * 20;
 
-			DebugOverlay.Line(Position, pos + dir, Color.Cyan, 10, false);
-
 			// splatters around and behind the target, mostly from impact
 			for(int i = 0; i < 10; i++) {
 
@@ -171,11 +168,9 @@ namespace SpeedDial.Player {
 						.Size(1)
 						.Run();
 
-				DebugOverlay.Line(pos, trDir, Color.Green, 10, false);
-
 				// FIXME
 				// oops stupid path
-				var decalPathSplatter = "materials/decals/blood/blood_splatter.decal";
+				var decalPathSplatter = "decals/blood_splatter.decal";
 				if(decalPathSplatter != null) {
 					if(DecalDefinition.ByPath.TryGetValue(decalPathSplatter, out var decal)) {
 						decal.PlaceUsingTrace(trSplatter);
@@ -193,9 +188,7 @@ namespace SpeedDial.Player {
 					.Size(1)
 					.Run();
 
-			//DebugOverlay.Line(pos, tr.EndPos, Color.Red, 3f ,false);
-			var decalPath = "decals/blood_test.decal";
-			//var decalPath = Rand.FromArray(tr.Surface.ImpactEffects.BulletDecal);
+			var decalPath = "decals/blood_splatter_floor.decal";
 			if(decalPath != null) {
 				if(DecalDefinition.ByPath.TryGetValue(decalPath, out var decal)) {
 
@@ -272,7 +265,6 @@ namespace SpeedDial.Player {
 				Inventory?.Add(pickUpEntity, Inventory.Active == null);
 				pickup = false;
 				pickUpEntity = null;
-				PlaySound( "weaponspin" );
 			}
 
 			if(IsClient) {
