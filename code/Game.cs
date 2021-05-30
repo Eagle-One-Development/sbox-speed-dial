@@ -35,7 +35,7 @@ namespace SpeedDial {
 		public SpeedDialGame() {
 
 			PrecacheModels();
-			Global.PhysicsSubSteps = 2;
+			Global.PhysicsSubSteps = 1;
 
 			if(IsServer) {
 				Log.Info("[SV] Gamemode created!");

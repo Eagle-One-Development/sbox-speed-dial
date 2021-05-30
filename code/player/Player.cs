@@ -90,6 +90,7 @@ namespace SpeedDial.Player {
 			DamageInfo info = new DamageInfo();
 			info.Damage = 200f;
 			info.Attacker = attacker;
+			info.Position = Position;
 			TakeDamage( info );
 		}
 
@@ -340,7 +341,7 @@ namespace SpeedDial.Player {
 			//	
 			//HitIndicator.Current?.OnHit( pos, amount );
 			if(healthinv <= 0) {
-
+				Log.Info( "AYYY" );
 				int ScoreBase = SpeedDialGame.ScoreBase;
 				ComboEvents(pos, ScoreBase * KillCombo);
 			}
