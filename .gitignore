@@ -27,3 +27,4 @@ code/Properties/
 materials/default/*
 obj/
 tools_asset_info.bin
+*.vpcf_c
