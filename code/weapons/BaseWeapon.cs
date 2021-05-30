@@ -32,8 +32,8 @@ namespace SpeedDial.Weapons {
 		public TimeSince TimeSinceDeployed { get; set; }
 
 		public PickupTrigger PickupTrigger { get; protected set; }
+		TimeSince lifetime;
 
-		
 
 		public virtual int AmmoToAward => 5;
 
@@ -71,6 +71,15 @@ namespace SpeedDial.Weapons {
 			
 		}
 
+		[Event("server.tick")]
+		public void CheckLifeTime()
+		{
+			if(lifetime > 5f && Owner == null)
+			{
+				Delete();
+			}
+		}
+
 		async Task SetGravity()
 		{
 			await Task.DelaySeconds(0.2f);
@@ -102,7 +111,7 @@ namespace SpeedDial.Weapons {
 
 		public override void Simulate(Client owner) {
 
-
+			lifetime = 0;
 			
 
 			if ( TimeSinceDeployed < 0.6f )
