@@ -30,6 +30,8 @@ namespace SpeedDial {
 		[ServerVar("sdial_combo_time", Help = "Set the combo time window in seconds.")]
 		public static float ComboTime { get; set; } = 3f;
 
+		
+
 		public static SpeedDialGame Instance => (SpeedDialGame)Current;
 
 		public SpeedDialGame() {
@@ -133,6 +135,7 @@ namespace SpeedDial {
 			Round.OnSecond();
 		}
 
+		
 		public override void PostLevelLoaded() {
 			_ = StartSecondTimer();
 			base.PostLevelLoaded();

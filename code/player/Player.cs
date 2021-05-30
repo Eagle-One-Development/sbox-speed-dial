@@ -1,6 +1,7 @@
 using System;
 using Sandbox;
 using SpeedDial.Weapons;
+using SpeedDial.UI;
 
 
 namespace SpeedDial.Player {
@@ -78,16 +79,24 @@ namespace SpeedDial.Player {
 		}
 
 		public override void Touch(Entity other) {
-			if(timeSinceDropped < 1) return;
+
+			if(timeSinceDropped < 1f) return;
+
+			if(IsClient) return;
+
 
 			if(IsClient) return;
 
 			if(other is PickupTrigger pt) {
 				if(other.Parent is BaseSpeedDialWeapon wep1) {
-					StartTouch(other.Parent);
+					Touch(other.Parent);
+
+
+
 				}
 				return;
 			}
+
 			pickUpEntity = other;
 			pickup = true;
 		}
@@ -253,6 +262,14 @@ namespace SpeedDial.Player {
 				Inventory?.Add(pickUpEntity, Inventory.Active == null);
 				pickup = false;
 				pickUpEntity = null;
+			}
+
+			if(IsClient && pickup && Input.ActiveChild == null) {
+				AmmoPanel.Current.pickedup = 1f;
+			} else {
+				if(IsClient) {
+					AmmoPanel.Current.pickedup = 0f;
+				}
 			}
 
 			SimulateActiveChild(cl, ActiveChild);
