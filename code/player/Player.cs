@@ -15,6 +15,12 @@ namespace SpeedDial.Player {
 		[Net]
 		public Color32 PlayerColor { get; set; }
 
+		[Net]
+		public bool pickup { get; set; }
+		private Entity pickUpEntity;
+
+		TimeSince timeSinceDropped;
+
 		public SpeedDialPlayer() {
 			Inventory = new SpeedDialInventory(this);
 		}
@@ -33,11 +39,92 @@ namespace SpeedDial.Player {
 				PlayerColor = Color.Random;
 			}
 
+			
+
+			Vector3 offset = new Vector3( 2 );
+
+			
+
 			//Set a default character
 			character = SpeedDialGame.Instance.characters[0];
 
 			Respawn();
 		}
+
+		public override void StartTouch( Entity other )
+		{
+			if ( timeSinceDropped < 1 ) return;
+
+			if ( IsClient ) return;
+
+			if ( other is PickupTrigger pt)
+			{
+				if ( other.Parent is BaseSpeedDialWeapon wep1 )
+				{
+					StartTouch( other.Parent );
+					
+					float magnitude = wep1.PhysicsBody.Velocity.Length;
+					Log.Info( $"Velocity: {magnitude}" );
+					if ( magnitude > 450f )
+					{
+
+						wep1.PhysicsBody.EnableAutoSleeping = false;
+
+
+						KillMyself(wep1.previousOwner);
+						wep1.Velocity *= -0.5f;
+					}
+
+				}
+				return;
+			}
+
+
+			
+		}
+
+		[ServerCmd]
+		public void KillMyself(Entity attacker)
+		{
+
+			DamageInfo info = new DamageInfo();
+			info.Damage = 200f;
+			info.Attacker = attacker;
+			TakeDamage( info );
+		}
+
+		public override void Touch( Entity other )
+		{
+
+			if ( timeSinceDropped < 1 ) return;
+
+			if ( IsClient ) return;
+
+
+
+				if ( other is PickupTrigger pt )
+				{
+					if ( other.Parent is BaseSpeedDialWeapon wep1 )
+					{
+						StartTouch( other.Parent );
+			
+						
+			
+					}
+					return;
+				}
+			pickUpEntity = other;
+			pickup = true;
+
+		}
+
+		public override void EndTouch( Entity other )
+		{
+			base.EndTouch( other );
+			pickup = false;
+			pickUpEntity = null;
+		}
+
 
 
 		public override void Respawn() {
@@ -137,30 +224,36 @@ namespace SpeedDial.Player {
 
 			// TODO
 			// particles
+			// particles
 			// (water particle dyed red? blood impact particle looks lame)
 
 		}
 
 		public override void OnKilled() {
 			Game.Current?.OnKilled(this);
+			TimeSinceDied = 0;
+			LifeState = LifeState.Dead;
+			StopUsing();
+
+
+			Inventory.DeleteContents();
 
 			//Create the combo score on the client
-			if(LastDamage.Attacker is SpeedDialPlayer attacker && attacker != this) {
+			if (LastDamage.Attacker is SpeedDialPlayer attacker && attacker != this) {
 				//attacker.ComboEvents(EyePos,(SpeedDialGame.ScoreBase * attacker.KillCombo));
 				BloodSplatter(Position - attacker.Position);
 			}
 
 			BecomeRagdollOnClient(new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0));
 
-			Inventory.DeleteContents();
+			
 
-			TimeSinceDied = 0;
-			LifeState = LifeState.Dead;
 
 			Controller = null;
 
 			EnableAllCollisions = false;
 			EnableDrawing = false;
+			
 		}
 
 		[ClientRpc]
@@ -177,20 +270,44 @@ namespace SpeedDial.Player {
 				return;
 			}
 
-			if(Input.ActiveChild != null) {
+			
+			
+
+			var controller = GetActiveController();
+			controller?.Simulate( cl, this, GetActiveAnimator() );
+
+			if (Input.ActiveChild != null) {
 				ActiveChild = Input.ActiveChild;
 			}
-			// giveclip = true;
-			// if(giveclip) {
-			// Log.Info("YEYEYEYEYEYEYEYEYEYEYEEYEYEYEY");
-			// (ActiveChild as BaseSpeedDialWeapon).OnReloadFinish();
-			// giveclip = false;
-			// }
+
+
+			if ( Input.Pressed( InputButton.Attack2 ) )
+			{
+				var dropped = Inventory.DropActive();
+				if ( dropped != null )
+				{
+					if ( dropped.PhysicsGroup != null )
+					{
+						//dropped.PhysicsGroup.Velocity = Velocity + (EyeRot.Forward) * 500f;
+						//dropped.PhysicsGroup.AngularVelocity = new Vector3( 0, 0, 100f );
+						(dropped as BaseSpeedDialWeapon).ApplyThrowVelocity( EyeRot.Forward );
+					}
+
+					timeSinceDropped = 0;
+				}
+			}
+
+			if ( Input.Pressed( InputButton.Attack2 ) && pickup && pickUpEntity != null && Input.ActiveChild == null)
+			{
+				Inventory?.Add( pickUpEntity, Inventory.Active == null );
+				pickup = false;
+				pickUpEntity = null;
+			}
+			
 
 			SimulateActiveChild(cl, ActiveChild);
 
-			var controller = GetActiveController();
-			controller?.Simulate(cl, this, GetActiveAnimator());
+			
 		}
 
 		DamageInfo LastDamage;

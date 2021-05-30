@@ -35,6 +35,7 @@ namespace SpeedDial {
 		public SpeedDialGame() {
 
 			PrecacheModels();
+			Global.PhysicsSubSteps = 2;
 
 			if(IsServer) {
 				Log.Info("[SV] Gamemode created!");
@@ -66,8 +67,8 @@ namespace SpeedDial {
 					attacker.KillCombo++;
 
 					// fuck ammo
-					(attacker.ActiveChild as BaseSpeedDialWeapon).AwardAmmo();
-					attacker.IncreaseWeaponClip();
+					//(attacker.ActiveChild as BaseSpeedDialWeapon).AwardAmmo();
+					//attacker.IncreaseWeaponClip();
 
 					attacker.TimeSinceMurdered = 0;
 				}

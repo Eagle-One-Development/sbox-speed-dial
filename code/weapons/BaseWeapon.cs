@@ -16,6 +16,9 @@ namespace SpeedDial.Weapons {
 		public virtual int Bucket => 1;
 		public virtual int BucketWeight => 100;
 
+		[Net]
+		public Entity previousOwner { get; set; }
+
 		[Net, Predicted]
 		public int AmmoClip { get; set; }
 
@@ -30,6 +33,8 @@ namespace SpeedDial.Weapons {
 
 		public PickupTrigger PickupTrigger { get; protected set; }
 
+		
+
 		public virtual int AmmoToAward => 5;
 
 		public int AvailableAmmo() {
@@ -42,7 +47,7 @@ namespace SpeedDial.Weapons {
 
 		public override void ActiveStart(Entity ent) {
 			base.ActiveStart(ent);
-
+			Log.Info( "Weapon Active Start" );
 			TimeSinceDeployed = 0;
 		}
 
@@ -54,6 +59,22 @@ namespace SpeedDial.Weapons {
 			PickupTrigger = new();
 			PickupTrigger.Parent = this;
 			PickupTrigger.Position = Position;
+			PickupTrigger.EnableTouchPersists = true;
+		}
+
+		public void ApplyThrowVelocity(Vector3 rot)
+		{
+			PhysicsBody.Velocity = Velocity + (rot) * 500;
+			PhysicsBody.AngularVelocity = new Vector3( 0, 0, 100f );
+			PhysicsBody.GravityScale = 0.0f;
+			_ = SetGravity();
+			
+		}
+
+		async Task SetGravity()
+		{
+			await Task.DelaySeconds(0.2f);
+			PhysicsBody.GravityScale = 1.0f;
 		}
 
 		public override void Reload() {
@@ -81,11 +102,20 @@ namespace SpeedDial.Weapons {
 
 		public override void Simulate(Client owner) {
 
-			if(owner.Input.Down(InputButton.Reload)) {
-				Reload();
-			}
 
-			if(!this.IsValid())
+			
+
+			if ( TimeSinceDeployed < 0.6f )
+				return;
+
+			//if(owner.Input.Down(InputButton.Reload)) {
+			//	Reload();
+			//}
+
+			
+			
+
+			if (!this.IsValid())
 				return;
 
 			if(CanPrimaryAttack()) {
@@ -93,12 +123,17 @@ namespace SpeedDial.Weapons {
 				AttackPrimary();
 			}
 
-			if(!owner.IsValid())
-				return;
+			//if(!owner.IsValid())
+			//	return;
 
 			if(CanSecondaryAttack()) {
 				TimeSinceSecondaryAttack = 0;
 				AttackSecondary();
+			}
+
+			if(Owner != null )
+			{
+				previousOwner = Owner;
 			}
 
 
@@ -211,6 +246,7 @@ namespace SpeedDial.Weapons {
 		public virtual void DryFire() {
 			// CLICK
 		}
+
 
 		public bool IsUsable() {
 			if(AmmoClip > 0) return true;
