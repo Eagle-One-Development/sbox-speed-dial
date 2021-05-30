@@ -62,7 +62,7 @@ namespace SpeedDial.Player {
 					if(magnitude > 450f) {
 
 						wep1.PhysicsBody.EnableAutoSleeping = false;
-
+						
 						KillMyself(wep1.previousOwner);
 						wep1.Velocity *= -0.5f;
 					}
@@ -78,6 +78,7 @@ namespace SpeedDial.Player {
 			info.Attacker = attacker;
 			info.Position = Position;
 			TakeDamage(info);
+			PlaySound( "weaponhit" );
 		}
 
 		public override void Touch(Entity other) {
@@ -271,6 +272,7 @@ namespace SpeedDial.Player {
 				Inventory?.Add(pickUpEntity, Inventory.Active == null);
 				pickup = false;
 				pickUpEntity = null;
+				PlaySound( "weaponspin" );
 			}
 
 			if(IsClient) {
