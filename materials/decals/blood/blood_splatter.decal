@@ -92,6 +92,83 @@
 				KeepAspect = true
 				Depth = [ 8.0, 3.0, 0.0 ]
 			},
+			{
+				Material = "materials/decals/blood/blood14.vmat"
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
+				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
+			},
+			{
+				Material = "materials/decals/blood/blood15.vmat"
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
+				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
+			},
+			{
+				Material = "materials/decals/blood/blood16.vmat"
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
+				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
+			},
+			{
+				Material = "materials/decals/blood/blood17.vmat"
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
+				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
+			},
+			{
+				Material = "materials/decals/blood/blood18.vmat"
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
+				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
+			},
+			{
+				Material = "materials/decals/blood/blood19.vmat"
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
+				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
+			},
+			{
+				Material = "materials/decals/blood/blood20.vmat"
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
+				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
+			},
+			{
+				Material = "materials/decals/blood/blood21.vmat"
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
+				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
+			},
+			{
+				Material = "materials/decals/blood/blood22.vmat"
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
+				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
+			},
+			{
+				Material = "materials/decals/blood/blood23.vmat"
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
+				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
+			},
+			{
+				Material = "materials/decals/blood/blood24.vmat"
+				Width = [ 32.0, 5.0, 0.0 ]
+				Height = [ 32.0, 5.0, 0.0 ]
+				KeepAspect = true
+				Depth = [ 8.0, 3.0, 0.0 ]
+			},
 		]
 	}
 }
