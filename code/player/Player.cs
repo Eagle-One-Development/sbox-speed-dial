@@ -62,7 +62,7 @@ namespace SpeedDial.Player {
 					if(magnitude > 450f) {
 
 						wep1.PhysicsBody.EnableAutoSleeping = false;
-						Sound.FromEntity( "weaponhit", this );
+						Sound.FromEntity("weaponhit", this);
 						KillMyself(wep1.previousOwner);
 						wep1.Velocity *= -0.5f;
 					}
@@ -78,7 +78,7 @@ namespace SpeedDial.Player {
 			info.Attacker = attacker;
 			info.Position = Position;
 			TakeDamage(info);
-			PlaySound( "weaponhit" );
+			PlaySound("weaponhit");
 		}
 
 		public override void Touch(Entity other) {
@@ -179,28 +179,33 @@ namespace SpeedDial.Player {
 				}
 			}
 
-			//For blood splatter on the ground, pool of blood essentially
+			for(int i = 0; i < 5; i++) {
 
-			// UPCOMING
-			// Better and more decals for ground splatter
-			var tr = Sandbox.Trace.Ray(pos, pos + Vector3.Down * 85f + Vector3.Random * 0.2f)
-					.UseHitboxes()
-					.Ignore(this)
-					.Size(1)
-					.Run();
+				//For blood splatter on the ground, pool of blood essentially
 
-			var decalPath = "decals/blood_splatter_floor.decal";
-			if(decalPath != null) {
-				if(DecalDefinition.ByPath.TryGetValue(decalPath, out var decal)) {
+				// UPCOMING
+				// Better and more decals for ground splatter
+				var trDir = pos + (Vector3.Down + (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 3 * 0.25f) * 100;
+				var tr = Sandbox.Trace.Ray(pos, trDir)
+						.UseHitboxes()
+						.Ignore(this)
+						.Size(1)
+						.Run();
 
-					decal.PlaceUsingTrace(tr);
+				DebugOverlay.Line(pos, trDir, Color.Green, 10, false);
+
+				var decalPath = "decals/blood_splatter_floor.decal";
+				if(decalPath != null) {
+					if(DecalDefinition.ByPath.TryGetValue(decalPath, out var decal)) {
+						decal.PlaceUsingTrace(tr);
+					}
 				}
-			}
 
-			// TODO
-			// particles
-			// particles
-			// (water particle dyed red? blood impact particle looks lame)
+				// TODO
+				// particles
+				// particles
+				// (water particle dyed red? blood impact particle looks lame)
+			}
 		}
 
 		public override void OnKilled() {
@@ -253,15 +258,14 @@ namespace SpeedDial.Player {
 						//dropped.PhysicsGroup.Velocity = Velocity + (EyeRot.Forward) * 500f;
 						//dropped.PhysicsGroup.AngularVelocity = new Vector3( 0, 0, 100f );
 						(dropped as BaseSpeedDialWeapon).ApplyThrowVelocity(EyeRot.Forward);
-						PlaySound( "weaponspin" );
+						PlaySound("weaponspin");
 					}
 
 					timeSinceDropped = 0;
 				}
-				if ( IsClient && ActiveChild != null )
-				{
+				if(IsClient && ActiveChild != null) {
 
-					PlaySound( "weaponspin" );
+					PlaySound("weaponspin");
 				}
 			}
 

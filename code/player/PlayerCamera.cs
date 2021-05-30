@@ -34,8 +34,6 @@ namespace SpeedDial.Player {
 			var pawn = Local.Pawn;
 			if(pawn == null) return;
 
-			DebugOverlay.Text(pawn.EyePos, $"{pawn.EyePos.z}", Color.Green);
-
 			var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rot, Screen.Size);
 			var HitPosition = LinePlaneIntersectionWithHeight(Pos, direction, pawn.EyePos.z - 20);
 

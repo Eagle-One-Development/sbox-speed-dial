@@ -32,8 +32,8 @@ namespace SpeedDial.UI {
 
 		public CharacterSelect() {
 			StyleSheet.Load("/ui/CharacterSelect.scss");
-			backPortrait = Add.Image("/ui/portraits/default.png", "backportrait");
-			portrait = Add.Image("/ui/portraits/default.png", "portrait");
+			backPortrait = Add.Image("materials/ui/portraits/default.png", "backportrait");
+			portrait = Add.Image("materials/ui/portraits/default.png", "portrait");
 
 			AddClass("active");
 			title = portrait.Add.Label("PLAYER NAME", "title");
