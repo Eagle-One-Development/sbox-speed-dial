@@ -84,37 +84,23 @@ namespace SpeedDial.Player {
 
 			if(IsClient) return;
 
-
-			if(IsClient) return;
-
 			if(other is PickupTrigger pt) {
 				if(other.Parent is BaseSpeedDialWeapon wep1) {
 					Touch(other.Parent);
-					
 					pickup = true;
-
-
 				}
 				return;
 			}
-
 			pickUpEntity = other;
-
-
-
 		}
 
 		public override void EndTouch(Entity other) {
 			base.EndTouch(other);
-			if ( other is PickupTrigger pt )
-			{
-				if ( other.Parent is BaseSpeedDialWeapon wep1 )
-				{
-					Touch( other.Parent );
+			if(other is PickupTrigger pt) {
+				if(other.Parent is BaseSpeedDialWeapon wep1) {
+					Touch(other.Parent);
 					pickUpEntity = null;
 					pickup = false;
-
-
 				}
 				return;
 			}
@@ -271,9 +257,8 @@ namespace SpeedDial.Player {
 				}
 			}
 
-			if ( IsClient && pickUpEntity != null)
-			{
-				Log.Info( pickUpEntity.ToString() );
+			if(IsClient && pickUpEntity != null) {
+				Log.Info(pickUpEntity.ToString());
 			}
 			if(Input.Pressed(InputButton.Attack2) && pickup && pickUpEntity != null && Input.ActiveChild == null) {
 				Inventory?.Add(pickUpEntity, Inventory.Active == null);
@@ -281,13 +266,12 @@ namespace SpeedDial.Player {
 				pickUpEntity = null;
 			}
 
-			if ( IsClient )
-			{
+			if(IsClient) {
 				AmmoPanel.Current.pickedup = 0f;
 			}
-			
-			
-			if (IsClient && pickup && Input.ActiveChild == null) {
+
+
+			if(IsClient && pickup && Input.ActiveChild == null) {
 				AmmoPanel.Current.pickedup = 1f;
 			}
 
