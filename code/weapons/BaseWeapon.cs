@@ -74,7 +74,7 @@ namespace SpeedDial.Weapons {
 
 			IsReloading = true;
 
-			(Owner as AnimEntity).SetAnimParam("b_reload", true);
+			(Owner as AnimEntity).SetAnimBool("b_reload", true);
 
 			StartReloadEffects();
 		}

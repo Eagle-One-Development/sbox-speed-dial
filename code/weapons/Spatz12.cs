@@ -26,7 +26,7 @@ namespace SpeedDial.Weapons {
 				return;
 			}
 
-			(Owner as AnimEntity).SetAnimParam("b_attack", true);
+			(Owner as AnimEntity).SetAnimBool("b_attack", true);
 
 			ShootEffects();
 			PlaySound("rust_pumpshotgun.shoot");
@@ -43,7 +43,7 @@ namespace SpeedDial.Weapons {
 			Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
 			Particles.Create("particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point");
 
-			ViewModelEntity?.SetAnimParam("fire", true);
+			ViewModelEntity?.SetAnimBool("fire", true);
 
 			if(IsLocalPawn) {
 				new Sandbox.ScreenShake.Perlin(1.0f, 1.5f, 2.0f);

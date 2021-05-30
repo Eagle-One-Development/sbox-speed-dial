@@ -36,7 +36,7 @@ namespace SpeedDial.Weapons {
 						return;
 					}
 
-					(Owner as AnimEntity).SetAnimParam("b_attack", true);
+					(Owner as AnimEntity).SetAnimBool("b_attack", true);
 
 					ShootEffects();
 					PlaySound("rust_smg.shoot");
