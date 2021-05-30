@@ -51,11 +51,11 @@
 				[
 					{
 						_class = "PhysicsShapeBox"
-						parent_bone = "SK_Prop_Pistol_Slide_01"
+						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						origin = [ 0.002514, -0.303895, 0.028366 ]
-						angles = [ 0.0, 0.0, 0.0 ]
+						origin = [ 3.629039, -0.303895, 1.91424 ]
+						angles = [ 89.508881, 0.0, 0.0 ]
 						dimensions = [ 1.516273, 2.012978, 10.861658 ]
 					},
 					{
