@@ -14,7 +14,7 @@ namespace SpeedDial.Weapons {
 		public override void Spawn() {
 			base.Spawn();
 
-			SetModel("models/weapons/sk_uzi.vmdl");
+			SetModel("models/weapons/sk_prop_rifle_01.vmdl");
 			AmmoClip = 20;
 		}
 
