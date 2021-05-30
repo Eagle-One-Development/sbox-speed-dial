@@ -23,7 +23,7 @@ namespace SpeedDial.Player {
 		/// <summary>
 		/// The path to the portrait that appears on the character select
 		/// </summary>
-		public virtual string Portrait => "ui/portraits/default.png";
+		public virtual string Portrait => "materials/ui/portraits/default.png";
 
 		/// <summary>
 		/// The path to the image of the head that appears on the UI

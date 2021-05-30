@@ -47,7 +47,7 @@ namespace SpeedDial.Weapons {
 
 		public override void ActiveStart(Entity ent) {
 			base.ActiveStart(ent);
-			Log.Info( "Weapon Active Start" );
+			Log.Info("Weapon Active Start");
 			TimeSinceDeployed = 0;
 		}
 
@@ -62,28 +62,25 @@ namespace SpeedDial.Weapons {
 			PickupTrigger.EnableTouchPersists = true;
 		}
 
-		public void ApplyThrowVelocity(Vector3 rot)
-		{
+		public void ApplyThrowVelocity(Vector3 rot) {
 			PhysicsBody.Velocity = Velocity + (rot) * 500;
-			PhysicsBody.AngularVelocity = new Vector3( 0, 0, 100f );
+			PhysicsBody.AngularVelocity = new Vector3(0, 0, 100f);
 			PhysicsBody.GravityScale = 0.0f;
 			_ = SetGravity();
-			
+
 		}
 
 		[Event("server.tick")]
-		public void CheckLifeTime()
-		{
-			if(lifetime > 5f && Owner == null)
-			{
+		public void CheckLifeTime() {
+			if(lifetime > 5f && Owner == null) {
 				Delete();
 			}
 		}
 
-		async Task SetGravity()
-		{
+		async Task SetGravity() {
 			await Task.DelaySeconds(0.2f);
-			PhysicsBody.GravityScale = 1.0f;
+			if(PhysicsBody.IsValid())
+				PhysicsBody.GravityScale = 1.0f;
 		}
 
 		public override void Reload() {
@@ -112,19 +109,19 @@ namespace SpeedDial.Weapons {
 		public override void Simulate(Client owner) {
 
 			lifetime = 0;
-			
 
-			if ( TimeSinceDeployed < 0.6f )
+
+			if(TimeSinceDeployed < 0.6f)
 				return;
 
 			//if(owner.Input.Down(InputButton.Reload)) {
 			//	Reload();
 			//}
 
-			
-			
 
-			if (!this.IsValid())
+
+
+			if(!this.IsValid())
 				return;
 
 			if(CanPrimaryAttack()) {
@@ -140,8 +137,7 @@ namespace SpeedDial.Weapons {
 				AttackSecondary();
 			}
 
-			if(Owner != null )
-			{
+			if(Owner != null) {
 				previousOwner = Owner;
 			}
 
