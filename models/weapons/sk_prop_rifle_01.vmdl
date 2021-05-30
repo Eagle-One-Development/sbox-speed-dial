@@ -29,7 +29,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/biped_standard/prop_rifle.dmx"
+						filename = "models/weapons/prop_rifle.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
