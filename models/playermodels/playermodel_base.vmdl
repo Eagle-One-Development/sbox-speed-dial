@@ -1382,6 +1382,7 @@
 						]
 					},
 				]
+				disabled = true
 				hide_materialgroup_in_tools = false
 				hide_rendercolor_in_tools = false
 			},
