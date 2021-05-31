@@ -1,0 +1,15 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "projected_decals.vfx"
+
+	//---- Decal ----
+	F_BLEND_MODE 1 // Mod2X
+
+	//---- Color ----
+	TextureColor "materials/decals/blood/blood21.tga"
+
+	//---- Translucent ----
+	TextureTranslucency "materials/decals/blood/blood21_trans.png"
+}

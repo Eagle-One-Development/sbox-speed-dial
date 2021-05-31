@@ -10,6 +10,7 @@
 				Height = [ 64.0, 96.0, 1.0 ]
 				KeepAspect = true
 				Depth = [ 8.0, 3.0, 0.0 ]
+				Rotation = [ 0.0, 359.0, 1.0 ]
 			},
 		]
 	}

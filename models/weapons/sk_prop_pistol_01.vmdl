@@ -29,7 +29,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "poly/Meshes/Weapons/SK_Prop_Pistol_01.FBX"
+						filename = "poly/meshes/weapons/sk_prop_pistol_01.fbx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.3937
@@ -50,13 +50,31 @@
 				children = 
 				[
 					{
-						_class = "PhysicsShapeCapsule"
-						parent_bone = "SK_Prop_Pistol_Slide_01"
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						radius = 1.0
-						point0 = [ -0.098219, -0.441271, 5.147298 ]
-						point1 = [ 0.050107, -0.441271, -4.448083 ]
+						origin = [ 3.629039, -0.303895, 1.91424 ]
+						angles = [ 89.508881, 0.0, 0.0 ]
+						dimensions = [ 1.516273, 2.012978, 10.861658 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ -0.25178, -0.013654, -1.07531 ]
+						angles = [ 16.067108, 0.0, 0.0 ]
+						dimensions = [ 2.528446, 1.564217, 6.435604 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ 2.520583, -0.013654, 0.286569 ]
+						angles = [ 0.570252, 0.0, 0.0 ]
+						dimensions = [ 2.755206, 1.564217, 1.928149 ]
 					},
 				]
 			},

@@ -5,7 +5,6 @@ namespace SpeedDial.Weapons {
 	[Library("sd_mac", Title = "Mac-10")]
 	partial class Mac10 : BaseSpeedDialWeapon {
 
-
 		public override float PrimaryRate => 15.0f;
 		public override float SecondaryRate => 1.0f;
 		public override int ClipSize => 20;
@@ -14,7 +13,7 @@ namespace SpeedDial.Weapons {
 		public override void Spawn() {
 			base.Spawn();
 
-			SetModel("models/weapons/sk_prop_rifle_01.vmdl");
+			SetModel("models/weapons/sk_uzi.vmdl");
 			AmmoClip = 20;
 		}
 
@@ -31,7 +30,7 @@ namespace SpeedDial.Weapons {
 
 			ShootEffects();
 			PlaySound("rust_smg.shoot");
-			ShootBullet(0.05f, 1.5f, 100, 3.0f);
+			ShootBullet(0.65f, 1.5f, 100, 3.0f);
 		}
 
 		public override void AttackSecondary() {

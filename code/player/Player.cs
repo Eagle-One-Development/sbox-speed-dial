@@ -1,19 +1,27 @@
+using System.Numerics;
+using System.Diagnostics;
 using System;
 using Sandbox;
 using SpeedDial.Weapons;
-
+using SpeedDial.UI;
 
 namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer : Sandbox.Player {
 
 		[Net, Local]
-		private TimeSince TimeSinceDied { get; set; } = 0;
+		public TimeSince TimeSinceDied { get; set; } = 0;
 
-		[Net]
+		[Net, Local]
 		public float RespawnTime { get; set; } = 1f;
 
 		[Net]
 		public Color32 PlayerColor { get; set; }
+
+		[Net]
+		public bool pickup { get; set; }
+		private Entity pickUpEntity;
+
+		TimeSince timeSinceDropped;
 
 		public SpeedDialPlayer() {
 			Inventory = new SpeedDialInventory(this);
@@ -23,8 +31,8 @@ namespace SpeedDial.Player {
 
 		public void InitialSpawn() {
 
-			if(GetClientOwner().SteamId == 76561198000823482) {
-				PlayerColor = new Color32(250, 176, 3); // bak
+			if(GetClientOwner().SteamId == 76561198000823482) { // bak
+				PlayerColor = new Color32(250, 176, 3);
 			} else if(GetClientOwner().SteamId == 76561198203314521) { // gurke
 				PlayerColor = new Color32(70, 0, 70);
 			} else if(GetClientOwner().SteamId == 76561198095231052) { // generic
@@ -33,20 +41,72 @@ namespace SpeedDial.Player {
 				PlayerColor = Color.Random;
 			}
 
+			Controller = new SpeedDialController();
+			Camera = new SpeedDialCamera();
+
 			//Set a default character
 			character = SpeedDialGame.Instance.characters[0];
 
 			Respawn();
 		}
 
+		public override void StartTouch(Entity other) {
+			if(timeSinceDropped < 1) return;
+
+			if(IsClient) return;
+
+			if(other is PickupTrigger pt) {
+				if(other.Parent is BaseSpeedDialWeapon wep1) {
+					StartTouch(other.Parent);
+
+					float magnitude = wep1.PhysicsBody.Velocity.Length;
+					Log.Info($"Velocity: {magnitude}");
+					if(magnitude > 450f) {
+						wep1.PhysicsBody.EnableAutoSleeping = false;
+						Sound.FromEntity("weaponhit", this);
+						KillMyself(wep1.previousOwner);
+						wep1.Velocity *= -0.5f;
+					}
+				}
+				return;
+			}
+		}
+
+		public override void Touch(Entity other) {
+
+			if(timeSinceDropped < 1f) return;
+
+			if(IsClient) return;
+
+			if(other is PickupTrigger) {
+				if(other.Parent is BaseSpeedDialWeapon) {
+					Touch(other.Parent);
+					pickup = true;
+				}
+				return;
+			}
+			pickUpEntity = other;
+		}
+
+		public override void EndTouch(Entity other) {
+			base.EndTouch(other);
+			if(other is PickupTrigger) {
+				if(other.Parent is BaseSpeedDialWeapon) {
+					Touch(other.Parent);
+					pickUpEntity = null;
+					pickup = false;
+				}
+				return;
+			}
+		}
 
 		public override void Respawn() {
 			SetModel("models/biped_standard/biped_standard.vmdl");
 
 			RenderColor = PlayerColor;
 
-			Camera = new SpeedDialCamera();
-			Controller = new SpeedDialController();
+			(Camera as SpeedDialCamera).Freeze = false;
+			(Controller as SpeedDialController).Freeze = false;
 			Animator = new PlayerAnimator();
 
 			EnableAllCollisions = true;
@@ -58,14 +118,8 @@ namespace SpeedDial.Player {
 
 			KillCombo = 0;
 
-			//Inventory.Add(new Pistol(), true);
-			//string[] s = {character.Weapon};
-			//Log.Info(s[0].ToString());
-			//ConsoleSystem.Run("give_weapon",s);
 			BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>(character.Weapon);
 			Inventory.Add(weapon, true);
-
-			//GiveAmmo(AmmoType.Pistol, 1000);
 
 			LifeState = LifeState.Alive;
 			Health = 100;
@@ -87,85 +141,23 @@ namespace SpeedDial.Player {
 		}
 
 		[ClientRpc]
-		public void BloodSplatter(Vector3 dir) {
-			Vector3 pos = Position + Vector3.Up * 50f;
-
-			// splatters around and behind the target, mostly from impact
-			for(int i = 0; i < 15; i++) {
-
-				// var forward = Owner.EyeRot.Forward;
-				// forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
-				// forward = forward.Normal;
-
-				// TODO
-				// proper distribution of blood behind and around the target
-				var trSplatter = Trace.Ray(pos, pos + dir.Normal * 85f + Vector3.Random)
-						.UseHitboxes()
-						.Ignore(this)
-						.Size(1)
-						.Run();
-
-				// FIXME
-				// oops stupid path
-				var decalPathSplatter = "materials/decals/blood/blood_splatter.decal";
-				if(decalPathSplatter != null) {
-					if(DecalDefinition.ByPath.TryGetValue(decalPathSplatter, out var decal)) {
-						decal.PlaceUsingTrace(trSplatter);
-					}
-				}
-			}
-
-			//For blood splatter on the ground, pool of blood essentially
-
-			// UPCOMING
-			// Better and more decals for ground splatter
-			var tr = Trace.Ray(pos, pos + Vector3.Down * 85f + Vector3.Random * 0.2f)
-					.UseHitboxes()
-					.Ignore(this)
-					.Size(1)
-					.Run();
-
-			//DebugOverlay.Line(pos, tr.EndPos, Color.Red, 3f ,false);
-			var decalPath = "decals/blood_test.decal";
-			//var decalPath = Rand.FromArray(tr.Surface.ImpactEffects.BulletDecal);
-			if(decalPath != null) {
-				if(DecalDefinition.ByPath.TryGetValue(decalPath, out var decal)) {
-
-					decal.PlaceUsingTrace(tr);
-				}
-			}
-
-			// TODO
-			// particles
-			// (water particle dyed red? blood impact particle looks lame)
-
-		}
-
-		public override void OnKilled() {
-			Game.Current?.OnKilled(this);
-
-			//Create the combo score on the client
-			if(LastDamage.Attacker is SpeedDialPlayer attacker && attacker != this) {
-				//attacker.ComboEvents(EyePos,(SpeedDialGame.ScoreBase * attacker.KillCombo));
-				BloodSplatter(Position - attacker.Position);
-			}
-
-			BecomeRagdollOnClient(new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0));
-
-			Inventory.DeleteContents();
-
-			TimeSinceDied = 0;
-			LifeState = LifeState.Dead;
-
-			Controller = null;
-
-			EnableAllCollisions = false;
-			EnableDrawing = false;
-		}
-
-		[ClientRpc]
 		public void GiveLoadout() {
 
+		}
+
+		public void Freeze() {
+			(Controller as SpeedDialController).Freeze = true;
+			(Camera as SpeedDialCamera).Freeze = true;
+		}
+
+		public void Unfreeze() {
+			(Controller as SpeedDialController).Freeze = false;
+			(Camera as SpeedDialCamera).Freeze = false;
+		}
+
+		public void Freeze(bool freeze) {
+			(Controller as SpeedDialController).Freeze = freeze;
+			(Camera as SpeedDialCamera).Freeze = freeze;
 		}
 
 		public override void Simulate(Client cl) {
@@ -177,64 +169,46 @@ namespace SpeedDial.Player {
 				return;
 			}
 
+			var controller = GetActiveController();
+			controller?.Simulate(cl, this, GetActiveAnimator());
+
 			if(Input.ActiveChild != null) {
 				ActiveChild = Input.ActiveChild;
 			}
-			// giveclip = true;
-			// if(giveclip) {
-			// Log.Info("YEYEYEYEYEYEYEYEYEYEYEEYEYEYEY");
-			// (ActiveChild as BaseSpeedDialWeapon).OnReloadFinish();
-			// giveclip = false;
-			// }
+
+			if(Input.Pressed(InputButton.Attack2)) {
+				var dropped = Inventory.DropActive();
+				if(dropped != null) {
+					if(dropped.PhysicsGroup != null) {
+						(dropped as BaseSpeedDialWeapon).ApplyThrowVelocity(EyeRot.Forward);
+						PlaySound("weaponspin");
+					}
+
+					timeSinceDropped = 0;
+				}
+				if(IsClient && ActiveChild != null) {
+					PlaySound("weaponspin");
+				}
+			}
+
+			if(IsClient && pickUpEntity != null) {
+				Log.Info(pickUpEntity.ToString());
+			}
+			if(Input.Pressed(InputButton.Attack2) && pickup && pickUpEntity != null && Input.ActiveChild == null) {
+				Inventory?.Add(pickUpEntity, Inventory.Active == null);
+				pickup = false;
+				pickUpEntity = null;
+			}
+
+			if(IsClient) {
+				AmmoPanel.Current.pickedup = 0f;
+			}
+
+			if(IsClient && pickup && Input.ActiveChild == null) {
+				AmmoPanel.Current.pickedup = 1f;
+			}
 
 			SimulateActiveChild(cl, ActiveChild);
-
-			var controller = GetActiveController();
-			controller?.Simulate(cl, this, GetActiveAnimator());
-		}
-
-		DamageInfo LastDamage;
-
-		public override void TakeDamage(DamageInfo info) {
-			LastDamage = info;
-
-
-			base.TakeDamage(info);
-
-			if(info.Attacker is SpeedDialPlayer attacker && attacker != this) {
-				// Note - sending this only to the attacker!
-				attacker.DidDamage(To.Single(attacker), info.Position, info.Damage, Health);
-
-				TookDamage(To.Single(this), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position);
-			}
-		}
-
-
-		/// <summary>
-		/// A client side function for client side effects when the player has done damage
-		/// </summary>
-		/// <param name="pos"></param>
-		/// <param name="amount"></param>
-		/// <param name="healthinv"></param>
-		[ClientRpc]
-		public void DidDamage(Vector3 pos, float amount, float healthinv) {
-			//Sound.FromScreen( "dm.ui_attacker" )
-			//	.SetPitch( 1 + healthinv * 1 );
-			//	
-			//HitIndicator.Current?.OnHit( pos, amount );
-			if(healthinv <= 0) {
-
-				int ScoreBase = SpeedDialGame.ScoreBase;
-				ComboEvents(pos, ScoreBase * KillCombo);
-			}
-		}
-
-
-		[ClientRpc]
-		public void TookDamage(Vector3 pos) {
-			//DebugOverlay.Sphere( pos, 5.0f, Color.Red, false, 50.0f );
-
-			//DamageIndicator.Current?.OnHit( pos );
 		}
 	}
 }

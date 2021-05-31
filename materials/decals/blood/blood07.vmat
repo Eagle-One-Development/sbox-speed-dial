@@ -4,26 +4,11 @@ Layer0
 {
 	shader "projected_decals.vfx"
 
-	//---- Specular ----
-	F_SPECULAR 1
-	F_SPECULAR_CUBE_MAP 1 // In-game Cube Map
-
-	//---- Ambient Occlusion ----
-	TextureAmbientOcclusion "materials/default/default_ao.tga"
+	//---- Decal ----
+	F_BLEND_MODE 1 // Mod2X
 
 	//---- Color ----
 	TextureColor "materials/decals/blood/blood07.tga"
-
-	//---- Fog ----
-	g_bFogEnabled "1"
-
-	//---- Lighting ----
-	g_flDirectionalLightmapMinZ "0.050"
-	g_flDirectionalLightmapStrength "1.000"
-	g_flGlossiness "0.500"
-
-	//---- Metalness ----
-	TextureMetalness "[1.000000 1.000000 1.000000 0.000000]"
 
 	//---- Translucent ----
 	TextureTranslucency "materials/decals/blood/blood07_trans.png"

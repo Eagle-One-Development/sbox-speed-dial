@@ -16,6 +16,9 @@ namespace SpeedDial.Weapons {
 		public virtual int Bucket => 1;
 		public virtual int BucketWeight => 100;
 
+		[Net]
+		public Entity previousOwner { get; set; }
+
 		[Net, Predicted]
 		public int AmmoClip { get; set; }
 
@@ -29,6 +32,8 @@ namespace SpeedDial.Weapons {
 		public TimeSince TimeSinceDeployed { get; set; }
 
 		public PickupTrigger PickupTrigger { get; protected set; }
+		TimeSince lifetime;
+
 
 		public virtual int AmmoToAward => 5;
 
@@ -42,7 +47,6 @@ namespace SpeedDial.Weapons {
 
 		public override void ActiveStart(Entity ent) {
 			base.ActiveStart(ent);
-
 			TimeSinceDeployed = 0;
 		}
 
@@ -54,6 +58,27 @@ namespace SpeedDial.Weapons {
 			PickupTrigger = new();
 			PickupTrigger.Parent = this;
 			PickupTrigger.Position = Position;
+			PickupTrigger.EnableTouchPersists = true;
+		}
+
+		public void ApplyThrowVelocity(Vector3 rot) {
+			PhysicsBody.Velocity = Velocity + rot * 500;
+			PhysicsBody.AngularVelocity = new Vector3(0, 0, 100f);
+			PhysicsBody.GravityScale = 0.0f;
+			_ = SetGravity();
+		}
+
+		[Event("server.tick")]
+		public void CheckLifeTime() {
+			if(lifetime > 5f && Owner == null) {
+				Delete();
+			}
+		}
+
+		async Task SetGravity() {
+			await Task.DelaySeconds(0.2f);
+			if(PhysicsBody.IsValid())
+				PhysicsBody.GravityScale = 1.0f;
 		}
 
 		public override void Reload() {
@@ -68,22 +93,19 @@ namespace SpeedDial.Weapons {
 			if(Owner is SpeedDialPlayer player) {
 				if(player.AmmoCount(AmmoType) <= 0)
 					return;
-
-				StartReloadEffects();
 			}
 
 			IsReloading = true;
 
 			(Owner as AnimEntity).SetAnimBool("b_reload", true);
-
-			StartReloadEffects();
 		}
 
 		public override void Simulate(Client owner) {
 
-			if(owner.Input.Down(InputButton.Reload)) {
-				Reload();
-			}
+			lifetime = 0;
+
+			if(TimeSinceDeployed < 0.6f)
+				return;
 
 			if(!this.IsValid())
 				return;
@@ -93,15 +115,14 @@ namespace SpeedDial.Weapons {
 				AttackPrimary();
 			}
 
-			if(!owner.IsValid())
-				return;
-
 			if(CanSecondaryAttack()) {
 				TimeSinceSecondaryAttack = 0;
 				AttackSecondary();
 			}
 
-
+			if(Owner != null) {
+				previousOwner = Owner;
+			}
 
 			if(TimeSinceDeployed < 0.6f)
 				return;
@@ -113,11 +134,6 @@ namespace SpeedDial.Weapons {
 
 		public virtual void OnReloadFinish() {
 			IsReloading = false;
-		}
-
-		[ClientRpc]
-		public virtual void StartReloadEffects() {
-			// ex viewmodel shit
 		}
 
 		public override void AttackPrimary() {
@@ -135,7 +151,7 @@ namespace SpeedDial.Weapons {
 				if(!IsServer) continue;
 				if(!tr.Entity.IsValid()) continue;
 
-				// We turn predictiuon off for this, so aany exploding effects don't get culled etc
+				// We turn predictiuon off for this, so any exploding effects don't get culled etc
 				using(Prediction.Off()) {
 					var damage = DamageInfo.FromBullet(tr.EndPos, Owner.EyeRot.Forward * 100, 15)
 						.UsingTraceResult(tr)
@@ -151,6 +167,8 @@ namespace SpeedDial.Weapons {
 		protected virtual void ShootEffects() {
 			Host.AssertClient();
 
+			// TODO
+			// Get bullet tracer particle and go pew pew
 			Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
 
 			if(IsLocalPawn) {
@@ -200,10 +218,6 @@ namespace SpeedDial.Weapons {
 		}
 
 		public void AwardAmmo() {
-			if(IsClient)
-				Log.Info("Updated clip on client in weapon");
-			if(IsServer)
-				Log.Info("Updated clip on server in weapon");
 			AmmoClip = Math.Clamp(AmmoClip + AmmoToAward, 0, ClipSize);
 		}
 

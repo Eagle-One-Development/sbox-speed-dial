@@ -14,10 +14,6 @@
 						remaps = 
 						[
 							{
-								from = "mat_polygonprototype_01.vmat"
-								to = "material/dev/dev01.vmat"
-							},
-							{
 								from = "materials/error.vmat"
 								to = "material/dev/dev01.vmat"
 							},
@@ -33,7 +29,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/biped_standard/prop_rifle.dmx"
+						filename = "models/weapons/prop_rifle.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -55,12 +51,66 @@
 				[
 					{
 						_class = "PhysicsShapeCapsule"
-						parent_bone = "SK_Prop_Rifle_Slide_01"
+						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						radius = 1.980615
-						point0 = [ -0.34863, -1.292748, 21.346619 ]
-						point1 = [ 0.11308, -1.292749, -8.521919 ]
+						radius = 1.0
+						point0 = [ 0.0, 0.0, 4.355451 ]
+						point1 = [ 28.029987, 0.0, 4.355451 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						radius = 1.599509
+						point0 = [ -0.116693, 0.0, 3.135469 ]
+						point1 = [ -12.045897, -0.000002, -0.120546 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ 0.03271, 0.092693, 0.468987 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 2.853745, 1.185387, 1.937974 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ -0.439537, 0.092693, -1.259341 ]
+						angles = [ -74.534966, 0.0, 0.0 ]
+						dimensions = [ 3.754271, 1.185387, 1.937974 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ 6.862957, 0.092693, -0.202445 ]
+						angles = [ -80.000221, 180.0, 180.0 ]
+						dimensions = [ 3.754271, 1.185387, 3.35324 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ 8.900833, 0.092694, -3.471558 ]
+						angles = [ -45.302475, -179.999985, -180.0 ]
+						dimensions = [ 5.929271, 1.185387, 3.35324 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ 11.349329, 0.092692, 3.230954 ]
+						angles = [ 0.761207, -180.0, 180.0 ]
+						dimensions = [ 20.093304, 1.185387, 3.35324 ]
 					},
 				]
 			},

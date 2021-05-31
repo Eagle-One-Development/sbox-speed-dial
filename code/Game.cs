@@ -36,6 +36,8 @@ namespace SpeedDial {
 
 			PrecacheModels();
 
+			Global.PhysicsSubSteps = 2;
+
 			if(IsServer) {
 				Log.Info("[SV] Gamemode created!");
 				new SpeedDialHud();
@@ -46,6 +48,12 @@ namespace SpeedDial {
 			if(IsClient) {
 				Log.Info("[CL] Gamemode created!");
 			}
+		}
+
+		public override void DoPlayerSuicide(Client cl) {
+			if(cl.Pawn.LifeState != LifeState.Alive || (cl.Pawn as SpeedDialPlayer).TimeSinceDied < 2) return;
+			Log.Info($"{cl.Name} committed suicide.");
+			cl.Pawn.TakeDamage(DamageInfo.Generic(int.MaxValue));
 		}
 
 		public override void OnKilled(Client client, Entity pawn) {
@@ -66,8 +74,8 @@ namespace SpeedDial {
 					attacker.KillCombo++;
 
 					// fuck ammo
-					(attacker.ActiveChild as BaseSpeedDialWeapon).AwardAmmo();
-					attacker.IncreaseWeaponClip();
+					//(attacker.ActiveChild as BaseSpeedDialWeapon).AwardAmmo();
+					//attacker.IncreaseWeaponClip();
 
 					attacker.TimeSinceMurdered = 0;
 				}
@@ -79,7 +87,6 @@ namespace SpeedDial {
 
 			if(ConsoleSystem.Caller.Pawn is SpeedDialPlayer player) {
 				BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>(entityName);
-				//Log.Info("TEST");
 				player.Inventory.Add(weapon, true);
 			}
 		}
@@ -130,6 +137,7 @@ namespace SpeedDial {
 			CheckMinimumPlayers();
 			Round.OnSecond();
 		}
+
 
 		public override void PostLevelLoaded() {
 			_ = StartSecondTimer();

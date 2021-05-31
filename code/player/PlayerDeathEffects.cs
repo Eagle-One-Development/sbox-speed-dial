@@ -1,0 +1,159 @@
+using System.Numerics;
+using System.Diagnostics;
+using System;
+using Sandbox;
+using SpeedDial.Weapons;
+using SpeedDial.UI;
+using System.Threading.Tasks;
+
+namespace SpeedDial.Player {
+	public partial class SpeedDialPlayer {
+
+		[ClientRpc]
+		public void BloodSplatter() {
+			Host.AssertClient();
+			BloodSplatter(Vector3.Down);
+		}
+
+		[ClientRpc]
+		public void BloodSplatter(Vector3 dir) {
+			Host.AssertClient();
+			Vector3 pos = EyePos + Vector3.Down * 20;
+
+			// splatters around and behind the target, mostly from impact
+			for(int i = 0; i < 10; i++) {
+				var trDir = pos + (dir.Normal + (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 0.85f * 0.25f) * 100 + Vector3.Down * i;
+				var tr = Sandbox.Trace.Ray(pos, trDir)
+						.UseHitboxes()
+						.Ignore(this)
+						.Size(1)
+						.Run();
+
+				_ = CreateDecalAsync("decals/blood_splatter.decal", tr, i * 0.05f);
+			}
+
+			//For blood splatter on the ground, pool of blood essentially
+			for(int i = 0; i < 5; i++) {
+				var trDir = pos + (Vector3.Down + (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 3 * 0.25f) * 100;
+				var tr = Sandbox.Trace.Ray(pos, trDir)
+						.UseHitboxes()
+						.Ignore(this)
+						.Size(1)
+						.Run();
+
+				_ = CreateDecalAsync("decals/blood_splatter_floor.decal", tr, i * 0.05f);
+			}
+
+			//For blood detail splatters on the ground
+			for(int i = 0; i < 5; i++) {
+				var trDir = pos + (Vector3.Down + (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 3 * 0.25f) * 100;
+				var tr = Sandbox.Trace.Ray(pos, trDir)
+						.UseHitboxes()
+						.Ignore(this)
+						.Size(1)
+						.Run();
+
+				_ = CreateDecalAsync("decals/blood_splatter.decal", tr, i * 0.1f);
+			}
+
+			// three slightly different particle effects, splash will be the most noticeable 
+			_ = CreateParticleAsync("particles/blood_splash.vpcf", Corpse, dir.Normal, 0, "head");
+
+			_ = CreateParticleAsync("particles/blood_drops.vpcf", Corpse, Vector3.Down, 0.5f, "head", true);
+
+			_ = CreateParticleAsync("particles/blood_plip.vpcf", Corpse, Vector3.Down, 0.7f, "head");
+		}
+
+		async Task CreateDecalAsync(string decalname, TraceResult tr, float delay = 0) {
+			await Task.DelaySeconds(delay);
+
+			var decalPath = decalname;
+			if(decalPath != null) {
+				if(DecalDefinition.ByPath.TryGetValue(decalPath, out var decal)) {
+					decal.PlaceUsingTrace(tr);
+				}
+			}
+		}
+
+		async Task CreateParticleAsync(string particle, Entity entity, Vector3 forward, float delay = 0, string bone = "root", bool bloodpool = false) {
+			await Task.DelaySeconds(delay);
+			var pos = (entity as ModelEntity).GetBonePhysicsBody((entity as ModelEntity).GetBoneIndex(bone)).Position;
+			var ps = Particles.Create(particle, pos);
+			ps.SetForward(0, forward);
+			if(bloodpool) {
+				var trDir = pos + Vector3.Down * 1000;
+				var tr = Sandbox.Trace.Ray(pos, trDir)
+						.WorldAndEntities()
+						.UseHitboxes()
+						.Ignore(this)
+						.Size(1)
+						.Run();
+
+				_ = CreateDecalAsync("decals/blood_splatter_floor.decal", tr, 0.5f);
+			}
+		}
+
+		[ServerCmd]
+		public void KillMyself(Entity attacker) {
+			DamageInfo info = new();
+			info.Damage = 200f;
+			info.Attacker = attacker;
+			info.Position = Position;
+			TakeDamage(info);
+			PlaySound("weaponhit");
+		}
+
+		public override void OnKilled() {
+			Game.Current?.OnKilled(this);
+			TimeSinceDied = 0;
+			LifeState = LifeState.Dead;
+			StopUsing();
+
+			Inventory.DeleteContents();
+
+			// spawn ragdoll before effects to spawn particles on the body
+			BecomeRagdollOnClient(new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0));
+
+			// create blood effects
+			if(LastDamage.Attacker is SpeedDialPlayer attacker && attacker != this) {
+				// someone killed someone, base the effect direction on the attacker
+				BloodSplatter(EyePos + Vector3.Down * 20 - (attacker.EyePos + Vector3.Down * 20));
+			} else {
+				// suicide, effects just go down
+				BloodSplatter();
+			}
+
+			(Controller as SpeedDialController).Freeze = true;
+			(Camera as SpeedDialCamera).Freeze = true;
+
+			EnableAllCollisions = false;
+			EnableDrawing = false;
+		}
+		DamageInfo LastDamage;
+
+		public override void TakeDamage(DamageInfo info) {
+			LastDamage = info;
+
+			base.TakeDamage(info);
+
+			if(info.Attacker is SpeedDialPlayer attacker && attacker != this) {
+				// Note - sending this only to the attacker!
+				attacker.DidDamage(To.Single(attacker), info.Position, info.Damage, Health);
+
+				TookDamage(To.Single(this), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position);
+			}
+		}
+
+		[ClientRpc]
+		public void DidDamage(Vector3 pos, float amount, float healthinv) {
+			if(healthinv <= 0) {
+				int ScoreBase = SpeedDialGame.ScoreBase;
+				ComboEvents(pos, ScoreBase * KillCombo);
+			}
+		}
+
+		[ClientRpc]
+		public void TookDamage(Vector3 pos) {
+		}
+	}
+}
