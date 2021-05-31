@@ -148,6 +148,17 @@ namespace SpeedDial.Weapons {
 			foreach(var tr in TraceBullet(Owner.EyePos, Owner.EyePos + Owner.EyeRot.Forward * 5000)) {
 				tr.Surface.DoBulletImpact(tr);
 
+				// WHY THE FUCK IS THIS NOT BEING CALLED???
+				Log.Info("Bullet");
+
+				// var ps = Particles.Create("particles/physgun_beam.vpcf", tr.EndPos);
+				// ps.SetEntityAttachment(0, EffectEntity, "muzzle", true);
+				// ps.SetPos(0, Owner.EyePos + Vector3.Down * 20);
+				// ps.SetPos(1, tr.EndPos);
+
+				DebugOverlay.Line(Owner.EyePos + Vector3.Down * 20, tr.EndPos, Color.White, 1, false);
+
+
 				if(!IsServer) continue;
 				if(!tr.Entity.IsValid()) continue;
 
@@ -163,12 +174,18 @@ namespace SpeedDial.Weapons {
 			}
 		}
 
+		public void BulletTracer(Vector3 from, Vector3 to) {
+			Log.Info("Bullet tracer");
+
+			var ps = Particles.Create("particles/weapon_fx/bullet_trail.vpcf");
+			ps.SetPos(0, from);
+			ps.SetPos(1, to);
+		}
+
 		[ClientRpc]
 		protected virtual void ShootEffects() {
 			Host.AssertClient();
 
-			// TODO
-			// Get bullet tracer particle and go pew pew
 			Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
 
 			if(IsLocalPawn) {
