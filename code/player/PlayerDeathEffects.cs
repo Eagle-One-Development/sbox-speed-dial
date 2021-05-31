@@ -78,7 +78,7 @@ namespace SpeedDial.Player {
 		async Task CreateParticleAsync(string particle, Entity entity, Vector3 forward, float delay = 0, string bone = "root", bool bloodpool = false) {
 			await Task.DelaySeconds(delay);
 			if(entity is ModelEntity ent) {
-				var pos = (entity as ModelEntity).GetBonePhysicsBody((entity as ModelEntity).GetBoneIndex(bone)).Position;
+				var pos = ent.GetBonePhysicsBody(ent.GetBoneIndex(bone)).Position;
 				var ps = Particles.Create(particle, pos);
 				ps.SetForward(0, forward);
 				if(bloodpool) {
