@@ -3306,10 +3306,10 @@
 					},
 				]
 				m_seed = 1365036986
-				m_choiceMethod = "Iterate"
+				m_choiceMethod = "WeightedRandomNoRepeat"
 				m_choiceChangeMethod = "OnReset"
 				m_blendMethod = "SingleBlendTime"
-				m_blendTime = 0.0
+				m_blendTime = 1.0
 				m_bCrossFade = false
 				m_bResetChosen = true
 				m_bDontResetSameSelection = false
