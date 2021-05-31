@@ -776,6 +776,27 @@
 		{
 			key = 
 			{
+				m_id = 285939101
+			}
+			value = 
+			{
+				_class = "CSequenceAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ 160.553101, 2219.356934 ]
+				m_nNodeID = 
+				{
+					m_id = 285939101
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_tagSpans = [  ]
+				m_sequenceName = "left_jab"
+				m_playbackSpeed = 1.0
+				m_bLoop = false
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 289694236
 			}
 			value = 
@@ -2058,6 +2079,27 @@
 					m_fMinSpeed = 10.0
 					m_fMaxTension = 1000.0
 				}
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 569586905
+			}
+			value = 
+			{
+				_class = "CSequenceAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ 163.0, 2316.0 ]
+				m_nNodeID = 
+				{
+					m_id = 569586905
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_tagSpans = [  ]
+				m_sequenceName = "idle_pistol_aim"
+				m_playbackSpeed = 5.0
+				m_bLoop = false
 			}
 		},
 		{
@@ -5661,7 +5703,7 @@
 						m_name = "start"
 						m_childNodeID = 
 						{
-							m_id = 4294967295
+							m_id = 285939101
 						}
 						m_stateID = 
 						{
@@ -5716,7 +5758,7 @@
 						m_name = "pistol"
 						m_childNodeID = 
 						{
-							m_id = 4294967295
+							m_id = 569586905
 						}
 						m_stateID = 
 						{
@@ -5766,7 +5808,7 @@
 						m_name = "SMG"
 						m_childNodeID = 
 						{
-							m_id = 4294967295
+							m_id = 569586905
 						}
 						m_stateID = 
 						{
