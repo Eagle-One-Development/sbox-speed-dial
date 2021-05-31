@@ -1,8 +1,5 @@
 using Sandbox;
 using Sandbox.UI;
-using Sandbox.UI.Construct;
-using System;
-using System.Threading.Tasks;
 
 namespace SpeedDial.UI {
 	[Library]
@@ -16,7 +13,7 @@ namespace SpeedDial.UI {
 			RootPanel.AddChild<GameRoundPanel>();
 			RootPanel.AddChild<CharacterSelect>();
 			RootPanel.AddChild<ComboPanel>();
-			RootPanel.AddChild<Sandbox.UI.Scoreboard<Sandbox.UI.ScoreboardEntry>>();
+			RootPanel.AddChild<SpeedDialScoreboard<SpeedDialScoreboardEntry>>();
 		}
 	}
 }
