@@ -60,7 +60,7 @@ namespace SpeedDial.Player {
 					StartTouch(other.Parent);
 
 					float magnitude = wep1.PhysicsBody.Velocity.Length;
-					Log.Info($"Velocity: {magnitude}");
+					//Log.Info($"Velocity: {magnitude}");
 					if(magnitude > 450f) {
 						wep1.PhysicsBody.EnableAutoSleeping = false;
 						Sound.FromEntity("weaponhit", this);
