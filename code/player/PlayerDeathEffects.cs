@@ -57,11 +57,11 @@ namespace SpeedDial.Player {
 			}
 
 			// three slightly different particle effects, splash will be the most noticeable 
-			_ = CreateParticleAsync("particles/blood_splash.vpcf", Corpse, dir.Normal, 0, "head");
+			_ = CreateParticleAsync("particles/blood/blood_splash.vpcf", Corpse, dir.Normal, 0, "head");
 
-			_ = CreateParticleAsync("particles/blood_drops.vpcf", Corpse, Vector3.Down, 0.5f, "head", true);
+			_ = CreateParticleAsync("particles/blood/blood_drops.vpcf", Corpse, Vector3.Down, 0.5f, "head", true);
 
-			_ = CreateParticleAsync("particles/blood_plip.vpcf", Corpse, Vector3.Down, 0.7f, "head");
+			_ = CreateParticleAsync("particles/blood/blood_plip.vpcf", Corpse, Vector3.Down, 0.7f, "head");
 		}
 
 		async Task CreateDecalAsync(string decalname, TraceResult tr, float delay = 0) {
