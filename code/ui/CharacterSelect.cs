@@ -100,7 +100,7 @@ namespace SpeedDial.UI {
 			bool E = input.Pressed(InputButton.Use);
 			bool space = input.Pressed(InputButton.Jump);
 
-			if(input.Pressed(InputButton.Score)) {
+			if(input.Pressed(InputButton.Duck)) {
 				open = !open;
 			}
 

@@ -184,6 +184,15 @@ namespace SpeedDial.Weapons {
 			CrosshairPanel?.OnEvent("fire");
 		}
 
+		[ClientRpc]
+		protected virtual void BulletTracer(Vector3 from, Vector3 to) {
+			Host.AssertClient();
+
+			var ps = Particles.Create("particles/weapon_fx/bullet_trail.vpcf", to);
+			ps.SetPos(0, from);
+			ps.SetPos(1, to);
+		}
+
 		public virtual void ShootBullet(float spread, float force, float damage, float bulletSize) {
 			var forward = Owner.EyeRot.Forward;
 			forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
@@ -195,13 +204,11 @@ namespace SpeedDial.Weapons {
 			// ShootBullet is coded in a way where we can have bullets pass through shit
 			// or bounce off shit, in which case it'll return multiple results
 			//
+
 			foreach(var tr in TraceBullet(Owner.EyePos, Owner.EyePos + forward * 5000, bulletSize)) {
 				tr.Surface.DoBulletImpact(tr);
 
-				var ps = Particles.Create("particles/weapon_fx/bullet_trail.vpcf", tr.EndPos);
-				//ps.SetEntityAttachment(0, EffectEntity, "muzzle", true);
-				ps.SetPos(0, Owner.EyePos + Vector3.Down * 20);
-				ps.SetPos(1, tr.EndPos);
+				BulletTracer(EffectEntity.Position, tr.EndPos);
 
 				if(!IsServer) continue;
 				if(!tr.Entity.IsValid()) continue;

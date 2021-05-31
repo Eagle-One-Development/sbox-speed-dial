@@ -37,6 +37,8 @@ namespace SpeedDial.Player {
 				PlayerColor = new Color32(70, 0, 70);
 			} else if(GetClientOwner().SteamId == 76561198095231052) { // generic
 				PlayerColor = new Color32(27, 49, 63);
+			} else if(GetClientOwner().SteamId == 76561198257053769) { // whimsy
+				PlayerColor = Color.Cyan;
 			} else {
 				PlayerColor = Color.Random;
 			}
