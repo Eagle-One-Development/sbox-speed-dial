@@ -41,6 +41,8 @@ namespace SpeedDial.Weapons {
 		public virtual string ShootSound => "rust_pistol.shoot";
 		public virtual string WorldModel => "models/weapons/sk_prop_pistol_01.vmdl";
 		public virtual Vector4 ScreenShakeParameters => new(1, 1, 1, 1);
+		public virtual float Range => 4096;
+		public virtual int AmmoPerShot => 1;
 
 		public virtual int HoldType => 1;
 
@@ -126,6 +128,8 @@ namespace SpeedDial.Weapons {
 		public virtual void AttackPrimary() {
 			TimeSincePrimaryAttack = 0;
 
+			if(!TakeAmmo(AmmoPerShot)) return;
+
 			// Tell the clients to play the shoot effects
 			ShootEffects();
 
@@ -144,7 +148,7 @@ namespace SpeedDial.Weapons {
 
 			AmmoPanel.Current?.Bump();
 
-			foreach(var tr in TraceBullet(Owner.EyePos, Owner.EyePos + forward * 5000, bulletSize)) {
+			foreach(var tr in TraceBullet(Owner.EyePos, Owner.EyePos + forward * Range, bulletSize)) {
 				tr.Surface.DoBulletImpact(tr);
 
 				BulletTracer(EffectEntity.Position, tr.EndPos);

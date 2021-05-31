@@ -20,13 +20,7 @@ namespace SpeedDial.Weapons {
 		public override float BulletSize => 3;
 		public override string ShootSound => "rust_smg.shoot";
 
-		public override void Spawn() {
-			base.Spawn();
-
-			SetModel("models/weapons/sk_prop_rifle_01.vmdl");
-			AmmoClip = 30;
-		}
-
+		// Override for burst fire
 		public override void Simulate(Client owner) {
 
 			base.Simulate(owner);
