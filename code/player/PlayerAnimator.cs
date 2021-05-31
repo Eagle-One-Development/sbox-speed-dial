@@ -38,7 +38,7 @@ namespace SpeedDial.Player {
 			if(Pawn.ActiveChild is BaseCarriable carry) {
 				carry.SimulateAnimator(this);
 			} else {
-				SetParam("holdtype", 0);
+				SetParam("holdtype", 5);
 				SetParam("aimat_weight", 0.5f);
 			}
 
@@ -86,7 +86,7 @@ namespace SpeedDial.Player {
 			var moveDir = WishVelocity;
 			var forward = idealRotation.Forward.Dot(moveDir.Normal);
 			var sideward = idealRotation.Right.Dot(moveDir.Normal);
-			
+
 			//
 			// Set our speeds on the animgraph
 			//

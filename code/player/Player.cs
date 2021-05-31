@@ -5,6 +5,7 @@ using Sandbox;
 using SpeedDial.Weapons;
 using SpeedDial.UI;
 using SpeedDial.Meds;
+using System.Threading.Tasks;
 
 namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer : Sandbox.Player {
@@ -61,67 +62,10 @@ namespace SpeedDial.Player {
 			Respawn();
 		}
 
-		public override void StartTouch(Entity other) {
-			if(timeSinceDropped < 1) return;
-
-			if(IsClient) return;
-
-			if(other is PickupTrigger pt) {
-				if(other.Parent is BaseSpeedDialWeapon wep1) {
-					StartTouch(other.Parent);
-
-					float magnitude = wep1.PhysicsBody.Velocity.Length;
-					//Log.Info($"Velocity: {magnitude}");
-					if(magnitude > 450f) {
-						wep1.PhysicsBody.EnableAutoSleeping = false;
-						Sound.FromEntity("weaponhit", this);
-						KillMyself(wep1.previousOwner);
-						wep1.Velocity *= -0.5f;
-
-					}
-				}
-
-
-				if(other.Parent is BaseMedication drug) {
-					StartTouch(other.Parent);
-					drug.PickUp();
-				}
-				return;
-			}
-		}
-
-		public override void Touch(Entity other) {
-
-			if(timeSinceDropped < 1f) return;
-
-			if(IsClient) return;
-
-			if(other is PickupTrigger) {
-				if(other.Parent is BaseSpeedDialWeapon) {
-					Touch(other.Parent);
-					pickup = true;
-				}
-				return;
-			}
-			pickUpEntity = other;
-		}
-
-		public override void EndTouch(Entity other) {
-			base.EndTouch(other);
-			if(other is PickupTrigger) {
-				if(other.Parent is BaseSpeedDialWeapon) {
-					Touch(other.Parent);
-					pickUpEntity = null;
-					pickup = false;
-				}
-				return;
-			}
-		}
-
 		public override void Respawn() {
 			SetModel("models/playermodels/playermodel_base.vmdl");
 
-			SetBodyGroup(1, BodyGroup);
+			SetPlayerBodyGroup(1, BodyGroup);
 
 			RenderColor = PlayerColor;
 
@@ -147,6 +91,11 @@ namespace SpeedDial.Player {
 			CreateHull();
 			ResetInterpolation();
 			SpeedDialGame.MoveToSpawn(this);
+		}
+
+		[ClientRpc]
+		public void SetPlayerBodyGroup(int group, int value) {
+			SetBodyGroup(group, value);
 		}
 
 		[ClientRpc]
@@ -183,11 +132,12 @@ namespace SpeedDial.Player {
 		/// <summary>
 		/// Handles Punching
 		/// </summary>
-		public void HandleMelee() {
+		async Task HandleMelee() {
 
 			if(Input.ActiveChild == null) {
 				if(Input.Pressed(InputButton.Attack1)) {
 					if(timeSinceMelee > 0.33f) {
+						await Task.DelaySeconds(0.1f);
 						timeSinceMelee = 0;
 						var forward = EyeRot.Forward;
 						Vector3 pos = EyePos + Vector3.Down * 20f;
@@ -199,11 +149,13 @@ namespace SpeedDial.Player {
 
 						PlaySwoosh();
 
+						SetAnimBool("b_attack", true);
 
-						//DebugOverlay.Line( EyePos + Vector3.Down * 20, tr.EndPos, Color.White, 1, false );
+						//DebugOverlay.Line(EyePos + Vector3.Down * 20, tr.EndPos, Color.White, 1, false);
 
 						if(!IsServer) return;
 						if(!tr.Entity.IsValid()) return;
+						if(!(LifeState == LifeState.Alive)) return;
 
 						// We turn predictiuon off for this, so any exploding effects don't get culled etc
 						using(Prediction.Off()) {
@@ -216,14 +168,18 @@ namespace SpeedDial.Player {
 							damage.Position = Position;
 							PlayClientSound("punch_connect_1");
 							PlaySound("punch_connect_1");
-
+							await Task.DelaySeconds(0.2f);
+							if(!(LifeState == LifeState.Alive)) return;
 							tr.Entity.TakeDamage(damage);
 						}
-
-
 					}
 				}
 			}
+		}
+
+		async Task AsyncApplyDamage(Entity entity, DamageInfo damage, float delay) {
+			await Task.DelaySeconds(delay);
+			entity.TakeDamage(damage);
 		}
 
 		[ClientRpc]
@@ -298,6 +254,63 @@ namespace SpeedDial.Player {
 			}
 
 			SimulateActiveChild(cl, ActiveChild);
+		}
+
+		public override void StartTouch(Entity other) {
+			if(timeSinceDropped < 1) return;
+
+			if(IsClient) return;
+
+			if(other is PickupTrigger pt) {
+				if(other.Parent is BaseSpeedDialWeapon wep1) {
+					StartTouch(other.Parent);
+
+					float magnitude = wep1.PhysicsBody.Velocity.Length;
+					//Log.Info($"Velocity: {magnitude}");
+					if(magnitude > 450f) {
+						wep1.PhysicsBody.EnableAutoSleeping = false;
+						Sound.FromEntity("weaponhit", this);
+						KillMyself(wep1.previousOwner);
+						wep1.Velocity *= -0.5f;
+
+					}
+				}
+
+
+				if(other.Parent is BaseMedication drug) {
+					StartTouch(other.Parent);
+					drug.PickUp();
+				}
+				return;
+			}
+		}
+
+		public override void Touch(Entity other) {
+
+			if(timeSinceDropped < 1f) return;
+
+			if(IsClient) return;
+
+			if(other is PickupTrigger) {
+				if(other.Parent is BaseSpeedDialWeapon) {
+					Touch(other.Parent);
+					pickup = true;
+				}
+				return;
+			}
+			pickUpEntity = other;
+		}
+
+		public override void EndTouch(Entity other) {
+			base.EndTouch(other);
+			if(other is PickupTrigger) {
+				if(other.Parent is BaseSpeedDialWeapon) {
+					Touch(other.Parent);
+					pickUpEntity = null;
+					pickup = false;
+				}
+				return;
+			}
 		}
 	}
 }

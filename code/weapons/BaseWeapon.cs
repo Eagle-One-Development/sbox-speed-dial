@@ -20,7 +20,7 @@ namespace SpeedDial.Weapons {
 		[Net, Predicted]
 		public int AmmoClip { get; set; }
 
-		[Net, Predicted]
+		[Net, Local]
 		public TimeSince TimeSinceDeployed { get; set; }
 
 		public PickupTrigger PickupTrigger { get; protected set; }
@@ -138,6 +138,8 @@ namespace SpeedDial.Weapons {
 			ShootEffects();
 
 			PlaySound(ShootSound);
+
+			(Owner as AnimEntity).SetAnimBool("b_attack", true);
 
 			// shoot the bullets, bulletcount for something like a shotgun with multiple bullets
 			for(int i = 0; i < BulletCount; i++) {
