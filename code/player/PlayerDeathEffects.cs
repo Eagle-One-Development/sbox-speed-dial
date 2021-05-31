@@ -106,7 +106,8 @@ namespace SpeedDial.Player {
 			// funny ragdoll moment
 			BecomeRagdollOnClient(new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0));
 
-			Controller = null;
+			(Controller as SpeedDialController).Freeze = true;
+			(Camera as SpeedDialCamera).Freeze = true;
 
 			EnableAllCollisions = false;
 			EnableDrawing = false;

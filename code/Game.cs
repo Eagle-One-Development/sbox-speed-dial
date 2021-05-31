@@ -51,6 +51,7 @@ namespace SpeedDial {
 		}
 
 		public override void DoPlayerSuicide(Client cl) {
+			if(cl.Pawn.LifeState != LifeState.Alive || (cl.Pawn as SpeedDialPlayer).TimeSinceDied < 2) return;
 			Log.Info($"{cl.Name} committed suicide.");
 			cl.Pawn.TakeDamage(DamageInfo.Generic(int.MaxValue));
 		}
@@ -86,7 +87,6 @@ namespace SpeedDial {
 
 			if(ConsoleSystem.Caller.Pawn is SpeedDialPlayer player) {
 				BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>(entityName);
-				//Log.Info("TEST");
 				player.Inventory.Add(weapon, true);
 			}
 		}

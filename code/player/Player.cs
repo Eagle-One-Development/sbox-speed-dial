@@ -10,7 +10,7 @@ namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer : Sandbox.Player {
 
 		[Net, Local]
-		private TimeSince TimeSinceDied { get; set; } = 0;
+		public TimeSince TimeSinceDied { get; set; } = 0;
 
 		[Net, Local]
 		public float RespawnTime { get; set; } = 1f;
@@ -41,6 +41,9 @@ namespace SpeedDial.Player {
 			} else {
 				PlayerColor = Color.Random;
 			}
+
+			Controller = new SpeedDialController();
+			Camera = new SpeedDialCamera();
 
 			//Set a default character
 			character = SpeedDialGame.Instance.characters[0];
@@ -103,8 +106,8 @@ namespace SpeedDial.Player {
 
 			RenderColor = PlayerColor;
 
-			Camera = new SpeedDialCamera();
-			Controller = new SpeedDialController();
+			(Camera as SpeedDialCamera).Freeze = false;
+			(Controller as SpeedDialController).Freeze = false;
 			Animator = new PlayerAnimator();
 
 			EnableAllCollisions = true;
