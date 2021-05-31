@@ -47,7 +47,6 @@ namespace SpeedDial.Weapons {
 
 		public override void ActiveStart(Entity ent) {
 			base.ActiveStart(ent);
-			Log.Info("Weapon Active Start");
 			TimeSinceDeployed = 0;
 		}
 
@@ -63,7 +62,7 @@ namespace SpeedDial.Weapons {
 		}
 
 		public void ApplyThrowVelocity(Vector3 rot) {
-			PhysicsBody.Velocity = Velocity + (rot) * 500;
+			PhysicsBody.Velocity = Velocity + rot * 500;
 			PhysicsBody.AngularVelocity = new Vector3(0, 0, 100f);
 			PhysicsBody.GravityScale = 0.0f;
 			_ = SetGravity();
@@ -94,15 +93,11 @@ namespace SpeedDial.Weapons {
 			if(Owner is SpeedDialPlayer player) {
 				if(player.AmmoCount(AmmoType) <= 0)
 					return;
-
-				StartReloadEffects();
 			}
 
 			IsReloading = true;
 
 			(Owner as AnimEntity).SetAnimBool("b_reload", true);
-
-			StartReloadEffects();
 		}
 
 		public override void Simulate(Client owner) {
@@ -141,11 +136,6 @@ namespace SpeedDial.Weapons {
 			IsReloading = false;
 		}
 
-		[ClientRpc]
-		public virtual void StartReloadEffects() {
-			// ex viewmodel shit
-		}
-
 		public override void AttackPrimary() {
 			TimeSincePrimaryAttack = 0;
 			TimeSinceSecondaryAttack = 0;
@@ -161,7 +151,7 @@ namespace SpeedDial.Weapons {
 				if(!IsServer) continue;
 				if(!tr.Entity.IsValid()) continue;
 
-				// We turn predictiuon off for this, so aany exploding effects don't get culled etc
+				// We turn predictiuon off for this, so any exploding effects don't get culled etc
 				using(Prediction.Off()) {
 					var damage = DamageInfo.FromBullet(tr.EndPos, Owner.EyeRot.Forward * 100, 15)
 						.UsingTraceResult(tr)
@@ -177,6 +167,8 @@ namespace SpeedDial.Weapons {
 		protected virtual void ShootEffects() {
 			Host.AssertClient();
 
+			// TODO
+			// Get bullet tracer particle and go pew pew
 			Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
 
 			if(IsLocalPawn) {
@@ -226,10 +218,6 @@ namespace SpeedDial.Weapons {
 		}
 
 		public void AwardAmmo() {
-			if(IsClient)
-				Log.Info("Updated clip on client in weapon");
-			if(IsServer)
-				Log.Info("Updated clip on server in weapon");
 			AmmoClip = Math.Clamp(AmmoClip + AmmoToAward, 0, ClipSize);
 		}
 

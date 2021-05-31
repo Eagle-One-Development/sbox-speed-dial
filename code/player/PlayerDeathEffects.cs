@@ -5,18 +5,19 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		public void BloodSplatter() {
+			Host.AssertClient();
 			BloodSplatter(Vector3.Down);
 		}
 
 		[ClientRpc]
 		public void BloodSplatter(Vector3 dir) {
+			Host.AssertClient();
 			Vector3 pos = EyePos + Vector3.Down * 20;
 
 			// splatters around and behind the target, mostly from impact
 			for(int i = 0; i < 10; i++) {
-
 				var trDir = pos + (dir.Normal + (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 0.85f * 0.25f) * 100 + Vector3.Down * i;
-				var trSplatter = Sandbox.Trace.Ray(pos, trDir)
+				var trSplatter = Trace.Ray(pos, trDir)
 						.UseHitboxes()
 						.Ignore(this)
 						.Size(1)
@@ -30,12 +31,10 @@ namespace SpeedDial.Player {
 				}
 			}
 
+			//For blood splatter on the ground, pool of blood essentially
 			for(int i = 0; i < 5; i++) {
-
-				//For blood splatter on the ground, pool of blood essentially
-
 				var trDir = pos + (Vector3.Down + (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 3 * 0.25f) * 100;
-				var tr = Sandbox.Trace.Ray(pos, trDir)
+				var tr = Trace.Ray(pos, trDir)
 						.UseHitboxes()
 						.Ignore(this)
 						.Size(1)
@@ -49,12 +48,10 @@ namespace SpeedDial.Player {
 				}
 			}
 
+			//For blood detail splatters on the ground
 			for(int i = 0; i < 5; i++) {
-
-				//For blood detail splatters on the ground
-
 				var trDir = pos + (Vector3.Down + (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 3 * 0.25f) * 100;
-				var tr = Sandbox.Trace.Ray(pos, trDir)
+				var tr = Trace.Ray(pos, trDir)
 						.UseHitboxes()
 						.Ignore(this)
 						.Size(1)
@@ -68,6 +65,7 @@ namespace SpeedDial.Player {
 				}
 			}
 
+			// three slightly different particle effects, splash will be the most noticeable 
 			var ps = Particles.Create("particles/blood_splash.vpcf", EyePos + Vector3.Down * 20);
 			ps.SetForward(0, dir.Normal);
 
@@ -76,12 +74,11 @@ namespace SpeedDial.Player {
 
 			ps = Particles.Create("particles/blood_plip.vpcf", EyePos + Vector3.Down * 20);
 			ps.SetForward(0, dir.Normal);
-
 		}
 
 		[ServerCmd]
 		public void KillMyself(Entity attacker) {
-			DamageInfo info = new DamageInfo();
+			DamageInfo info = new();
 			info.Damage = 200f;
 			info.Attacker = attacker;
 			info.Position = Position;
@@ -97,14 +94,16 @@ namespace SpeedDial.Player {
 
 			Inventory.DeleteContents();
 
-			//Create the combo score on the client
+			// create blood effects
 			if(LastDamage.Attacker is SpeedDialPlayer attacker && attacker != this) {
-				//attacker.ComboEvents(EyePos,(SpeedDialGame.ScoreBase * attacker.KillCombo));
+				// someone killed someone, base the effect direction on the attacker
 				BloodSplatter(EyePos + Vector3.Down * 20 - (attacker.EyePos + Vector3.Down * 20));
 			} else {
+				// suicide, effects just go down
 				BloodSplatter();
 			}
 
+			// funny ragdoll moment
 			BecomeRagdollOnClient(new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0));
 
 			Controller = null;
@@ -127,17 +126,9 @@ namespace SpeedDial.Player {
 			}
 		}
 
-		/// <summary>
-		/// A client side function for client side effects when the player has done damage
-		/// </summary>
 		[ClientRpc]
 		public void DidDamage(Vector3 pos, float amount, float healthinv) {
-			//Sound.FromScreen( "dm.ui_attacker" )
-			//	.SetPitch( 1 + healthinv * 1 );
-			//	
-			//HitIndicator.Current?.OnHit( pos, amount );
 			if(healthinv <= 0) {
-				Log.Info("AYYY");
 				int ScoreBase = SpeedDialGame.ScoreBase;
 				ComboEvents(pos, ScoreBase * KillCombo);
 			}
@@ -145,9 +136,6 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		public void TookDamage(Vector3 pos) {
-			//DebugOverlay.Sphere( pos, 5.0f, Color.Red, false, 50.0f );
-
-			//DamageIndicator.Current?.OnHit( pos );
 		}
 	}
 }

@@ -50,6 +50,11 @@ namespace SpeedDial {
 			}
 		}
 
+		public override void DoPlayerSuicide(Client cl) {
+			Log.Info($"{cl.Name} committed suicide.");
+			cl.Pawn.TakeDamage(DamageInfo.Generic(int.MaxValue));
+		}
+
 		public override void OnKilled(Client client, Entity pawn) {
 			//base.OnKilled(client, pawn);
 
