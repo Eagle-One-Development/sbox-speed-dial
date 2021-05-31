@@ -21,8 +21,7 @@ namespace SpeedDial.Player {
 		public bool pickup { get; set; }
 		private Entity pickUpEntity;
 
-		[Net]
-		public int maxCombo { get; set; }
+		
 
 		TimeSince timeSinceDropped;
 
