@@ -36,7 +36,7 @@ namespace SpeedDial.Player {
 			for(int i = 0; i < 5; i++) {
 				var trDir = pos + (Vector3.Down + (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 3 * 0.25f) * 100;
 				var tr = Sandbox.Trace.Ray(pos, trDir)
-						.UseHitboxes()
+						.WorldOnly()
 						.Ignore(this)
 						.Size(1)
 						.Run();
@@ -48,7 +48,7 @@ namespace SpeedDial.Player {
 			for(int i = 0; i < 5; i++) {
 				var trDir = pos + (Vector3.Down + (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 3 * 0.25f) * 100;
 				var tr = Sandbox.Trace.Ray(pos, trDir)
-						.UseHitboxes()
+						.WorldOnly()
 						.Ignore(this)
 						.Size(1)
 						.Run();
