@@ -19,10 +19,11 @@ namespace SpeedDial.Player {
 		public Color32 PlayerColor { get; set; }
 
 		[Net]
+		public int BodyGroup { get; set; }
+
+		[Net]
 		public bool pickup { get; set; }
 		private Entity pickUpEntity;
-
-
 
 		TimeSince timeSinceDropped;
 
@@ -48,6 +49,8 @@ namespace SpeedDial.Player {
 			} else {
 				PlayerColor = Color.Random;
 			}
+
+			BodyGroup = Rand.Int(0, 5);
 
 			Controller = new SpeedDialController();
 			Camera = new SpeedDialCamera();
@@ -117,6 +120,8 @@ namespace SpeedDial.Player {
 
 		public override void Respawn() {
 			SetModel("models/playermodels/playermodel_base.vmdl");
+
+			SetBodyGroup(1, BodyGroup);
 
 			RenderColor = PlayerColor;
 
