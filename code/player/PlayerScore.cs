@@ -12,6 +12,9 @@ namespace SpeedDial.Player {
 		[Net, Local]
 		public TimeSince TimeSinceMurdered { get; set; }
 
+		[Net]
+		public int maxCombo { get; set; }
+
 		[ClientRpc]
 		public void ComboEvents(Vector3 position, int amt) {
 			ComboPanel.Current.Bump();

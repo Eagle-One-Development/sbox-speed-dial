@@ -21,6 +21,9 @@ namespace SpeedDial.Player {
 		public bool pickup { get; set; }
 		private Entity pickUpEntity;
 
+		[Net]
+		public int maxCombo { get; set; }
+
 		TimeSince timeSinceDropped;
 
 		[Net, Predicted]
@@ -236,13 +239,18 @@ namespace SpeedDial.Player {
 			PlaySound( s );
 		}
 
-		public override void Simulate(Client cl) {
-			if(LifeState == LifeState.Dead) {
-				if(TimeSinceDied > RespawnTime && IsServer) {
+		public override void Simulate( Client cl ) {
+			if ( LifeState == LifeState.Dead ) {
+				if ( TimeSinceDied > RespawnTime && IsServer ) {
 
 					Respawn();
 				}
 				return;
+			}
+
+			if ( KillCombo > maxCombo )
+			{
+				maxCombo = KillCombo;
 			}
 
 			var controller = GetActiveController();
