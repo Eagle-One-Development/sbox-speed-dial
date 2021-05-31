@@ -1,5 +1,5 @@
 using System.Numerics;
-using System.Diagnostics;
+
 using System;
 using Sandbox;
 using SpeedDial.Weapons;
@@ -22,6 +22,9 @@ namespace SpeedDial.Player {
 		private Entity pickUpEntity;
 
 		TimeSince timeSinceDropped;
+
+		[Net, Predicted]
+		public TimeSince timeSinceMelee { get; set; }
 
 		public SpeedDialPlayer() {
 			Inventory = new SpeedDialInventory(this);
@@ -162,6 +165,77 @@ namespace SpeedDial.Player {
 			(Camera as SpeedDialCamera).Freeze = freeze;
 		}
 
+		/// <summary>
+		/// Handles Punching
+		/// </summary>
+		public void HandleMelee()
+		{
+			
+			if(Input.ActiveChild == null)
+			{
+				if ( Input.Pressed( InputButton.Attack1 ) )
+				{
+					if(timeSinceMelee > 0.33f )
+					{
+						timeSinceMelee = 0;
+						var forward = EyeRot.Forward;
+						Vector3 pos = EyePos + Vector3.Down * 20f;
+						var tr = Trace.Ray( pos, pos + forward * 40f )
+						.UseHitboxes()
+						.Ignore( this )
+						.Size( 20f )
+						.Run();
+
+						PlaySwoosh();
+						
+
+						//DebugOverlay.Line( EyePos + Vector3.Down * 20, tr.EndPos, Color.White, 1, false );
+
+						if ( !IsServer ) return;
+						if ( !tr.Entity.IsValid() ) return;
+
+						// We turn predictiuon off for this, so any exploding effects don't get culled etc
+						using ( Prediction.Off() )
+						{
+							var damage = DamageInfo.FromBullet( tr.EndPos, Owner.EyeRot.Forward * 100, 200 )
+								.UsingTraceResult( tr )
+								.WithAttacker( Owner )
+								.WithWeapon( this );
+
+							damage.Attacker = this;
+							damage.Position = Position;
+							PlayClientSound( "punch_connect_1" );
+							PlaySound( "punch_connect_1" );
+
+							tr.Entity.TakeDamage( damage );
+						}
+
+
+					}
+				}
+			}
+		}
+
+		[ClientRpc]
+		public void PlaySwoosh()
+		{
+			float f = Rand.Float( 1 );
+			if(f > 0.5f )
+			{
+				PlaySound( "punch_woosh_1" );
+			}
+			else
+			{
+				PlaySound( "punch_woosh_2" );
+			}
+		}
+
+		
+		public void PlayClientSound(string s)
+		{
+			PlaySound( s );
+		}
+
 		public override void Simulate(Client cl) {
 			if(LifeState == LifeState.Dead) {
 				if(TimeSinceDied > RespawnTime && IsServer) {
@@ -176,6 +250,11 @@ namespace SpeedDial.Player {
 
 			if(Input.ActiveChild != null) {
 				ActiveChild = Input.ActiveChild;
+			}
+
+			if ( ActiveChild == null )
+			{
+				HandleMelee();
 			}
 
 			if(Input.Pressed(InputButton.Attack2)) {
