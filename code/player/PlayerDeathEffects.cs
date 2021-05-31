@@ -77,19 +77,21 @@ namespace SpeedDial.Player {
 
 		async Task CreateParticleAsync(string particle, Entity entity, Vector3 forward, float delay = 0, string bone = "root", bool bloodpool = false) {
 			await Task.DelaySeconds(delay);
-			var pos = (entity as ModelEntity).GetBonePhysicsBody((entity as ModelEntity).GetBoneIndex(bone)).Position;
-			var ps = Particles.Create(particle, pos);
-			ps.SetForward(0, forward);
-			if(bloodpool) {
-				var trDir = pos + Vector3.Down * 1000;
-				var tr = Sandbox.Trace.Ray(pos, trDir)
-						.WorldAndEntities()
-						.UseHitboxes()
-						.Ignore(this)
-						.Size(1)
-						.Run();
+			if(entity is ModelEntity ent) {
+				var pos = (entity as ModelEntity).GetBonePhysicsBody((entity as ModelEntity).GetBoneIndex(bone)).Position;
+				var ps = Particles.Create(particle, pos);
+				ps.SetForward(0, forward);
+				if(bloodpool) {
+					var trDir = pos + Vector3.Down * 1000;
+					var tr = Sandbox.Trace.Ray(pos, trDir)
+							.WorldAndEntities()
+							.UseHitboxes()
+							.Ignore(this)
+							.Size(1)
+							.Run();
 
-				_ = CreateDecalAsync("decals/blood_splatter_floor.decal", tr, 0.5f);
+					_ = CreateDecalAsync("decals/blood_splatter_floor.decal", tr, 0.5f);
+				}
 			}
 		}
 
