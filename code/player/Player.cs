@@ -4,6 +4,7 @@ using System;
 using Sandbox;
 using SpeedDial.Weapons;
 using SpeedDial.UI;
+using SpeedDial.Meds;
 
 namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer : Sandbox.Player {
@@ -75,6 +76,13 @@ namespace SpeedDial.Player {
 						wep1.Velocity *= -0.5f;
 						
 					}
+				}
+
+
+				if ( other.Parent is BaseMedication drug )
+				{
+					StartTouch( other.Parent );
+					drug.PickUp();
 				}
 				return;
 			}
