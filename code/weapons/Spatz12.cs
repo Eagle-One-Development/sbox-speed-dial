@@ -13,6 +13,7 @@ namespace SpeedDial.Weapons {
 		public override float BulletForce => 0.3f;
 		public override float BulletDamage => 100;
 		public override float BulletSize => 3;
+		public override int BulletCount => 6;
 		public override Vector4 ScreenShakeParameters => new(1, 1.5f, 2, 1);
 	}
 }
