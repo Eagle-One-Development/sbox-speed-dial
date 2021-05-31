@@ -5,7 +5,6 @@ using Sandbox;
 using SpeedDial.Weapons;
 using SpeedDial.UI;
 
-
 namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer : Sandbox.Player {
 
