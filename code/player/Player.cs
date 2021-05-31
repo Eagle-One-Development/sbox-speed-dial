@@ -146,6 +146,21 @@ namespace SpeedDial.Player {
 
 		}
 
+		public void Freeze() {
+			(Controller as SpeedDialController).Freeze = true;
+			(Camera as SpeedDialCamera).Freeze = true;
+		}
+
+		public void Unfreeze() {
+			(Controller as SpeedDialController).Freeze = false;
+			(Camera as SpeedDialCamera).Freeze = false;
+		}
+
+		public void Freeze(bool freeze) {
+			(Controller as SpeedDialController).Freeze = freeze;
+			(Camera as SpeedDialCamera).Freeze = freeze;
+		}
+
 		public override void Simulate(Client cl) {
 			if(LifeState == LifeState.Dead) {
 				if(TimeSinceDied > RespawnTime && IsServer) {
