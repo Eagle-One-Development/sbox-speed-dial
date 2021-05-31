@@ -11,6 +11,6 @@ namespace SpeedDial.Weapons {
 		public override float BulletDamage => 100;
 		public override float BulletSize => 3;
 		public override string ShootSound => "rust_pistol.shoot";
-		public override string WorldModel => "models/weapons/sk_prop_pistol_01.vmdl";
+		public override string WorldModel => "models/playermodels/weapons/prop_pistol.vmdl";
 	}
 }

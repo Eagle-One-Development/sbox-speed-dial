@@ -39,7 +39,7 @@ namespace SpeedDial.Weapons {
 		public virtual float BulletSize => 1;
 		public virtual bool Automatic => false;
 		public virtual string ShootSound => "rust_pistol.shoot";
-		public virtual string WorldModel => "models/weapons/sk_prop_pistol_01.vmdl";
+		public virtual string WorldModel => "models/playermodels/weapons/prop_pistol.vmdl";
 		public virtual Vector4 ScreenShakeParameters => new(1, 1, 1, 1);
 		public virtual float Range => 4096;
 		public virtual int AmmoPerShot => 1;
@@ -107,12 +107,11 @@ namespace SpeedDial.Weapons {
 			if(!this.IsValid())
 				return;
 
-			if ( Owner != null )
-			{
+			if(Owner != null) {
 				previousOwner = Owner;
 			}
 
-			if (TimeSinceDeployed < 0.6f)
+			if(TimeSinceDeployed < 0.6f)
 				return;
 
 			if(CanPrimaryAttack()) {

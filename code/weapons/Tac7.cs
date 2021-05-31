@@ -19,7 +19,7 @@ namespace SpeedDial.Weapons {
 		public override float BulletDamage => 100;
 		public override float BulletSize => 3;
 		public override string ShootSound => "rust_smg.shoot";
-		public override string WorldModel => "models/weapons/sk_prop_rifle_01.vmdl";
+		public override string WorldModel => "models/playermodels/weapons/prop_rifle.vmdl";
 		public override bool Automatic => true;
 
 		// Override for burst fire
