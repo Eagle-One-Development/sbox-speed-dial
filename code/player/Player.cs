@@ -73,6 +73,7 @@ namespace SpeedDial.Player {
 						Sound.FromEntity("weaponhit", this);
 						KillMyself(wep1.previousOwner);
 						wep1.Velocity *= -0.5f;
+						
 					}
 				}
 				return;

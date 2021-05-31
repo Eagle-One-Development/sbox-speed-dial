@@ -107,7 +107,12 @@ namespace SpeedDial.Weapons {
 			if(!this.IsValid())
 				return;
 
-			if(TimeSinceDeployed < 0.6f)
+			if ( Owner != null )
+			{
+				previousOwner = Owner;
+			}
+
+			if (TimeSinceDeployed < 0.6f)
 				return;
 
 			if(CanPrimaryAttack()) {
