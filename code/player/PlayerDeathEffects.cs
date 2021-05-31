@@ -59,7 +59,7 @@ namespace SpeedDial.Player {
 			// three slightly different particle effects, splash will be the most noticeable 
 			_ = CreateParticleAsync("particles/blood/blood_splash.vpcf", Corpse, dir.Normal, 0, "head");
 
-			_ = CreateParticleAsync("particles/blood/blood_drops.vpcf", Corpse, Vector3.Down, 0.5f, "head", true);
+			_ = CreateParticleAsync("particles/blood/blood_drops.vpcf", Corpse, Vector3.Down, 0.5f, "head", true, 3);
 
 			_ = CreateParticleAsync("particles/blood/blood_plip.vpcf", Corpse, Vector3.Down, 0.7f, "head");
 		}
@@ -75,22 +75,25 @@ namespace SpeedDial.Player {
 			}
 		}
 
-		async Task CreateParticleAsync(string particle, Entity entity, Vector3 forward, float delay = 0, string bone = "root", bool bloodpool = false) {
+		async Task CreateParticleAsync(string particle, Entity entity, Vector3 forward, float delay = 0, string bone = "root", bool bloodpool = false, int pools = 1) {
 			await Task.DelaySeconds(delay);
 			if(entity is ModelEntity ent) {
-				var pos = ent.GetBonePhysicsBody(ent.GetBoneIndex(bone)).Position;
-				var ps = Particles.Create(particle, pos);
+				var boneBody = ent.GetBonePhysicsBody(ent.GetBoneIndex(bone));
+				var ps = Particles.Create(particle, boneBody.Position);
 				ps.SetForward(0, forward);
 				if(bloodpool) {
-					var trDir = pos + Vector3.Down * 1000;
-					var tr = Sandbox.Trace.Ray(pos, trDir)
-							.WorldAndEntities()
-							.UseHitboxes()
-							.Ignore(this)
-							.Size(1)
-							.Run();
+					for(int i = 0; i < pools; i++) {
+						await Task.DelaySeconds(i * 0.1f);
+						var trDir = boneBody.Position + Vector3.Down * 1000;
+						var tr = Sandbox.Trace.Ray(boneBody.Position, trDir)
+								.WorldAndEntities()
+								.UseHitboxes()
+								.Ignore(this)
+								.Size(1)
+								.Run();
 
-					_ = CreateDecalAsync("decals/blood_splatter_floor.decal", tr, 0.5f);
+						_ = CreateDecalAsync("decals/blood_splatter_floor.decal", tr, 0.5f);
+					}
 				}
 			}
 		}

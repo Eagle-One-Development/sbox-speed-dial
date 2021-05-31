@@ -12,6 +12,7 @@ namespace SpeedDial {
 			Precache.Add("particles/pistol_muzzleflash.vpcf");
 			Precache.Add("particles/impact.generic.vpcf");
 			Precache.Add("particles/weapon_fx/bullet_trail.vpcf");
+			Precache.Add("particles/pistol_ejectbrass.vpcf");
 		}
 	}
 }
