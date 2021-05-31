@@ -1173,7 +1173,7 @@
 						m_name = "pistol"
 						m_childNodeID = 
 						{
-							m_id = 1320436731
+							m_id = 555617305
 						}
 						m_stateID = 
 						{
@@ -1230,7 +1230,7 @@
 						m_name = "SMG"
 						m_childNodeID = 
 						{
-							m_id = 1320436731
+							m_id = 555617305
 						}
 						m_stateID = 
 						{
@@ -1287,7 +1287,7 @@
 						m_name = "Shotgun"
 						m_childNodeID = 
 						{
-							m_id = 1252706675
+							m_id = 1859365194
 						}
 						m_stateID = 
 						{
@@ -1401,7 +1401,7 @@
 						m_name = "Melee"
 						m_childNodeID = 
 						{
-							m_id = 1957814626
+							m_id = 1202866230
 						}
 						m_stateID = 
 						{
@@ -1458,7 +1458,7 @@
 						m_name = "Ability"
 						m_childNodeID = 
 						{
-							m_id = 1957814626
+							m_id = 1202866230
 						}
 						m_stateID = 
 						{
@@ -1515,7 +1515,7 @@
 						m_name = "EMPTY"
 						m_childNodeID = 
 						{
-							m_id = 1957814626
+							m_id = 1202866230
 						}
 						m_stateID = 
 						{
@@ -5291,7 +5291,7 @@
 			{
 				_class = "CBlend2DAnimNode"
 				m_sName = "walk"
-				m_vecPosition = [ -998.0, 1559.0 ]
+				m_vecPosition = [ -949.0, 1551.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1202866230
@@ -6816,7 +6816,7 @@
 			{
 				_class = "CBlend2DAnimNode"
 				m_sName = "rifle_walk"
-				m_vecPosition = [ -694.0, 1305.0 ]
+				m_vecPosition = [ -896.0, 1292.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1859365194
