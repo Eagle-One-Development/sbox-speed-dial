@@ -1892,7 +1892,6 @@
 								bone = "thigh_l"
 							},
 						]
-						disabled = true
 						m_bDoBonesOrientAlongPositiveX = true
 						"m_DefaultSolverSettings.m_nNumIterations" = 6
 						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
@@ -1945,7 +1944,6 @@
 								bone = "thigh_r"
 							},
 						]
-						disabled = true
 						m_bDoBonesOrientAlongPositiveX = true
 						"m_DefaultSolverSettings.m_nNumIterations" = 6
 						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"

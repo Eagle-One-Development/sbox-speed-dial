@@ -803,15 +803,15 @@
 			{
 				_class = "CTwoBoneIKAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 927.0, 1802.0 ]
+				m_vecPosition = [ 821.0, 2012.0 ]
 				m_nNodeID = 
 				{
 					m_id = 289694236
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_childID = 
 				{
-					m_id = 4294967295
+					m_id = 905804277
 				}
 				m_ikChainName = "IK_Leg_Left"
 				m_endEffectorType = "IkEndEffector_Bone"
@@ -6278,12 +6278,12 @@
 			{
 				_class = "CTwoBoneIKAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 996.0, 1807.0 ]
+				m_vecPosition = [ 1022.0, 1981.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1615485554
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_childID = 
 				{
 					m_id = 289694236
@@ -6754,7 +6754,7 @@
 				{
 					m_id = 1851828504
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_childID = 
 				{
 					m_id = 1615485554
