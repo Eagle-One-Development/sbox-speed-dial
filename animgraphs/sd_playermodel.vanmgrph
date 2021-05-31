@@ -446,7 +446,7 @@
 				{
 					m_id = 43047625
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_childID = 
 				{
 					m_id = 1202866230
@@ -496,7 +496,7 @@
 				{
 					m_id = 78561993
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_childID = 
 				{
 					m_id = 1859365194
@@ -584,7 +584,7 @@
 				{
 					m_id = 236076305
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_states = 
 				[
 					{
@@ -745,7 +745,7 @@
 				{
 					m_id = 284662444
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "unarmed_idle"
 				m_playbackSpeed = 1.0
@@ -787,7 +787,7 @@
 				{
 					m_id = 285939101
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "left_jab"
 				m_playbackSpeed = 1.0
@@ -844,7 +844,7 @@
 				{
 					m_id = 306794296
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "left_jab"
 				m_playbackSpeed = 1.0
@@ -886,7 +886,7 @@
 				{
 					m_id = 357684445
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_states = 
 				[
 					{
@@ -1999,7 +1999,7 @@
 				{
 					m_id = 555617305
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_items = 
 				[
 					{
@@ -2090,12 +2090,12 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 163.0, 2316.0 ]
+				m_vecPosition = [ 125.0, 2328.0 ]
 				m_nNodeID = 
 				{
 					m_id = 569586905
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "idle_pistol_aim"
 				m_playbackSpeed = 5.0
@@ -2900,7 +2900,7 @@
 				{
 					m_id = 770770966
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_aim_idle"
 				m_playbackSpeed = 1.0
@@ -3113,7 +3113,7 @@
 				{
 					m_id = 905804277
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_states = 
 				[
 					{
@@ -3260,7 +3260,7 @@
 				{
 					m_id = 909451985
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_childID = 
 				{
 					m_id = 2047231774
@@ -3283,7 +3283,7 @@
 				{
 					m_id = 940632011
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_children = 
 				[
 					{
@@ -3324,12 +3324,12 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -661.0, 1596.0 ]
+				m_vecPosition = [ -770.0, 1674.0 ]
 				m_nNodeID = 
 				{
 					m_id = 986242409
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "idle_pistol_aim"
 				m_playbackSpeed = 1.0
@@ -3396,7 +3396,7 @@
 				{
 					m_id = 994428825
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_states = 
 				[
 					{
@@ -4404,7 +4404,7 @@
 				{
 					m_id = 1084477314
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_weightListName = "firing"
 				m_child1ID = 
 				{
@@ -5338,7 +5338,7 @@
 				{
 					m_id = 1202866230
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_items = 
 				[
 					{
@@ -5461,7 +5461,7 @@
 				{
 					m_id = 1252706675
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_childID = 
 				{
 					m_id = 78561993
@@ -5486,7 +5486,7 @@
 				{
 					m_id = 1255631825
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_states = 
 				[
 					{
@@ -6075,7 +6075,7 @@
 				{
 					m_id = 1320436731
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_childID = 
 				{
 					m_id = 1753967864
@@ -6169,7 +6169,7 @@
 				{
 					m_id = 1427589181
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_fire"
 				m_playbackSpeed = 1.5
@@ -6244,7 +6244,7 @@
 				{
 					m_id = 1511044145
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_weightListName = "holding_weapon"
 				m_child1ID = 
 				{
@@ -6415,7 +6415,7 @@
 				{
 					m_id = 1691432854
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_baseChildID = 
 				{
 					m_id = 994428825
@@ -6467,7 +6467,7 @@
 				{
 					m_id = 1753967864
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_childID = 
 				{
 					m_id = 555617305
@@ -6863,7 +6863,7 @@
 				{
 					m_id = 1859365194
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_items = 
 				[
 					{
@@ -6959,7 +6959,7 @@
 				{
 					m_id = 1866668698
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "right_jab"
 				m_playbackSpeed = 1.0
@@ -7049,7 +7049,7 @@
 				{
 					m_id = 1957814626
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_childID = 
 				{
 					m_id = 43047625
@@ -7069,7 +7069,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -937.0, 1097.0 ]
+				m_vecPosition = [ -1084.0, 1036.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1959136241
@@ -7287,7 +7287,7 @@
 				{
 					m_id = 2007043503
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_states = 
 				[
 					{
@@ -7581,7 +7581,7 @@
 				{
 					m_id = 2028981333
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "shotgun"
 				m_playbackSpeed = 1.0
@@ -7623,7 +7623,7 @@
 				{
 					m_id = 2047231774
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_childID = 
 				{
 					m_id = 905804277
@@ -7691,7 +7691,7 @@
 				{
 					m_id = 2106747085
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_baseChildID = 
 				{
 					m_id = 994428825
