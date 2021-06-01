@@ -7,18 +7,15 @@ using System.Threading.Tasks;
 /// Any entities that implement this interface are added as a record and respawned
 /// So it should really just be weapons, ammo and healthpacks etc
 /// </summary>
-public interface IRespawnableEntity
-{
+public interface IRespawnableEntity {
 
 }
 
-public class ItemRespawn
-{
+public class ItemRespawn {
 	/// <summary>
 	/// A record of an entity and its position
 	/// </summary>
-	public class Record
-	{
+	public class Record {
 		public Transform Transform;
 		public string ClassName;
 	}
@@ -32,15 +29,12 @@ public class ItemRespawn
 	/// Create a bunch of records from the existing entities. This should be called before
 	/// any players are spawned, but right after the level is loaded.
 	/// </summary>
-	public static void Init()
-	{
+	public static void Init() {
 		Records = new();
 
-		foreach ( var entity in Entity.All )
-		{
-			if ( entity is IRespawnableEntity )
-			{
-				AddRecordFromEntity( entity );
+		foreach(var entity in Entity.All) {
+			if(entity is IRespawnableEntity) {
+				AddRecordFromEntity(entity);
 			}
 		}
 	}
@@ -49,10 +43,8 @@ public class ItemRespawn
 	/// Respawn this entity if it gets deleted (and Taken is called before!)
 	/// </summary>
 	/// <param name="ent"></param>
-	public static void AddRecordFromEntity( Entity ent )
-	{
-		var record = new Record
-		{
+	public static void AddRecordFromEntity(Entity ent) {
+		var record = new Record {
 			Transform = ent.Transform,
 			ClassName = ent.ClassInfo.Name
 		};
@@ -64,23 +56,20 @@ public class ItemRespawn
 	/// Entity has been picked up, or deleted or something.
 	/// If it was in our records, start a respawn timer
 	/// </summary>
-	public static void Taken( Entity ent )
-	{
-		if ( Records.Remove( ent, out var record ) )
-		{
-			_ = RespawnAsync( record );
+	public static void Taken(Entity ent) {
+		if(Records.Remove(ent, out var record)) {
+			_ = RespawnAsync(record);
 		}
 	}
 
 	/// <summary>
 	/// Async Respawn timer. Wait 30 seconds, spawn the entity, add a record for it.
 	/// </summary>
-	static async Task RespawnAsync( Record record )
-	{
+	static async Task RespawnAsync(Record record) {
 		// TODO - Take.Delay In Game Time 
-		await GameTask.Delay( 1000 * 30 );
+		await GameTask.DelaySeconds(10);
 
-		var ent = Library.Create<Entity>( record.ClassName );
+		var ent = Library.Create<Entity>(record.ClassName);
 		ent.Transform = record.Transform;
 
 		Records[ent] = record;
