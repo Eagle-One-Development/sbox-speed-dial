@@ -13,10 +13,11 @@ namespace SpeedDial.Meds
 	public class BaseMedication : ModelEntity, IRespawnableEntity
 	{
 
-		public virtual string WorldModel    => "models/weapons/sk_prop_pistol_01.vmdl";
+		public virtual string WorldModel    => "models/abilities/sm_candy.vmdl";
 		public virtual float  rotationSpeed => 75f;
-		public virtual string drugName      => "Over the Counter Medication";
-		public virtual float drugDuration   => 5f;
+		public virtual string drugName      => "POLVO";
+		public virtual float drugDuration   => 4f;
+		public virtual DrugType drug		=>	DrugType.Polvo;
 
 		private Vector3 initialPosition = Vector3.Zero;
 
@@ -60,5 +61,13 @@ namespace SpeedDial.Meds
 		{
 			Delete();
 		}
+	}
+
+	public enum DrugType
+	{
+		Polvo,
+		Leaf,
+		Ollie,
+		Ritindi
 	}
 }

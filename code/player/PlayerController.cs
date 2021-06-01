@@ -26,6 +26,9 @@ namespace SpeedDial.Player {
 		[Net, Local]
 		public bool Freeze { get; set; } = false;
 
+		[Net, Local]
+		public bool fast { get; set; } = false;
+
 		public Unstuck Unstuck;
 
 
@@ -110,6 +113,12 @@ namespace SpeedDial.Player {
 				}
 			}
 
+
+			float f = 1f;
+			if ( (Pawn as SpeedDialPlayer).medTaken && (Pawn as SpeedDialPlayer).currentDrug == Meds.DrugType.Polvo )
+			{
+				f = 2f;
+			}
 			//
 			// Work out wish velocity.. just take input, rotate it to view, clamp to -1, 1
 			//
@@ -119,7 +128,7 @@ namespace SpeedDial.Player {
 			WishVelocity = WishVelocity.WithZ(0);
 
 			WishVelocity = WishVelocity.Normal * inSpeed;
-			WishVelocity *= DefaultSpeed;
+			WishVelocity *= DefaultSpeed * f;
 
 
 			bool bStayOnGround = false;

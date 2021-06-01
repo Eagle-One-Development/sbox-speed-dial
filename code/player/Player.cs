@@ -31,6 +31,18 @@ namespace SpeedDial.Player {
 		[Net, Predicted]
 		public TimeSince timeSinceMelee { get; set; }
 
+		[Net, Predicted]
+		public TimeSince timeSinceMedTaken { get; set; }
+
+		[Net]
+		public bool medTaken { get; set; }
+
+		[Net]
+		public float medDuration { get; set; }
+		
+		[Net]
+		public DrugType currentDrug { get; set; }
+
 		public SpeedDialPlayer() {
 			Inventory = new SpeedDialInventory(this);
 		}
@@ -99,14 +111,22 @@ namespace SpeedDial.Player {
 		}
 
 		[ClientRpc]
-		public void IncreaseWeaponClip() {
-			if(ActiveChild is BaseSpeedDialWeapon weapon) {
-				if(IsClient)
-					Log.Info("Updated clip on client in rpc");
-				if(IsServer)
-					Log.Info("Updated clip on server in rpc");
+		public void IncreaseWeaponClip()
+		{
+			if ( ActiveChild is BaseSpeedDialWeapon weapon )
+			{
+				if ( IsClient )
+					Log.Info( "Updated clip on client in rpc" );
+				if ( IsServer )
+					Log.Info( "Updated clip on server in rpc" );
 				weapon.AwardAmmo();
 			}
+		}
+
+		[ClientRpc]
+		public void DrugBump(string s )
+		{
+			AmmoPanel.Current.DrugBump(s);
 		}
 
 		public void Freeze() {
@@ -183,7 +203,7 @@ namespace SpeedDial.Player {
 			} else {
 				PlaySound("punch_woosh_2");
 			}
-			Log.Info( "AHHHH" );
+			
 		}
 
 
@@ -214,6 +234,21 @@ namespace SpeedDial.Player {
 
 			if(ActiveChild == null) {
 				_ = HandleMelee();
+			}
+
+			
+
+			if(timeSinceMedTaken > medDuration )
+			{
+				medTaken = false;
+				//Basically remove our extra health after the drug duration if we're high on leaf
+				if(currentDrug == DrugType.Leaf )
+				{
+					if(Health > 100 )
+					{
+						Health = 100;
+					}
+				}
 			}
 
 			if(Input.Pressed(InputButton.Attack2)) {
@@ -272,9 +307,27 @@ namespace SpeedDial.Player {
 				}
 
 
-				if(other.Parent is BaseMedication drug) {
+				if(other.Parent is BaseMedication drug && !medTaken) {
 					StartTouch(other.Parent);
 					drug.PickUp();
+					medTaken = true;
+					if ( drug.drug != DrugType.Leaf )
+					{
+						
+						
+					}
+					else
+					{	
+						//Since Leaf lets you take an extra hit we don't need to do any kind of effect over time so we can just set the health to 200
+						Health = 200f;
+						
+					}
+					currentDrug = drug.drug;
+					timeSinceMedTaken = 0;
+					medTaken = true;
+					medDuration = drug.drugDuration;
+					DrugBump( drug.drugName );
+
 				}
 				return;
 			}

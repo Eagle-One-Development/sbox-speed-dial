@@ -10,13 +10,22 @@ ammopanel {
         position: absolute;
         align-items: center;
         justify-content: center;
-        
+
+        .medlabel {
+            position: absolute;
+            font-family: VCR_OSD_MONO;
+            color: #fff;
+            font-size: 96px;
+            text-align: center;
+            font-weight: bold;
+        }
 
         .pickupLabel {
+            
             font-family: VCR_OSD_MONO;
             color: #fff;
             font-size: 25px;
-            bottom:5%;
+            bottom: 5%;
             text-align: center;
             font-weight: bold;
         }
