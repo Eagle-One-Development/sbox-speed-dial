@@ -128,8 +128,6 @@ namespace SpeedDial.Player {
 		/// Handles Punching
 		/// </summary>
 		async Task HandleMelee() {
-
-			if(Input.ActiveChild == null) {
 				if(Input.Pressed(InputButton.Attack1)) {
 					if(timeSinceMelee > 0.33f) {
 						await Task.DelaySeconds(0.1f);
@@ -142,8 +140,12 @@ namespace SpeedDial.Player {
 						.Size(20f)
 						.Run();
 
+						if ( IsClient )
+						{
+
 						PlaySwoosh();
 
+						}
 						SetAnimBool("b_attack", true);
 
 						//DebugOverlay.Line(EyePos + Vector3.Down * 20, tr.EndPos, Color.White, 1, false);
@@ -169,7 +171,7 @@ namespace SpeedDial.Player {
 						}
 					}
 				}
-			}
+
 		}
 
 		[ClientRpc]
@@ -177,9 +179,11 @@ namespace SpeedDial.Player {
 			float f = Rand.Float(1);
 			if(f > 0.5f) {
 				PlaySound("punch_woosh_1");
+
 			} else {
 				PlaySound("punch_woosh_2");
 			}
+			Log.Info( "AHHHH" );
 		}
 
 
