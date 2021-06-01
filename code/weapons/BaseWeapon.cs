@@ -118,6 +118,8 @@ namespace SpeedDial.Weapons {
 				TimeSincePrimaryAttack = 0;
 				AttackPrimary();
 			}
+
+
 		}
 
 		public virtual bool CanPrimaryAttack() {
@@ -157,7 +159,7 @@ namespace SpeedDial.Weapons {
 			foreach(var tr in TraceBullet(Owner.EyePos, Owner.EyePos + forward * Range, bulletSize)) {
 				tr.Surface.DoBulletImpact(tr);
 
-				BulletTracer(EffectEntity.Position, tr.EndPos);
+				BulletTracer(EffectEntity.GetAttachment("muzzle", true).Position, tr.EndPos);
 
 				if(!IsServer) continue;
 				if(!tr.Entity.IsValid()) continue;
