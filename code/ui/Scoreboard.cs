@@ -35,6 +35,12 @@ namespace SpeedDial.UI {
 		public override void Tick() {
 			base.Tick();
 
+			foreach ( var (key, value) in Entries )
+			{
+				SpeedDialScoreboardEntry entry = value as SpeedDialScoreboardEntry;
+				entry.FauxTick();
+			}
+
 			SetClass("open", Local.Client?.Input.Down(InputButton.Score) ?? false);
 		}
 
