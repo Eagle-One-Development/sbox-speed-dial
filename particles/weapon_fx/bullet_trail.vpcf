@@ -126,7 +126,7 @@
 			_class = "C_OP_FadeAndKill"
 			m_flEndFadeInTime = 0.0
 			m_flStartFadeOutTime = 0.0
-			m_flEndFadeOutTime = 0.3
+			m_flEndFadeOutTime = 0.1
 		},
 	]
 	m_Renderers = 
