@@ -3,8 +3,8 @@
 	position: absolute;
 	z-index: 100;
 	flex-direction: column;
-	font-family: Poppins;
-	font-size: 18px;
+	font-family: VCR_OSD_MONO;
+	font-size: 24px;
 	font-weight: 500;
 	color: white;
 	width: 100%;
@@ -30,7 +30,7 @@
 
 	.score, .maxcombo
 	{
-		width: 120px;
+		width: 140px;
 		text-align: right;
 	}
 

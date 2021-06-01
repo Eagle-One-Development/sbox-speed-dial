@@ -25,9 +25,9 @@ namespace SpeedDial.UI {
 		public virtual void UpdateFrom(PlayerScore.Entry entry) {
 			Entry = entry;
 
-			PlayerName.Text = entry.GetString("name");
-			Score.Text = entry.Get<int>("score", 0).ToString();
-			MaxCombo.Text = entry.Get<int>("maxcombo", 0).ToString();
+			PlayerName.Text = $"{entry.GetString("name")}";
+			Score.Text = $"{entry.Get<int>("score", 0)} pts";
+			MaxCombo.Text = $"x{entry.Get<int>("maxcombo", 0)}";
 
 			SetClass("me", Local.Client != null && entry.Get<ulong>("steamid", 0) == Local.Client.SteamId);
 		}
