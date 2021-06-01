@@ -2,6 +2,7 @@
 using Sandbox;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using SpeedDial.Meds;
 
 /// <summary>
 /// Any entities that implement this interface are added as a record and respawned
@@ -18,6 +19,7 @@ public class ItemRespawn {
 	public class Record {
 		public Transform Transform;
 		public string ClassName;
+		public float RespawnTime;
 	}
 
 	/// <summary>
@@ -46,7 +48,8 @@ public class ItemRespawn {
 	public static void AddRecordFromEntity(Entity ent) {
 		var record = new Record {
 			Transform = ent.Transform,
-			ClassName = ent.ClassInfo.Name
+			ClassName = ent.ClassInfo.Name,
+			RespawnTime = (ent as BaseMedication).RespawnTime
 		};
 
 		Records[ent] = record;
@@ -67,7 +70,7 @@ public class ItemRespawn {
 	/// </summary>
 	static async Task RespawnAsync(Record record) {
 		// TODO - Take.Delay In Game Time 
-		await GameTask.DelaySeconds(10);
+		await GameTask.DelaySeconds(record.RespawnTime);
 
 		var ent = Library.Create<Entity>(record.ClassName);
 		ent.Transform = record.Transform;

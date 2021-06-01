@@ -17,6 +17,9 @@ namespace SpeedDial.Meds {
 		public virtual float drugDuration => 4f;
 		public virtual DrugType drug => DrugType.Polvo;
 
+		[HammerProp]
+		public virtual float RespawnTime { get; set; }
+
 		private Vector3 initialPosition = Vector3.Zero;
 
 
@@ -53,7 +56,6 @@ namespace SpeedDial.Meds {
 		}
 
 		public virtual void PickUp() {
-			Log.Info("PICKUP");
 			ItemRespawn.Taken(this);
 			Delete();
 		}
