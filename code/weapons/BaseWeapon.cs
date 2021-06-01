@@ -149,11 +149,10 @@ namespace SpeedDial.Weapons {
 			}
 		}
 
-		public virtual void ShootBullet( float spread, float force, float damage, float bulletSize ) {
+		public virtual void ShootBullet(float spread, float force, float damage, float bulletSize) {
 			float f = 1f;
 			var player = Owner as SpeedDialPlayer;
-			if ( player.medTaken && player.currentDrug == Meds.DrugType.Ritindi )
-			{
+			if(player.medTaken && player.currentDrug == Meds.DrugType.Ritindi) {
 
 				f = 0.25f;
 			}
@@ -162,26 +161,21 @@ namespace SpeedDial.Weapons {
 			var forward = Owner.EyeRot.Forward;
 			forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f * f;
 			forward = forward.Normal;
-			
+
 			AmmoPanel.Current?.Bump();
 			int index = 0;
 			foreach(var tr in TraceBullet(Owner.EyePos, Owner.EyePos + forward * Range, bulletSize)) {
 				tr.Surface.DoBulletImpact(tr);
 
-				if ( index == 0 )
-				{
-					Log.Info( $"INDEX: {index}" );
-					BulletTracer( EffectEntity.GetAttachment( "muzzle", true ).Position, tr.EndPos );
-				}
-				else
-				{
-					BulletTracer( tr.StartPos, tr.EndPos );
-					Log.Info( $"INDEX: {index}" );
+				if(index == 0) {
+					BulletTracer(EffectEntity.GetAttachment("muzzle", true).Position, tr.EndPos);
+				} else {
+					BulletTracer(tr.StartPos, tr.EndPos);
 				}
 
 				index++;
 
-				if (!IsServer) continue;
+				if(!IsServer) continue;
 				if(!tr.Entity.IsValid()) continue;
 
 				using(Prediction.Off()) {
@@ -192,7 +186,7 @@ namespace SpeedDial.Weapons {
 
 					tr.Entity.TakeDamage(damageInfo);
 				}
-				
+
 			}
 		}
 
@@ -211,51 +205,45 @@ namespace SpeedDial.Weapons {
 
 			var player = Owner as SpeedDialPlayer;
 
-			if ( player.medTaken && player.currentDrug == Meds.DrugType.Ollie)
-			{
-				if ( tr.Entity is SpeedDialPlayer )
-				{
+			if(player.medTaken && player.currentDrug == Meds.DrugType.Ollie) {
+				if(tr.Entity is SpeedDialPlayer) {
 					var dir = tr.EndPos - tr.StartPos;
-					var tr2 = Trace.Ray( tr.EndPos, end + dir.Normal * 100f )
+					var tr2 = Trace.Ray(tr.EndPos, end + dir.Normal * 100f)
 							.UseHitboxes()
-							.HitLayer( CollisionLayer.Water, !InWater )
-							.Ignore( this )
+							.HitLayer(CollisionLayer.Water, !InWater)
+							.Ignore(this)
 							.Ignore(tr.Entity)
-							.Size( radius )
+							.Size(radius)
 							.Run();
 
-					if ( IsClient )
-					{
+					if(IsClient) {
 						//DebugOverlay.Line( tr2.StartPos, tr2.EndPos, 10f, false );
 						//DebugOverlay.Sphere( tr2.StartPos, 10f, Color.Blue, false, 10f );
 						//DebugOverlay.Sphere( tr2.EndPos + Vector3.Up * 100f, 10f, Color.Red, false, 10f );
 						//DebugOverlay.Sphere( tr.EndPos, 10f, Color.Red, false, 10f );
 					}
 					yield return tr2;
-				}
-				else
-				{
+				} else {
 					var inDir = tr.EndPos - tr.StartPos;
-					float f = Vector3.Dot( inDir.Normal, tr.Normal );
-					
-					if (  f > -0.7f )
-					{
-						var dir = Vector3.Reflect( inDir, tr.Normal );
-						var tr2 = Trace.Ray( tr.EndPos, end + dir * 5000f )
+					float f = Vector3.Dot(inDir.Normal, tr.Normal);
+
+					if(f > -0.7f) {
+						var dir = Vector3.Reflect(inDir, tr.Normal);
+						var tr2 = Trace.Ray(tr.EndPos, end + dir * 5000f)
 								.UseHitboxes()
-								.HitLayer( CollisionLayer.Water, !InWater )
-								.Ignore( Owner )
-								.Ignore( this )
-								.Size( radius )
+								.HitLayer(CollisionLayer.Water, !InWater)
+								.Ignore(Owner)
+								.Ignore(this)
+								.Size(radius)
 								.Run();
 
-						
+
 						yield return tr2;
 					}
 				}
 			}
 
-			
+
 		}
 
 		[ClientRpc]

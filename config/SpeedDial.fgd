@@ -1,19 +1,19 @@
-@PointClass base(Targetname) editormodel( "models/jballv2/jball.vmdl" ) = meds_leaf : 
+@PointClass base(Targetname) editormodel( "models/abilities/sm_candy.vmdl" ) = meds_leaf : 
     "Leaf Drug"
 [
 ]
 
-@PointClass base(Targetname) editormodel( "models/jballv2/jball.vmdl" ) = meds_ollie : 
+@PointClass base(Targetname) editormodel( "models/abilities/sm_candy.vmdl" ) = meds_ollie : 
     "Ollie Drug"
 [
 ]
 
-@PointClass base(Targetname) editormodel( "models/jballv2/jball.vmdl" ) = meds_polvo : 
+@PointClass base(Targetname) editormodel( "models/abilities/sm_candy.vmdl" ) = meds_polvo : 
     "Polvo Drug"
 [
 ]
 
-@PointClass base(Targetname) editormodel( "models/jballv2/jball.vmdl" ) = meds_ritindi : 
+@PointClass base(Targetname) editormodel( "models/abilities/sm_candy.vmdl" ) = meds_ritindi : 
     "Ritindi Drug"
 [
 ]
