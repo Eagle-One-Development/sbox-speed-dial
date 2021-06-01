@@ -31,7 +31,6 @@ namespace SpeedDial.Weapons {
 
 		public virtual float PrimaryRate => 5.0f;
 		public virtual float SecondaryRate => 15.0f;
-		public virtual int AmmoToAward => 5;
 		public virtual int BulletCount => 1;
 		public virtual float BulletSpread => 0.1f;
 		public virtual float BulletForce => 1;
@@ -43,6 +42,7 @@ namespace SpeedDial.Weapons {
 		public virtual Vector4 ScreenShakeParameters => new(1, 1, 1, 1);
 		public virtual float Range => 4096;
 		public virtual int AmmoPerShot => 1;
+		public virtual float DeployTime => 0.6f;
 
 		public virtual int HoldType => 1;
 
@@ -90,7 +90,7 @@ namespace SpeedDial.Weapons {
 		}
 
 		async Task SetGravity() {
-			await Task.DelaySeconds(0.2f);
+			await GameTask.DelaySeconds(0.2f);
 			if(PhysicsBody.IsValid())
 				PhysicsBody.GravityScale = 1.0f;
 		}
@@ -111,15 +111,13 @@ namespace SpeedDial.Weapons {
 				previousOwner = Owner;
 			}
 
-			if(TimeSinceDeployed < 0.6f)
+			if(TimeSinceDeployed < DeployTime)
 				return;
 
 			if(CanPrimaryAttack()) {
 				TimeSincePrimaryAttack = 0;
 				AttackPrimary();
 			}
-
-
 		}
 
 		public virtual bool CanPrimaryAttack() {
@@ -152,11 +150,10 @@ namespace SpeedDial.Weapons {
 		public virtual void ShootBullet(float spread, float force, float damage, float bulletSize) {
 			float f = 1f;
 			var player = Owner as SpeedDialPlayer;
-			if(player.medTaken && player.currentDrug == Meds.DrugType.Ritindi) {
+			if(player.MedTaken && player.CurrentDrug == Meds.DrugType.Ritindi) {
 
 				f = 0.25f;
 			}
-
 
 			var forward = Owner.EyeRot.Forward;
 			forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f * f;
@@ -186,70 +183,56 @@ namespace SpeedDial.Weapons {
 
 					tr.Entity.TakeDamage(damageInfo);
 				}
-
 			}
 		}
 
 		public virtual IEnumerable<TraceResult> TraceBullet(Vector3 start, Vector3 end, float radius = 2.0f) {
-			bool InWater = Physics.TestPointContents(start, CollisionLayer.Water);
 
-			var tr = Trace.Ray(start, end)
+			var bullet = Trace.Ray(start, end)
 					.UseHitboxes()
-					.HitLayer(CollisionLayer.Water, !InWater)
 					.Ignore(Owner)
 					.Ignore(this)
 					.Size(radius)
 					.Run();
 
-			yield return tr;
+			yield return bullet;
 
 			var player = Owner as SpeedDialPlayer;
 
-			if(player.medTaken && player.currentDrug == Meds.DrugType.Ollie) {
-				if(tr.Entity is SpeedDialPlayer) {
-					var dir = tr.EndPos - tr.StartPos;
-					var tr2 = Trace.Ray(tr.EndPos, end + dir.Normal * 100f)
+			if(player.MedTaken && player.CurrentDrug == Meds.DrugType.Ollie) {
+				// pierce through the first player hit
+				if(bullet.Entity is SpeedDialPlayer) {
+					var dir = bullet.EndPos - bullet.StartPos;
+					var penetrate = Trace.Ray(bullet.EndPos, bullet.EndPos + dir.Normal * 100f)
 							.UseHitboxes()
-							.HitLayer(CollisionLayer.Water, !InWater)
 							.Ignore(this)
-							.Ignore(tr.Entity)
+							.Ignore(bullet.Entity)
 							.Size(radius)
 							.Run();
 
-					if(IsClient) {
-						//DebugOverlay.Line( tr2.StartPos, tr2.EndPos, 10f, false );
-						//DebugOverlay.Sphere( tr2.StartPos, 10f, Color.Blue, false, 10f );
-						//DebugOverlay.Sphere( tr2.EndPos + Vector3.Up * 100f, 10f, Color.Red, false, 10f );
-						//DebugOverlay.Sphere( tr.EndPos, 10f, Color.Red, false, 10f );
-					}
-					yield return tr2;
+					yield return penetrate;
 				} else {
-					var inDir = tr.EndPos - tr.StartPos;
-					float f = Vector3.Dot(inDir.Normal, tr.Normal);
+					// ricochet off the wall
+					var inDir = bullet.EndPos - bullet.StartPos;
+					float dot = Vector3.Dot(inDir.Normal, bullet.Normal);
 
-					if(f > -0.7f) {
-						var dir = Vector3.Reflect(inDir, tr.Normal);
-						var tr2 = Trace.Ray(tr.EndPos, end + dir * 5000f)
+					if(dot < 0) {
+						var dir = Vector3.Reflect(inDir, bullet.Normal);
+						var ricochet = Trace.Ray(bullet.EndPos, end + dir * Range)
 								.UseHitboxes()
-								.HitLayer(CollisionLayer.Water, !InWater)
 								.Ignore(Owner)
 								.Ignore(this)
 								.Size(radius)
 								.Run();
 
-
-						yield return tr2;
+						yield return ricochet;
 					}
 				}
 			}
-
-
 		}
 
 		[ClientRpc]
 		protected virtual void ShootEffects() {
-			Host.AssertClient();
-
 			Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
 			Particles.Create("particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point");
 
@@ -262,8 +245,6 @@ namespace SpeedDial.Weapons {
 
 		[ClientRpc]
 		protected virtual void BulletTracer(Vector3 from, Vector3 to) {
-			Host.AssertClient();
-
 			var ps = Particles.Create("particles/weapon_fx/bullet_trail.vpcf", to);
 			ps.SetPos(0, from);
 			ps.SetPos(1, to);
@@ -275,10 +256,6 @@ namespace SpeedDial.Weapons {
 
 			AmmoClip -= amount;
 			return true;
-		}
-
-		public void AwardAmmo() {
-			AmmoClip = Math.Clamp(AmmoClip + AmmoToAward, 0, ClipSize);
 		}
 
 		public override void OnCarryStart(Entity carrier) {
