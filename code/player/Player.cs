@@ -218,7 +218,7 @@ namespace SpeedDial.Player {
 			}
 
 			if(ActiveChild == null) {
-				HandleMelee();
+				_ = HandleMelee();
 			}
 
 			if(Input.Pressed(InputButton.Attack2)) {
