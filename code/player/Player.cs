@@ -109,11 +109,6 @@ namespace SpeedDial.Player {
 			}
 		}
 
-		[ClientRpc]
-		public void GiveLoadout() {
-
-		}
-
 		public void Freeze() {
 			(Controller as SpeedDialController).Freeze = true;
 			(Camera as SpeedDialCamera).Freeze = true;
@@ -175,11 +170,6 @@ namespace SpeedDial.Player {
 					}
 				}
 			}
-		}
-
-		async Task AsyncApplyDamage(Entity entity, DamageInfo damage, float delay) {
-			await Task.DelaySeconds(delay);
-			entity.TakeDamage(damage);
 		}
 
 		[ClientRpc]

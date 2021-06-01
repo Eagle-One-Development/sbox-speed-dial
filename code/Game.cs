@@ -98,25 +98,23 @@ namespace SpeedDial {
 			}
 		}
 
-		[ServerCmd( "spawn_entity" )]
-		public static void SpawnEntity( string entName )
-		{
+		[ServerCmd("spawn_entity")]
+		public static void SpawnEntity(string entName) {
 			var owner = ConsoleSystem.Caller.Pawn;
 
-			if ( owner == null )
+			if(owner == null)
 				return;
 
-			
-			
-			var ent = Library.Create<Entity>( entName );
-			if ( ent is BaseCarriable && owner.Inventory != null )
-			{
-				if ( owner.Inventory.Add( ent, true ) )
+
+
+			var ent = Library.Create<Entity>(entName);
+			if(ent is BaseCarriable && owner.Inventory != null) {
+				if(owner.Inventory.Add(ent, true))
 					return;
 			}
 
 			ent.Position = owner.EyePos;
-			
+
 
 			//Log.Info( $"ent: {ent}" );
 		}
