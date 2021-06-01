@@ -28,20 +28,20 @@ namespace SpeedDial.Player {
 
 		TimeSince timeSinceDropped;
 
-		[Net, Predicted]
-		public TimeSince timeSinceMelee { get; set; }
+		[Net, Local, Predicted]
+		public TimeSince TimeSinceMelee { get; set; }
 
-		[Net, Predicted]
-		public TimeSince timeSinceMedTaken { get; set; }
-
-		[Net]
-		public bool medTaken { get; set; }
+		[Net, Local, Predicted]
+		public TimeSince TimeSinceMedTaken { get; set; }
 
 		[Net]
-		public float medDuration { get; set; }
-		
+		public bool MedTaken { get; set; }
+
 		[Net]
-		public DrugType currentDrug { get; set; }
+		public float MedDuration { get; set; }
+
+		[Net]
+		public DrugType CurrentDrug { get; set; }
 
 		public SpeedDialPlayer() {
 			Inventory = new SpeedDialInventory(this);
@@ -111,21 +111,7 @@ namespace SpeedDial.Player {
 		}
 
 		[ClientRpc]
-		public void IncreaseWeaponClip()
-		{
-			if ( ActiveChild is BaseSpeedDialWeapon weapon )
-			{
-				if ( IsClient )
-					Log.Info( "Updated clip on client in rpc" );
-				if ( IsServer )
-					Log.Info( "Updated clip on server in rpc" );
-				weapon.AwardAmmo();
-			}
-		}
-
-		[ClientRpc]
-		public void DrugBump(string s )
-		{
+		public void DrugBump(string s) {
 			AmmoPanel.Current.DrugBump(s);
 		}
 
@@ -148,50 +134,46 @@ namespace SpeedDial.Player {
 		/// Handles Punching
 		/// </summary>
 		async Task HandleMelee() {
-				if(Input.Pressed(InputButton.Attack1)) {
-					if(timeSinceMelee > 0.33f) {
-						await Task.DelaySeconds(0.1f);
-						timeSinceMelee = 0;
-						var forward = EyeRot.Forward;
-						Vector3 pos = EyePos + Vector3.Down * 20f;
-						var tr = Trace.Ray(pos, pos + forward * 40f)
-						.UseHitboxes()
-						.Ignore(this)
-						.Size(20f)
-						.Run();
+			if(Input.Pressed(InputButton.Attack1)) {
+				if(TimeSinceMelee > 0.33f) {
+					await GameTask.DelaySeconds(0.1f);
+					TimeSinceMelee = 0;
+					var forward = EyeRot.Forward;
+					Vector3 pos = EyePos + Vector3.Down * 20f;
+					var tr = Trace.Ray(pos, pos + forward * 40f)
+					.UseHitboxes()
+					.Ignore(this)
+					.Size(20f)
+					.Run();
 
-						if ( IsClient )
-						{
-
+					if(IsClient) {
 						PlaySwoosh();
+					}
+					SetAnimBool("b_attack", true);
 
-						}
-						SetAnimBool("b_attack", true);
+					//DebugOverlay.Line(EyePos + Vector3.Down * 20, tr.EndPos, Color.White, 1, false);
 
-						//DebugOverlay.Line(EyePos + Vector3.Down * 20, tr.EndPos, Color.White, 1, false);
+					if(!IsServer) return;
+					if(!tr.Entity.IsValid()) return;
+					if(!(LifeState == LifeState.Alive)) return;
 
-						if(!IsServer) return;
-						if(!tr.Entity.IsValid()) return;
+					// We turn predictiuon off for this, so any exploding effects don't get culled etc
+					using(Prediction.Off()) {
+						var damage = DamageInfo.FromBullet(tr.EndPos, Owner.EyeRot.Forward * 100, 200)
+							.UsingTraceResult(tr)
+							.WithAttacker(Owner)
+							.WithWeapon(this);
+
+						damage.Attacker = this;
+						damage.Position = Position;
+						PlayClientSound("punch_connect_1");
+						PlaySound("punch_connect_1");
+						await GameTask.DelaySeconds(0.2f);
 						if(!(LifeState == LifeState.Alive)) return;
-
-						// We turn predictiuon off for this, so any exploding effects don't get culled etc
-						using(Prediction.Off()) {
-							var damage = DamageInfo.FromBullet(tr.EndPos, Owner.EyeRot.Forward * 100, 200)
-								.UsingTraceResult(tr)
-								.WithAttacker(Owner)
-								.WithWeapon(this);
-
-							damage.Attacker = this;
-							damage.Position = Position;
-							PlayClientSound("punch_connect_1");
-							PlaySound("punch_connect_1");
-							await Task.DelaySeconds(0.2f);
-							if(!(LifeState == LifeState.Alive)) return;
-							tr.Entity.TakeDamage(damage);
-						}
+						tr.Entity.TakeDamage(damage);
 					}
 				}
-
+			}
 		}
 
 		[ClientRpc]
@@ -199,13 +181,10 @@ namespace SpeedDial.Player {
 			float f = Rand.Float(1);
 			if(f > 0.5f) {
 				PlaySound("punch_woosh_1");
-
 			} else {
 				PlaySound("punch_woosh_2");
 			}
-			
 		}
-
 
 		public void PlayClientSound(string s) {
 			PlaySound(s);
@@ -236,16 +215,11 @@ namespace SpeedDial.Player {
 				_ = HandleMelee();
 			}
 
-			
-
-			if(timeSinceMedTaken > medDuration )
-			{
-				medTaken = false;
+			if(TimeSinceMedTaken > MedDuration) {
+				MedTaken = false;
 				//Basically remove our extra health after the drug duration if we're high on leaf
-				if(currentDrug == DrugType.Leaf )
-				{
-					if(Health > 100 )
-					{
+				if(CurrentDrug == DrugType.Leaf) {
+					if(Health > 100) {
 						Health = 100;
 					}
 				}
@@ -284,81 +258,6 @@ namespace SpeedDial.Player {
 			}
 
 			SimulateActiveChild(cl, ActiveChild);
-		}
-
-		public override void StartTouch(Entity other) {
-			if(timeSinceDropped < 1) return;
-
-			if(IsClient) return;
-
-			if(other is PickupTrigger pt) {
-				if(other.Parent is BaseSpeedDialWeapon wep1) {
-					StartTouch(other.Parent);
-
-					float magnitude = wep1.PhysicsBody.Velocity.Length;
-					//Log.Info($"Velocity: {magnitude}");
-					if(magnitude > 450f) {
-						wep1.PhysicsBody.EnableAutoSleeping = false;
-						Sound.FromEntity("weaponhit", this);
-						KillMyself(wep1.previousOwner);
-						wep1.Velocity *= -0.5f;
-
-					}
-				}
-
-
-				if(other.Parent is BaseMedication drug && !medTaken) {
-					StartTouch(other.Parent);
-					drug.PickUp();
-					medTaken = true;
-					if ( drug.drug != DrugType.Leaf )
-					{
-						
-						
-					}
-					else
-					{	
-						//Since Leaf lets you take an extra hit we don't need to do any kind of effect over time so we can just set the health to 200
-						Health = 200f;
-						
-					}
-					currentDrug = drug.drug;
-					timeSinceMedTaken = 0;
-					medTaken = true;
-					medDuration = drug.drugDuration;
-					DrugBump( drug.drugName );
-
-				}
-				return;
-			}
-		}
-
-		public override void Touch(Entity other) {
-
-			if(timeSinceDropped < 1f) return;
-
-			if(IsClient) return;
-
-			if(other is PickupTrigger) {
-				if(other.Parent is BaseSpeedDialWeapon) {
-					Touch(other.Parent);
-					pickup = true;
-				}
-				return;
-			}
-			pickUpEntity = other;
-		}
-
-		public override void EndTouch(Entity other) {
-			base.EndTouch(other);
-			if(other is PickupTrigger) {
-				if(other.Parent is BaseSpeedDialWeapon) {
-					Touch(other.Parent);
-					pickUpEntity = null;
-					pickup = false;
-				}
-				return;
-			}
 		}
 	}
 }

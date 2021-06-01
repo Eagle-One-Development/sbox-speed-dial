@@ -18,7 +18,7 @@ namespace SpeedDial.Player {
 
 		public bool CameraShift { get; set; }
 
-		[Net, Local]
+		[Net, Local, Predicted]
 		public bool Freeze { get; set; } = false;
 
 		public override void BuildInput(InputBuilder input) {

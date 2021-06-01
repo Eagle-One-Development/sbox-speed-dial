@@ -23,7 +23,7 @@ namespace SpeedDial.Player {
 		public bool Swimming { get; set; } = false;
 		public bool AutoJump { get; set; } = false;
 
-		[Net, Local]
+		[Net, Local, Predicted]
 		public bool Freeze { get; set; } = false;
 
 		[Net, Local]
@@ -113,10 +113,8 @@ namespace SpeedDial.Player {
 				}
 			}
 
-
 			float f = 1f;
-			if ( (Pawn as SpeedDialPlayer).medTaken && (Pawn as SpeedDialPlayer).currentDrug == Meds.DrugType.Polvo )
-			{
+			if((Pawn as SpeedDialPlayer).MedTaken && (Pawn as SpeedDialPlayer).CurrentDrug == Meds.DrugType.Polvo) {
 				f = 2f;
 			}
 			//

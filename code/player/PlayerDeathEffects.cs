@@ -65,7 +65,7 @@ namespace SpeedDial.Player {
 		}
 
 		async Task CreateDecalAsync(string decalname, TraceResult tr, float delay = 0) {
-			await Task.DelaySeconds(delay);
+			await GameTask.DelaySeconds(delay);
 
 			var decalPath = decalname;
 			if(decalPath != null) {
@@ -76,14 +76,14 @@ namespace SpeedDial.Player {
 		}
 
 		async Task CreateParticleAsync(string particle, Entity entity, Vector3 forward, float delay = 0, string bone = "root", bool bloodpool = false, int pools = 1) {
-			await Task.DelaySeconds(delay);
+			await GameTask.DelaySeconds(delay);
 			if(entity is ModelEntity ent) {
 				var boneBody = ent.GetBonePhysicsBody(ent.GetBoneIndex(bone));
 				var ps = Particles.Create(particle, boneBody.Position);
 				ps.SetForward(0, forward);
 				if(bloodpool) {
 					for(int i = 0; i < pools; i++) {
-						await Task.DelaySeconds(i * 0.1f);
+						await GameTask.DelaySeconds(i * 0.1f);
 						var trDir = boneBody.Position + Vector3.Down * 1000;
 						var tr = Sandbox.Trace.Ray(boneBody.Position, trDir)
 								.WorldAndEntities()

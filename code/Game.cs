@@ -139,7 +139,7 @@ namespace SpeedDial {
 
 		public async Task StartTickTimer() {
 			while(true) {
-				await Task.NextPhysicsFrame();
+				await GameTask.NextPhysicsFrame();
 				OnTick();
 			}
 		}
@@ -150,7 +150,7 @@ namespace SpeedDial {
 
 		public async Task StartSecondTimer() {
 			while(true) {
-				await Task.DelaySeconds(1f);
+				await GameTask.DelaySeconds(1f);
 				OnSecond();
 			}
 		}
