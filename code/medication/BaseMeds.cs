@@ -14,6 +14,7 @@ namespace SpeedDial.Meds {
 		public virtual string WorldModel => "models/abilities/sm_candy.vmdl";
 		public virtual float rotationSpeed => 75f;
 		public virtual string drugName => "POLVO";
+		public virtual string drugFlavor => "vanilla";
 		public virtual float drugDuration => 4f;
 		public virtual DrugType drug => DrugType.Polvo;
 

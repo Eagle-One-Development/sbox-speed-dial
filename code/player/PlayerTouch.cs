@@ -38,11 +38,21 @@ namespace SpeedDial.Player {
 					TimeSinceMedTaken = 0;
 					MedTaken = true;
 					MedDuration = drug.drugDuration;
-					DrugBump(drug.drugName);
+					DBump( drug.drugName, this, drug.drugFlavor);
 
 				}
 				return;
 			}
+		}
+
+		[ClientRpc]
+		public void DBump(string s , SpeedDialPlayer p, string f )
+		{
+			if ( p == Local.Pawn )
+			{
+				DrugBump( s , f);
+			}
+			
 		}
 
 		public override void Touch(Entity other) {

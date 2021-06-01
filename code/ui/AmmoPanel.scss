@@ -18,10 +18,18 @@ ammopanel {
             font-size: 96px;
             text-align: center;
             font-weight: bold;
+            align-items: center;
+            justify-content: center;
+
+
+            .medFlavor {
+                position:absolute;
+                top:100px;
+                font-size: 48px;
+            }
         }
 
         .pickupLabel {
-            
             font-family: VCR_OSD_MONO;
             color: #fff;
             font-size: 25px;

@@ -13,6 +13,7 @@ namespace SpeedDial.UI {
 		public Panel pickUpPanel;
 		public Label pickUpLabel;
 		public Label medLabel;
+		public Label medFlavor;
 		private TimeSince aTime;
 		public static AmmoPanel Current;
 
@@ -37,6 +38,7 @@ namespace SpeedDial.UI {
 			pickUpLabel = pickUpPanel.Add.Label("Right Click To Pick Up", "pickuplabel");
 
 			medLabel = pickUpPanel.Add.Label( "DRUG TAKEN", "medlabel" );
+			medFlavor = medLabel.Add.Label( "you feel better", "medFlavor" );
 
 			Current = this;
 			scale = 0;
@@ -48,12 +50,15 @@ namespace SpeedDial.UI {
 		public void Bump() {
 			scale = 0.7f;
 		}
+		
 
-		public void DrugBump(string s)
+		
+		public void DrugBump(string s, string f)
 		{
 			wideScale = 0.5f;
 			totalDrugScale = 1.0f;
 			medLabel.Text = s + " TAKEN";
+			medFlavor.Text = f;
 		}
 
 		public override void Tick() {
@@ -99,7 +104,7 @@ namespace SpeedDial.UI {
 			PanelTransform transform3 = new();
 			transform3.AddScale( new Vector3( totalDrugScale + wideScale, totalDrugScale, totalDrugScale ) );
 
-			wideScale = wideScale.LerpTo( 0, Time.Delta * 8f );
+			wideScale = wideScale.LerpTo( 0, Time.Delta * 4f );
 			if(wideScale <= 0.01f )
 			{
 				totalDrugScale = totalDrugScale.LerpTo( 0, Time.Delta * 8f);
