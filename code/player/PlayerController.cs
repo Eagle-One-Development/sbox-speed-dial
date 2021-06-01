@@ -23,7 +23,7 @@ namespace SpeedDial.Player {
 		public bool Swimming { get; set; } = false;
 		public bool AutoJump { get; set; } = false;
 
-		[Net, Local]
+		[Net, Local, Predicted]
 		public bool Freeze { get; set; } = false;
 
 		[Net, Local]

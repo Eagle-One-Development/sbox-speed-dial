@@ -28,10 +28,10 @@ namespace SpeedDial.Player {
 
 		TimeSince timeSinceDropped;
 
-		[Net, Predicted]
+		[Net, Local, Predicted]
 		public TimeSince TimeSinceMelee { get; set; }
 
-		[Net, Predicted]
+		[Net, Local, Predicted]
 		public TimeSince TimeSinceMedTaken { get; set; }
 
 		[Net]
