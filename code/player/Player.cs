@@ -198,6 +198,7 @@ namespace SpeedDial.Player {
 
 			if(KillCombo > maxCombo) {
 				maxCombo = KillCombo;
+				cl.SetScore("maxcombo", maxCombo);
 			}
 
 			var controller = GetActiveController();

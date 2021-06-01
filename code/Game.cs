@@ -71,6 +71,7 @@ namespace SpeedDial {
 					Log.Info($"{attackerClient.Name} killed {client.Name}");
 
 					attacker.KillScore += ScoreBase + (ScoreBase * attacker.KillCombo);
+					attacker.GetClientOwner().SetScore("score", attacker.KillScore);
 					attacker.KillCombo++;
 
 					// fuck ammo

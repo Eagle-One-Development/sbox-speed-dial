@@ -50,6 +50,7 @@ namespace SpeedDial.UI {
 			p.UpdateFrom(entry);
 
 			Entries[entry.Id] = p;
+			Log.Info($"Player Entry {entry}");
 		}
 
 		protected virtual void UpdatePlayer(PlayerScore.Entry entry) {
