@@ -95,7 +95,7 @@
 				m_bUseMostRecentValue = false
 				m_bAutoReset = false
 				m_bPredicted = false
-				m_fDefaultValue = 200.0
+				m_fDefaultValue = 0.0
 				m_fMinValue = -1.0
 				m_fMaxValue = 1.0
 				m_bInterpolate = true
@@ -446,7 +446,7 @@
 				{
 					m_id = 35339583
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_baseChildID = 
 				{
 					m_id = 2080667233
@@ -502,7 +502,7 @@
 				{
 					m_id = 57784369
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_items = 
 				[
 					{
@@ -598,7 +598,7 @@
 				{
 					m_id = 59821949
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_items = 
 				[
 					{
@@ -744,7 +744,7 @@
 				{
 					m_id = 148397179
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_sequenceName = "rifle_aim_idle"
 				m_nFrameIndex = 0
 			}
@@ -1026,7 +1026,7 @@
 				{
 					m_id = 238498427
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_weightListName = "firing_pistol"
 				m_child1ID = 
 				{
@@ -1065,7 +1065,7 @@
 				{
 					m_id = 265142813
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_items = 
 				[
 					{
@@ -1186,7 +1186,7 @@
 				{
 					m_id = 284662444
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "unarmed_idle"
 				m_playbackSpeed = 1.0
@@ -1228,7 +1228,7 @@
 				{
 					m_id = 296265303
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_weightListName = "holding_weapon"
 				m_child1ID = 
 				{
@@ -1267,7 +1267,7 @@
 				{
 					m_id = 306794296
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "left_jab"
 				m_playbackSpeed = 1.0
@@ -2012,7 +2012,7 @@
 				{
 					m_id = 393878692
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_children = 
 				[
 					{
@@ -3126,7 +3126,7 @@
 				{
 					m_id = 770770966
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_aim_idle"
 				m_playbackSpeed = 1.0
@@ -3507,7 +3507,7 @@
 				{
 					m_id = 909451985
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_childID = 
 				{
 					m_id = 2047231774
@@ -3530,7 +3530,7 @@
 				{
 					m_id = 911425550
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_weightListName = "default"
 				m_child1ID = 
 				{
@@ -3569,7 +3569,7 @@
 				{
 					m_id = 940632011
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_children = 
 				[
 					{
@@ -3615,7 +3615,7 @@
 				{
 					m_id = 986242409
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "idle_pistol_aim"
 				m_playbackSpeed = 1.0
@@ -4705,12 +4705,12 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 240.0, 316.0 ]
+				m_vecPosition = [ 171.0, 327.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1078025784
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_states = 
 				[
 					{
@@ -6240,7 +6240,7 @@
 				{
 					m_id = 1202105796
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_fire_add"
 				m_playbackSpeed = 1.0
@@ -6357,7 +6357,7 @@
 				{
 					m_id = 1230413633
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_children = 
 				[
 					{
@@ -6512,7 +6512,7 @@
 				{
 					m_id = 1306534364
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_sequenceName = "idle_pistol_aim"
 				m_nFrameIndex = 0
 			}
@@ -6531,7 +6531,7 @@
 				{
 					m_id = 1308567919
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_states = 
 				[
 					{
@@ -6826,7 +6826,7 @@
 				{
 					m_id = 1484775698
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_baseChildID = 
 				{
 					m_id = 1937084724
@@ -6857,7 +6857,7 @@
 				{
 					m_id = 1486800679
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_sequenceName = "unarmed_idle"
 				m_nFrameIndex = 0
 			}
@@ -7084,7 +7084,7 @@
 				{
 					m_id = 1769068269
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "idle_pistol_fire"
 				m_playbackSpeed = 5.0
@@ -7105,7 +7105,7 @@
 				{
 					m_id = 1798185898
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_states = 
 				[
 					{
@@ -7726,89 +7726,6 @@
 		{
 			key = 
 			{
-				m_id = 1808485689
-			}
-			value = 
-			{
-				_class = "CSelectorAnimNode"
-				m_sName = "Unnamed"
-				m_vecPosition = [ 1704.0, 1335.0 ]
-				m_nNodeID = 
-				{
-					m_id = 1808485689
-				}
-				m_networkMode = "ServerAuthoritative"
-				m_children = 
-				[
-					{
-						m_id = 4294967295
-					},
-					{
-						m_id = 4294967295
-					},
-					{
-						m_id = 4294967295
-					},
-					{
-						m_id = 4294967295
-					},
-					{
-						m_id = 4294967295
-					},
-					{
-						m_id = 4294967295
-					},
-					{
-						m_id = 4294967295
-					},
-				]
-				m_tags = 
-				[
-					{
-						m_id = 4294967295
-					},
-					{
-						m_id = 4294967295
-					},
-					{
-						m_id = 4294967295
-					},
-					{
-						m_id = 4294967295
-					},
-					{
-						m_id = 4294967295
-					},
-					{
-						m_id = 4294967295
-					},
-					{
-						m_id = 4294967295
-					},
-				]
-				m_selectionSource = "SelectionSource_Enum"
-				m_boolParamID = 
-				{
-					m_id = 4294967295
-				}
-				m_enumParamID = 
-				{
-					m_id = 72339625
-				}
-				m_blendDuration = 0.2
-				m_tagBehavior = "SelectorTagBehavior_OffWhenFinished"
-				m_bResetOnChange = true
-				m_bSyncCyclesOnChange = false
-				m_blendCurve = 
-				{
-					m_vControlPoint1 = [ 0.5, 0.0 ]
-					m_vControlPoint2 = [ 0.5, 1.0 ]
-				}
-			}
-		},
-		{
-			key = 
-			{
 				m_id = 1827302082
 			}
 			value = 
@@ -7955,7 +7872,7 @@
 				{
 					m_id = 1866668698
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "right_jab"
 				m_playbackSpeed = 1.0
@@ -8045,7 +7962,7 @@
 				{
 					m_id = 1937084724
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_sequenceName = "rifle_aim_idle"
 				m_nFrameIndex = 0
 			}
@@ -8281,7 +8198,7 @@
 				{
 					m_id = 1989301844
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_weightListName = "firing_pistol"
 				m_child1ID = 
 				{
@@ -8677,7 +8594,7 @@
 				{
 					m_id = 2047231774
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_childID = 
 				{
 					m_id = 296265303
@@ -8724,7 +8641,7 @@
 				{
 					m_id = 2080667233
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_sequenceName = "idle_pistol_aim"
 				m_nFrameIndex = 0
 			}
