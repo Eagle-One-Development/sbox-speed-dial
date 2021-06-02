@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Sandbox;
 using SpeedDial.Player;
-
+using SpeedDial.UI;
 namespace SpeedDial {
 	public class GameRound : BaseRound {
 		public override string RoundName => "Game Round";
-		public override int RoundDuration => 300;
+		public override int RoundDuration => 120;
 
 		private bool _roundStarted;
 
@@ -46,7 +46,7 @@ namespace SpeedDial {
 			Log.Info("Game Round Round Up!");
 
 			SpeedDialGame.Instance.ChangeRound(new PostRound());
-
+			
 			base.OnTimeUp();
 		}
 	}

@@ -30,6 +30,13 @@ namespace SpeedDial {
 		[ServerVar("sdial_combo_time", Help = "Set the combo time window in seconds.")]
 		public static float ComboTime { get; set; } = 3f;
 
+		[ServerCmd]
+		public List<SpeedDialPlayer> SortedPlayerList()
+		{
+			
+			return Entity.All.OfType<SpeedDialPlayer>().OrderByDescending( x => x.KillScore ).ToList<SpeedDialPlayer>();
+		}
+
 		public static SpeedDialGame Instance => (SpeedDialGame)Current;
 
 		public SpeedDialGame() {

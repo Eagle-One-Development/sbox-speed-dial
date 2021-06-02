@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sandbox;
+using SpeedDial.Player;
 
 namespace SpeedDial {
 	public class PostRound : BaseRound {
@@ -12,6 +13,22 @@ namespace SpeedDial {
 
 		protected override void OnFinish() {
 			Log.Info("Finished Game Round");
+
+		}
+
+		protected override void OnStart()
+		{
+			
+			var players = Client.All;
+			foreach ( var p in players.ToArray() )
+			{
+				
+				if ( p.Pawn is SpeedDialPlayer jp )
+				{
+					Log.Info( "ROUND STARTED" );
+					jp.Freeze();
+				}
+			}
 
 		}
 
