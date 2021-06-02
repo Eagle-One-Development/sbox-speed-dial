@@ -35,8 +35,7 @@ namespace SpeedDial.UI {
 		public override void Tick() {
 			base.Tick();
 
-			foreach ( var (key, value) in Entries )
-			{
+			foreach(var (key, value) in Entries) {
 				SpeedDialScoreboardEntry entry = value as SpeedDialScoreboardEntry;
 				entry.FauxTick();
 			}
@@ -56,12 +55,12 @@ namespace SpeedDial.UI {
 			p.UpdateFrom(entry);
 
 			Entries[entry.Id] = p;
-			Log.Info($"Player Entry {entry}");
 		}
 
 		protected virtual void UpdatePlayer(PlayerScore.Entry entry) {
 			if(Entries.TryGetValue(entry.Id, out var panel)) {
 				panel.UpdateFrom(entry);
+				Canvas.SortChildren((x) => -(x as SpeedDialScoreboardEntry).Entry.Get<int>("score"));
 			}
 		}
 
