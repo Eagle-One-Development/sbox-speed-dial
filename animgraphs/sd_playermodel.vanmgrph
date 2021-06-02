@@ -446,7 +446,7 @@
 				{
 					m_id = 43047625
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_childID = 
 				{
 					m_id = 1202866230
@@ -496,7 +496,7 @@
 				{
 					m_id = 78561993
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_childID = 
 				{
 					m_id = 1859365194
@@ -537,7 +537,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -2013.0, 1570.0 ]
+				m_vecPosition = [ -2932.0, 790.0 ]
 				m_nNodeID = 
 				{
 					m_id = 215492735
@@ -558,7 +558,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -2013.0, 1669.0 ]
+				m_vecPosition = [ -2932.0, 889.0 ]
 				m_nNodeID = 
 				{
 					m_id = 222818352
@@ -584,7 +584,7 @@
 				{
 					m_id = 236076305
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_states = 
 				[
 					{
@@ -745,7 +745,7 @@
 				{
 					m_id = 284662444
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_tagSpans = [  ]
 				m_sequenceName = "unarmed_idle"
 				m_playbackSpeed = 1.0
@@ -761,7 +761,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1579.0, 1553.0 ]
+				m_vecPosition = [ -2498.0, 773.0 ]
 				m_nNodeID = 
 				{
 					m_id = 285663228
@@ -787,7 +787,7 @@
 				{
 					m_id = 285939101
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_tagSpans = [  ]
 				m_sequenceName = "left_jab"
 				m_playbackSpeed = 1.0
@@ -803,7 +803,7 @@
 			{
 				_class = "CTwoBoneIKAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 821.0, 2012.0 ]
+				m_vecPosition = [ 853.0, 1827.0 ]
 				m_nNodeID = 
 				{
 					m_id = 289694236
@@ -811,7 +811,7 @@
 				m_networkMode = "ClientPredicted"
 				m_childID = 
 				{
-					m_id = 905804277
+					m_id = 4294967295
 				}
 				m_ikChainName = "IK_Leg_Left"
 				m_endEffectorType = "IkEndEffector_Bone"
@@ -844,7 +844,7 @@
 				{
 					m_id = 306794296
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_tagSpans = [  ]
 				m_sequenceName = "left_jab"
 				m_playbackSpeed = 1.0
@@ -860,7 +860,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -2012.0, 1715.0 ]
+				m_vecPosition = [ -2931.0, 935.0 ]
 				m_nNodeID = 
 				{
 					m_id = 354242449
@@ -886,7 +886,7 @@
 				{
 					m_id = 357684445
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_states = 
 				[
 					{
@@ -1874,7 +1874,7 @@
 			{
 				_class = "CTurnHelperAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1851.0, 1436.0 ]
+				m_vecPosition = [ -2770.0, 656.0 ]
 				m_nNodeID = 
 				{
 					m_id = 470932627
@@ -1901,7 +1901,7 @@
 			{
 				_class = "CTurnHelperAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1848.0, 1337.0 ]
+				m_vecPosition = [ -2767.0, 557.0 ]
 				m_nNodeID = 
 				{
 					m_id = 476613757
@@ -1928,7 +1928,7 @@
 			{
 				_class = "CTurnHelperAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1843.0, 1196.0 ]
+				m_vecPosition = [ -2762.0, 416.0 ]
 				m_nNodeID = 
 				{
 					m_id = 491443627
@@ -1999,7 +1999,7 @@
 				{
 					m_id = 555617305
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_items = 
 				[
 					{
@@ -2095,7 +2095,7 @@
 				{
 					m_id = 569586905
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_tagSpans = [  ]
 				m_sequenceName = "idle_pistol_aim"
 				m_playbackSpeed = 5.0
@@ -2111,7 +2111,7 @@
 			{
 				_class = "CSelectorAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -1306.0, 2326.0 ]
+				m_vecPosition = [ -2184.0, 2504.0 ]
 				m_nNodeID = 
 				{
 					m_id = 598238023
@@ -2184,7 +2184,7 @@
 			{
 				_class = "CTurnHelperAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1849.0, 1387.0 ]
+				m_vecPosition = [ -2768.0, 607.0 ]
 				m_nNodeID = 
 				{
 					m_id = 659910173
@@ -2211,7 +2211,7 @@
 			{
 				_class = "CTurnHelperAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1802.0, 1815.0 ]
+				m_vecPosition = [ -2721.0, 1035.0 ]
 				m_nNodeID = 
 				{
 					m_id = 722187793
@@ -2263,7 +2263,7 @@
 			{
 				_class = "CMotionMatchingAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -1684.0, 2503.0 ]
+				m_vecPosition = [ -2562.0, 2681.0 ]
 				m_nNodeID = 
 				{
 					m_id = 734525575
@@ -2492,7 +2492,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1631.0, 1267.0 ]
+				m_vecPosition = [ -2550.0, 487.0 ]
 				m_nNodeID = 
 				{
 					m_id = 765553018
@@ -2847,7 +2847,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -2061.0, 1336.0 ]
+				m_vecPosition = [ -2980.0, 556.0 ]
 				m_nNodeID = 
 				{
 					m_id = 766914264
@@ -2868,7 +2868,7 @@
 			{
 				_class = "CTurnHelperAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1844.0, 1290.0 ]
+				m_vecPosition = [ -2763.0, 510.0 ]
 				m_nNodeID = 
 				{
 					m_id = 767886496
@@ -2900,7 +2900,7 @@
 				{
 					m_id = 770770966
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_aim_idle"
 				m_playbackSpeed = 1.0
@@ -2916,7 +2916,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -1091.0, 2349.0 ]
+				m_vecPosition = [ -1969.0, 2527.0 ]
 				m_nNodeID = 
 				{
 					m_id = 848144266
@@ -3062,7 +3062,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -2061.0, 1435.0 ]
+				m_vecPosition = [ -2980.0, 655.0 ]
 				m_nNodeID = 
 				{
 					m_id = 848264451
@@ -3113,7 +3113,7 @@
 				{
 					m_id = 905804277
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_states = 
 				[
 					{
@@ -3260,7 +3260,7 @@
 				{
 					m_id = 909451985
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_childID = 
 				{
 					m_id = 2047231774
@@ -3278,12 +3278,12 @@
 			{
 				_class = "CChoiceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -297.0, 2697.0 ]
+				m_vecPosition = [ 11.0, 2532.0 ]
 				m_nNodeID = 
 				{
 					m_id = 940632011
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_children = 
 				[
 					{
@@ -3324,12 +3324,12 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -770.0, 1674.0 ]
+				m_vecPosition = [ -772.0, 1674.0 ]
 				m_nNodeID = 
 				{
 					m_id = 986242409
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_tagSpans = [  ]
 				m_sequenceName = "idle_pistol_aim"
 				m_playbackSpeed = 1.0
@@ -3345,7 +3345,7 @@
 			{
 				_class = "CTurnHelperAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1799.0, 1716.0 ]
+				m_vecPosition = [ -2718.0, 936.0 ]
 				m_nNodeID = 
 				{
 					m_id = 988623976
@@ -3396,7 +3396,7 @@
 				{
 					m_id = 994428825
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_states = 
 				[
 					{
@@ -4023,7 +4023,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1582.0, 1646.0 ]
+				m_vecPosition = [ -2501.0, 866.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1051596620
@@ -4378,7 +4378,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -2062.0, 1290.0 ]
+				m_vecPosition = [ -2981.0, 510.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1057439538
@@ -4404,7 +4404,7 @@
 				{
 					m_id = 1084477314
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_weightListName = "firing"
 				m_child1ID = 
 				{
@@ -5212,7 +5212,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -2061.0, 1243.0 ]
+				m_vecPosition = [ -2980.0, 463.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1171853419
@@ -5233,7 +5233,7 @@
 			{
 				_class = "CSelectorAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -1590.0, 2667.0 ]
+				m_vecPosition = [ -2468.0, 2845.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1190919314
@@ -5338,7 +5338,7 @@
 				{
 					m_id = 1202866230
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_items = 
 				[
 					{
@@ -5429,7 +5429,7 @@
 			{
 				_class = "CTurnHelperAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1794.0, 1575.0 ]
+				m_vecPosition = [ -2713.0, 795.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1237797468
@@ -5461,7 +5461,7 @@
 				{
 					m_id = 1252706675
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_childID = 
 				{
 					m_id = 78561993
@@ -5486,7 +5486,7 @@
 				{
 					m_id = 1255631825
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_states = 
 				[
 					{
@@ -6023,7 +6023,7 @@
 						m_name = "Ability"
 						m_childNodeID = 
 						{
-							m_id = 4294967295
+							m_id = 940632011
 						}
 						m_stateID = 
 						{
@@ -6050,7 +6050,7 @@
 			{
 				_class = "CCommentAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -2168.0, 975.0 ]
+				m_vecPosition = [ -3087.0, 195.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1285318539
@@ -6075,7 +6075,7 @@
 				{
 					m_id = 1320436731
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_childID = 
 				{
 					m_id = 1753967864
@@ -6095,7 +6095,7 @@
 			{
 				_class = "CTurnHelperAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1800.0, 1766.0 ]
+				m_vecPosition = [ -2719.0, 986.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1332945537
@@ -6143,7 +6143,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1522.0, 1009.0 ]
+				m_vecPosition = [ -2441.0, 229.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1425890235
@@ -6169,7 +6169,7 @@
 				{
 					m_id = 1427589181
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_fire"
 				m_playbackSpeed = 1.5
@@ -6185,7 +6185,7 @@
 			{
 				_class = "CTurnHelperAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1796.0, 1623.0 ]
+				m_vecPosition = [ -2715.0, 843.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1471911028
@@ -6212,7 +6212,7 @@
 			{
 				_class = "CTurnHelperAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1845.0, 1244.0 ]
+				m_vecPosition = [ -2764.0, 464.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1503442020
@@ -6244,7 +6244,7 @@
 				{
 					m_id = 1511044145
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_weightListName = "holding_weapon"
 				m_child1ID = 
 				{
@@ -6415,7 +6415,7 @@
 				{
 					m_id = 1691432854
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_baseChildID = 
 				{
 					m_id = 994428825
@@ -6441,7 +6441,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -2062.0, 1191.0 ]
+				m_vecPosition = [ -2981.0, 411.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1715603949
@@ -6467,7 +6467,7 @@
 				{
 					m_id = 1753967864
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_childID = 
 				{
 					m_id = 555617305
@@ -6518,7 +6518,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1393.0, 1586.0 ]
+				m_vecPosition = [ -2312.0, 806.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1803397261
@@ -6863,7 +6863,7 @@
 				{
 					m_id = 1859365194
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_items = 
 				[
 					{
@@ -6959,7 +6959,7 @@
 				{
 					m_id = 1866668698
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_tagSpans = [  ]
 				m_sequenceName = "right_jab"
 				m_playbackSpeed = 1.0
@@ -6996,7 +6996,7 @@
 			{
 				_class = "CTurnHelperAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1795.0, 1669.0 ]
+				m_vecPosition = [ -2714.0, 889.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1873420012
@@ -7049,7 +7049,7 @@
 				{
 					m_id = 1957814626
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_childID = 
 				{
 					m_id = 43047625
@@ -7069,7 +7069,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -1084.0, 1036.0 ]
+				m_vecPosition = [ -2003.0, 256.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1959136241
@@ -7240,7 +7240,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -2012.0, 1622.0 ]
+				m_vecPosition = [ -2931.0, 842.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1965408809
@@ -7261,7 +7261,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -2012.0, 1814.0 ]
+				m_vecPosition = [ -2931.0, 1034.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1992545380
@@ -7287,7 +7287,7 @@
 				{
 					m_id = 2007043503
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_states = 
 				[
 					{
@@ -7576,7 +7576,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -800.0, 1970.0 ]
+				m_vecPosition = [ -1625.0, 1863.0 ]
 				m_nNodeID = 
 				{
 					m_id = 2028981333
@@ -7597,7 +7597,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -2012.0, 1766.0 ]
+				m_vecPosition = [ -2931.0, 986.0 ]
 				m_nNodeID = 
 				{
 					m_id = 2046860959
@@ -7623,7 +7623,7 @@
 				{
 					m_id = 2047231774
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_childID = 
 				{
 					m_id = 905804277
@@ -7665,7 +7665,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Don\'t use turns for now"
-				m_vecPosition = [ -2061.0, 1387.0 ]
+				m_vecPosition = [ -2980.0, 607.0 ]
 				m_nNodeID = 
 				{
 					m_id = 2082515925
@@ -7691,7 +7691,7 @@
 				{
 					m_id = 2106747085
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_baseChildID = 
 				{
 					m_id = 994428825
