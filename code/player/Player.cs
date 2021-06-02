@@ -74,7 +74,7 @@ namespace SpeedDial.Player {
 			Controller = new SpeedDialController();
 			Camera = new SpeedDialCamera();
 
-			ResetTimeSinceMedTaken = true;
+			MedTaken = false;
 
 			//Set a default character
 			character = SpeedDialGame.Instance.characters[0];
