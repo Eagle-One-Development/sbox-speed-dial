@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SpeedDial.Player;
 namespace SpeedDial {
 	public class WarmUpRound : BaseRound {
 		public override string RoundName => "WarmUp";
@@ -17,9 +17,22 @@ namespace SpeedDial {
 			}
 		}
 
-		protected override void OnStart() {
+		protected override void OnStart()
+		{
 
-			//Log.Info( "AAAAAAAAAAAAAAAAAAAAA" );
+			var players = Client.All;
+			foreach ( var p in players.ToArray() )
+			{
+
+				if ( p.Pawn is SpeedDialPlayer sp )
+				{
+					Log.Info( "ROUND STARTED" );
+					sp.Unfreeze();
+					sp.KillScore = 0;
+					sp.maxCombo = 0;
+					sp.KillCombo = 0;
+				}
+			}
 
 		}
 

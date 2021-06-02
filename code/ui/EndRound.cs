@@ -23,11 +23,13 @@ namespace SpeedDial.UI
 		public PlayerPanel secondPlace;
 		public PlayerPanel thirdPlace;
 
-		private TimeSince anim;
+		private TimeSince animTime;
 		private float[] scale  = new float[3];
 
-		
-		
+		Color vhs_green;
+		Color vhs_magenta;
+
+
 
 		public void SetPlayers()
 		{
@@ -57,17 +59,21 @@ namespace SpeedDial.UI
 				thirdPlace.subLabel.Text = "3rd";
 			}
 
-			
+			vhs_green = new Color( 28f / 255f, 255f / 255f, 176f / 255f, 1.0f );//new Color(173f/255f,255f/255f,226f/255f,1.0f);
+			vhs_magenta = new Color( 255f / 255f, 89 / 255f, 255f / 255f, 1.0f );//new Color(255f / 255f, 163f / 255f, 255f / 255f, 1.0f);
+
 		}
 
 		public EndRound()
 		{
 			StyleSheet.Load( "/ui/EndRound.scss" );
 			firstPlace = AddChild<PlayerPanel>();
-			secondPlace =AddChild<PlayerPanel>();
+			secondPlace = AddChild<PlayerPanel>();
 			secondPlace.myImage.SetClass( "right",true);
+			secondPlace.subLabel.SetClass( "right", true );
 			thirdPlace = AddChild<PlayerPanel>();
 			thirdPlace.myImage.SetClass( "left", true);
+			thirdPlace.subLabel.SetClass( "left", true );
 			Current = this;
 			scale[0] = 100f;
 			scale[1] = 100f;
@@ -85,52 +91,98 @@ namespace SpeedDial.UI
 			base.Tick();
 			if ( SpeedDialGame.Instance.Round is PostRound gr )
 			{
+				Shadow s1 = new();
+				s1.OffsetX = 2f + MathF.Sin( Time.Now * 2f ) * 2f;
+				s1.OffsetY = 0f;
+				s1.Color = vhs_green;
+				s1.Blur = 4f;
+
+				Shadow s2 = new();
+				s2.OffsetX = -2f + MathF.Sin( Time.Now * 2f ) * 2f;
+				s2.OffsetY = 0;
+				s2.Color = vhs_magenta;
+				s2.Blur = 4f;
+
+				ShadowList shadows = new();
+				shadows.Add( s1 );
+				shadows.Add( s2 );
+
 				SetClass( "active", true );
 				SetPlayers();
 				PanelTransform first = new PanelTransform();
 				first.AddTranslateY( Length.Percent( scale[0] ) );
 
+				PanelTransform firstLabel = new PanelTransform();
+				float anim = MathF.Sin( Time.Now * 4f );
+				float anim2 = MathF.Sin( Time.Now * 2f );
+				firstLabel.AddScale( 1f + 0.1f * anim );
+				firstLabel.AddRotation( 0, 0, 15 * anim2 );
+
+				PanelTransform secondLabel = new PanelTransform();
+				anim = MathF.Sin( Time.Now * 4f );
+				anim2 = MathF.Sin( Time.Now * 2f );
+				secondLabel.AddScale( 1f + 0.05f * anim );
+				secondLabel.AddRotation( 0, 0, 2 * anim2 );
+
 				PanelTransform second = new PanelTransform();
 				second.AddTranslateY( Length.Percent( scale[1] ) );
+
 
 				PanelTransform third = new PanelTransform();
 				third.AddTranslateY( Length.Percent( scale[2] ) );
 
 				float startTime = 2f;
 
-				if ( anim > startTime )
+				if ( animTime > startTime )
 				{
 					scale[0] = scale[0].LerpTo( 0, Time.Delta * 4f );
 				}
 
+
+
 				startTime += 1f;
 
-				if ( anim > startTime && secondPlace.myLabel.Text != "STEAM NAME")
+				if ( animTime > startTime && secondPlace.myLabel.Text != "STEAM NAME")
 				{
 					scale[1] = scale[1].LerpTo( 0, Time.Delta * 4f );
 				}
 
 				startTime += 1f;
 
-				if ( anim > startTime && thirdPlace.myLabel.Text != "STEAM NAME" )
+				if ( animTime > startTime && thirdPlace.myLabel.Text != "STEAM NAME" )
 				{
 					scale[2] = scale[2].LerpTo( 0, Time.Delta * 4f );
 				}
 
 				firstPlace.Style.Transform = first;
+				firstPlace.Style.TextShadow = shadows;
 				firstPlace.Style.Dirty();
 
+				
+
+
+				firstPlace.subLabel.Style.Transform = firstLabel;
+				firstPlace.subLabel.Style.Dirty();
+
 				secondPlace.Style.Transform = second;
+				secondPlace.Style.TextShadow = shadows;
 				secondPlace.Style.Dirty();
 
+				secondPlace.subLabel.Style.Transform = secondLabel;
+				secondPlace.subLabel.Style.Dirty();
+
 				thirdPlace.Style.Transform = third;
+				thirdPlace.Style.TextShadow = shadows;
 				thirdPlace.Style.Dirty();
 
 			}
 			else
 			{
 				SetClass( "active", false );
-				anim = 0;
+				animTime = 0;
+				scale[0] = 100f;
+				scale[1] = 100f;
+				scale[2] = 100f;
 			}
 		}
 

@@ -6,7 +6,7 @@ namespace SpeedDial.Player {
 		[Net, Local]
 		public int KillCombo { get; set; }
 
-		[Net, Local]
+		[Net]
 		public int KillScore { get; set; }
 
 		[Net, Local]
