@@ -31,8 +31,14 @@ namespace SpeedDial.Player {
 		[Net, Local, Predicted]
 		public TimeSince TimeSinceMelee { get; set; }
 
+		[Net, Local]
+		public bool ResetTimeSinceMelee { get; set; } = false;
+
 		[Net, Local, Predicted]
 		public TimeSince TimeSinceMedTaken { get; set; }
+
+		[Net, Local]
+		public bool ResetTimeSinceMedTaken { get; set; }
 
 		[Net]
 		public bool MedTaken { get; set; }
@@ -136,8 +142,8 @@ namespace SpeedDial.Player {
 		async Task HandleMelee() {
 			if(Input.Pressed(InputButton.Attack1)) {
 				if(TimeSinceMelee > 0.33f) {
+					ResetTimeSinceMelee = true;
 					await GameTask.DelaySeconds(0.1f);
-					TimeSinceMelee = 0;
 					var forward = EyeRot.Forward;
 					Vector3 pos = EyePos + Vector3.Down * 20f;
 					var tr = Trace.Ray(pos, pos + forward * 40f)
@@ -197,6 +203,16 @@ namespace SpeedDial.Player {
 					Respawn();
 				}
 				return;
+			}
+
+			if(ResetTimeSinceMelee) {
+				TimeSinceMelee = 0;
+				ResetTimeSinceMelee = false;
+			}
+
+			if(ResetTimeSinceMedTaken) {
+				TimeSinceMedTaken = 0;
+				ResetTimeSinceMedTaken = false;
 			}
 
 			if(KillCombo > maxCombo) {

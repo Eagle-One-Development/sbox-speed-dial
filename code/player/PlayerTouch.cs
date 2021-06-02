@@ -27,18 +27,18 @@ namespace SpeedDial.Player {
 					StartTouch(other.Parent);
 					drug.PickUp();
 					MedTaken = true;
-					if(drug.drug != DrugType.Leaf) {
+					if(drug.Drug != DrugType.Leaf) {
 
 					} else {
 						//Since Leaf lets you take an extra hit we don't need to do any kind of effect over time so we can just set the health to 200
 						Health = 200f;
 
 					}
-					CurrentDrug = drug.drug;
-					TimeSinceMedTaken = 0;
+					CurrentDrug = drug.Drug;
+					ResetTimeSinceMedTaken = true;
 					MedTaken = true;
-					MedDuration = drug.drugDuration;
-					DBump( drug.drugName, this, drug.drugFlavor);
+					MedDuration = drug.DrugDuration;
+					DBump(drug.DrugName, this, drug.DrugFlavor);
 
 				}
 				return;
@@ -46,13 +46,11 @@ namespace SpeedDial.Player {
 		}
 
 		[ClientRpc]
-		public void DBump(string s , SpeedDialPlayer p, string f )
-		{
-			if ( p == Local.Pawn )
-			{
-				DrugBump( s , f);
+		public void DBump(string s, SpeedDialPlayer p, string f) {
+			if(p == Local.Pawn) {
+				DrugBump(s, f);
 			}
-			
+
 		}
 
 		public override void Touch(Entity other) {

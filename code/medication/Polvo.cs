@@ -9,10 +9,10 @@ namespace SpeedDial.Meds {
 	[Library("meds_polvo")]
 	public class Polvo : BaseMedication {
 		public override string WorldModel => "models/abilities/sm_candy.vmdl";
-		public override float rotationSpeed => 75f;
-		public override string drugName => "POLVO";
-		public override string drugFlavor => "you are speed";
-		public override float drugDuration => 4f;
-		public override DrugType drug => DrugType.Polvo;
+		public override float RotationSpeed => 75f;
+		public override string DrugName => "POLVO";
+		public override string DrugFlavor => "you are speed"; // legs so fast // gotta move // dashing!
+		public override float DrugDuration => 4f;
+		public override DrugType Drug => DrugType.Polvo;
 	}
 }

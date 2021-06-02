@@ -12,11 +12,11 @@ namespace SpeedDial.Meds {
 	public class BaseMedication : ModelEntity, IRespawnableEntity {
 
 		public virtual string WorldModel => "models/abilities/sm_candy.vmdl";
-		public virtual float rotationSpeed => 75f;
-		public virtual string drugName => "POLVO";
-		public virtual string drugFlavor => "vanilla";
-		public virtual float drugDuration => 4f;
-		public virtual DrugType drug => DrugType.Polvo;
+		public virtual float RotationSpeed => 75f;
+		public virtual string DrugName => "POLVO";
+		public virtual string DrugFlavor => "vanilla";
+		public virtual float DrugDuration => 4f;
+		public virtual DrugType Drug => DrugType.Polvo;
 
 		[HammerProp]
 		public virtual float RespawnTime { get; set; }
@@ -50,7 +50,7 @@ namespace SpeedDial.Meds {
 				initialPosition = Position;
 			}
 
-			rotationAngle += rotationSpeed * Time.Delta;
+			rotationAngle += RotationSpeed * Time.Delta;
 			Rotation = Rotation.FromAxis(Vector3.Up, rotationAngle);
 
 			Position = initialPosition + Vector3.Up * MathF.Sin(Time.Now * 2f) * 7f;
