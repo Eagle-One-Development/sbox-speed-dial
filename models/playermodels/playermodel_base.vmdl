@@ -624,6 +624,34 @@
 								framerate = -1.0
 								reverse = false
 							},
+							{
+								_class = "AnimFile"
+								name = "idle_pistol_fire"
+								children = 
+								[
+									{
+										_class = "AnimSubtract"
+										anim_name = "idle_pistol_aim"
+										frame = 0
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/idle_pistol_aim.dmx"
+								start_frame = -1
+								end_frame = 10
+								framerate = -1.0
+								reverse = false
+							},
 						]
 					},
 					{
@@ -634,7 +662,7 @@
 							{
 								_class = "AnimFile"
 								name = "unarmed_idle"
-								activity_name = ""
+								activity_name = "ACT_IDLE"
 								activity_weight = 1
 								weight_list_name = ""
 								fade_in_time = 0.2
@@ -1003,6 +1031,62 @@
 								framerate = -1.0
 								reverse = false
 							},
+							{
+								_class = "AnimFile"
+								name = "left_jab_add"
+								children = 
+								[
+									{
+										_class = "AnimSubtract"
+										anim_name = "unarmed_idle"
+										frame = 0
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/left_jab.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "right_jab_add"
+								children = 
+								[
+									{
+										_class = "AnimSubtract"
+										anim_name = "unarmed_idle"
+										frame = 0
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/right_jab.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
 						]
 					},
 					{
@@ -1336,6 +1420,34 @@
 								framerate = -1.0
 								reverse = false
 							},
+							{
+								_class = "AnimFile"
+								name = "rifle_fire_add"
+								children = 
+								[
+									{
+										_class = "AnimSubtract"
+										anim_name = "rifle_aim_idle"
+										frame = 0
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_fire.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
 						]
 					},
 				]
@@ -1635,6 +1747,60 @@
 							{
 								bone = "spine_03"
 								weight = 0.143939
+							},
+							{
+								bone = "spine_1"
+								weight = 0.0
+							},
+							{
+								bone = "spine_2"
+								weight = 0.0
+							},
+							{
+								bone = "spine_3"
+								weight = 1.0
+							},
+							{
+								bone = "thigh_l"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 0.0
+							},
+							{
+								bone = "weapon_hand_r"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "firing_pistol"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "clavicle_r"
+								weight = 1.0
+							},
+							{
+								bone = "hand_r"
+								weight = 1.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.0
+							},
+							{
+								bone = "spine_0"
+								weight = 0.0
+							},
+							{
+								bone = "spine_03"
+								weight = 0.0
 							},
 							{
 								bone = "spine_1"
