@@ -1783,12 +1783,16 @@
 						weights = 
 						[
 							{
+								bone = "clavicle_l"
+								weight = 0.0
+							},
+							{
 								bone = "clavicle_r"
-								weight = 1.0
+								weight = 0.0
 							},
 							{
 								bone = "hand_r"
-								weight = 1.0
+								weight = 0.0
 							},
 							{
 								bone = "pelvis"
