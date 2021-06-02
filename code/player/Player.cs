@@ -74,6 +74,8 @@ namespace SpeedDial.Player {
 			Controller = new SpeedDialController();
 			Camera = new SpeedDialCamera();
 
+			ResetTimeSinceMedTaken = true;
+
 			//Set a default character
 			character = SpeedDialGame.Instance.characters[0];
 
@@ -102,6 +104,8 @@ namespace SpeedDial.Player {
 
 			BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>(character.Weapon);
 			Inventory.Add(weapon, true);
+
+
 
 			LifeState = LifeState.Alive;
 			Health = 100;
