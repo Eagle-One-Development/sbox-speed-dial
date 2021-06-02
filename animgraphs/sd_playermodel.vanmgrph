@@ -510,6 +510,60 @@
 		{
 			key = 
 			{
+				m_id = 165906050
+			}
+			value = 
+			{
+				_class = "CBlendAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ 1024.0, 2224.0 ]
+				m_nNodeID = 
+				{
+					m_id = 165906050
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_children = 
+				[
+					{
+						m_nodeID = 
+						{
+							m_id = 4294967295
+						}
+						m_name = ""
+						m_blendValue = 0.0
+					},
+					{
+						m_nodeID = 
+						{
+							m_id = 4294967295
+						}
+						m_name = ""
+						m_blendValue = 1.0
+					},
+				]
+				m_blendValueSource = "Parameter"
+				m_param = 
+				{
+					m_id = 1583933958
+				}
+				m_blendKeyType = "BlendKey_Velocity"
+				m_bLockBlendOnReset = false
+				m_bSyncCycles = true
+				m_bLoop = true
+				m_bLockWhenWaning = true
+				m_damping = 
+				{
+					_class = "CAnimInputDamping"
+					m_speedFunction = "NoDamping"
+					m_fSpeedScale = 16.0
+					m_fMinSpeed = 10.0
+					m_fMaxTension = 1000.0
+				}
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 173944915
 			}
 			value = 
@@ -579,7 +633,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Movement"
-				m_vecPosition = [ 83.0, 1849.0 ]
+				m_vecPosition = [ 105.0, 1850.0 ]
 				m_nNodeID = 
 				{
 					m_id = 236076305
@@ -664,6 +718,11 @@
 											m_nType = 4
 											m_data = 0.0
 										}
+									},
+									{
+										_class = "CTimeCondition"
+										m_comparisonOp = 3
+										m_comparisonValue = 5.0
 									},
 								]
 								m_blendDuration = 0.1
@@ -782,14 +841,14 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 160.553101, 2219.356934 ]
+				m_vecPosition = [ -3.0, 2284.0 ]
 				m_nNodeID = 
 				{
 					m_id = 285939101
 				}
 				m_networkMode = "ServerAuthoritative"
 				m_tagSpans = [  ]
-				m_sequenceName = "left_jab"
+				m_sequenceName = "unarmed_idle"
 				m_playbackSpeed = 1.0
 				m_bLoop = false
 			}
@@ -803,7 +862,7 @@
 			{
 				_class = "CTwoBoneIKAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 853.0, 1827.0 ]
+				m_vecPosition = [ 885.0, 1496.0 ]
 				m_nNodeID = 
 				{
 					m_id = 289694236
@@ -1827,7 +1886,7 @@
 			{
 				_class = "CLookAtAnimNode"
 				m_sName = "AimAt"
-				m_vecPosition = [ 1259.0, 1680.0 ]
+				m_vecPosition = [ 1291.0, 1349.0 ]
 				m_nNodeID = 
 				{
 					m_id = 459618477
@@ -2090,7 +2149,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 125.0, 2328.0 ]
+				m_vecPosition = [ -17.0, 2403.0 ]
 				m_nNodeID = 
 				{
 					m_id = 569586905
@@ -2895,7 +2954,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -786.0, 1857.0 ]
+				m_vecPosition = [ -923.0, 1809.0 ]
 				m_nNodeID = 
 				{
 					m_id = 770770966
@@ -3391,7 +3450,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -435.0, 1904.0 ]
+				m_vecPosition = [ -604.0, 1904.0 ]
 				m_nNodeID = 
 				{
 					m_id = 994428825
@@ -5286,7 +5345,7 @@
 			{
 				_class = "CLookAtAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 1117.0, 1709.0 ]
+				m_vecPosition = [ 1149.0, 1378.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1197182447
@@ -5481,7 +5540,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 442.0, 2304.0 ]
+				m_vecPosition = [ 471.0, 2458.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1255631825
@@ -6239,7 +6298,7 @@
 			{
 				_class = "CBoneMaskAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -224.0, 1787.0 ]
+				m_vecPosition = [ -236.0, 1769.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1511044145
@@ -6278,7 +6337,7 @@
 			{
 				_class = "CTwoBoneIKAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 1022.0, 1981.0 ]
+				m_vecPosition = [ 994.0, 1686.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1615485554
@@ -6410,7 +6469,7 @@
 			{
 				_class = "CAddAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -197.0, 2143.0 ]
+				m_vecPosition = [ -150.0, 2158.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1691432854
@@ -6749,7 +6808,7 @@
 			{
 				_class = "CFootLockAnimNode"
 				m_sName = "StrideR"
-				m_vecPosition = [ 1146.0, 1815.0 ]
+				m_vecPosition = [ 1178.0, 1484.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1851828504
