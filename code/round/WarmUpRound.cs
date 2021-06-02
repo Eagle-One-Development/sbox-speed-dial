@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SpeedDial.Player;
+using SpeedDial.UI;
+
 namespace SpeedDial {
 	public class WarmUpRound : BaseRound {
 		public override string RoundName => "WarmUp";
@@ -17,16 +19,14 @@ namespace SpeedDial {
 			}
 		}
 
-		protected override void OnStart()
-		{
+		protected override void OnStart() {
+			SpeedDialHud.Scoreboard?.UpdateScoreboard();
 
 			var players = Client.All;
-			foreach ( var p in players.ToArray() )
-			{
+			foreach(var p in players.ToArray()) {
 
-				if ( p.Pawn is SpeedDialPlayer sp )
-				{
-					Log.Info( "ROUND STARTED" );
+				if(p.Pawn is SpeedDialPlayer sp) {
+					Log.Info("ROUND STARTED");
 					sp.Unfreeze();
 					sp.KillScore = 0;
 					sp.maxCombo = 0;

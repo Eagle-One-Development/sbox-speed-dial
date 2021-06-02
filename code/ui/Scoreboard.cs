@@ -70,5 +70,11 @@ namespace SpeedDial.UI {
 				Entries.Remove(entry.Id);
 			}
 		}
+
+		public void UpdateScoreboard() {
+			foreach(var player in PlayerScore.All) {
+				UpdatePlayer(player);
+			}
+		}
 	}
 }

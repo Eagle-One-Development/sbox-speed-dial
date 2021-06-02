@@ -4,6 +4,8 @@ using Sandbox.UI;
 namespace SpeedDial.UI {
 	[Library]
 	public class SpeedDialHud : HudEntity<RootPanel> {
+
+		public static SpeedDialScoreboard<SpeedDialScoreboardEntry> Scoreboard;
 		public SpeedDialHud() {
 			if(!IsClient)
 				return;
@@ -15,7 +17,7 @@ namespace SpeedDial.UI {
 			RootPanel.AddChild<ComboPanel>();
 			RootPanel.AddChild<ChatBox>();
 			RootPanel.AddChild<EndRound>();
-			RootPanel.AddChild<SpeedDialScoreboard<SpeedDialScoreboardEntry>>();
+			Scoreboard = RootPanel.AddChild<SpeedDialScoreboard<SpeedDialScoreboardEntry>>();
 		}
 	}
 }
