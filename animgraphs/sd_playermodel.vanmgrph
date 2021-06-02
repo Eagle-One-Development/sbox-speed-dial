@@ -1134,7 +1134,7 @@
 			{
 				_class = "CBoneMaskAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 1475.0, 1341.0 ]
+				m_vecPosition = [ 1484.0, 1314.0 ]
 				m_nNodeID = 
 				{
 					m_id = 296265303
@@ -2161,7 +2161,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Holdtype"
-				m_vecPosition = [ 533.0, 1077.0 ]
+				m_vecPosition = [ 647.0, 1044.0 ]
 				m_nNodeID = 
 				{
 					m_id = 403738004
@@ -7169,7 +7169,7 @@
 			{
 				_class = "CAddAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 822.0, 1173.0 ]
+				m_vecPosition = [ 908.0, 1154.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1608075164
@@ -7984,6 +7984,89 @@
 				m_sequenceName = "rifle_walk_ne"
 				m_playbackSpeed = 1.0
 				m_bLoop = false
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 1808485689
+			}
+			value = 
+			{
+				_class = "CSelectorAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ 1704.0, 1335.0 ]
+				m_nNodeID = 
+				{
+					m_id = 1808485689
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_children = 
+				[
+					{
+						m_id = 4294967295
+					},
+					{
+						m_id = 4294967295
+					},
+					{
+						m_id = 4294967295
+					},
+					{
+						m_id = 4294967295
+					},
+					{
+						m_id = 4294967295
+					},
+					{
+						m_id = 4294967295
+					},
+					{
+						m_id = 4294967295
+					},
+				]
+				m_tags = 
+				[
+					{
+						m_id = 4294967295
+					},
+					{
+						m_id = 4294967295
+					},
+					{
+						m_id = 4294967295
+					},
+					{
+						m_id = 4294967295
+					},
+					{
+						m_id = 4294967295
+					},
+					{
+						m_id = 4294967295
+					},
+					{
+						m_id = 4294967295
+					},
+				]
+				m_selectionSource = "SelectionSource_Enum"
+				m_boolParamID = 
+				{
+					m_id = 4294967295
+				}
+				m_enumParamID = 
+				{
+					m_id = 72339625
+				}
+				m_blendDuration = 0.2
+				m_tagBehavior = "SelectorTagBehavior_OffWhenFinished"
+				m_bResetOnChange = true
+				m_bSyncCyclesOnChange = false
+				m_blendCurve = 
+				{
+					m_vControlPoint1 = [ 0.5, 0.0 ]
+					m_vControlPoint2 = [ 0.5, 1.0 ]
+				}
 			}
 		},
 		{
