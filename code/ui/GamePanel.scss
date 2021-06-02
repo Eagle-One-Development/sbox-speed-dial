@@ -1,11 +1,6 @@
-gamepanel{
+gamepanel {
     pointer-events: visible;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    border: 0px solid #b7ff0000;
-    transition: all 0.1s ease;
-    cursor: crosshair;
+    cursor: progress;
+    
+    
 }

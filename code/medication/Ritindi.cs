@@ -11,6 +11,7 @@ namespace SpeedDial.Meds {
 		public override string WorldModel => "models/abilities/sm_candy.vmdl";
 		public override float rotationSpeed => 75f;
 		public override string drugName => "Ritindi";
+		public override string drugFlavor => "your hands are steady";
 		public override float drugDuration => 4f;
 		public override DrugType drug => DrugType.Ritindi;
 	}
