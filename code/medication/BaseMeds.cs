@@ -9,7 +9,7 @@ using Sandbox.UI.Construct;
 
 namespace SpeedDial.Meds {
 	[Library("base_med", Title = "Drugs")]
-	public class BaseMedication : ModelEntity, IRespawnableEntity {
+	public partial class BaseMedication : ModelEntity, IRespawnableEntity {
 
 		public virtual string WorldModel => "models/abilities/sm_candy.vmdl";
 		public virtual float RotationSpeed => 75f;
@@ -22,6 +22,9 @@ namespace SpeedDial.Meds {
 		public virtual float RespawnTime { get; set; }
 
 		private Vector3 initialPosition = Vector3.Zero;
+
+		[Net]
+		public TimeSince TimeSinceSpawned { get; set; }
 
 
 		public PickupTrigger PickupTrigger { get; protected set; }
@@ -36,16 +39,24 @@ namespace SpeedDial.Meds {
 
 			SetModel(WorldModel);
 
+			ResetInterpolation();
+
 			PickupTrigger = new();
 			PickupTrigger.Parent = this;
+			PickupTrigger.ResetInterpolation();
 			PickupTrigger.Position = Position;
-			PickupTrigger.EnableTouchPersists = true;
+			PickupTrigger.EnableAllCollisions = false;
+
+			TimeSinceSpawned = 0;
 
 			ItemRespawn.AddRecordFromEntity(this);
 		}
 
 		[Event("server.tick")]
 		public void Simulate() {
+			if(TimeSinceSpawned > 0.5f) {
+				PickupTrigger.EnableAllCollisions = true;
+			}
 			if(initialPosition == Vector3.Zero) {
 				initialPosition = Position;
 			}

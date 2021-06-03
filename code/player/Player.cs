@@ -84,7 +84,7 @@ namespace SpeedDial.Player {
 		public override void Respawn() {
 			SetModel("models/playermodels/playermodel_base.vmdl");
 
-			SetPlayerBodyGroup(1, BodyGroup);
+			SetBodyGroup(1, BodyGroup);
 
 			RenderColor = PlayerColor;
 
@@ -116,6 +116,7 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		public void SetPlayerBodyGroup(int group, int value) {
+			Log.Info("Set Bodygroup Client");
 			SetBodyGroup(group, value);
 		}
 
@@ -247,6 +248,8 @@ namespace SpeedDial.Player {
 			if(Input.Pressed(InputButton.Attack2)) {
 				var dropped = Inventory.DropActive();
 				if(dropped != null) {
+					ResetInterpolation();
+					dropped.Position = EyePos;
 					if(dropped.PhysicsGroup != null) {
 						(dropped as BaseSpeedDialWeapon).ApplyThrowVelocity(EyeRot.Forward);
 						PlaySound("weaponspin");
