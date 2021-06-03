@@ -1876,11 +1876,11 @@
 						[
 							{
 								bone = "clavicle_l"
-								weight = 0.0
+								weight = 0.677536
 							},
 							{
 								bone = "clavicle_r"
-								weight = 0.0
+								weight = 0.677536
 							},
 							{
 								bone = "pelvis"
