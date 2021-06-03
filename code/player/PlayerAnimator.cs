@@ -6,6 +6,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using SpeedDial.Weapons;
 
 namespace SpeedDial.Player {
 	public class PlayerAnimator : PawnAnimator {
