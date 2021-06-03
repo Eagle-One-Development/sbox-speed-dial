@@ -74,9 +74,8 @@ namespace SpeedDial.Player {
 			Controller = new SpeedDialController();
 			Camera = new SpeedDialCamera();
 
-			MedTaken = false;
-
 			//Set a default character
+			MedTaken = false;
 			character = SpeedDialGame.Instance.characters[0];
 
 			Respawn();
@@ -101,11 +100,10 @@ namespace SpeedDial.Player {
 			Host.AssertServer();
 
 			KillCombo = 0;
+			MedTaken = false;
 
 			BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>(character.Weapon);
 			Inventory.Add(weapon, true);
-
-
 
 			LifeState = LifeState.Alive;
 			Health = 100;
@@ -113,6 +111,7 @@ namespace SpeedDial.Player {
 			CreateHull();
 			ResetInterpolation();
 			SpeedDialGame.MoveToSpawn(this);
+
 		}
 
 		[ClientRpc]
@@ -144,7 +143,7 @@ namespace SpeedDial.Player {
 		/// Handles Punching
 		/// </summary>
 		async Task HandleMelee() {
-			if(Input.Pressed(InputButton.Attack1)) {
+			if(Input.Down(InputButton.Attack1)) {
 				if(TimeSinceMelee > 0.33f) {
 					ResetTimeSinceMelee = true;
 					await GameTask.DelaySeconds(0.1f);

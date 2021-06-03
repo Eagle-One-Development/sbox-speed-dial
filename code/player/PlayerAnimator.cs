@@ -45,10 +45,6 @@ namespace SpeedDial.Player {
 		}
 
 		public virtual void DoRotation(Rotation idealRotation) {
-			//
-			// Our ideal player model rotation is the way we're facing
-			//
-			var allowYawDiff = Pawn.ActiveChild == null ? 0 : 0;
 
 			float turnSpeed = 0.01f;
 
@@ -60,7 +56,7 @@ namespace SpeedDial.Player {
 			//
 			// Clamp the foot rotation to within 120 degrees of the ideal rotation
 			//
-			Rotation = Rotation.Clamp(idealRotation, allowYawDiff, out var change);
+			Rotation = Rotation.Clamp(idealRotation, 0, out var change);
 
 			//
 			// If we did restrict, and are standing still, add a foot shuffle
@@ -76,9 +72,9 @@ namespace SpeedDial.Player {
 			// so the foot speed matches the floor speed. Your art should probably
 			// do this - but that ain't how we roll
 			//
-			SetParam("walkspeed_scale", 2.0f / 190.0f);
-			SetParam("runspeed_scale", 2.0f / 320.0f);
-			SetParam("duckspeed_scale", 2.0f / 80.0f);
+			SetParam("walkspeed_scale", 2.0f / 300.0f);
+			SetParam("runspeed_scale", 2.0f / 300.0f);
+			SetParam("duckspeed_scale", 2.0f / 300.0f);
 
 			//
 			// Work out our movement relative to our body rotation

@@ -8,7 +8,7 @@ using Sandbox;
 namespace SpeedDial.Meds {
 	[Library("meds_ollie")]
 	public class Ollie : BaseMedication {
-		public override string WorldModel => "models/abilities/sm_candy.vmdl";
+		public override string WorldModel => "models/abilities/sm_potion2.vmdl";
 		public override float RotationSpeed => 75f;
 		public override string DrugName => "OLLIE";
 		public override string DrugFlavor => "penetrating, richocheting"; // super bullets // uranium slugs // shootin' lazers

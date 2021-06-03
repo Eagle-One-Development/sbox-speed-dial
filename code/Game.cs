@@ -31,10 +31,9 @@ namespace SpeedDial {
 		public static float ComboTime { get; set; } = 3f;
 
 		[ServerCmd]
-		public List<SpeedDialPlayer> SortedPlayerList()
-		{
-			
-			return Entity.All.OfType<SpeedDialPlayer>().OrderByDescending( x => x.KillScore ).ToList<SpeedDialPlayer>();
+		public List<SpeedDialPlayer> SortedPlayerList() {
+
+			return Entity.All.OfType<SpeedDialPlayer>().OrderByDescending(x => x.KillScore).ToList<SpeedDialPlayer>();
 		}
 
 		public static SpeedDialGame Instance => (SpeedDialGame)Current;
@@ -71,6 +70,8 @@ namespace SpeedDial {
 			if(attackerClient == null) {
 				return;
 			}
+
+			(pawn as SpeedDialPlayer).MedTaken = false;
 
 			if(attackerClient != null) {
 				var attacker = attackerClient.Pawn as SpeedDialPlayer;
