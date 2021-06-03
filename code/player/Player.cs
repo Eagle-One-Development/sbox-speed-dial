@@ -143,7 +143,7 @@ namespace SpeedDial.Player {
 		/// Handles Punching
 		/// </summary>
 		async Task HandleMelee() {
-			if(Input.Down(InputButton.Attack1)) {
+			if(Input.Pressed(InputButton.Attack1)) {
 				if(TimeSinceMelee > 0.33f) {
 					ResetTimeSinceMelee = true;
 					await GameTask.DelaySeconds(0.1f);
