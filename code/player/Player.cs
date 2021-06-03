@@ -245,6 +245,8 @@ namespace SpeedDial.Player {
 				}
 			}
 
+			SetAnimBool("b_polvo", (MedTaken && CurrentDrug == Meds.DrugType.Polvo) ? true : false);
+
 			if(Input.Pressed(InputButton.Attack2)) {
 				var dropped = Inventory.DropActive();
 				if(dropped != null) {
