@@ -1113,7 +1113,7 @@
 									{
 										_class = "AnimOffset"
 										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, 2.0 ]
+										rotation_xyz = [ 0.0, 0.0, -3.0 ]
 									},
 								]
 								activity_name = ""
@@ -1152,7 +1152,7 @@
 									{
 										_class = "AnimOffset"
 										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, 2.0 ]
+										rotation_xyz = [ 0.0, 0.0, -3.0 ]
 									},
 								]
 								activity_name = ""
@@ -1191,7 +1191,7 @@
 									{
 										_class = "AnimOffset"
 										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, 2.0 ]
+										rotation_xyz = [ 0.0, 0.0, -3.0 ]
 									},
 								]
 								activity_name = ""
@@ -1230,7 +1230,7 @@
 									{
 										_class = "AnimOffset"
 										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, 2.0 ]
+										rotation_xyz = [ 0.0, 0.0, -3.0 ]
 									},
 								]
 								activity_name = ""
@@ -1269,7 +1269,7 @@
 									{
 										_class = "AnimOffset"
 										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, 2.0 ]
+										rotation_xyz = [ 0.0, 0.0, -3.0 ]
 									},
 								]
 								activity_name = ""
@@ -1308,7 +1308,7 @@
 									{
 										_class = "AnimOffset"
 										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, 2.0 ]
+										rotation_xyz = [ 0.0, 0.0, -3.0 ]
 									},
 								]
 								activity_name = ""
@@ -1347,7 +1347,7 @@
 									{
 										_class = "AnimOffset"
 										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, 2.0 ]
+										rotation_xyz = [ 0.0, 0.0, -3.0 ]
 									},
 								]
 								activity_name = ""
@@ -1386,7 +1386,7 @@
 									{
 										_class = "AnimOffset"
 										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, 2.0 ]
+										rotation_xyz = [ 0.0, 0.0, -3.0 ]
 									},
 								]
 								activity_name = ""
@@ -1425,7 +1425,7 @@
 									{
 										_class = "AnimOffset"
 										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, 2.0 ]
+										rotation_xyz = [ 0.0, 0.0, -3.0 ]
 									},
 								]
 								activity_name = ""
@@ -1575,6 +1575,7 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
+						disabled = true
 						model_name = "models/playermodels/weapons/prop_smg.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
@@ -1588,7 +1589,6 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
-						disabled = true
 						model_name = "models/playermodels/weapons/prop_rifle.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
@@ -2182,8 +2182,8 @@
 						_class = "Attachment"
 						name = "pistol_attach"
 						parent_bone = "hand_r"
-						relative_origin = [ -3.770596, -2.102306, 1.002979 ]
-						relative_angles = [ 4.323905, -164.999435, 22.981558 ]
+						relative_origin = [ -3.893547, -2.058931, 1.475361 ]
+						relative_angles = [ 1.251167, -161.96637, 21.70899 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -2191,8 +2191,8 @@
 						_class = "Attachment"
 						name = "smg_attach"
 						parent_bone = "hand_r"
-						relative_origin = [ -3.770596, -2.102306, 1.002979 ]
-						relative_angles = [ 4.323905, -164.999435, 22.981558 ]
+						relative_origin = [ -3.765289, -1.981676, 0.646606 ]
+						relative_angles = [ 2.861993, -159.281876, 24.416889 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
