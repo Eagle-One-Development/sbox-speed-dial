@@ -14,6 +14,8 @@ namespace SpeedDial.Weapons {
 		public override float BulletDamage => 100;
 		public override float BulletSize => 3;
 		public override int BulletCount => 6;
+		public override float Range => 1024;
 		public override Vector4 ScreenShakeParameters => new(1, 1.5f, 2, 1);
+		public override string AttachementName => "shotgun_attach";
 	}
 }

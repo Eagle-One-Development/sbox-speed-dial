@@ -8,6 +8,7 @@ using System.Numerics;
 using System.Threading.Tasks;
 using SpeedDial.Player;
 using SpeedDial.UI;
+
 namespace SpeedDial.Weapons {
 	public partial class BaseSpeedDialWeapon : BaseCarriable {
 		public virtual AmmoType AmmoType => AmmoType.Pistol;
@@ -43,8 +44,8 @@ namespace SpeedDial.Weapons {
 		public virtual float Range => 4096;
 		public virtual int AmmoPerShot => 1;
 		public virtual float DeployTime => 0.6f;
-
 		public virtual int HoldType => 1;
+		public virtual string AttachementName => "pistol_attach";
 
 		public int AvailableAmmo() {
 			if(Owner is SpeedDialPlayer owner) {
@@ -259,7 +260,14 @@ namespace SpeedDial.Weapons {
 		}
 
 		public override void OnCarryStart(Entity carrier) {
-			base.OnCarryStart(carrier);
+			if(IsClient) return;
+
+			SetParent(carrier, AttachementName, Transform.Zero);
+
+			Owner = carrier;
+			MoveType = MoveType.None;
+			EnableAllCollisions = false;
+			EnableDrawing = false;
 
 			if(PickupTrigger.IsValid()) {
 				PickupTrigger.EnableTouch = false;
