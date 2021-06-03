@@ -21,6 +21,14 @@
 								from = "test1.vmat"
 								to = "materials/playermodels/military_palette_skin_default.vmat"
 							},
+							{
+								from = "mi_unlit_military_gear_default.vmat"
+								to = "materials/playermodels/military_gear_default.vmat"
+							},
+							{
+								from = "mi_unlit_skingrads_with_rim.vmat"
+								to = "materials/playermodels/military_palette_skin_default.vmat"
+							},
 						]
 						use_global_default = false
 						global_default_material = ""
@@ -33,6 +41,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
+						name = "source"
 						filename = "models/playermodels/soldier.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -3447,6 +3456,13 @@
 								meshes = 
 								[
 									"8",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"source",
 								]
 							},
 						]
