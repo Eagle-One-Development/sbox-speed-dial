@@ -69,7 +69,7 @@ namespace SpeedDial.Player {
 				PlayerColor = Color.Random;
 			}
 
-			BodyGroup = Rand.Int(0, 8);
+			BodyGroup = Rand.Int(0, 9);
 
 			Controller = new SpeedDialController();
 			Camera = new SpeedDialCamera();
@@ -84,7 +84,7 @@ namespace SpeedDial.Player {
 		public override void Respawn() {
 			SetModel("models/playermodels/playermodel_base.vmdl");
 
-			SetBodyGroup(1, BodyGroup);
+			SetBodyGroup(0, BodyGroup);
 
 			RenderColor = PlayerColor;
 
