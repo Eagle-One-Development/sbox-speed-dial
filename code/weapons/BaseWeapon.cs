@@ -139,7 +139,7 @@ namespace SpeedDial.Weapons {
 
 			PlaySound(ShootSound);
 
-			(Owner as AnimEntity).SetAnimBool("b_attack", true);
+			//(Owner as AnimEntity).SetAnimBool("b_attack", true);
 
 			// shoot the bullets, bulletcount for something like a shotgun with multiple bullets
 			for(int i = 0; i < BulletCount; i++) {
