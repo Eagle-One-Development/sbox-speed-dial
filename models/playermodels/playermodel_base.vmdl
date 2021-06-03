@@ -1110,6 +1110,11 @@
 										root_bone_name = "pelvis"
 										motion_type = "Uniform"
 									},
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 2.0 ]
+									},
 								]
 								activity_name = ""
 								activity_weight = 1
@@ -1143,6 +1148,11 @@
 										quadratic = false
 										root_bone_name = "pelvis"
 										motion_type = "Uniform"
+									},
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 2.0 ]
 									},
 								]
 								activity_name = ""
@@ -1178,6 +1188,11 @@
 										root_bone_name = "pelvis"
 										motion_type = "Uniform"
 									},
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 2.0 ]
+									},
 								]
 								activity_name = ""
 								activity_weight = 1
@@ -1211,6 +1226,11 @@
 										quadratic = false
 										root_bone_name = "pelvis"
 										motion_type = "Uniform"
+									},
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 2.0 ]
 									},
 								]
 								activity_name = ""
@@ -1246,6 +1266,11 @@
 										root_bone_name = "pelvis"
 										motion_type = "Uniform"
 									},
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 2.0 ]
+									},
 								]
 								activity_name = ""
 								activity_weight = 1
@@ -1279,6 +1304,11 @@
 										quadratic = false
 										root_bone_name = "pelvis"
 										motion_type = "Uniform"
+									},
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 2.0 ]
 									},
 								]
 								activity_name = ""
@@ -1314,6 +1344,11 @@
 										root_bone_name = "pelvis"
 										motion_type = "Uniform"
 									},
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 2.0 ]
+									},
 								]
 								activity_name = ""
 								activity_weight = 1
@@ -1348,6 +1383,11 @@
 										root_bone_name = "pelvis"
 										motion_type = "Uniform"
 									},
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 2.0 ]
+									},
 								]
 								activity_name = ""
 								activity_weight = 1
@@ -1381,6 +1421,11 @@
 										quadratic = false
 										root_bone_name = "pelvis"
 										motion_type = "Uniform"
+									},
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 2.0 ]
 									},
 								]
 								activity_name = ""
@@ -1521,6 +1566,47 @@
 						entity_class = ""
 						attachment_type = "attach"
 						attach_point = "pistol_attach"
+						use_additional_offset = false
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						user_specified_color = false
+						user_specified_materialgroup = false
+						accept_parent_materialdriven_decals = false
+					},
+					{
+						_class = "ConfigAttachedModel"
+						model_name = "models/playermodels/weapons/prop_smg.vmdl"
+						entity_class = ""
+						attachment_type = "attach"
+						attach_point = "smg_attach"
+						use_additional_offset = false
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						user_specified_color = false
+						user_specified_materialgroup = false
+						accept_parent_materialdriven_decals = false
+					},
+					{
+						_class = "ConfigAttachedModel"
+						disabled = true
+						model_name = "models/playermodels/weapons/prop_rifle.vmdl"
+						entity_class = ""
+						attachment_type = "attach"
+						attach_point = "rifle_attach"
+						use_additional_offset = false
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						user_specified_color = false
+						user_specified_materialgroup = false
+						accept_parent_materialdriven_decals = false
+					},
+					{
+						_class = "ConfigAttachedModel"
+						disabled = true
+						model_name = "models/playermodels/weapons/prop_shotgun.vmdl"
+						entity_class = ""
+						attachment_type = "attach"
+						attach_point = "shotgun_attach"
 						use_additional_offset = false
 						relative_origin = [ 0.0, 0.0, 0.0 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
@@ -2096,8 +2182,35 @@
 						_class = "Attachment"
 						name = "pistol_attach"
 						parent_bone = "hand_r"
-						relative_origin = [ -4.468864, -1.871199, 1.968506 ]
-						relative_angles = [ -3.606836, -166.924545, 20.783175 ]
+						relative_origin = [ -3.770596, -2.102306, 1.002979 ]
+						relative_angles = [ 4.323905, -164.999435, 22.981558 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "smg_attach"
+						parent_bone = "hand_r"
+						relative_origin = [ -3.770596, -2.102306, 1.002979 ]
+						relative_angles = [ 4.323905, -164.999435, 22.981558 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "rifle_attach"
+						parent_bone = "hand_r"
+						relative_origin = [ -2.291302, -1.1572, 0.998192 ]
+						relative_angles = [ 13.363872, -169.675278, -2.20414 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "shotgun_attach"
+						parent_bone = "hand_r"
+						relative_origin = [ -4.925995, -0.701643, 1.570538 ]
+						relative_angles = [ 2.362393, -170.262863, 14.741102 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
