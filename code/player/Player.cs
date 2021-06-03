@@ -69,7 +69,7 @@ namespace SpeedDial.Player {
 				PlayerColor = Color.Random;
 			}
 
-			BodyGroup = Rand.Int(0, 5);
+			BodyGroup = Rand.Int(0, 8);
 
 			Controller = new SpeedDialController();
 			Camera = new SpeedDialCamera();

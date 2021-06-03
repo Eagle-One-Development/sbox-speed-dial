@@ -41,25 +41,8 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						name = "upper"
-						filename = "models/playermodels/upperbody.dmx"
-						import_translation = [ 0.0, 0.0, 0.0 ]
-						import_rotation = [ 0.0, 90.0, 0.0 ]
-						import_scale = 0.3937
-						align_origin_x_type = "None"
-						align_origin_y_type = "None"
-						align_origin_z_type = "None"
-						parent_bone = ""
-						import_filter = 
-						{
-							exclude_by_default = false
-							exception_list = [  ]
-						}
-					},
-					{
-						_class = "RenderMeshFile"
 						name = "0"
-						filename = "modular_playermodels/Military_Characters_Modular/01_Male/SK_Male_Head_BLK_001.FBX"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_BLK_001.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.3937
@@ -76,7 +59,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "1"
-						filename = "modular_playermodels/Military_Characters_Modular/01_Male/SK_Male_Head_BLK_002.FBX"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_BLK_002.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.3937
@@ -93,7 +76,24 @@
 					{
 						_class = "RenderMeshFile"
 						name = "2"
-						filename = "modular_playermodels/Military_Characters_Modular/01_Male/SK_Male_Head_BLK_003.FBX"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_BLK_003.FBX"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.3937
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "3"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_BLK_004.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.3937
@@ -110,7 +110,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "4"
-						filename = "modular_playermodels/Military_Characters_Modular/01_Male/SK_Male_Head_WHT_001.FBX"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_001.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.3937
@@ -127,7 +127,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "5"
-						filename = "modular_playermodels/Military_Characters_Modular/01_Male/SK_Male_Head_WHT_002.FBX"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_002.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.3937
@@ -144,7 +144,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "6"
-						filename = "modular_playermodels/Military_Characters_Modular/01_Male/SK_Male_Head_WHT_003.FBX"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_003.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.3937
@@ -160,8 +160,8 @@
 					},
 					{
 						_class = "RenderMeshFile"
-						name = "10"
-						filename = "modular_playermodels/Military_Characters_Modular/01_Male/SK_Male_Upper_BLK_001.FBX"
+						name = "7"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_004.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.3937
@@ -177,93 +177,8 @@
 					},
 					{
 						_class = "RenderMeshFile"
-						name = "11"
-						filename = "modular_playermodels/Military_Characters_Modular/01_Male/SK_Male_Upper_BLK_002.FBX"
-						import_translation = [ 0.0, 0.0, 0.0 ]
-						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 0.3937
-						align_origin_x_type = "None"
-						align_origin_y_type = "None"
-						align_origin_z_type = "None"
-						parent_bone = ""
-						import_filter = 
-						{
-							exclude_by_default = false
-							exception_list = [  ]
-						}
-					},
-					{
-						_class = "RenderMeshFile"
-						name = "12"
-						filename = "modular_playermodels/Military_Characters_Modular/01_Male/SK_Male_Upper_BLK_003.FBX"
-						import_translation = [ 0.0, 0.0, 0.0 ]
-						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 0.3937
-						align_origin_x_type = "None"
-						align_origin_y_type = "None"
-						align_origin_z_type = "None"
-						parent_bone = ""
-						import_filter = 
-						{
-							exclude_by_default = false
-							exception_list = [  ]
-						}
-					},
-					{
-						_class = "RenderMeshFile"
-						name = "13"
-						filename = "modular_playermodels/Military_Characters_Modular/01_Male/SK_Male_Upper_WHT_001.FBX"
-						import_translation = [ 0.0, 0.0, 0.0 ]
-						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 0.3937
-						align_origin_x_type = "None"
-						align_origin_y_type = "None"
-						align_origin_z_type = "None"
-						parent_bone = ""
-						import_filter = 
-						{
-							exclude_by_default = false
-							exception_list = [  ]
-						}
-					},
-					{
-						_class = "RenderMeshFile"
-						name = "14"
-						filename = "modular_playermodels/Military_Characters_Modular/01_Male/SK_Male_Upper_WHT_002.FBX"
-						import_translation = [ 0.0, 0.0, 0.0 ]
-						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 0.3937
-						align_origin_x_type = "None"
-						align_origin_y_type = "None"
-						align_origin_z_type = "None"
-						parent_bone = ""
-						import_filter = 
-						{
-							exclude_by_default = false
-							exception_list = [  ]
-						}
-					},
-					{
-						_class = "RenderMeshFile"
-						name = "15"
-						filename = "modular_playermodels/Military_Characters_Modular/01_Male/SK_Male_Upper_WHT_003.FBX"
-						import_translation = [ 0.0, 0.0, 0.0 ]
-						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 0.3937
-						align_origin_x_type = "None"
-						align_origin_y_type = "None"
-						align_origin_z_type = "None"
-						parent_bone = ""
-						import_filter = 
-						{
-							exclude_by_default = false
-							exception_list = [  ]
-						}
-					},
-					{
-						_class = "RenderMeshFile"
-						name = "lower"
-						filename = "modular_playermodels/Military_Characters_Modular/01_Male/SK_Male_Lower_001.FBX"
+						name = "8"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_005.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.3937
@@ -2440,7 +2355,6 @@
 								meshes = 
 								[
 									"0",
-									"10",
 								]
 							},
 							{
@@ -2448,7 +2362,6 @@
 								meshes = 
 								[
 									"1",
-									"11",
 								]
 							},
 							{
@@ -2456,7 +2369,13 @@
 								meshes = 
 								[
 									"2",
-									"12",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"3",
 								]
 							},
 							{
@@ -2464,7 +2383,6 @@
 								meshes = 
 								[
 									"4",
-									"13",
 								]
 							},
 							{
@@ -2472,7 +2390,6 @@
 								meshes = 
 								[
 									"5",
-									"14",
 								]
 							},
 							{
@@ -2480,7 +2397,20 @@
 								meshes = 
 								[
 									"6",
-									"15",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"7",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"8",
 								]
 							},
 						]

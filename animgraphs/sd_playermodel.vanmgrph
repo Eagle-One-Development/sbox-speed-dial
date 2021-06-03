@@ -249,6 +249,83 @@
 				m_bPredicted = false
 				m_bDefaultValue = false
 			},
+			{
+				_class = "CIntAnimParameter"
+				m_name = "i_Hit_Bone"
+				m_id = 
+				{
+					m_id = 1454653401
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = true
+				m_bUseMostRecentValue = true
+				m_bAutoReset = false
+				m_bPredicted = false
+				m_defaultValue = 19
+				m_minValue = 0
+				m_maxValue = 100
+			},
+			{
+				_class = "CBoolAnimParameter"
+				m_name = "b_hit_trigger"
+				m_id = 
+				{
+					m_id = 32777283
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = true
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = false
+				m_bDefaultValue = false
+			},
+			{
+				_class = "CVectorAnimParameter"
+				m_name = "v_Hit_offset"
+				m_id = 
+				{
+					m_id = 1255650699
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = true
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = false
+				m_defaultValue = [ 0.0, 0.0, 0.0 ]
+				m_bInterpolate = false
+			},
+			{
+				_class = "CVectorAnimParameter"
+				m_name = "v_Hit_direction"
+				m_id = 
+				{
+					m_id = 1972178564
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = true
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = false
+				m_defaultValue = [ 0.0, 0.0, 0.0 ]
+				m_bInterpolate = false
+			},
+			{
+				_class = "CFloatAnimParameter"
+				m_name = "f_hit_strength"
+				m_id = 
+				{
+					m_id = 396822723
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = true
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = false
+				m_fDefaultValue = 0.0
+				m_fMinValue = 0.0
+				m_fMaxValue = 1.0
+				m_bInterpolate = false
+			},
 		]
 	}
 	m_pTagManager = 
@@ -752,7 +829,7 @@
 				{
 					m_id = 140905755
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_childID = 
 				{
 					m_id = 1410396904
@@ -3538,6 +3615,65 @@
 				{
 					m_id = 1583933958
 				}
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 891995616
+			}
+			value = 
+			{
+				_class = "CHitReactAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ 2628.0, 1321.0 ]
+				m_nNodeID = 
+				{
+					m_id = 891995616
+				}
+				m_networkMode = "ClientPredicted"
+				m_childID = 
+				{
+					m_id = 909451985
+				}
+				m_flMinDelayBetweenHits = 0.0
+				m_triggerParam = 
+				{
+					m_id = 32777283
+				}
+				m_hitBoneParam = 
+				{
+					m_id = 1454653401
+				}
+				m_hitOffsetParam = 
+				{
+					m_id = 1255650699
+				}
+				m_hitDirectionParam = 
+				{
+					m_id = 1972178564
+				}
+				m_hitStrengthParam = 
+				{
+					m_id = 396822723
+				}
+				m_weightListName = "default"
+				m_hipBoneName = "spine_01"
+				m_flHipBoneTranslationScale = 3.5
+				m_nEffectedBoneCount = 5
+				m_flMaxImpactForce = 100.0
+				m_flMinImpactForce = 100.0
+				m_flWhipImpactScale = 0.8
+				m_flCounterRotationScale = 1.0
+				m_flDistanceFadeScale = 0.2
+				m_flPropagationScale = 0.7
+				m_flWhipDelay = 0.07
+				m_flSpringStrength = 35.0
+				m_flWhipSpringStrength = 25.0
+				m_flHipDipSpringStrength = 12.0
+				m_flHipDipImpactScale = 0.2
+				m_flHipDipDelay = 0.03
+				m_bResetBase = true
 			}
 		},
 		{
@@ -6626,7 +6762,7 @@
 				m_networkMode = "ClientPredicted"
 				m_childID = 
 				{
-					m_id = 909451985
+					m_id = 891995616
 				}
 			}
 		},
