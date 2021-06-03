@@ -22,11 +22,7 @@
 								to = "materials/playermodels/military_palette_skin_default.vmat"
 							},
 							{
-								from = "mi_unlit_skingrads.vmat"
-								to = "materials/vgui/white_alpha_only_no_stencil.vmat"
-							},
-							{
-								from = "mi_unlit_military_gear.vmat"
+								from = "no_material.vmat"
 								to = "materials/playermodels/military_gear_default.vmat"
 							},
 						]
@@ -41,7 +37,24 @@
 				[
 					{
 						_class = "RenderMeshFile"
+						filename = "models/playermodels/soldier.dmx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
 						name = "0"
+						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_BLK_001.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -59,6 +72,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "1"
+						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_BLK_002.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -76,6 +90,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "2"
+						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_BLK_003.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -93,6 +108,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "3"
+						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_BLK_004.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -110,6 +126,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "4"
+						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_001.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -127,6 +144,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "5"
+						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_002.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -144,6 +162,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "6"
+						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_003.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -161,6 +180,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "7"
+						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_004.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -178,6 +198,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "8"
+						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_005.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -564,6 +585,26 @@
 								source_filename = "models/playermodels/anims/pistol_fire_temp.dmx"
 								start_frame = -1
 								end_frame = 10
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "idle_pistol_aim_IK"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/idle_pistol_aim_ik.dmx"
+								start_frame = -1
+								end_frame = 41
 								framerate = -1.0
 								reverse = false
 							},
@@ -1429,6 +1470,133 @@
 						end_frame = 20
 						framerate = -1.0
 						reverse = false
+					},
+					{
+						_class = "Folder"
+						name = "Turns_Rifle"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "rifle_turn_45L"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_turn_45L.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_turn_45R"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_turn_45R.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_turn_90L"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_turn_90L.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_turn_90R"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_turn_90R.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_turn_180L"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_turn_180.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_turn_180R"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_turn_180R.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+						]
 					},
 				]
 				default_root_bone_name = ""
