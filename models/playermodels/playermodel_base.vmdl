@@ -1512,9 +1512,23 @@
 								choice = 5
 							},
 						]
+						disabled = true
+					},
+					{
+						_class = "ConfigAttachedModel"
+						disabled = true
+						model_name = "models/playermodels/weapons/prop_pistol.vmdl"
+						entity_class = ""
+						attachment_type = "attach"
+						attach_point = "pistol_attach"
+						use_additional_offset = false
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						user_specified_color = false
+						user_specified_materialgroup = false
+						accept_parent_materialdriven_decals = false
 					},
 				]
-				disabled = true
 				hide_materialgroup_in_tools = false
 				hide_rendercolor_in_tools = false
 			},
@@ -2075,6 +2089,15 @@
 						parent_bone = "hand_R"
 						relative_origin = [ -8.003757, 0.804641, 0.194546 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "pistol_attach"
+						parent_bone = "hand_r"
+						relative_origin = [ -4.468864, -1.871199, 1.968506 ]
+						relative_angles = [ -3.606836, -166.924545, 20.783175 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
