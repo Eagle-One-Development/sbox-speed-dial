@@ -102,6 +102,8 @@ namespace SpeedDial.Player {
 			KillCombo = 0;
 			MedTaken = false;
 
+			// reset weapon/ammo on spawn
+			Inventory.DeleteContents();
 			BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>(character.Weapon);
 			Inventory.Add(weapon, true);
 
@@ -111,7 +113,6 @@ namespace SpeedDial.Player {
 			CreateHull();
 			ResetInterpolation();
 			SpeedDialGame.MoveToSpawn(this);
-
 		}
 
 		[ClientRpc]

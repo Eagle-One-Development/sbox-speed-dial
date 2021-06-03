@@ -80,7 +80,7 @@ namespace SpeedDial.Player {
 		}
 
 		public override void Simulate() {
-			if(Freeze) return;
+			if(Freeze) { WishVelocity = Vector3.Zero; return; }
 			EyePosLocal = Vector3.Up * (EyeHeight * Pawn.Scale);
 			UpdateBBox();
 

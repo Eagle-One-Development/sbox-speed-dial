@@ -130,21 +130,23 @@ namespace SpeedDial.Weapons {
 			return TimeSincePrimaryAttack > (1 / rate);
 		}
 
-		public virtual void AttackPrimary() {
+		public virtual void AttackPrimary(bool overrideBullet = false, bool overrideShootEffects = false) {
 			TimeSincePrimaryAttack = 0;
 
-			if(!TakeAmmo(AmmoPerShot)) return;
+			if(!overrideBullet) {
+				if(!TakeAmmo(AmmoPerShot)) return; // no ammo, no shooty shoot
 
-			// Tell the clients to play the shoot effects
-			ShootEffects();
+				// shoot the bullets, bulletcount for something like a shotgun with multiple bullets
+				for(int i = 0; i < BulletCount; i++) {
+					ShootBullet(BulletSpread, BulletForce, BulletDamage, BulletSize);
+				}
+			}
 
-			PlaySound(ShootSound);
-
-			(Owner as AnimEntity).SetAnimBool("b_attack", true);
-
-			// shoot the bullets, bulletcount for something like a shotgun with multiple bullets
-			for(int i = 0; i < BulletCount; i++) {
-				ShootBullet(BulletSpread, BulletForce, BulletDamage, BulletSize);
+			if(!overrideShootEffects) {
+				// clientside shoot effects
+				ShootEffects(); // muzzle and brass eject
+				PlaySound(ShootSound); // shoot sound
+				(Owner as AnimEntity).SetAnimBool("b_attack", true); // shoot anim
 			}
 		}
 

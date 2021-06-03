@@ -37,7 +37,7 @@ namespace SpeedDial.Weapons {
 						isFiring = false;
 						return;
 					}
-					//(Owner as AnimEntity).SetAnimBool("b_attack", true);
+					(Owner as AnimEntity).SetAnimBool("b_attack", true);
 
 					ShootEffects();
 					PlaySound(ShootSound);
@@ -53,8 +53,8 @@ namespace SpeedDial.Weapons {
 			}
 		}
 
-		public override void AttackPrimary() {
-			TimeSincePrimaryAttack = 0;
+		public override void AttackPrimary(bool overrideBullet = false, bool overrideShootEffects = false) {
+			base.AttackPrimary(true, true);
 
 			if(!isFiring) {
 				isFiring = true;
