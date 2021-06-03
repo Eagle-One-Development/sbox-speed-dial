@@ -50,7 +50,6 @@
 					{
 						_class = "RenderMeshFile"
 						name = "0"
-						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_BLK_001.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -68,7 +67,6 @@
 					{
 						_class = "RenderMeshFile"
 						name = "1"
-						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_BLK_002.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -86,7 +84,6 @@
 					{
 						_class = "RenderMeshFile"
 						name = "2"
-						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_BLK_003.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -104,7 +101,6 @@
 					{
 						_class = "RenderMeshFile"
 						name = "3"
-						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_BLK_004.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -122,7 +118,6 @@
 					{
 						_class = "RenderMeshFile"
 						name = "4"
-						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_001.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -140,7 +135,6 @@
 					{
 						_class = "RenderMeshFile"
 						name = "5"
-						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_002.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -158,7 +152,6 @@
 					{
 						_class = "RenderMeshFile"
 						name = "6"
-						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_003.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -176,7 +169,6 @@
 					{
 						_class = "RenderMeshFile"
 						name = "7"
-						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_004.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -194,7 +186,6 @@
 					{
 						_class = "RenderMeshFile"
 						name = "8"
-						disabled = true
 						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_005.FBX"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
