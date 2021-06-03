@@ -1589,6 +1589,7 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
+						disabled = true
 						model_name = "models/playermodels/weapons/prop_rifle.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
