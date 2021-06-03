@@ -22,6 +22,8 @@ namespace SpeedDial {
 			Precache.Add("particles/pistol_ejectbrass.vpcf");
 
 			Precache.Add("animgraphs/sd_playermodel.vanmgrph");
+			Precache.Add("animgraphs/sd_playermodel_test.vanmgrph");
+
 		}
 	}
 }
