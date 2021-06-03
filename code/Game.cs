@@ -114,8 +114,6 @@ namespace SpeedDial {
 			if(owner == null)
 				return;
 
-
-
 			var ent = Library.Create<Entity>(entName);
 			if(ent is BaseCarriable && owner.Inventory != null) {
 				if(owner.Inventory.Add(ent, true))
@@ -196,19 +194,29 @@ namespace SpeedDial {
 			// who needs noclip anyways
 		}
 
-		public static void MoveToSpawn(SpeedDialPlayer player) {
+		public static void MoveToSpawn(SpeedDialPlayer respawnPlayer) {
 			if(Host.IsServer) {
 
 				//info_player_start as spawnpoint (Sandbox.SpawnPoint)
-				var spawnpoints = Entity.All.Where((e) => e is SpawnPoint);
-				var randomSpawn = spawnpoints.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
-				if(randomSpawn == null) {
-					//no info_player_start found, fall back to world origin
-					player.Position = Vector3.Zero;
-					return;
+				var spawnpoints = All.Where((s) => s is SpawnPoint);
+				Entity optimalSpawn = spawnpoints.ToList()[0];
+				float optimalDistance = 0;
+
+				foreach(var spawn in spawnpoints) {
+					float smallestDistance = 999999;
+					foreach(var player in All.Where((p) => p is SpeedDialPlayer)) {
+						var distance = Vector3.DistanceBetween(spawn.Position, player.Position);
+						if(distance < smallestDistance) {
+							smallestDistance = distance;
+						}
+					}
+					if(smallestDistance > optimalDistance) {
+						optimalSpawn = spawn;
+						optimalDistance = smallestDistance;
+					}
 				}
 
-				player.Transform = randomSpawn.Transform;
+				respawnPlayer.Transform = optimalSpawn.Transform;
 				return;
 			}
 		}
