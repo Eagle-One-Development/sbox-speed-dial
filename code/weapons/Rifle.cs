@@ -37,7 +37,7 @@ namespace SpeedDial.Weapons {
 						isFiring = false;
 						return;
 					}
-					(Owner as AnimEntity).SetAnimBool("b_attack", true);
+					//(Owner as AnimEntity).SetAnimBool("b_attack", true);
 
 					ShootEffects();
 					PlaySound(ShootSound);
