@@ -16,7 +16,7 @@ namespace SpeedDial.Weapons {
 		public virtual float ReloadTime => 0.17f;
 
 		[Net]
-		public Entity previousOwner { get; set; }
+		public Entity PreviousOwner { get; set; }
 
 		[Net, Predicted]
 		public int AmmoClip { get; set; }
@@ -109,7 +109,7 @@ namespace SpeedDial.Weapons {
 				return;
 
 			if(Owner != null) {
-				previousOwner = Owner;
+				PreviousOwner = Owner;
 			}
 
 			if(TimeSinceDeployed < DeployTime)
