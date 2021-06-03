@@ -220,7 +220,7 @@ namespace SpeedDial.Weapons {
 					float dot = Vector3.Dot(inDir.Normal, bullet.Normal);
 
 					if(dot < 0) {
-						var dir = Vector3.Reflect(inDir, bullet.Normal);
+						var dir = Vector3.Reflect(inDir, bullet.Normal).WithZ(0);
 						var ricochet = Trace.Ray(bullet.EndPos, end + dir * Range)
 								.UseHitboxes()
 								.Ignore(Owner)

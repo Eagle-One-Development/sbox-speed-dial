@@ -32,13 +32,13 @@ namespace SpeedDial.UI {
 		public AmmoPanel() {
 			StyleSheet.Load("/ui/AmmoPanel.scss");
 			ammoCounter = Add.Panel("counter");
-			clipLabel = ammoCounter.Add.Label("000", "ammoLabel");
+			clipLabel = ammoCounter.Add.Label("0", "ammoLabel");
 
 			pickUpPanel = Add.Panel("pickuppanel");
 			pickUpLabel = pickUpPanel.Add.Label("Right Click To Pick Up", "pickuplabel");
 
-			medLabel = pickUpPanel.Add.Label( "DRUG TAKEN", "medlabel" );
-			medFlavor = medLabel.Add.Label( "you feel better", "medFlavor" );
+			medLabel = pickUpPanel.Add.Label("DRUG TAKEN", "medlabel");
+			medFlavor = medLabel.Add.Label("you feel better", "medFlavor");
 
 			Current = this;
 			scale = 0;
@@ -50,11 +50,10 @@ namespace SpeedDial.UI {
 		public void Bump() {
 			scale = 0.7f;
 		}
-		
 
-		
-		public void DrugBump(string s, string f)
-		{
+
+
+		public void DrugBump(string s, string f) {
 			wideScale = 0.5f;
 			totalDrugScale = 1.0f;
 			medLabel.Text = s + " TAKEN";
@@ -102,12 +101,11 @@ namespace SpeedDial.UI {
 			pickUpLabel.Style.Dirty();
 
 			PanelTransform transform3 = new();
-			transform3.AddScale( new Vector3( totalDrugScale + wideScale, totalDrugScale, totalDrugScale ) );
+			transform3.AddScale(new Vector3(totalDrugScale + wideScale, totalDrugScale, totalDrugScale));
 
-			wideScale = wideScale.LerpTo( 0, Time.Delta * 4f );
-			if(wideScale <= 0.01f )
-			{
-				totalDrugScale = totalDrugScale.LerpTo( 0, Time.Delta * 8f);
+			wideScale = wideScale.LerpTo(0, Time.Delta * 4f);
+			if(wideScale <= 0.01f) {
+				totalDrugScale = totalDrugScale.LerpTo(0, Time.Delta * 8f);
 			}
 
 			medLabel.Style.Transform = transform3;
@@ -124,7 +122,7 @@ namespace SpeedDial.UI {
 				clipLabel.Text = $"{weapon.AmmoClip}";
 			} else {
 				outscale = outscale.LerpTo(0f, Time.Delta * 8f);
-				clipLabel.Text = "00";
+				clipLabel.Text = "0";
 			}
 		}
 	}

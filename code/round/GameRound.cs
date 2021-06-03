@@ -26,12 +26,12 @@ namespace SpeedDial {
 		}
 
 		protected override void OnStart() {
-			var players = Client.All;
-			foreach ( var p in players.ToArray() )
-			{
-
-				(p.Pawn as SpeedDialPlayer).Respawn();
-			}
+			// var players = Client.All;
+			// foreach ( var p in players.ToArray() )
+			// {
+			// 
+			// (p.Pawn as SpeedDialPlayer).Respawn();
+			// }
 
 		}
 
@@ -44,7 +44,7 @@ namespace SpeedDial {
 			Log.Info("Game Round Round Up!");
 
 			SpeedDialGame.Instance.ChangeRound(new PostRound());
-			
+
 			base.OnTimeUp();
 		}
 	}
