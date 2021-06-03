@@ -9,7 +9,7 @@ using SpeedDial.Player;
 namespace SpeedDial {
 	public class PreRound : BaseRound {
 		public override string RoundName => "Pre-Round";
-		public override int RoundDuration => 3;
+		public override int RoundDuration => 5;
 
 		private bool _roundStarted;
 
@@ -24,17 +24,20 @@ namespace SpeedDial {
 			base.OnPlayerSpawn(player);
 		}
 
-		protected override void OnStart() {
-			Log.Info("Started Pre Round");
-			//var players = Player.All;
-			//foreach(var p in players.ToArray()) {
-			//	//Log.Info("BLOCK");
-			//	if(p is SpeedDialPlayer jp) {
-			//		jp.Respawn();
-			//		SpeedDialPlayer jbc = jp.Controller as SpeedDialPlayer;
-			//		jbc.CanMove = false;
-			//	}
-			//}
+		protected override void OnStart()
+		{
+			Log.Info( "Pre Round Started" );
+			var players = Client.All;
+			foreach ( var p in players.ToArray() )
+			{
+
+				if ( p.Pawn is SpeedDialPlayer jp )
+				{
+					jp.Respawn();
+					(jp.Controller as SpeedDialController).Freeze = true;
+					
+				}
+			}
 
 		}
 

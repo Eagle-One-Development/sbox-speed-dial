@@ -29,6 +29,8 @@ namespace SpeedDial.UI {
 		private float wideScale;
 		private float totalDrugScale;
 
+		public Label preRoundCountDownLabel;
+
 		public AmmoPanel() {
 			StyleSheet.Load("/ui/AmmoPanel.scss");
 			ammoCounter = Add.Panel("counter");
@@ -42,6 +44,9 @@ namespace SpeedDial.UI {
 
 			Current = this;
 			scale = 0;
+
+			var panel = Add.Panel( "countdown" );
+			preRoundCountDownLabel = panel.Add.Label( "10", "timer" );
 
 			vhs_green = new Color(28f / 255f, 255f / 255f, 176f / 255f, 1.0f);//new Color(173f/255f,255f/255f,226f/255f,1.0f);
 			vhs_magenta = new Color(255f / 255f, 89 / 255f, 255f / 255f, 1.0f);//new Color(255f / 255f, 163f / 255f, 255f / 255f, 1.0f);
@@ -112,7 +117,30 @@ namespace SpeedDial.UI {
 			medLabel.Style.TextShadow = shadows;
 			medLabel.Style.Dirty();
 
+			if ( SpeedDialGame.Instance.Round is PreRound gr )
+			{
+				if ( gr.TimeLeft >= 0 )
+				{
+					preRoundCountDownLabel.Text = MathF.Round( gr.TimeLeft ).ToString();
+				}
+				else
+				{
+					preRoundCountDownLabel.Text = "";
+				}
+			}
+			else
+			{
+				preRoundCountDownLabel.Text = "";
+			}
 
+			if ( SpeedDialGame.Instance.Round is GameRound || SpeedDialGame.Instance.Round is PreRound )
+			{
+				SetClass( "active", false );
+			}
+			else
+			{
+				SetClass( "active", true );
+			}
 
 			var player = Local.Pawn;
 			if(player == null) return;

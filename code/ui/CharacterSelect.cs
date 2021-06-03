@@ -53,7 +53,7 @@ namespace SpeedDial.UI {
 			portrait.SetTexture(character.Portrait);
 
 			string wep = Library.GetAttribute(character.Weapon).Title;
-			startLoad.Text = $"Weapon: {wep}\nAbility: NONE";
+			startLoad.Text = $"Weapon: {wep}";
 
 			var transform = new PanelTransform();
 
@@ -92,6 +92,15 @@ namespace SpeedDial.UI {
 					SetClass("active", true);
 				}
 			}
+
+			if ( SpeedDialGame.Instance.Round is GameRound || SpeedDialGame.Instance.Round is PreRound )
+			{
+
+			}
+			else
+			{
+				SetClass( "active", false );
+			}
 		}
 
 		[Event("buildinput")]
@@ -110,7 +119,8 @@ namespace SpeedDial.UI {
 					translate = 100f;
 					translate2 = 0f;
 					right = true;
-					if(currentIndex > SpeedDialGame.Instance.characters.Count - 1) {
+					backPortrait.Texture = portrait.Texture;
+					if (currentIndex > SpeedDialGame.Instance.characters.Count - 1) {
 						currentIndex = 0;
 					}
 				}
@@ -121,7 +131,7 @@ namespace SpeedDial.UI {
 					//Log.Info(currentIndex.ToString());
 					translate2 = 100f;
 					translate = 0f;
-
+					backPortrait.Texture = portrait.Texture;
 					if(currentIndex < 0) {
 						currentIndex = SpeedDialGame.Instance.characters.Count - 1;
 					}

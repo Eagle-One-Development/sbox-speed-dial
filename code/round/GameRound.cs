@@ -9,7 +9,7 @@ using SpeedDial.UI;
 namespace SpeedDial {
 	public class GameRound : BaseRound {
 		public override string RoundName => "Game Round";
-		public override int RoundDuration => 300;
+		public override int RoundDuration => 30;
 
 		private bool _roundStarted;
 
@@ -26,12 +26,13 @@ namespace SpeedDial {
 		}
 
 		protected override void OnStart() {
-			// var players = Client.All;
-			// foreach ( var p in players.ToArray() )
-			// {
-			// 
-			// (p.Pawn as SpeedDialPlayer).Respawn();
-			// }
+			Log.Info( "GAME ROUND START" );
+			var players = Client.All;
+			foreach ( var p in players.ToArray() )
+			{
+
+				(p.Pawn as SpeedDialPlayer).Unfreeze();
+			}
 
 		}
 
@@ -41,7 +42,7 @@ namespace SpeedDial {
 		}
 
 		protected override void OnTimeUp() {
-			Log.Info("Game Round Round Up!");
+			Log.Info("Game Round Up!");
 
 			SpeedDialGame.Instance.ChangeRound(new PostRound());
 

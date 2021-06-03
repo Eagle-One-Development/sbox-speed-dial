@@ -3,7 +3,7 @@ using SpeedDial.Weapons;
 using Sandbox.UI;
 
 namespace SpeedDial.Player {
-	public partial class BaseSpeedDialCharacter {
+	public partial class BaseSpeedDialCharacter : NetworkComponent{
 
 		/// <summary>
 		/// Name of the library for the weapon this character spawns with

@@ -29,7 +29,7 @@ namespace SpeedDial.UI
 		Color vhs_green;
 		Color vhs_magenta;
 
-
+		public bool characterset;
 
 		public void SetPlayers()
 		{
@@ -47,15 +47,22 @@ namespace SpeedDial.UI
 			firstPlace.myLabel.Text = players[0].GetClientOwner().Name;
 			firstPlace.subLabel.Text = "1st";
 
+
+			firstPlace.myImage.Texture = Texture.Load( players[0].character.Portrait );
+			Log.Info( "WAFFLES" );
+
+
 			if(players.Count > 1 )
 			{
 				secondPlace.myLabel.Text = players[1].GetClientOwner().Name;
+				secondPlace.myImage.Texture = Texture.Load( players[1].character.Portrait );
 				secondPlace.subLabel.Text = "2nd";
 			}
 
 			if ( players.Count > 2 )
 			{
 				thirdPlace.myLabel.Text = players[2].GetClientOwner().Name;
+				thirdPlace.myImage.Texture = Texture.Load( players[2].character.Portrait );
 				thirdPlace.subLabel.Text = "3rd";
 			}
 
@@ -108,7 +115,12 @@ namespace SpeedDial.UI
 				shadows.Add( s2 );
 
 				SetClass( "active", true );
-				SetPlayers();
+
+				if ( !characterset )
+				{
+					SetPlayers();
+					characterset = true;
+				}
 				PanelTransform first = new PanelTransform();
 				first.AddTranslateY( Length.Percent( scale[0] ) );
 

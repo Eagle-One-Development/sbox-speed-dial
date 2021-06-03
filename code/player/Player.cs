@@ -53,7 +53,8 @@ namespace SpeedDial.Player {
 			Inventory = new SpeedDialInventory(this);
 		}
 
-		public BaseSpeedDialCharacter character;
+		[Net]
+		public BaseSpeedDialCharacter character { get; set; }
 
 		public void InitialSpawn() {
 

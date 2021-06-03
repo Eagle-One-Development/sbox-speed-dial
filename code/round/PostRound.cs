@@ -18,14 +18,13 @@ namespace SpeedDial {
 
 		protected override void OnStart()
 		{
-			
+			Log.Info( "POST ROUND START" );
 			var players = Client.All;
 			foreach ( var p in players.ToArray() )
 			{
 				
 				if ( p.Pawn is SpeedDialPlayer jp )
 				{
-					Log.Info( "ROUND STARTED" );
 					jp.Freeze();
 				}
 			}
@@ -33,7 +32,7 @@ namespace SpeedDial {
 		}
 
 		protected override void OnTimeUp() {
-			Log.Info("Game Round Round Up!");
+			Log.Info("Post Round Time Up");
 
 			SpeedDialGame.Instance.ChangeRound( new WarmUpRound() );
 
