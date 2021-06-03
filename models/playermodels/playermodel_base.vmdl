@@ -1962,7 +1962,31 @@
 						weights = 
 						[
 							{
+								bone = "clavicle_l"
+								weight = 0.766949
+							},
+							{
+								bone = "clavicle_r"
+								weight = 0.78178
+							},
+							{
 								bone = "spine_01"
+								weight = 0.264493
+							},
+							{
+								bone = "spine_02"
+								weight = 0.436441
+							},
+							{
+								bone = "spine_03"
+								weight = 0.608051
+							},
+							{
+								bone = "upperarm_l"
+								weight = 1.0
+							},
+							{
+								bone = "upperarm_r"
 								weight = 1.0
 							},
 						]
@@ -1986,6 +2010,70 @@
 							{
 								bone = "pelvis"
 								weight = 0.347826
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "legs_only"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "pelvis"
+								weight = 1.0
+							},
+							{
+								bone = "spine_01"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_l"
+								weight = 1.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "upper_body_rifle"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "clavicle_l"
+								weight = 1.0
+							},
+							{
+								bone = "clavicle_r"
+								weight = 1.0
+							},
+							{
+								bone = "spine_01"
+								weight = 0.264493
+							},
+							{
+								bone = "spine_02"
+								weight = 0.492754
+							},
+							{
+								bone = "spine_03"
+								weight = 0.655797
+							},
+							{
+								bone = "thigh_l"
+								weight = 0.594203
+							},
+							{
+								bone = "thigh_r"
+								weight = 0.59058
 							},
 						]
 						master_morph_weight = -1.0
@@ -2132,16 +2220,27 @@
 					},
 					{
 						_class = "LookAtChain"
-						name = "HandRAim"
-						disabled = true
+						name = "AimChain"
 						lookat_chain = 
 						{
 							name = ""
 							bones = 
 							[
 								{
-									name = "hand_R"
+									name = "spine_03"
 									weight = 1.0
+								},
+								{
+									name = "spine_02"
+									weight = 0.75
+								},
+								{
+									name = "spine_01"
+									weight = 0.5
+								},
+								{
+									name = "pelvis"
+									weight = 0.25
 								},
 							]
 						}
