@@ -881,7 +881,7 @@
 									m_id = 1486483708
 								}
 								m_bReset = true
-								m_resetCycleOption = "SameCycleAsSource"
+								m_resetCycleOption = "Beginning"
 								m_flFixedCycleValue = 0.0
 								m_blendCurve = 
 								{
