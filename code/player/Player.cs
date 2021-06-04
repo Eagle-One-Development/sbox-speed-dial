@@ -56,8 +56,11 @@ namespace SpeedDial.Player {
 		[Net]
 		public BaseSpeedDialCharacter character { get; set; }
 
+		[Net, Local, Predicted]
+		public bool Frozen { get; set; } = false; // sorry for naming differences
+
 		public void InitialSpawn() {
-			
+
 			if(GetClientOwner().SteamId == 76561198000823482) { // bak
 				PlayerColor = new Color32(250, 176, 3);
 			} else if(GetClientOwner().SteamId == 76561198203314521) { // gurke
@@ -116,6 +119,15 @@ namespace SpeedDial.Player {
 			SpeedDialGame.MoveToSpawn(this);
 		}
 
+		/// <summary>
+		/// Reloads weapons to give them their selected character's weapons.
+		/// </summary>
+		public void ResetWeapon() {
+			Inventory.DeleteContents();
+			BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>(character.Weapon);
+			Inventory.Add(weapon, true);
+		}
+
 		[ClientRpc]
 		public void SetPlayerBodyGroup(int group, int value) {
 			Log.Info("Set Bodygroup Client");
@@ -127,19 +139,31 @@ namespace SpeedDial.Player {
 			AmmoPanel.Current.DrugBump(s, f);
 		}
 
+		/// <summary>
+		/// Completely freezes the player. Essentially stops camera, controller and entity from simulating.
+		/// </summary>
 		public void Freeze() {
 			(Controller as SpeedDialController).Freeze = true;
 			(Camera as SpeedDialCamera).Freeze = true;
+			Frozen = true;
 		}
 
+		/// <summary>
+		/// Completely unfreezes the player. Resumes camera, controller and entity simulating.
+		/// </summary>
 		public void Unfreeze() {
 			(Controller as SpeedDialController).Freeze = false;
 			(Camera as SpeedDialCamera).Freeze = false;
+			Frozen = false;
 		}
 
+		/// <summary>
+		/// Completely freezes or unfreezes the player. Essentially stops/resumes camera, controller and entity from simulating.
+		/// </summary>
 		public void Freeze(bool freeze) {
 			(Controller as SpeedDialController).Freeze = freeze;
 			(Camera as SpeedDialCamera).Freeze = freeze;
+			Frozen = freeze;
 		}
 
 		/// <summary>
@@ -203,6 +227,7 @@ namespace SpeedDial.Player {
 		}
 
 		public override void Simulate(Client cl) {
+			if(Frozen) return;
 			if(LifeState == LifeState.Dead) {
 				if(TimeSinceDied > RespawnTime && IsServer) {
 

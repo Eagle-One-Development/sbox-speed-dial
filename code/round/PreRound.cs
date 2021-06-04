@@ -24,18 +24,15 @@ namespace SpeedDial {
 			base.OnPlayerSpawn(player);
 		}
 
-		protected override void OnStart()
-		{
-			Log.Info( "Pre Round Started" );
+		protected override void OnStart() {
+			Log.Info("Pre Round Started");
 			var players = Client.All;
-			foreach ( var p in players.ToArray() )
-			{
+			foreach(var p in players.ToArray()) {
 
-				if ( p.Pawn is SpeedDialPlayer jp )
-				{
+				if(p.Pawn is SpeedDialPlayer jp) {
 					jp.Respawn();
 					(jp.Controller as SpeedDialController).Freeze = true;
-					
+					jp.Frozen = true;
 				}
 			}
 
