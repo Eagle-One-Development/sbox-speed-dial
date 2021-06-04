@@ -49,7 +49,7 @@ namespace SpeedDial.UI
 
 
 			firstPlace.myImage.Texture = Texture.Load( players[0].character.Portrait );
-			Log.Info( "WAFFLES" );
+
 
 
 			if(players.Count > 1 )

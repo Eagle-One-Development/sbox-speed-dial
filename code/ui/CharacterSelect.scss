@@ -11,9 +11,36 @@ characterselect {
         opacity: 1;
     }
 
+    .bars{
+
+        position:absolute;
+        width:100%;
+        height:100%;
+        
+        .bar{
+            width:100%;
+            height:1%;
+            background-color: #000;
+            transition: height 0.5s ease-out;
+            position:absolute;
+
+            &.active{
+                height:12%;
+            }
+
+            &.top{
+                top:0px;
+            }
+
+            &.bottom{
+                bottom:0px;
+            }
+        }
+    }
+
     .backportrait {
         position: absolute;
-        width: 30%;
+        height: 90%;
         aspect-ratio: 0.5992395437262357;
         left: 200px;
         bottom: 0px;
@@ -26,7 +53,7 @@ characterselect {
 
     .portrait {
         position: absolute;
-        width: 30%;
+        height: 90%;
         aspect-ratio: 0.5992395437262357;
         left: 200px;
         bottom: 0px;

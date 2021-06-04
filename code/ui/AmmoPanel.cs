@@ -9,9 +9,15 @@ namespace SpeedDial.UI {
 	public class AmmoPanel : Panel {
 		public Panel ammoCounter;
 		public Label ammoLabel;
+		
 		public Label clipLabel;
+		
 		public Panel pickUpPanel;
 		public Label pickUpLabel;
+
+		//public Panel drugPanel;
+		//public Image drugImage;
+
 		public Label medLabel;
 		public Label medFlavor;
 		private TimeSince aTime;

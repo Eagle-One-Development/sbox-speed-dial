@@ -57,7 +57,7 @@ namespace SpeedDial.Player {
 		public BaseSpeedDialCharacter character { get; set; }
 
 		public void InitialSpawn() {
-
+			
 			if(GetClientOwner().SteamId == 76561198000823482) { // bak
 				PlayerColor = new Color32(250, 176, 3);
 			} else if(GetClientOwner().SteamId == 76561198203314521) { // gurke
