@@ -105,7 +105,7 @@ namespace SpeedDial.Player {
 			info.Attacker = attacker;
 			info.Position = Position;
 			TakeDamage(info);
-			PlaySound("weaponhit");
+			PlaySound("smack");
 		}
 
 		public override void OnKilled() {

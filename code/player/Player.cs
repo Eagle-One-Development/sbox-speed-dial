@@ -169,7 +169,7 @@ namespace SpeedDial.Player {
 		/// </summary>
 		async Task HandleMelee() {
 			if(Input.Pressed(InputButton.Attack1)) {
-				if(TimeSinceMelee > 0.33f) {
+				if(TimeSinceMelee > 0.5f) {
 					ResetTimeSinceMelee = true;
 					await GameTask.DelaySeconds(0.1f);
 					var forward = EyeRot.Forward;
@@ -180,9 +180,12 @@ namespace SpeedDial.Player {
 					.Size(20f)
 					.Run();
 
-					if(IsClient) {
-						PlaySwoosh();
+					using(Prediction.Off()) {
+						if(IsServer) {
+							PlaySound("woosh");
+						}
 					}
+
 					SetAnimBool("b_attack", true);
 
 					//DebugOverlay.Line(EyePos + Vector3.Down * 20, tr.EndPos, Color.White, 1, false);
@@ -193,6 +196,7 @@ namespace SpeedDial.Player {
 
 					// We turn predictiuon off for this, so any exploding effects don't get culled etc
 					using(Prediction.Off()) {
+
 						var damage = DamageInfo.FromBullet(tr.EndPos, Owner.EyeRot.Forward * 100, 200)
 							.UsingTraceResult(tr)
 							.WithAttacker(Owner)
@@ -200,23 +204,15 @@ namespace SpeedDial.Player {
 
 						damage.Attacker = this;
 						damage.Position = Position;
-						//PlayClientSound("smack");
-						PlaySound("smack");
+						if(IsServer) {
+							PlaySound("smack");
+						}
 						await GameTask.DelaySeconds(0.2f);
 						if(!(LifeState == LifeState.Alive)) return;
 						tr.Entity.TakeDamage(damage);
 					}
 				}
 			}
-		}
-
-		[ClientRpc]
-		public void PlaySwoosh() {
-			PlaySound("woosh");
-		}
-
-		public void PlayClientSound(string s) {
-			PlaySound(s);
 		}
 
 		public override void Simulate(Client cl) {

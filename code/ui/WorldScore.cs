@@ -31,7 +31,7 @@ namespace SpeedDial.UI {
 			Parent = parent;
 			position = pos;
 
-			lb = Add.Label(amt.ToString(), "label");
+			lb = Add.Label($"{amt}", "label");
 			screenPosition = position.ToScreen();
 
 			Style.Left = Length.Fraction(screenPosition.x);
@@ -55,7 +55,7 @@ namespace SpeedDial.UI {
 			base.Tick();
 
 			UpdateNumberPosition();
-			lb.Text = amount.ToString() + "pts";
+			lb.Text = $"{amount}pts";
 
 
 			screenPosition = position.ToScreen();
@@ -81,7 +81,7 @@ namespace SpeedDial.UI {
 			Style.Transform = transform;
 
 			if(lifetime > life) {
-				Style.Opacity = (1 - (lifetime - life) / life);
+				Style.Opacity = 1 - (lifetime - life) / life;
 				scale = scale.LerpTo(0, Time.Delta * 3f);
 			} else {
 				Style.Opacity = 1;

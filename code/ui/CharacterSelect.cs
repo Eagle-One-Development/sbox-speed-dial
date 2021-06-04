@@ -158,6 +158,7 @@ namespace SpeedDial.UI {
 					//Log.Info(s[0].ToString());
 					ConsoleSystem.Run("set_character", s);
 					open = false;
+					var sound = Sound.FromScreen("select_confirm");
 				}
 			}
 		}

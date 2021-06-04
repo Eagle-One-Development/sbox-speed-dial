@@ -17,7 +17,7 @@ namespace SpeedDial.Player {
 					//Log.Info($"Velocity: {magnitude}");
 					if(magnitude > 450f) {
 						wep1.PhysicsBody.EnableAutoSleeping = false;
-						Sound.FromEntity("weaponhit", this);
+						Sound.FromEntity("smack", this);
 						KillMyself(wep1.PreviousOwner);
 						wep1.Velocity *= -0.5f;
 					}

@@ -3,15 +3,13 @@
 	data = 
 	{
 		UI = false
-		Volume = 3.0
+		Volume = 1.0
 		VolumeRandom = 0.0
-		Pitch = 2.0
+		Pitch = 1.0
 		PitchRandom = 0.0
 		DistanceMax = 1000.0
 		Sounds = 
 		[
-			"sounds/punch/punch01.vsnd",
-			"sounds/punch/punch02.vsnd",
 			"sounds/punch/punch03.vsnd",
 			"sounds/punch/punch04.vsnd",
 		]
