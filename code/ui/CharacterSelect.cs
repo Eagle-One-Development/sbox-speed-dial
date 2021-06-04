@@ -44,11 +44,11 @@ namespace SpeedDial.UI {
 			description = portrait.Add.Label("Default character is so cool. He spent his days doing crime while not doing the time.", "description");
 			startLoad = description.Add.Label("Abilities: NONE\nWeapon: NONE", "loadout");
 
-			bars = Add.Panel( "bars" );
-			bar1 = bars.Add.Panel( "bar" );
-			bar2 = bars.Add.Panel( "bar" );
-			bar1.SetClass( "top", true);
-			bar2.SetClass( "bottom", true );
+			bars = Add.Panel("bars");
+			bar1 = bars.Add.Panel("bar");
+			bar2 = bars.Add.Panel("bar");
+			bar1.SetClass("top", true);
+			bar2.SetClass("bottom", true);
 
 
 			Current = this;
@@ -91,7 +91,7 @@ namespace SpeedDial.UI {
 				transform.AddScale(0.9f + 0.1f * (1 - anim));
 			}
 
-			
+
 
 			backPortrait.Style.Transform = transform2;
 			portrait.Style.Transform = transform;
@@ -101,22 +101,19 @@ namespace SpeedDial.UI {
 			if(Host.IsClient) {
 				if(!open) {
 					SetClass("active", false);
-					bar1.SetClass( "active", false );
-					bar2.SetClass( "active", false );
+					bar1.SetClass("active", false);
+					bar2.SetClass("active", false);
 				} else {
 					SetClass("active", true);
-					bar1.SetClass( "active", true );
-					bar2.SetClass( "active", true );
+					bar1.SetClass("active", true);
+					bar2.SetClass("active", true);
 				}
 			}
 
-			if ( SpeedDialGame.Instance.Round is GameRound || SpeedDialGame.Instance.Round is PreRound )
-			{
+			if(SpeedDialGame.Instance.Round is GameRound || SpeedDialGame.Instance.Round is PreRound) {
 
-			}
-			else
-			{
-				SetClass( "active", false );
+			} else {
+				SetClass("active", false);
 			}
 		}
 
@@ -137,9 +134,10 @@ namespace SpeedDial.UI {
 					translate2 = 0f;
 					right = true;
 					backPortrait.Texture = portrait.Texture;
-					if (currentIndex > SpeedDialGame.Instance.characters.Count - 1) {
+					if(currentIndex > SpeedDialGame.Instance.characters.Count - 1) {
 						currentIndex = 0;
 					}
+					var sound = Sound.FromScreen("select_click");
 				}
 
 				if(Q) {
@@ -152,6 +150,7 @@ namespace SpeedDial.UI {
 					if(currentIndex < 0) {
 						currentIndex = SpeedDialGame.Instance.characters.Count - 1;
 					}
+					var sound = Sound.FromScreen("select_click");
 				}
 
 				if(space) {

@@ -107,9 +107,7 @@ namespace SpeedDial.Player {
 			MedTaken = false;
 
 			// reset weapon/ammo on spawn
-			Inventory.DeleteContents();
-			BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>(character.Weapon);
-			Inventory.Add(weapon, true);
+			ResetWeapon();
 
 			LifeState = LifeState.Alive;
 			Health = 100;
@@ -202,8 +200,8 @@ namespace SpeedDial.Player {
 
 						damage.Attacker = this;
 						damage.Position = Position;
-						PlayClientSound("punch_connect_1");
-						PlaySound("punch_connect_1");
+						//PlayClientSound("smack");
+						PlaySound("smack");
 						await GameTask.DelaySeconds(0.2f);
 						if(!(LifeState == LifeState.Alive)) return;
 						tr.Entity.TakeDamage(damage);
@@ -214,12 +212,7 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		public void PlaySwoosh() {
-			float f = Rand.Float(1);
-			if(f > 0.5f) {
-				PlaySound("punch_woosh_1");
-			} else {
-				PlaySound("punch_woosh_2");
-			}
+			PlaySound("woosh");
 		}
 
 		public void PlayClientSound(string s) {
