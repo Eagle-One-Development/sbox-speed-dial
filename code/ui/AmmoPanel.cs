@@ -35,7 +35,8 @@ namespace SpeedDial.UI {
 
 		private float wideScale;
 		private float totalDrugScale;
-
+		private float old;
+		private float oldScale;
 		public Label preRoundCountDownLabel;
 
 		public AmmoPanel() {
@@ -167,19 +168,34 @@ namespace SpeedDial.UI {
 			var screenPos = player.EyePos.ToScreen();
 
 
+			
 
-			float f = (player as SpeedDialPlayer).TimeSinceMedTaken / (player as SpeedDialPlayer).MedDuration;
-			drugPanel.Style.Left = Length.Pixels( screenPos.x * Screen.Width + 32f );
-			drugPanel.Style.Top = Length.Pixels( (screenPos.y) * Screen.Height - (64f * Math.Clamp(1 - f, 0, 1f )) );		
-			drugPanel.Style.Height = Length.Pixels( Math.Clamp(1 - f,0,1f) * 64f );
+			drugPanel.Style.Left = Length.Fraction( screenPos.x);
+			drugPanel.Style.Top = Length.Fraction( screenPos.y);
 
-			//PanelTransform pt = new PanelTransform();
-			//
-			//pt.AddTranslateY( Length.Pixels( -65f ) );
-			//pt.AddTranslateX( Length.Pixels( -32f ) );
-			//
-			//drugPanel.Style.Transform = pt;
+			float f = Math.Clamp((MathF.Round((player as SpeedDialPlayer).TimeSinceMedTaken)) / (player as SpeedDialPlayer).MedDuration,0f,1f);
 
+			
+
+			PanelTransform pt = new PanelTransform();
+			if(f != old )
+			{
+				oldScale = 0.5f;
+			}
+
+			oldScale = oldScale.LerpTo( 0, Time.Delta * 4f );
+
+			pt.AddScale((1 - f) + oldScale);
+
+			old = f;
+
+			drugImage.Style.TransformOriginX = Length.Fraction( -0.0f );
+			drugImage.Style.TransformOriginY = Length.Fraction( -1.0f );
+
+
+			drugImage.Style.Transform = pt;
+
+			drugImage.Style.Dirty();
 			drugPanel.Style.Dirty();
 			
 

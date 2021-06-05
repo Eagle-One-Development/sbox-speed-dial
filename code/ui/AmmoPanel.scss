@@ -13,20 +13,22 @@ ammopanel {
         position: absolute;
         justify-content: center;
         align-items: center;
-        height: 32px;
+        height: 64px;
         width: 64px;
-        //background-color: rgba(#ff0,0.5);
-        overflow: hidden;
+        transform: translatex(-50%) translatey(-150%);
         
+
+
+
 
 
         .drugImage {
+            //transform-origin: 50% 50%;
+            
             position: absolute;
             height: 64px;
             width: 64px;
-        
-            bottom: 0px;
-          
+            //bottom: 0px;
         }
     }
 
