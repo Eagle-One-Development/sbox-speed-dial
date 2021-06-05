@@ -34,6 +34,12 @@ namespace SpeedDial.UI {
 		public Panel bar1;
 		public Panel bar2;
 
+		Sound tapeSound;
+
+		public Label time;
+		public Label date;
+		public Label pause;
+
 		public CharacterSelect() {
 			StyleSheet.Load("/ui/CharacterSelect.scss");
 			backPortrait = Add.Image("materials/ui/portraits/default.png", "backportrait");
@@ -50,6 +56,11 @@ namespace SpeedDial.UI {
 			bar1.SetClass("top", true);
 			bar2.SetClass("bottom", true);
 
+			time = bar1.Add.Label( "00:00:00", "timer" );
+
+			date = bar2.Add.Label( "00:00:00", "dater" );
+
+			
 
 			Current = this;
 		}
@@ -62,6 +73,17 @@ namespace SpeedDial.UI {
 			title.Text = character.Name;
 			description.Text = character.Description;
 			portrait.SetTexture(character.Portrait);
+
+			DateTime dt = DateTime.Now.AddYears( -35 );
+
+			string s = dt.ToString( @"tt hh:mm" );
+
+			s += "\n";
+
+			s += dt.ToString( @"MMM. dd yyyy" );
+
+			time.Text = TimeSpan.FromSeconds( Time.Now ).ToString( @"hh\:mm\:ss" );
+			date.Text = s;
 
 			string wep = Library.GetAttribute(character.Weapon).Title;
 			startLoad.Text = $"Weapon: {wep}";
@@ -134,6 +156,14 @@ namespace SpeedDial.UI {
 
 			if(input.Pressed(InputButton.Duck)) {
 				open = !open;
+				if ( open ) {
+					Sound.FromScreen( "tape_stop" );
+					tapeSound = Sound.FromScreen( "tape_noise" );
+				}
+				else
+				{
+					tapeSound.Stop();
+				}
 			}
 
 			if(open) {
@@ -167,6 +197,7 @@ namespace SpeedDial.UI {
 					//Log.Info(s[0].ToString());
 					ConsoleSystem.Run("set_character", s);
 					open = false;
+					tapeSound.Stop();
 					var sound = Sound.FromScreen("select_confirm");
 				}
 			}
