@@ -34,6 +34,7 @@ namespace SpeedDial.Weapons {
 		public virtual float SecondaryRate => 15.0f;
 		public virtual int BulletCount => 1;
 		public virtual float BulletSpread => 0.1f;
+		public virtual float VerticalBulletSpread => 1f;
 		public virtual float BulletForce => 1;
 		public virtual float BulletDamage => 100;
 		public virtual float BulletSize => 1;
@@ -161,6 +162,8 @@ namespace SpeedDial.Weapons {
 			var forward = Owner.EyeRot.Forward;
 			forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f * f;
 			forward = forward.Normal;
+			//forward = new Vector3( forward.x, forward.y, forward.z * VerticalBulletSpread );
+			forward.z *= VerticalBulletSpread;
 
 			AmmoPanel.Current?.Bump();
 			int index = 0;

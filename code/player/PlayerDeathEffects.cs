@@ -7,7 +7,18 @@ using SpeedDial.UI;
 using System.Threading.Tasks;
 
 namespace SpeedDial.Player {
+	public enum COD
+	{
+		Gunshot,
+		Melee,
+		Thrown,
+		Explosive,
+		HeartAttack
+	}
+	
 	public partial class SpeedDialPlayer {
+		[Net]
+		public COD CauseOfDeath { get; set; } = COD.HeartAttack;
 
 		[ClientRpc]
 		public void BloodSplatter() {
@@ -143,17 +154,17 @@ namespace SpeedDial.Player {
 
 			if(info.Attacker is SpeedDialPlayer attacker && attacker != this) {
 				// Note - sending this only to the attacker!
-				attacker.DidDamage(To.Single(attacker), info.Position, info.Damage, Health);
+				attacker.DidDamage(To.Single(attacker), info.Position, info.Damage, Health, CauseOfDeath);
 
 				TookDamage(To.Single(this), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position);
 			}
 		}
 
 		[ClientRpc]
-		public void DidDamage(Vector3 pos, float amount, float healthinv) {
+		public void DidDamage(Vector3 pos, float amount, float healthinv, COD death) {
 			if(healthinv <= 0) {
 				int ScoreBase = SpeedDialGame.ScoreBase;
-				ComboEvents(pos, ScoreBase * KillCombo);
+				ComboEvents(pos, ScoreBase * KillCombo, KillCombo, death);
 			}
 		}
 

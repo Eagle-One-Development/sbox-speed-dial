@@ -51,12 +51,13 @@ namespace SpeedDial.UI {
 			}
 		}
 
-		public void OnKill(Vector3 pos, int amt) {
+		public void OnKill(Vector3 pos, int amt, COD death, int combo) {
 			WorldScore ws = null;
 			for(int i = 0; i < scores.Count; i++) {
 				WorldScore temp = scores[i];
 				if(temp.lifetime > temp.life) {
 					ws = temp;
+					continue;
 				}
 			}
 
@@ -65,9 +66,68 @@ namespace SpeedDial.UI {
 				ws.amount = amt;
 				ws.lifetime = 0;
 				ws.ang = 0;
-
+				ws.quip = String.Empty;
 				ws.tarAng = Rand.Float(-15f, 15f);
 			}
+
+			float chance = Rand.Float( 1 );
+			float chanceMod = 0.3f;
+			
+			
+
+			if(chance > chanceMod || combo < 2)
+			{
+				return;
+			}
+
+			string quip = "RADICAL";
+
+			string[] combos = { "DOUBLE KILL", "TRIPLE KILL", "QUAD KILL", "KILLIONAIRE", "KILL BILL" };
+
+			if ( combo >= 2 && combo < combos.Length)
+			{
+				quip = combos[combo - 2];
+			}
+
+			Log.Info( "CAUSE OF DEATH: " + death.ToString() );
+
+			switch ( death )
+			{
+				case COD.Melee:
+					quip = "BRUTAL";
+				break;
+				case COD.Thrown:
+					quip = "BAD CATCH";
+				break;
+				case COD.Explosive:
+					quip = "BOMB";
+				break;
+
+			}
+
+			//This is for the qup
+			ws = null;
+			for ( int i = 0; i < scores.Count; i++ )
+			{
+				WorldScore temp = scores[i];
+				if ( temp.lifetime > temp.life )
+				{
+					ws = temp;
+					continue;
+				}
+			}
+
+			if ( ws != null )
+			{
+				ws.position = pos;
+				ws.amount = amt;
+				ws.lifetime = 0;
+				ws.ang = 0;
+				ws.quip = quip;
+
+			}
+
+
 		}
 
 		public void Bump() {

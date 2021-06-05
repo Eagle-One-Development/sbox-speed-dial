@@ -101,6 +101,8 @@ namespace SpeedDial.Player {
 			EnableHideInFirstPerson = true;
 			EnableShadowInFirstPerson = true;
 
+			CauseOfDeath = COD.Gunshot;
+
 			Host.AssertServer();
 
 			KillCombo = 0;
@@ -209,7 +211,15 @@ namespace SpeedDial.Player {
 						}
 						await GameTask.DelaySeconds(0.2f);
 						if(!(LifeState == LifeState.Alive)) return;
+
+						if ( tr.Entity is SpeedDialPlayer player )
+						{
+							player.CauseOfDeath = COD.Melee;
+						}
+
 						tr.Entity.TakeDamage(damage);
+						
+
 					}
 				}
 			}

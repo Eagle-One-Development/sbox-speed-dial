@@ -16,9 +16,9 @@ namespace SpeedDial.Player {
 		public int maxCombo { get; set; }
 
 		[ClientRpc]
-		public void ComboEvents(Vector3 position, int amt) {
+		public void ComboEvents(Vector3 position, int amt, int combo, COD death) {
 			ComboPanel.Current.Bump();
-			ComboPanel.Current.OnKill(position, amt);
+			ComboPanel.Current.OnKill(position, amt, death, KillCombo);
 			AmmoPanel.Current?.Bump();
 		}
 
