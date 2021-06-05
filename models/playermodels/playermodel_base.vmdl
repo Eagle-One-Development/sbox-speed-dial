@@ -226,338 +226,6 @@
 						[
 							{
 								_class = "AnimFile"
-								name = "pistol_run_e"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 10
-										frames_from_end = 10
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/pistol_run_e.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "pistol_run_n"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 10
-										frames_from_end = 10
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/pistol_run_n.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "pistol_run_ne"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 19
-										frames_from_end = 19
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/pistol_run_ne.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = 35.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "pistol_run_nw"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 10
-										frames_from_end = 10
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/pistol_run_nw.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = 35.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "pistol_run_s"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 10
-										frames_from_end = 10
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/pistol_run_s.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "pistol_run_se"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 10
-										frames_from_end = 10
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/pistol_run_se.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = 35.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "pistol_run_w"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 10
-										frames_from_end = 10
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/pistol_run_w.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = 35.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "pistol_run_sw"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 10
-										frames_from_end = 10
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/pistol_run_sw.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "idle_pistol_aim"
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = false
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/idle_pistol_aim.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
 								name = "idle_pistol_fire"
 								children = 
 								[
@@ -586,7 +254,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "idle_pistol_aim_IK"
+								name = "idle_pistol_aim"
 								activity_name = ""
 								activity_weight = 1
 								weight_list_name = ""
@@ -606,7 +274,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "pistol_run_w_ik"
+								name = "pistol_run_w"
 								children = 
 								[
 									{
@@ -640,7 +308,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "pistol_run_sw_ik"
+								name = "pistol_run_sw"
 								children = 
 								[
 									{
@@ -674,7 +342,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "pistol_run_se_ik"
+								name = "pistol_run_se"
 								children = 
 								[
 									{
@@ -708,7 +376,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "pistol_run_s_ik"
+								name = "pistol_run_s"
 								children = 
 								[
 									{
@@ -742,7 +410,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "pistol_run_nw_ik"
+								name = "pistol_run_nw"
 								children = 
 								[
 									{
@@ -776,7 +444,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "pistol_run_ne_ik"
+								name = "pistol_run_ne"
 								children = 
 								[
 									{
@@ -810,7 +478,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "pistol_run_n_ik"
+								name = "pistol_run_n"
 								children = 
 								[
 									{
@@ -844,7 +512,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "pistol_run_e_ik"
+								name = "pistol_run_e"
 								children = 
 								[
 									{
@@ -883,339 +551,6 @@
 						name = "unarmed"
 						children = 
 						[
-							{
-								_class = "AnimFile"
-								name = "unarmed_idle"
-								disabled = true
-								activity_name = "ACT_IDLE"
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/unarmed_idle.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "unarmed_run_e"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 10
-										frames_from_end = 10
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/unarmed_run_e.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "unarmed_run_n"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 10
-										frames_from_end = 10
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/unarmed_run_n.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "unarmed_run_ne"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 20
-										frames_from_end = 20
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/unarmed_run_ne.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = 24.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "unarmed_run_nw"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 20
-										frames_from_end = 20
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/unarmed_run_nw.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = 24.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "unarmed_run_s"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 10
-										frames_from_end = 10
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/unarmed_run_s.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "unarmed_run_se"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 10
-										frames_from_end = 10
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/unarmed_run_se.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "unarmed_run_sw"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 10
-										frames_from_end = 10
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/unarmed_run_sw.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "unarmed_run_w"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 10
-										frames_from_end = 10
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/unarmed_run_w.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
 							{
 								_class = "AnimFile"
 								name = "left_jab"
@@ -1314,7 +649,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "unarmed_idle_ik"
+								name = "unarmed_idle"
 								activity_name = "ACT_IDLE"
 								activity_weight = 1
 								weight_list_name = ""
@@ -1334,7 +669,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "unarmed_run_e_ik"
+								name = "unarmed_run_e"
 								children = 
 								[
 									{
@@ -1368,7 +703,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "unarmed_run_n_ik"
+								name = "unarmed_run_n"
 								children = 
 								[
 									{
@@ -1402,7 +737,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "unarmed_run_ne_ik"
+								name = "unarmed_run_ne"
 								children = 
 								[
 									{
@@ -1441,7 +776,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "unarmed_run_w_ik"
+								name = "unarmed_run_w"
 								children = 
 								[
 									{
@@ -1475,7 +810,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "unarmed_run_s_ik"
+								name = "unarmed_run_s"
 								children = 
 								[
 									{
@@ -1509,7 +844,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "unarmed_run_se_ik"
+								name = "unarmed_run_se"
 								children = 
 								[
 									{
@@ -1543,7 +878,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "unarmed_run_sw_IK"
+								name = "unarmed_run_sw"
 								children = 
 								[
 									{
@@ -1577,7 +912,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "unarmed_run_nw_ik"
+								name = "unarmed_run_nw"
 								children = 
 								[
 									{
@@ -1637,405 +972,6 @@
 										root_bone_name = "pelvis"
 										motion_type = "Uniform"
 									},
-									{
-										_class = "AnimOffset"
-										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, -3.0 ]
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/rifle_aim_idle.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "rifle_run_e"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimOffset"
-										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, -3.0 ]
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/rifle_run_e.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "rifle_run_s"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimOffset"
-										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, -3.0 ]
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/rifle_run_s.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "rifle_run_w"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimOffset"
-										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, -3.0 ]
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/rifle_run_w.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "rifle_run_n"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimOffset"
-										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, -3.0 ]
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/rifle_run_n.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "rifle_run_ne"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimOffset"
-										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, -3.0 ]
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/rifle_run_ne.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "rifle_run_nw"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimOffset"
-										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, -3.0 ]
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/rifle_run_nw.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "rifle_run_se"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimOffset"
-										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, -3.0 ]
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/rifle_run_se.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "rifle_run_sw"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimOffset"
-										translation = [ 0.0, 0.0, 0.0 ]
-										rotation_xyz = [ 0.0, 0.0, -3.0 ]
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/rifle_run_sw.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "rifle_fire"
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = false
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/rifle_fire.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "rifle_fire_add"
-								children = 
-								[
-									{
-										_class = "AnimSubtract"
-										anim_name = "rifle_aim_idle"
-										frame = 0
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = false
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/rifle_fire.dmx"
-								start_frame = -1
-								end_frame = -1
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "rifle_aim_idle_ik"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
 								]
 								activity_name = ""
 								activity_weight = 1
@@ -2056,7 +992,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "rifle_run_e_ik"
+								name = "rifle_run_e"
 								children = 
 								[
 									{
@@ -2090,7 +1026,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "rifle_run_n_ik"
+								name = "rifle_run_n"
 								children = 
 								[
 									{
@@ -2124,7 +1060,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "rifle_run_ne_ik"
+								name = "rifle_run_ne"
 								children = 
 								[
 									{
@@ -2158,7 +1094,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "rifle_run_nw_ik"
+								name = "rifle_run_nw"
 								children = 
 								[
 									{
@@ -2192,7 +1128,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "rifle_run_s_ik"
+								name = "rifle_run_s"
 								children = 
 								[
 									{
@@ -2226,7 +1162,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "rifle_run_se_ik"
+								name = "rifle_run_se"
 								children = 
 								[
 									{
@@ -2260,7 +1196,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "rifle_run_sw_ik"
+								name = "rifle_run_sw"
 								children = 
 								[
 									{
@@ -2294,7 +1230,7 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "rifle_run_w_ik"
+								name = "rifle_run_w"
 								children = 
 								[
 									{
@@ -2323,6 +1259,26 @@
 								source_filename = "models/playermodels/anims/rifle_run_w_ik.dmx"
 								start_frame = -1
 								end_frame = 16
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_fire"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_fire.dmx"
+								start_frame = -1
+								end_frame = -1
 								framerate = -1.0
 								reverse = false
 							},
