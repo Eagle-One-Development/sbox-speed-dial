@@ -160,7 +160,7 @@ namespace SpeedDial.UI {
 			if(player == null) return;
 			if(player.ActiveChild is BaseSpeedDialWeapon weapon) {
 				if(weapon == null) return;
-				outscale = outscale.LerpTo(1f, Time.Delta * 4f);
+				outscale = outscale.LerpTo(1f, Time.Delta * 2f);
 				clipLabel.Text = $"{weapon.AmmoClip}";
 			} else {
 				outscale = outscale.LerpTo(0f, Time.Delta * 8f);
