@@ -119,6 +119,15 @@ namespace SpeedDial.UI {
 
 		[Event("buildinput")]
 		public void ProcessClientInput(InputBuilder input) {
+			if ( SpeedDialGame.Instance.Round is GameRound || SpeedDialGame.Instance.Round is PreRound )
+			{
+
+			}
+			else
+			{
+				return;
+			}
+
 			bool Q = input.Pressed(InputButton.Menu);
 			bool E = input.Pressed(InputButton.Use);
 			bool space = input.Pressed(InputButton.Jump);
