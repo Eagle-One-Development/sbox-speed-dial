@@ -217,6 +217,7 @@ namespace SpeedDial.Player {
 
 		public override void Simulate(Client cl) {
 			if(Frozen) return;
+
 			if(LifeState == LifeState.Dead) {
 				if(TimeSinceDied > RespawnTime && IsServer) {
 
@@ -269,8 +270,18 @@ namespace SpeedDial.Player {
 					ResetInterpolation();
 					dropped.Position = EyePos;
 					if(dropped.PhysicsGroup != null) {
-						(dropped as BaseSpeedDialWeapon).ApplyThrowVelocity(EyeRot.Forward);
-						PlaySound("weaponspin");
+						if(dropped is BaseSpeedDialWeapon wep) {
+							wep.ApplyThrowVelocity(EyeRot.Forward);
+							wep.GlowState = GlowStates.GlowStateOn;
+							wep.GlowDistanceStart = 0;
+							wep.GlowDistanceEnd = 1000;
+							if(wep.AmmoClip > 0)
+								wep.GlowColor = new Color(0.2f, 1, 0.2f, 1);
+							else
+								wep.GlowColor = new Color(1, 0.2f, 0.2f, 1);
+							wep.GlowActive = true;
+							PlaySound("weaponspin");
+						}
 					}
 
 					timeSinceDropped = 0;
@@ -285,6 +296,8 @@ namespace SpeedDial.Player {
 			}
 			if(Input.Pressed(InputButton.Attack2) && pickup && pickUpEntity != null && Input.ActiveChild == null) {
 				Inventory?.Add(pickUpEntity, Inventory.Active == null);
+				(pickUpEntity as BaseSpeedDialWeapon).GlowState = GlowStates.GlowStateOff;
+				(pickUpEntity as BaseSpeedDialWeapon).GlowActive = false;
 				pickup = false;
 				pickUpEntity = null;
 			}

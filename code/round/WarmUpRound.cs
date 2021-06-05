@@ -20,7 +20,7 @@ namespace SpeedDial {
 		}
 
 		protected override void OnStart() {
-			SpeedDialHud.Scoreboard?.UpdateScoreboard();
+
 
 			var players = Client.All;
 			foreach(var p in players.ToArray()) {
@@ -33,6 +33,7 @@ namespace SpeedDial {
 					sp.KillCombo = 0;
 				}
 			}
+			SpeedDialHud.Scoreboard?.UpdateScoreboard();
 
 		}
 

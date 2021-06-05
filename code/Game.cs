@@ -65,6 +65,20 @@ namespace SpeedDial {
 		public override void OnKilled(Client client, Entity pawn) {
 			//base.OnKilled(client, pawn);
 
+			if(pawn is SpeedDialPlayer ply) {
+				if(ply.Inventory.DropActive() is BaseSpeedDialWeapon dropped && dropped != null) {
+					dropped.Position = pawn.EyePos;
+					dropped.GlowState = GlowStates.GlowStateOn;
+					dropped.GlowDistanceStart = 0;
+					dropped.GlowDistanceEnd = 1000;
+					if(dropped.AmmoClip > 0)
+						dropped.GlowColor = new Color(0.2f, 1, 0.2f, 1);
+					else
+						dropped.GlowColor = new Color(1, 0.2f, 0.2f, 1);
+					dropped.GlowActive = true;
+				}
+			}
+
 			var attackerClient = pawn.LastAttacker?.GetClientOwner();
 
 			if(attackerClient == null) {

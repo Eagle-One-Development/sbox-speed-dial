@@ -35,7 +35,7 @@ namespace SpeedDial {
 					jp.Frozen = true;
 				}
 			}
-
+			SpeedDialHud.Scoreboard?.UpdateScoreboard();
 		}
 
 		protected override void OnFinish() {

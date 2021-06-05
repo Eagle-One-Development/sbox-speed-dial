@@ -32,7 +32,7 @@ namespace SpeedDial {
 				(p.Pawn as SpeedDialPlayer).ResetWeapon();
 				(p.Pawn as SpeedDialPlayer).Unfreeze();
 			}
-
+			SpeedDialHud.Scoreboard?.UpdateScoreboard();
 		}
 
 		protected override void OnFinish() {
