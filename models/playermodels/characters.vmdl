@@ -41,6 +41,22 @@
 								from = "red.vmat"
 								to = "materials/dev/primary_red.vmat"
 							},
+							{
+								from = "blue.vmat"
+								to = "materials/dev/primary_blue.vmat"
+							},
+							{
+								from = "eyes.vmat"
+								to = "models/characters/jack/maria_eyes.vmat"
+							},
+							{
+								from = "pink.vmat"
+								to = "models/characters/jack/pink.vmat"
+							},
+							{
+								from = "tannedskin.vmat"
+								to = "models/characters/jack/tannedskin.vmat"
+							},
 						]
 						use_global_default = false
 						global_default_material = "materials/playermodels/military_gear_default.vmat"
@@ -305,6 +321,7 @@
 					},
 					{
 						_class = "RenderMeshFile"
+						name = "jack"
 						filename = "models/characters/jack/JackRig.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -316,7 +333,53 @@
 						import_filter = 
 						{
 							exclude_by_default = false
+							exception_list = 
+							[
+								"Cube_008",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "maria"
+						filename = "models/characters/jack/MariaRig.dmx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
 							exception_list = [  ]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "shoes"
+						filename = "models/characters/jack/JackRig.dmx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = 
+							[
+								"BezierCurve_007",
+								"Cube_007",
+								"Cube",
+								"Cube_006",
+								"Cube_005",
+								"Cube_004",
+								"Cube_003",
+							]
 						}
 					},
 				]
@@ -2269,6 +2332,28 @@
 							},
 						]
 						disabled = true
+						hidden_in_tools = false
+					},
+					{
+						_class = "BodyGroup"
+						name = "characters"
+						children = 
+						[
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"jack",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"maria",
+								]
+							},
+						]
 						hidden_in_tools = false
 					},
 				]
