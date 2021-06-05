@@ -63,17 +63,17 @@ namespace SpeedDial.UI {
 			bar1.SetClass("top", true);
 			bar2.SetClass("bottom", true);
 
-			time = bar1.Add.Label( "00:00:00", "timer" );
+			time = bar1.Add.Label("00:00:00", "timer");
 
-			date = bar2.Add.Label( "00:00:00", "dater" );
+			date = bar2.Add.Label("00:00:00", "dater");
 
 
-			var panel = Add.Panel("portrait2" );
-			leftPrompt  = panel.Add.Label( "< Q", "prompt" );
-			rightPrompt = panel.Add.Label( "E >", "prompt" );
-			leftPrompt.SetClass( "left", true );
-			rightPrompt.SetClass( "right", true );
-			
+			var panel = Add.Panel("portrait2");
+			leftPrompt = panel.Add.Label("< Q", "prompt");
+			rightPrompt = panel.Add.Label("E >", "prompt");
+			leftPrompt.SetClass("left", true);
+			rightPrompt.SetClass("right", true);
+
 
 			Current = this;
 		}
@@ -87,25 +87,25 @@ namespace SpeedDial.UI {
 			description.Text = character.Description;
 			portrait.SetTexture(character.Portrait);
 
-			DateTime dt = DateTime.Now.AddYears( -28 );
+			DateTime dt = DateTime.Now.AddYears(-28);
 
-			string s = dt.ToString( @"tt hh:mm" );
+			string s = dt.ToString(@"tt hh:mm");
 
 			s += "\n";
 
-			s += dt.ToString( @"MMM. dd yyyy" );
+			s += dt.ToString(@"MMM. dd yyyy");
 
-			time.Text = TimeSpan.FromSeconds( Time.Now ).ToString( @"hh\:mm\:ss" );
+			time.Text = TimeSpan.FromSeconds(Time.Now).ToString(@"hh\:mm\:ss");
 			date.Text = s;
 
-			leftScale = leftScale.LerpTo( 0, Time.Delta * 8f );
-			rightScale = rightScale.LerpTo( 0, Time.Delta * 8f );
+			leftScale = leftScale.LerpTo(0, Time.Delta * 8f);
+			rightScale = rightScale.LerpTo(0, Time.Delta * 8f);
 
 			PanelTransform rightBump = new PanelTransform();
 			PanelTransform leftBump = new PanelTransform();
 
-			rightBump.AddScale( 1f + 0.5f * rightScale);
-			leftBump.AddScale( 1f + 0.5f * leftScale );
+			rightBump.AddScale(1f + 0.5f * rightScale);
+			leftBump.AddScale(1f + 0.5f * leftScale);
 
 
 			rightPrompt.Style.Transform = rightBump;
@@ -170,12 +170,9 @@ namespace SpeedDial.UI {
 
 		[Event("buildinput")]
 		public void ProcessClientInput(InputBuilder input) {
-			if ( SpeedDialGame.Instance.Round is GameRound || SpeedDialGame.Instance.Round is PreRound )
-			{
+			if(SpeedDialGame.Instance.Round is GameRound || SpeedDialGame.Instance.Round is PreRound) {
 
-			}
-			else
-			{
+			} else {
 				return;
 			}
 
@@ -185,13 +182,12 @@ namespace SpeedDial.UI {
 
 			if(input.Pressed(InputButton.Duck)) {
 				open = !open;
-				if ( open ) {
-					Sound.FromScreen( "tape_stop" );
-					tapeSound = Sound.FromScreen( "tape_noise" );
-				}
-				else
-				{
+				if(open) {
+					Sound.FromScreen("tape_stop");
+					tapeSound = Sound.FromScreen("tape_noise");
+				} else {
 					tapeSound.Stop();
+					var sound = Sound.FromScreen("select_confirm");
 				}
 			}
 
@@ -211,7 +207,7 @@ namespace SpeedDial.UI {
 
 				if(Q) {
 					right = false;
-					
+
 					currentIndex--;
 					//Log.Info(currentIndex.ToString());
 					translate2 = 100f;

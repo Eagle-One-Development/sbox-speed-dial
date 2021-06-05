@@ -15,5 +15,6 @@ namespace SpeedDial.Meds {
 		public override float DrugDuration => 4f;
 		public override DrugType Drug => DrugType.Ollie;
 		public override string icon => "materials/ui/ollie.png";
+		//public override string PickupSound => "sd_ollie_take"; uncomment when sound is fixed
 	}
 }

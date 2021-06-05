@@ -212,17 +212,22 @@ namespace SpeedDial.Player {
 						await GameTask.DelaySeconds(0.2f);
 						if(!(LifeState == LifeState.Alive)) return;
 
-						if ( tr.Entity is SpeedDialPlayer player )
-						{
+						if(tr.Entity is SpeedDialPlayer player) {
 							player.CauseOfDeath = COD.Melee;
 						}
 
 						tr.Entity.TakeDamage(damage);
-						
+
 
 					}
 				}
 			}
+		}
+
+		[ClientRpc]
+		public void PlayUISound(string sound) {
+			Log.Info("PLAY DRUG SOUND");
+			Sound.FromScreen(sound);
 		}
 
 		public override void Simulate(Client cl) {

@@ -2,17 +2,15 @@
 {
 	data = 
 	{
-		UI = true
-		Volume = 2.5
-		VolumeRandom = 0.0
-		Pitch = 2.0
+		UI = false
+		Volume = 3.0
+		VolumeRandom = 1.0
+		Pitch = 1.0
 		PitchRandom = 0.1
-		DistanceMax = 1000.0
+		DistanceMax = 2000.0
 		Sounds = 
 		[
-			"sounds/ui/select01.vsnd",
-			"sounds/ui/select02.vsnd",
-			"sounds/ui/select03.vsnd",
+			"sounds/simpleguns/glock_shot_noise.vsnd",
 		]
 	}
 }

@@ -15,5 +15,6 @@ namespace SpeedDial.Meds {
 		public override float DrugDuration => 4f;
 		public override DrugType Drug => DrugType.Ritindi;
 		public override string icon => "materials/ui/pill.png";
+		//public override string PickupSound => "sd_ritindi_take"; uncomment when sound is fixed
 	}
 }

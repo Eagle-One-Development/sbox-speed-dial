@@ -16,5 +16,6 @@ namespace SpeedDial.Meds {
 		public override float DrugDuration => 4f;
 		public override DrugType Drug => DrugType.Leaf;
 		public override string icon => "materials/ui/leaf.png";
+		public override string PickupSound => "sd_leaf_take";
 	}
 }

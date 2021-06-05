@@ -7,6 +7,8 @@ using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
 
+using SpeedDial.Player;
+
 namespace SpeedDial.Meds {
 	[Library("base_med", Title = "Drugs")]
 	public partial class BaseMedication : ModelEntity, IRespawnableEntity {
@@ -18,6 +20,7 @@ namespace SpeedDial.Meds {
 		public virtual float DrugDuration => 4f;
 		public virtual DrugType Drug => DrugType.Polvo;
 		public virtual string icon => "materials/ui/smile.png";
+		public virtual string PickupSound => "sd_leaf_take";
 
 		[HammerProp]
 		public virtual float RespawnTime { get; set; }
@@ -68,7 +71,8 @@ namespace SpeedDial.Meds {
 			Position = initialPosition + Vector3.Up * MathF.Sin(Time.Now * 2f) * 7f;
 		}
 
-		public virtual void PickUp() {
+		public virtual void PickUp(SpeedDialPlayer player) {
+			player.PlayUISound(PickupSound);
 			ItemRespawn.Taken(this);
 			Delete();
 		}

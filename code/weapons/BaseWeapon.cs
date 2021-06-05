@@ -39,7 +39,7 @@ namespace SpeedDial.Weapons {
 		public virtual float BulletDamage => 100;
 		public virtual float BulletSize => 1;
 		public virtual bool Automatic => false;
-		public virtual string ShootSound => "rust_pistol.shoot";
+		public virtual string ShootSound => "sd_pistol_shoot";
 		public virtual string WorldModel => "models/playermodels/weapons/prop_pistol.vmdl";
 		public virtual Vector4 ScreenShakeParameters => new(1, 1, 1, 1);
 		public virtual float Range => 4096;

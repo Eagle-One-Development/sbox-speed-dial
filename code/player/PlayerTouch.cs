@@ -19,14 +19,14 @@ namespace SpeedDial.Player {
 						wep1.PhysicsBody.EnableAutoSleeping = false;
 						Sound.FromEntity("smack", this);
 						CauseOfDeath = COD.Thrown;
-						KillMyself( wep1.PreviousOwner );
+						KillMyself(wep1.PreviousOwner);
 						wep1.Velocity *= -0.5f;
 					}
 				}
 
 				if(!MedTaken && other.Parent is BaseMedication drug) {
 					StartTouch(other.Parent);
-					drug.PickUp();
+					drug.PickUp(this);
 					MedTaken = true;
 					if(drug.Drug != DrugType.Leaf) {
 
