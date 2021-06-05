@@ -2,7 +2,7 @@ using Sandbox;
 using SpeedDial.Player;
 
 namespace SpeedDial.Weapons {
-	[Library("sd_pistol", Title = "Pistol")]
+	[Library("sd_pistol", Title = "Glock-7")]
 	partial class Pistol : BaseSpeedDialWeapon {
 		public override float PrimaryRate => 12.0f;
 		public override int ClipSize => 12;
