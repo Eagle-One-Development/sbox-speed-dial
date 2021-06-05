@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sandbox;
 using SpeedDial.Player;
+using SpeedDial.UI;
 
 namespace SpeedDial {
 	public class PreRound : BaseRound {
