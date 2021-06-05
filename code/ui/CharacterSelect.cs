@@ -40,6 +40,13 @@ namespace SpeedDial.UI {
 		public Label date;
 		public Label pause;
 
+		public Label leftPrompt;
+		public Label rightPrompt;
+
+		private float rightScale;
+		private float leftScale;
+
+
 		public CharacterSelect() {
 			StyleSheet.Load("/ui/CharacterSelect.scss");
 			backPortrait = Add.Image("materials/ui/portraits/default.png", "backportrait");
@@ -60,6 +67,12 @@ namespace SpeedDial.UI {
 
 			date = bar2.Add.Label( "00:00:00", "dater" );
 
+
+			var panel = Add.Panel("portrait2" );
+			leftPrompt  = panel.Add.Label( "< Q", "prompt" );
+			rightPrompt = panel.Add.Label( "E >", "prompt" );
+			leftPrompt.SetClass( "left", true );
+			rightPrompt.SetClass( "right", true );
 			
 
 			Current = this;
@@ -74,7 +87,7 @@ namespace SpeedDial.UI {
 			description.Text = character.Description;
 			portrait.SetTexture(character.Portrait);
 
-			DateTime dt = DateTime.Now.AddYears( -35 );
+			DateTime dt = DateTime.Now.AddYears( -28 );
 
 			string s = dt.ToString( @"tt hh:mm" );
 
@@ -84,6 +97,22 @@ namespace SpeedDial.UI {
 
 			time.Text = TimeSpan.FromSeconds( Time.Now ).ToString( @"hh\:mm\:ss" );
 			date.Text = s;
+
+			leftScale = leftScale.LerpTo( 0, Time.Delta * 8f );
+			rightScale = rightScale.LerpTo( 0, Time.Delta * 8f );
+
+			PanelTransform rightBump = new PanelTransform();
+			PanelTransform leftBump = new PanelTransform();
+
+			rightBump.AddScale( 1f + 0.5f * rightScale);
+			leftBump.AddScale( 1f + 0.5f * leftScale );
+
+
+			rightPrompt.Style.Transform = rightBump;
+			leftPrompt.Style.Transform = leftBump;
+
+			rightPrompt.Style.Dirty();
+			leftPrompt.Style.Dirty();
 
 			string wep = Library.GetAttribute(character.Weapon).Title;
 			startLoad.Text = $"Weapon: {wep}";
@@ -171,6 +200,7 @@ namespace SpeedDial.UI {
 					currentIndex++;
 					translate = 100f;
 					translate2 = 0f;
+					rightScale = 1f;
 					right = true;
 					backPortrait.Texture = portrait.Texture;
 					if(currentIndex > SpeedDialGame.Instance.characters.Count - 1) {
@@ -181,6 +211,7 @@ namespace SpeedDial.UI {
 
 				if(Q) {
 					right = false;
+					
 					currentIndex--;
 					//Log.Info(currentIndex.ToString());
 					translate2 = 100f;
@@ -189,6 +220,7 @@ namespace SpeedDial.UI {
 					if(currentIndex < 0) {
 						currentIndex = SpeedDialGame.Instance.characters.Count - 1;
 					}
+					leftScale = 1f;
 					var sound = Sound.FromScreen("select_click");
 				}
 
@@ -198,6 +230,7 @@ namespace SpeedDial.UI {
 					ConsoleSystem.Run("set_character", s);
 					open = false;
 					tapeSound.Stop();
+
 					var sound = Sound.FromScreen("select_confirm");
 				}
 			}
