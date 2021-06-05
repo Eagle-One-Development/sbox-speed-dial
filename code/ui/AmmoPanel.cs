@@ -4,6 +4,7 @@ using Sandbox.UI.Construct;
 using System;
 using System.Threading.Tasks;
 using SpeedDial.Weapons;
+using SpeedDial.Player;
 
 namespace SpeedDial.UI {
 	public class AmmoPanel : Panel {
@@ -15,8 +16,8 @@ namespace SpeedDial.UI {
 		public Panel pickUpPanel;
 		public Label pickUpLabel;
 
-		//public Panel drugPanel;
-		//public Image drugImage;
+		public Panel drugPanel;
+		public Image drugImage;
 
 		public Label medLabel;
 		public Label medFlavor;
@@ -56,6 +57,10 @@ namespace SpeedDial.UI {
 
 			vhs_green = new Color(28f / 255f, 255f / 255f, 176f / 255f, 1.0f);//new Color(173f/255f,255f/255f,226f/255f,1.0f);
 			vhs_magenta = new Color(255f / 255f, 89 / 255f, 255f / 255f, 1.0f);//new Color(255f / 255f, 163f / 255f, 255f / 255f, 1.0f);
+
+			drugPanel = Add.Panel( "drug" );
+			drugImage = drugPanel.Add.Image( "materials/ui/smile.png" , "drugImage");
+
 		}
 
 		public void Bump() {
@@ -158,6 +163,26 @@ namespace SpeedDial.UI {
 				outscale = outscale.LerpTo(0f, Time.Delta * 8f);
 				clipLabel.Text = "0";
 			}
+
+			var screenPos = player.EyePos.ToScreen();
+
+
+
+			float f = (player as SpeedDialPlayer).TimeSinceMedTaken / (player as SpeedDialPlayer).MedDuration;
+			drugPanel.Style.Left = Length.Pixels( screenPos.x * Screen.Width + 32f );
+			drugPanel.Style.Top = Length.Pixels( (screenPos.y) * Screen.Height - (64f * Math.Clamp(1 - f, 0, 1f )) );		
+			drugPanel.Style.Height = Length.Pixels( Math.Clamp(1 - f,0,1f) * 64f );
+
+			//PanelTransform pt = new PanelTransform();
+			//
+			//pt.AddTranslateY( Length.Pixels( -65f ) );
+			//pt.AddTranslateX( Length.Pixels( -32f ) );
+			//
+			//drugPanel.Style.Transform = pt;
+
+			drugPanel.Style.Dirty();
+			
+
 		}
 	}
 }

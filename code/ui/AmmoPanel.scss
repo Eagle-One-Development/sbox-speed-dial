@@ -5,16 +5,37 @@ ammopanel {
     opacity: 1;
     transition: opacity 1s ease-in-out;
 
-    &.active{
+    &.active {
         opacity: 0;
+    }
+
+    .drug {
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        height: 32px;
+        width: 64px;
+        //background-color: rgba(#ff0,0.5);
+        overflow: hidden;
+        
+
+
+        .drugImage {
+            position: absolute;
+            height: 64px;
+            width: 64px;
+        
+            bottom: 0px;
+          
+        }
     }
 
     .countdown {
         justify-content: center;
         align-items: center;
-        position:absolute;
-        width:100%;
-        height:100%;
+        position: absolute;
+        width: 100%;
+        height: 100%;
 
         .timer {
             position: absolute;
