@@ -14,5 +14,6 @@ namespace SpeedDial.Meds {
 		public override string DrugFlavor => "penetrating, richocheting"; // super bullets // uranium slugs // shootin' lazers
 		public override float DrugDuration => 4f;
 		public override DrugType Drug => DrugType.Ollie;
+		public override string icon => "materials/ui/ollie.png";
 	}
 }

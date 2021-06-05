@@ -17,6 +17,7 @@ namespace SpeedDial.Meds {
 		public virtual string DrugFlavor => "vanilla";
 		public virtual float DrugDuration => 4f;
 		public virtual DrugType Drug => DrugType.Polvo;
+		public virtual string icon => "materials/ui/smile.png";
 
 		[HammerProp]
 		public virtual float RespawnTime { get; set; }

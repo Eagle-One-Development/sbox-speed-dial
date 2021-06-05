@@ -5,6 +5,8 @@ using System;
 using System.Threading.Tasks;
 using SpeedDial.Weapons;
 using SpeedDial.Player;
+using SpeedDial.Meds;
+
 
 namespace SpeedDial.UI {
 	public class AmmoPanel : Panel {
@@ -167,14 +169,33 @@ namespace SpeedDial.UI {
 
 			var screenPos = player.EyePos.ToScreen();
 
-
+			
 			
 
 			drugPanel.Style.Left = Length.Fraction( screenPos.x);
 			drugPanel.Style.Top = Length.Fraction( screenPos.y);
 
 			float f = Math.Clamp((MathF.Round((player as SpeedDialPlayer).TimeSinceMedTaken)) / (player as SpeedDialPlayer).MedDuration,0f,1f);
+			if((player as SpeedDialPlayer).MedTaken == true && f >= 0.95f )
+			{
+				DrugType dt = (player as SpeedDialPlayer).CurrentDrug;
+				switch ( dt )
+				{
+					case DrugType.Ollie:
+						drugImage.Texture = Texture.Load( "materials/ui/ollie.png" );
+					break;
+					case DrugType.Polvo:
+						drugImage.Texture = Texture.Load( "materials/ui/polvo.png" );
+						break;
+					case DrugType.Ritindi:
+						drugImage.Texture = Texture.Load( "materials/ui/pill.png" );
 
+					break;
+					case DrugType.Leaf:
+						drugImage.Texture = Texture.Load( "materials/ui/leaf.png" );
+					break;
+				}
+			}
 			
 
 			PanelTransform pt = new PanelTransform();

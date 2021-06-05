@@ -15,5 +15,6 @@ namespace SpeedDial.Meds {
 		public override string DrugFlavor => "you feel less pain, bro"; // lizard skin (?) // tough as steel // armadillo/turtle mode // 
 		public override float DrugDuration => 4f;
 		public override DrugType Drug => DrugType.Leaf;
+		public override string icon => "materials/ui/leaf.png";
 	}
 }

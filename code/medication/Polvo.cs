@@ -14,5 +14,6 @@ namespace SpeedDial.Meds {
 		public override string DrugFlavor => "you are speed"; // legs so fast // gotta move // dashing!
 		public override float DrugDuration => 4f;
 		public override DrugType Drug => DrugType.Polvo;
+		public override string icon => "materials/ui/polvo.png";
 	}
 }

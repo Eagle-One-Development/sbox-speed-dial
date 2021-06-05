@@ -14,5 +14,6 @@ namespace SpeedDial.Meds {
 		public override string DrugFlavor => "steady hands"; // keep steady // true aim // recoil control
 		public override float DrugDuration => 4f;
 		public override DrugType Drug => DrugType.Ritindi;
+		public override string icon => "materials/ui/pill.png";
 	}
 }
