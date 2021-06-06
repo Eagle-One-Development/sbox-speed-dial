@@ -1573,4 +1573,10 @@
 			}
 		},
 	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/blood/blood_plip_continuous.vpcf"
+		},
+	]
 }
