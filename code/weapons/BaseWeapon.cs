@@ -171,6 +171,7 @@ namespace SpeedDial.Weapons {
 			forward.z *= VerticalBulletSpread;
 
 			AmmoPanel.Current?.Bump();
+			CrossHair.Current?.Bump();
 			int index = 0;
 			foreach(var tr in TraceBullet(Owner.EyePos, Owner.EyePos + forward * Range, bulletSize)) {
 				tr.Surface.DoBulletImpact(tr);
