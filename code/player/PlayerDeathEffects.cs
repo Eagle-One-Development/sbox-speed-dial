@@ -71,7 +71,7 @@ namespace SpeedDial.Player {
 
 			_ = CreateParticleAsync("particles/blood/blood_drops.vpcf", Corpse, Vector3.Down, 0.5f, "head", false, true, 3);
 
-			_ = CreateParticleAsync("particles/blood/blood_plip.vpcf", Corpse, Vector3.Down, 0.7f, "head", true);
+			_ = CreateParticleAsync("particles/blood/blood_plip.vpcf", Corpse, Vector3.Down, 0, "head", true);
 		}
 
 		async Task CreateDecalAsync(string decalname, TraceResult tr, float delay = 0) {
