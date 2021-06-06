@@ -563,5 +563,11 @@
 		{
 			m_ChildRef = resource:"particles/weapon_fx/sd_bullet_trail/sd_bullet_trail_light.vpcf"
 		},
+		{
+			m_ChildRef = resource:"particles/weapon_fx/sd_bullet_trail/sd_bullet_trail_end_embers.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/weapon_fx/sd_bullet_trail/sd_bullet_trail_end_glow.vpcf"
+		},
 	]
 }
