@@ -32,7 +32,7 @@
 						filename = "models/weapons/bat/meshes/bat_lowpoly.fbx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 0.03
+						import_scale = 0.035
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
@@ -52,11 +52,11 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = ""
-						surface_prop = "default"
+						surface_prop = "wood"
 						collision_prop = "default"
 						radius = 1.3
-						point0 = [ -0.070872, -0.022666, -12.680246 ]
-						point1 = [ -0.004896, -0.052022, 24.538528 ]
+						point0 = [ -0.075126, -0.020773, -15.080105 ]
+						point1 = [ 0.002443, -0.055287, 28.678665 ]
 					},
 				]
 			},
@@ -68,7 +68,7 @@
 						_class = "Attachment"
 						name = "bat_tip"
 						parent_bone = ""
-						relative_origin = [ 0.0, 0.0, 24.391506 ]
+						relative_origin = [ 0.0, 0.0, 28.605928 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false

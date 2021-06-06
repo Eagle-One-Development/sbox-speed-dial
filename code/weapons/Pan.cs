@@ -5,7 +5,7 @@ namespace SpeedDial.Weapons {
 	[Library("sd_pan", Title = "Pan Stick")]
 	partial class Pan : BaseSpeedDialWeapon {
 		public override float PrimaryRate => 2.0f;
-		public override int HoldType => 5; // need melee holdtype
+		public override int HoldType => 6; // need melee holdtype
 		public override int ClipSize => -1; // no ammo hud
 		public override string WorldModel => "models/weapons/pan/pan.vmdl";
 		public override string AttachementName => "melee_pan_attach";

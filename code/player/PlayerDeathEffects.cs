@@ -7,15 +7,14 @@ using SpeedDial.UI;
 using System.Threading.Tasks;
 
 namespace SpeedDial.Player {
-	public enum COD
-	{
+	public enum COD {
 		Gunshot,
 		Melee,
 		Thrown,
 		Explosive,
 		HeartAttack
 	}
-	
+
 	public partial class SpeedDialPlayer {
 		[Net]
 		public COD CauseOfDeath { get; set; } = COD.HeartAttack;
@@ -70,9 +69,9 @@ namespace SpeedDial.Player {
 			// three slightly different particle effects, splash will be the most noticeable 
 			_ = CreateParticleAsync("particles/blood/blood_splash.vpcf", Corpse, dir.Normal, 0, "head");
 
-			_ = CreateParticleAsync("particles/blood/blood_drops.vpcf", Corpse, Vector3.Down, 0.5f, "head", true, 3);
+			_ = CreateParticleAsync("particles/blood/blood_drops.vpcf", Corpse, Vector3.Down, 0.5f, "head", false, true, 3);
 
-			_ = CreateParticleAsync("particles/blood/blood_plip.vpcf", Corpse, Vector3.Down, 0.7f, "head");
+			_ = CreateParticleAsync("particles/blood/blood_plip.vpcf", Corpse, Vector3.Down, 0.7f, "head", true);
 		}
 
 		async Task CreateDecalAsync(string decalname, TraceResult tr, float delay = 0) {
@@ -86,12 +85,14 @@ namespace SpeedDial.Player {
 			}
 		}
 
-		async Task CreateParticleAsync(string particle, Entity entity, Vector3 forward, float delay = 0, string bone = "root", bool bloodpool = false, int pools = 1) {
+		async Task CreateParticleAsync(string particle, Entity entity, Vector3 forward, float delay = 0, string bone = "root", bool attach = false, bool bloodpool = false, int pools = 1) {
 			await GameTask.DelaySeconds(delay);
 			if(entity is ModelEntity ent) {
 				var boneBody = ent.GetBonePhysicsBody(ent.GetBoneIndex(bone));
 				var ps = Particles.Create(particle, boneBody.Position);
 				ps.SetForward(0, forward);
+				if(attach)
+					ps.SetEntityAttachment(0, entity, "head_blood", true);
 				if(bloodpool) {
 					for(int i = 0; i < pools; i++) {
 						await GameTask.DelaySeconds(i * 0.1f);
