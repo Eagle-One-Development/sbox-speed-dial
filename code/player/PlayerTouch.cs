@@ -49,25 +49,9 @@ namespace SpeedDial.Player {
 
 					}
 
-					// make drug particle according to drug type
-					switch(drug.Drug) {
-						case DrugType.Polvo:
-							DrugParticles = Particles.Create(drug.ParticleName, Position);
-							DrugParticles.SetForward(0, Vector3.Up);
-							break;
-						case DrugType.Leaf:
-							DrugParticles = Particles.Create(drug.ParticleName, Position);
-							DrugParticles.SetForward(0, Vector3.Up);
-							break;
-						case DrugType.Ollie:
-							DrugParticles = Particles.Create(drug.ParticleName, Position);
-							DrugParticles.SetForward(0, Vector3.Up);
-							break;
-						case DrugType.Ritindi:
-							DrugParticles = Particles.Create(drug.ParticleName, Position);
-							DrugParticles.SetForward(0, Vector3.Up);
-							break;
-					}
+					DrugParticles = Particles.Create(drug.ParticleName);
+					DrugParticles.SetForward(0, Vector3.Up);
+					DrugParticles.SetEntityBone(0, this, GetBoneIndex("head"), Transform.Zero, true);
 
 					CurrentDrug = drug.Drug;
 					ResetTimeSinceMedTaken = true;
