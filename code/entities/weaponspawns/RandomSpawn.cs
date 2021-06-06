@@ -14,7 +14,7 @@ namespace SpeedDial.WeaponSpawns {
 	[Library("sd_random_weaponspawn", Title = "Weapon Spawn")]
 	public partial class RandomWeaponSpawn : BaseWeaponSpawn {
 
-		public string[] WeaponClasses = {
+		public string[] WeaponClasses = { // will implement a weighted randomness later
 			"sd_pistol",
 			"sd_shotgun",
 			"sd_smg",

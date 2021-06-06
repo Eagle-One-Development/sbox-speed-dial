@@ -1533,7 +1533,6 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
-						disabled = true
 						model_name = "models/weapons/bat/bat.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
@@ -2248,8 +2247,8 @@
 						_class = "Attachment"
 						name = "melee_swing_attach"
 						parent_bone = "hand_r"
-						relative_origin = [ -4.373047, -0.900963, 1.698426 ]
-						relative_angles = [ -13.734428, -113.592789, 1.936424 ]
+						relative_origin = [ -4.373051, -0.900963, 1.698423 ]
+						relative_angles = [ -21.014008, -103.542297, 82.380432 ]
 						weight = 1.0
 						ignore_rotation = false
 					},

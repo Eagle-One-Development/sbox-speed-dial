@@ -12,9 +12,9 @@ namespace SpeedDial.UI {
 	public class AmmoPanel : Panel {
 		public Panel ammoCounter;
 		public Label ammoLabel;
-		
+
 		public Label clipLabel;
-		
+
 		public Panel pickUpPanel;
 		public Label pickUpLabel;
 
@@ -55,14 +55,14 @@ namespace SpeedDial.UI {
 			Current = this;
 			scale = 0;
 
-			var panel = Add.Panel( "countdown" );
-			preRoundCountDownLabel = panel.Add.Label( "10", "timer" );
+			var panel = Add.Panel("countdown");
+			preRoundCountDownLabel = panel.Add.Label("10", "timer");
 
 			vhs_green = new Color(28f / 255f, 255f / 255f, 176f / 255f, 1.0f);//new Color(173f/255f,255f/255f,226f/255f,1.0f);
 			vhs_magenta = new Color(255f / 255f, 89 / 255f, 255f / 255f, 1.0f);//new Color(255f / 255f, 163f / 255f, 255f / 255f, 1.0f);
 
-			drugPanel = Add.Panel( "drug" );
-			drugImage = drugPanel.Add.Image( "materials/ui/smile.png" , "drugImage");
+			drugPanel = Add.Panel("drug");
+			drugImage = drugPanel.Add.Image("materials/ui/smile.png", "drugImage");
 
 		}
 
@@ -131,34 +131,25 @@ namespace SpeedDial.UI {
 			medLabel.Style.TextShadow = shadows;
 			medLabel.Style.Dirty();
 
-			if ( SpeedDialGame.Instance.Round is PreRound gr )
-			{
-				if ( gr.TimeLeft >= 0 )
-				{
-					preRoundCountDownLabel.Text = MathF.Round( gr.TimeLeft ).ToString();
-				}
-				else
-				{
+			if(SpeedDialGame.Instance.Round is PreRound gr) {
+				if(gr.TimeLeft >= 0) {
+					preRoundCountDownLabel.Text = MathF.Round(gr.TimeLeft).ToString();
+				} else {
 					preRoundCountDownLabel.Text = "";
 				}
-			}
-			else
-			{
+			} else {
 				preRoundCountDownLabel.Text = "";
 			}
 
-			if ( SpeedDialGame.Instance.Round is GameRound || SpeedDialGame.Instance.Round is PreRound )
-			{
-				SetClass( "active", false );
-			}
-			else
-			{
-				SetClass( "active", true );
+			if(SpeedDialGame.Instance.Round is GameRound || SpeedDialGame.Instance.Round is PreRound) {
+				SetClass("active", false);
+			} else {
+				SetClass("active", true);
 			}
 
 			var player = Local.Pawn;
 			if(player == null) return;
-			if(player.ActiveChild is BaseSpeedDialWeapon weapon) {
+			if(player.ActiveChild is BaseSpeedDialWeapon weapon && weapon.AmmoClip >= 0) {
 				if(weapon == null) return;
 				outscale = outscale.LerpTo(1f, Time.Delta * 2f);
 				clipLabel.Text = $"{weapon.AmmoClip}";
@@ -169,56 +160,53 @@ namespace SpeedDial.UI {
 
 			var screenPos = player.EyePos.ToScreen();
 
-			
-			
 
-			drugPanel.Style.Left = Length.Fraction( screenPos.x);
-			drugPanel.Style.Top = Length.Fraction( screenPos.y);
 
-			float f = Math.Clamp((MathF.Round((player as SpeedDialPlayer).TimeSinceMedTaken)) / (player as SpeedDialPlayer).MedDuration,0f,1f);
-			if((player as SpeedDialPlayer).MedTaken == true && f >= 0.95f )
-			{
+
+			drugPanel.Style.Left = Length.Fraction(screenPos.x);
+			drugPanel.Style.Top = Length.Fraction(screenPos.y);
+
+			float f = Math.Clamp((MathF.Round((player as SpeedDialPlayer).TimeSinceMedTaken)) / (player as SpeedDialPlayer).MedDuration, 0f, 1f);
+			if((player as SpeedDialPlayer).MedTaken == true && f >= 0.95f) {
 				DrugType dt = (player as SpeedDialPlayer).CurrentDrug;
-				switch ( dt )
-				{
+				switch(dt) {
 					case DrugType.Ollie:
-						drugImage.Texture = Texture.Load( "materials/ui/ollie.png" );
-					break;
+						drugImage.Texture = Texture.Load("materials/ui/ollie.png");
+						break;
 					case DrugType.Polvo:
-						drugImage.Texture = Texture.Load( "materials/ui/polvo.png" );
+						drugImage.Texture = Texture.Load("materials/ui/polvo.png");
 						break;
 					case DrugType.Ritindi:
-						drugImage.Texture = Texture.Load( "materials/ui/pill.png" );
+						drugImage.Texture = Texture.Load("materials/ui/pill.png");
 
-					break;
+						break;
 					case DrugType.Leaf:
-						drugImage.Texture = Texture.Load( "materials/ui/leaf.png" );
-					break;
+						drugImage.Texture = Texture.Load("materials/ui/leaf.png");
+						break;
 				}
 			}
-			
+
 
 			PanelTransform pt = new PanelTransform();
-			if(f != old )
-			{
+			if(f != old) {
 				oldScale = 0.5f;
 			}
 
-			oldScale = oldScale.LerpTo( 0, Time.Delta * 4f );
+			oldScale = oldScale.LerpTo(0, Time.Delta * 4f);
 
 			pt.AddScale((1 - f) + oldScale);
 
 			old = f;
 
-			drugImage.Style.TransformOriginX = Length.Fraction( -0.0f );
-			drugImage.Style.TransformOriginY = Length.Fraction( -1.0f );
+			drugImage.Style.TransformOriginX = Length.Fraction(-0.0f);
+			drugImage.Style.TransformOriginY = Length.Fraction(-1.0f);
 
 
 			drugImage.Style.Transform = pt;
 
 			drugImage.Style.Dirty();
 			drugPanel.Style.Dirty();
-			
+
 
 		}
 	}
