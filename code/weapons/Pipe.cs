@@ -2,13 +2,13 @@ using Sandbox;
 using SpeedDial.Player;
 
 namespace SpeedDial.Weapons {
-	[Library("sd_bat", Title = "Baseball Bat")]
-	partial class BaseballBat : BaseSpeedDialWeapon {
+	[Library("sd_pipe", Title = "Pipe")]
+	partial class Pipe : BaseSpeedDialWeapon {
 		public override float PrimaryRate => 2.0f;
 		public override int HoldType => 5; // need melee holdtype
 		public override int ClipSize => -1; // no ammo hud
-		public override string WorldModel => "models/weapons/bat/bat.vmdl";
-		public override string AttachementName => "melee_bat_attach";
+		public override string WorldModel => "models/weapons/pipe/pipe.vmdl";
+		public override string AttachementName => "melee_pipe_attach";
 
 		public override void AttackPrimary(bool _ = false, bool __ = false) {
 			(Owner as AnimEntity).SetAnimBool("b_attack", true);
@@ -45,7 +45,7 @@ namespace SpeedDial.Weapons {
 		public override void Simulate(Client owner) {
 			base.Simulate(owner);
 			//if(IsClient)
-			//DebugOverlay.Sphere(EffectEntity.GetAttachment("bat_tip", true).Position, 3, Color.Green, true, 0.1f);
+			//DebugOverlay.Sphere(EffectEntity.GetAttachment("pipe_tip", true).Position, 3, Color.Green, true, 0.1f);
 		}
 
 		public override void Touch(Entity other) {
