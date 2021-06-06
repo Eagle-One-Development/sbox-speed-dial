@@ -548,7 +548,7 @@
 	m_Children = 
 	[
 		{
-			m_ChildRef = resource:"particles/weapon_fxbkp/weapon_fx/sd_bullet_trail/sd_bullet_trail_parent.vpcf"
+			m_ChildRef = resource:"particles/weapon_fx/sd_bullet_trail/sd_bullet_trail_parent.vpcf"
 		},
 	]
 }
