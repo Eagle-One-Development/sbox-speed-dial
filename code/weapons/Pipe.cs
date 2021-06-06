@@ -5,7 +5,7 @@ namespace SpeedDial.Weapons {
 	[Library("sd_pipe", Title = "Pipe")]
 	partial class Pipe : BaseSpeedDialWeapon {
 		public override float PrimaryRate => 2.0f;
-		public override int HoldType => 5; // need melee holdtype
+		public override int HoldType => 6; // need melee holdtype
 		public override int ClipSize => -1; // no ammo hud
 		public override string WorldModel => "models/weapons/pipe/pipe.vmdl";
 		public override string AttachementName => "melee_pipe_attach";

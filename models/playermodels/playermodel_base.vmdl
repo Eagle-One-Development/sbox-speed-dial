@@ -1620,6 +1620,7 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
+						disabled = true
 						model_name = "models/weapons/bat/bat.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
@@ -2408,18 +2409,27 @@
 					{
 						_class = "Attachment"
 						name = "melee_pan_attach"
-						parent_bone = "hand_r"
-						relative_origin = [ 2.784828, -6.616982, -5.498378 ]
-						relative_angles = [ 13.231277, 60.737724, -56.254658 ]
+						parent_bone = "hand_l"
+						relative_origin = [ -2.461048, 1.366772, 7.259263 ]
+						relative_angles = [ -36.715675, 9.744344, 177.881577 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
 					{
 						_class = "Attachment"
 						name = "melee_pipe_attach"
-						parent_bone = "hand_r"
-						relative_origin = [ -15.73024, 2.436596, 6.09014 ]
-						relative_angles = [ -33.604309, -96.534401, 55.914997 ]
+						parent_bone = "hand_l"
+						relative_origin = [ 13.696384, 1.493429, -14.717593 ]
+						relative_angles = [ 13.295776, -111.939117, -152.318207 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "head_blood"
+						parent_bone = "head"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
