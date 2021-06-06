@@ -7,7 +7,7 @@ namespace SpeedDial.Weapons {
 		public override float PrimaryRate => 0.5f;
 		public override int ClipSize => 4;
 		public override int HoldType => 4;
-		public override string WorldModel => "models/playermodels/weapons/prop_shotgun.vmdl";
+		public override string WorldModel => "models/weapons/shotgun/prop_shotgun.vmdl";
 		public override string ShootSound => "rust_pumpshotgun.shoot";
 		public override float BulletSpread => 0.8f;
 		public override float BulletForce => 0.3f;

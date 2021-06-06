@@ -12,7 +12,7 @@ namespace SpeedDial.Weapons {
 		public override float BulletSize => 3;
 		public override int HoldType => 1;
 		public override string ShootSound => "sd_pistol_shoot";
-		public override string WorldModel => "models/playermodels/weapons/prop_pistol.vmdl";
+		public override string WorldModel => "models/weapons/pistol/prop_pistol.vmdl";
 		public override string AttachementName => "pistol_attach";
 	}
 }

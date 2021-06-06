@@ -42,7 +42,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "source"
-						filename = "models/playermodels/soldier.dmx"
+						filename = "models/playermodels/playermodel_base/soldier.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -1565,7 +1565,7 @@
 					{
 						_class = "ConfigAttachedModel"
 						disabled = true
-						model_name = "models/playermodels/weapons/prop_pistol.vmdl"
+						model_name = "models/weapons/pistol/prop_pistol.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
 						attach_point = "pistol_attach"
@@ -1579,7 +1579,7 @@
 					{
 						_class = "ConfigAttachedModel"
 						disabled = true
-						model_name = "models/playermodels/weapons/prop_smg.vmdl"
+						model_name = "models/weapons/smg/prop_smg.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
 						attach_point = "smg_attach"
@@ -1593,7 +1593,7 @@
 					{
 						_class = "ConfigAttachedModel"
 						disabled = true
-						model_name = "models/playermodels/weapons/prop_rifle.vmdl"
+						model_name = "models/weapons/rifle/prop_rifle.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
 						attach_point = "rifle_attach"
@@ -1607,7 +1607,7 @@
 					{
 						_class = "ConfigAttachedModel"
 						disabled = true
-						model_name = "models/playermodels/weapons/prop_shotgun.vmdl"
+						model_name = "models/weapons/shotgun/prop_shotgun.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
 						attach_point = "shotgun_attach"

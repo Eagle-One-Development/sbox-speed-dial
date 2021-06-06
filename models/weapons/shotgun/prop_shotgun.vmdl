@@ -14,7 +14,7 @@
 						remaps = 
 						[
 							{
-								from = "materials/error.vmat"
+								from = "mi_unlit_military_gear_default.vmat"
 								to = "materials/playermodels/military_gear_default.vmat"
 							},
 						]
@@ -29,7 +29,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/playermodels/smg.dmx"
+						filename = "models/weapons/shotgun/shotgun.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -54,9 +54,9 @@
 						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						origin = [ 3.629039, -0.303895, 1.91424 ]
+						origin = [ 0.668954, -0.117985, 2.640292 ]
 						angles = [ 89.508881, 0.0, 0.0 ]
-						dimensions = [ 1.516273, 2.012978, 10.861658 ]
+						dimensions = [ 3.01907, 3.921317, 29.758787 ]
 					},
 					{
 						_class = "PhysicsShapeBox"
@@ -72,9 +72,9 @@
 						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						origin = [ 2.520583, -0.013654, 0.286569 ]
+						origin = [ 12.007288, -0.013654, -0.833292 ]
 						angles = [ 0.570252, 0.0, 0.0 ]
-						dimensions = [ 2.755206, 1.564217, 1.928149 ]
+						dimensions = [ 2.755206, 1.564217, 4.167982 ]
 					},
 				]
 			},
@@ -86,7 +86,7 @@
 						_class = "Attachment"
 						name = "muzzle"
 						parent_bone = "weapon_hand_r"
-						relative_origin = [ 0.803643, 3.321774, 10.075435 ]
+						relative_origin = [ 0.107456, 4.467498, 17.358835 ]
 						relative_angles = [ -89.999962, -0.000036, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
@@ -95,8 +95,8 @@
 						_class = "Attachment"
 						name = "ejection_point"
 						parent_bone = "weapon_hand_r"
-						relative_origin = [ -0.773121, 1.958356, 0.089216 ]
-						relative_angles = [ 2.515072, -179.999985, 179.999924 ]
+						relative_origin = [ -0.773123, 1.546163, -8.095057 ]
+						relative_angles = [ 2.514723, -88.542076, -179.992569 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
