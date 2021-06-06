@@ -3,6 +3,7 @@
 	_class = "CParticleSystemDefinition"
 	m_nBehaviorVersion = 10
 	m_flConstantRadius = 1.0
+	m_flConstantLifespan = 0.1
 	m_controlPointConfigurations = 
 	[
 		{
@@ -97,8 +98,8 @@
 				m_flMultFactor = 1.0
 				m_flInput0 = 0.0
 				m_flInput1 = 1.0
-				m_flOutput0 = 1.0
-				m_flOutput1 = 2.0
+				m_flOutput0 = 0.5
+				m_flOutput1 = 1.0
 				m_nBiasType = "PF_BIAS_TYPE_STANDARD"
 				m_flBiasParameter = 0.0
 				m_Curve = 
@@ -179,7 +180,8 @@
 				}
 			}
 			m_bAdditive = true
-			m_hTexture = resource:"materials/particles/beam_generic_2.vtex"
+			m_hTexture = resource:"materials/particles/beam_generic_7.vtex"
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_RenderRopes"
@@ -276,12 +278,6 @@
 			m_bAdditive = true
 			m_bOnlyRenderInEffectsBloomPass = true
 			m_hTexture = resource:"materials/particles/beam_generic_2.vtex"
-		},
-	]
-	m_Children = 
-	[
-		{
-			m_ChildRef = resource:"particles/weapon_fx/bullet_trail_glow.vpcf"
 		},
 	]
 }
