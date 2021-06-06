@@ -89,7 +89,7 @@ namespace SpeedDial.Player {
 
 			float mouseShiftFactor = 0.3f;//Sniper
 			if(pawn.ActiveChild is Sniper) {
-				mouseShiftFactor = 0.7f;
+				mouseShiftFactor = 0.5f;
 			}
 
 			if(CameraShift) {
