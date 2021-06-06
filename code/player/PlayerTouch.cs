@@ -18,9 +18,9 @@ namespace SpeedDial.Player {
 					if(magnitude > 450f) {
 
 						wep1.PhysicsBody.EnableAutoSleeping = false;
-						Sound.FromEntity( "smack", this );
+						Sound.FromEntity("smack", this);
 						CauseOfDeath = COD.Thrown;
-						KillMyself( wep1.PreviousOwner );
+						KillMyself(wep1.PreviousOwner);
 						wep1.Velocity *= -0.5f;
 						//if (wep1.PhysicsBody.Velocity.Normal.Dot(other.EyeRot.Forward.Normal) < 0.4f || Inventory.Active is not BaseSpeedDialWeapon) {
 						//	
@@ -48,6 +48,27 @@ namespace SpeedDial.Player {
 						Health = 200f;
 
 					}
+
+					// make drug particle according to drug type
+					switch(drug.Drug) {
+						case DrugType.Polvo:
+							DrugParticles = Particles.Create(drug.ParticleName, Position);
+							DrugParticles.SetForward(0, Vector3.Up);
+							break;
+						case DrugType.Leaf:
+							DrugParticles = Particles.Create(drug.ParticleName, Position);
+							DrugParticles.SetForward(0, Vector3.Up);
+							break;
+						case DrugType.Ollie:
+							DrugParticles = Particles.Create(drug.ParticleName, Position);
+							DrugParticles.SetForward(0, Vector3.Up);
+							break;
+						case DrugType.Ritindi:
+							DrugParticles = Particles.Create(drug.ParticleName, Position);
+							DrugParticles.SetForward(0, Vector3.Up);
+							break;
+					}
+
 					CurrentDrug = drug.Drug;
 					ResetTimeSinceMedTaken = true;
 					MedTaken = true;

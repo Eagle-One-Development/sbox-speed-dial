@@ -16,7 +16,7 @@ namespace SpeedDial {
 		[Net]
 		public BaseRound Round { get; private set; }
 
-		private BaseRound _lastRound;
+		//private BaseRound _lastRound;
 
 		[ServerVar("sdial_min_players", Help = "The minimum players required to start the game.")]
 		public static int MinPlayers { get; set; } = 1;
@@ -87,6 +87,8 @@ namespace SpeedDial {
 			}
 
 			(pawn as SpeedDialPlayer).MedTaken = false;
+			(pawn as SpeedDialPlayer).DrugParticles.Destroy(false);
+			(pawn as SpeedDialPlayer).DrugParticles.Dispose();
 
 			if(attackerClient != null) {
 				var attacker = attackerClient.Pawn as SpeedDialPlayer;

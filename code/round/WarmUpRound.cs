@@ -37,6 +37,6 @@ namespace SpeedDial {
 
 		}
 
-		private bool _roundStarted;
+		//private bool _roundStarted;
 	}
 }

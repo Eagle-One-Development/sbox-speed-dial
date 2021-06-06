@@ -18,5 +18,6 @@ namespace SpeedDial.Meds {
 		public override string icon => "materials/ui/leaf.png";
 		public override string PickupSound => "sd_leaf_take";
 		public override Color OutlineColor => new Color(0.1f, 1, 0.1f, 1);
+		public override string ParticleName => "particles/drug_fx/sd_leaf/sd_leaf.vpcf";
 	}
 }

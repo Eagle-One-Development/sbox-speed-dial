@@ -16,5 +16,6 @@ namespace SpeedDial.Meds {
 		public override DrugType Drug => DrugType.Polvo;
 		public override string icon => "materials/ui/polvo.png";
 		public override string PickupSound => "sd_polvo_take";
+		public override string ParticleName => "particles/drug_fx/sd_polvo/sd_polvo.vpcf";
 	}
 }

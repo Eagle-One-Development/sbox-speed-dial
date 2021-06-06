@@ -16,7 +16,7 @@ namespace SpeedDial.Meds {
 		public override DrugType Drug => DrugType.Ollie;
 		public override string icon => "materials/ui/ollie.png";
 		public override string PickupSound => "sd_ollie_take";
-
 		public override Color OutlineColor => new Color(0.1f, 0.1f, 1, 1);
+		public override string ParticleName => "particles/drug_fx/sd_ollie/sd_ollie.vpcf";
 	}
 }

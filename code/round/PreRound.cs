@@ -12,15 +12,15 @@ namespace SpeedDial {
 		public override string RoundName => "Pre-Round";
 		public override int RoundDuration => 5;
 
-		private bool _roundStarted;
+		//private bool _roundStarted;
 
 		public override void OnPlayerSpawn(SpeedDialPlayer player) {
 			if(Players.Contains(player)) return;
 
 			AddPlayer(player);
 
-			if(_roundStarted) {
-			}
+			//if(_roundStarted) {
+			//}
 
 			base.OnPlayerSpawn(player);
 		}
