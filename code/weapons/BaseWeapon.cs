@@ -8,6 +8,7 @@ using System.Numerics;
 using System.Threading.Tasks;
 using SpeedDial.Player;
 using SpeedDial.UI;
+using SpeedDial.WeaponSpawns;
 
 namespace SpeedDial.Weapons {
 	public partial class BaseSpeedDialWeapon : BaseCarriable {
@@ -17,6 +18,8 @@ namespace SpeedDial.Weapons {
 
 		[Net]
 		public Entity PreviousOwner { get; set; }
+		[Net]
+		public BaseWeaponSpawn WeaponSpawn { get; set; }
 
 		[Net, Predicted]
 		public int AmmoClip { get; set; }
@@ -26,6 +29,7 @@ namespace SpeedDial.Weapons {
 
 		public PickupTrigger PickupTrigger { get; protected set; }
 		TimeSince lifetime;
+		public bool DespawnAfterTime = true;
 
 		[Net, Predicted]
 		public TimeSince TimeSincePrimaryAttack { get; set; }
@@ -87,7 +91,7 @@ namespace SpeedDial.Weapons {
 
 		[Event("server.tick")]
 		public void CheckLifeTime() {
-			if(lifetime > 10f && Owner == null) {
+			if(lifetime > 10f && Owner == null && DespawnAfterTime) {
 				Delete();
 			}
 		}
@@ -267,6 +271,13 @@ namespace SpeedDial.Weapons {
 
 		public override void OnCarryStart(Entity carrier) {
 			if(IsClient) return;
+
+			//spawned via a weaponspawn. Tell the spawn that it's cleared up and can start respawning the weapon
+			if(WeaponSpawn != null) {
+				WeaponSpawn.ItemTaken = true;
+				WeaponSpawn.TimeSinceTaken = 0;
+				WeaponSpawn = null;
+			}
 
 			SetParent(carrier, AttachementName, Transform.Zero);
 

@@ -217,8 +217,6 @@ namespace SpeedDial.Player {
 						}
 
 						tr.Entity.TakeDamage(damage);
-
-
 					}
 				}
 			}
@@ -226,7 +224,6 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		public void PlayUISound(string sound) {
-			Log.Info("PLAY DRUG SOUND");
 			Sound.FromScreen(sound);
 		}
 
@@ -287,6 +284,7 @@ namespace SpeedDial.Player {
 					if(dropped.PhysicsGroup != null) {
 						if(dropped is BaseSpeedDialWeapon wep) {
 							wep.ApplyThrowVelocity(EyeRot.Forward);
+							wep.DespawnAfterTime = true;
 							wep.GlowState = GlowStates.GlowStateOn;
 							wep.GlowDistanceStart = 0;
 							wep.GlowDistanceEnd = 1000;

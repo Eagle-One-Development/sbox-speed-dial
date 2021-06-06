@@ -68,6 +68,7 @@ namespace SpeedDial {
 			if(pawn is SpeedDialPlayer ply) {
 				if(ply.Inventory.DropActive() is BaseSpeedDialWeapon dropped && dropped != null) {
 					dropped.Position = pawn.EyePos;
+					dropped.DespawnAfterTime = true;
 					dropped.GlowState = GlowStates.GlowStateOn;
 					dropped.GlowDistanceStart = 0;
 					dropped.GlowDistanceEnd = 1000;

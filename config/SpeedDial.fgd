@@ -25,3 +25,51 @@
     RespawnTime(int) : "Respawn Time in seconds" : 15 : 
         "The time in seconds it takes for this med to respawn"
 ]
+
+@PointClass base(Targetname) editormodel( "models/playermodels/weapons/prop_pistol.vmdl" ) = sd_weaponspawn_pistol : 
+    "Pistol Weaponspawn"
+[
+    WeaponClass(string) : "Weapon class to spawn" : "sd_pistol"
+    RespawnTime(int) : "Respawn Time in seconds" : 15 : 
+        "The time in seconds it takes for this weapon to respawn"
+]
+
+@PointClass base(Targetname) editormodel( "models/playermodels/weapons/prop_shotgun.vmdl" ) = sd_weaponspawn_shotgun : 
+    "Shotgun Weaponspawn"
+[
+    WeaponClass(string) : "Weapon class to spawn" : "sd_spatz"
+    RespawnTime(int) : "Respawn Time in seconds" : 15 : 
+        "The time in seconds it takes for this weapon to respawn"
+]
+
+@PointClass base(Targetname) editormodel( "models/playermodels/weapons/prop_smg.vmdl" ) = sd_weaponspawn_smg : 
+    "Smg Weaponspawn"
+[
+    WeaponClass(string) : "Weapon class to spawn" : "sd_mac"
+    RespawnTime(int) : "Respawn Time in seconds" : 15 : 
+        "The time in seconds it takes for this weapon to respawn"
+]
+
+@PointClass base(Targetname) editormodel( "models/playermodels/weapons/prop_rifle.vmdl" ) = sd_weaponspawn_rifle : 
+    "Rifle Weaponspawn"
+[
+    WeaponClass(string) : "Weapon class to spawn" : "sd_tac"
+    RespawnTime(int) : "Respawn Time in seconds" : 15 : 
+        "The time in seconds it takes for this weapon to respawn"
+]
+
+@PointClass base(Targetname) editormodel( "models/playermodels/weapons/prop_rifle.vmdl" ) = sd_weaponspawn_sniper : 
+    "Sniper Weaponspawn"
+[
+    WeaponClass(string) : "Weapon class to spawn" : "sd_sniper"
+    RespawnTime(int) : "Respawn Time in seconds" : 15 : 
+        "The time in seconds it takes for this weapon to respawn"
+]
+
+@PointClass base(Targetname) editormodel( "models/playermodels/weapons/prop_shotgun.vmdl" ) = sd_weaponspawn_roomclearer : 
+    "Room Clearer Weaponspawn"
+[
+    WeaponClass(string) : "Weapon class to spawn" : "sd_roomclearer"
+    RespawnTime(int) : "Respawn Time in seconds" : 15 : 
+        "The time in seconds it takes for this weapon to respawn"
+]
