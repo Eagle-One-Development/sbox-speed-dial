@@ -871,7 +871,7 @@
 				m_networkMode = "ServerAuthoritative"
 				m_tagSpans = [  ]
 				m_sequenceName = "bat_swing_3"
-				m_playbackSpeed = 2.0
+				m_playbackSpeed = 1.0
 				m_bLoop = false
 			}
 		},
@@ -2605,7 +2605,7 @@
 				m_networkMode = "ServerAuthoritative"
 				m_tagSpans = [  ]
 				m_sequenceName = "bat_swing_1"
-				m_playbackSpeed = 2.0
+				m_playbackSpeed = 1.0
 				m_bLoop = false
 			}
 		},
@@ -2874,7 +2874,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 66.0, 2395.0 ]
+				m_vecPosition = [ 64.0, 2397.0 ]
 				m_nNodeID = 
 				{
 					m_id = 709130136
@@ -8624,7 +8624,7 @@
 				m_networkMode = "ServerAuthoritative"
 				m_tagSpans = [  ]
 				m_sequenceName = "bat_swing_2"
-				m_playbackSpeed = 2.0
+				m_playbackSpeed = 1.0
 				m_bLoop = false
 			}
 		},
@@ -8733,7 +8733,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Holdtype"
-				m_vecPosition = [ 393.0, 2156.0 ]
+				m_vecPosition = [ 395.0, 2156.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1798185898
@@ -9111,7 +9111,22 @@
 							},
 							{
 								_class = "CAnimStateTransition"
-								m_conditions = [  ]
+								m_conditions = 
+								[
+									{
+										_class = "CParameterAnimCondition"
+										m_comparisonOp = 0
+										m_paramID = 
+										{
+											m_id = 72339625
+										}
+										m_comparisonValue = 
+										{
+											m_nType = 2
+											m_data = 6
+										}
+									},
+								]
 								m_blendDuration = 0.2
 								m_destState = 
 								{
@@ -9153,7 +9168,22 @@
 						[
 							{
 								_class = "CAnimStateTransition"
-								m_conditions = [  ]
+								m_conditions = 
+								[
+									{
+										_class = "CParameterAnimCondition"
+										m_comparisonOp = 1
+										m_paramID = 
+										{
+											m_id = 72339625
+										}
+										m_comparisonValue = 
+										{
+											m_nType = 2
+											m_data = 6
+										}
+									},
+								]
 								m_blendDuration = 0.2
 								m_destState = 
 								{
@@ -10320,7 +10350,7 @@
 					m_id = 2110578779
 				}
 				m_networkMode = "ClientPredicted"
-				m_weightListName = "upper_body"
+				m_weightListName = "holding_bat"
 				m_child1ID = 
 				{
 					m_id = 84528413
