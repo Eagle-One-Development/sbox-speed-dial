@@ -18,6 +18,5 @@ namespace SpeedDial.Weapons {
 		public override Vector4 ScreenShakeParameters => new(2, 2.5f, 3, 2);
 		public override string AttachementName => "shotgun_attach";
 		public override float VerticalBulletSpread => 0.2f;
-		public override bool Penetrate => true;
 	}
 }

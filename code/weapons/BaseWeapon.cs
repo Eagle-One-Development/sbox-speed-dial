@@ -264,7 +264,7 @@ namespace SpeedDial.Weapons {
 			ps.SetPos(0, from);
 			ps.SetPos(1, to);
 
-			Vector3 tracerCPValue = new Vector3(Math.Floor(Vector3.DistanceBetween(from, to) * TracerNumPerUnit), 0.0f, 0.0f);
+			Vector3 tracerCPValue = new Vector3((float)Math.Floor(Vector3.DistanceBetween(from, to) * TracerNumPerUnit), 0.0f, 0.0f);
 			ps.SetPos(TracerCP, tracerCPValue);
 		}
 

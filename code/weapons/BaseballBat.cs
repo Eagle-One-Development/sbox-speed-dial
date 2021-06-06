@@ -22,5 +22,29 @@ namespace SpeedDial.Weapons {
 			// multiple traces for a sweeping attack
 			// I wanna be able to BONK multiple people
 		}
+
+		public override void Spawn() {
+
+			CollisionGroup = CollisionGroup.Weapon; // so players touch it as a trigger but not as a solid
+			SetInteractsAs(CollisionLayer.Debris); // so player movement doesn't walk into it
+			SetModel(WorldModel);
+			AmmoClip = ClipSize;
+			PickupTrigger = new();
+			PickupTrigger.Parent = this;
+			PickupTrigger.Position = Position;
+			PickupTrigger.EnableTouchPersists = true;
+
+			MoveType = MoveType.Physics;
+			//CollisionGroup = CollisionGroup.;
+			PhysicsEnabled = true;
+			UsePhysicsCollision = true;
+			EnableHideInFirstPerson = true;
+			EnableShadowInFirstPerson = true;
+		}
+
+		public override void Touch(Entity other) {
+			base.Touch(other);
+			//Log.Info($"BASEBALL BAT TOUCHED {other}");
+		}
 	}
 }

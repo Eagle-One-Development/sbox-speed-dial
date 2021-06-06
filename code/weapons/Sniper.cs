@@ -14,6 +14,5 @@ namespace SpeedDial.Weapons {
 		public override string ShootSound => "sd_pistol_shoot";
 		public override string WorldModel => "models/weapons/sk_prop_rifle_01.vmdl";
 		public override string AttachementName => "rifle_attach";
-		public override bool Penetrate => true;
 	}
 }
