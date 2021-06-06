@@ -71,7 +71,7 @@ namespace SpeedDial.UI {
 			}
 
 			float chance = Rand.Float( 1 );
-			float chanceMod = 0.3f;
+			float chanceMod = 0.35f;
 			
 			
 
@@ -80,7 +80,9 @@ namespace SpeedDial.UI {
 				return;
 			}
 
-			string quip = "RADICAL";
+			string[] baseQuips = { "RADICAL", "DISGUSTING", "HARD RESET", "OUCH", "SICK", "EXCELLENT", "POPPIN' OFF", "CAPPED", "DECEASED", "AN EARLY GRAVE" };
+
+			string quip = baseQuips[Rand.Int(baseQuips.Length - 1)];
 
 			string[] combos = { "DOUBLE KILL", "TRIPLE KILL", "QUAD KILL", "KILLIONAIRE", "KILL BILL" };
 

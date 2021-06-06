@@ -281,6 +281,7 @@ namespace SpeedDial.Player {
 				if(dropped != null) {
 					ResetInterpolation();
 					dropped.Position = EyePos;
+					//dropped.Rotation = Rotation.Identity;
 					if(dropped.PhysicsGroup != null) {
 						if(dropped is BaseSpeedDialWeapon wep) {
 							wep.ApplyThrowVelocity(EyeRot.Forward);

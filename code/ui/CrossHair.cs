@@ -10,6 +10,7 @@ using SpeedDial.Player;
 using SpeedDial.Weapons;
 
 
+
 namespace SpeedDial.UI
 {
 	public partial class CrossHair : Panel
@@ -45,6 +46,12 @@ namespace SpeedDial.UI
 		public override void Tick()
 		{
 			base.Tick();
+
+			//SetClass( "inactive", false );
+			SetClass( "active", Global.InGame);
+			
+
+
 
 			//Log.Info( $"X: {Mouse.Position.x} Y: {Mouse.Position.y} \b Screen Width: {Screen.Width}" );
 
