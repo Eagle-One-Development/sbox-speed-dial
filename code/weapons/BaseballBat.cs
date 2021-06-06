@@ -5,7 +5,7 @@ namespace SpeedDial.Weapons {
 	[Library("sd_bat", Title = "Baseball Bat")]
 	partial class BaseballBat : BaseSpeedDialWeapon {
 		public override float PrimaryRate => 2.0f;
-		public override int HoldType => 5; // need melee holdtype
+		public override int HoldType => 6; // need melee holdtype
 		public override int ClipSize => -1; // no ammo hud
 		public override string WorldModel => "models/weapons/bat/bat.vmdl";
 		public override string AttachementName => "melee_bat_attach";

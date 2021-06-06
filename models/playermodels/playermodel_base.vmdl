@@ -1492,7 +1492,7 @@
 								disable_compression = false
 								source_filename = "models/playermodels/anims/bat_swing_2.dmx"
 								start_frame = -1
-								end_frame = -1
+								end_frame = 41
 								framerate = -1.0
 								reverse = false
 							},
@@ -1512,7 +1512,7 @@
 								disable_compression = false
 								source_filename = "models/playermodels/anims/bat_swing_3.dmx"
 								start_frame = -1
-								end_frame = -1
+								end_frame = 34
 								framerate = -1.0
 								reverse = false
 							},
@@ -1620,7 +1620,6 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
-						disabled = true
 						model_name = "models/weapons/bat/bat.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
@@ -2124,6 +2123,44 @@
 						master_morph_weight = -1.0
 						morph_weights = [  ]
 					},
+					{
+						_class = "WeightList"
+						name = "holding_bat"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "clavicle_l"
+								weight = 1.0
+							},
+							{
+								bone = "clavicle_r"
+								weight = 0.78178
+							},
+							{
+								bone = "spine_01"
+								weight = 0.483709
+							},
+							{
+								bone = "spine_02"
+								weight = 0.666667
+							},
+							{
+								bone = "spine_03"
+								weight = 0.864662
+							},
+							{
+								bone = "upperarm_l"
+								weight = 1.0
+							},
+							{
+								bone = "upperarm_r"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
 				]
 			},
 			{
@@ -2362,9 +2399,9 @@
 					{
 						_class = "Attachment"
 						name = "melee_bat_attach"
-						parent_bone = "hand_r"
-						relative_origin = [ -4.373051, -0.900963, 1.698423 ]
-						relative_angles = [ -21.014008, -103.542297, 82.380432 ]
+						parent_bone = "hand_l"
+						relative_origin = [ 7.082401, 3.211586, -8.203894 ]
+						relative_angles = [ 12.473188, -92.676529, -165.617172 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
