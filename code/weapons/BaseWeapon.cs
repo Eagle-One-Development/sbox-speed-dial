@@ -53,9 +53,6 @@ namespace SpeedDial.Weapons {
 		public virtual string AttachementName => "pistol_attach";
 		public virtual bool Penetrate => false;
 
-		public virtual int TracerCP => 3;
-		public virtual float TracerNumPerUnit => 0.05f;
-
 		public int AvailableAmmo() {
 			if(Owner is SpeedDialPlayer owner) {
 				if(owner == null) return 0;
@@ -263,9 +260,6 @@ namespace SpeedDial.Weapons {
 			var ps = Particles.Create("particles/weapon_fx/bullet_trail_test.vpcf", to);
 			ps.SetPos(0, from);
 			ps.SetPos(1, to);
-
-			Vector3 tracerCPValue = new Vector3((float)Math.Floor(Vector3.DistanceBetween(from, to) * TracerNumPerUnit), 0.0f, 0.0f);
-			ps.SetPos(TracerCP, tracerCPValue);
 		}
 
 		public bool TakeAmmo(int amount) {
