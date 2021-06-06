@@ -6816,7 +6816,7 @@
 				{
 					m_id = 1144694180
 				}
-				m_networkMode = "ClientPredicted"
+				m_networkMode = "ServerAuthoritative"
 				m_childID = 
 				{
 					m_id = 891995616
