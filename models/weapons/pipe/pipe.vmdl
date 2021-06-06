@@ -14,12 +14,45 @@
 						remaps = 
 						[
 							{
-								from = "mi_baseballbat_post.vmat"
-								to = "models/weapons/bat/materials/bat.vmat"
+								from = "metalpipewep.vmat"
+								to = "models/weapons/pipe/materials/pipe.vmat"
 							},
 						]
 						use_global_default = false
 						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						radius = 0.5
+						point0 = [ -0.554047, 2.145917, -24.073231 ]
+						point1 = [ -0.032937, 2.030153, 9.596685 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ 0.004419, -0.594808, 0.053925 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 0.377967, 3.38633, 16.142593 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						radius = 0.5
+						point0 = [ 0.000982, 5.771612, 9.815201 ]
+						point1 = [ 0.065723, 2.507794, 9.637973 ]
 					},
 				]
 			},
@@ -29,10 +62,10 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/weapons/bat/meshes/bat_lowpoly.fbx"
+						filename = "models/weapons/pipe/meshes/pipe_low.fbx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 0.03
+						import_scale = 0.08
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
@@ -46,29 +79,14 @@
 				]
 			},
 			{
-				_class = "PhysicsShapeList"
-				children = 
-				[
-					{
-						_class = "PhysicsShapeCapsule"
-						parent_bone = ""
-						surface_prop = "default"
-						collision_prop = "default"
-						radius = 1.3
-						point0 = [ -0.070872, -0.022666, -12.680246 ]
-						point1 = [ -0.004896, -0.052022, 24.538528 ]
-					},
-				]
-			},
-			{
 				_class = "AttachmentList"
 				children = 
 				[
 					{
 						_class = "Attachment"
-						name = "bat_tip"
+						name = "pipe_tip"
 						parent_bone = ""
-						relative_origin = [ 0.0, 0.0, 24.391506 ]
+						relative_origin = [ 0.0, 0.828174, 18.715849 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false

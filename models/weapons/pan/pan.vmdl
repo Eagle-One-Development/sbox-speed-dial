@@ -6,31 +6,13 @@
 		children = 
 		[
 			{
-				_class = "MaterialGroupList"
-				children = 
-				[
-					{
-						_class = "DefaultMaterialGroup"
-						remaps = 
-						[
-							{
-								from = "mi_baseballbat_post.vmat"
-								to = "models/weapons/bat/materials/bat.vmat"
-							},
-						]
-						use_global_default = false
-						global_default_material = ""
-					},
-				]
-			},
-			{
 				_class = "RenderMeshList"
 				children = 
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/weapons/bat/meshes/bat_lowpoly.fbx"
-						import_translation = [ 0.0, 0.0, 0.0 ]
+						filename = "models/weapons/pan/meshes/pan1_low.fbx"
+						import_translation = [ 0.0, 0.0, 1000.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.03
 						align_origin_x_type = "None"
@@ -46,6 +28,24 @@
 				]
 			},
 			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "fryingpanonastick.vmat"
+								to = "models/weapons/pan/materials/pan.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+				]
+			},
+			{
 				_class = "PhysicsShapeList"
 				children = 
 				[
@@ -54,9 +54,18 @@
 						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						radius = 1.3
-						point0 = [ -0.070872, -0.022666, -12.680246 ]
-						point1 = [ -0.004896, -0.052022, 24.538528 ]
+						radius = 1.0
+						point0 = [ -0.048555, -0.00148, -7.610653 ]
+						point1 = [ 0.248001, 0.007559, 38.872017 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ 0.096034, 0.032677, 30.009125 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 1.616581, 9.440335, 9.330599 ]
 					},
 				]
 			},
@@ -66,9 +75,9 @@
 				[
 					{
 						_class = "Attachment"
-						name = "bat_tip"
+						name = "pan_tip"
 						parent_bone = ""
-						relative_origin = [ 0.0, 0.0, 24.391506 ]
+						relative_origin = [ 0.0, 0.0, 38.061668 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
