@@ -18,6 +18,7 @@ namespace SpeedDial.UI {
 			RootPanel.AddChild<EndRound>();
 			Scoreboard = RootPanel.AddChild<SpeedDialScoreboard<SpeedDialScoreboardEntry>>();
 			RootPanel.AddChild<ChatBox>();
+			RootPanel.AddChild<CrossHair>();
 		}
 	}
 }
