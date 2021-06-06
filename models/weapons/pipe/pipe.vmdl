@@ -32,27 +32,27 @@
 						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						radius = 0.5
-						point0 = [ -0.554047, 2.145917, -24.073231 ]
-						point1 = [ -0.032937, 2.030153, 9.596685 ]
+						radius = 0.729468
+						point0 = [ 0.041341, 2.356925, -30.172474 ]
+						point1 = [ 0.012722, 2.586132, 11.354115 ]
 					},
 					{
 						_class = "PhysicsShapeBox"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						origin = [ 0.004419, -0.594808, 0.053925 ]
+						origin = [ 0.004419, -0.634399, 0.148926 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 0.377967, 3.38633, 16.142593 ]
+						dimensions = [ 0.377967, 5.040954, 20.056458 ]
 					},
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						radius = 0.5
-						point0 = [ 0.000982, 5.771612, 9.815201 ]
-						point1 = [ 0.065723, 2.507794, 9.637973 ]
+						radius = 0.60875
+						point0 = [ 0.089111, 7.199689, 12.195665 ]
+						point1 = [ -0.024295, 3.235437, 11.957178 ]
 					},
 				]
 			},
@@ -86,7 +86,7 @@
 						_class = "Attachment"
 						name = "pipe_tip"
 						parent_bone = ""
-						relative_origin = [ 0.0, 0.828174, 18.715849 ]
+						relative_origin = [ 0.0, 2.921341, 11.961302 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false

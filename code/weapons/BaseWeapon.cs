@@ -176,6 +176,12 @@ namespace SpeedDial.Weapons {
 			foreach(var tr in TraceBullet(Owner.EyePos, Owner.EyePos + forward * Range, bulletSize)) {
 				tr.Surface.DoBulletImpact(tr);
 
+				// blood plip where player was hit
+				if(tr.Entity is SpeedDialPlayer hitply) {
+					var ps = Particles.Create("particles/blood/blood_plip.vpcf", tr.EndPos);
+					ps.SetForward(0, tr.Normal);
+				}
+
 				if(index == 0) {
 					BulletTracer(EffectEntity.GetAttachment("muzzle", true).Position, tr.EndPos);
 				} else {

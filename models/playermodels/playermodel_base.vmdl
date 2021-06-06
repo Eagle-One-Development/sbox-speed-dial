@@ -2419,8 +2419,8 @@
 						_class = "Attachment"
 						name = "melee_pipe_attach"
 						parent_bone = "hand_l"
-						relative_origin = [ 13.696384, 1.493429, -14.717593 ]
-						relative_angles = [ 13.295776, -111.939117, -152.318207 ]
+						relative_origin = [ 13.400425, -0.718227, -20.526495 ]
+						relative_angles = [ 28.023129, 169.580719, 173.324432 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
