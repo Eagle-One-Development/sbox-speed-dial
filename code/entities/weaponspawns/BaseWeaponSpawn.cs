@@ -14,7 +14,6 @@ namespace SpeedDial.WeaponSpawns {
 	[Library("base_weaponspawn", Title = "Weapon Spawn")]
 	public partial class BaseWeaponSpawn : Entity {
 
-		public virtual string WorldModel => "models/playermodels/weapons/prop_pistol.vmdl";
 		public virtual string WeaponClass => "sd_pistol";
 
 		[HammerProp]
