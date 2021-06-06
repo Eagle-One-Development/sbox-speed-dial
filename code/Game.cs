@@ -87,8 +87,8 @@ namespace SpeedDial {
 			}
 
 			(pawn as SpeedDialPlayer).MedTaken = false;
-			(pawn as SpeedDialPlayer).DrugParticles.Destroy(false);
-			(pawn as SpeedDialPlayer).DrugParticles.Dispose();
+			(pawn as SpeedDialPlayer).DrugParticles?.Destroy(false);
+			(pawn as SpeedDialPlayer).DrugParticles?.Dispose();
 
 			if(attackerClient != null) {
 				var attacker = attackerClient.Pawn as SpeedDialPlayer;
