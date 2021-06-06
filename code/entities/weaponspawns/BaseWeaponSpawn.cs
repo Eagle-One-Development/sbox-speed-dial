@@ -26,8 +26,21 @@ namespace SpeedDial.WeaponSpawns {
 		[Net]
 		public TimeSince TimeSinceTaken { get; set; }
 
+
 		public override void Spawn() {
 			base.Spawn();
+			SpawnWeapon();
+		}
+
+		[Event("server.tick")]
+		public void Simulate() {
+			if(ItemTaken && TimeSinceTaken > RespawnTime) {
+				SpawnWeapon();
+				ItemTaken = false;
+			}
+		}
+
+		public virtual void SpawnWeapon() {
 			var ent = Library.Create<Entity>(WeaponClass) as BaseSpeedDialWeapon;
 			ent.Transform = Transform;
 			ent.WeaponSpawn = this;
@@ -37,22 +50,6 @@ namespace SpeedDial.WeaponSpawns {
 			ent.GlowDistanceEnd = 1000;
 			ent.GlowColor = new Color(1, 1, 1, 1);
 			ent.GlowActive = true;
-		}
-
-		[Event("server.tick")]
-		public void Simulate() {
-			if(ItemTaken && TimeSinceTaken > RespawnTime) {
-				var ent = Library.Create<Entity>(WeaponClass) as BaseSpeedDialWeapon;
-				ent.Transform = Transform;
-				ent.WeaponSpawn = this;
-				ent.DespawnAfterTime = false;
-				ent.GlowState = GlowStates.GlowStateOn;
-				ent.GlowDistanceStart = 0;
-				ent.GlowDistanceEnd = 1000;
-				ent.GlowColor = new Color(1, 1, 1, 1);
-				ent.GlowActive = true;
-				ItemTaken = false;
-			}
 		}
 	}
 }

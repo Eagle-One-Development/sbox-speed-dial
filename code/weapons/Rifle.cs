@@ -2,7 +2,7 @@ using Sandbox;
 using System;
 
 namespace SpeedDial.Weapons {
-	[Library("sd_tac", Title = "TAC-7")]
+	[Library("sd_rifle", Title = "TAC-7")]
 	partial class Tac7 : BaseSpeedDialWeapon {
 
 		public override float PrimaryRate => 2.0f;

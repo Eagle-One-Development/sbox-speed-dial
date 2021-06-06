@@ -2,7 +2,7 @@ using Sandbox;
 using System;
 
 namespace SpeedDial.Weapons {
-	[Library("sd_mac", Title = "Mac-11")]
+	[Library("sd_smg", Title = "Mac-11")]
 	partial class Mac10 : BaseSpeedDialWeapon {
 
 		public override float PrimaryRate => 15.0f;

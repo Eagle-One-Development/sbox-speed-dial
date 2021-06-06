@@ -2,7 +2,7 @@ using Sandbox;
 using System;
 
 namespace SpeedDial.Weapons {
-	[Library("sd_spatz", Title = "Spatz-12")]
+	[Library("sd_shotgun", Title = "Spatz-12")]
 	partial class Shotgun : BaseSpeedDialWeapon {
 		public override float PrimaryRate => 1;
 		public override int ClipSize => 8;
