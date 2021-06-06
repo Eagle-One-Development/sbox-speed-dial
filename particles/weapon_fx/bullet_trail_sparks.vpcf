@@ -467,18 +467,18 @@
 						{
 							x = 0.0
 							y = 0.0
-							m_flSlopeIncoming = 48.184818
-							m_flSlopeOutgoing = 48.184818
+							m_flSlopeIncoming = 12.046205
+							m_flSlopeOutgoing = 12.046205
 						},
 						{
-							x = 0.041507
-							y = 2.0
-							m_flSlopeIncoming = 4.0
-							m_flSlopeOutgoing = 4.0
+							x = 0.083014
+							y = 1.0
+							m_flSlopeIncoming = 1.0
+							m_flSlopeOutgoing = 1.0
 						},
 						{
-							x = 0.5
-							y = 2.0
+							x = 1.0
+							y = 1.0
 							m_flSlopeIncoming = 0.0
 							m_flSlopeOutgoing = 0.0
 						},
@@ -499,7 +499,7 @@
 						},
 					]
 					m_vDomainMins = [ 0.0, 0.0 ]
-					m_vDomainMaxs = [ 0.5, 2.0 ]
+					m_vDomainMaxs = [ 1.0, 1.0 ]
 				}
 			}
 			m_nOutputField = "7"
@@ -523,13 +523,13 @@
 				m_flLOD2 = 0.0
 				m_flLOD3 = 0.0
 				m_flNoiseOutputMin = 1.0
-				m_flNoiseOutputMax = 2.0
+				m_flNoiseOutputMax = 3.0
 				m_flNoiseScale = 0.510745
 				m_vecNoiseOffsetRate = [ 40.0, 1.0, 1.0 ]
 				m_flNoiseOffset = -374.0
 				m_nNoiseOctaves = 1
 				m_nNoiseTurbulence = "PF_NOISE_TURB_NONE"
-				m_nNoiseType = "PF_NOISE_TYPE_WORLEY"
+				m_nNoiseType = "PF_NOISE_TYPE_PERLIN"
 				m_nNoiseModifier = "PF_NOISE_MODIFIER_NONE"
 				m_flNoiseTurbulenceScale = 0.11
 				m_flNoiseTurbulenceMix = -0.188
@@ -1334,7 +1334,7 @@
 			{
 				m_nType = "PF_TYPE_LITERAL"
 				m_nMapType = "PF_MAP_TYPE_DIRECT"
-				m_flLiteralValue = 2.0
+				m_flLiteralValue = 1.5
 				m_nControlPoint = 0
 				m_nScalarAttribute = 3
 				m_nVectorAttribute = 6
@@ -1564,7 +1564,7 @@
 			{
 				m_nType = "PF_TYPE_LITERAL"
 				m_nMapType = "PF_MAP_TYPE_DIRECT"
-				m_flLiteralValue = 2.0
+				m_flLiteralValue = 1.5
 				m_nControlPoint = 0
 				m_nScalarAttribute = 3
 				m_nVectorAttribute = 6

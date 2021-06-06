@@ -382,7 +382,7 @@
 			m_nControlPoint = 1
 			m_nControlPointCompare = 0
 			m_nControlPointLocal = 1
-			m_flVelocityScale = 0.3
+			m_flVelocityScale = 0.4
 		},
 	]
 	m_Operators = 
@@ -393,6 +393,7 @@
 		{
 			_class = "C_OP_BasicMovement"
 			m_Gravity = [ 0.0, 0.0, -100.0 ]
+			m_fDrag = 0.01
 		},
 		{
 			_class = "C_OP_FadeOutSimple"
@@ -594,7 +595,6 @@
 				}
 			}
 			m_hTexture = resource:"materials/particle/particle_glow_05.vtex"
-			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_RenderSprites"
@@ -646,7 +646,6 @@
 			m_bAdditive = true
 			m_bOnlyRenderInEffectsBloomPass = true
 			m_hTexture = resource:"materials/particle/particle_glow_05.vtex"
-			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_RenderTrails"
@@ -698,6 +697,7 @@
 			}
 			m_bAdditive = true
 			m_hTexture = resource:"materials/particle/particle_glow_05.vtex"
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_RenderTrails"
@@ -750,6 +750,7 @@
 			m_bAdditive = true
 			m_bOnlyRenderInEffectsBloomPass = true
 			m_hTexture = resource:"materials/particle/particle_glow_05.vtex"
+			m_bDisableOperator = true
 		},
 	]
 	m_Children = 
