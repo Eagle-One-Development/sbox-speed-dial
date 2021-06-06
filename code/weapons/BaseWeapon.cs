@@ -260,7 +260,7 @@ namespace SpeedDial.Weapons {
 
 		[ClientRpc]
 		protected virtual void BulletTracer(Vector3 from, Vector3 to) {
-			var ps = Particles.Create("particles/weapon_fx/bullet_trail_test.vpcf", to);
+			var ps = Particles.Create("particles/weapon_fx/sd_bullet_trail/sd_bullet_trail.vpcf", to);
 			ps.SetPos(0, from);
 			ps.SetPos(1, to);
 
