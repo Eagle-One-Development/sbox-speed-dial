@@ -28,7 +28,7 @@ namespace SpeedDial {
 		public static int ScoreBase { get; set; } = 100;
 
 		[ServerVar("sdial_combo_time", Help = "Set the combo time window in seconds.")]
-		public static float ComboTime { get; set; } = 3f;
+		public static float ComboTime { get; set; } = 5f;
 
 		[ServerCmd]
 		public List<SpeedDialPlayer> SortedPlayerList() {

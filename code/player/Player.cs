@@ -306,9 +306,6 @@ namespace SpeedDial.Player {
 				}
 			}
 
-			if(IsClient && pickUpEntity != null) {
-				Log.Info(pickUpEntity.ToString());
-			}
 			if(Input.Pressed(InputButton.Attack2) && pickup && pickUpEntity != null && Input.ActiveChild == null) {
 				Inventory?.Add(pickUpEntity, Inventory.Active == null);
 				(pickUpEntity as BaseSpeedDialWeapon).GlowState = GlowStates.GlowStateOff;

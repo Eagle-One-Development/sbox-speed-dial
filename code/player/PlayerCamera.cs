@@ -1,11 +1,9 @@
 using System.Net;
 using System;
 using Sandbox;
+using SpeedDial.Weapons;
 
 namespace SpeedDial.Player {
-
-
-
 	public partial class SpeedDialCamera : Camera {
 
 		public virtual float CameraHeight => 400;
@@ -89,8 +87,13 @@ namespace SpeedDial.Player {
 			Pos += Vector3.Up * CameraHeight; // add camera height
 			Pos += -Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle))); // move camera back
 
+			float mouseShiftFactor = 0.3f;//Sniper
+			if(pawn.ActiveChild is Sniper) {
+				mouseShiftFactor = 0.7f;
+			}
+
 			if(CameraShift) {
-				camOffsetTarget = Vector3.Left * -((Mouse.Position.x - Screen.Size.x / 2) * 0.3f) + Vector3.Forward * -((Mouse.Position.y - Screen.Size.y / 2) * 0.3f);
+				camOffsetTarget = Vector3.Left * -((Mouse.Position.x - Screen.Size.x / 2) * mouseShiftFactor) + Vector3.Forward * -((Mouse.Position.y - Screen.Size.y / 2) * mouseShiftFactor);
 			} else {
 				camOffsetTarget = Vector3.Zero;
 			}

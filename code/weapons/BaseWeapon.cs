@@ -47,6 +47,7 @@ namespace SpeedDial.Weapons {
 		public virtual float DeployTime => 0.6f;
 		public virtual int HoldType => 1;
 		public virtual string AttachementName => "pistol_attach";
+		public virtual bool Penetrate => false;
 
 		public int AvailableAmmo() {
 			if(Owner is SpeedDialPlayer owner) {
@@ -86,7 +87,7 @@ namespace SpeedDial.Weapons {
 
 		[Event("server.tick")]
 		public void CheckLifeTime() {
-			if(lifetime > 5f && Owner == null) {
+			if(lifetime > 10f && Owner == null) {
 				Delete();
 			}
 		}
@@ -205,7 +206,7 @@ namespace SpeedDial.Weapons {
 
 			var player = Owner as SpeedDialPlayer;
 
-			if(player.MedTaken && player.CurrentDrug == Meds.DrugType.Ollie) {
+			if(player.MedTaken && player.CurrentDrug == Meds.DrugType.Ollie || Penetrate) {
 				// pierce through the first player hit
 				if(bullet.Entity is SpeedDialPlayer) {
 					var dir = bullet.EndPos - bullet.StartPos;
