@@ -548,17 +548,20 @@
 	m_Children = 
 	[
 		{
-			m_ChildRef = resource:"particles/weapon_fxbkp/weapon_fx/sd_bullet_trail/sd_bullet_trail_rope.vpcf"
+			m_ChildRef = resource:"particles/weapon_fx/sd_bullet_trail/sd_bullet_trail_rope.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/weapon_fxbkp/weapon_fx/sd_bullet_trail/sd_bullet_trail_embers.vpcf"
+			m_ChildRef = resource:"particles/weapon_fx/sd_bullet_trail/sd_bullet_trail_embers.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/weapon_fxbkp/weapon_fx/sd_bullet_trail/sd_bullet_trail_rope_glow.vpcf"
+			m_ChildRef = resource:"particles/weapon_fx/sd_bullet_trail/sd_bullet_trail_rope_glow.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/weapon_fxbkp/weapon_fx/sd_bullet_trail/sd_bullet_trail_rope_smoke.vpcf"
+			m_ChildRef = resource:"particles/weapon_fx/sd_bullet_trail/sd_bullet_trail_rope_smoke.vpcf"
 			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/weapon_fx/sd_bullet_trail/sd_bullet_trail_light.vpcf"
 		},
 	]
 }
