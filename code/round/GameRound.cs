@@ -11,7 +11,7 @@ namespace SpeedDial {
 		public override string RoundName => "Game Round";
 		public override int RoundDuration => 300;
 
-		private bool _roundStarted;
+		//private bool _roundStarted;
 
 
 		public override void OnPlayerSpawn(SpeedDialPlayer player) {
@@ -19,8 +19,9 @@ namespace SpeedDial {
 
 			AddPlayer(player);
 
-			if(_roundStarted) {
-			}
+			//if(_roundStarted) {
+			//	// ouch
+			//}
 
 			base.OnPlayerSpawn(player);
 		}

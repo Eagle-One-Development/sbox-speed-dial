@@ -16,7 +16,7 @@ namespace SpeedDial.Meds {
 		public override DrugType Drug => DrugType.Ritindi;
 		public override string icon => "materials/ui/pill.png";
 		public override string PickupSound => "sd_ritindi_take";
-
 		public override Color OutlineColor => new Color(1, 0.3f, 0, 1);
+		public override string ParticleName => "particles/drug_fx/sd_ritindi/sd_ritindi.vpcf";
 	}
 }

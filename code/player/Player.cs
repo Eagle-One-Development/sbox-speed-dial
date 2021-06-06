@@ -53,6 +53,8 @@ namespace SpeedDial.Player {
 			Inventory = new SpeedDialInventory(this);
 		}
 
+		public Particles DrugParticles { get; set; }
+
 		[Net]
 		public BaseSpeedDialCharacter character { get; set; }
 

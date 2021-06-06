@@ -34,6 +34,7 @@ namespace SpeedDial.Meds {
 
 		public PickupTrigger PickupTrigger { get; protected set; }
 		private float rotationAngle;
+		public virtual string ParticleName => "particles/drug_fx/sd_polvo/sd_polvo.vpcf";
 
 
 		public override void Spawn() {
