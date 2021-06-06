@@ -21,6 +21,7 @@ namespace SpeedDial.Meds {
 		public virtual DrugType Drug => DrugType.Polvo;
 		public virtual string icon => "materials/ui/smile.png";
 		public virtual string PickupSound => "sd_leaf_take";
+		public virtual Color OutlineColor => new Color(1, 1, 1, 1);
 
 		[HammerProp]
 		public virtual float RespawnTime { get; set; }
@@ -42,6 +43,12 @@ namespace SpeedDial.Meds {
 			SetInteractsAs(CollisionLayer.Debris); // so player movement doesn't walk into it
 
 			SetModel(WorldModel);
+
+			GlowState = GlowStates.GlowStateOn;
+			GlowDistanceStart = 0;
+			GlowDistanceEnd = 1000;
+			GlowColor = OutlineColor;
+			GlowActive = true;
 
 			ResetInterpolation();
 
