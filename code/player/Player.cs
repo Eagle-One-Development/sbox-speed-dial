@@ -268,6 +268,10 @@ namespace SpeedDial.Player {
 
 			if(TimeSinceMedTaken > MedDuration) {
 				MedTaken = false;
+
+				DrugParticles.Destroy(true);
+				DrugParticles.Dispose();
+
 				//Basically remove our extra health after the drug duration if we're high on leaf
 				if(CurrentDrug == DrugType.Leaf) {
 					if(Health > 100) {
