@@ -264,6 +264,11 @@ namespace SpeedDial.Player {
 			}
 		}
 
+		[ClientRpc]
+		public void DestroyDrugParticles() {
+			DrugParticles?.Destroy(true);
+		}
+
 		public override void Simulate(Client cl) {
 			if(Frozen) return;
 
