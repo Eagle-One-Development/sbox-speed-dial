@@ -42,7 +42,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "source"
-						filename = "models/playermodels/playermodel_base/soldier.dmx"
+						filename = "models/playermodels/playermodel_base/soldier_combined.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
