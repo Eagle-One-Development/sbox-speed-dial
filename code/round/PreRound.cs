@@ -34,6 +34,8 @@ namespace SpeedDial {
 					jp.Respawn();
 					(jp.Controller as SpeedDialController).Freeze = true;
 					jp.Frozen = true;
+					jp.StopSoundtrack(To.Single(jp));
+					jp.PlaySoundtrack(To.Single(jp), "track01");
 				}
 			}
 			SpeedDialHud.Scoreboard?.UpdateScoreboard();

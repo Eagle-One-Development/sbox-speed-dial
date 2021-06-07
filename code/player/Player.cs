@@ -61,7 +61,9 @@ namespace SpeedDial.Player {
 		[Net, Local, Predicted]
 		public bool Frozen { get; set; } = false; // sorry for naming differences
 
-		public void InitialSpawn() {
+		public Sound SoundTrack { get; set; }
+
+		public async Task InitialSpawn() {
 
 			if(GetClientOwner().SteamId == 76561198000823482) { // bak
 				PlayerColor = new Color32(250, 176, 3);
@@ -84,7 +86,27 @@ namespace SpeedDial.Player {
 			MedTaken = false;
 			character = SpeedDialGame.Instance.characters[0];
 
+
+			//PlayUISound("track01");
+
 			Respawn();
+			await GameTask.DelaySeconds(2.5f);
+			//PlaySoundtrack(To.Single(this), "track01");
+		}
+
+		[ClientRpc]
+		public void PlaySoundtrack(string track) {
+			SoundTrack = Sound.FromScreen(track);
+		}
+
+		[ClientRpc]
+		public void StopSoundtrack() {
+			SoundTrack.Stop();
+		}
+
+		[ClientRpc]
+		public void PlayUISound(string sound) {
+			Sound.FromScreen(sound);
 		}
 
 		public override void Respawn() {
@@ -224,11 +246,6 @@ namespace SpeedDial.Player {
 			}
 		}
 
-		[ClientRpc]
-		public void PlayUISound(string sound) {
-			Sound.FromScreen(sound);
-		}
-
 		public override void Simulate(Client cl) {
 			if(Frozen) return;
 
@@ -281,7 +298,7 @@ namespace SpeedDial.Player {
 				}
 			}
 
-			SetAnimBool("b_polvo", (MedTaken && CurrentDrug == Meds.DrugType.Polvo) ? true : false);
+			SetAnimBool("b_polvo", MedTaken && CurrentDrug == Meds.DrugType.Polvo);
 
 			if(Input.Pressed(InputButton.Attack2)) {
 				var dropped = Inventory.DropActive();
