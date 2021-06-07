@@ -264,17 +264,12 @@ namespace SpeedDial.Player {
 			}
 		}
 
-		[ClientRpc]
-		public void DestroyDrugParticles() {
-			DrugParticles?.Destroy(true);
-		}
-
 		public override void Simulate(Client cl) {
 			if(Frozen) return;
 
 			if(LifeState == LifeState.Dead) {
+				DrugParticles?.Destroy(false);
 				if(TimeSinceDied > RespawnTime && IsServer) {
-
 					Respawn();
 				}
 				return;
@@ -309,9 +304,7 @@ namespace SpeedDial.Player {
 			if(TimeSinceMedTaken > MedDuration) {
 				MedTaken = false;
 
-				//DrugParticles.
 				DrugParticles?.Destroy(false);
-				//DrugParticles?.Dispose();
 
 				//Basically remove our extra health after the drug duration if we're high on leaf
 				if(CurrentDrug == DrugType.Leaf) {

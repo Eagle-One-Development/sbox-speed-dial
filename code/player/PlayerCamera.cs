@@ -83,7 +83,7 @@ namespace SpeedDial.Player {
 			if(pawn == null)
 				return;
 
-			Pos = pawn.EyePos; // relative to pawn eyepos
+			Pos = pawn.EyePos + Vector3.Down * 20; // relative to pawn eyepos
 			Pos += Vector3.Up * CameraHeight; // add camera height
 			Pos += -Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle))); // move camera back
 
