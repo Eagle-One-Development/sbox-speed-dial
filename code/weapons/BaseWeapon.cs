@@ -98,7 +98,7 @@ namespace SpeedDial.Weapons {
 
 		async Task SetGravity() {
 			await GameTask.DelaySeconds(0.2f);
-			if(PhysicsBody.IsValid())
+			if((bool)PhysicsBody?.IsValid())
 				PhysicsBody.GravityScale = 1.0f;
 		}
 
