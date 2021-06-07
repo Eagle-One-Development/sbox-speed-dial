@@ -26,7 +26,6 @@ namespace SpeedDial {
 					jp.StopSoundtrack(To.Single(jp));
 				}
 			}
-
 		}
 
 		protected override void OnTimeUp() {

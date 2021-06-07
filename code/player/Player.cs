@@ -95,14 +95,29 @@ namespace SpeedDial.Player {
 		}
 
 		[ClientRpc]
-		public async Task PlaySoundtrack(string track) {
-			await GameTask.DelaySeconds(2.5f);
+		public void PlaySoundtrack(string track) {
+			_ = PlaySoundtrackAsync(track, 2.5f);
+		}
+
+		private async Task PlaySoundtrackAsync(string track, float delay) {
+			await GameTask.DelaySeconds(delay);
 			SoundTrack = Sound.FromScreen(track);
 		}
 
 		[ClientRpc]
-		public async Task StopSoundtrack() {
-			await GameTask.DelaySeconds(1);
+		public void StopSoundtrack(bool instant = false) {
+			if(instant) {
+				SoundTrack.Stop();
+			} else {
+				_ = StopSoundtrackFade();
+			}
+		}
+
+		private async Task StopSoundtrackFade() {
+			for(int i = 0; i < 50; i++) {
+				await GameTask.DelaySeconds(0.1f);
+				SoundTrack.SetVolume(1 - i * 0.02f);
+			}
 			SoundTrack.Stop();
 		}
 
