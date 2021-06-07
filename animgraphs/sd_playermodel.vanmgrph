@@ -534,32 +534,8 @@
 					{
 						_class = "CBlend2DItem"
 						m_tagSpans = [  ]
-						m_sequenceName = "pistol_run_ne"
-						m_blendValue = [ 1.0, 1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "pistol_run_nw"
-						m_blendValue = [ -1.0, 1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
 						m_sequenceName = "pistol_run_s"
 						m_blendValue = [ 0.0, -1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "pistol_run_se"
-						m_blendValue = [ 1.0, -1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "pistol_run_sw"
-						m_blendValue = [ -1.0, -1.0 ]
 					},
 					{
 						_class = "CBlend2DItem"
@@ -615,7 +591,7 @@
 				m_networkMode = "ServerAuthoritative"
 				m_childID = 
 				{
-					m_id = 1143038174
+					m_id = 1932007295
 				}
 				m_param = 
 				{
@@ -632,7 +608,7 @@
 			{
 				_class = "CBlend2DAnimNode"
 				m_sName = "rifle_walk"
-				m_vecPosition = [ -1704.0, 550.0 ]
+				m_vecPosition = [ -1706.0, 550.0 ]
 				m_nNodeID = 
 				{
 					m_id = 26347081
@@ -655,32 +631,8 @@
 					{
 						_class = "CBlend2DItem"
 						m_tagSpans = [  ]
-						m_sequenceName = "rifle_run_ne"
-						m_blendValue = [ 1.0, 1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "rifle_run_nw"
-						m_blendValue = [ -1.0, 1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
 						m_sequenceName = "rifle_run_s"
 						m_blendValue = [ 0.0, -1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "rifle_run_se"
-						m_blendValue = [ 1.0, -1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "rifle_run_sw"
-						m_blendValue = [ -1.0, -1.0 ]
 					},
 					{
 						_class = "CBlend2DItem"
@@ -899,6 +851,102 @@
 		{
 			key = 
 			{
+				m_id = 142561330
+			}
+			value = 
+			{
+				_class = "CBlend2DAnimNode"
+				m_sName = "rifle_walk"
+				m_vecPosition = [ -2119.0, 706.0 ]
+				m_nNodeID = 
+				{
+					m_id = 142561330
+				}
+				m_networkMode = "ClientPredicted"
+				m_items = 
+				[
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_run_e"
+						m_blendValue = [ 1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_run_n"
+						m_blendValue = [ 0.0, 1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_run_ne"
+						m_blendValue = [ 1.0, 1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_run_nw"
+						m_blendValue = [ -1.0, 1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_run_s"
+						m_blendValue = [ 0.0, -1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_run_se"
+						m_blendValue = [ 1.0, -1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_run_sw"
+						m_blendValue = [ -1.0, -1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_run_w"
+						m_blendValue = [ -1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_aim_idle"
+						m_blendValue = [ 0.0, 0.0 ]
+					},
+				]
+				m_blendSourceX = "Parameter"
+				m_paramX = 
+				{
+					m_id = 1307562239
+				}
+				m_blendSourceY = "Parameter"
+				m_paramY = 
+				{
+					m_id = 940853046
+				}
+				m_bLoop = true
+				m_bLockBlendOnReset = false
+				m_bLockWhenWaning = true
+				m_playbackSpeed = 1.0
+				m_damping = 
+				{
+					_class = "CAnimInputDamping"
+					m_speedFunction = "Spring"
+					m_fSpeedScale = 16.0
+					m_fMinSpeed = 10.0
+					m_fMaxTension = 1000.0
+				}
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 147410568
 			}
 			value = 
@@ -914,7 +962,7 @@
 				m_children = 
 				[
 					{
-						m_id = 1590743682
+						m_id = 572948740
 					},
 					{
 						m_id = 887600586
@@ -1344,102 +1392,6 @@
 		{
 			key = 
 			{
-				m_id = 262546794
-			}
-			value = 
-			{
-				_class = "CBlend2DAnimNode"
-				m_sName = "walk"
-				m_vecPosition = [ -38.0, -70.0 ]
-				m_nNodeID = 
-				{
-					m_id = 262546794
-				}
-				m_networkMode = "ClientPredicted"
-				m_items = 
-				[
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "unarmed_run_e"
-						m_blendValue = [ 1.0, 0.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "unarmed_run_n"
-						m_blendValue = [ 0.0, 1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "unarmed_run_ne"
-						m_blendValue = [ 1.0, 1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "unarmed_run_nw"
-						m_blendValue = [ -1.0, 1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "unarmed_run_s"
-						m_blendValue = [ 0.0, -1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "unarmed_run_se"
-						m_blendValue = [ 1.0, -1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "unarmed_run_sw"
-						m_blendValue = [ -1.0, -1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "unarmed_run_w"
-						m_blendValue = [ -1.0, 0.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "unarmed_idle"
-						m_blendValue = [ 0.0, 0.0 ]
-					},
-				]
-				m_blendSourceX = "Parameter"
-				m_paramX = 
-				{
-					m_id = 1307562239
-				}
-				m_blendSourceY = "Parameter"
-				m_paramY = 
-				{
-					m_id = 940853046
-				}
-				m_bLoop = true
-				m_bLockBlendOnReset = false
-				m_bLockWhenWaning = true
-				m_playbackSpeed = 1.0
-				m_damping = 
-				{
-					_class = "CAnimInputDamping"
-					m_speedFunction = "Spring"
-					m_fSpeedScale = 16.0
-					m_fMinSpeed = 10.0
-					m_fMaxTension = 1000.0
-				}
-			}
-		},
-		{
-			key = 
-			{
 				m_id = 277536928
 			}
 			value = 
@@ -1562,6 +1514,78 @@
 				m_sequenceName = "left_jab"
 				m_playbackSpeed = 1.0
 				m_bLoop = false
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 331173402
+			}
+			value = 
+			{
+				_class = "CBlend2DAnimNode"
+				m_sName = "walk"
+				m_vecPosition = [ 26.0, 2.0 ]
+				m_nNodeID = 
+				{
+					m_id = 331173402
+				}
+				m_networkMode = "ClientPredicted"
+				m_items = 
+				[
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_run_e"
+						m_blendValue = [ 1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_run_n"
+						m_blendValue = [ 0.0, 1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_run_s"
+						m_blendValue = [ 0.0, -1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_run_w"
+						m_blendValue = [ -1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_idle"
+						m_blendValue = [ 0.0, 0.0 ]
+					},
+				]
+				m_blendSourceX = "Parameter"
+				m_paramX = 
+				{
+					m_id = 1307562239
+				}
+				m_blendSourceY = "Parameter"
+				m_paramY = 
+				{
+					m_id = 940853046
+				}
+				m_bLoop = true
+				m_bLockBlendOnReset = false
+				m_bLockWhenWaning = true
+				m_playbackSpeed = 1.0
+				m_damping = 
+				{
+					_class = "CAnimInputDamping"
+					m_speedFunction = "Spring"
+					m_fSpeedScale = 16.0
+					m_fMinSpeed = 10.0
+					m_fMaxTension = 1000.0
+				}
 			}
 		},
 		{
@@ -2375,6 +2399,26 @@
 		{
 			key = 
 			{
+				m_id = 415796699
+			}
+			value = 
+			{
+				_class = "CCommentAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -2126.0, 1256.0 ]
+				m_nNodeID = 
+				{
+					m_id = 415796699
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_commentText = ""
+				m_size = [ 375.0, 225.0 ]
+				m_color = [ 49, 139, 146, 255 ]
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 420093059
 			}
 			value = 
@@ -2532,6 +2576,26 @@
 				m_bMatchChildDuration = true
 				m_bUseManualTurnOffset = false
 				m_manualTurnOffset = 0.0
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 471739081
+			}
+			value = 
+			{
+				_class = "CCommentAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -2241.0, 50.0 ]
+				m_nNodeID = 
+				{
+					m_id = 471739081
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_commentText = ""
+				m_size = [ 375.0, 225.0 ]
+				m_color = [ 49, 139, 146, 255 ]
 			}
 		},
 		{
@@ -2763,6 +2827,98 @@
 				m_sequenceName = "bat_idle"
 				m_playbackSpeed = 1.0
 				m_bLoop = true
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 572948740
+			}
+			value = 
+			{
+				_class = "CBlend2DAnimNode"
+				m_sName = "walk"
+				m_vecPosition = [ -1332.0, 1611.0 ]
+				m_nNodeID = 
+				{
+					m_id = 572948740
+				}
+				m_networkMode = "ClientPredicted"
+				m_items = 
+				[
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_run_e"
+						m_blendValue = [ 1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_run_n"
+						m_blendValue = [ 0.0, 1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_run_s"
+						m_blendValue = [ 0.0, -1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_run_w"
+						m_blendValue = [ -1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_idle"
+						m_blendValue = [ 0.0, 0.0 ]
+					},
+				]
+				m_blendSourceX = "Parameter"
+				m_paramX = 
+				{
+					m_id = 1307562239
+				}
+				m_blendSourceY = "Parameter"
+				m_paramY = 
+				{
+					m_id = 940853046
+				}
+				m_bLoop = true
+				m_bLockBlendOnReset = false
+				m_bLockWhenWaning = true
+				m_playbackSpeed = 1.0
+				m_damping = 
+				{
+					_class = "CAnimInputDamping"
+					m_speedFunction = "Spring"
+					m_fSpeedScale = 16.0
+					m_fMinSpeed = 10.0
+					m_fMaxTension = 1000.0
+				}
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 594462926
+			}
+			value = 
+			{
+				_class = "CCommentAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -2085.0, 1628.0 ]
+				m_nNodeID = 
+				{
+					m_id = 594462926
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_commentText = ""
+				m_size = [ 375.0, 198.0 ]
+				m_color = [ 49, 139, 146, 255 ]
 			}
 		},
 		{
@@ -3197,7 +3353,7 @@
 			{
 				_class = "CSpeedScaleAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -801.0, 1238.0 ]
+				m_vecPosition = [ -891.0, 1253.0 ]
 				m_nNodeID = 
 				{
 					m_id = 743678823
@@ -3619,102 +3775,6 @@
 		{
 			key = 
 			{
-				m_id = 769179312
-			}
-			value = 
-			{
-				_class = "CBlend2DAnimNode"
-				m_sName = "rifle_walk"
-				m_vecPosition = [ 4.063599, -139.193481 ]
-				m_nNodeID = 
-				{
-					m_id = 769179312
-				}
-				m_networkMode = "ClientPredicted"
-				m_items = 
-				[
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "rifle_run_e"
-						m_blendValue = [ 1.0, 0.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "rifle_run_n"
-						m_blendValue = [ 0.0, 1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "rifle_run_ne"
-						m_blendValue = [ 1.0, 1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "rifle_run_nw"
-						m_blendValue = [ -1.0, 1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "rifle_run_s"
-						m_blendValue = [ 0.0, -1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "rifle_run_se"
-						m_blendValue = [ 1.0, -1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "rifle_run_sw"
-						m_blendValue = [ -1.0, -1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "rifle_run_w"
-						m_blendValue = [ -1.0, 0.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "rifle_aim_idle"
-						m_blendValue = [ 0.0, 0.0 ]
-					},
-				]
-				m_blendSourceX = "Parameter"
-				m_paramX = 
-				{
-					m_id = 1307562239
-				}
-				m_blendSourceY = "Parameter"
-				m_paramY = 
-				{
-					m_id = 940853046
-				}
-				m_bLoop = true
-				m_bLockBlendOnReset = false
-				m_bLockWhenWaning = true
-				m_playbackSpeed = 1.0
-				m_damping = 
-				{
-					_class = "CAnimInputDamping"
-					m_speedFunction = "Spring"
-					m_fSpeedScale = 16.0
-					m_fMinSpeed = 10.0
-					m_fMaxTension = 1000.0
-				}
-			}
-		},
-		{
-			key = 
-			{
 				m_id = 770770966
 			}
 			value = 
@@ -3752,6 +3812,26 @@
 				m_sequenceName = "idle_pistol_fire"
 				m_playbackSpeed = 1.0
 				m_bLoop = false
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 832261900
+			}
+			value = 
+			{
+				_class = "CCommentAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -2237.0, 666.0 ]
+				m_nNodeID = 
+				{
+					m_id = 832261900
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_commentText = ""
+				m_size = [ 375.0, 225.0 ]
+				m_color = [ 49, 139, 146, 255 ]
 			}
 		},
 		{
@@ -4257,7 +4337,7 @@
 				m_children = 
 				[
 					{
-						m_id = 1143038174
+						m_id = 1932007295
 					},
 					{
 						m_id = 743678823
@@ -6157,6 +6237,102 @@
 		{
 			key = 
 			{
+				m_id = 1096499911
+			}
+			value = 
+			{
+				_class = "CBlend2DAnimNode"
+				m_sName = "pistol_walk"
+				m_vecPosition = [ -2120.0, 89.0 ]
+				m_nNodeID = 
+				{
+					m_id = 1096499911
+				}
+				m_networkMode = "ClientPredicted"
+				m_items = 
+				[
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "pistol_run_e"
+						m_blendValue = [ 1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "pistol_run_n"
+						m_blendValue = [ 0.0, 1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "pistol_run_ne"
+						m_blendValue = [ 1.0, 1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "pistol_run_nw"
+						m_blendValue = [ -1.0, 1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "pistol_run_s"
+						m_blendValue = [ 0.0, -1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "pistol_run_se"
+						m_blendValue = [ 1.0, -1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "pistol_run_sw"
+						m_blendValue = [ -1.0, -1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "pistol_run_w"
+						m_blendValue = [ -1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "idle_pistol_aim"
+						m_blendValue = [ 0.0, 0.0 ]
+					},
+				]
+				m_blendSourceX = "Parameter"
+				m_paramX = 
+				{
+					m_id = 1307562239
+				}
+				m_blendSourceY = "Parameter"
+				m_paramY = 
+				{
+					m_id = 940853046
+				}
+				m_bLoop = true
+				m_bLockBlendOnReset = false
+				m_bLockWhenWaning = true
+				m_playbackSpeed = 1.0
+				m_damping = 
+				{
+					_class = "CAnimInputDamping"
+					m_speedFunction = "Spring"
+					m_fSpeedScale = 16.0
+					m_fMinSpeed = 10.0
+					m_fMaxTension = 1000.0
+				}
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 1101044716
 			}
 			value = 
@@ -6916,7 +7092,7 @@
 			{
 				_class = "CBlend2DAnimNode"
 				m_sName = "walk"
-				m_vecPosition = [ -1740.0, 1203.0 ]
+				m_vecPosition = [ -2025.0, 1286.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1143038174
@@ -7043,6 +7219,78 @@
 				m_sequenceName = "rifle_turn_90R"
 				m_playbackSpeed = 1.0
 				m_bLoop = false
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 1184612940
+			}
+			value = 
+			{
+				_class = "CBlend2DAnimNode"
+				m_sName = "pistol_walk"
+				m_vecPosition = [ 8.0, -310.0 ]
+				m_nNodeID = 
+				{
+					m_id = 1184612940
+				}
+				m_networkMode = "ClientPredicted"
+				m_items = 
+				[
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "pistol_run_e"
+						m_blendValue = [ 1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "pistol_run_n"
+						m_blendValue = [ 0.0, 1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "pistol_run_s"
+						m_blendValue = [ 0.0, -1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "pistol_run_w"
+						m_blendValue = [ -1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "idle_pistol_aim"
+						m_blendValue = [ 0.0, 0.0 ]
+					},
+				]
+				m_blendSourceX = "Parameter"
+				m_paramX = 
+				{
+					m_id = 1307562239
+				}
+				m_blendSourceY = "Parameter"
+				m_paramY = 
+				{
+					m_id = 940853046
+				}
+				m_bLoop = true
+				m_bLockBlendOnReset = false
+				m_bLockWhenWaning = true
+				m_playbackSpeed = 1.0
+				m_damping = 
+				{
+					_class = "CAnimInputDamping"
+					m_speedFunction = "Spring"
+					m_fSpeedScale = 16.0
+					m_fMinSpeed = 10.0
+					m_fMaxTension = 1000.0
+				}
 			}
 		},
 		{
@@ -7212,25 +7460,25 @@
 				m_children = 
 				[
 					{
-						m_id = 262546794
+						m_id = 331173402
 					},
 					{
-						m_id = 1230979877
+						m_id = 1184612940
 					},
 					{
-						m_id = 1230979877
+						m_id = 1184612940
 					},
 					{
-						m_id = 769179312
+						m_id = 1442100432
 					},
 					{
-						m_id = 769179312
+						m_id = 1442100432
 					},
 					{
-						m_id = 262546794
+						m_id = 331173402
 					},
 					{
-						m_id = 262546794
+						m_id = 331173402
 					},
 				]
 				m_tags = 
@@ -7274,102 +7522,6 @@
 				{
 					m_vControlPoint1 = [ 0.5, 0.0 ]
 					m_vControlPoint2 = [ 0.5, 1.0 ]
-				}
-			}
-		},
-		{
-			key = 
-			{
-				m_id = 1230979877
-			}
-			value = 
-			{
-				_class = "CBlend2DAnimNode"
-				m_sName = "pistol_walk"
-				m_vecPosition = [ 1.0, -383.0 ]
-				m_nNodeID = 
-				{
-					m_id = 1230979877
-				}
-				m_networkMode = "ClientPredicted"
-				m_items = 
-				[
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "pistol_run_e"
-						m_blendValue = [ 1.0, 0.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "pistol_run_n"
-						m_blendValue = [ 0.0, 1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "pistol_run_ne"
-						m_blendValue = [ 1.0, 1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "pistol_run_nw"
-						m_blendValue = [ -1.0, 1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "pistol_run_s"
-						m_blendValue = [ 0.0, -1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "pistol_run_se"
-						m_blendValue = [ 1.0, -1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "pistol_run_sw"
-						m_blendValue = [ -1.0, -1.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "pistol_run_w"
-						m_blendValue = [ -1.0, 0.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "idle_pistol_aim"
-						m_blendValue = [ 0.0, 0.0 ]
-					},
-				]
-				m_blendSourceX = "Parameter"
-				m_paramX = 
-				{
-					m_id = 1307562239
-				}
-				m_blendSourceY = "Parameter"
-				m_paramY = 
-				{
-					m_id = 940853046
-				}
-				m_bLoop = true
-				m_bLockBlendOnReset = false
-				m_bLockWhenWaning = true
-				m_playbackSpeed = 1.0
-				m_damping = 
-				{
-					_class = "CAnimInputDamping"
-					m_speedFunction = "Spring"
-					m_fSpeedScale = 16.0
-					m_fMinSpeed = 10.0
-					m_fMaxTension = 1000.0
 				}
 			}
 		},
@@ -7866,6 +8018,78 @@
 		{
 			key = 
 			{
+				m_id = 1442100432
+			}
+			value = 
+			{
+				_class = "CBlend2DAnimNode"
+				m_sName = "rifle_walk"
+				m_vecPosition = [ -15.0, -193.0 ]
+				m_nNodeID = 
+				{
+					m_id = 1442100432
+				}
+				m_networkMode = "ClientPredicted"
+				m_items = 
+				[
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_run_e"
+						m_blendValue = [ 1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_run_n"
+						m_blendValue = [ 0.0, 1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_run_s"
+						m_blendValue = [ 0.0, -1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_run_w"
+						m_blendValue = [ -1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "rifle_aim_idle"
+						m_blendValue = [ 0.0, 0.0 ]
+					},
+				]
+				m_blendSourceX = "Parameter"
+				m_paramX = 
+				{
+					m_id = 1307562239
+				}
+				m_blendSourceY = "Parameter"
+				m_paramY = 
+				{
+					m_id = 940853046
+				}
+				m_bLoop = true
+				m_bLockBlendOnReset = false
+				m_bLockWhenWaning = true
+				m_playbackSpeed = 1.0
+				m_damping = 
+				{
+					_class = "CAnimInputDamping"
+					m_speedFunction = "Spring"
+					m_fSpeedScale = 16.0
+					m_fMinSpeed = 10.0
+					m_fMaxTension = 1000.0
+				}
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 1471911028
 			}
 			value = 
@@ -8149,7 +8373,7 @@
 			{
 				_class = "CBlend2DAnimNode"
 				m_sName = "walk"
-				m_vecPosition = [ -1260.0, 1671.0 ]
+				m_vecPosition = [ -1935.0, 1710.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1590743682
@@ -8382,7 +8606,7 @@
 				m_networkMode = "ServerAuthoritative"
 				m_childID = 
 				{
-					m_id = 1590743682
+					m_id = 572948740
 				}
 				m_param = 
 				{
@@ -9670,6 +9894,78 @@
 				m_sequenceName = "rifle_walk_n"
 				m_playbackSpeed = 1.0
 				m_bLoop = false
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 1932007295
+			}
+			value = 
+			{
+				_class = "CBlend2DAnimNode"
+				m_sName = "walk"
+				m_vecPosition = [ -1687.0, 1183.0 ]
+				m_nNodeID = 
+				{
+					m_id = 1932007295
+				}
+				m_networkMode = "ClientPredicted"
+				m_items = 
+				[
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_run_e"
+						m_blendValue = [ 1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_run_n"
+						m_blendValue = [ 0.0, 1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_run_s"
+						m_blendValue = [ 0.0, -1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_run_w"
+						m_blendValue = [ -1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_idle"
+						m_blendValue = [ 0.0, 0.0 ]
+					},
+				]
+				m_blendSourceX = "Parameter"
+				m_paramX = 
+				{
+					m_id = 1307562239
+				}
+				m_blendSourceY = "Parameter"
+				m_paramY = 
+				{
+					m_id = 940853046
+				}
+				m_bLoop = true
+				m_bLockBlendOnReset = false
+				m_bLockWhenWaning = true
+				m_playbackSpeed = 1.0
+				m_damping = 
+				{
+					_class = "CAnimInputDamping"
+					m_speedFunction = "Spring"
+					m_fSpeedScale = 16.0
+					m_fMinSpeed = 10.0
+					m_fMaxTension = 1000.0
+				}
 			}
 		},
 		{
