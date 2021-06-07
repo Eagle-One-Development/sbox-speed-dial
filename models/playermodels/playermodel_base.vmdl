@@ -2106,11 +2106,11 @@
 							},
 							{
 								bone = "spine_02"
-								weight = 0.492754
+								weight = 0.408273
 							},
 							{
 								bone = "spine_03"
-								weight = 0.655797
+								weight = 0.552158
 							},
 							{
 								bone = "thigh_l"
@@ -2157,6 +2157,56 @@
 							{
 								bone = "upperarm_r"
 								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "upper_body_pistol"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "clavicle_l"
+								weight = 0.723022
+							},
+							{
+								bone = "clavicle_r"
+								weight = 0.78178
+							},
+							{
+								bone = "pelvis"
+								weight = 0.163669
+							},
+							{
+								bone = "spine_01"
+								weight = 0.316547
+							},
+							{
+								bone = "spine_02"
+								weight = 0.42446
+							},
+							{
+								bone = "spine_03"
+								weight = 0.573741
+							},
+							{
+								bone = "thigh_l"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_l"
+								weight = 0.874101
+							},
+							{
+								bone = "upperarm_r"
+								weight = 0.872302
 							},
 						]
 						master_morph_weight = -1.0
