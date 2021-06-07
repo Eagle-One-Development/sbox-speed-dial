@@ -196,6 +196,8 @@ namespace SpeedDial.UI
 				scale[1] = 100f;
 				scale[2] = 100f;
 				characterset = false;
+				secondPlace.myLabel.Text = "STEAM NAME";
+				thirdPlace.myLabel.Text = "STEAM NAME";
 			}
 		}
 
