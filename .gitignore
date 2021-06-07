@@ -8,8 +8,6 @@ materials/default
 *.los
 *.py
 *.rar
-*.sound_c
-*.surface_c
 *.vanmgrph_c
 *.vmat_c
 *.vmdl_c
