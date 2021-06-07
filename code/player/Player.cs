@@ -110,14 +110,14 @@ namespace SpeedDial.Player {
 			if(instant) {
 				SoundTrack.Stop();
 			} else {
-				_ = StopSoundtrackFade();
+				_ = StopSoundtrackFade(3);
 			}
 		}
 
-		private async Task StopSoundtrackFade() {
-			for(int i = 0; i < 50; i++) {
-				await GameTask.DelaySeconds(0.1f);
-				SoundTrack.SetVolume(1 - i * 0.02f);
+		private async Task StopSoundtrackFade(float seconds, int steps = 100) {
+			for(int i = 0; i < steps; i++) {
+				await GameTask.DelaySeconds(seconds / steps);
+				SoundTrack.SetVolume(1 - (i * 1 / (float)steps));
 			}
 			SoundTrack.Stop();
 		}
@@ -264,17 +264,12 @@ namespace SpeedDial.Player {
 			}
 		}
 
-		[ClientRpc]
-		public void DestroyDrugParticles() {
-			DrugParticles?.Destroy(true);
-		}
-
 		public override void Simulate(Client cl) {
 			if(Frozen) return;
 
 			if(LifeState == LifeState.Dead) {
+				DrugParticles?.Destroy(false);
 				if(TimeSinceDied > RespawnTime && IsServer) {
-
 					Respawn();
 				}
 				return;
@@ -309,9 +304,7 @@ namespace SpeedDial.Player {
 			if(TimeSinceMedTaken > MedDuration) {
 				MedTaken = false;
 
-				//DrugParticles.
 				DrugParticles?.Destroy(false);
-				//DrugParticles?.Dispose();
 
 				//Basically remove our extra health after the drug duration if we're high on leaf
 				if(CurrentDrug == DrugType.Leaf) {

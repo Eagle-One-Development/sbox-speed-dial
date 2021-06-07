@@ -91,9 +91,6 @@ namespace SpeedDial {
 			}
 
 			(pawn as SpeedDialPlayer).MedTaken = false;
-			(pawn as SpeedDialPlayer).DrugParticles?.Destroy(true);
-			(pawn as SpeedDialPlayer).DestroyDrugParticles(To.Everyone);
-			(pawn as SpeedDialPlayer).DrugParticles?.Dispose();
 
 			if(attackerClient != null) {
 				var attacker = attackerClient.Pawn as SpeedDialPlayer;
@@ -103,10 +100,6 @@ namespace SpeedDial {
 					attacker.KillScore += ScoreBase + (ScoreBase * attacker.KillCombo);
 					attacker.GetClientOwner().SetScore("score", attacker.KillScore);
 					attacker.KillCombo++;
-
-					// fuck ammo
-					//(attacker.ActiveChild as BaseSpeedDialWeapon).AwardAmmo();
-					//attacker.IncreaseWeaponClip();
 
 					attacker.TimeSinceMurdered = 0;
 				}
