@@ -456,6 +456,12 @@
 			_class = "C_OP_Orient2DRelToCP"
 			m_bDisableOperator = true
 		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flStartTime = 0.5
+			m_flEndScale = 0.0
+			m_bEaseInAndOut = true
+		},
 	]
 	m_Constraints = 
 	[
