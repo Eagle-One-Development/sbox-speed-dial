@@ -1511,7 +1511,7 @@
 				}
 				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
-				m_sequenceName = "left_jab"
+				m_sequenceName = "jab_left"
 				m_playbackSpeed = 1.0
 				m_bLoop = false
 			}
@@ -2650,6 +2650,27 @@
 				m_bMatchChildDuration = true
 				m_bUseManualTurnOffset = false
 				m_manualTurnOffset = 0.0
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 499878070
+			}
+			value = 
+			{
+				_class = "CSequenceAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -542.0, 1326.0 ]
+				m_nNodeID = 
+				{
+					m_id = 499878070
+				}
+				m_networkMode = "ClientPredicted"
+				m_tagSpans = [  ]
+				m_sequenceName = "jab_left"
+				m_playbackSpeed = 1.0
+				m_bLoop = false
 			}
 		},
 		{
@@ -4401,7 +4422,7 @@
 					{
 						m_nodeID = 
 						{
-							m_id = 1866668698
+							m_id = 499878070
 						}
 						m_name = ""
 						m_weight = 1.0
@@ -9947,7 +9968,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -559.0, 1393.0 ]
+				m_vecPosition = [ -613.0, 1428.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1866668698
