@@ -491,6 +491,7 @@
 			}
 			m_bAdditive = true
 			m_hTexture = resource:"materials/particle/base_trail.vtex"
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_RenderTrails"
@@ -543,6 +544,7 @@
 			m_bAdditive = true
 			m_bOnlyRenderInEffectsBloomPass = true
 			m_hTexture = resource:"materials/particle/base_trail.vtex"
+			m_bDisableOperator = true
 		},
 	]
 	m_Children = 
