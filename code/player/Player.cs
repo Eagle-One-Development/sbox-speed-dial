@@ -63,7 +63,7 @@ namespace SpeedDial.Player {
 
 		public Sound SoundTrack { get; set; }
 
-		public async Task InitialSpawn() {
+		public void InitialSpawn() {
 
 			if(GetClientOwner().SteamId == 76561198000823482) { // bak
 				PlayerColor = new Color32(250, 176, 3);
@@ -90,17 +90,19 @@ namespace SpeedDial.Player {
 			//PlayUISound("track01");
 
 			Respawn();
-			await GameTask.DelaySeconds(2.5f);
+
 			//PlaySoundtrack(To.Single(this), "track01");
 		}
 
 		[ClientRpc]
-		public void PlaySoundtrack(string track) {
+		public async Task PlaySoundtrack(string track) {
+			await GameTask.DelaySeconds(2.5f);
 			SoundTrack = Sound.FromScreen(track);
 		}
 
 		[ClientRpc]
-		public void StopSoundtrack() {
+		public async Task StopSoundtrack() {
+			await GameTask.DelaySeconds(1);
 			SoundTrack.Stop();
 		}
 
