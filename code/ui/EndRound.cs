@@ -195,6 +195,7 @@ namespace SpeedDial.UI
 				scale[0] = 100f;
 				scale[1] = 100f;
 				scale[2] = 100f;
+				characterset = false;
 			}
 		}
 
