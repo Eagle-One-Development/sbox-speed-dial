@@ -616,7 +616,7 @@
 				},
 			]
 			m_bOrientZ = true
-			m_hOverrideMaterial = resource:"materials/dev/primary_white.vmat"
+			m_hOverrideMaterial = resource:"materials/dev/primary_white_emissive_trans.vmat"
 		},
 	]
 }
