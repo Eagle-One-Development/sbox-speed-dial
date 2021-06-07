@@ -110,14 +110,14 @@ namespace SpeedDial.Player {
 			if(instant) {
 				SoundTrack.Stop();
 			} else {
-				_ = StopSoundtrackFade();
+				_ = StopSoundtrackFade(3);
 			}
 		}
 
-		private async Task StopSoundtrackFade() {
-			for(int i = 0; i < 50; i++) {
-				await GameTask.DelaySeconds(0.1f);
-				SoundTrack.SetVolume(1 - i * 0.02f);
+		private async Task StopSoundtrackFade(float seconds, int steps = 100) {
+			for(int i = 0; i < steps; i++) {
+				await GameTask.DelaySeconds(seconds / steps);
+				SoundTrack.SetVolume(1 - (i * 1 / (float)steps));
 			}
 			SoundTrack.Stop();
 		}
