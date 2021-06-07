@@ -16,16 +16,14 @@ namespace SpeedDial {
 
 		}
 
-		protected override void OnStart()
-		{
-			Log.Info( "POST ROUND START" );
+		protected override void OnStart() {
+			Log.Info("POST ROUND START");
 			var players = Client.All;
-			foreach ( var p in players.ToArray() )
-			{
-				
-				if ( p.Pawn is SpeedDialPlayer jp )
-				{
+			foreach(var p in players.ToArray()) {
+
+				if(p.Pawn is SpeedDialPlayer jp) {
 					jp.Freeze();
+					jp.StopSoundtrack(To.Single(jp));
 				}
 			}
 
@@ -34,7 +32,7 @@ namespace SpeedDial {
 		protected override void OnTimeUp() {
 			Log.Info("Post Round Time Up");
 
-			SpeedDialGame.Instance.ChangeRound( new WarmUpRound() );
+			SpeedDialGame.Instance.ChangeRound(new WarmUpRound());
 
 			base.OnTimeUp();
 		}
