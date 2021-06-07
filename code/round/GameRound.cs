@@ -15,13 +15,12 @@ namespace SpeedDial {
 
 
 		public override void OnPlayerSpawn(SpeedDialPlayer player) {
-			if(Players.Contains(player)) return;
+			//if(Players.Contains(player)) return;
 
-			AddPlayer(player);
+			//AddPlayer(player);
 
-			//if(_roundStarted) {
-			//	// ouch
-			//}
+			player.StopSoundtrack(To.Single(player), true);
+			player.PlaySoundtrack(To.Single(player), "track01");
 
 			base.OnPlayerSpawn(player);
 		}

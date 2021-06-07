@@ -88,6 +88,7 @@ namespace SpeedDial.Player {
 
 
 			//PlayUISound("track01");
+			SpeedDialGame.Instance.Round?.OnPlayerSpawn(this);
 
 			Respawn();
 
