@@ -26,49 +26,49 @@
         "The time in seconds it takes for this med to respawn"
 ]
 
-@PointClass base(Targetname) editormodel( "models/playermodels/weapons/prop_pistol.vmdl" ) = sd_weaponspawn_pistol : 
+@PointClass base(Targetname) editormodel( "models/weapons/pistol/prop_pistol.vmdl" ) = sd_weaponspawn_pistol : 
     "Pistol Weaponspawn"
 [
     RespawnTime(int) : "Respawn Time in seconds" : 15 : 
         "The time in seconds it takes for this weapon to respawn"
 ]
 
-@PointClass base(Targetname) editormodel( "models/playermodels/weapons/prop_shotgun.vmdl" ) = sd_weaponspawn_shotgun : 
+@PointClass base(Targetname) editormodel( "models/weapons/shotgun/prop_shotgun.vmdl" ) = sd_weaponspawn_shotgun : 
     "Shotgun Weaponspawn"
 [
     RespawnTime(int) : "Respawn Time in seconds" : 15 : 
         "The time in seconds it takes for this weapon to respawn"
 ]
 
-@PointClass base(Targetname) editormodel( "models/playermodels/weapons/prop_smg.vmdl" ) = sd_weaponspawn_smg : 
+@PointClass base(Targetname) editormodel( "models/weapons/smg/prop_smg.vmdl" ) = sd_weaponspawn_smg : 
     "Smg Weaponspawn"
 [
     RespawnTime(int) : "Respawn Time in seconds" : 15 : 
         "The time in seconds it takes for this weapon to respawn"
 ]
 
-@PointClass base(Targetname) editormodel( "models/playermodels/weapons/prop_rifle.vmdl" ) = sd_weaponspawn_rifle : 
+@PointClass base(Targetname) editormodel( "models/weapons/rifle/prop_rifle.vmdl" ) = sd_weaponspawn_rifle : 
     "Rifle Weaponspawn"
 [
     RespawnTime(int) : "Respawn Time in seconds" : 15 : 
         "The time in seconds it takes for this weapon to respawn"
 ]
 
-@PointClass base(Targetname) editormodel( "models/playermodels/weapons/prop_rifle.vmdl" ) = sd_weaponspawn_sniper : 
+@PointClass base(Targetname) editormodel( "models/weapons/rifle/prop_rifle.vmdl" ) = sd_weaponspawn_sniper : 
     "Sniper Weaponspawn"
 [
     RespawnTime(int) : "Respawn Time in seconds" : 15 : 
         "The time in seconds it takes for this weapon to respawn"
 ]
 
-@PointClass base(Targetname) editormodel( "models/playermodels/weapons/prop_shotgun.vmdl" ) = sd_weaponspawn_roomclearer : 
+@PointClass base(Targetname) editormodel( "models/weapons/shotgun/prop_shotgun.vmdl" ) = sd_weaponspawn_roomclearer : 
     "Room Clearer Weaponspawn"
 [
     RespawnTime(int) : "Respawn Time in seconds" : 15 : 
         "The time in seconds it takes for this weapon to respawn"
 ]
 
-@PointClass base(Targetname) editormodel( "models/playermodels/weapons/prop_rifle.vmdl" ) = sd_random_weaponspawn : 
+@PointClass base(Targetname) editormodel( "models/weapons/rifle/prop_rifle.vmdl" ) = sd_random_weaponspawn : 
     "Random Weaponspawn"
 [
     RespawnTime(int) : "Respawn Time in seconds" : 15 : 
