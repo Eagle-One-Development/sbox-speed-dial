@@ -21,7 +21,6 @@ namespace SpeedDial {
 
 		protected override void OnStart() {
 
-
 			var players = Client.All;
 			foreach(var p in players.ToArray()) {
 
@@ -31,12 +30,11 @@ namespace SpeedDial {
 					sp.KillScore = 0;
 					sp.maxCombo = 0;
 					sp.KillCombo = 0;
+					sp.GetClientOwner().SetScore("score", 0);
+					sp.GetClientOwner().SetScore("maxcombo", 0);
 				}
 			}
-			SpeedDialHud.Scoreboard?.UpdateScoreboard();
-
 		}
-
 		//private bool _roundStarted;
 	}
 }

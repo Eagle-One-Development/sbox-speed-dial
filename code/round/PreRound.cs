@@ -39,7 +39,6 @@ namespace SpeedDial {
 					jp.PlaySoundtrack(To.Single(jp), "track01");
 				}
 			}
-			SpeedDialHud.Scoreboard?.UpdateScoreboard();
 		}
 
 		protected override void OnFinish() {

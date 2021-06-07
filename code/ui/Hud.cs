@@ -5,7 +5,8 @@ namespace SpeedDial.UI {
 	[Library]
 	public class SpeedDialHud : HudEntity<RootPanel> {
 
-		public static SpeedDialScoreboard<SpeedDialScoreboardEntry> Scoreboard;
+		[Net]
+		public static SpeedDialScoreboard<SpeedDialScoreboardEntry> Scoreboard { get; private set; }
 		public SpeedDialHud() {
 			if(!IsClient)
 				return;
