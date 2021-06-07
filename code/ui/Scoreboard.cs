@@ -72,6 +72,7 @@ namespace SpeedDial.UI {
 			}
 		}
 
+		[ServerCmd]
 		public void UpdateScoreboard() {
 			foreach(var player in PlayerScore.All) {
 				UpdatePlayer(player);

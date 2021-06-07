@@ -269,6 +269,7 @@ namespace SpeedDial.Weapons {
 		}
 
 		public bool TakeAmmo(int amount) {
+			if(SpeedDialGame.InfiniteAmmo) return true;
 			if(AmmoClip < amount)
 				return false;
 

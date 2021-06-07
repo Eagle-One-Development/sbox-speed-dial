@@ -30,6 +30,10 @@ namespace SpeedDial {
 		[ServerVar("sdial_combo_time", Help = "Set the combo time window in seconds.")]
 		public static float ComboTime { get; set; } = 5f;
 
+		[ServerVar("sdial_debug_infinite_ammo")]
+		[Net]
+		public static bool InfiniteAmmo { get; set; } = false;
+
 		[ServerCmd]
 		public List<SpeedDialPlayer> SortedPlayerList() {
 
