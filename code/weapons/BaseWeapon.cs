@@ -179,7 +179,7 @@ namespace SpeedDial.Weapons {
 				// blood plip where player was hit
 				if(tr.Entity is SpeedDialPlayer hitply) {
 					var ps = Particles.Create("particles/blood/blood_plip.vpcf", tr.EndPos);
-					ps.SetForward(0, tr.Normal);
+					ps?.SetForward(0, tr.Normal);
 				}
 
 				if(index == 0) {

@@ -80,7 +80,7 @@ namespace SpeedDial.Meds {
 		}
 
 		public virtual void PickUp(SpeedDialPlayer player) {
-			player.PlayUISound(PickupSound);
+			player.PlayUISound(To.Single(player), PickupSound);
 			ItemRespawn.Taken(this);
 			Delete();
 		}
