@@ -61,7 +61,7 @@ namespace SpeedDial.Player {
 		[Net, Local, Predicted]
 		public bool Frozen { get; set; } = false; // sorry for naming differences
 
-		public Sound SoundTrack { get; set; }
+		public SoundTrack SoundTrack { get; set; }
 
 		public void InitialSpawn() {
 
@@ -102,24 +102,38 @@ namespace SpeedDial.Player {
 
 		private async Task PlaySoundtrackAsync(string track, float delay) {
 			await GameTask.DelaySeconds(delay);
-			SoundTrack = Sound.FromScreen(track);
+			SoundTrack = SoundTrack.FromScreen(track);
 		}
 
 		[ClientRpc]
 		public void StopSoundtrack(bool instant = false) {
 			if(instant) {
-				SoundTrack.Stop();
+				SoundTrack?.Stop();
 			} else {
 				_ = StopSoundtrackFade(3);
 			}
 		}
 
-		private async Task StopSoundtrackFade(float seconds, int steps = 100) {
+		private async Task StopSoundtrackFade(float seconds = 1, int steps = 100) {
 			for(int i = 0; i < steps; i++) {
-				await GameTask.DelaySeconds(seconds / steps);
 				SoundTrack.SetVolume(1 - (i * 1 / (float)steps));
+				await GameTask.DelaySeconds(seconds / steps);
 			}
 			SoundTrack.Stop();
+		}
+
+		[ClientRpc]
+		public void FadeSoundtrack(float volumeTo) {
+			_ = FadeSoundtrackToVolume(volumeTo);
+		}
+
+		private async Task FadeSoundtrackToVolume(float volume, float seconds = 1, int steps = 100) {
+			var initialVolume = SoundTrack.GetVolume();
+			var volumeMod = initialVolume - volume;
+			for(int i = 0; i < steps; i++) {
+				SoundTrack.SetVolume(initialVolume - (i * volumeMod / steps));
+				await GameTask.DelaySeconds(seconds / steps);
+			}
 		}
 
 		[ClientRpc]
