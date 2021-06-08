@@ -1624,8 +1624,7 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
-						disabled = true
-						model_name = "models/weapons/smg/prop_smg.vmdl"
+						model_name = "models/weapons/smg/smg.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
 						attach_point = "smg_attach"
@@ -2470,8 +2469,8 @@
 						_class = "Attachment"
 						name = "smg_attach"
 						parent_bone = "hand_r"
-						relative_origin = [ -3.765289, -1.981676, 0.646606 ]
-						relative_angles = [ 2.861993, -159.281876, 24.416889 ]
+						relative_origin = [ -1.411921, 0.928244, 3.588669 ]
+						relative_angles = [ -25.497618, -68.394897, 7.513428 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
