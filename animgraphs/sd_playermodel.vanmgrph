@@ -820,7 +820,7 @@
 				{
 					m_id = 127128882
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "bat_swing_3"
 				m_playbackSpeed = 1.0
@@ -2686,7 +2686,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -542.0, 1326.0 ]
+				m_vecPosition = [ -541.0, 1326.0 ]
 				m_nNodeID = 
 				{
 					m_id = 499878070
@@ -2712,7 +2712,7 @@
 				{
 					m_id = 545268368
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "bat_swing_1"
 				m_playbackSpeed = 1.0
@@ -3553,7 +3553,7 @@
 				}
 				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
-				m_sequenceName = "pistol_fire_temp"
+				m_sequenceName = "pistol_fire"
 				m_playbackSpeed = 1.0
 				m_bLoop = false
 			}
@@ -9323,7 +9323,7 @@
 				{
 					m_id = 1736878935
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
 				m_sequenceName = "bat_swing_2"
 				m_playbackSpeed = 1.0
@@ -11125,7 +11125,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -1270.0, -232.0 ]
+				m_vecPosition = [ -1273.0, -232.0 ]
 				m_nNodeID = 
 				{
 					m_id = 2020902508
