@@ -150,9 +150,6 @@ namespace SpeedDial {
 			}
 
 			ent.Position = owner.EyePos;
-
-
-			//Log.Info( $"ent: {ent}" );
 		}
 
 		private void PopulateData() {
