@@ -34,6 +34,20 @@ namespace SpeedDial {
 		[Net]
 		public static bool InfiniteAmmo { get; set; } = false;
 
+		[Net]
+		public string CurrentSoundtrack { get; set; } = "track01";
+
+		[Net]
+		public string[] Soundtracks { get; set; } = {
+			"track01"
+		};
+
+		public void PickNewSoundtrack() {
+			var random = new Random();
+			int index = random.Next(0, Soundtracks.Length);
+			CurrentSoundtrack = Soundtracks[index];
+		}
+
 		[ServerCmd]
 		public List<SpeedDialPlayer> SortedPlayerList() {
 

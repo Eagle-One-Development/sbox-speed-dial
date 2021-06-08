@@ -9,7 +9,7 @@ using SpeedDial.UI;
 namespace SpeedDial {
 	public class GameRound : BaseRound {
 		public override string RoundName => "Game Round";
-		public override int RoundDuration => 300;
+		public override int RoundDuration => 30;
 
 		//private bool _roundStarted;
 
@@ -20,7 +20,7 @@ namespace SpeedDial {
 			//AddPlayer(player);
 
 			player.StopSoundtrack(To.Single(player), true);
-			player.PlaySoundtrack(To.Single(player), "track01");
+			player.PlaySoundtrack(To.Single(player));
 
 			base.OnPlayerSpawn(player);
 		}

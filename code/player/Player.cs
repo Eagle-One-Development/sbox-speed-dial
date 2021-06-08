@@ -96,11 +96,12 @@ namespace SpeedDial.Player {
 		}
 
 		[ClientRpc]
-		public void PlaySoundtrack(string track) {
-			_ = PlaySoundtrackAsync(track, 2.5f);
+		public void PlaySoundtrack() {
+			_ = PlaySoundtrackAsync(SpeedDialGame.Instance.CurrentSoundtrack, 2.5f);
 		}
 
 		private async Task PlaySoundtrackAsync(string track, float delay) {
+			Log.Info($"NEW TRACK {track}");
 			await GameTask.DelaySeconds(delay);
 			SoundTrack = SoundTrack.FromScreen(track);
 		}

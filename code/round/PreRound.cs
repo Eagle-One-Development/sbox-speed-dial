@@ -35,8 +35,10 @@ namespace SpeedDial {
 					(jp.Controller as SpeedDialController).Freeze = true;
 					jp.Frozen = true;
 
+					SpeedDialGame.Instance.PickNewSoundtrack();
+
 					jp.StopSoundtrack(To.Single(jp), true);
-					jp.PlaySoundtrack(To.Single(jp), "track01");
+					jp.PlaySoundtrack(To.Single(jp));
 				}
 			}
 		}
