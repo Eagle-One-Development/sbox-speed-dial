@@ -557,6 +557,7 @@
 		},
 		{
 			m_ChildRef = resource:"particles/weapon_fx/sd_bullet_trail/sd_bullet_trail_rope_glow.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/weapon_fx/sd_bullet_trail/sd_bullet_trail_rope_smoke.vpcf"
