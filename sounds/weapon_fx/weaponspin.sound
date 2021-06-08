@@ -2,15 +2,15 @@
 {
 	data = 
 	{
-		UI = true
-		Volume = 0.15
+		sounds = 
+		[
+			"sounds/weapon_fx/spin.vsnd",
+		]
+		UI = false
+		Volume = 1.5
 		VolumeRandom = 0.0
 		Pitch = 1.0
-		PitchRandom = 0.0
+		PitchRandom = 0.1
 		DistanceMax = 1000.0
-		Sounds = 
-		[
-			"sounds/music_onelesshero.vsnd",
-		]
 	}
 }

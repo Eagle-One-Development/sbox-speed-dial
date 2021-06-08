@@ -6,6 +6,7 @@ using System.Text;
 using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
+using Sandbox.Hammer;
 
 using SpeedDial.Player;
 using SpeedDial.Weapons;

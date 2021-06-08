@@ -6,6 +6,7 @@ using SpeedDial.Weapons;
 using SpeedDial.UI;
 using SpeedDial.Meds;
 using System.Threading.Tasks;
+using SpeedDial.GameSound;
 
 namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer : Sandbox.Player {
@@ -111,30 +112,13 @@ namespace SpeedDial.Player {
 			if(instant) {
 				SoundTrack?.Stop();
 			} else {
-				_ = StopSoundtrackFade(3);
+				SoundTrack?.Stop(1);
 			}
-		}
-
-		private async Task StopSoundtrackFade(float seconds = 1, int steps = 100) {
-			for(int i = 0; i < steps; i++) {
-				SoundTrack.SetVolume(1 - (i * 1 / (float)steps));
-				await GameTask.DelaySeconds(seconds / steps);
-			}
-			SoundTrack.Stop();
 		}
 
 		[ClientRpc]
 		public void FadeSoundtrack(float volumeTo) {
-			_ = FadeSoundtrackToVolume(volumeTo);
-		}
-
-		private async Task FadeSoundtrackToVolume(float volume, float seconds = 1, int steps = 100) {
-			var initialVolume = SoundTrack.GetVolume();
-			var volumeMod = initialVolume - volume;
-			for(int i = 0; i < steps; i++) {
-				SoundTrack.SetVolume(initialVolume - (i * volumeMod / steps));
-				await GameTask.DelaySeconds(seconds / steps);
-			}
+			SoundTrack?.FadeVolumeTo(volumeTo);
 		}
 
 		[ClientRpc]

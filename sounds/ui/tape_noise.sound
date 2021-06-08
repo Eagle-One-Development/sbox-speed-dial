@@ -4,7 +4,7 @@
 	{
 		sounds = 
 		[
-			"sounds/tape_noise.vsnd",
+			"sounds/ui/tape_noise.vsnd",
 		]
 		UI = true
 		Volume = 0.5
