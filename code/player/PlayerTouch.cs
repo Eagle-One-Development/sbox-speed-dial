@@ -5,7 +5,16 @@ using SpeedDial.Meds;
 namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer {
 		public override void StartTouch(Entity other) {
-			if(timeSinceDropped < 1) return;
+
+			if ( other.Parent is BaseSpeedDialWeapon wep )
+			{
+				
+				if ( timeSinceDropped < wep.PickupDelay ) return;
+			}
+			else
+			{
+				if ( timeSinceDropped < 1f ) return;
+			}
 
 			if(IsClient) return;
 
@@ -74,9 +83,19 @@ namespace SpeedDial.Player {
 
 		public override void Touch(Entity other) {
 
-			if(timeSinceDropped < 1f) return;
+			if ( other.Parent is BaseSpeedDialWeapon wep )
+			{
+				//Log.Info( wep.PickupDelay.ToString() );
+				if ( timeSinceDropped < wep.PickupDelay ) return;
+			}
+			else
+			{
+				
+				if ( timeSinceDropped < 1f ) return;
+				
+			}
 
-			if(IsClient) return;
+			if (IsClient) return;
 
 			if(other is PickupTrigger) {
 				if(other.Parent is BaseSpeedDialWeapon) {
