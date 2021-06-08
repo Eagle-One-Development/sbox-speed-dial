@@ -29,6 +29,8 @@ namespace SpeedDial.UI
 		Color vhs_green;
 		Color vhs_magenta;
 
+		public TimeSince time;
+
 		public bool characterset;
 
 		public void SetPlayers()
@@ -170,8 +172,8 @@ namespace SpeedDial.UI
 				firstPlace.Style.TextShadow = shadows;
 				firstPlace.Style.Dirty();
 
-				
 
+				time = 0f;
 
 				firstPlace.subLabel.Style.Transform = firstLabel;
 				firstPlace.subLabel.Style.Dirty();
@@ -196,8 +198,11 @@ namespace SpeedDial.UI
 				scale[1] = 100f;
 				scale[2] = 100f;
 				characterset = false;
-				secondPlace.myLabel.Text = "STEAM NAME";
-				thirdPlace.myLabel.Text = "STEAM NAME";
+				if ( time > 2f )
+				{
+					secondPlace.myLabel.Text = "STEAM NAME";
+					thirdPlace.myLabel.Text = "STEAM NAME";
+				}
 			}
 		}
 
