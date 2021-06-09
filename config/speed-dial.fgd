@@ -1,0 +1,210 @@
+// 
+// SpeedDial.SpeedDialGame : Sandbox.Game 
+// 
+@PointClass = speed-dial : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+]
+
+// 
+// SpeedDial.WeaponSpawns.BaseWeaponSpawn : Sandbox.Entity 
+// 
+@PointClass = base_weaponspawn : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	respawntime(float) : "RespawnTime" :  : ""
+
+]
+
+// 
+// SpeedDial.WeaponSpawns.PistolWeaponSpawn : SpeedDial.WeaponSpawns.BaseWeaponSpawn 
+// 
+@PointClass = sd_weaponspawn_pistol : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	respawntime(float) : "RespawnTime" :  : ""
+
+]
+
+// 
+// SpeedDial.WeaponSpawns.RandomWeaponSpawn : SpeedDial.WeaponSpawns.BaseWeaponSpawn 
+// 
+@PointClass = sd_random_weaponspawn : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	respawntime(float) : "RespawnTime" :  : ""
+
+]
+
+// 
+// SpeedDial.WeaponSpawns.RifleWeaponSpawn : SpeedDial.WeaponSpawns.BaseWeaponSpawn 
+// 
+@PointClass = sd_weaponspawn_rifle : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	respawntime(float) : "RespawnTime" :  : ""
+
+]
+
+// 
+// SpeedDial.WeaponSpawns.RoomClearerWeaponSpawn : SpeedDial.WeaponSpawns.BaseWeaponSpawn 
+// 
+@PointClass = sd_weaponspawn_roomclearer : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	respawntime(float) : "RespawnTime" :  : ""
+
+]
+
+// 
+// SpeedDial.WeaponSpawns.ShotgunWeaponSpawn : SpeedDial.WeaponSpawns.BaseWeaponSpawn 
+// 
+@PointClass = sd_weaponspawn_shotgun : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	respawntime(float) : "RespawnTime" :  : ""
+
+]
+
+// 
+// SpeedDial.WeaponSpawns.SmgWeaponSpawn : SpeedDial.WeaponSpawns.BaseWeaponSpawn 
+// 
+@PointClass = sd_weaponspawn_smg : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	respawntime(float) : "RespawnTime" :  : ""
+
+]
+
+// 
+// SpeedDial.WeaponSpawns.SniperWeaponSpawn : SpeedDial.WeaponSpawns.BaseWeaponSpawn 
+// 
+@PointClass = sd_weaponspawn_sniper : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	respawntime(float) : "RespawnTime" :  : ""
+
+]
+
+// 
+// SpeedDial.Weapons.BaseballBat : SpeedDial.Weapons.BaseSpeedDialWeapon 
+// 
+@SolidClass = sd_bat : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+]
+
+// 
+// SpeedDial.Weapons.Pan : SpeedDial.Weapons.BaseSpeedDialWeapon 
+// 
+@SolidClass = sd_pan : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+]
+
+// 
+// SpeedDial.Weapons.Pipe : SpeedDial.Weapons.BaseSpeedDialWeapon 
+// 
+@SolidClass = sd_pipe : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+]
+
+// 
+// SpeedDial.Weapons.Pistol : SpeedDial.Weapons.BaseSpeedDialWeapon 
+// 
+@SolidClass = sd_pistol : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+]
+
+// 
+// SpeedDial.Weapons.Tac7 : SpeedDial.Weapons.BaseSpeedDialWeapon 
+// 
+@SolidClass = sd_rifle : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+]
+
+// 
+// SpeedDial.Weapons.RoomClearer : SpeedDial.Weapons.BaseSpeedDialWeapon 
+// 
+@SolidClass = sd_roomclearer : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+]
+
+// 
+// SpeedDial.Weapons.Shotgun : SpeedDial.Weapons.BaseSpeedDialWeapon 
+// 
+@SolidClass = sd_shotgun : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+]
+
+// 
+// SpeedDial.Weapons.Mac10 : SpeedDial.Weapons.BaseSpeedDialWeapon 
+// 
+@SolidClass = sd_smg : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+]
+
+// 
+// SpeedDial.Weapons.Sniper : SpeedDial.Weapons.BaseSpeedDialWeapon 
+// 
+@SolidClass = sd_sniper : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+]
+
+// 
+// SpeedDial.Meds.BaseMedication : Sandbox.ModelEntity 
+// 
+@SolidClass = base_med : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	respawntime(float) : "RespawnTime" :  : ""
+
+]
+
+// 
+// SpeedDial.Meds.Leaf : SpeedDial.Meds.BaseMedication 
+// 
+@SolidClass = meds_leaf : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	respawntime(float) : "RespawnTime" :  : ""
+
+]
+
+// 
+// SpeedDial.Meds.Ollie : SpeedDial.Meds.BaseMedication 
+// 
+@SolidClass = meds_ollie : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	respawntime(float) : "RespawnTime" :  : ""
+
+]
+
+// 
+// SpeedDial.Meds.Polvo : SpeedDial.Meds.BaseMedication 
+// 
+@SolidClass = meds_polvo : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	respawntime(float) : "RespawnTime" :  : ""
+
+]
+
+// 
+// SpeedDial.Meds.Ritindi : SpeedDial.Meds.BaseMedication 
+// 
+@SolidClass = meds_ritindi : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	respawntime(float) : "RespawnTime" :  : ""
+
+]
+
