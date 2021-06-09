@@ -7,7 +7,7 @@ namespace SpeedDial.WeaponSpawns {
 
 		public virtual string WeaponClass => "sd_pistol";
 
-		[HammerProp]
+		[Property]
 		public virtual float RespawnTime { get; set; }
 
 		[Net]

@@ -16,7 +16,7 @@ namespace SpeedDial.Meds {
 		public virtual string PickupSound => "sd_leaf_take";
 		public virtual Color OutlineColor => new Color(1, 1, 1, 1);
 
-		[HammerProp]
+		[Property]
 		public virtual float RespawnTime { get; set; }
 
 		private Vector3 initialPosition = Vector3.Zero;
