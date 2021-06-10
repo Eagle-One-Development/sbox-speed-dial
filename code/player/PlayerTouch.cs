@@ -13,27 +13,29 @@ namespace SpeedDial.Player {
 				if(other.Parent is BaseSpeedDialWeapon wep1) {
 					StartTouch(other.Parent);
 
-					float magnitude = wep1.PhysicsBody.Velocity.Length;
-					//Log.Info($"Velocity: {magnitude}");
-					if(magnitude > 450f) {
+					if(wep1.PhysicsBody.IsValid()) {
+						float magnitude = wep1.PhysicsBody.Velocity.Length;
+						//Log.Info($"Velocity: {magnitude}");
+						if(magnitude > 450f) {
 
-						wep1.PhysicsBody.EnableAutoSleeping = false;
-						Sound.FromEntity("smack", this);
-						CauseOfDeath = COD.Thrown;
-						KillMyself(wep1.PreviousOwner);
-						wep1.Velocity *= -0.5f;
-						//if (wep1.PhysicsBody.Velocity.Normal.Dot(other.EyeRot.Forward.Normal) < 0.4f || Inventory.Active is not BaseSpeedDialWeapon) {
-						//	
-						//} 
-						//else {
-						//	wep1.PhysicsBody.EnableAutoSleeping = false;
-						//	Sound.FromEntity("smack", this);
-						//	Sound.FromEntity("sd_deflect_ricochet", this);
-						//	wep1.Velocity *= -0.5f;
-						//	if(Inventory.DropActive() is BaseSpeedDialWeapon drop) {
-						//		drop.PhysicsBody.ApplyForce(EyeRot.Forward + ((Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 0.8f * 0.25f));
-						//	}
-						//}
+							wep1.PhysicsBody.EnableAutoSleeping = false;
+							Sound.FromEntity("smack", this);
+							CauseOfDeath = COD.Thrown;
+							KillMyself(wep1.PreviousOwner);
+							wep1.Velocity *= -0.5f;
+							//if (wep1.PhysicsBody.Velocity.Normal.Dot(other.EyeRot.Forward.Normal) < 0.4f || Inventory.Active is not BaseSpeedDialWeapon) {
+							//	
+							//} 
+							//else {
+							//	wep1.PhysicsBody.EnableAutoSleeping = false;
+							//	Sound.FromEntity("smack", this);
+							//	Sound.FromEntity("sd_deflect_ricochet", this);
+							//	wep1.Velocity *= -0.5f;
+							//	if(Inventory.DropActive() is BaseSpeedDialWeapon drop) {
+							//		drop.PhysicsBody.ApplyForce(EyeRot.Forward + ((Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 0.8f * 0.25f));
+							//	}
+							//}
+						}
 					}
 				}
 

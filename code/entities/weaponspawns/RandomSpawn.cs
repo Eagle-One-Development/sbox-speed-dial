@@ -20,7 +20,10 @@ namespace SpeedDial.WeaponSpawns {
 			"sd_smg",
 			"sd_rifle",
 			"sd_sniper",
-			"sd_roomclearer"
+			"sd_roomclearer",
+			"sd_bat",
+			"sd_pipe",
+			"sd_pan"
 		};
 
 		public override void SpawnWeapon() {
