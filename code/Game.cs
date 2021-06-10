@@ -34,11 +34,11 @@ namespace SpeedDial {
 		public static bool InfiniteAmmo { get; set; } = false;
 
 		[Net]
-		public string CurrentSoundtrack { get; set; } = "track01";
+		public string CurrentSoundtrack { get; set; } = "track02";
 
 		[Net]
 		public string[] Soundtracks { get; set; } = {
-			"track01"
+			"track02"
 		};
 
 		public void PickNewSoundtrack() {
