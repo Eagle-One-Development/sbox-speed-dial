@@ -23,7 +23,7 @@ namespace SpeedDial.UI {
 
 		public Label medLabel;
 		public Label medFlavor;
-		private TimeSince aTime;
+		private TimeSince aTime = 0;
 		public static AmmoPanel Current;
 
 		Color vhs_green;

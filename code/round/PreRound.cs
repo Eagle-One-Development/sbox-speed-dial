@@ -44,8 +44,6 @@ namespace SpeedDial {
 		}
 
 		protected override void OnFinish() {
-			Log.Info("Finished Pre Round");
-
 		}
 
 		protected override void OnTimeUp() {

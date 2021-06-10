@@ -66,9 +66,18 @@
 				[
 					{
 						_class = "Attachment"
-						name = "bat_tip"
+						name = "melee_end"
 						parent_bone = ""
-						relative_origin = [ 0.0, 0.0, 28.605928 ]
+						relative_origin = [ 0.0, 0.0, 27.477612 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "melee_start"
+						parent_bone = ""
+						relative_origin = [ 0.0, 0.0, -0.041535 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false

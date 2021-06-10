@@ -328,7 +328,7 @@ namespace SpeedDial.Player {
 							wep.GlowState = GlowStates.GlowStateOn;
 							wep.GlowDistanceStart = 0;
 							wep.GlowDistanceEnd = 1000;
-							if(wep.AmmoClip > 0)
+							if(wep.AmmoClip > 0 && wep.AmmoClip != -1)
 								wep.GlowColor = new Color(0.2f, 1, 0.2f, 1);
 							else
 								wep.GlowColor = new Color(1, 0.2f, 0.2f, 1);

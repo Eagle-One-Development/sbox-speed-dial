@@ -27,4 +27,5 @@ obj/
 tools_asset_info.bin
 *.vpcf_c
 particles/weapon_fx/bullet_trail.vpcf_c
+config/speed-dial.fgd
 !sd_motel.vpk

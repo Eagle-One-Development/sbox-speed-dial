@@ -8,7 +8,6 @@ using SpeedDial.UI;
 using SpeedDial.Weapons;
 
 namespace SpeedDial {
-	[Library("speed-dial")]
 	public partial class SpeedDialGame : Game {
 
 		public List<BaseSpeedDialCharacter> characters;
@@ -35,11 +34,11 @@ namespace SpeedDial {
 		public static bool InfiniteAmmo { get; set; } = false;
 
 		[Net]
-		public string CurrentSoundtrack { get; set; } = "track01";
+		public string CurrentSoundtrack { get; set; } = "track02";
 
 		[Net]
 		public string[] Soundtracks { get; set; } = {
-			"track01"
+			"track02"
 		};
 
 		public void PickNewSoundtrack() {

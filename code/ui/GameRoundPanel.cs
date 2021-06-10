@@ -9,7 +9,7 @@ namespace SpeedDial.UI {
 	public class GameRoundPanel : Panel {
 		public Label timer;
 		public Panel container;
-		private TimeSince aTime;
+		private TimeSince aTime = 0;
 		Color vhs_green;
 		Color vhs_magenta;
 

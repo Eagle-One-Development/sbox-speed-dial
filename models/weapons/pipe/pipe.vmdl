@@ -84,9 +84,18 @@
 				[
 					{
 						_class = "Attachment"
-						name = "pipe_tip"
+						name = "melee_start"
 						parent_bone = ""
-						relative_origin = [ 0.0, 2.921341, 11.961302 ]
+						relative_origin = [ 0.0, 2.458404, -10.269722 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "melee_end"
+						parent_bone = ""
+						relative_origin = [ 0.0, 2.510855, 11.987017 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false

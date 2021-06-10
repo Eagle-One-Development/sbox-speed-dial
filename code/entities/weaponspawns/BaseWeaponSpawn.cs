@@ -2,7 +2,6 @@ using Sandbox;
 using SpeedDial.Weapons;
 
 namespace SpeedDial.WeaponSpawns {
-	[Library("base_weaponspawn", Title = "Weapon Spawn")]
 	public partial class BaseWeaponSpawn : Entity {
 
 		public virtual string WeaponClass => "sd_pistol";
