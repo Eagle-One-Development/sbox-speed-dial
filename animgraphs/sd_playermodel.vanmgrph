@@ -205,7 +205,7 @@
 					m_id = 1373865373
 				}
 				m_previewButton = "ANIMPARAM_BUTTON_NONE"
-				m_bNetwork = false
+				m_bNetwork = true
 				m_bUseMostRecentValue = false
 				m_bAutoReset = true
 				m_bPredicted = false
@@ -1465,7 +1465,7 @@
 			{
 				_class = "CBoneMaskAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 1484.0, 1314.0 ]
+				m_vecPosition = [ 1484.0, 1312.0 ]
 				m_nNodeID = 
 				{
 					m_id = 296265303
@@ -2956,7 +2956,7 @@
 			{
 				_class = "CCommentAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -2085.0, 1628.0 ]
+				m_vecPosition = [ -2085.0, 1627.0 ]
 				m_nNodeID = 
 				{
 					m_id = 594462926
@@ -8072,7 +8072,7 @@
 									m_id = 510348315
 								}
 								m_bReset = false
-								m_resetCycleOption = "SameCycleAsSource"
+								m_resetCycleOption = "Beginning"
 								m_flFixedCycleValue = 0.0
 								m_blendCurve = 
 								{
@@ -8667,7 +8667,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 79.0, 577.0 ]
+				m_vecPosition = [ 79.0, 576.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1520947307
@@ -8833,7 +8833,7 @@
 					},
 				]
 				m_seed = 1365036986
-				m_choiceMethod = "WeightedRandomNoRepeat"
+				m_choiceMethod = "Iterate"
 				m_choiceChangeMethod = "OnReset"
 				m_blendMethod = "SingleBlendTime"
 				m_blendTime = 1.0

@@ -10,6 +10,14 @@ namespace SpeedDial.Weapons {
 		public override string WorldModel => "models/weapons/bat/bat.vmdl";
 		public override string AttachementName => "melee_bat_attach";
 
+		[Net, Predicted, Local]
+		public bool Hitting { get; set; } = false;
+
+		[Net, Predicted, Local]
+		public TimeSince TimeSinceSwing { get; set; }
+
+		public MeleeTrigger MeleeTrigger;
+
 		public override void AttackPrimary(bool _ = false, bool __ = false) {
 			(Owner as AnimEntity).SetAnimBool("b_attack", true);
 			using(Prediction.Off()) {
@@ -29,10 +37,19 @@ namespace SpeedDial.Weapons {
 			SetInteractsAs(CollisionLayer.Debris); // so player movement doesn't walk into it
 			SetModel(WorldModel);
 			AmmoClip = ClipSize;
+
 			PickupTrigger = new();
 			PickupTrigger.Parent = this;
 			PickupTrigger.Position = Position;
 			PickupTrigger.EnableTouchPersists = true;
+
+			MeleeTrigger = new();
+			MeleeTrigger.SetupTrigger(EffectEntity.GetAttachment("melee_start", true).Position, EffectEntity.GetAttachment("melee_end", true).Position);
+			MeleeTrigger.Parent = this;
+			MeleeTrigger.Position = Position;
+			MeleeTrigger.EnableTouchPersists = true;
+
+			MeleeTrigger.EnableTouch = false;
 
 			MoveType = MoveType.Physics;
 			//CollisionGroup = CollisionGroup.;
@@ -44,15 +61,52 @@ namespace SpeedDial.Weapons {
 
 		public override void Simulate(Client owner) {
 			base.Simulate(owner);
-			//if(IsClient)
-			//DebugOverlay.Sphere(EffectEntity.GetAttachment("bat_tip", true).Position, 3, Color.Green, true, 0.1f);
 		}
 
 		public override void Touch(Entity other) {
-			Log.Info($"BASEBALL BAT TOUCHED {other} WITH OWNER");
 			base.Touch(other);
 			if(Owner != null)
-				Log.Info($"BASEBALL BAT TOUCHED {other}");
+				Log.Info($"BASEBALL BAT TOUCHED {other} WITH OWNER");
+		}
+
+		public override void OnCarryStart(Entity carrier) {
+			if(IsClient) return;
+
+			//spawned via a weaponspawn. Tell the spawn that it's cleared up and can start respawning the weapon
+			if(WeaponSpawn != null) {
+				WeaponSpawn.ItemTaken = true;
+				WeaponSpawn.TimeSinceTaken = 0;
+				WeaponSpawn = null;
+			}
+
+			SetParent(carrier, AttachementName, Transform.Zero);
+
+			//EffectEntity.EnableAllCollisions = true;
+
+			Owner = carrier;
+			MoveType = MoveType.None;
+			EnableAllCollisions = false;
+			EnableDrawing = true;
+
+			if(PickupTrigger.IsValid()) {
+				PickupTrigger.EnableTouch = false;
+			}
+
+			if(MeleeTrigger.IsValid()) {
+				MeleeTrigger.EnableTouch = true;
+			}
+		}
+
+		public override void OnCarryDrop(Entity dropper) {
+			base.OnCarryDrop(dropper);
+
+			if(PickupTrigger.IsValid()) {
+				PickupTrigger.EnableTouch = true;
+			}
+
+			if(MeleeTrigger.IsValid()) {
+				MeleeTrigger.EnableTouch = false;
+			}
 		}
 	}
 }

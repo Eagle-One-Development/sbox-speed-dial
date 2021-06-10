@@ -8,7 +8,6 @@ using SpeedDial.UI;
 using SpeedDial.Weapons;
 
 namespace SpeedDial {
-	[Library("speed-dial")]
 	public partial class SpeedDialGame : Game {
 
 		public List<BaseSpeedDialCharacter> characters;

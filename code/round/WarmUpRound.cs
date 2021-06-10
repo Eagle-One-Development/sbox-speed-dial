@@ -25,7 +25,6 @@ namespace SpeedDial {
 			foreach(var p in players.ToArray()) {
 
 				if(p.Pawn is SpeedDialPlayer sp) {
-					Log.Info("ROUND STARTED");
 					sp.Unfreeze();
 					sp.KillScore = 0;
 					sp.maxCombo = 0;

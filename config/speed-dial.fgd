@@ -1,22 +1,4 @@
 // 
-// SpeedDial.SpeedDialGame : Sandbox.Game 
-// 
-@PointClass = speed-dial : ""
-[
-	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
-]
-
-// 
-// SpeedDial.WeaponSpawns.BaseWeaponSpawn : Sandbox.Entity 
-// 
-@PointClass = base_weaponspawn : ""
-[
-	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
-	respawntime(float) : "RespawnTime" :  : ""
-
-]
-
-// 
 // SpeedDial.WeaponSpawns.PistolWeaponSpawn : SpeedDial.WeaponSpawns.BaseWeaponSpawn 
 // 
 @PointClass = sd_weaponspawn_pistol : ""
@@ -156,16 +138,6 @@
 @SolidClass = sd_sniper : ""
 [
 	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
-]
-
-// 
-// SpeedDial.Meds.BaseMedication : Sandbox.ModelEntity 
-// 
-@SolidClass = base_med : ""
-[
-	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
-	respawntime(float) : "RespawnTime" :  : ""
-
 ]
 
 // 
