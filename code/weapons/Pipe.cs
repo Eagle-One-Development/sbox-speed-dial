@@ -64,8 +64,6 @@ namespace SpeedDial.Weapons {
 			} else {
 				Hitting = false;
 			}
-			if(IsClient)
-				DebugOverlay.Line(start, end, Color.Green, 0.1f, false);
 		}
 	}
 }

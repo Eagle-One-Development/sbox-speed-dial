@@ -34,10 +34,11 @@ namespace SpeedDial {
 		public static bool InfiniteAmmo { get; set; } = false;
 
 		[Net]
-		public string CurrentSoundtrack { get; set; } = "track02";
+		public string CurrentSoundtrack { get; set; } = "track01";
 
 		[Net]
 		public string[] Soundtracks { get; set; } = {
+			"track01",
 			"track02"
 		};
 
@@ -91,8 +92,12 @@ namespace SpeedDial {
 					dropped.GlowDistanceEnd = 1000;
 					if(dropped.AmmoClip > 0)
 						dropped.GlowColor = new Color(0.2f, 1, 0.2f, 1);
-					else
-						dropped.GlowColor = new Color(1, 0.2f, 0.2f, 1);
+					else {
+						if(dropped.AmmoClip == -1)
+							dropped.GlowColor = new Color(1, 1, 1, 1);
+						else
+							dropped.GlowColor = new Color(1, 0.2f, 0.2f, 1);
+					}
 					dropped.GlowActive = true;
 				}
 			}
