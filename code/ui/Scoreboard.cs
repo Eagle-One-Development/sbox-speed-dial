@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace SpeedDial.UI {
 	public partial class SpeedDialScoreboard<T> : Panel where T : SpeedDialScoreboardEntry, new() {
 		public Panel Canvas { get; protected set; }
-		public TextEntry Input { get; protected set; }
+		public TextEntry TextInput { get; protected set; }
 
 		Dictionary<int, T> Entries = new();
 
@@ -40,7 +40,7 @@ namespace SpeedDial.UI {
 				entry.FauxTick();
 			}
 
-			SetClass("open", Sandbox.Input.Down(InputButton.Score));
+			SetClass("open", Input.Down(InputButton.Score));
 		}
 
 		protected virtual void AddHeader() {
