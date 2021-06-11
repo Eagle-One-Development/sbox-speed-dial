@@ -11,6 +11,7 @@ using SpeedDial.UI;
 using SpeedDial.WeaponSpawns;
 
 namespace SpeedDial.Weapons {
+	[Hammer.Skip]
 	public partial class BaseSpeedDialWeapon : BaseCarriable {
 		public virtual AmmoType AmmoType => AmmoType.Pistol;
 		public virtual int ClipSize => 16;

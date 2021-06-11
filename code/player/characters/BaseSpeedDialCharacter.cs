@@ -3,7 +3,7 @@ using SpeedDial.Weapons;
 using Sandbox.UI;
 
 namespace SpeedDial.Player {
-	public partial class BaseSpeedDialCharacter : NetworkComponent{
+	public partial class BaseSpeedDialCharacter : NetworkComponent {
 
 		/// <summary>
 		/// Name of the library for the weapon this character spawns with
@@ -24,6 +24,16 @@ namespace SpeedDial.Player {
 		/// The path to the portrait that appears on the character select
 		/// </summary>
 		public virtual string Portrait => "materials/ui/portraits/default.png";
+
+		private Texture cachedTexture;
+		public virtual Texture PortraitTexture {
+			get {
+				if(cachedTexture == null) {
+					cachedTexture = Texture.Load(Portrait);
+				}
+				return cachedTexture;
+			}
+		}
 
 		/// <summary>
 		/// The path to the image of the head that appears on the UI

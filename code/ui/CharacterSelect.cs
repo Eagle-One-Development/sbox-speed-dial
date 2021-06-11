@@ -85,7 +85,7 @@ namespace SpeedDial.UI {
 
 			title.Text = character.Name;
 			description.Text = character.Description;
-			portrait.SetTexture(character.Portrait);
+			portrait.Texture = character.PortraitTexture;
 
 			DateTime dt = DateTime.Now.AddYears(-28);
 
