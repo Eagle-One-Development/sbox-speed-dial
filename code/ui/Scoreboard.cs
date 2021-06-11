@@ -40,7 +40,7 @@ namespace SpeedDial.UI {
 				entry.FauxTick();
 			}
 
-			SetClass("open", Local.Client?.Input.Down(InputButton.Score) ?? false);
+			SetClass("open", Sandbox.Input.Down(InputButton.Score));
 		}
 
 		protected virtual void AddHeader() {
