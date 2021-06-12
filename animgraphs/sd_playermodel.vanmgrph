@@ -5906,7 +5906,7 @@
 				}
 				m_networkMode = "ClientPredicted"
 				m_tagSpans = [  ]
-				m_sequenceName = "rifle_fire"
+				m_sequenceName = "shotgun_fire"
 				m_playbackSpeed = 1.0
 				m_bLoop = false
 			}
