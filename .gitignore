@@ -17,7 +17,6 @@ materials/default
 *.zip
 *.vpk
 .codegen/
-.editorconfig
 .intermediate
 accesslist.txt
 code/*.csproj
