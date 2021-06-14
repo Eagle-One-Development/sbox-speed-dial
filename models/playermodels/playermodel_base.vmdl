@@ -19,7 +19,15 @@
 							},
 							{
 								from = "test1.vmat"
-								to = "materials/dev/temp_sheet.vmat"
+								to = "materials/playermodels/military_palette_skin_default.vmat"
+							},
+							{
+								from = "mi_unlit_military_gear_default.vmat"
+								to = "materials/playermodels/military_gear_default.vmat"
+							},
+							{
+								from = "mi_unlit_skingrads_with_rim.vmat"
+								to = "materials/playermodels/military_palette_skin_default.vmat"
 							},
 						]
 						use_global_default = false
@@ -34,24 +42,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "source"
-						children = 
-						[
-							{
-								_class = "RemoveBoneAndChildren"
-								bone_names = 
-								[
-									"calf_twist_01_l",
-									"calf_twist_01_r",
-									"lowerarm_twist_01_l",
-									"lowerarm_twist_01_r",
-									"thigh_twist_01_l",
-									"thigh_twist_01_r",
-									"upperarm_twist_01_l",
-									"upperarm_twist_01_r",
-								]
-							},
-						]
-						filename = "models/playermodels/src/playermodel.fbx"
+						filename = "models/playermodels/playermodel_base/soldier_combined.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -62,27 +53,167 @@
 						import_filter = 
 						{
 							exclude_by_default = false
-							exception_list = 
-							[
-								"SK_Male_Standalone_BLK_001_003",
-							]
+							exception_list = [  ]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "0"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_BLK_001.FBX"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.3937
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "1"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_BLK_002.FBX"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.3937
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "2"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_BLK_003.FBX"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.3937
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "3"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_BLK_004.FBX"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.3937
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "4"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_001.FBX"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.3937
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "5"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_002.FBX"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.3937
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "6"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_003.FBX"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.3937
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "7"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_004.FBX"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.3937
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "8"
+						filename = "modular_playermodels/Military_Characters_Standalone/01_Male/SK_Male_Standalone_WHT_005.FBX"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.3937
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 				]
 			},
 			{
 				_class = "BoneMarkupList"
-				children = 
-				[
-					{
-						_class = "BoneMarkup"
-						target_bone = "upperarm_twist_01_r"
-						ignore_Translation = false
-						ignore_rotation = false
-						do_not_discard = false
-					},
-				]
-				bone_cull_type = "Leaf Only"
+				bone_cull_type = "None"
 			},
 			{
 				_class = "AnimationList"
@@ -1453,23 +1584,6 @@
 							},
 						]
 					},
-					{
-						_class = "AnimBindPose"
-						name = "refPose"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						frame_count = 1
-						frame_rate = 30
-					},
 				]
 				default_root_bone_name = ""
 			},
@@ -2559,12 +2673,71 @@
 								_class = "BodyGroupChoice"
 								meshes = 
 								[
-									"source",
+									"0",
 								]
 							},
 							{
 								_class = "BodyGroupChoice"
-								meshes = [  ]
+								meshes = 
+								[
+									"1",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"2",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"3",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"4",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"5",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"6",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"7",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"8",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"source",
+								]
 							},
 						]
 						hidden_in_tools = false
