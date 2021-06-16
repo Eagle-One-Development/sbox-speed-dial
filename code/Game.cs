@@ -54,9 +54,11 @@ namespace SpeedDial {
 			return Entity.All.OfType<SpeedDialPlayer>().OrderByDescending(x => x.KillScore).ToList<SpeedDialPlayer>();
 		}
 
-		public static SpeedDialGame Instance => (SpeedDialGame)Current;
+		public static SpeedDialGame Instance { get; private set; }
 
 		public SpeedDialGame() {
+
+			Instance = this;
 
 			PrecacheModels();
 
