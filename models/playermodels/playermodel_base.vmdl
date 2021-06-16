@@ -1692,6 +1692,7 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
+						disabled = true
 						model_name = "models/weapons/shotgun/prop_shotgun.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
@@ -1733,7 +1734,6 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
-						disabled = true
 						model_name = "models/weapons/pipe/pipe.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
@@ -2544,8 +2544,8 @@
 						_class = "Attachment"
 						name = "melee_bat_attach"
 						parent_bone = "hand_l"
-						relative_origin = [ 8.109501, -0.213263, -10.212946 ]
-						relative_angles = [ -8.423306, -100.512138, -146.319336 ]
+						relative_origin = [ 6.121548, 0.268627, -7.775766 ]
+						relative_angles = [ -4.407094, -96.651749, -156.617081 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -2553,8 +2553,8 @@
 						_class = "Attachment"
 						name = "melee_pan_attach"
 						parent_bone = "hand_l"
-						relative_origin = [ -2.461048, 1.366772, 7.259263 ]
-						relative_angles = [ -36.715675, 9.744344, 177.881577 ]
+						relative_origin = [ 2.573978, 3.222752, 8.453971 ]
+						relative_angles = [ -12.11133, -73.695518, -174.835251 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -2562,8 +2562,8 @@
 						_class = "Attachment"
 						name = "melee_pipe_attach"
 						parent_bone = "hand_l"
-						relative_origin = [ 13.400425, -0.718227, -20.526495 ]
-						relative_angles = [ 28.023129, 169.580719, 173.324432 ]
+						relative_origin = [ 11.190159, -0.934433, -21.360142 ]
+						relative_angles = [ -13.448072, -63.361782, -173.327438 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
