@@ -1664,8 +1664,7 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
-						disabled = true
-						model_name = "models/weapons/smg/smg.vmdl"
+						model_name = "models/weapons/smg/prop_smg.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
 						attach_point = "smg_attach"
@@ -1734,10 +1733,10 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
-						model_name = "models/weapons/pipe/pipe.vmdl"
+						model_name = "models/weapons/melee/melee.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
-						attach_point = "melee_pipe_attach"
+						attach_point = "melee_bat_attach"
 						use_additional_offset = false
 						relative_origin = [ 0.0, 0.0, 0.0 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
@@ -2517,8 +2516,8 @@
 						_class = "Attachment"
 						name = "smg_attach"
 						parent_bone = "hand_r"
-						relative_origin = [ -1.411921, 0.928244, 3.588669 ]
-						relative_angles = [ -25.497618, -68.394897, 7.513428 ]
+						relative_origin = [ -3.76169, -1.965636, 0.769199 ]
+						relative_angles = [ 1.331834, -164.804672, 27.342676 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -2544,8 +2543,8 @@
 						_class = "Attachment"
 						name = "melee_bat_attach"
 						parent_bone = "hand_l"
-						relative_origin = [ 6.121548, 0.268627, -7.775766 ]
-						relative_angles = [ -4.407094, -96.651749, -156.617081 ]
+						relative_origin = [ 2.334858, 1.16357, 1.60859 ]
+						relative_angles = [ -4.407339, -96.651741, -156.617065 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -2553,8 +2552,8 @@
 						_class = "Attachment"
 						name = "melee_pan_attach"
 						parent_bone = "hand_l"
-						relative_origin = [ 2.573978, 3.222752, 8.453971 ]
-						relative_angles = [ -12.11133, -73.695518, -174.835251 ]
+						relative_origin = [ 2.33486, 1.16357, 1.60859 ]
+						relative_angles = [ -4.40734, -96.651703, -156.617004 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -2562,8 +2561,8 @@
 						_class = "Attachment"
 						name = "melee_pipe_attach"
 						parent_bone = "hand_l"
-						relative_origin = [ 11.190159, -0.934433, -21.360142 ]
-						relative_angles = [ -13.448072, -63.361782, -173.327438 ]
+						relative_origin = [ 2.33486, 1.16357, 1.60859 ]
+						relative_angles = [ -4.40734, -96.651703, -156.617004 ]
 						weight = 1.0
 						ignore_rotation = false
 					},

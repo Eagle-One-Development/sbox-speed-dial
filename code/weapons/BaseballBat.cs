@@ -13,7 +13,7 @@ namespace SpeedDial.Weapons {
 		public override float PrimaryRate => 2.0f;
 		public override int HoldType => 6; // need melee holdtype
 		public override int ClipSize => -1; // no ammo hud
-		public override string WorldModel => "models/weapons/bat/bat.vmdl";
+		public override string WorldModel => "models/weapons/melee/melee.vmdl";
 		public override string AttachementName => "melee_bat_attach";
 
 		[Net, Predicted, Local]
