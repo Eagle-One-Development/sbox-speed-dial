@@ -955,7 +955,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/playermodels/anims/melee_idle.dmx"
+								source_filename = "models/playermodels/anims/melee_idle_ik.dmx"
 								start_frame = -1
 								end_frame = 46
 								framerate = -1.0
@@ -1603,6 +1603,26 @@
 								reverse = false
 							},
 						]
+					},
+					{
+						_class = "AnimFile"
+						name = "melee_idle_ik"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/anims/melee_idle_ik.dmx"
+						start_frame = -1
+						end_frame = 45
+						framerate = -1.0
+						reverse = false
 					},
 				]
 				default_root_bone_name = ""

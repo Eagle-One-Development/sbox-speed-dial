@@ -517,6 +517,7 @@
 					m_id = 9616598
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -589,6 +590,7 @@
 					m_id = 16618273
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1932007295
@@ -614,6 +616,7 @@
 					m_id = 26347081
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -686,6 +689,7 @@
 					m_id = 34716411
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_walk_sw"
 				m_playbackSpeed = 1.0
@@ -707,6 +711,7 @@
 					m_id = 43047625
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1202866230
@@ -732,6 +737,7 @@
 					m_id = 69810200
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1622231149
@@ -757,6 +763,7 @@
 					m_id = 78561993
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1859365194
@@ -782,6 +789,7 @@
 					m_id = 84528413
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_weightListName = "holding_bat"
 				m_child1ID = 
 				{
@@ -821,6 +829,7 @@
 					m_id = 127128882
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "bat_swing_3"
 				m_playbackSpeed = 1.0
@@ -836,12 +845,13 @@
 			{
 				_class = "CChoreoAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 2266.0, 1332.0 ]
+				m_vecPosition = [ 2266.0, 1336.0 ]
 				m_nNodeID = 
 				{
 					m_id = 140905755
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1410396904
@@ -863,6 +873,7 @@
 					m_id = 142561330
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -959,6 +970,7 @@
 					m_id = 147410568
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_children = 
 				[
 					{
@@ -1012,6 +1024,7 @@
 					m_id = 155524936
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -1141,6 +1154,7 @@
 					m_id = 165906050
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_children = 
 				[
 					{
@@ -1195,6 +1209,7 @@
 					m_id = 173944915
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_walk_e"
 				m_playbackSpeed = 1.0
@@ -1216,6 +1231,7 @@
 					m_id = 215492735
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "turn_right_180"
 				m_playbackSpeed = 1.0
@@ -1237,6 +1253,7 @@
 					m_id = 222818352
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "turn_right_45"
 				m_playbackSpeed = 1.0
@@ -1258,6 +1275,7 @@
 					m_id = 236076305
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -1404,6 +1422,7 @@
 					m_id = 277536928
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 732957981
@@ -1429,6 +1448,7 @@
 					m_id = 284662444
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "unarmed_idle"
 				m_playbackSpeed = 1.0
@@ -1450,6 +1470,7 @@
 					m_id = 285663228
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "idle"
 				m_playbackSpeed = 1.0
@@ -1471,6 +1492,7 @@
 					m_id = 296265303
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_weightListName = "holding_weapon"
 				m_child1ID = 
 				{
@@ -1510,6 +1532,7 @@
 					m_id = 305143438
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1796597480
@@ -1535,6 +1558,7 @@
 					m_id = 306794296
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "jab_left"
 				m_playbackSpeed = 1.0
@@ -1556,6 +1580,7 @@
 					m_id = 331173402
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -1628,6 +1653,7 @@
 					m_id = 354242449
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "turn_left_45"
 				m_playbackSpeed = 1.0
@@ -1649,6 +1675,7 @@
 					m_id = 357684445
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -2331,6 +2358,7 @@
 					m_id = 389152289
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_walk_idle"
 				m_playbackSpeed = 1.0
@@ -2352,6 +2380,7 @@
 					m_id = 395637519
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_baseChildID = 
 				{
 					m_id = 1622231149
@@ -2383,6 +2412,7 @@
 					m_id = 409549014
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_children = 
 				[
 					{
@@ -2436,6 +2466,7 @@
 					m_id = 415796699
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_commentText = ""
 				m_size = [ 375.0, 225.0 ]
 				m_color = [ 49, 139, 146, 255 ]
@@ -2456,6 +2487,7 @@
 					m_id = 420093059
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1724374834
@@ -2481,6 +2513,7 @@
 					m_id = 445825400
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_children = 
 				[
 					{
@@ -2534,6 +2567,7 @@
 					m_id = 453724189
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_walk_idle"
 				m_playbackSpeed = 1.0
@@ -2549,12 +2583,13 @@
 			{
 				_class = "CTwoBoneIKAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 1673.0, 1505.0 ]
+				m_vecPosition = [ 1734.0, 1530.0 ]
 				m_nNodeID = 
 				{
 					m_id = 454811694
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1711875474
@@ -2591,6 +2626,7 @@
 					m_id = 470932627
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 848264451
@@ -2618,6 +2654,7 @@
 					m_id = 471739081
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_commentText = ""
 				m_size = [ 375.0, 225.0 ]
 				m_color = [ 49, 139, 146, 255 ]
@@ -2638,6 +2675,7 @@
 					m_id = 476613757
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 766914264
@@ -2665,6 +2703,7 @@
 					m_id = 491443627
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1715603949
@@ -2692,6 +2731,7 @@
 					m_id = 499878070
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "jab_left"
 				m_playbackSpeed = 1.0
@@ -2713,6 +2753,7 @@
 					m_id = 545268368
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "bat_swing_1"
 				m_playbackSpeed = 1.0
@@ -2734,6 +2775,7 @@
 					m_id = 553081857
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_weightListName = "firing"
 				m_child1ID = 
 				{
@@ -2773,6 +2815,7 @@
 					m_id = 555617305
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -2869,6 +2912,7 @@
 					m_id = 556106774
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "melee_idle"
 				m_playbackSpeed = 1.0
@@ -2890,6 +2934,7 @@
 					m_id = 572948740
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -2962,6 +3007,7 @@
 					m_id = 594462926
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_commentText = ""
 				m_size = [ 375.0, 198.0 ]
 				m_color = [ 49, 139, 146, 255 ]
@@ -2982,6 +3028,7 @@
 					m_id = 598238023
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_children = 
 				[
 					{
@@ -3035,6 +3082,7 @@
 					m_id = 608469585
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_weightListName = "upper_body_rifle"
 				m_child1ID = 
 				{
@@ -3074,6 +3122,7 @@
 					m_id = 621495693
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_commentText = "Fix Leg Ik bones to reimplement\n"
 				m_size = [ 375.0, 286.0 ]
 				m_color = [ 49, 139, 146, 255 ]
@@ -3094,6 +3143,7 @@
 					m_id = 659910173
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 2082515925
@@ -3121,6 +3171,7 @@
 					m_id = 707091004
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -3250,6 +3301,7 @@
 					m_id = 709130136
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "bat_idle"
 				m_playbackSpeed = 1.0
@@ -3271,6 +3323,7 @@
 					m_id = 722187793
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1992545380
@@ -3298,6 +3351,7 @@
 					m_id = 732957981
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 4294967295
@@ -3323,6 +3377,7 @@
 					m_id = 734525575
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_clipGroups = 
 				[
 					{
@@ -3552,6 +3607,7 @@
 					m_id = 743275804
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "pistol_fire"
 				m_playbackSpeed = 1.0
@@ -3573,6 +3629,7 @@
 					m_id = 743678823
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 16618273
@@ -3598,6 +3655,7 @@
 					m_id = 765553018
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -3953,6 +4011,7 @@
 					m_id = 766914264
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_turn_45L"
 				m_playbackSpeed = 1.0
@@ -3974,6 +4033,7 @@
 					m_id = 767886496
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1057439538
@@ -4001,6 +4061,7 @@
 					m_id = 770770966
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_aim_idle"
 				m_playbackSpeed = 1.0
@@ -4022,6 +4083,7 @@
 					m_id = 780117872
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "idle_pistol_fire"
 				m_playbackSpeed = 1.0
@@ -4043,6 +4105,7 @@
 					m_id = 832261900
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_commentText = ""
 				m_size = [ 375.0, 225.0 ]
 				m_color = [ 49, 139, 146, 255 ]
@@ -4063,6 +4126,7 @@
 					m_id = 848144266
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -4209,6 +4273,7 @@
 					m_id = 848264451
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_turn_180L"
 				m_playbackSpeed = 1.0
@@ -4230,6 +4295,7 @@
 					m_id = 852961211
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 69810200
@@ -4255,6 +4321,7 @@
 					m_id = 887600586
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1619204774
@@ -4280,6 +4347,7 @@
 					m_id = 891995616
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 909451985
@@ -4339,6 +4407,7 @@
 					m_id = 905804277
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -4486,6 +4555,7 @@
 					m_id = 909451985
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 140905755
@@ -4509,6 +4579,7 @@
 					m_id = 911425550
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_weightListName = "upper_body"
 				m_child1ID = 
 				{
@@ -4548,6 +4619,7 @@
 					m_id = 913117520
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_children = 
 				[
 					{
@@ -4601,6 +4673,7 @@
 					m_id = 916103571
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -4673,6 +4746,7 @@
 					m_id = 940632011
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_children = 
 				[
 					{
@@ -4719,6 +4793,7 @@
 					m_id = 973502308
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "shotgun_idle"
 				m_playbackSpeed = 1.0
@@ -4740,6 +4815,7 @@
 					m_id = 986242409
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "idle_pistol_aim"
 				m_playbackSpeed = 1.0
@@ -4761,6 +4837,7 @@
 					m_id = 988623976
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 354242449
@@ -4788,6 +4865,7 @@
 					m_id = 990600827
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_sequenceName = "shotgun"
 				m_nFrameIndex = 0
 			}
@@ -4807,6 +4885,7 @@
 					m_id = 994428825
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -5418,6 +5497,7 @@
 					m_id = 1027449608
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_weightListName = "upper_body_pistol"
 				m_child1ID = 
 				{
@@ -5457,6 +5537,7 @@
 					m_id = 1028464115
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -5529,6 +5610,7 @@
 					m_id = 1049985592
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_walk_w"
 				m_playbackSpeed = 1.0
@@ -5550,6 +5632,7 @@
 					m_id = 1051596620
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -5905,6 +5988,7 @@
 					m_id = 1052552936
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "shotgun_fire"
 				m_playbackSpeed = 1.0
@@ -5926,6 +6010,7 @@
 					m_id = 1057439538
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_turn_45R"
 				m_playbackSpeed = 1.0
@@ -5947,6 +6032,7 @@
 					m_id = 1068818903
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_commentText = "Old Crap\n"
 				m_size = [ 3843.0, 4529.0 ]
 				m_color = [ 49, 139, 146, 255 ]
@@ -5967,6 +6053,7 @@
 					m_id = 1078025784
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -6649,6 +6736,7 @@
 					m_id = 1096499911
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -6745,6 +6833,7 @@
 					m_id = 1101044716
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -7498,6 +7587,7 @@
 					m_id = 1143038174
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -7594,6 +7684,7 @@
 					m_id = 1144694180
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 891995616
@@ -7615,6 +7706,7 @@
 					m_id = 1171853419
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_turn_90R"
 				m_playbackSpeed = 1.0
@@ -7636,6 +7728,7 @@
 					m_id = 1184612940
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -7708,6 +7801,7 @@
 					m_id = 1190919314
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_children = 
 				[
 					{
@@ -7761,6 +7855,7 @@
 					m_id = 1202866230
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -7857,6 +7952,7 @@
 					m_id = 1230413633
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_children = 
 				[
 					{
@@ -7940,6 +8036,7 @@
 					m_id = 1237797468
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 215492735
@@ -7967,6 +8064,7 @@
 					m_id = 1252706675
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 78561993
@@ -7992,6 +8090,7 @@
 					m_id = 1283714185
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -8121,6 +8220,7 @@
 					m_id = 1308567919
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -8268,6 +8368,7 @@
 					m_id = 1320436731
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1753967864
@@ -8293,6 +8394,7 @@
 					m_id = 1332945537
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 2046860959
@@ -8320,6 +8422,7 @@
 					m_id = 1363470567
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_walk_nw"
 				m_playbackSpeed = 1.0
@@ -8341,6 +8444,7 @@
 					m_id = 1400678945
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_weightListName = "upper_body_rifle"
 				m_child1ID = 
 				{
@@ -8380,6 +8484,7 @@
 					m_id = 1410396904
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 2047231774
@@ -8405,9 +8510,9 @@
 				m_damping = 
 				{
 					_class = "CAnimInputDamping"
-					m_speedFunction = "NoDamping"
-					m_fSpeedScale = 20.0
-					m_fMinSpeed = 10.0
+					m_speedFunction = "Spring"
+					m_fSpeedScale = 100.0
+					m_fMinSpeed = 100.0
 					m_fMaxTension = 1000.0
 				}
 			}
@@ -8427,6 +8532,7 @@
 					m_id = 1425890235
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_walk_idle"
 				m_playbackSpeed = 1.0
@@ -8448,6 +8554,7 @@
 					m_id = 1427589181
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_fire"
 				m_playbackSpeed = 1.5
@@ -8469,6 +8576,7 @@
 					m_id = 1442100432
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -8541,6 +8649,7 @@
 					m_id = 1471911028
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1965408809
@@ -8568,6 +8677,7 @@
 					m_id = 1503442020
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1171853419
@@ -8595,6 +8705,7 @@
 					m_id = 1511044145
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_weightListName = "holding_weapon"
 				m_child1ID = 
 				{
@@ -8634,6 +8745,7 @@
 					m_id = 1520947307
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -8763,6 +8875,7 @@
 					m_id = 1544540373
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_children = 
 				[
 					{
@@ -8818,6 +8931,7 @@
 					m_id = 1590743682
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -8914,6 +9028,7 @@
 					m_id = 1607634620
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -9043,6 +9158,7 @@
 					m_id = 1619204774
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 572948740
@@ -9068,6 +9184,7 @@
 					m_id = 1622231149
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -9164,6 +9281,7 @@
 					m_id = 1630999381
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_weightListName = "upper_body"
 				m_child1ID = 
 				{
@@ -9203,6 +9321,7 @@
 					m_id = 1711875474
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 296265303
@@ -9239,6 +9358,7 @@
 					m_id = 1715603949
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_turn_180R"
 				m_playbackSpeed = 1.0
@@ -9260,6 +9380,7 @@
 					m_id = 1724374834
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 26347081
@@ -9285,6 +9406,7 @@
 					m_id = 1736878935
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "bat_swing_2"
 				m_playbackSpeed = 1.0
@@ -9306,6 +9428,7 @@
 					m_id = 1753967864
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 555617305
@@ -9331,6 +9454,7 @@
 					m_id = 1765972848
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1028464115
@@ -9356,6 +9480,7 @@
 					m_id = 1769068269
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_fire"
 				m_playbackSpeed = 1.0
@@ -9377,6 +9502,7 @@
 					m_id = 1770169863
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "idle_pistol_aim"
 				m_playbackSpeed = 1.0
@@ -9398,6 +9524,7 @@
 					m_id = 1773538924
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 1765972848
@@ -9423,6 +9550,7 @@
 					m_id = 1796597480
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 916103571
@@ -9448,6 +9576,7 @@
 					m_id = 1798185898
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -9948,6 +10077,7 @@
 					m_id = 1799344448
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_baseChildID = 
 				{
 					m_id = 1622231149
@@ -9979,6 +10109,7 @@
 					m_id = 1803397261
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -10150,6 +10281,7 @@
 					m_id = 1804893927
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_walk_ne"
 				m_playbackSpeed = 1.0
@@ -10171,6 +10303,7 @@
 					m_id = 1827302082
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_weightListName = "shotgun"
 				m_child1ID = 
 				{
@@ -10210,6 +10343,7 @@
 					m_id = 1859365194
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -10306,6 +10440,7 @@
 					m_id = 1866668698
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "right_jab"
 				m_playbackSpeed = 1.0
@@ -10327,6 +10462,7 @@
 					m_id = 1871275068
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_walk_s"
 				m_playbackSpeed = 1.0
@@ -10348,6 +10484,7 @@
 					m_id = 1873420012
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 222818352
@@ -10375,6 +10512,7 @@
 					m_id = 1892504678
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_weightListName = "upper_body_pistol"
 				m_child1ID = 
 				{
@@ -10414,6 +10552,7 @@
 					m_id = 1917351048
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_weightListName = "upper_body"
 				m_child1ID = 
 				{
@@ -10453,6 +10592,7 @@
 					m_id = 1926175993
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_walk_n"
 				m_playbackSpeed = 1.0
@@ -10474,6 +10614,7 @@
 					m_id = 1929792217
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_children = 
 				[
 					{
@@ -10527,6 +10668,7 @@
 					m_id = 1932007295
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -10599,6 +10741,7 @@
 					m_id = 1957814626
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 43047625
@@ -10624,6 +10767,7 @@
 					m_id = 1959136241
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -10795,6 +10939,7 @@
 					m_id = 1965408809
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "turn_right_90"
 				m_playbackSpeed = 1.0
@@ -10816,6 +10961,7 @@
 					m_id = 1992545380
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "turn_left_180"
 				m_playbackSpeed = 1.0
@@ -10837,6 +10983,7 @@
 					m_id = 2007043503
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_states = 
 				[
 					{
@@ -11131,6 +11278,7 @@
 					m_id = 2020902508
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "shotgun_idle"
 				m_playbackSpeed = 1.0
@@ -11152,6 +11300,7 @@
 					m_id = 2028981333
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "shotgun"
 				m_playbackSpeed = 1.0
@@ -11173,6 +11322,7 @@
 					m_id = 2035364220
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_aim_idle"
 				m_playbackSpeed = 1.0
@@ -11194,6 +11344,7 @@
 					m_id = 2046860959
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "turn_left_90"
 				m_playbackSpeed = 1.0
@@ -11215,6 +11366,7 @@
 					m_id = 2047231774
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_childID = 
 				{
 					m_id = 454811694
@@ -11262,6 +11414,7 @@
 					m_id = 2082515925
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_turn90L"
 				m_playbackSpeed = 1.0
@@ -11283,6 +11436,7 @@
 					m_id = 2086648415
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_items = 
 				[
 					{
@@ -11355,6 +11509,7 @@
 					m_id = 2107665036
 				}
 				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
 				m_tagSpans = [  ]
 				m_sequenceName = "rifle_walk_se"
 				m_playbackSpeed = 1.0
@@ -11376,6 +11531,7 @@
 					m_id = 2110578779
 				}
 				m_networkMode = "ClientPredicted"
+				m_sNote = ""
 				m_weightListName = "holding_bat"
 				m_child1ID = 
 				{
