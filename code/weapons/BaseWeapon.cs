@@ -184,7 +184,7 @@ namespace SpeedDial.Weapons {
 				}
 
 				if(index == 0) {
-					BulletTracer(EffectEntity.GetAttachment("muzzle", true).Position, tr.EndPos);
+					BulletTracer(EffectEntity.GetAttachment("muzzle", true).Value.Position, tr.EndPos);
 				} else {
 					BulletTracer(tr.StartPos, tr.EndPos);
 				}

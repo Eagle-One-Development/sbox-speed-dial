@@ -37,11 +37,15 @@ namespace SpeedDial.Weapons {
 
 		public override void Simulate(Client owner) {
 			base.Simulate(owner);
-			var start = EffectEntity.GetAttachment("melee_start").Position;
-			var end = EffectEntity.GetAttachment("melee_end").Position;
+			if ( EffectEntity.GetAttachment( "melee_start" ) == null )
+			{
+				return;
+			}
+			var start = EffectEntity.GetAttachment( "melee_start" ).Value.Position;
+			var end = EffectEntity.GetAttachment( "melee_end" ).Value.Position;
 
 			// hardcoded values cause I suck
-			if(TimeSinceSwing <= 1.2f && Hitting) {
+			if (TimeSinceSwing <= 1.2f && Hitting) {
 				if(TimeSinceSwing >= 0.8f) {
 					foreach(var tr in TraceBullet(start, end, 4)) {
 						if(tr.Entity is SpeedDialPlayer) {
