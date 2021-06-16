@@ -653,7 +653,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/playermodels/anims/unarmed_idle_ik.dmx"
+								source_filename = "models/playermodels/anims/unarmed_idle.dmx"
 								start_frame = -1
 								end_frame = 109
 								framerate = -1.0
@@ -1442,7 +1442,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/playermodels/anims/bat_idle.dmx"
+								source_filename = "models/playermodels/anims/melee_idle.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1462,9 +1462,9 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/playermodels/anims/bat_swing_1.dmx"
+								source_filename = "models/playermodels/anims/melee_swing.dmx"
 								start_frame = -1
-								end_frame = -1
+								end_frame = 16
 								framerate = -1.0
 								reverse = false
 							},
@@ -1482,9 +1482,9 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/playermodels/anims/bat_swing_2.dmx"
+								source_filename = "models/playermodels/anims/melee_swing.dmx"
 								start_frame = -1
-								end_frame = 41
+								end_frame = 16
 								framerate = -1.0
 								reverse = false
 							},
@@ -1502,9 +1502,9 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/playermodels/anims/bat_swing_3.dmx"
+								source_filename = "models/playermodels/anims/melee_swing.dmx"
 								start_frame = -1
-								end_frame = 34
+								end_frame = 16
 								framerate = -1.0
 								reverse = false
 							},
