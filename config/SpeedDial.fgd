@@ -5,7 +5,7 @@
         "The time in seconds it takes for this med to respawn"
 ]
 
-@PointClass base(Targetname) editormodel( "models/drugs/ollie/ollie.vmdl" ) = meds_ollie : 
+@PointClass base(Targetname) editormodel( "models/abilities/sm_candy.vmdl" ) = meds_ollie : 
     "Ollie Drug"
 [
     RespawnTime(int) : "Respawn Time in seconds" : 15 : 
@@ -19,7 +19,7 @@
         "The time in seconds it takes for this med to respawn"
 ]
 
-@PointClass base(Targetname) editormodel( "models/drugs/ritindi/ritindi.vmdl" ) = meds_ritindi : 
+@PointClass base(Targetname) editormodel( "models/abilities/sm_candy.vmdl" ) = meds_ritindi : 
     "Ritindi Drug"
 [
     RespawnTime(int) : "Respawn Time in seconds" : 15 : 
@@ -40,7 +40,7 @@
         "The time in seconds it takes for this weapon to respawn"
 ]
 
-@PointClass base(Targetname) editormodel( "models/weapons/smg/smg.vmdl" ) = sd_weaponspawn_smg : 
+@PointClass base(Targetname) editormodel( "models/weapons/smg/prop_smg.vmdl" ) = sd_weaponspawn_smg : 
     "Smg Weaponspawn"
 [
     RespawnTime(int) : "Respawn Time in seconds" : 15 : 
