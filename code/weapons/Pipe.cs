@@ -13,7 +13,7 @@ namespace SpeedDial.Weapons {
 		public override float PrimaryRate => 2.0f;
 		public override int HoldType => 6; // need melee holdtype
 		public override int ClipSize => -1; // no ammo hud
-		public override string WorldModel => "models/weapons/pipe/pipe.vmdl";
+		public override string WorldModel => "models/weapons/melee/melee.vmdl";
 		public override string AttachementName => "melee_pipe_attach";
 
 		[Net, Predicted, Local]
@@ -37,36 +37,39 @@ namespace SpeedDial.Weapons {
 
 		public override void Simulate(Client owner) {
 			base.Simulate(owner);
-			if ( EffectEntity.GetAttachment( "melee_start" ) == null )
-			{
+
+			if(EffectEntity.GetAttachment("melee_start") == null) {
 				return;
 			}
-			var start = EffectEntity.GetAttachment("melee_start").Value.Position;
-			var end = EffectEntity.GetAttachment("melee_end").Value.Position;
+			if(EffectEntity.GetAttachment("melee_start") is Transform start && EffectEntity.GetAttachment("melee_end") is Transform end) {
 
-			// hardcoded values cause I suck
-			if(TimeSinceSwing <= 1.2f && Hitting) {
-				if(TimeSinceSwing >= 0.8f) {
-					foreach(var tr in TraceBullet(start, end, 4)) {
-						if(tr.Entity is SpeedDialPlayer) {
+				// hardcoded values cause I suck
+				if(TimeSinceSwing <= 0.25f && Hitting) {
+					//DebugOverlay.Line(start.Position, end.Position, Color.Green, 0.1f, false);
+					foreach(var tr in TraceBullet(start.Position, end.Position, 4)) {
+						if(tr.Entity is SpeedDialPlayer hitPlayer) {
 							var ps = Particles.Create("particles/blood/blood_plip.vpcf", tr.EndPos);
 							ps?.SetForward(0, tr.Normal);
-						}
-						if(!IsServer) continue;
-						if(!tr.Entity.IsValid()) continue;
 
-						using(Prediction.Off()) {
-							var damageInfo = DamageInfo.FromBullet(tr.EndPos, 1000, 100)
-								.UsingTraceResult(tr)
-								.WithAttacker(Owner)
-								.WithWeapon(this);
+							if(!IsServer) continue;
+							if(!tr.Entity.IsValid()) continue;
 
-							tr.Entity.TakeDamage(damageInfo);
+							using(Prediction.Off()) {
+								var damageInfo = DamageInfo.FromBullet(tr.EndPos, 1000, 100)
+									.UsingTraceResult(tr)
+									.WithAttacker(Owner)
+									.WithWeapon(this);
+
+								// need bonk sound pls
+								PlaySound("smack");
+
+								tr.Entity.TakeDamage(damageInfo);
+							}
 						}
 					}
+				} else {
+					Hitting = false;
 				}
-			} else {
-				Hitting = false;
 			}
 		}
 	}

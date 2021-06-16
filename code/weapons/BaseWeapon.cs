@@ -154,6 +154,7 @@ namespace SpeedDial.Weapons {
 				ShootEffects(); // muzzle and brass eject
 				PlaySound(ShootSound); // shoot sound
 				(Owner as AnimEntity).SetAnimBool("b_attack", true); // shoot anim
+				
 			}
 		}
 

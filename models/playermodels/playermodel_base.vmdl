@@ -941,6 +941,26 @@
 								framerate = -1.0
 								reverse = false
 							},
+							{
+								_class = "AnimFile"
+								name = "melee_idle"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/melee_idle_ik.dmx"
+								start_frame = -1
+								end_frame = 46
+								framerate = -1.0
+								reverse = false
+							},
 						]
 					},
 					{
@@ -1444,7 +1464,7 @@
 								disable_compression = false
 								source_filename = "models/playermodels/anims/melee_idle.dmx"
 								start_frame = -1
-								end_frame = -1
+								end_frame = 45
 								framerate = -1.0
 								reverse = false
 							},
@@ -1584,6 +1604,26 @@
 							},
 						]
 					},
+					{
+						_class = "AnimFile"
+						name = "melee_idle_ik"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/anims/melee_idle_ik.dmx"
+						start_frame = -1
+						end_frame = 45
+						framerate = -1.0
+						reverse = false
+					},
 				]
 				default_root_bone_name = ""
 			},
@@ -1644,7 +1684,7 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
-						model_name = "models/weapons/smg/smg.vmdl"
+						model_name = "models/weapons/smg/prop_smg.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
 						attach_point = "smg_attach"
@@ -1713,11 +1753,10 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
-						disabled = true
-						model_name = "models/weapons/pipe/pipe.vmdl"
+						model_name = "models/weapons/melee/melee.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
-						attach_point = "melee_pipe_attach"
+						attach_point = "melee_bat_attach"
 						use_additional_offset = false
 						relative_origin = [ 0.0, 0.0, 0.0 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
@@ -1911,7 +1950,7 @@
 							},
 							{
 								bone = "pelvis"
-								weight = 0.5
+								weight = 0.0
 							},
 							{
 								bone = "root_motion"
@@ -1920,6 +1959,10 @@
 							{
 								bone = "spine_0"
 								weight = 0.5
+							},
+							{
+								bone = "spine_01"
+								weight = 1.0
 							},
 							{
 								bone = "spine_1"
@@ -1945,27 +1988,19 @@
 						[
 							{
 								bone = "clavicle_l"
-								weight = 0.542929
+								weight = 0.044355
 							},
 							{
 								bone = "clavicle_r"
-								weight = 0.540404
+								weight = 0.03629
 							},
 							{
 								bone = "hand_l"
-								weight = 1.0
+								weight = 0.048387
 							},
 							{
-								bone = "hand_r"
-								weight = 1.0
-							},
-							{
-								bone = "lowerarm_l"
-								weight = 0.542929
-							},
-							{
-								bone = "lowerarm_r"
-								weight = 0.545455
+								bone = "lowerarm_twist_01_l"
+								weight = 0.044355
 							},
 							{
 								bone = "pelvis"
@@ -1977,7 +2012,7 @@
 							},
 							{
 								bone = "spine_03"
-								weight = 0.143939
+								weight = 0.0
 							},
 							{
 								bone = "spine_1"
@@ -1998,6 +2033,14 @@
 							{
 								bone = "thigh_r"
 								weight = 0.0
+							},
+							{
+								bone = "thumb_03_l"
+								weight = 0.048387
+							},
+							{
+								bone = "upperarm_twist_01_l"
+								weight = 0.020161
 							},
 							{
 								bone = "weapon_hand_r"
@@ -2171,19 +2214,19 @@
 							},
 							{
 								bone = "spine_02"
-								weight = 0.408273
+								weight = 1.0
 							},
 							{
 								bone = "spine_03"
-								weight = 0.552158
+								weight = 1.0
 							},
 							{
 								bone = "thigh_l"
-								weight = 0.594203
+								weight = 0.0
 							},
 							{
 								bone = "thigh_r"
-								weight = 0.59058
+								weight = 0.0
 							},
 						]
 						master_morph_weight = -1.0
@@ -2201,19 +2244,23 @@
 							},
 							{
 								bone = "clavicle_r"
-								weight = 0.78178
+								weight = 1.0
+							},
+							{
+								bone = "pelvis"
+								weight = 1.0
 							},
 							{
 								bone = "spine_01"
-								weight = 0.483709
+								weight = 1.0
 							},
 							{
 								bone = "spine_02"
-								weight = 0.666667
+								weight = 1.0
 							},
 							{
 								bone = "spine_03"
-								weight = 0.864662
+								weight = 1.0
 							},
 							{
 								bone = "upperarm_l"
@@ -2489,8 +2536,8 @@
 						_class = "Attachment"
 						name = "smg_attach"
 						parent_bone = "hand_r"
-						relative_origin = [ -1.411921, 0.928244, 3.588669 ]
-						relative_angles = [ -25.497618, -68.394897, 7.513428 ]
+						relative_origin = [ -3.76169, -1.965636, 0.769199 ]
+						relative_angles = [ 1.331834, -164.804672, 27.342676 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -2516,8 +2563,8 @@
 						_class = "Attachment"
 						name = "melee_bat_attach"
 						parent_bone = "hand_l"
-						relative_origin = [ 7.082401, 3.211586, -8.203894 ]
-						relative_angles = [ 12.473188, -92.676529, -165.617172 ]
+						relative_origin = [ 2.334858, 1.16357, 1.60859 ]
+						relative_angles = [ -4.407339, -96.651741, -156.617065 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -2525,8 +2572,8 @@
 						_class = "Attachment"
 						name = "melee_pan_attach"
 						parent_bone = "hand_l"
-						relative_origin = [ -2.461048, 1.366772, 7.259263 ]
-						relative_angles = [ -36.715675, 9.744344, 177.881577 ]
+						relative_origin = [ 2.33486, 1.16357, 1.60859 ]
+						relative_angles = [ -4.40734, -96.651703, -156.617004 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -2534,8 +2581,8 @@
 						_class = "Attachment"
 						name = "melee_pipe_attach"
 						parent_bone = "hand_l"
-						relative_origin = [ 13.400425, -0.718227, -20.526495 ]
-						relative_angles = [ 28.023129, 169.580719, 173.324432 ]
+						relative_origin = [ 2.33486, 1.16357, 1.60859 ]
+						relative_angles = [ -4.40734, -96.651703, -156.617004 ]
 						weight = 1.0
 						ignore_rotation = false
 					},

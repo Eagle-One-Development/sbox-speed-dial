@@ -70,13 +70,12 @@ namespace SpeedDial.UI {
 				ws.tarAng = Rand.Float(-15f, 15f);
 			}
 
-			float chance = Rand.Float( 1 );
+			float chance = Rand.Float(1);
 			float chanceMod = 0.35f;
-			
-			
 
-			if(chance > chanceMod || combo < 2)
-			{
+
+
+			if(chance > chanceMod || combo < 2) {
 				return;
 			}
 
@@ -86,41 +85,36 @@ namespace SpeedDial.UI {
 
 			string[] combos = { "DOUBLE KILL", "TRIPLE KILL", "QUAD KILL", "KILLIONAIRE", "KILL BILL" };
 
-			if ( combo >= 2 && combo < combos.Length)
-			{
+			if(combo >= 2 && combo < combos.Length) {
 				quip = combos[combo - 2];
 			}
 
-			Log.Info( "CAUSE OF DEATH: " + death.ToString() );
+			//Log.Info( "CAUSE OF DEATH: " + death.ToString() );
 
-			switch ( death )
-			{
+			switch(death) {
 				case COD.Melee:
 					quip = "BRUTAL";
-				break;
+					break;
 				case COD.Thrown:
 					quip = "BAD CATCH";
-				break;
+					break;
 				case COD.Explosive:
 					quip = "BOMB";
-				break;
+					break;
 
 			}
 
 			//This is for the qup
 			ws = null;
-			for ( int i = 0; i < scores.Count; i++ )
-			{
+			for(int i = 0; i < scores.Count; i++) {
 				WorldScore temp = scores[i];
-				if ( temp.lifetime > temp.life )
-				{
+				if(temp.lifetime > temp.life) {
 					ws = temp;
 					continue;
 				}
 			}
 
-			if ( ws != null )
-			{
+			if(ws != null) {
 				ws.position = pos;
 				ws.amount = amt;
 				ws.lifetime = 0;
