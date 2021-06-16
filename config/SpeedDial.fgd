@@ -1,4 +1,4 @@
-@PointClass base(Targetname) editormodel( "models/abilities/sm_candy.vmdl" ) = meds_leaf : 
+@PointClass base(Targetname) editormodel( "models/drugs/ollie/ollie.vmdl" ) = meds_leaf : 
     "Leaf Drug"
 [
     RespawnTime(int) : "Respawn Time in seconds" : 15 : 
@@ -19,7 +19,7 @@
         "The time in seconds it takes for this med to respawn"
 ]
 
-@PointClass base(Targetname) editormodel( "models/abilities/sm_candy.vmdl" ) = meds_ritindi : 
+@PointClass base(Targetname) editormodel( "models/drugs/ritindi/ritindi.vmdl" ) = meds_ritindi :  
     "Ritindi Drug"
 [
     RespawnTime(int) : "Respawn Time in seconds" : 15 : 
