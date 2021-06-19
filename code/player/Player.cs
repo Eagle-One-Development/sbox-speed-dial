@@ -127,7 +127,7 @@ namespace SpeedDial.Player {
 		}
 
 		public override void Respawn() {
-			SetModel("models/playermodels/playermodel_base.vmdl");
+			SetModel("models/playermodels/character_fallback.vmdl");
 
 			SetBodyGroup(0, BodyGroup);
 
