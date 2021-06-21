@@ -333,6 +333,14 @@
 							{
 								_class = "AnimFile"
 								name = "smg_hold"
+								children = 
+								[
+									{
+										_class = "AnimSmoothLoop"
+										frames_from_start = 35
+										frames_from_end = 35
+									},
+								]
 								activity_name = ""
 								activity_weight = 1
 								weight_list_name = ""
