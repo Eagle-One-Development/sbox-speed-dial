@@ -2,15 +2,15 @@
 {
 	data = 
 	{
+		sounds = 
+		[
+			"sounds/simpleguns/uzi 1.vsnd",
+		]
 		UI = false
 		Volume = 0.8
-		VolumeRandom = 0.1
+		VolumeRandom = 0.0
 		Pitch = 1.0
-		PitchRandom = 0.1
-		DistanceMax = 2000.0
-		Sounds = 
-		[
-			"sounds/simpleguns/magnum.vsnd",
-		]
+		PitchRandom = 0.0
+		DistanceMax = 1000.0
 	}
 }

@@ -3,14 +3,14 @@
 	data = 
 	{
 		UI = false
-		Volume = 3.0
+		Volume = 1.0
 		VolumeRandom = 0.1
 		Pitch = 0.9
 		PitchRandom = 0.1
 		DistanceMax = 1000.0
 		Sounds = 
 		[
-			"sounds/simpleguns/magnum.vsnd",
+			"sounds/simpleguns/sniper 1.vsnd",
 		]
 	}
 }

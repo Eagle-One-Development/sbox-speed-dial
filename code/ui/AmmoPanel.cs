@@ -79,6 +79,7 @@ namespace SpeedDial.UI {
 			totalDrugScale = 1.0f;
 			medLabel.Text = s + " TAKEN";
 			medFlavor.Text = f;
+			Log.Info("TEST");
 		}
 
 		public override void Tick() {
