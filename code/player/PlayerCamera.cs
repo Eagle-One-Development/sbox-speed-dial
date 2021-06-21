@@ -6,6 +6,10 @@ using SpeedDial.Weapons;
 namespace SpeedDial.Player {
 	public partial class SpeedDialCamera : Camera {
 
+		[ClientVar]
+		public static bool sd_viewshift_toggle { get; set; } = false;
+		private bool shiftToggle = false;
+
 		public virtual float CameraHeight => 400;
 		public virtual float CameraAngle => 65;
 
@@ -27,8 +31,10 @@ namespace SpeedDial.Player {
 				return;
 			}
 
-			if(input.Down(InputButton.Run)) {
+			if(!sd_viewshift_toggle && input.Down(InputButton.Run)) {
 				CameraShift = true;
+			} else if(sd_viewshift_toggle && input.Pressed(InputButton.Run)) {
+				shiftToggle = !shiftToggle;
 			} else {
 				CameraShift = false;
 			}
@@ -92,7 +98,7 @@ namespace SpeedDial.Player {
 				mouseShiftFactor = 0.5f;
 			}
 
-			if(CameraShift) {
+			if(CameraShift || sd_viewshift_toggle && shiftToggle) {
 				camOffsetTarget = Vector3.Left * -((Mouse.Position.x - Screen.Size.x / 2) * mouseShiftFactor) + Vector3.Forward * -((Mouse.Position.y - Screen.Size.y / 2) * mouseShiftFactor);
 			} else {
 				camOffsetTarget = Vector3.Zero;
