@@ -330,6 +330,46 @@
 								framerate = -1.0
 								reverse = false
 							},
+							{
+								_class = "AnimFile"
+								name = "smg_hold"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/smg_hold.fbx"
+								start_frame = -1
+								end_frame = 140
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "smg_temp_shoot"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/smg_temp_shoot.fbx"
+								start_frame = -1
+								end_frame = 5
+								framerate = -1.0
+								reverse = false
+							},
 						]
 					},
 					{
@@ -2308,8 +2348,8 @@
 						_class = "Attachment"
 						name = "smg_attach"
 						parent_bone = "hand_r"
-						relative_origin = [ -3.76169, -1.965636, 0.769199 ]
-						relative_angles = [ 1.331834, -164.804672, 27.342676 ]
+						relative_origin = [ -4.031673, -2.282404, 1.524834 ]
+						relative_angles = [ 27.765417, -159.301819, -0.507269 ]
 						weight = 1.0
 						ignore_rotation = false
 					},

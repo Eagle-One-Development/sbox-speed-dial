@@ -15,7 +15,7 @@
 						[
 							{
 								from = "test.vmat"
-								to = "materials/dev/temp_sheet.vmat"
+								to = "materials/models/editor/player_start.vmat"
 							},
 						]
 						use_global_default = false
