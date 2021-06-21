@@ -3,14 +3,14 @@
 	data = 
 	{
 		UI = false
-		Volume = 0.8
-		VolumeRandom = 0.1
+		Volume = 2.0
+		VolumeRandom = 0.5
 		Pitch = 1.0
 		PitchRandom = 0.1
 		DistanceMax = 2000.0
 		Sounds = 
 		[
-			"sounds/simpleguns/pistol 1.vsnd",
+			"sounds/simpleguns/glock_shot_noise.vsnd",
 		]
 	}
 }

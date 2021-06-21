@@ -8,7 +8,7 @@ using Sandbox;
 namespace SpeedDial.Meds {
 	[Library("meds_leaf")]
 	public class Leaf : BaseMedication {
-		public override string WorldModel => "models/abilities/sm_icon_apple_01.vmdl";
+		public override string WorldModel => "models/drugs/leaf/leaf.vmdl";
 		public override float RotationSpeed => 75f;
 		public override string DrugName => "LEAF";
 		// these are kinda lame, not sure how to get the armor with weed into context lol
@@ -19,5 +19,6 @@ namespace SpeedDial.Meds {
 		public override string PickupSound => "sd_leaf_take";
 		public override Color OutlineColor => new Color(0.1f, 1, 0.1f, 1);
 		public override string ParticleName => "particles/drug_fx/sd_leaf/sd_leaf.vpcf";
+
 	}
 }
