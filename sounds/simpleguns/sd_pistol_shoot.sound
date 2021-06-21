@@ -10,7 +10,7 @@
 		DistanceMax = 2000.0
 		Sounds = 
 		[
-			"sounds/simpleguns/magnum.vsnd",
+			"sounds/simpleguns/pistol 1.vsnd",
 		]
 	}
 }
