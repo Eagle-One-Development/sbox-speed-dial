@@ -229,6 +229,8 @@ namespace SpeedDial.UI {
 					open = false;
 					tapeSound.Stop();
 
+					
+
 					var sound = Sound.FromScreen("select_confirm");
 				}
 			}

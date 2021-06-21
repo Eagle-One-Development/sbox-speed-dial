@@ -173,8 +173,14 @@ namespace SpeedDial.Player {
 			Inventory.DeleteContents();
 			BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>(character.Weapon);
 			Inventory.Add(weapon, true);
+			if(character == null) {
+				SetModel("models/playermodels/character_fallback.vmdl");
+			} else {
+				SetModel(character.Model);
+			}
 		}
 
+	
 		[ClientRpc]
 		public void SetPlayerBodyGroup(int group, int value) {
 			Log.Info("Set Bodygroup Client");
