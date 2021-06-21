@@ -2144,6 +2144,44 @@
 						master_morph_weight = -1.0
 						morph_weights = [  ]
 					},
+					{
+						_class = "WeightList"
+						name = "upper_body_smg"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "clavicle_l"
+								weight = 0.157258
+							},
+							{
+								bone = "clavicle_r"
+								weight = 0.78178
+							},
+							{
+								bone = "spine_01"
+								weight = 0.264493
+							},
+							{
+								bone = "spine_02"
+								weight = 0.436441
+							},
+							{
+								bone = "spine_03"
+								weight = 0.608051
+							},
+							{
+								bone = "upperarm_l"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_r"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
 				]
 			},
 			{

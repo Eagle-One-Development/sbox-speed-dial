@@ -2678,7 +2678,7 @@
 				}
 				m_networkMode = "ClientPredicted"
 				m_sNote = ""
-				m_weightListName = "upper_body"
+				m_weightListName = "upper_body_smg"
 				m_child1ID = 
 				{
 					m_id = 1255327437
@@ -7787,7 +7787,7 @@
 				m_children = 
 				[
 					{
-						m_id = 246869267
+						m_id = 1205318376
 					},
 					{
 						m_id = 2010874809
@@ -8190,6 +8190,79 @@
 		{
 			key = 
 			{
+				m_id = 1205318376
+			}
+			value = 
+			{
+				_class = "CBlend2DAnimNode"
+				m_sName = "walk"
+				m_vecPosition = [ -722.0, -1151.0 ]
+				m_nNodeID = 
+				{
+					m_id = 1205318376
+				}
+				m_networkMode = "ClientPredicted"
+				m_sNote = ""
+				m_items = 
+				[
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_run_e"
+						m_blendValue = [ 1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_run_n"
+						m_blendValue = [ 0.0, 1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_run_s"
+						m_blendValue = [ 0.0, -1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_run_w"
+						m_blendValue = [ -1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "smg_hold"
+						m_blendValue = [ 0.0, 0.0 ]
+					},
+				]
+				m_blendSourceX = "Parameter"
+				m_paramX = 
+				{
+					m_id = 1307562239
+				}
+				m_blendSourceY = "Parameter"
+				m_paramY = 
+				{
+					m_id = 940853046
+				}
+				m_bLoop = true
+				m_bLockBlendOnReset = false
+				m_bLockWhenWaning = true
+				m_playbackSpeed = 1.0
+				m_damping = 
+				{
+					_class = "CAnimInputDamping"
+					m_speedFunction = "Spring"
+					m_fSpeedScale = 16.0
+					m_fMinSpeed = 10.0
+					m_fMaxTension = 1000.0
+				}
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 1230413633
 			}
 			value = 
@@ -8334,14 +8407,14 @@
 			{
 				_class = "CBoneMaskAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 179.131714, -1078.861572 ]
+				m_vecPosition = [ 178.0, -1079.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1255327437
 				}
 				m_networkMode = "ClientPredicted"
 				m_sNote = ""
-				m_weightListName = "upper_body"
+				m_weightListName = "upper_body_smg"
 				m_child1ID = 
 				{
 					m_id = 1138870100
@@ -9614,7 +9687,7 @@
 				m_sNote = ""
 				m_childID = 
 				{
-					m_id = 246869267
+					m_id = 1205318376
 				}
 				m_param = 
 				{
@@ -9656,6 +9729,79 @@
 				m_rotationParam = 
 				{
 					m_id = 4294967295
+				}
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 1713476837
+			}
+			value = 
+			{
+				_class = "CBlend2DAnimNode"
+				m_sName = "pistol_walk"
+				m_vecPosition = [ -902.0, -1219.0 ]
+				m_nNodeID = 
+				{
+					m_id = 1713476837
+				}
+				m_networkMode = "ClientPredicted"
+				m_sNote = ""
+				m_items = 
+				[
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "pistol_run_e"
+						m_blendValue = [ 1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "pistol_run_n"
+						m_blendValue = [ 0.0, 1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "pistol_run_s"
+						m_blendValue = [ 0.0, -1.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "pistol_run_w"
+						m_blendValue = [ -1.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "idle_pistol_aim"
+						m_blendValue = [ 0.0, 0.0 ]
+					},
+				]
+				m_blendSourceX = "Parameter"
+				m_paramX = 
+				{
+					m_id = 1307562239
+				}
+				m_blendSourceY = "Parameter"
+				m_paramY = 
+				{
+					m_id = 940853046
+				}
+				m_bLoop = true
+				m_bLockBlendOnReset = false
+				m_bLockWhenWaning = true
+				m_playbackSpeed = 1.0
+				m_damping = 
+				{
+					_class = "CAnimInputDamping"
+					m_speedFunction = "Spring"
+					m_fSpeedScale = 16.0
+					m_fMinSpeed = 10.0
+					m_fMaxTension = 1000.0
 				}
 			}
 		},
