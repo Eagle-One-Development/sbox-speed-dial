@@ -10,7 +10,7 @@
 		DistanceMax = 1000.0
 		Sounds = 
 		[
-			"sounds/drukqs/ollie.vsnd",
+			"sounds/drukqs/ollie_2.vsnd",
 		]
 	}
 }
