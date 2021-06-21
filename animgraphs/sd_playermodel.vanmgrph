@@ -498,7 +498,7 @@
 	}
 	m_previewModels = 
 	[
-		"models/playermodels/playermodel_base.vmdl",
+		"models/playermodels/character_fallback.vmdl",
 	]
 	m_nodes = 
 	[
@@ -790,7 +790,7 @@
 				}
 				m_networkMode = "ClientPredicted"
 				m_sNote = ""
-				m_weightListName = "holding_bat"
+				m_weightListName = "upper_body"
 				m_child1ID = 
 				{
 					m_id = 147410568
@@ -2928,7 +2928,7 @@
 			{
 				_class = "CBlend2DAnimNode"
 				m_sName = "walk"
-				m_vecPosition = [ -1332.0, 1611.0 ]
+				m_vecPosition = [ -1330.0, 1611.0 ]
 				m_nNodeID = 
 				{
 					m_id = 572948740
@@ -4320,7 +4320,7 @@
 				{
 					m_id = 887600586
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_sNote = ""
 				m_childID = 
 				{
@@ -9152,12 +9152,12 @@
 			{
 				_class = "CSpeedScaleAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -1080.0, 1821.0 ]
+				m_vecPosition = [ -1085.0, 1823.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1619204774
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_sNote = ""
 				m_childID = 
 				{
@@ -11525,14 +11525,14 @@
 			{
 				_class = "CBoneMaskAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 48.0, 1676.0 ]
+				m_vecPosition = [ 50.0, 1674.0 ]
 				m_nNodeID = 
 				{
 					m_id = 2110578779
 				}
 				m_networkMode = "ClientPredicted"
 				m_sNote = ""
-				m_weightListName = "holding_bat"
+				m_weightListName = "upper_body"
 				m_child1ID = 
 				{
 					m_id = 84528413
@@ -11552,7 +11552,7 @@
 				m_flTimingBlend = 0.5
 				m_flRootMotionBlend = 0.0
 				m_footMotionTiming = "Child1"
-				m_bResetChild1 = true
+				m_bResetChild1 = false
 				m_bResetChild2 = true
 			}
 		},
