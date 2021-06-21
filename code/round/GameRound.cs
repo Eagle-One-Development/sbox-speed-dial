@@ -29,8 +29,10 @@ namespace SpeedDial {
 			Log.Info("GAME ROUND START");
 			var players = Client.All;
 			foreach(var p in players.ToArray()) {
-				(p.Pawn as SpeedDialPlayer).ResetWeapon();
-				(p.Pawn as SpeedDialPlayer).Unfreeze();
+				if(p.Pawn != null) {
+					(p.Pawn as SpeedDialPlayer).ResetWeapon();
+					(p.Pawn as SpeedDialPlayer).Unfreeze();
+				}
 			}
 		}
 
