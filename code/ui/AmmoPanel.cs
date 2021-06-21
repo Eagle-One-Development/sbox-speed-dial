@@ -40,6 +40,7 @@ namespace SpeedDial.UI {
 		private float old;
 		private float oldScale;
 		public Label preRoundCountDownLabel;
+		public Label preRoundMenuLabel;
 
 		public AmmoPanel() {
 			StyleSheet.Load("/ui/AmmoPanel.scss");
@@ -57,6 +58,7 @@ namespace SpeedDial.UI {
 
 			var panel = Add.Panel("countdown");
 			preRoundCountDownLabel = panel.Add.Label("10", "timer");
+			preRoundMenuLabel = panel.Add.Label("PRESS " + Input.GetKeyWithBinding("+iv_duck").ToUpper() + " TO OPEN CHARACTER SELECT","char");
 
 			vhs_green = new Color(28f / 255f, 255f / 255f, 176f / 255f, 1.0f);//new Color(173f/255f,255f/255f,226f/255f,1.0f);
 			vhs_magenta = new Color(255f / 255f, 89 / 255f, 255f / 255f, 1.0f);//new Color(255f / 255f, 163f / 255f, 255f / 255f, 1.0f);
@@ -134,11 +136,14 @@ namespace SpeedDial.UI {
 			if(SpeedDialGame.Instance.Round is PreRound gr) {
 				if(gr.TimeLeft >= 0) {
 					preRoundCountDownLabel.Text = MathF.Round(gr.TimeLeft).ToString();
+					preRoundMenuLabel.Text = "PRESS " + Input.GetKeyWithBinding("+iv_duck").ToUpper() + " TO OPEN CHARACTER SELECT";
 				} else {
 					preRoundCountDownLabel.Text = "";
+					preRoundMenuLabel.Text = "";
 				}
 			} else {
 				preRoundCountDownLabel.Text = "";
+				preRoundMenuLabel.Text = "";
 			}
 
 			if(SpeedDialGame.Instance.Round is GameRound || SpeedDialGame.Instance.Round is PreRound) {
@@ -153,9 +158,11 @@ namespace SpeedDial.UI {
 				if(weapon == null) return;
 				outscale = outscale.LerpTo(1f, Time.Delta * 2f);
 				clipLabel.Text = $"{weapon.AmmoClip}";
+				
 			} else {
 				outscale = outscale.LerpTo(0f, Time.Delta * 8f);
 				clipLabel.Text = "0";
+				
 			}
 
 			var screenPos = player.EyePos.ToScreen();

@@ -127,11 +127,17 @@ namespace SpeedDial.Player {
 		}
 
 		public override void Respawn() {
-			SetModel("models/playermodels/character_fallback.vmdl");
+			if(character == null) {
+				SetModel("models/playermodels/character_fallback.vmdl");
+			} else {
+				SetModel(character.Model);
+			}
 
 			SetBodyGroup(0, BodyGroup);
 
-			RenderColor = PlayerColor;
+			RenderColor = Color.White;
+
+
 
 			(Camera as SpeedDialCamera).Freeze = false;
 			(Controller as SpeedDialController).Freeze = false;

@@ -25,6 +25,12 @@ namespace SpeedDial.Player {
 		/// </summary>
 		public virtual string Portrait => "materials/ui/portraits/default.png";
 
+
+		/// <summary>
+		/// The path for the model
+		/// </summary>
+		public virtual string Model => "models/playermodels/character_fallback.vmdl";
+
 		private Texture cachedTexture;
 		public virtual Texture PortraitTexture {
 			get {

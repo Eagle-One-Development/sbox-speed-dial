@@ -16,7 +16,7 @@ ammopanel {
         height: 64px;
         width: 64px;
         transform: translatex(-50%) translatey(-150%);
-        
+
 
 
 
@@ -24,7 +24,7 @@ ammopanel {
 
         .drugImage {
             //transform-origin: 50% 50%;
-            
+
             position: absolute;
             height: 64px;
             width: 64px;
@@ -48,6 +48,18 @@ ammopanel {
             font-weight: bold;
             align-items: center;
             justify-content: center;
+        }
+
+        .char {
+            position: absolute;
+            font-family: VCR_OSD_MONO;
+            color: #fff;
+            font-size: 32px;
+            text-align: center;
+            font-weight: bold;
+            align-items: center;
+            justify-content: center;
+            bottom: 20px;
         }
     }
 

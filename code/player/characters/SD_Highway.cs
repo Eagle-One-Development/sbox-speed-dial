@@ -7,5 +7,6 @@ namespace SpeedDial.Player {
 		public override string Description => "Nobody knows who Highway is or what their goal is. Stories tell of a drifter who comes in and out of towns, leaving bodies in their wake.";
 		public override string Weapon => "sd_shotgun";
 		public override string Portrait => "materials/ui/portraits/highway_hd.png";
+		public override string Model => "models/playermodels/character_highway.vmdl";
 	}
 }
