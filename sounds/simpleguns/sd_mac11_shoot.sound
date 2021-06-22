@@ -4,7 +4,7 @@
 	{
 		sounds = 
 		[
-			"sounds/simpleguns/mac11.wav",
+			"sounds/simpleguns/uzi 1.vsnd",
 		]
 		UI = false
 		Volume = 2.0
