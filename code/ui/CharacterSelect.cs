@@ -232,13 +232,11 @@ namespace SpeedDial.UI {
 				if(space) {
 					string[] s = { currentIndex.ToString() };
 					//Log.Info(s[0].ToString());
+					(Local.Pawn as SpeedDialPlayer).FadeSoundtrack(1);
 					ConsoleSystem.Run("set_character", s);
 					open = false;
 					middleScale = 2f;
 					tapeSound.Stop();
-					
-					
-
 					var sound = Sound.FromScreen("select_confirm");
 				}
 			}
