@@ -5,6 +5,21 @@ ammopanel {
     opacity: 1;
     transition: opacity 1s ease-in-out;
 
+    skull {
+        position: absolute;
+        opacity: 1;
+        width: 64px;
+        aspect-ratio: 1;
+        transform: translateX(-32px) translateY(-64px);
+        background-image-tint: #B72316;
+
+        .icon {
+            width: 100%;
+            background-image-tint: #B72316;
+            color: #B72316;
+        }
+    }
+
     &.active {
         opacity: 0;
     }

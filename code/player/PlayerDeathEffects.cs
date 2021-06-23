@@ -135,7 +135,7 @@ namespace SpeedDial.Player {
 			if(LastDamage.Attacker is SpeedDialPlayer attacker && attacker != this) {
 				// someone killed someone, base the effect direction on the attacker
 				BloodSplatter(EyePos + Vector3.Down * 20 - (attacker.EyePos + Vector3.Down * 20));
-				DrugBump(To.Single(this),attacker.GetClientOwner().Name, "KILLED YOU", false);
+				
 
 			} else {
 				// suicide, effects just go down

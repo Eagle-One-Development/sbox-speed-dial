@@ -5,6 +5,7 @@ using System;
 using System.Threading.Tasks;
 using SpeedDial.Weapons;
 using SpeedDial.Player;
+using System.Collections.Generic;
 using SpeedDial.Meds;
 
 
@@ -42,6 +43,8 @@ namespace SpeedDial.UI {
 		public Label preRoundCountDownLabel;
 		public Label preRoundMenuLabel;
 
+		public List<Skull> dominators;
+
 		public AmmoPanel() {
 			StyleSheet.Load("/ui/AmmoPanel.scss");
 			ammoCounter = Add.Panel("counter");
@@ -55,6 +58,8 @@ namespace SpeedDial.UI {
 
 			Current = this;
 			scale = 0;
+
+			dominators = new();
 
 			var panel = Add.Panel("countdown");
 			preRoundCountDownLabel = panel.Add.Label("10", "timer");
@@ -70,6 +75,28 @@ namespace SpeedDial.UI {
 
 		public void Bump() {
 			scale = 0.7f;
+		}
+
+		public void AddDominator(Entity e) {
+			Skull s = new Skull(e);
+			AddChild(s);
+			dominators.Add(s);
+		}
+
+		public void RemoveDominator(Entity e) {
+			int index = -1;
+			Log.Info($"ATTEMPTING TO DELETE {e.GetClientOwner().Name}");
+			for(int i = 0; i < dominators.Count; i++) {
+				Skull s = dominators[i];
+				if(s.target == e) {
+					dominators[i].DeleteChildren(true);
+					dominators[i].Delete(true);
+					Log.Info("DELETED");
+					dominators.RemoveAt(i);
+					index = i;
+					continue;
+				}
+			}
 		}
 
 
@@ -171,7 +198,15 @@ namespace SpeedDial.UI {
 
 			var screenPos = player.EyePos.ToScreen();
 
-
+			for(int i = 0; i < dominators.Count; i++) {
+				if(dominators[i] != null) {
+					
+					var pos = dominators[i].target.EyePos.ToScreen();
+					dominators[i].Style.Left = Length.Fraction(pos.x);
+					dominators[i].Style.Top = Length.Fraction(pos.y);
+					dominators[i].Style.Dirty();
+				}
+			}
 
 
 			drugPanel.Style.Left = Length.Fraction(screenPos.x);
@@ -221,4 +256,14 @@ namespace SpeedDial.UI {
 
 		}
 	}
+	
+
+	public class Skull : Panel {
+		public Entity target;
+		public Skull(Entity t) {
+			Add.Image("materials/ui/skull.png", "icon");
+			target = t;
+		}
+	}
+
 }

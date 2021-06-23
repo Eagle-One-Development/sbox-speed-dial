@@ -170,6 +170,9 @@ namespace SpeedDial.Player {
 		/// Reloads weapons to give them their selected character's weapons.
 		/// </summary>
 		public void ResetWeapon() {
+			if(Inventory == null) {
+				return;
+			}
 			Inventory.DeleteContents();
 			BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>(character.Weapon);
 			Inventory.Add(weapon, true);
@@ -190,6 +193,16 @@ namespace SpeedDial.Player {
 		[ClientRpc]
 		public void DrugBump(string s, string f, bool b) {
 			AmmoPanel.Current.DrugBump(s, f, b);
+		}
+
+		[ClientRpc]
+		public void Dominate(Entity e) {
+			AmmoPanel.Current.AddDominator(e);
+		}
+
+		[ClientRpc]
+		public void Revenge(Entity e) {
+			AmmoPanel.Current.RemoveDominator(e);
 		}
 
 		/// <summary>
