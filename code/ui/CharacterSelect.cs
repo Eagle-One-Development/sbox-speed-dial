@@ -174,7 +174,18 @@ namespace SpeedDial.UI {
 				SetClass("active", false);
 			}
 		}
-
+		public void ToggleOpen() {
+			open = !open;
+			if(open) {
+				(Local.Pawn as SpeedDialPlayer).FadeSoundtrack(0.3f);
+				Sound.FromScreen("tape_stop");
+				tapeSound = Sound.FromScreen("tape_noise");
+			} else {
+				(Local.Pawn as SpeedDialPlayer).FadeSoundtrack(1);
+				tapeSound.Stop();
+				var sound = Sound.FromScreen("select_confirm");
+			}
+		}
 		[Event("buildinput")]
 		public void ProcessClientInput(InputBuilder input) {
 			if(SpeedDialGame.Instance.Round is GameRound || SpeedDialGame.Instance.Round is PreRound) {
@@ -188,16 +199,7 @@ namespace SpeedDial.UI {
 			bool space = input.Pressed(InputButton.Jump);
 
 			if(input.Pressed(InputButton.Duck)) {
-				open = !open;
-				if(open) {
-					(Local.Pawn as SpeedDialPlayer).FadeSoundtrack(0.3f);
-					Sound.FromScreen("tape_stop");
-					tapeSound = Sound.FromScreen("tape_noise");
-				} else {
-					(Local.Pawn as SpeedDialPlayer).FadeSoundtrack(1);
-					tapeSound.Stop();
-					var sound = Sound.FromScreen("select_confirm");
-				}
+				ToggleOpen();
 			}
 
 			if(open) {

@@ -206,6 +206,7 @@ namespace SpeedDial.UI {
 						dominators[i].Delete(true);
 						Log.Info("DELETED");
 						dominators.RemoveAt(i);
+						continue;
 					}
 					var pos = dominators[i].target.EyePos.ToScreen();
 					dominators[i].Style.Left = Length.Fraction(pos.x);

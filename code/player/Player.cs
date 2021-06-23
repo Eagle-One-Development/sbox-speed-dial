@@ -64,6 +64,8 @@ namespace SpeedDial.Player {
 
 		public SoundTrack SoundTrack { get; set; }
 
+		private bool screenOpen = false;
+
 		public void InitialSpawn() {
 
 			if(GetClientOwner().SteamId == 76561198000823482) { // bak
@@ -91,10 +93,21 @@ namespace SpeedDial.Player {
 			//PlayUISound("track01");
 			SpeedDialGame.Instance.Round?.OnPlayerSpawn(this);
 
+			if(SpeedDialGame.Instance.Round is PreRound) {
+				(Controller as SpeedDialController).Freeze = true;
+				Frozen = true;
+				StopSoundtrack(To.Single(this), true);
+				PlaySoundtrack(To.Single(this));
+
+			}
+			
+
 			Respawn();
 
 			//PlaySoundtrack(To.Single(this), "track01");
 		}
+
+
 
 		[ClientRpc]
 		public void PlaySoundtrack() {
@@ -164,6 +177,8 @@ namespace SpeedDial.Player {
 			CreateHull();
 			ResetInterpolation();
 			SpeedDialGame.MoveToSpawn(this);
+
+			
 		}
 
 		/// <summary>
@@ -289,6 +304,11 @@ namespace SpeedDial.Player {
 		}
 
 		public override void Simulate(Client cl) {
+
+			if(SpeedDialGame.Instance.Round is PreRound) {
+				screenOpen = true;
+			}
+
 			if(Frozen) return;
 
 			if(LifeState == LifeState.Dead) {
@@ -297,6 +317,14 @@ namespace SpeedDial.Player {
 					Respawn();
 				}
 				return;
+			}
+
+			
+
+			if(!screenOpen && SpeedDialGame.Instance.Round is GameRound) {
+				CharacterSelect.Current?.ToggleOpen();
+
+				screenOpen = true;
 			}
 
 			if(ResetTimeSinceMelee) {
