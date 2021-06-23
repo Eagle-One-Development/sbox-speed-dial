@@ -132,6 +132,9 @@ namespace SpeedDial {
 			//Temp variable for counting number of kills
 			int numKills = 0;
 
+			//Remove any kill feed entries where the player enttiy is no longer valid, prevents errors when players disconnect
+			KillFeed.RemoveAll(item => !item.attacker.IsValid() || !item.victim.IsValid());
+
 			//Iterate through the kill feed and check the number of kills our attacker had against us before we killed them.
 			for(int i = 0; i < KillFeed.Count; i++) {
 
