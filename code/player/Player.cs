@@ -188,8 +188,8 @@ namespace SpeedDial.Player {
 		}
 
 		[ClientRpc]
-		public void DrugBump(string s, string f) {
-			AmmoPanel.Current.DrugBump(s, f);
+		public void DrugBump(string s, string f, bool b) {
+			AmmoPanel.Current.DrugBump(s, f, b);
 		}
 
 		/// <summary>

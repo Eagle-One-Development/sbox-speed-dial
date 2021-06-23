@@ -69,7 +69,7 @@ namespace SpeedDial.Player {
 		[ClientRpc]
 		public void DBump(string s, SpeedDialPlayer p, string f) {
 			if(p == Local.Pawn) {
-				DrugBump(s, f);
+				DrugBump(s, f, true);
 			}
 
 		}

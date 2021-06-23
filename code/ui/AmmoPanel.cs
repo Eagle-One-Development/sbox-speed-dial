@@ -74,10 +74,13 @@ namespace SpeedDial.UI {
 
 
 
-		public void DrugBump(string s, string f) {
+		public void DrugBump(string s, string f, bool b) {
 			wideScale = 0.5f;
 			totalDrugScale = 1.0f;
-			medLabel.Text = s + " TAKEN";
+			medLabel.Text = s;
+			if(b) {
+				medLabel.Text += " TAKEN";
+			}
 			medFlavor.Text = f;
 			Log.Info("TEST");
 		}

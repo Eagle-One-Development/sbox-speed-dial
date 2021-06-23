@@ -7,8 +7,8 @@
 			"sounds/simpleguns/uzi 1.vsnd",
 		]
 		UI = false
-		Volume = 2.0
-		VolumeRandom = 0.2
+		Volume = 0.8
+		VolumeRandom = 0.1
 		Pitch = 1.0
 		PitchRandom = 0.01
 		DistanceMax = 1000.0
