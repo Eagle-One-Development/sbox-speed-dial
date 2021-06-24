@@ -48,7 +48,7 @@ namespace SpeedDial {
 			CurrentSoundtrack = Soundtracks[index];
 		}
 
-		
+
 
 		[ServerCmd]
 		public List<SpeedDialPlayer> SortedPlayerList() {
@@ -153,7 +153,7 @@ namespace SpeedDial {
 				(pawn.LastAttacker as SpeedDialPlayer).DrugBump(To.Single(pawn.LastAttacker.GetClientOwner()), "REVENGE", "AGAINST " + pawn.GetClientOwner().Name, false);
 				(pawn.LastAttacker as SpeedDialPlayer).Revenge(To.Single(pawn.LastAttacker.GetClientOwner()), pawn);
 				revenge = true;
-				
+
 			}
 
 			//Reset the number of kills
@@ -162,13 +162,13 @@ namespace SpeedDial {
 			//Iterate over the kill feed and check how many times our attacker has killed us
 			for(int i = 0; i < KillFeed.Count; i++) {
 				KillFeedEntry check = KillFeed[i];
-				
+
 				if(check.attacker == pawn.LastAttacker && check.victim == pawn) {
 					numKills++;
 				}
 			}
 
-			Log.Info(pawn.LastAttacker.GetClientOwner().Name + " NUMBER OF KILLS: " + numKills.ToString());
+			//Log.Info(pawn.LastAttacker.GetClientOwner().Name + " NUMBER OF KILLS: " + numKills.ToString());
 
 			//If it's 3 kills, and they weren't taking revenge on us, then we will say we are dominating them and add an icon to their hud
 			if(numKills == 3 && !revenge) {
@@ -200,7 +200,7 @@ namespace SpeedDial {
 				}
 			}
 
-			
+
 		}
 
 		[ServerCmd("give_weapon")]

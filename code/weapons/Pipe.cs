@@ -45,7 +45,7 @@ namespace SpeedDial.Weapons {
 
 				// hardcoded values cause I suck
 				if(TimeSinceSwing <= 0.25f && Hitting) {
-					//DebugOverlay.Line(start.Position, end.Position, Color.Green, 0.1f, false);
+					DebugOverlay.Line(start.Position, end.Position, Color.Green, 0.1f, false);
 					foreach(var tr in TraceBullet(start.Position, end.Position, 4)) {
 						if(tr.Entity is SpeedDialPlayer hitPlayer) {
 							var ps = Particles.Create("particles/blood/blood_plip.vpcf", tr.EndPos);

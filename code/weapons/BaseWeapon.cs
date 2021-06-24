@@ -154,7 +154,7 @@ namespace SpeedDial.Weapons {
 				ShootEffects(); // muzzle and brass eject
 				PlaySound(ShootSound); // shoot sound
 				(Owner as AnimEntity).SetAnimBool("b_attack", true); // shoot anim
-				
+
 			}
 		}
 
@@ -257,10 +257,8 @@ namespace SpeedDial.Weapons {
 			Particles.Create("particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point");
 
 			if(IsLocalPawn) {
-				new Sandbox.ScreenShake.Perlin(ScreenShakeParameters.x, ScreenShakeParameters.y, ScreenShakeParameters.z, ScreenShakeParameters.w);
+				_ = new Sandbox.ScreenShake.Perlin(ScreenShakeParameters.x, ScreenShakeParameters.y, ScreenShakeParameters.z, ScreenShakeParameters.w);
 			}
-
-			CrosshairPanel?.OnEvent("fire");
 		}
 
 		[ClientRpc]

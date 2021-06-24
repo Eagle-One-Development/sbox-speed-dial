@@ -63,7 +63,7 @@ namespace SpeedDial.UI {
 
 			var panel = Add.Panel("countdown");
 			preRoundCountDownLabel = panel.Add.Label("10", "timer");
-			preRoundMenuLabel = panel.Add.Label("PRESS " + Input.GetKeyWithBinding("+iv_duck").ToUpper() + " TO OPEN CHARACTER SELECT","char");
+			preRoundMenuLabel = panel.Add.Label("PRESS " + Input.GetKeyWithBinding("+iv_duck").ToUpper() + " TO OPEN CHARACTER SELECT", "char");
 
 			vhs_green = new Color(28f / 255f, 255f / 255f, 176f / 255f, 1.0f);//new Color(173f/255f,255f/255f,226f/255f,1.0f);
 			vhs_magenta = new Color(255f / 255f, 89 / 255f, 255f / 255f, 1.0f);//new Color(255f / 255f, 163f / 255f, 255f / 255f, 1.0f);
@@ -109,7 +109,7 @@ namespace SpeedDial.UI {
 				medLabel.Text += " TAKEN";
 			}
 			medFlavor.Text = f;
-			Log.Info("TEST");
+			//Log.Info("TEST");
 		}
 
 		public override void Tick() {
@@ -189,11 +189,11 @@ namespace SpeedDial.UI {
 				if(weapon == null) return;
 				outscale = outscale.LerpTo(1f, Time.Delta * 2f);
 				clipLabel.Text = $"{weapon.AmmoClip}";
-				
+
 			} else {
 				outscale = outscale.LerpTo(0f, Time.Delta * 8f);
 				clipLabel.Text = "0";
-				
+
 			}
 
 			var screenPos = player.EyePos.ToScreen();
@@ -263,7 +263,7 @@ namespace SpeedDial.UI {
 
 		}
 	}
-	
+
 
 	public class Skull : Panel {
 		public Entity target;
