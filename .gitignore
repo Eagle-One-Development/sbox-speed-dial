@@ -1,5 +1,6 @@
 !sd_test.vpk
 !sd_den.vpk
+!sd_bank.vpk
 !sd_lab_player_shoot_height.vpk
 !sd_height_test.vpk
 *materials/*/*/*.vmat_c
@@ -31,3 +32,5 @@ config/speed-dial.fgd
 !sd_motel.vpk
 maps/editor/_bakeresourcecache/toolscene_default_baked/env_cubemap_16.txt
 tools_thumbnail_cache.bin
+tools_thumbnail_cache.bin
+code/code/Properties/launchSettings.json
