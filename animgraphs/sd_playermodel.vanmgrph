@@ -3174,7 +3174,7 @@
 				}
 				m_networkMode = "ClientPredicted"
 				m_sNote = ""
-				m_weightListName = "upper_body_rifle"
+				m_weightListName = "upper_body"
 				m_child1ID = 
 				{
 					m_id = 1929792217
