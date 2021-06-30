@@ -7,6 +7,6 @@ namespace SpeedDial.Player {
 		public override string Description => "Dial-Up assisted many L.A. crime gangs on various counts of cyber-crime. Now he specializes in 'violent corporate cyber espionage'.";
 		public override string Portrait => "materials/ui/portraits/hd_me.png";
 		public override string Weapon => "sd_smg";
-
+		public override string Model => "models/playermodels/character_dialup.vmdl";
 	}
 }
