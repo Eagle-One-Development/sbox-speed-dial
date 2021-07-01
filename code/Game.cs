@@ -194,7 +194,7 @@ namespace SpeedDial {
 
 					attacker.KillScore += ScoreBase + (ScoreBase * attacker.KillCombo);
 					attacker.GetClientOwner().SetScore("score", attacker.KillScore);
-					attacker.KillCombo++;
+					//attacker.KillCombo++;
 
 					attacker.TimeSinceMurdered = 0;
 				}

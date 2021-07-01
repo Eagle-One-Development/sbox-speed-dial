@@ -4,7 +4,9 @@
 	{
 		sounds = 
 		[
-			"sounds/simpleguns/rifle 1.vsnd",
+			"sounds/simpleguns/[final1]sfx_ra-23_shot-001.vsnd",
+			"sounds/simpleguns/[final1]sfx_ra-23_shot-002.vsnd",
+			"sounds/simpleguns/[final1]sfx_ra-23_shot-003.vsnd",
 		]
 		UI = false
 		Volume = 1.0

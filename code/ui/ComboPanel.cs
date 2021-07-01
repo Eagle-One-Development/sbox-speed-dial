@@ -61,6 +61,8 @@ namespace SpeedDial.UI {
 				}
 			}
 
+			
+
 			if(ws != null) {
 				ws.position = pos;
 				ws.amount = amt;

@@ -47,7 +47,7 @@ namespace SpeedDial.Player {
 
 					} else {
 						//Since Leaf lets you take an extra hit we don't need to do any kind of effect over time so we can just set the health to 200
-						Health = 200f;
+						Health = 500f;
 
 					}
 

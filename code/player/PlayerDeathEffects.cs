@@ -156,18 +156,24 @@ namespace SpeedDial.Player {
 			base.TakeDamage(info);
 
 			if(info.Attacker is SpeedDialPlayer attacker && attacker != this) {
+				if(Health <= 0) {
+					attacker.KillCombo++;
+					Log.Info($"TEST { attacker.KillCombo }");
+				}
 				// Note - sending this only to the attacker!
-				attacker.DidDamage(To.Single(attacker), info.Position, info.Damage, Health, CauseOfDeath);
+				attacker.DidDamage(To.Single(attacker), info.Position, info.Damage, Health, CauseOfDeath, attacker.KillCombo);
+				
 
 				TookDamage(To.Single(this), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position);
 			}
 		}
 
 		[ClientRpc]
-		public void DidDamage(Vector3 pos, float amount, float healthinv, COD death) {
+		public void DidDamage(Vector3 pos, float amount, float healthinv, COD death, int combo) {
 			if(healthinv <= 0) {
+				Log.Info(combo);
 				int ScoreBase = SpeedDialGame.ScoreBase;
-				ComboEvents(pos, ScoreBase * KillCombo, KillCombo, death);
+				ComboEvents(pos, ScoreBase * combo, combo, death);
 			}
 		}
 
