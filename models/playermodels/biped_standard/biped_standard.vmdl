@@ -3833,14 +3833,14 @@
 						placement_bone = "ankle_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "interactive"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
-						fadetime = 20.0
+						fadetime = 5.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
-						random_spawn_chance = 1.0
-						is_essential_piece = true
+						random_spawn_chance = 0.5
+						is_essential_piece = false
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -3873,14 +3873,14 @@
 						placement_bone = "ankle_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "interactive"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
-						fadetime = 20.0
+						fadetime = 5.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
-						random_spawn_chance = 1.0
-						is_essential_piece = true
+						random_spawn_chance = 0.5
+						is_essential_piece = false
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -3913,14 +3913,14 @@
 						placement_bone = "arm_lower_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "interactive"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
-						fadetime = 20.0
+						fadetime = 5.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
-						random_spawn_chance = 1.0
-						is_essential_piece = true
+						random_spawn_chance = 0.5
+						is_essential_piece = false
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -3953,14 +3953,14 @@
 						placement_bone = "arm_upper_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "interactive"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
-						fadetime = 20.0
+						fadetime = 5.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
-						random_spawn_chance = 1.0
-						is_essential_piece = true
+						random_spawn_chance = 0.5
+						is_essential_piece = false
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -3993,14 +3993,14 @@
 						placement_bone = "head"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "interactive"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
-						fadetime = 20.0
+						fadetime = 5.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
-						random_spawn_chance = 1.0
-						is_essential_piece = true
+						random_spawn_chance = 0.5
+						is_essential_piece = false
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4033,14 +4033,14 @@
 						placement_bone = "hand_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "interactive"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
-						fadetime = 20.0
+						fadetime = 5.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
-						random_spawn_chance = 1.0
-						is_essential_piece = true
+						random_spawn_chance = 0.5
+						is_essential_piece = false
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4073,14 +4073,14 @@
 						placement_bone = "head"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "interactive"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
-						fadetime = 20.0
+						fadetime = 5.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
-						random_spawn_chance = 1.0
-						is_essential_piece = true
+						random_spawn_chance = 0.5
+						is_essential_piece = false
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4113,14 +4113,14 @@
 						placement_bone = "leg_lower_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "interactive"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
-						fadetime = 20.0
+						fadetime = 5.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
-						random_spawn_chance = 1.0
-						is_essential_piece = true
+						random_spawn_chance = 0.5
+						is_essential_piece = false
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4153,14 +4153,14 @@
 						placement_bone = "leg_lower_R"
 						placement_attach = "leg_lower_r"
 						is_ragdoll = false
-						collision_group = "interactive"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
-						fadetime = 20.0
+						fadetime = 5.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
-						random_spawn_chance = 1.0
-						is_essential_piece = true
+						random_spawn_chance = 0.5
+						is_essential_piece = false
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4193,14 +4193,14 @@
 						placement_bone = "leg_upper_L"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "interactive"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
-						fadetime = 20.0
+						fadetime = 5.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
-						random_spawn_chance = 1.0
-						is_essential_piece = true
+						random_spawn_chance = 0.5
+						is_essential_piece = false
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4233,14 +4233,14 @@
 						placement_bone = "leg_upper_R"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "interactive"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
-						fadetime = 20.0
+						fadetime = 5.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
-						random_spawn_chance = 1.0
-						is_essential_piece = true
+						random_spawn_chance = 0.5
+						is_essential_piece = false
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4273,14 +4273,14 @@
 						placement_bone = "pelvis"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "interactive"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
-						fadetime = 20.0
+						fadetime = 5.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
-						random_spawn_chance = 1.0
-						is_essential_piece = true
+						random_spawn_chance = 0.5
+						is_essential_piece = false
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4313,14 +4313,14 @@
 						placement_bone = "arm_lower_R"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "interactive"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
-						fadetime = 20.0
+						fadetime = 5.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
-						random_spawn_chance = 1.0
-						is_essential_piece = true
+						random_spawn_chance = 0.5
+						is_essential_piece = false
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4353,14 +4353,14 @@
 						placement_bone = "arm_upper_R"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "interactive"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
-						fadetime = 20.0
+						fadetime = 5.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
-						random_spawn_chance = 1.0
-						is_essential_piece = true
+						random_spawn_chance = 0.5
+						is_essential_piece = false
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4393,14 +4393,14 @@
 						placement_bone = "spine_2"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "interactive"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
-						fadetime = 20.0
+						fadetime = 5.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
-						random_spawn_chance = 1.0
-						is_essential_piece = true
+						random_spawn_chance = 0.5
+						is_essential_piece = false
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4433,14 +4433,14 @@
 						placement_bone = "hand_R"
 						placement_attach = ""
 						is_ragdoll = false
-						collision_group = "interactive"
+						collision_group = "debris"
 						offset = [ 0.0, 0.0, 0.0 ]
-						fadetime = 20.0
+						fadetime = 5.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
-						random_spawn_chance = 1.0
-						is_essential_piece = true
+						random_spawn_chance = 0.5
+						is_essential_piece = false
 						manual_mode = false
 						surface_prop_override = ""
 					},

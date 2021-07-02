@@ -1413,7 +1413,7 @@
 								anim_markup_ordered = false
 								disable_compression = false
 								source_filename = "models/playermodels/anims/jab_left.dmx"
-								start_frame = 4
+								start_frame = 1
 								end_frame = 14
 								framerate = -1.0
 								reverse = false
