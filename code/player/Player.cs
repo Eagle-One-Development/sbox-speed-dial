@@ -63,6 +63,7 @@ namespace SpeedDial.Player {
 		public bool Frozen { get; set; } = false; // sorry for naming differences
 
 		public SoundTrack SoundTrack { get; set; }
+		public bool SoundtrackPlaying { get; set; }
 
 		private bool screenOpen = false;
 
@@ -100,7 +101,7 @@ namespace SpeedDial.Player {
 				PlaySoundtrack(To.Single(this));
 
 			}
-			
+
 
 			Respawn();
 
@@ -117,15 +118,20 @@ namespace SpeedDial.Player {
 		private async Task PlaySoundtrackAsync(string track, float delay) {
 			Log.Info($"NEW TRACK {track}");
 			await GameTask.DelaySeconds(delay);
-			SoundTrack = SoundTrack.FromScreen(track);
+			if(!SoundtrackPlaying) {
+				SoundTrack = SoundTrack.FromScreen(track);
+				SoundtrackPlaying = true;
+			}
 		}
 
 		[ClientRpc]
 		public void StopSoundtrack(bool instant = false) {
 			if(instant) {
 				SoundTrack?.Stop();
+				SoundtrackPlaying = false;
 			} else {
 				SoundTrack?.Stop(1);
+				SoundtrackPlaying = false;
 			}
 		}
 
@@ -178,7 +184,7 @@ namespace SpeedDial.Player {
 			ResetInterpolation();
 			SpeedDialGame.MoveToSpawn(this);
 
-			
+
 		}
 
 		/// <summary>
@@ -198,7 +204,7 @@ namespace SpeedDial.Player {
 			}
 		}
 
-	
+
 		[ClientRpc]
 		public void SetPlayerBodyGroup(int group, int value) {
 			Log.Info("Set Bodygroup Client");
@@ -319,7 +325,7 @@ namespace SpeedDial.Player {
 				return;
 			}
 
-			
+
 
 			if(!screenOpen && SpeedDialGame.Instance.Round is GameRound) {
 				CharacterSelect.Current?.ToggleOpen();
