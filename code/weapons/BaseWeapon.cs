@@ -143,7 +143,7 @@ namespace SpeedDial.Weapons {
 			if(!overrideBullet) {
 				if(!TakeAmmo(AmmoPerShot)) {
 					Log.Info("CLICK");
-					PlaySound("sd_dryfire");
+					PlaySound("sd_dryfrire");
 					return;
 				}// no ammo, no shooty shoot
 
