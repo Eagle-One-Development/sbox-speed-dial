@@ -12,7 +12,7 @@ namespace SpeedDial.Meds {
 		public override float RotationSpeed => 75f;
 		public override string DrugName => "Ritindi";
 		public override string DrugFlavor => "steady hands"; // keep steady // true aim // recoil control
-		public override float DrugDuration => 4f;
+		public override float DrugDuration => 5f;
 		public override DrugType Drug => DrugType.Ritindi;
 		public override string icon => "materials/ui/pill.png";
 		public override string PickupSound => "sd_ritindi_take";

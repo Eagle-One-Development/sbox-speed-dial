@@ -12,7 +12,7 @@ namespace SpeedDial.Meds {
 		public override float RotationSpeed => 75f;
 		public override string DrugName => "OLLIE";
 		public override string DrugFlavor => "penetrating, richocheting"; // super bullets // uranium slugs // shootin' lazers
-		public override float DrugDuration => 4f;
+		public override float DrugDuration => 5f;
 		public override DrugType Drug => DrugType.Ollie;
 		public override string icon => "materials/ui/ollie.png";
 		public override string PickupSound => "sd_ollie_take";

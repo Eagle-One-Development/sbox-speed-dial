@@ -7,14 +7,15 @@ namespace SpeedDial.Weapons {
 
 		public override float PrimaryRate => 2.0f;
 		public override float SecondaryRate => 1.0f;
-		public override int ClipSize => 30;
+		public override int ClipSize => 21;
 		public int burst = 3;
 		private int curBurst = 0;
 		private bool isFiring;
 		public TimeSince burstTimer;
 		public override int HoldType => 4;
 		public override Vector4 ScreenShakeParameters => new(0.5f, 4.0f, 1.0f, 0.5f);
-		public override float BulletSpread => 0.025f;
+		public override float BulletSpread => 0.05f;
+		public override float VerticalBulletSpread => 0.25f;
 		public override float BulletForce => 1.5f;
 		public override float BulletDamage => 100;
 		public override float BulletSize => 3;
