@@ -5,7 +5,7 @@ namespace SpeedDial.Weapons {
 	[Library("sd_roomclearer", Title = "The Room Clearer (TEST)")]
 	partial class RoomClearer : BaseSpeedDialWeapon {
 		public override float PrimaryRate => 1;
-		public override int ClipSize => 2;
+		public override int ClipSize => 4;
 		public override int HoldType => 4;
 		public override string WorldModel => "models/weapons/shotgun/prop_shotgun.vmdl";
 		public override string ShootSound => "sd_beeg";
