@@ -12,7 +12,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "default"
-						filename = "models/biped_standard/biped_standard_model.dmx"
+						filename = "models/playermodels/biped_standard/dmx/mesh/biped_standard_model.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 90.0, 0.0 ]
 						import_scale = 1.0
@@ -29,9 +29,9 @@
 					{
 						_class = "RenderMeshFile"
 						name = "gordo"
-						filename = "models/biped_standard/playerstart2.dmx"
+						filename = "models/playermodels/biped_standard/playerstart2.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
-						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 90.0, 0.0 ]
 						import_scale = 1.0
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
@@ -208,13 +208,13 @@
 						{
 							base = ""
 							allowstatic = false
-							bakelighting = true
-							health = 5.0
+							bakelighting = false
+							health = 10.0
 							spawn_motion_disabled = false
 							parent_bodygroup_name = ""
 							parent_bodygroup_value = 0
 							min_impact_damage_speed = -1.0
-							impact_damage = 1.0
+							impact_damage = 400.0
 						}
 					},
 					{
@@ -258,17 +258,16 @@
 					},
 					{
 						_class = "BreakCommand"
-						game_class = "break_create_joint_revolute"
+						disabled = true
+						game_class = "break_uniform_burst"
 						game_keys = 
 						{
-							parent_piece = "piece_07"
-							child_piece = "piece_05"
-							anchor_position = [ 0.0, 0.0, 0.0 ]
-							anchor_angles = [ 0.0, 0.0, 0.0 ]
-							friction = 500.0
-							enable_limit = true
-							min_angle = 0.0
-							max_angle = 0.0
+							offset = [ 0.0, 0.0, 0.0 ]
+							attachment_point = ""
+							center_on_damage_point = false
+							limit_to_piece = ""
+							burst_scale = 0.0
+							burst_randomize = 0.0
 						}
 					},
 				]
@@ -334,7 +333,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/walke.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/walke.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -378,7 +377,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/walkn.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/walkn.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -432,7 +431,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/walkne.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/walkne.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -486,7 +485,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/walknw.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/walknw.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -540,7 +539,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/walks.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/walks.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -594,7 +593,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/walkse.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/walkse.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -648,7 +647,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/walksw.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/walksw.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -702,7 +701,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/walkw.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/walkw.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -757,7 +756,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/turn_left_45.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/turn_left_45.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -805,7 +804,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/turn_left_90.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/turn_left_90.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -853,7 +852,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/turn_left_180.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/turn_left_180.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -901,7 +900,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/turn_right_45.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/turn_right_45.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -949,7 +948,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/turn_right_90.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/turn_right_90.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -997,7 +996,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/turn_right_180.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/turn_right_180.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1043,7 +1042,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/crouch_walke.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/crouch_walke.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1082,7 +1081,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/crouch_walkn.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/crouch_walkn.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1121,7 +1120,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/crouch_walkne.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/crouch_walkne.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1160,7 +1159,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/crouch_walknw.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/crouch_walknw.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1199,7 +1198,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/crouch_walks.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/crouch_walks.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1238,7 +1237,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/crouch_walkse.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/crouch_walkse.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1277,7 +1276,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/crouch_walksw.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/crouch_walksw.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1316,7 +1315,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/crouch_walkw.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/crouch_walkw.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1362,7 +1361,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/rune.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/rune.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1401,7 +1400,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/runn.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/runn.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1440,7 +1439,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/runne.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/runne.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1479,7 +1478,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/runnw.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/runnw.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1518,7 +1517,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/runs.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/runs.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1557,7 +1556,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/runse.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/runse.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1596,7 +1595,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/runsw.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/runsw.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1635,7 +1634,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/dmx/animation/runw.dmx"
+								source_filename = "models/playermodels/biped_standard/dmx/animation/runw.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1657,7 +1656,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/biped_standard/dmx/animation/idle.dmx"
+						source_filename = "models/playermodels/biped_standard/dmx/animation/idle.dmx"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1700,7 +1699,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/rifle_idle.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/rifle_idle.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1734,7 +1733,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/rifle_walk_e.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/rifle_walk_e.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1768,7 +1767,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/rifle_walk_idle.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/rifle_walk_idle.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1802,7 +1801,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/rifle_walk_n.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/rifle_walk_n.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1836,7 +1835,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/rifle_walk_ne.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/rifle_walk_ne.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1870,7 +1869,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/rifle_walk_nw.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/rifle_walk_nw.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1904,7 +1903,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/rifle_walk_s.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/rifle_walk_s.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1938,7 +1937,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/rifle_walk_se.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/rifle_walk_se.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -1972,7 +1971,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/rifle_walk_sw.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/rifle_walk_sw.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -2006,7 +2005,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/rifle_walk_w.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/rifle_walk_w.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -2045,7 +2044,7 @@
 										hidden = false
 										anim_markup_ordered = false
 										disable_compression = false
-										source_filename = "models/biped_standard/anims/rifle_turn_90R.dmx"
+										source_filename = "models/playermodels/biped_standard/anims/rifle_turn_90R.dmx"
 										start_frame = -1
 										end_frame = -1
 										framerate = -1.0
@@ -2079,7 +2078,7 @@
 										hidden = false
 										anim_markup_ordered = false
 										disable_compression = false
-										source_filename = "models/biped_standard/anims/rifle_turn_135R.dmx"
+										source_filename = "models/playermodels/biped_standard/anims/rifle_turn_135R.dmx"
 										start_frame = -1
 										end_frame = -1
 										framerate = -1.0
@@ -2113,7 +2112,7 @@
 										hidden = false
 										anim_markup_ordered = false
 										disable_compression = false
-										source_filename = "models/biped_standard/anims/rifle_turn_180L.dmx"
+										source_filename = "models/playermodels/biped_standard/anims/rifle_turn_180L.dmx"
 										start_frame = -1
 										end_frame = -1
 										framerate = -1.0
@@ -2147,7 +2146,7 @@
 										hidden = false
 										anim_markup_ordered = false
 										disable_compression = false
-										source_filename = "models/biped_standard/anims/rifle_turn90L.dmx"
+										source_filename = "models/playermodels/biped_standard/anims/rifle_turn90L.dmx"
 										start_frame = -1
 										end_frame = -1
 										framerate = -1.0
@@ -2181,7 +2180,7 @@
 										hidden = false
 										anim_markup_ordered = false
 										disable_compression = false
-										source_filename = "models/biped_standard/anims/rifle_turn_45L.dmx"
+										source_filename = "models/playermodels/biped_standard/anims/rifle_turn_45L.dmx"
 										start_frame = -1
 										end_frame = -1
 										framerate = -1.0
@@ -2215,7 +2214,7 @@
 										hidden = false
 										anim_markup_ordered = false
 										disable_compression = false
-										source_filename = "models/biped_standard/anims/rifle_turn_45R.dmx"
+										source_filename = "models/playermodels/biped_standard/anims/rifle_turn_45R.dmx"
 										start_frame = -1
 										end_frame = -1
 										framerate = -1.0
@@ -2249,7 +2248,7 @@
 										hidden = false
 										anim_markup_ordered = false
 										disable_compression = false
-										source_filename = "models/biped_standard/anims/rifle_turn_180R.dmx"
+										source_filename = "models/playermodels/biped_standard/anims/rifle_turn_180R.dmx"
 										start_frame = -1
 										end_frame = -1
 										framerate = -1.0
@@ -2276,7 +2275,7 @@
 										hidden = false
 										anim_markup_ordered = false
 										disable_compression = false
-										source_filename = "models/biped_standard/anims/rifle_aiming_idle.dmx"
+										source_filename = "models/playermodels/biped_standard/anims/rifle_aiming_idle.dmx"
 										start_frame = -1
 										end_frame = -1
 										framerate = -1.0
@@ -2298,7 +2297,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/rifle_fire.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/rifle_fire.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -2349,7 +2348,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/pistol_arc_e.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/pistol_arc_e.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = 24.0
@@ -2393,7 +2392,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/pistol_arc_n.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/pistol_arc_n.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = 24.0
@@ -2437,7 +2436,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/pistol_arc_ne.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/pistol_arc_ne.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = 24.0
@@ -2481,7 +2480,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/pistol_arc_nw.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/pistol_arc_nw.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = 24.0
@@ -2525,7 +2524,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/pistol_arc_s.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/pistol_arc_s.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = 24.0
@@ -2569,7 +2568,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/pistol_arc_se.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/pistol_arc_se.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = 24.0
@@ -2613,7 +2612,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/pistol_arc_sw.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/pistol_arc_sw.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = 24.0
@@ -2657,7 +2656,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/pistol_arc_w.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/pistol_arc_w.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = 24.0
@@ -2685,7 +2684,7 @@
 								hidden = false
 								anim_markup_ordered = false
 								disable_compression = false
-								source_filename = "models/biped_standard/anims/pistol_idle.dmx"
+								source_filename = "models/playermodels/biped_standard/anims/pistol_idle.dmx"
 								start_frame = -1
 								end_frame = -1
 								framerate = -1.0
@@ -2715,7 +2714,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/biped_standard/anims/shotgun.dmx"
+						source_filename = "models/playermodels/biped_standard/anims/shotgun.dmx"
 						start_frame = 160
 						end_frame = 169
 						framerate = 24.0
@@ -2735,7 +2734,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/biped_standard/anims/shotgun.dmx"
+						source_filename = "models/playermodels/biped_standard/anims/shotgun.dmx"
 						start_frame = 84
 						end_frame = 160
 						framerate = -1.0
@@ -3812,7 +3811,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/biped_standard/ankle_l.dmx"
+								filename = "models/playermodels/biped_standard/ankle_l.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -3833,15 +3832,15 @@
 						placement_mode = "default"
 						placement_bone = "ankle_L"
 						placement_attach = ""
-						is_ragdoll = true
-						collision_group = "debris"
+						is_ragdoll = false
+						collision_group = "interactive"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
 						random_spawn_chance = 1.0
-						is_essential_piece = false
+						is_essential_piece = true
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -3852,7 +3851,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/biped_standard/ankle_r.dmx"
+								filename = "models/playermodels/biped_standard/ankle_r.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -3873,15 +3872,15 @@
 						placement_mode = "default"
 						placement_bone = "ankle_L"
 						placement_attach = ""
-						is_ragdoll = true
-						collision_group = "debris"
+						is_ragdoll = false
+						collision_group = "interactive"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
 						random_spawn_chance = 1.0
-						is_essential_piece = false
+						is_essential_piece = true
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -3892,7 +3891,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/biped_standard/arm_lower_L_gib.dmx"
+								filename = "models/playermodels/biped_standard/arm_lower_L_gib.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -3913,15 +3912,15 @@
 						placement_mode = "default"
 						placement_bone = "arm_lower_L"
 						placement_attach = ""
-						is_ragdoll = true
-						collision_group = "debris"
+						is_ragdoll = false
+						collision_group = "interactive"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
 						random_spawn_chance = 1.0
-						is_essential_piece = false
+						is_essential_piece = true
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -3932,7 +3931,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/biped_standard/arm_upper_L_gib.dmx"
+								filename = "models/playermodels/biped_standard/arm_upper_L_gib.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -3953,15 +3952,15 @@
 						placement_mode = "default"
 						placement_bone = "arm_upper_L"
 						placement_attach = ""
-						is_ragdoll = true
-						collision_group = "debris"
+						is_ragdoll = false
+						collision_group = "interactive"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
 						random_spawn_chance = 1.0
-						is_essential_piece = false
+						is_essential_piece = true
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -3972,7 +3971,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/biped_standard/glasses_gib.dmx"
+								filename = "models/playermodels/biped_standard/glasses_gib.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -3993,15 +3992,15 @@
 						placement_mode = "default"
 						placement_bone = "head"
 						placement_attach = ""
-						is_ragdoll = true
-						collision_group = "debris"
+						is_ragdoll = false
+						collision_group = "interactive"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
 						random_spawn_chance = 1.0
-						is_essential_piece = false
+						is_essential_piece = true
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4012,7 +4011,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/biped_standard/hand_L_gib.dmx"
+								filename = "models/playermodels/biped_standard/hand_L_gib.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4033,15 +4032,15 @@
 						placement_mode = "default"
 						placement_bone = "hand_L"
 						placement_attach = ""
-						is_ragdoll = true
-						collision_group = "debris"
+						is_ragdoll = false
+						collision_group = "interactive"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
 						random_spawn_chance = 1.0
-						is_essential_piece = false
+						is_essential_piece = true
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4052,7 +4051,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/biped_standard/head_gib.dmx"
+								filename = "models/playermodels/biped_standard/head_gib.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4073,15 +4072,15 @@
 						placement_mode = "default"
 						placement_bone = "head"
 						placement_attach = ""
-						is_ragdoll = true
-						collision_group = "debris"
+						is_ragdoll = false
+						collision_group = "interactive"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
 						random_spawn_chance = 1.0
-						is_essential_piece = false
+						is_essential_piece = true
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4092,7 +4091,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/biped_standard/leg_lower_l.dmx"
+								filename = "models/playermodels/biped_standard/leg_lower_l.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4113,15 +4112,15 @@
 						placement_mode = "default"
 						placement_bone = "leg_lower_L"
 						placement_attach = ""
-						is_ragdoll = true
-						collision_group = "debris"
+						is_ragdoll = false
+						collision_group = "interactive"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
 						random_spawn_chance = 1.0
-						is_essential_piece = false
+						is_essential_piece = true
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4132,7 +4131,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/biped_standard/leg_lower_r.dmx"
+								filename = "models/playermodels/biped_standard/leg_lower_r.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4153,15 +4152,15 @@
 						placement_mode = "default"
 						placement_bone = "leg_lower_R"
 						placement_attach = "leg_lower_r"
-						is_ragdoll = true
-						collision_group = "debris"
+						is_ragdoll = false
+						collision_group = "interactive"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
 						random_spawn_chance = 1.0
-						is_essential_piece = false
+						is_essential_piece = true
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4172,7 +4171,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/biped_standard/leg_upper_l.dmx"
+								filename = "models/playermodels/biped_standard/leg_upper_l.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4193,15 +4192,15 @@
 						placement_mode = "default"
 						placement_bone = "leg_upper_L"
 						placement_attach = ""
-						is_ragdoll = true
-						collision_group = "debris"
+						is_ragdoll = false
+						collision_group = "interactive"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
 						random_spawn_chance = 1.0
-						is_essential_piece = false
+						is_essential_piece = true
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4212,7 +4211,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/biped_standard/leg_upper_r.dmx"
+								filename = "models/playermodels/biped_standard/leg_upper_r.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4233,15 +4232,15 @@
 						placement_mode = "default"
 						placement_bone = "leg_upper_R"
 						placement_attach = ""
-						is_ragdoll = true
-						collision_group = "debris"
+						is_ragdoll = false
+						collision_group = "interactive"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
 						random_spawn_chance = 1.0
-						is_essential_piece = false
+						is_essential_piece = true
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4252,7 +4251,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/biped_standard/pelvis.dmx"
+								filename = "models/playermodels/biped_standard/pelvis.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4273,15 +4272,15 @@
 						placement_mode = "default"
 						placement_bone = "pelvis"
 						placement_attach = ""
-						is_ragdoll = true
-						collision_group = "debris"
+						is_ragdoll = false
+						collision_group = "interactive"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
 						random_spawn_chance = 1.0
-						is_essential_piece = false
+						is_essential_piece = true
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4292,7 +4291,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/biped_standard/playerstart_arm_lower_r_gib.dmx"
+								filename = "models/playermodels/biped_standard/playerstart_arm_lower_r_gib.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4313,15 +4312,15 @@
 						placement_mode = "default"
 						placement_bone = "arm_lower_R"
 						placement_attach = ""
-						is_ragdoll = true
-						collision_group = "debris"
+						is_ragdoll = false
+						collision_group = "interactive"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
 						random_spawn_chance = 1.0
-						is_essential_piece = false
+						is_essential_piece = true
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4332,7 +4331,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/biped_standard/playerstart_arm_upper_R_gib.dmx"
+								filename = "models/playermodels/biped_standard/playerstart_arm_upper_R_gib.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4353,15 +4352,15 @@
 						placement_mode = "default"
 						placement_bone = "arm_upper_R"
 						placement_attach = ""
-						is_ragdoll = true
-						collision_group = "debris"
+						is_ragdoll = false
+						collision_group = "interactive"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
 						random_spawn_chance = 1.0
-						is_essential_piece = false
+						is_essential_piece = true
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4372,7 +4371,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/biped_standard/playerstart_gib_chest.dmx"
+								filename = "models/playermodels/biped_standard/playerstart_gib_chest.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4393,15 +4392,15 @@
 						placement_mode = "default"
 						placement_bone = "spine_2"
 						placement_attach = ""
-						is_ragdoll = true
-						collision_group = "debris"
+						is_ragdoll = false
+						collision_group = "interactive"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
 						random_spawn_chance = 1.0
-						is_essential_piece = false
+						is_essential_piece = true
 						manual_mode = false
 						surface_prop_override = ""
 					},
@@ -4412,7 +4411,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/biped_standard/playerstart_hand_r_gib.dmx"
+								filename = "models/playermodels/biped_standard/playerstart_hand_r_gib.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4433,23 +4432,23 @@
 						placement_mode = "default"
 						placement_bone = "hand_R"
 						placement_attach = ""
-						is_ragdoll = true
-						collision_group = "debris"
+						is_ragdoll = false
+						collision_group = "interactive"
 						offset = [ 0.0, 0.0, 0.0 ]
 						fadetime = 20.0
 						fade_min_dist = 0.0
 						fade_max_dist = 0.0
 						name_mode = "none"
 						random_spawn_chance = 1.0
-						is_essential_piece = false
+						is_essential_piece = true
 						manual_mode = false
 						surface_prop_override = ""
 					},
 				]
 			},
 		]
-		model_archetype = "physics_prop_model"
-		primary_associated_entity = "prop_physics"
+		model_archetype = ""
+		primary_associated_entity = ""
 		anim_graph_name = "animgraphs/biped_standard.vanmgrph"
 	}
 }
