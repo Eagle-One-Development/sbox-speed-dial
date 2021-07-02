@@ -24,12 +24,8 @@
 						remaps = 
 						[
 							{
-								from = "test.vmat"
-								to = "materials/dev/temp_sheet.vmat"
-							},
-							{
-								from = "military.vmat"
-								to = "materials/playermodels/military_palette_skin_default.vmat"
+								from = "defaultmat.vmat"
+								to = "models/playermodels/src/textures/maria/mariatex.vmat"
 							},
 						]
 						use_global_default = false
@@ -43,7 +39,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						name = "playermodel"
+						name = "character_maria"
 						filename = "models/playermodels/src/character_maria.fbx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
