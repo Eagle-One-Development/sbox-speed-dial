@@ -61,7 +61,7 @@ namespace SpeedDial.Weapons {
 									.WithWeapon(this);
 
 								// need bonk sound pls
-								PlaySound("smack");
+								PlaySound("snd_bad_hit");
 
 								tr.Entity.TakeDamage(damageInfo);
 							}
