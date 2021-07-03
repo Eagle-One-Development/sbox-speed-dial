@@ -343,8 +343,6 @@ namespace SpeedDial.Player {
 				return;
 			}
 
-
-
 			if(!screenOpen && SpeedDialGame.Instance.Round is GameRound) {
 				CharacterSelect.Current?.ToggleOpen();
 
