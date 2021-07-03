@@ -37,13 +37,16 @@ namespace SpeedDial.UI {
 			s1.OffsetX = 2f + MathF.Sin( Time.Now * 1f ) * 1f;
 			s1.OffsetY = 0f;
 			s1.Color = vhs_green;
-			s1.Blur = 2f;
+			s1.Blur = 1f;
+			s1.Spread = 20f;
 
 			Shadow s2 = new();
 			s2.OffsetX = -1f + MathF.Sin( Time.Now * 2f ) * 1f;
 			s2.OffsetY = 0;
 			s2.Color = vhs_magenta;
 			s2.Blur = 2f;
+			s2.Blur = 1f;
+			s2.Spread = 20f;
 
 			ShadowList shadows = new();
 			shadows.Add( s1 );
