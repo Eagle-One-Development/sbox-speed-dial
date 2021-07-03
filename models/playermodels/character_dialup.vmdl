@@ -39,7 +39,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/playermodels/src/dialup.fbx"
+						filename = "models/playermodels/src/character_dialup.fbx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0

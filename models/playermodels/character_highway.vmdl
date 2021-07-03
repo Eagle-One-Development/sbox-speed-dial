@@ -24,8 +24,8 @@
 						remaps = 
 						[
 							{
-								from = "test.vmat"
-								to = "materials/dev/temp_sheet.vmat"
+								from = "highway.vmat"
+								to = "models/playermodels/src/textures/highway/highway.vmat"
 							},
 						]
 						use_global_default = false

@@ -1547,6 +1547,7 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
+						disabled = true
 						model_name = "models/weapons/smg/prop_smg.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
