@@ -81,7 +81,7 @@ namespace SpeedDial.Player {
 			//
 			// Work out our movement relative to our body rotation
 			//
-			var moveDir = Velocity;
+			var moveDir = WishVelocity;
 			var forward = idealRotation.Forward.Dot(moveDir.Normal);
 			var sideward = idealRotation.Right.Dot(moveDir.Normal);
 
