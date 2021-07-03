@@ -67,6 +67,9 @@ namespace SpeedDial.Player {
 
 		private bool screenOpen = false;
 
+		[ClientVar]
+		public static bool sd_soundtrack { get; set; } = true;
+
 		public void InitialSpawn() {
 
 			if(GetClientOwner().SteamId == 76561198000823482) { // bak
@@ -110,6 +113,7 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		public void PlayRoundendClimax() {
+			if(!sd_soundtrack) return;
 			SoundTrack.FromScreen("climax");
 			_ = StopSoundtrackAsync();
 		}
@@ -123,6 +127,7 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		public void PlaySoundtrack() {
+			if(!sd_soundtrack) return;
 			_ = PlaySoundtrackAsync(SpeedDialGame.Instance.CurrentSoundtrack, 2.5f);
 		}
 
@@ -137,6 +142,7 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		public void StopSoundtrack(bool instant = false) {
+			if(!sd_soundtrack) return;
 			if(instant) {
 				SoundTrack?.Stop();
 				SoundtrackPlaying = false;
@@ -148,6 +154,7 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		public void FadeSoundtrack(float volumeTo) {
+			if(!sd_soundtrack) return;
 			SoundTrack?.FadeVolumeTo(volumeTo);
 		}
 
