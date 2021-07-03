@@ -141,7 +141,11 @@ namespace SpeedDial.Weapons {
 			TimeSincePrimaryAttack = 0;
 
 			if(!overrideBullet) {
-				if(!TakeAmmo(AmmoPerShot)) return; // no ammo, no shooty shoot
+				if(!TakeAmmo(AmmoPerShot)) {
+					Log.Info("CLICK");
+					PlaySound("sd_dryfrire");
+					return;
+				}// no ammo, no shooty shoot
 
 				// shoot the bullets, bulletcount for something like a shotgun with multiple bullets
 				for(int i = 0; i < BulletCount; i++) {
