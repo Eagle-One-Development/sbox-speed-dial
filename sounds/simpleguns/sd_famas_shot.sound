@@ -9,7 +9,7 @@
 			"sounds/simpleguns/[final1]sfx_famas_shot-003.vsnd",
 		]
 		UI = false
-		Volume = 1.0
+		Volume = 2.0
 		VolumeRandom = 0.0
 		Pitch = 1.0
 		PitchRandom = 0.04

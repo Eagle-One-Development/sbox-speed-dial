@@ -7,7 +7,7 @@
 			"sounds/simpleguns/[draft1]sfx_dryfire.vsnd",
 		]
 		UI = false
-		Volume = 0.5
+		Volume = 0.7
 		VolumeRandom = 0.0
 		Pitch = 1.0
 		PitchRandom = 0.0

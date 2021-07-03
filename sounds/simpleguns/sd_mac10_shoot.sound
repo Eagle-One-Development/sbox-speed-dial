@@ -12,8 +12,8 @@
 			"sounds/simpleguns/[final1]sfx_mac-10_shot-006.vsnd",
 		]
 		UI = false
-		Volume = 1.0
-		VolumeRandom = 0.0
+		Volume = 2.0
+		VolumeRandom = 0.1
 		Pitch = 1.0
 		PitchRandom = 0.05
 		DistanceMax = 1000.0

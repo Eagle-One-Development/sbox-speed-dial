@@ -36,6 +36,7 @@ namespace SpeedDial.Weapons {
 						burstTimer = 0;
 						curBurst = 0;
 						isFiring = false;
+						PlaySound("sd_dryfrire");
 						return;
 					}
 					(Owner as AnimEntity).SetAnimBool("b_attack", true);
