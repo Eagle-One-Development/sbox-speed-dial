@@ -11,7 +11,7 @@ namespace SpeedDial.Weapons {
 		public override float BulletDamage => 100;
 		public override float BulletSize => 5;
 		public override int HoldType => 4;
-		public override string ShootSound => "sd_magnum_shoot";
+		public override string ShootSound => "sd_rifle_shoot";
 		public override string WorldModel => "models/weapons/rifle/prop_rifle.vmdl";
 		public override string AttachementName => "rifle_attach";
 	}

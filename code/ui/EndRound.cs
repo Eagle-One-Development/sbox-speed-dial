@@ -43,7 +43,7 @@ namespace SpeedDial.UI {
 			//}
 			//Log.Info( "------------------" );
 
-			firstPlace.myLabel.Text = players[0].GetClientOwner().Name;
+			firstPlace.myLabel.Text = players[0].GetClientOwner().Name + "\n" + players[0].KillScore + "pts";
 			firstPlace.subLabel.Text = "1st";
 
 
@@ -52,13 +52,13 @@ namespace SpeedDial.UI {
 
 
 			if(players.Count > 1) {
-				secondPlace.myLabel.Text = players[1].GetClientOwner().Name;
+				secondPlace.myLabel.Text = players[1].GetClientOwner().Name + "\n" + players[1].KillScore + "pts";
 				secondPlace.myImage.Texture = Texture.Load(players[1].character.Portrait);
 				secondPlace.subLabel.Text = "2nd";
 			}
 
 			if(players.Count > 2) {
-				thirdPlace.myLabel.Text = players[2].GetClientOwner().Name;
+				thirdPlace.myLabel.Text = players[2].GetClientOwner().Name + "\n" + players[2].KillScore + "pts";
 				thirdPlace.myImage.Texture = Texture.Load(players[2].character.Portrait);
 				thirdPlace.subLabel.Text = "3rd";
 			}

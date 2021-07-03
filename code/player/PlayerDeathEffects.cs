@@ -174,6 +174,7 @@ namespace SpeedDial.Player {
 				Log.Info(combo);
 				int ScoreBase = SpeedDialGame.ScoreBase;
 				ComboEvents(pos, ScoreBase * combo, combo, death);
+				Sound.FromWorld("kill_confirm", pos);
 			}
 		}
 

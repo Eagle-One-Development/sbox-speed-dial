@@ -39,7 +39,8 @@ namespace SpeedDial {
 		[Net]
 		public string[] Soundtracks { get; set; } = {
 			"track01",
-			"track02"
+			"track02",
+			"track03"
 		};
 
 		public void PickNewSoundtrack() {
