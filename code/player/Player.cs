@@ -108,6 +108,17 @@ namespace SpeedDial.Player {
 			//PlaySoundtrack(To.Single(this), "track01");
 		}
 
+		[ClientRpc]
+		public void PlayRoundendClimax() {
+			SoundTrack.FromScreen("climax");
+			_ = StopSoundtrackAsync();
+		}
+
+		private async Task StopSoundtrackAsync(int delay = 5) {
+			await GameTask.DelaySeconds(delay);
+			_ = SoundTrack.Stop(5, 500);
+			SoundtrackPlaying = false;
+		}
 
 
 		[ClientRpc]

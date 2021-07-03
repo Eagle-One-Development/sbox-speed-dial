@@ -34,6 +34,16 @@ namespace SpeedDial {
 					(p.Pawn as SpeedDialPlayer).Unfreeze();
 				}
 			}
+			_ = PlayClimaxMusic(RoundDuration - 10);
+		}
+
+		private async Task PlayClimaxMusic(int delay) {
+			await GameTask.DelaySeconds(delay);
+			foreach(var p in Client.All.ToArray()) {
+				if(p.Pawn != null) {
+					(p.Pawn as SpeedDialPlayer).PlayRoundendClimax(To.Single(p));
+				}
+			}
 		}
 
 		protected override void OnFinish() {

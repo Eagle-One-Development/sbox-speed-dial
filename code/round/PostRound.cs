@@ -23,7 +23,7 @@ namespace SpeedDial {
 
 				if(p.Pawn is SpeedDialPlayer jp) {
 					jp.Freeze();
-					jp.StopSoundtrack(To.Single(jp));
+					//jp.StopSoundtrack(To.Single(jp));
 				}
 			}
 		}
