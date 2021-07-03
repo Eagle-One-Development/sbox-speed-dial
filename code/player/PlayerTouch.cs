@@ -16,13 +16,14 @@ namespace SpeedDial.Player {
 					if(wep1.PhysicsBody.IsValid()) {
 						float magnitude = wep1.PhysicsBody.Velocity.Length;
 						//Log.Info($"Velocity: {magnitude}");
-						if(magnitude > 450f) {
+						if(magnitude > 450f && this != wep1.PreviousOwner && wep1.CanKill) {
 
 							wep1.PhysicsBody.EnableAutoSleeping = false;
 							Sound.FromEntity("smack", this);
 							CauseOfDeath = COD.Thrown;
 							KillMyself(wep1.PreviousOwner);
 							wep1.Velocity *= -0.5f;
+							wep1.CanKill = false;
 							//if (wep1.PhysicsBody.Velocity.Normal.Dot(other.EyeRot.Forward.Normal) < 0.4f || Inventory.Active is not BaseSpeedDialWeapon) {
 							//	
 							//} 

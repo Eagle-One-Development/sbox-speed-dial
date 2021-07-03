@@ -50,31 +50,31 @@
 				children = 
 				[
 					{
-						_class = "PhysicsShapeBox"
-						parent_bone = ""
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "weapon_hand_r"
 						surface_prop = "default"
 						collision_prop = "default"
-						origin = [ 0.668954, -0.117985, 2.640292 ]
-						angles = [ 89.508881, 0.0, 0.0 ]
-						dimensions = [ 3.01907, 3.921317, 29.758787 ]
+						radius = 1.65396
+						point0 = [ -0.000003, 2.126881, -12.51921 ]
+						point1 = [ -0.123019, 2.184862, 14.200461 ]
 					},
 					{
-						_class = "PhysicsShapeBox"
-						parent_bone = ""
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "weapon_hand_r"
 						surface_prop = "default"
 						collision_prop = "default"
-						origin = [ -0.25178, -0.013654, -1.07531 ]
-						angles = [ 16.067108, 0.0, 0.0 ]
-						dimensions = [ 2.528446, 1.564217, 6.435604 ]
+						radius = 1.65396
+						point0 = [ 0.000001, -3.146981, -1.122851 ]
+						point1 = [ -0.123022, 2.012158, 0.643691 ]
 					},
 					{
-						_class = "PhysicsShapeBox"
-						parent_bone = ""
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "weapon_hand_r"
 						surface_prop = "default"
 						collision_prop = "default"
-						origin = [ 12.007288, -0.013654, -0.833292 ]
-						angles = [ 0.570252, 0.0, 0.0 ]
-						dimensions = [ 2.755206, 1.564217, 4.167982 ]
+						radius = 1.65396
+						point0 = [ 0.000004, -2.249929, 11.787493 ]
+						point1 = [ -0.12302, 2.128892, 11.170243 ]
 					},
 				]
 			},

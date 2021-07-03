@@ -53,6 +53,8 @@ namespace SpeedDial.Weapons {
 		public virtual int HoldType => 1;
 		public virtual string AttachementName => "pistol_attach";
 		public virtual bool Penetrate => false;
+		[Net]
+		public bool CanKill { get; set; } = true;
 
 		public int AvailableAmmo() {
 			if(Owner is SpeedDialPlayer owner) {
@@ -142,7 +144,7 @@ namespace SpeedDial.Weapons {
 
 			if(!overrideBullet) {
 				if(!TakeAmmo(AmmoPerShot)) {
-					
+
 					PlaySound("sd_dryfrire");
 					return;
 				}// no ammo, no shooty shoot
@@ -283,6 +285,8 @@ namespace SpeedDial.Weapons {
 
 		public override void OnCarryStart(Entity carrier) {
 			if(IsClient) return;
+
+			CanKill = true;
 
 			//spawned via a weaponspawn. Tell the spawn that it's cleared up and can start respawning the weapon
 			if(WeaponSpawn != null) {
