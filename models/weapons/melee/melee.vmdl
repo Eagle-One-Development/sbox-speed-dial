@@ -15,7 +15,7 @@
 						[
 							{
 								from = "cylinder.vmat"
-								to = "material/dev/dev01.vmat"
+								to = "materials/dev/dev01.vmat"
 							},
 						]
 						use_global_default = false
