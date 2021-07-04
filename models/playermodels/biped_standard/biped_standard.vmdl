@@ -3811,7 +3811,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/playermodels/biped_standard/ankle_l.dmx"
+								filename = "models/playermodels/biped_standard/gordon_gib/ankle_l.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -3851,7 +3851,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/playermodels/biped_standard/ankle_r.dmx"
+								filename = "models/playermodels/biped_standard/gordon_gib/ankle_r.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -3891,7 +3891,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/playermodels/biped_standard/arm_lower_L_gib.dmx"
+								filename = "models/playermodels/biped_standard/gordon_gib/arm_lower_L_gib.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -3931,7 +3931,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/playermodels/biped_standard/arm_upper_L_gib.dmx"
+								filename = "models/playermodels/biped_standard/gordon_gib/arm_upper_L_gib.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -3971,7 +3971,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/playermodels/biped_standard/glasses_gib.dmx"
+								filename = "models/playermodels/biped_standard/gordon_gib/glasses_gib.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4011,7 +4011,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/playermodels/biped_standard/hand_L_gib.dmx"
+								filename = "models/playermodels/biped_standard/gordon_gib/hand_L_gib.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4051,7 +4051,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/playermodels/biped_standard/head_gib.dmx"
+								filename = "models/playermodels/biped_standard/gordon_gib/head_gib.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4091,7 +4091,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/playermodels/biped_standard/leg_lower_l.dmx"
+								filename = "models/playermodels/biped_standard/gordon_gib/leg_lower_l.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4131,7 +4131,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/playermodels/biped_standard/leg_lower_r.dmx"
+								filename = "models/playermodels/biped_standard/gordon_gib/leg_lower_r.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4171,7 +4171,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/playermodels/biped_standard/leg_upper_l.dmx"
+								filename = "models/playermodels/biped_standard/gordon_gib/leg_upper_l.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4211,7 +4211,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/playermodels/biped_standard/leg_upper_r.dmx"
+								filename = "models/playermodels/biped_standard/gordon_gib/leg_upper_r.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4251,7 +4251,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/playermodels/biped_standard/pelvis.dmx"
+								filename = "models/playermodels/biped_standard/gordon_gib/pelvis.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4291,7 +4291,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/playermodels/biped_standard/playerstart_arm_lower_r_gib.dmx"
+								filename = "models/playermodels/biped_standard/gordon_gib/playerstart_arm_lower_r_gib.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4331,7 +4331,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/playermodels/biped_standard/playerstart_arm_upper_R_gib.dmx"
+								filename = "models/playermodels/biped_standard/gordon_gib/playerstart_arm_upper_R_gib.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4371,7 +4371,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/playermodels/biped_standard/playerstart_gib_chest.dmx"
+								filename = "models/playermodels/biped_standard/gordon_gib/playerstart_gib_chest.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
@@ -4411,7 +4411,7 @@
 						[
 							{
 								_class = "RenderMeshFile"
-								filename = "models/playermodels/biped_standard/playerstart_hand_r_gib.dmx"
+								filename = "models/playermodels/biped_standard/gordon_gib/playerstart_hand_r_gib.dmx"
 								import_translation = [ 0.0, 0.0, 0.0 ]
 								import_rotation = [ 0.0, 0.0, 0.0 ]
 								import_scale = 1.0
