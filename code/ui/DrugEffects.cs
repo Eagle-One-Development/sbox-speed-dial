@@ -45,8 +45,8 @@ namespace SpeedDial.UI {
 					}
 
 					if(p.CurrentDrug == Meds.DrugType.Ollie) {
-						contrast = contrast.LerpTo(2f, Time.Delta * 2f);
-						saturation = saturation.LerpTo(0.2f, Time.Delta * 4f);
+						contrast = contrast.LerpTo(1.35f, Time.Delta * 2f);
+						saturation = saturation.LerpTo(0.3f, Time.Delta * 4f);
 						brightness = brightness.LerpTo(2f, Time.Delta * 2f);
 
 
