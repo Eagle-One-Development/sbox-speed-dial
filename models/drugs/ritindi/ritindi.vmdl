@@ -14,7 +14,7 @@
 						remaps = 
 						[
 							{
-								from = "pillbottle.vmat"
+								from = "mi_pillbottles_01a.vmat"
 								to = "models/drugs/ritindi/materials/ritindi.vmat"
 							},
 						]
@@ -28,12 +28,29 @@
 				children = 
 				[
 					{
-						_class = "PhysicsHullFromRender"
+						_class = "PhysicsHullFile"
+						name = "SM_PillBottle_01a"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						faceMergeAngle = 5.0
-						maxHullVertices = 64
+						recenter_on_parent_bone = false
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						filename = "models/drugs/ritindi/meshes/sm_pillbottle_01t.fbx"
+						import_scale = 5.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = 
+							[
+								"SM_PillBottle_01a",
+								"SM_PillBottle_01t",
+							]
+						}
 					},
 				]
 			},
@@ -43,10 +60,10 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/drugs/ritindi/meshes/pillbottle_low.fbx"
-						import_translation = [ 0.0, 0.0, 0.0 ]
-						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 0.03
+						filename = "models/drugs/ritindi/meshes/sm_pillbottle_01t.fbx"
+						import_translation = [ 0.0, 2.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 35.0 ]
+						import_scale = 5.0
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
@@ -54,7 +71,11 @@
 						import_filter = 
 						{
 							exclude_by_default = false
-							exception_list = [  ]
+							exception_list = 
+							[
+								"UCX_SM_PillBottle_01a",
+								"UCX_SM_PillBottle_01t",
+							]
 						}
 					},
 				]
