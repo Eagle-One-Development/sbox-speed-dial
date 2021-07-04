@@ -43,8 +43,9 @@ namespace SpeedDial.UI {
 			//}
 			//Log.Info( "------------------" );
 
-			firstPlace.myLabel.Text = players[0].GetClientOwner().Name + "\n" + players[0].KillScore + "pts";
+			firstPlace.myLabel.Text = players[0].GetClientOwner().Name;
 			firstPlace.subLabel.Text = "1st";
+			firstPlace.scoreLabel.Text = players[0].KillScore.ToString() + " pts";
 
 
 			firstPlace.myImage.Texture = Texture.Load(players[0].character.Portrait);
@@ -52,13 +53,15 @@ namespace SpeedDial.UI {
 
 
 			if(players.Count > 1) {
-				secondPlace.myLabel.Text = players[1].GetClientOwner().Name + "\n" + players[1].KillScore + "pts";
+				secondPlace.myLabel.Text = players[1].GetClientOwner().Name;
+				secondPlace.scoreLabel.Text = players[1].KillScore.ToString() + " pts";
 				secondPlace.myImage.Texture = Texture.Load(players[1].character.Portrait);
 				secondPlace.subLabel.Text = "2nd";
 			}
 
 			if(players.Count > 2) {
-				thirdPlace.myLabel.Text = players[2].GetClientOwner().Name + "\n" + players[2].KillScore + "pts";
+				thirdPlace.myLabel.Text = players[2].GetClientOwner().Name;
+				thirdPlace.scoreLabel.Text = players[2].KillScore.ToString() + " pts";
 				thirdPlace.myImage.Texture = Texture.Load(players[2].character.Portrait);
 				thirdPlace.subLabel.Text = "3rd";
 			}
@@ -137,7 +140,7 @@ namespace SpeedDial.UI {
 				PanelTransform third = new PanelTransform();
 				third.AddTranslateY(Length.Percent(scale[2]));
 
-				float startTime = 2f;
+				float startTime = 0.5f;
 
 				if(animTime > startTime) {
 					scale[0] = scale[0].LerpTo(0, Time.Delta * 4f);
@@ -225,10 +228,12 @@ namespace SpeedDial.UI {
 		public Image myImage;
 		public Label myLabel;
 		public Label subLabel;
+		public Label scoreLabel;
 		public PlayerPanel() {
 			myImage = Add.Image("materials/ui/portraits/default.png", "playerimage");
 			myLabel = myImage.Add.Label("STEAM NAME", "name");
 			subLabel = myLabel.Add.Label("1st", "sublabel");
+			scoreLabel = myLabel.Add.Label("0000000", "scoreLabel");
 		}
 	}
 }

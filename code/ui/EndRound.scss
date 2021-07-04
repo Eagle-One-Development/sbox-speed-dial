@@ -24,6 +24,7 @@
             justify-content: center;
 
 
+
             &.right {
                 right: 10%;
                 bottom: -96px;
@@ -45,19 +46,29 @@
                 white-space: nowrap;
                 justify-content: center;
                 align-items: center;
-                bottom: 150%;
-                
-                
+                bottom: 155%;
+
+                .scoreLabel {
+                    position: absolute;
+                    font-size: 20px;
+                    font-family: VCR_OSD_MONO;
+                    color: #fff;
+                    font-size: 48px;
+                    top: 54px;
+                    color: white;
+                }
 
                 .sublabel {
                     position: absolute;
                     font-size: 20px;
                     font-family: VCR_OSD_MONO;
                     color: #fff;
-                    font-size: 72px;
-                    bottom: 100px;
+                    font-size: 64px;
+                    bottom: 64px;
                     color: #C9B037;
-                    text-shadow: 0px 0px 10px #FFEFAA;
+                    text-shadow: 0px 0px 10px #FFE97C;
+                    
+                    mix-blend-mode: lighten;
 
                     &.right {
                         color: #D7D7D7;
