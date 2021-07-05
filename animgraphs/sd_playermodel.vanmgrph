@@ -2479,8 +2479,8 @@
 				m_flStrideCurveLimitScale = 0.25
 				m_bEnableVerticalCurvedPaths = true
 				m_bModulateStepHeight = true
-				m_flStepHeightIncreaseScale = 0.0
-				m_flStepHeightDecreaseScale = 1.0
+				m_flStepHeightIncreaseScale = 0.5
+				m_flStepHeightDecreaseScale = 0.5
 				m_bEnableHipShift = false
 				m_flHipShiftScale = 0.312
 				m_hipShiftDamping = 
@@ -2496,7 +2496,7 @@
 				m_flTiltPlaneRollSpringStrength = 5.0
 				m_bEnableLockBreaking = true
 				m_flLockBreakTolerance = 0.1
-				m_flLockBreakBlendTime = 0.1
+				m_flLockBreakBlendTime = 0.05
 				m_bEnableStretching = false
 				m_flMaxStretchAmount = 2.0
 				m_flStretchExtensionScale = 0.98
@@ -2513,7 +2513,7 @@
 					m_fMinSpeed = 20.0
 					m_fMaxTension = 1000.0
 				}
-				m_bEnableRootHeightDamping = false
+				m_bEnableRootHeightDamping = true
 				m_rootHeightDamping = 
 				{
 					_class = "CAnimInputDamping"
