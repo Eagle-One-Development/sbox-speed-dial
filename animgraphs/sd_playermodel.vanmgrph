@@ -1209,7 +1209,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ -557.0, 1255.0 ]
+				m_vecPosition = [ -670.0, 1319.0 ]
 				m_nNodeID = 
 				{
 					m_id = 306794296
@@ -2033,6 +2033,53 @@
 		{
 			key = 
 			{
+				m_id = 717362345
+			}
+			value = 
+			{
+				_class = "CChoiceAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ -350.819977, 1370.849487 ]
+				m_nNodeID = 
+				{
+					m_id = 717362345
+				}
+				m_networkMode = "ClientPredicted"
+				m_sNote = ""
+				m_children = 
+				[
+					{
+						m_nodeID = 
+						{
+							m_id = 306794296
+						}
+						m_name = ""
+						m_weight = 0.0
+						m_blendTime = 0.2
+					},
+					{
+						m_nodeID = 
+						{
+							m_id = 1866668698
+						}
+						m_name = ""
+						m_weight = 0.0
+						m_blendTime = 0.2
+					},
+				]
+				m_seed = 2078906968
+				m_choiceMethod = "Iterate"
+				m_choiceChangeMethod = "OnReset"
+				m_blendMethod = "SingleBlendTime"
+				m_blendTime = 0.2
+				m_bCrossFade = false
+				m_bResetChosen = true
+				m_bDontResetSameSelection = false
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 743275804
 			}
 			value = 
@@ -2254,7 +2301,7 @@
 				}
 				m_child2ID = 
 				{
-					m_id = 306794296
+					m_id = 717362345
 				}
 				m_blendSpace = "BlendSpace_Model_RotationOnly"
 				m_bUseBlendScale = false

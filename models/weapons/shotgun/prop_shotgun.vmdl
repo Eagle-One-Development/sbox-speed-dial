@@ -95,7 +95,7 @@
 						_class = "Attachment"
 						name = "ejection_point"
 						parent_bone = "weapon_hand_r"
-						relative_origin = [ -0.773123, 1.546163, -8.095057 ]
+						relative_origin = [ -0.773123, 0.956913, -7.719165 ]
 						relative_angles = [ 2.514723, -88.542076, -179.992569 ]
 						weight = 1.0
 						ignore_rotation = false
