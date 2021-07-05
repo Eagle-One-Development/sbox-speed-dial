@@ -13,6 +13,7 @@ using SpeedDial.Weapons;
 namespace SpeedDial.WeaponSpawns {
 	[Library("sd_random_weaponspawn", Title = "Weapon Spawn")]
 	[Hammer.EditorModel("models/weapons/pistol/prop_pistol.vmdl")]
+	[Hammer.EntityTool("Random Weapon", "Speed Dial Weapons", "Random Weapon spawn point")]
 	public partial class RandomWeaponSpawn : BaseWeaponSpawn {
 
 		public string[] WeaponClasses = { // will implement a weighted randomness later
