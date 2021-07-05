@@ -19,6 +19,6 @@ namespace SpeedDial.Weapons {
 		public override bool Automatic => true;
 		public override Vector4 ScreenShakeParameters => new(0.5f, 4, 1, 0.5f);
 		public override string AttachementName => "smg_attach";
-		
+
 	}
 }

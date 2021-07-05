@@ -7,6 +7,7 @@ using Sandbox;
 
 namespace SpeedDial.Meds {
 	[Library("meds_ritindi")]
+	[Hammer.EditorModel("models/drugs/ritindi/ritindi.vmdl")]
 	public class Ritindi : BaseMedication {
 		public override string WorldModel => "models/drugs/ritindi/ritindi.vmdl";
 		public override float RotationSpeed => 75f;
