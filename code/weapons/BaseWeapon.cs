@@ -52,6 +52,7 @@ namespace SpeedDial.Weapons {
 		public virtual float DeployTime => 0.6f;
 		public virtual int HoldType => 1;
 		public virtual string AttachementName => "pistol_attach";
+		public virtual string EjectionParticle => "particles/pistol_ejectbrass.vpcf";
 		public virtual bool Penetrate => false;
 		[Net]
 		public bool CanKill { get; set; } = true;
@@ -260,7 +261,7 @@ namespace SpeedDial.Weapons {
 		[ClientRpc]
 		protected virtual void ShootEffects() {
 			Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
-			Particles.Create("particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point");
+			Particles.Create(EjectionParticle, EffectEntity, "ejection_point");
 
 			if(IsLocalPawn) {
 				_ = new Sandbox.ScreenShake.Perlin(ScreenShakeParameters.x, ScreenShakeParameters.y, ScreenShakeParameters.z, ScreenShakeParameters.w);

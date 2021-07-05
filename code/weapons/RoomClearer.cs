@@ -17,5 +17,6 @@ namespace SpeedDial.Weapons {
 		public override float Range => 1024;
 		public override string AttachementName => "shotgun_attach";
 		public override float VerticalBulletSpread => 0.2f;
+		public override string EjectionParticle => "particles/weapon_fx/shotgun_ejectbrass.vpcf";
 	}
 }
