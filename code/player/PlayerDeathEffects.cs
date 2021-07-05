@@ -125,6 +125,8 @@ namespace SpeedDial.Player {
 			TimeSinceDied = 0;
 			LifeState = LifeState.Dead;
 			StopUsing();
+			MedTaken = false;
+			TimeSinceMedTaken = MedDuration + 1f;
 
 			Inventory.DeleteContents();
 
