@@ -6,16 +6,6 @@
 		children = 
 		[
 			{
-				_class = "PrefabList"
-				children = 
-				[
-					{
-						_class = "Prefab"
-						target_file = "models/playermodels/prefabs/playermodel_base.vmdl_prefab"
-					},
-				]
-			},
-			{
 				_class = "MaterialGroupList"
 				children = 
 				[
@@ -54,6 +44,3144 @@
 						}
 					},
 				]
+			},
+			{
+				_class = "IKData"
+				children = 
+				[
+					{
+						_class = "IKChain"
+						name = "IK_Leg_Left"
+						children = 
+						[
+							{
+								_class = "IKChainJoint"
+								name = "leg_upper_L"
+								children = 
+								[
+									{
+										_class = "IKChainJoint"
+										name = "leg_lower_L"
+										children = 
+										[
+											{
+												_class = "IKChainJoint"
+												name = "ankle_L"
+												bone = "foot_l"
+											},
+											{
+												_class = "IKJointConstraint_Hinge"
+												constrained_joint = ""
+												hinge_axis = "Down"
+												min_radians = 0.0
+												max_radians = 1.570796
+											},
+										]
+										bone = "calf_l"
+									},
+								]
+								bone = "thigh_l"
+							},
+						]
+						m_bDoBonesOrientAlongPositiveX = true
+						"m_DefaultSolverSettings.m_nNumIterations" = 6
+						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
+						"m_DefaultTargetSettings.m_Bone" = 
+						{
+							m_Name = "foot_L_IK_target"
+						}
+						"m_DefaultTargetSettings.m_TargetSource" = "Bone"
+						"m_Data.m_DefaultTargetSettings.m_AnimgraphParameterNamePosition" = 
+						{
+							m_id = 4294967295
+						}
+						"m_Data.m_EndEffectorFixedOffsetAttachment" = 
+						{
+							m_Name = ""
+						}
+						"m_Data.m_bParentJointRequiresAlignment" = true
+					},
+					{
+						_class = "IKChain"
+						name = "IK_Leg_Right"
+						children = 
+						[
+							{
+								_class = "IKChainJoint"
+								name = "leg_upper_R"
+								children = 
+								[
+									{
+										_class = "IKChainJoint"
+										name = "leg_lower_R"
+										children = 
+										[
+											{
+												_class = "IKChainJoint"
+												name = "ankle_R"
+												bone = "foot_r"
+											},
+											{
+												_class = "IKJointConstraint_Hinge"
+												constrained_joint = ""
+												hinge_axis = "Down"
+												min_radians = 0.0
+												max_radians = 1.570796
+											},
+										]
+										bone = "calf_r"
+									},
+								]
+								bone = "thigh_r"
+							},
+						]
+						m_bDoBonesOrientAlongPositiveX = true
+						"m_DefaultSolverSettings.m_nNumIterations" = 6
+						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
+						"m_DefaultTargetSettings.m_Bone" = 
+						{
+							m_Name = "foot_R_IK_target"
+						}
+						"m_DefaultTargetSettings.m_TargetSource" = "Bone"
+						"m_Data.m_DefaultTargetSettings.m_AnimgraphParameterNamePosition" = 
+						{
+							m_id = 4294967295
+						}
+						"m_Data.m_EndEffectorFixedOffsetAttachment" = 
+						{
+							m_Name = ""
+						}
+						"m_Data.m_bParentJointRequiresAlignment" = true
+					},
+				]
+			},
+			{
+				_class = "BoneMarkupList"
+				children = 
+				[
+					{
+						_class = "BoneMarkup"
+						target_bone = "foot_L_IK_Target"
+						ignore_Translation = false
+						ignore_rotation = false
+						do_not_discard = true
+					},
+					{
+						_class = "BoneMarkup"
+						target_bone = "foot_R_IK_Target"
+						ignore_Translation = false
+						ignore_rotation = false
+						do_not_discard = true
+					},
+				]
+				bone_cull_type = "Aggressive"
+			},
+			{
+				_class = "WeightListList"
+				children = 
+				[
+					{
+						_class = "WeightList"
+						name = "upper_body"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "ball_l"
+								weight = 0.0
+							},
+							{
+								bone = "calf_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_l"
+								weight = 1.0
+							},
+							{
+								bone = "clavicle_r"
+								weight = 1.0
+							},
+							{
+								bone = "foot_L_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_R_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_l"
+								weight = 0.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.381818
+							},
+							{
+								bone = "spine_01"
+								weight = 1.0
+							},
+							{
+								bone = "spine_02"
+								weight = 1.0
+							},
+							{
+								bone = "spine_03"
+								weight = 1.0
+							},
+							{
+								bone = "thigh_l"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_l"
+								weight = 1.0
+							},
+							{
+								bone = "upperarm_r"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "upper_body_smg"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "ball_l"
+								weight = 0.0
+							},
+							{
+								bone = "calf_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_l"
+								weight = 0.138182
+							},
+							{
+								bone = "clavicle_r"
+								weight = 0.0
+							},
+							{
+								bone = "foot_L_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_R_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_l"
+								weight = 0.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.0
+							},
+							{
+								bone = "spine_01"
+								weight = 0.0
+							},
+							{
+								bone = "spine_02"
+								weight = 0.010909
+							},
+							{
+								bone = "spine_03"
+								weight = 0.043636
+							},
+							{
+								bone = "thigh_l"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_l"
+								weight = 0.516364
+							},
+							{
+								bone = "upperarm_r"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "clear_weights"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "ball_l"
+								weight = 0.0
+							},
+							{
+								bone = "calf_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_r"
+								weight = 0.0
+							},
+							{
+								bone = "foot_L_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_R_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_l"
+								weight = 0.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.0
+							},
+							{
+								bone = "spine_01"
+								weight = 0.0
+							},
+							{
+								bone = "spine_02"
+								weight = 0.0
+							},
+							{
+								bone = "spine_03"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_l"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_l"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_r"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+				]
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "MovementSettings"
+						movementsettings = 
+						{
+							name = ""
+							speeds = [  ]
+							runspeed = 320.0
+							walkspeed = 190.0
+							maxSpringTension = 100.0
+							springConstant = 10.0
+							useSmoothPaths = true
+							useMotionDamping = false
+							sharpStartAngle = 180.0
+							m_vTraceScale = [ 1.0, 1.0, 1.0 ]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "Head_LookAt_Chain"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "head"
+									weight = 1.0
+								},
+								{
+									name = "neck_0"
+									weight = 0.785
+								},
+							]
+						}
+					},
+					{
+						_class = "Feet"
+						children = 
+						[
+							{
+								_class = "Foot"
+								name = "Foot_Left"
+								anklebone = "foot_l"
+								toebone = "ball_L"
+								balloffset = [ -5.075963, 2.198952, -1.533585 ]
+								heeloffset = [ -6.20428, -6.727437, -0.63166 ]
+								autolevel = true
+								traceheight = 40.0
+								traceradius = 6.0
+							},
+							{
+								_class = "Foot"
+								name = "Foot_Right"
+								anklebone = "foot_r"
+								toebone = "ball_R"
+								balloffset = [ 5.045742, 6.638915, 0.280292 ]
+								heeloffset = [ 4.912509, -2.362074, 0.97265 ]
+								autolevel = true
+								traceheight = 40.0
+								traceradius = 6.0
+							},
+						]
+						locktolerance = 0.6
+						heighttolerance = 2.0
+						sanitizetrajectories = true
+					},
+					{
+						_class = "GenericGameData"
+						name = "AO_Proxy_Foot_Left"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "foot_l"
+							radius = 2.75591
+							point0 = [ -4.34026, -7.0429, 0.031398 ]
+							point1 = [ -4.17106, 0.555447, 0.205879 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = "AO_Proxy_Foot_Right"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "foot_r"
+							radius = 2.75816
+							point0 = [ 3.80171, -0.693547, -0.186959 ]
+							point1 = [ 4.44462, 6.89748, -0.442323 ]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "AimAt"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "spine_2"
+									weight = 1.0
+								},
+								{
+									name = "spine_1"
+									weight = 0.75
+								},
+								{
+									name = "spine_0"
+									weight = 0.5
+								},
+								{
+									name = "pelvis"
+									weight = 0.25
+								},
+							]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "AimChain"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "spine_03"
+									weight = 0.821
+								},
+								{
+									name = "spine_02"
+									weight = 0.446
+								},
+								{
+									name = "spine_01"
+									weight = 0.196
+								},
+							]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "HeadAim"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "head"
+									weight = 0.696
+								},
+								{
+									name = "neck_0"
+									weight = 0.339
+								},
+							]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "aim_at_weapon"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "spine_03"
+									weight = 1.0
+								},
+							]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "pelvis"
+							radius = 6.53773
+							point0 = [ 0.988315, 0.022924, -0.999669 ]
+							point1 = [ 1.01169, -0.022924, 0.999669 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "spine_01"
+							radius = 6.94128
+							point0 = [ 5.03811, 2.26818, 0.217871 ]
+							point1 = [ 4.02622, 2.04324, 0.217871 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "spine_03"
+							radius = 5.82718
+							point0 = [ 0.403256, 1.04053, -2.22681 ]
+							point1 = [ 0.398963, 1.05935, 2.19005 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "neck_01"
+							radius = 2.0
+							point0 = [ 1.08087, 0.581718, 0.590812 ]
+							point1 = [ -2.16131, 0.581718, 0.590812 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "head"
+							radius = 4.12579
+							point0 = [ 1.97878, -0.384581, 0.302005 ]
+							point1 = [ -0.243847, 0.030181, 0.231402 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "clavicle_l"
+							radius = 2.83977
+							point0 = [ 6.87264, -0.000039, -2.02162 ]
+							point1 = [ 3.21819, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "upperarm_l"
+							radius = 2.98621
+							point0 = [ 11.9448, 0.0, 0.0 ]
+							point1 = [ 1.79468, -0.088019, -1.528 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "lowerarm_l"
+							radius = 2.65503
+							point0 = [ 10.256, 0.753748, 0.138477 ]
+							point1 = [ 1.32938, 0.753748, 0.138477 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "hand_l"
+							radius = 2.98656
+							point0 = [ 4.82057, 1.33784, 0.0 ]
+							point1 = [ 2.84764, 1.33784, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "clavicle_r"
+							radius = 2.93287
+							point0 = [ -3.65626, 0.0, 0.0 ]
+							point1 = [ -6.45479, 0.000023, 1.39987 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "upperarm_r"
+							radius = 2.9862
+							point0 = [ -1.53449, 0.075258, 1.30651 ]
+							point1 = [ -11.9448, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "lowerarm_r"
+							radius = 2.65503
+							point0 = [ -1.50067, -0.887072, -0.162984 ]
+							point1 = [ -10.1916, -0.887072, -0.162984 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "hand_r"
+							radius = 2.53127
+							point0 = [ 0.0, 0.0, -0.901395 ]
+							point1 = [ -5.25003, 0.0, -0.901395 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "thigh_l"
+							radius = 4.19015
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ -11.4109, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "calf_l"
+							radius = 3.95636
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ -15.8254, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "thigh_r"
+							radius = 4.19018
+							point0 = [ 12.1993, 0.0, 0.0 ]
+							point1 = [ 0.0, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "calf_r"
+							radius = 3.95636
+							point0 = [ 15.8255, 0.0, 0.0 ]
+							point1 = [ 0.0, 0.0, 0.0 ]
+						}
+					},
+				]
+			},
+			{
+				_class = "PhysicsJointList"
+				children = 
+				[
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "pelvis"
+						child_body = "spine_01"
+						anchor_origin = [ 4.255459, -0.335207, 0.000012 ]
+						anchor_angles = [ -0.000006, -97.153893, -89.999992 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 7.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -10.0
+						max_twist_angle = 10.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "spine_01"
+						child_body = "spine_03"
+						anchor_origin = [ 12.511265, 2.939761, -0.000017 ]
+						anchor_angles = [ 0.000005, -73.157005, -89.999992 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 7.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -5.0
+						max_twist_angle = 5.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "spine_03"
+						child_body = "neck_01"
+						anchor_origin = [ 6.517924, -0.14749, 0.398397 ]
+						anchor_angles = [ -0.000026, -113.508064, -90.000008 ]
+						collision_enabled = false
+						friction = 0.21
+						enable_swing_limit = true
+						swing_limit = 20.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -5.0
+						max_twist_angle = 5.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "neck_01"
+						child_body = "head"
+						anchor_origin = [ 1.008322, 0.488399, 0.478611 ]
+						anchor_angles = [ -0.009204, -83.502258, -90.17057 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -30.0
+						max_twist_angle = 30.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "spine_03"
+						child_body = "clavicle_l"
+						anchor_origin = [ 4.678574, -1.075618, -1.488961 ]
+						anchor_angles = [ 26.536863, -99.480774, 170.257629 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 10.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "clavicle_l"
+						child_body = "upperarm_l"
+						anchor_origin = [ 6.214489, 0.000003, -0.000008 ]
+						anchor_angles = [ 5.845243, -112.00177, -130.554977 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -25.0
+						max_twist_angle = 25.0
+					},
+					{
+						_class = "PhysicsJointRevolute"
+						parent_body = "upperarm_l"
+						child_body = "lowerarm_l"
+						anchor_origin = [ 11.944822, -0.000004, -0.000046 ]
+						anchor_angles = [ -3.553845, -121.013779, -79.582413 ]
+						collision_enabled = false
+						friction = 0.05
+						enable_limit = true
+						min_angle = 0.0
+						max_angle = 60.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "lowerarm_l"
+						child_body = "hand_l"
+						anchor_origin = [ 10.620127, 0.000002, -0.000057 ]
+						anchor_angles = [ -76.13327, -80.225945, -100.485703 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -30.0
+						max_twist_angle = 30.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "spine_03"
+						child_body = "clavicle_r"
+						anchor_origin = [ 4.678619, -1.075632, 1.48894 ]
+						anchor_angles = [ -26.536882, -99.480873, 9.742583 ]
+						collision_enabled = false
+						friction = 1.0
+						enable_swing_limit = true
+						swing_limit = 10.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -12.0
+						max_twist_angle = 12.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "clavicle_r"
+						child_body = "upperarm_r"
+						anchor_origin = [ -6.214441, -0.000002, -0.000057 ]
+						anchor_angles = [ -5.845303, 67.998253, -49.445164 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -25.0
+						max_twist_angle = 25.0
+					},
+					{
+						_class = "PhysicsJointRevolute"
+						parent_body = "upperarm_r"
+						child_body = "lowerarm_r"
+						anchor_origin = [ -11.944815, 0.000014, -0.000065 ]
+						anchor_angles = [ 3.553816, 58.986088, -100.417587 ]
+						collision_enabled = false
+						friction = 0.05
+						enable_limit = true
+						min_angle = 0.0
+						max_angle = 60.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "lowerarm_r"
+						child_body = "hand_r"
+						anchor_origin = [ -10.62009, 0.000016, -0.000065 ]
+						anchor_angles = [ 76.133377, 99.773811, -79.514565 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -30.0
+						max_twist_angle = 30.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "pelvis"
+						child_body = "thigh_l"
+						anchor_origin = [ -0.570408, -0.209223, -3.54558 ]
+						anchor_angles = [ 8.498581, -90.459343, -82.889206 ]
+						collision_enabled = false
+						friction = 0.05
+						enable_swing_limit = true
+						swing_limit = 20.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointRevolute"
+						parent_body = "thigh_l"
+						child_body = "calf_l"
+						anchor_origin = [ -16.760582, -0.000004, -0.00001 ]
+						anchor_angles = [ 5.73321, 82.565903, -88.203735 ]
+						collision_enabled = false
+						friction = 0.25
+						enable_limit = true
+						min_angle = 0.0
+						max_angle = 45.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "calf_l"
+						child_body = "foot_l"
+						anchor_origin = [ -15.825438, -0.00001, -0.000019 ]
+						anchor_angles = [ 0.414452, 98.086426, -86.294983 ]
+						collision_enabled = false
+						friction = 0.5
+						enable_swing_limit = true
+						swing_limit = 7.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -7.0
+						max_twist_angle = 7.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "pelvis"
+						child_body = "thigh_r"
+						anchor_origin = [ -0.570354, -0.209225, 3.545594 ]
+						anchor_angles = [ -8.498527, -90.459343, -97.110725 ]
+						collision_enabled = false
+						friction = 0.05
+						enable_swing_limit = true
+						swing_limit = 20.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointRevolute"
+						parent_body = "thigh_r"
+						child_body = "calf_r"
+						anchor_origin = [ 16.760702, 0.000001, 0.0 ]
+						anchor_angles = [ -5.733259, -97.434113, -91.796326 ]
+						collision_enabled = false
+						friction = 0.25
+						enable_limit = true
+						min_angle = 0.0
+						max_angle = 45.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "calf_r"
+						child_body = "foot_r"
+						anchor_origin = [ 15.825453, 0.000023, 0.000001 ]
+						anchor_angles = [ -0.414518, -81.913582, -93.705269 ]
+						collision_enabled = false
+						friction = 0.5
+						enable_swing_limit = true
+						swing_limit = 7.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -7.0
+						max_twist_angle = 7.0
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "pelvis"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 6.537728
+						point0 = [ 0.988315, 0.022924, -0.999669 ]
+						point1 = [ 1.011685, -0.022924, 0.999669 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "spine_01"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 6.941284
+						point0 = [ 5.038108, 2.268176, 0.217871 ]
+						point1 = [ 4.026224, 2.043244, 0.217871 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "spine_03"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 5.827178
+						point0 = [ 0.403256, 1.040526, -2.226808 ]
+						point1 = [ 0.398963, 1.059348, 2.190054 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "neck_01"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 2.0
+						point0 = [ 1.08087, 0.581718, 0.590812 ]
+						point1 = [ -2.161314, 0.581718, 0.590812 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "head"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 4.125793
+						point0 = [ 1.978779, -0.384581, 0.302005 ]
+						point1 = [ -0.243847, 0.030181, 0.231402 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "clavicle_l"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 2.839769
+						point0 = [ 6.872641, -0.000039, -2.021615 ]
+						point1 = [ 3.218186, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "upperarm_l"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 2.986206
+						point0 = [ 11.944822, 0.0, 0.0 ]
+						point1 = [ 1.794681, -0.088019, -1.528 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "lowerarm_l"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 2.655031
+						point0 = [ 10.256035, 0.753748, 0.138477 ]
+						point1 = [ 1.32938, 0.753748, 0.138477 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "hand_l"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 2.986558
+						point0 = [ 4.820568, 1.337843, 0.0 ]
+						point1 = [ 2.847641, 1.337843, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "clavicle_r"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 2.932868
+						point0 = [ -3.656258, 0.0, 0.0 ]
+						point1 = [ -6.454788, 0.000023, 1.399866 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "upperarm_r"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 2.986204
+						point0 = [ -1.53449, 0.075258, 1.306512 ]
+						point1 = [ -11.944817, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "lowerarm_r"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 2.655025
+						point0 = [ -1.500671, -0.887072, -0.162984 ]
+						point1 = [ -10.191618, -0.887072, -0.162984 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "hand_r"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 2.531266
+						point0 = [ 0.0, 0.0, -0.901395 ]
+						point1 = [ -5.250029, 0.0, -0.901395 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "thigh_l"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 4.190147
+						point0 = [ 0.0, 0.0, 0.0 ]
+						point1 = [ -11.410913, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "calf_l"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 3.956357
+						point0 = [ 0.0, 0.0, 0.0 ]
+						point1 = [ -15.825429, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "foot_l"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 3.119381
+						point0 = [ -2.055053, 0.154218, -0.038307 ]
+						point1 = [ -4.3396, -6.675243, 1.68489 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "thigh_r"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 4.190175
+						point0 = [ 12.199323, 0.0, 0.0 ]
+						point1 = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "calf_r"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 3.956363
+						point0 = [ 15.825454, 0.0, 0.0 ]
+						point1 = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "foot_r"
+						surface_prop = "flesh"
+						collision_prop = "default"
+						radius = 4.27938
+						point0 = [ 2.356655, 1.535968, 0.0 ]
+						point1 = [ 3.38325, 6.134298, -0.002012 ]
+					},
+				]
+			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "Head_LookAt_Attachment"
+						parent_bone = "head"
+						relative_origin = [ 0.924911, -4.267622, -0.268209 ]
+						relative_angles = [ 0.0, -89.703018, -0.000051 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "forward"
+						parent_bone = ""
+						relative_origin = [ 52.240799, 0.0, 58.811604 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "aim_R"
+						parent_bone = "hand_R"
+						relative_origin = [ -8.003757, 0.804641, 0.194546 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "pistol_attach"
+						parent_bone = "hand_r"
+						relative_origin = [ -3.893547, -2.058931, 1.475361 ]
+						relative_angles = [ 1.251167, -161.96637, 21.70899 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "smg_attach"
+						parent_bone = "hand_r"
+						relative_origin = [ -4.0756, -1.838148, 0.67173 ]
+						relative_angles = [ 5.955971, -156.901871, 1.629869 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "rifle_attach"
+						parent_bone = "hand_r"
+						relative_origin = [ -2.291302, -1.1572, 0.998192 ]
+						relative_angles = [ 13.363872, -169.675278, -2.20414 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "shotgun_attach"
+						parent_bone = "hand_r"
+						relative_origin = [ -4.925995, -0.701643, 1.570538 ]
+						relative_angles = [ 2.362393, -170.262863, 14.741102 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "melee_bat_attach"
+						parent_bone = "hand_l"
+						relative_origin = [ 2.334858, 1.16357, 1.60859 ]
+						relative_angles = [ -4.407339, -96.651741, -156.617065 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "melee_pan_attach"
+						parent_bone = "hand_l"
+						relative_origin = [ 2.33486, 1.16357, 1.60859 ]
+						relative_angles = [ -4.40734, -96.651703, -156.617004 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "melee_pipe_attach"
+						parent_bone = "hand_l"
+						relative_origin = [ 2.33486, 1.16357, 1.60859 ]
+						relative_angles = [ -4.40734, -96.651703, -156.617004 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "head_blood"
+						parent_bone = "head"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+				]
+			},
+			{
+				_class = "HitboxSetList"
+				children = 
+				[
+					{
+						_class = "HitboxSet"
+						name = "default"
+						children = 
+						[
+							{
+								_class = "Hitbox"
+								name = "pelvis"
+								parent_bone = "pelvis"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -9.735192, -4.848153, -8.455885 ]
+								hitbox_maxs = [ 4.255459, 5.179291, 8.455879 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "spine_01"
+								parent_bone = "spine_01"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -4.561958, -4.878212, -6.540155 ]
+								hitbox_maxs = [ 7.431221, 5.147192, 6.540135 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "spine_02"
+								parent_bone = "spine_02"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -9.402112, -3.746232, -6.981263 ]
+								hitbox_maxs = [ 14.254874, 6.425011, 7.03468 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "spine_03"
+								parent_bone = "spine_03"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -0.5, -2.723645, -3.311396 ]
+								hitbox_maxs = [ 11.141526, 3.380358, 3.311423 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "clavicle_l"
+								parent_bone = "clavicle_l"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -2.840411, -1.167004, -1.464236 ]
+								hitbox_maxs = [ 6.214491, 5.229228, 1.982976 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "upperarm_l"
+								parent_bone = "upperarm_l"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -1.333088, -2.104991, -1.460163 ]
+								hitbox_maxs = [ 11.587278, 1.733938, 2.482166 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "lowerarm_l"
+								parent_bone = "lowerarm_l"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -5.289092, -2.255386, -1.188097 ]
+								hitbox_maxs = [ 12.123621, 2.646874, 2.699146 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "hand_l"
+								parent_bone = "hand_l"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -0.5, -1.323102, -2.873097 ]
+								hitbox_maxs = [ 5.60118, 2.571623, 2.742524 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "clavicle_r"
+								parent_bone = "clavicle_r"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -9.762604, -5.229218, -3.949471 ]
+								hitbox_maxs = [ 3.613098, 1.167015, 1.464284 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "upperarm_r"
+								parent_bone = "upperarm_r"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -13.979404, -2.008388, -2.487686 ]
+								hitbox_maxs = [ 2.29068, 1.265958, 0.58197 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "lowerarm_r"
+								parent_bone = "lowerarm_r"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -13.166355, -1.187577, -3.595371 ]
+								hitbox_maxs = [ 0.912943, 2.584404, 2.368464 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "hand_r"
+								parent_bone = "hand_r"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -4.82048, -0.935062, -1.828048 ]
+								hitbox_maxs = [ 0.5, 0.5, 0.999062 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "neck_01"
+								parent_bone = "neck_01"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -1.966933, -4.169708, -3.311389 ]
+								hitbox_maxs = [ 9.893145, 4.807557, 3.31143 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "thigh_l"
+								parent_bone = "thigh_l"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -25.234251, -4.238742, -4.367587 ]
+								hitbox_maxs = [ 4.370314, 5.611876, 5.451716 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "calf_l"
+								parent_bone = "calf_l"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -19.695076, -5.855942, -3.322603 ]
+								hitbox_maxs = [ 6.863595, 4.233788, 4.134234 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "foot_l"
+								parent_bone = "foot_l"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -5.649068, -9.68335, -2.849932 ]
+								hitbox_maxs = [ 3.822172, 2.8468, 3.554361 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "thigh_r"
+								parent_bone = "thigh_r"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -4.370234, -5.611873, -5.311981 ]
+								hitbox_maxs = [ 22.642679, 4.238739, 4.367569 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "calf_r"
+								parent_bone = "calf_r"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -4.582476, -3.910362, -3.82079 ]
+								hitbox_maxs = [ 19.14794, 5.067885, 3.235627 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "foot_r"
+								parent_bone = "foot_r"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -2.089417, -2.736543, -2.800483 ]
+								hitbox_maxs = [ 5.649014, 9.683338, 2.850003 ]
+							},
+						]
+					},
+				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "Folder"
+						name = "pistol"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "idle_pistol_aim"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/idle_pistol_aim_ik.dmx"
+								start_frame = -1
+								end_frame = 41
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_run_w"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/pistol_run_w_ik.dmx"
+								start_frame = -1
+								end_frame = 16
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_run_sw"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/pistol_run_sw_ik.dmx"
+								start_frame = -1
+								end_frame = 16
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_run_se"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/pistol_run_se_ik.dmx"
+								start_frame = -1
+								end_frame = 15
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_run_s"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/pistol_run_s_ik.dmx"
+								start_frame = -1
+								end_frame = 17
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_run_nw"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/pistol_run_nw_ik.dmx"
+								start_frame = -1
+								end_frame = 17
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_run_ne"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/pistol_run_ne_ik.dmx"
+								start_frame = -1
+								end_frame = 18
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_run_n"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/pistol_run_n_ik.dmx"
+								start_frame = -1
+								end_frame = 22
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_run_e"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/pistol_run_e_ik.dmx"
+								start_frame = -1
+								end_frame = 19
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_fire"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/pistol_firev2.dmx"
+								start_frame = -1
+								end_frame = 4
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "smg_hold"
+								children = 
+								[
+									{
+										_class = "AnimSmoothLoop"
+										disabled = true
+										frames_from_start = 35
+										frames_from_end = 35
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/smg_idle_ik.dmx"
+								start_frame = -1
+								end_frame = 40
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "smg_temp_shoot"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/smg_fire.dmx"
+								start_frame = -1
+								end_frame = 5
+								framerate = -1.0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "unarmed"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "left_jab"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/left_jab.dmx"
+								start_frame = 8
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "right_jab"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/right_jab.dmx"
+								start_frame = 7
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "left_jab_add"
+								children = 
+								[
+									{
+										_class = "AnimSubtract"
+										anim_name = "unarmed_idle"
+										frame = 0
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/left_jab.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "right_jab_add"
+								children = 
+								[
+									{
+										_class = "AnimSubtract"
+										anim_name = "unarmed_idle"
+										frame = 0
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/right_jab.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "unarmed_idle"
+								activity_name = "ACT_IDLE"
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/unarmed_idle_ik.dmx"
+								start_frame = -1
+								end_frame = 109
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "unarmed_run_e"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/unarmed_run_e_ik.dmx"
+								start_frame = -1
+								end_frame = 84
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "unarmed_run_n"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/unarmed_run_n_ik.dmx"
+								start_frame = -1
+								end_frame = 89
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "unarmed_run_ne"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = true
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+									{
+										_class = "AnimSmoothLoop"
+										disabled = true
+										frames_from_start = 10
+										frames_from_end = 10
+									},
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 0.0 ]
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/unarmed_run_ne_ik.dmx"
+								start_frame = -1
+								end_frame = 114
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "unarmed_run_w"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/unarmed_run_w_ik.dmx"
+								start_frame = -1
+								end_frame = 85
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "unarmed_run_s"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/unarmed_run_s_ik.dmx"
+								start_frame = -1
+								end_frame = 81
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "unarmed_run_se"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = true
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/unarmed_run_se_ik.dmx"
+								start_frame = -1
+								end_frame = 114
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "unarmed_run_sw"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = true
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/unarmed_run_sw_IK.dmx"
+								start_frame = -1
+								end_frame = 114
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "unarmed_run_nw"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = true
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+									{
+										_class = "AnimSmoothLoop"
+										disabled = true
+										frames_from_start = 12
+										frames_from_end = 12
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/unarmed_run_nw_ik.dmx"
+								start_frame = -1
+								end_frame = 114
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "melee_idle"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/melee_idle_ik.dmx"
+								start_frame = -1
+								end_frame = 46
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimBindPose"
+								name = "BindPose"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								frame_count = 1
+								frame_rate = 30
+							},
+							{
+								_class = "AnimFile"
+								name = "unarmed_idle_add_smg"
+								children = 
+								[
+									{
+										_class = "AnimSubtract"
+										anim_name = "smg_hold"
+										frame = 0
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/unarmed_idle_ik.dmx"
+								start_frame = -1
+								end_frame = 109
+								framerate = -1.0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "rifle"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "rifle_aim_idle"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_aim_idle_ik.dmx"
+								start_frame = -1
+								end_frame = 94
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_run_e"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_run_e_ik.dmx"
+								start_frame = -1
+								end_frame = 16
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_run_n"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_run_n_ik.dmx"
+								start_frame = -1
+								end_frame = 23
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_run_ne"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_run_ne_ik.dmx"
+								start_frame = -1
+								end_frame = 16
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_run_nw"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_run_nw_ik.dmx"
+								start_frame = -1
+								end_frame = 16
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_run_s"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_run_s_ik.dmx"
+								start_frame = -1
+								end_frame = 17
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_run_se"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_run_se_ik.dmx"
+								start_frame = -1
+								end_frame = 16
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_run_sw"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_run_sw_ik.dmx"
+								start_frame = -1
+								end_frame = 16
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_run_w"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_run_w_ik.dmx"
+								start_frame = -1
+								end_frame = 16
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_fire"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_fire_test.dmx"
+								start_frame = -1
+								end_frame = 8
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_fire_test"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_fire_test.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "pistol_fire_temp"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/anims/pistol_fire_temp.dmx"
+						start_frame = -1
+						end_frame = 20
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "Folder"
+						name = "Turns_Rifle"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "rifle_turn_45L"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_turn_45L.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_turn_45R"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_turn_45R.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_turn_90L"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_turn_90L.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_turn_90R"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_turn_90R.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_turn_180L"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_turn_180.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_turn_180R"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/rifle_turn_180R.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "bat"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "bat_idle"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/melee_idle.dmx"
+								start_frame = -1
+								end_frame = 45
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "bat_swing_1"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/melee_swing.dmx"
+								start_frame = -1
+								end_frame = 16
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "bat_swing_2"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/melee_swing.dmx"
+								start_frame = -1
+								end_frame = 16
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "bat_swing_3"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/melee_swing.dmx"
+								start_frame = -1
+								end_frame = 16
+								framerate = -1.0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "Improved_Jab"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "jab_left"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/jab_left.dmx"
+								start_frame = 1
+								end_frame = 14
+								framerate = -1.0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "shotgun"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "shotgun_idle"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/shotgun_idle.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "shotgun_fire"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/shotgun_firev2.dmx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "melee_idle_ik"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/anims/melee_idle_ik.dmx"
+						start_frame = -1
+						end_frame = 45
+						framerate = -1.0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
+			},
+			{
+				_class = "SpawnConfig"
+				children = 
+				[
+					{
+						_class = "ConfigRandomPick"
+						children = 
+						[
+							{
+								_class = "ConfigSetBodygroup"
+								group_name = "Model"
+								choice = 0
+							},
+							{
+								_class = "ConfigSetBodygroup"
+								group_name = "Model"
+								choice = 1
+							},
+							{
+								_class = "ConfigSetBodygroup"
+								group_name = "Model"
+								choice = 2
+							},
+							{
+								_class = "ConfigSetBodygroup"
+								group_name = "Model"
+								choice = 3
+							},
+							{
+								_class = "ConfigSetBodygroup"
+								group_name = "Model"
+								choice = 4
+							},
+							{
+								_class = "ConfigSetBodygroup"
+								group_name = "Model"
+								choice = 5
+							},
+						]
+						disabled = true
+					},
+					{
+						_class = "ConfigAttachedModel"
+						disabled = true
+						model_name = "models/weapons/pistol/prop_pistol.vmdl"
+						entity_class = ""
+						attachment_type = "attach"
+						attach_point = "pistol_attach"
+						use_additional_offset = false
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						user_specified_color = false
+						user_specified_materialgroup = false
+						accept_parent_materialdriven_decals = false
+					},
+					{
+						_class = "ConfigAttachedModel"
+						disabled = true
+						model_name = "models/weapons/smg/prop_smg.vmdl"
+						entity_class = ""
+						attachment_type = "attach"
+						attach_point = "smg_attach"
+						use_additional_offset = false
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						user_specified_color = false
+						user_specified_materialgroup = false
+						accept_parent_materialdriven_decals = false
+					},
+					{
+						_class = "ConfigAttachedModel"
+						disabled = true
+						model_name = "models/weapons/rifle/prop_rifle.vmdl"
+						entity_class = ""
+						attachment_type = "attach"
+						attach_point = "rifle_attach"
+						use_additional_offset = false
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						user_specified_color = false
+						user_specified_materialgroup = false
+						accept_parent_materialdriven_decals = false
+					},
+					{
+						_class = "ConfigAttachedModel"
+						disabled = true
+						model_name = "models/weapons/shotgun/prop_shotgun.vmdl"
+						entity_class = ""
+						attachment_type = "attach"
+						attach_point = "shotgun_attach"
+						use_additional_offset = false
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						user_specified_color = false
+						user_specified_materialgroup = false
+						accept_parent_materialdriven_decals = false
+					},
+					{
+						_class = "ConfigAttachedModel"
+						disabled = true
+						model_name = "models/weapons/bat/bat.vmdl"
+						entity_class = ""
+						attachment_type = "attach"
+						attach_point = "melee_bat_attach"
+						use_additional_offset = false
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						user_specified_color = false
+						user_specified_materialgroup = false
+						accept_parent_materialdriven_decals = false
+					},
+					{
+						_class = "ConfigAttachedModel"
+						disabled = true
+						model_name = "models/weapons/pan/pan.vmdl"
+						entity_class = ""
+						attachment_type = "attach"
+						attach_point = "melee_pan_attach"
+						use_additional_offset = false
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						user_specified_color = false
+						user_specified_materialgroup = false
+						accept_parent_materialdriven_decals = false
+					},
+					{
+						_class = "ConfigAttachedModel"
+						model_name = "models/weapons/melee/melee.vmdl"
+						entity_class = ""
+						attachment_type = "attach"
+						attach_point = "melee_bat_attach"
+						use_additional_offset = false
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						user_specified_color = false
+						user_specified_materialgroup = false
+						accept_parent_materialdriven_decals = false
+					},
+				]
+				hide_materialgroup_in_tools = false
+				hide_rendercolor_in_tools = false
 			},
 		]
 		model_archetype = ""

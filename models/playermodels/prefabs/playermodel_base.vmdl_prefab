@@ -521,84 +521,6 @@
 							},
 							{
 								_class = "AnimFile"
-								name = "unarmed_run_e"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 15
-										frames_from_end = 15
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/unarmed_run_e_ik.dmx"
-								start_frame = -1
-								end_frame = 114
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "unarmed_run_n"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 15
-										frames_from_end = 15
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/unarmed_run_n_ik.dmx"
-								start_frame = -1
-								end_frame = 114
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
 								name = "unarmed_run_ne"
 								children = 
 								[
@@ -637,84 +559,6 @@
 								anim_markup_ordered = false
 								disable_compression = false
 								source_filename = "models/playermodels/anims/unarmed_run_ne_ik.dmx"
-								start_frame = -1
-								end_frame = 114
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "unarmed_run_w"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 15
-										frames_from_end = 15
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/unarmed_run_w_ik.dmx"
-								start_frame = -1
-								end_frame = 114
-								framerate = -1.0
-								reverse = false
-							},
-							{
-								_class = "AnimFile"
-								name = "unarmed_run_s"
-								children = 
-								[
-									{
-										_class = "ExtractMotion"
-										extract_tx = true
-										extract_ty = true
-										extract_tz = false
-										extract_rz = false
-										linear = false
-										quadratic = false
-										root_bone_name = "pelvis"
-										motion_type = "Uniform"
-									},
-									{
-										_class = "AnimSmoothLoop"
-										frames_from_start = 15
-										frames_from_end = 15
-									},
-								]
-								activity_name = ""
-								activity_weight = 1
-								weight_list_name = ""
-								fade_in_time = 0.2
-								fade_out_time = 0.2
-								looping = true
-								delta = false
-								worldSpace = false
-								hidden = false
-								anim_markup_ordered = false
-								disable_compression = false
-								source_filename = "models/playermodels/anims/unarmed_run_s_ik.dmx"
 								start_frame = -1
 								end_frame = 114
 								framerate = -1.0
@@ -890,6 +734,142 @@
 								source_filename = "models/playermodels/anims/unarmed_idle_ik.dmx"
 								start_frame = -1
 								end_frame = 109
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "unarmed_run_n"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/unarmed_run_n_ik.dmx"
+								start_frame = -1
+								end_frame = 89
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "unarmed_run_w"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/unarmed_run_w_ik.dmx"
+								start_frame = -1
+								end_frame = 85
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "unarmed_run_s"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/unarmed_run_s_ik.dmx"
+								start_frame = -1
+								end_frame = 81
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "unarmed_run_e"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "pelvis"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/unarmed_run_e_ik.dmx"
+								start_frame = -1
+								end_frame = 84
 								framerate = -1.0
 								reverse = false
 							},
