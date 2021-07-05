@@ -597,7 +597,7 @@
 										extract_tx = true
 										extract_ty = true
 										extract_tz = false
-										extract_rz = false
+										extract_rz = true
 										linear = false
 										quadratic = false
 										root_bone_name = "pelvis"
@@ -605,8 +605,14 @@
 									},
 									{
 										_class = "AnimSmoothLoop"
+										disabled = true
 										frames_from_start = 10
 										frames_from_end = 10
+									},
+									{
+										_class = "AnimOffset"
+										translation = [ 0.0, 0.0, 0.0 ]
+										rotation_xyz = [ 0.0, 0.0, 0.0 ]
 									},
 								]
 								activity_name = ""
@@ -622,7 +628,7 @@
 								disable_compression = false
 								source_filename = "models/playermodels/anims/unarmed_run_ne_ik.dmx"
 								start_frame = -1
-								end_frame = 23
+								end_frame = 114
 								framerate = -1.0
 								reverse = false
 							},
@@ -704,7 +710,7 @@
 										extract_tx = true
 										extract_ty = true
 										extract_tz = false
-										extract_rz = false
+										extract_rz = true
 										linear = false
 										quadratic = false
 										root_bone_name = "pelvis"
@@ -724,7 +730,7 @@
 								disable_compression = false
 								source_filename = "models/playermodels/anims/unarmed_run_se_ik.dmx"
 								start_frame = -1
-								end_frame = 21
+								end_frame = 114
 								framerate = -1.0
 								reverse = false
 							},
@@ -739,7 +745,7 @@
 										extract_ty = true
 										extract_tz = false
 										extract_rz = false
-										linear = false
+										linear = true
 										quadratic = false
 										root_bone_name = "pelvis"
 										motion_type = "Uniform"
@@ -758,7 +764,7 @@
 								disable_compression = false
 								source_filename = "models/playermodels/anims/unarmed_run_sw_IK.dmx"
 								start_frame = -1
-								end_frame = 21
+								end_frame = 114
 								framerate = -1.0
 								reverse = false
 							},
@@ -772,7 +778,7 @@
 										extract_tx = true
 										extract_ty = true
 										extract_tz = false
-										extract_rz = false
+										extract_rz = true
 										linear = false
 										quadratic = false
 										root_bone_name = ""
@@ -780,6 +786,7 @@
 									},
 									{
 										_class = "AnimSmoothLoop"
+										disabled = true
 										frames_from_start = 12
 										frames_from_end = 12
 									},
@@ -797,7 +804,7 @@
 								disable_compression = false
 								source_filename = "models/playermodels/anims/unarmed_run_nw_ik.dmx"
 								start_frame = -1
-								end_frame = 24
+								end_frame = 114
 								framerate = -1.0
 								reverse = false
 							},
@@ -818,6 +825,51 @@
 								source_filename = "models/playermodels/anims/melee_idle_ik.dmx"
 								start_frame = -1
 								end_frame = 46
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimBindPose"
+								name = "BindPose"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								frame_count = 1
+								frame_rate = 30
+							},
+							{
+								_class = "AnimFile"
+								name = "unarmed_idle_add_smg"
+								children = 
+								[
+									{
+										_class = "AnimSubtract"
+										anim_name = "smg_hold"
+										frame = 0
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/anims/unarmed_idle_ik.dmx"
+								start_frame = -1
+								end_frame = 109
 								framerate = -1.0
 								reverse = false
 							},
@@ -1655,347 +1707,19 @@
 				[
 					{
 						_class = "WeightList"
-						name = "Foot_IK_Only"
-						default_weight = 0.0
-						weights = 
-						[
-							{
-								bone = "ball_L"
-								weight = 0.0
-							},
-							{
-								bone = "ball_R"
-								weight = 0.0
-							},
-							{
-								bone = "foot_L_IK_target"
-								weight = 1.0
-							},
-							{
-								bone = "foot_R_IK_target"
-								weight = 1.0
-							},
-							{
-								bone = "ik_foot_root"
-								weight = 0.0
-							},
-							{
-								bone = "ik_hand_root"
-								weight = 0.0
-							},
-							{
-								bone = "pelvis"
-								weight = 0.0
-							},
-							{
-								bone = "root"
-								weight = 1.0
-							},
-							{
-								bone = "root_motion"
-								weight = 1.0
-							},
-						]
-						master_morph_weight = -1.0
-						morph_weights = [  ]
-					},
-					{
-						_class = "WeightList"
-						name = "firing"
-						default_weight = 0.0
-						weights = 
-						[
-							{
-								bone = "clavicle_r"
-								weight = 1.0
-							},
-							{
-								bone = "hand_r"
-								weight = 1.0
-							},
-							{
-								bone = "pelvis"
-								weight = 0.0
-							},
-							{
-								bone = "spine_0"
-								weight = 0.0
-							},
-							{
-								bone = "spine_03"
-								weight = 0.0
-							},
-							{
-								bone = "spine_1"
-								weight = 0.0
-							},
-							{
-								bone = "spine_2"
-								weight = 0.0
-							},
-							{
-								bone = "spine_3"
-								weight = 1.0
-							},
-							{
-								bone = "thigh_l"
-								weight = 0.0
-							},
-							{
-								bone = "thigh_r"
-								weight = 0.0
-							},
-							{
-								bone = "weapon_hand_r"
-								weight = 1.0
-							},
-						]
-						master_morph_weight = -1.0
-						morph_weights = [  ]
-					},
-					{
-						_class = "WeightList"
-						name = "shotgun"
-						default_weight = 0.0
-						weights = 
-						[
-							{
-								bone = "clavicle_L"
-								weight = 0.155477
-							},
-							{
-								bone = "clavicle_R"
-								weight = 0.134276
-							},
-							{
-								bone = "neck_0"
-								weight = 0.0
-							},
-							{
-								bone = "pelvis"
-								weight = 0.258555
-							},
-							{
-								bone = "root"
-								weight = 0.262357
-							},
-							{
-								bone = "spine_0"
-								weight = 0.0
-							},
-							{
-								bone = "spine_1"
-								weight = 0.0
-							},
-							{
-								bone = "spine_2"
-								weight = 0.0
-							},
-							{
-								bone = "spine_3"
-								weight = 0.0
-							},
-						]
-						master_morph_weight = -1.0
-						morph_weights = [  ]
-					},
-					{
-						_class = "WeightList"
-						name = "shotgun_fire"
-						default_weight = 0.0
-						weights = 
-						[
-							{
-								bone = "clavicle_L"
-								weight = 0.5
-							},
-							{
-								bone = "clavicle_R"
-								weight = 0.5
-							},
-							{
-								bone = "leg_lower_R"
-								weight = 0.5
-							},
-							{
-								bone = "leg_upper_L"
-								weight = 0.5
-							},
-							{
-								bone = "leg_upper_R"
-								weight = 0.5
-							},
-							{
-								bone = "neck_0"
-								weight = 0.5
-							},
-							{
-								bone = "pelvis"
-								weight = 0.0
-							},
-							{
-								bone = "root_motion"
-								weight = 0.5
-							},
-							{
-								bone = "spine_0"
-								weight = 0.5
-							},
-							{
-								bone = "spine_01"
-								weight = 1.0
-							},
-							{
-								bone = "spine_1"
-								weight = 0.5
-							},
-							{
-								bone = "spine_2"
-								weight = 0.5
-							},
-							{
-								bone = "spine_3"
-								weight = 0.5
-							},
-						]
-						master_morph_weight = -1.0
-						morph_weights = [  ]
-					},
-					{
-						_class = "WeightList"
-						name = "holding_weapon"
-						default_weight = 0.0
-						weights = 
-						[
-							{
-								bone = "clavicle_l"
-								weight = 0.044355
-							},
-							{
-								bone = "clavicle_r"
-								weight = 0.03629
-							},
-							{
-								bone = "hand_l"
-								weight = 0.048387
-							},
-							{
-								bone = "lowerarm_twist_01_l"
-								weight = 0.044355
-							},
-							{
-								bone = "pelvis"
-								weight = 0.0
-							},
-							{
-								bone = "spine_0"
-								weight = 0.0
-							},
-							{
-								bone = "spine_03"
-								weight = 0.0
-							},
-							{
-								bone = "spine_1"
-								weight = 0.0
-							},
-							{
-								bone = "spine_2"
-								weight = 0.0
-							},
-							{
-								bone = "spine_3"
-								weight = 1.0
-							},
-							{
-								bone = "thigh_l"
-								weight = 0.0
-							},
-							{
-								bone = "thigh_r"
-								weight = 0.0
-							},
-							{
-								bone = "thumb_03_l"
-								weight = 0.048387
-							},
-							{
-								bone = "upperarm_twist_01_l"
-								weight = 0.020161
-							},
-							{
-								bone = "weapon_hand_r"
-								weight = 1.0
-							},
-						]
-						master_morph_weight = -1.0
-						morph_weights = [  ]
-					},
-					{
-						_class = "WeightList"
-						name = "firing_pistol"
-						default_weight = 0.0
-						weights = 
-						[
-							{
-								bone = "clavicle_l"
-								weight = 0.0
-							},
-							{
-								bone = "clavicle_r"
-								weight = 0.0
-							},
-							{
-								bone = "hand_r"
-								weight = 0.0
-							},
-							{
-								bone = "pelvis"
-								weight = 0.0
-							},
-							{
-								bone = "spine_0"
-								weight = 0.0
-							},
-							{
-								bone = "spine_03"
-								weight = 0.0
-							},
-							{
-								bone = "spine_1"
-								weight = 0.0
-							},
-							{
-								bone = "spine_2"
-								weight = 0.0
-							},
-							{
-								bone = "spine_3"
-								weight = 1.0
-							},
-							{
-								bone = "thigh_l"
-								weight = 0.0
-							},
-							{
-								bone = "thigh_r"
-								weight = 0.0
-							},
-							{
-								bone = "weapon_hand_r"
-								weight = 1.0
-							},
-						]
-						master_morph_weight = -1.0
-						morph_weights = [  ]
-					},
-					{
-						_class = "WeightList"
 						name = "upper_body"
 						default_weight = 0.0
 						weights = 
 						[
 							{
+								bone = "ball_l"
+								weight = 0.0
+							},
+							{
+								bone = "calf_l"
+								weight = 0.0
+							},
+							{
 								bone = "clavicle_l"
 								weight = 1.0
 							},
@@ -2012,16 +1736,32 @@
 								weight = 0.0
 							},
 							{
+								bone = "foot_l"
+								weight = 0.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.381818
+							},
+							{
 								bone = "spine_01"
-								weight = 0.264493
+								weight = 1.0
 							},
 							{
 								bone = "spine_02"
-								weight = 0.436441
+								weight = 1.0
 							},
 							{
 								bone = "spine_03"
-								weight = 0.608051
+								weight = 1.0
+							},
+							{
+								bone = "thigh_l"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 0.0
 							},
 							{
 								bone = "upperarm_l"
@@ -2037,47 +1777,69 @@
 					},
 					{
 						_class = "WeightList"
-						name = "moving_blend"
+						name = "upper_body_smg"
 						default_weight = 0.0
 						weights = 
 						[
 							{
+								bone = "ball_l"
+								weight = 0.0
+							},
+							{
+								bone = "calf_l"
+								weight = 0.0
+							},
+							{
 								bone = "clavicle_l"
-								weight = 0.677536
+								weight = 0.138182
 							},
 							{
 								bone = "clavicle_r"
-								weight = 0.677536
+								weight = 0.0
+							},
+							{
+								bone = "foot_L_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_R_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_l"
+								weight = 0.0
 							},
 							{
 								bone = "pelvis"
-								weight = 0.347826
-							},
-						]
-						master_morph_weight = -1.0
-						morph_weights = [  ]
-					},
-					{
-						_class = "WeightList"
-						name = "legs_only"
-						default_weight = 0.0
-						weights = 
-						[
-							{
-								bone = "pelvis"
-								weight = 1.0
+								weight = 0.0
 							},
 							{
 								bone = "spine_01"
 								weight = 0.0
 							},
 							{
+								bone = "spine_02"
+								weight = 0.010909
+							},
+							{
+								bone = "spine_03"
+								weight = 0.043636
+							},
+							{
 								bone = "thigh_l"
-								weight = 1.0
+								weight = 0.0
 							},
 							{
 								bone = "thigh_r"
-								weight = 1.0
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_l"
+								weight = 0.516364
+							},
+							{
+								bone = "upperarm_r"
+								weight = 0.0
 							},
 						]
 						master_morph_weight = -1.0
@@ -2119,23 +1881,7 @@
 								},
 								{
 									name = "neck_0"
-									weight = 0.857
-								},
-								{
-									name = "spine_3"
-									weight = 0.375
-								},
-								{
-									name = "spine_2"
-									weight = 0.285
-								},
-								{
-									name = "spine_1"
-									weight = 0.214
-								},
-								{
-									name = "spine_0"
-									weight = 0.142
+									weight = 0.785
 								},
 							]
 						}
@@ -2149,22 +1895,22 @@
 								name = "Foot_Left"
 								anklebone = "foot_l"
 								toebone = "ball_L"
-								balloffset = [ 7.697131, -0.575445, 0.055231 ]
-								heeloffset = [ -0.395982, -4.087081, -0.036411 ]
-								autolevel = false
+								balloffset = [ -6.42262, 1.225133, 0.855579 ]
+								heeloffset = [ -6.20428, -6.727437, -0.151212 ]
+								autolevel = true
 								traceheight = 40.0
-								traceradius = 0.5
+								traceradius = 4.0
 							},
 							{
 								_class = "Foot"
 								name = "Foot_Right"
 								anklebone = "foot_r"
 								toebone = "ball_R"
-								balloffset = [ -8.308445, -0.253959, -0.132064 ]
-								heeloffset = [ 0.07128, 4.121193, 0.01902 ]
-								autolevel = false
+								balloffset = [ 5.045742, 8.186316, 0.039427 ]
+								heeloffset = [ 4.47519, -2.815835, 0.97265 ]
+								autolevel = true
 								traceheight = 40.0
-								traceradius = 0.5
+								traceradius = 4.0
 							},
 						]
 						locktolerance = 0.8
@@ -2232,19 +1978,34 @@
 							[
 								{
 									name = "spine_03"
-									weight = 1.0
+									weight = 0.714
 								},
 								{
 									name = "spine_02"
-									weight = 0.75
+									weight = 0.482
 								},
 								{
 									name = "spine_01"
-									weight = 0.5
+									weight = 0.142
+								},
+							]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "HeadAim"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "head"
+									weight = 1.0
 								},
 								{
-									name = "pelvis"
-									weight = 0.25
+									name = "neck_0"
+									weight = 0.857
 								},
 							]
 						}
@@ -2758,8 +2519,8 @@
 						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 5.827178
-						point0 = [ 1.813289, -0.283862, -2.226827 ]
-						point1 = [ 1.808996, -0.26504, 2.190035 ]
+						point0 = [ 0.403256, 1.040526, -2.226808 ]
+						point1 = [ 0.398963, 1.059348, 2.190054 ]
 					},
 					{
 						_class = "PhysicsShapeCapsule"
@@ -2785,7 +2546,7 @@
 						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 2.839769
-						point0 = [ 6.525559, 0.0, 0.0 ]
+						point0 = [ 6.872641, -0.000039, -2.021615 ]
 						point1 = [ 3.218186, 0.0, 0.0 ]
 					},
 					{
@@ -2795,7 +2556,7 @@
 						collision_prop = "default"
 						radius = 2.986206
 						point0 = [ 11.944822, 0.0, 0.0 ]
-						point1 = [ 0.0, 0.0, 0.0 ]
+						point1 = [ 1.794681, -0.088019, -1.528 ]
 					},
 					{
 						_class = "PhysicsShapeCapsule"
@@ -2803,8 +2564,8 @@
 						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 2.655031
-						point0 = [ 10.620125, 0.0, 0.0 ]
-						point1 = [ 1.69347, 0.0, 0.0 ]
+						point0 = [ 10.256035, 0.753748, 0.138477 ]
+						point1 = [ 1.32938, 0.753748, 0.138477 ]
 					},
 					{
 						_class = "PhysicsShapeCapsule"
@@ -2822,7 +2583,7 @@
 						collision_prop = "default"
 						radius = 2.932868
 						point0 = [ -3.656258, 0.0, 0.0 ]
-						point1 = [ -6.214442, 0.0, 0.0 ]
+						point1 = [ -6.454788, 0.000023, 1.399866 ]
 					},
 					{
 						_class = "PhysicsShapeCapsule"
@@ -2830,7 +2591,7 @@
 						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 2.986204
-						point0 = [ 0.0, 0.0, 0.0 ]
+						point0 = [ -1.53449, 0.075258, 1.306512 ]
 						point1 = [ -11.944817, 0.0, 0.0 ]
 					},
 					{
@@ -2839,8 +2600,8 @@
 						surface_prop = "flesh"
 						collision_prop = "default"
 						radius = 2.655025
-						point0 = [ -1.929152, 0.0, 0.0 ]
-						point1 = [ -10.620099, 0.0, 0.0 ]
+						point0 = [ -1.500671, -0.887072, -0.162984 ]
+						point1 = [ -10.191618, -0.887072, -0.162984 ]
 					},
 					{
 						_class = "PhysicsShapeCapsule"
@@ -2876,7 +2637,7 @@
 						collision_prop = "default"
 						radius = 3.119381
 						point0 = [ -2.055053, 0.154218, -0.038307 ]
-						point1 = [ -2.177494, -6.649028, 1.651585 ]
+						point1 = [ -4.3396, -6.675243, 1.68489 ]
 					},
 					{
 						_class = "PhysicsShapeCapsule"
@@ -2903,7 +2664,7 @@
 						collision_prop = "default"
 						radius = 4.27938
 						point0 = [ 2.356655, 1.535968, 0.0 ]
-						point1 = [ 3.250958, 6.132694, 0.0 ]
+						point1 = [ 3.38325, 6.134298, -0.002012 ]
 					},
 				]
 			},
