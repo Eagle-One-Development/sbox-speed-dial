@@ -206,7 +206,7 @@ namespace SpeedDial.UI {
 
 
 				firstAnim = new AnimSceneObject(m, firstPlaceTransform);
-				firstAnim.SetAnimParam("b_grounded", true);
+				firstAnim.SetAnimBool("b_grounded", true);
 				firstAnim.MeshGroupMask = 0;
 
 				Light.Point(Vector3.Up * 150.0f, 200.0f, Color.Red * 5000.0f);

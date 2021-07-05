@@ -7,6 +7,7 @@ using Sandbox;
 
 namespace SpeedDial.WeaponSpawns {
 	[Library("sd_weaponspawn_shotgun")]
+	[Hammer.EditorModel("models/weapons/shotgun/prop_shotgun.vmdl")]
 	public class ShotgunWeaponSpawn : BaseWeaponSpawn {
 		public override string WeaponClass => "sd_spatz";
 	}

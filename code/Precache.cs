@@ -20,6 +20,7 @@ namespace SpeedDial {
 			Precache.Add("particles/impact.generic.vpcf");
 			Precache.Add("particles/weapon_fx/bullet_trail.vpcf");
 			Precache.Add("particles/pistol_ejectbrass.vpcf");
+			Precache.Add("particles/weapon_fx/shotgun_ejectbrass.vpcf");
 
 
 			Precache.Add("animgraphs/sd_playermodel.vanmgrph");
@@ -83,7 +84,7 @@ namespace SpeedDial {
 			Precache.Add("sounds/weapon_fx/spin.vsnd");
 
 
-			
+
 
 
 

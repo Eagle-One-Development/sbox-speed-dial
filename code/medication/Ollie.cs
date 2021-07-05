@@ -7,12 +7,13 @@ using Sandbox;
 
 namespace SpeedDial.Meds {
 	[Library("meds_ollie")]
+	[Hammer.EditorModel("models/drugs/ollie/ollie.vmdl")]
 	public class Ollie : BaseMedication {
 		public override string WorldModel => "models/drugs/ollie/ollie.vmdl";
 		public override float RotationSpeed => 75f;
 		public override string DrugName => "OLLIE";
 		public override string DrugFlavor => "penetrating, richocheting"; // super bullets // uranium slugs // shootin' lazers
-		public override float DrugDuration => 5f;
+		public override float DrugDuration => 8f;
 		public override DrugType Drug => DrugType.Ollie;
 		public override string icon => "materials/ui/ollie.png";
 		public override string PickupSound => "sd_ollie_take";

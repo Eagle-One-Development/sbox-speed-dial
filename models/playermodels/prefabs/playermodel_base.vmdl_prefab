@@ -401,7 +401,7 @@
 								anim_markup_ordered = false
 								disable_compression = false
 								source_filename = "models/playermodels/anims/left_jab.dmx"
-								start_frame = 10
+								start_frame = 8
 								end_frame = -1
 								framerate = -1.0
 								reverse = false
@@ -421,7 +421,7 @@
 								anim_markup_ordered = false
 								disable_compression = false
 								source_filename = "models/playermodels/anims/right_jab.dmx"
-								start_frame = -1
+								start_frame = 7
 								end_frame = -1
 								framerate = -1.0
 								reverse = false

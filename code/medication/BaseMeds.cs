@@ -3,7 +3,6 @@ using Sandbox;
 using SpeedDial.Player;
 
 namespace SpeedDial.Meds {
-	[Hammer.Skip]
 	public partial class BaseMedication : ModelEntity, IRespawnableEntity {
 
 		public virtual string WorldModel => "models/abilities/sm_candy.vmdl";
