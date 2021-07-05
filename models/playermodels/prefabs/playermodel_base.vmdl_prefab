@@ -1978,15 +1978,15 @@
 							[
 								{
 									name = "spine_03"
-									weight = 0.714
+									weight = 0.821
 								},
 								{
 									name = "spine_02"
-									weight = 0.482
+									weight = 0.446
 								},
 								{
 									name = "spine_01"
-									weight = 0.142
+									weight = 0.196
 								},
 							]
 						}
@@ -2001,11 +2001,26 @@
 							[
 								{
 									name = "head"
-									weight = 1.0
+									weight = 0.696
 								},
 								{
 									name = "neck_0"
-									weight = 0.857
+									weight = 0.339
+								},
+							]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "aim_at_weapon"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "spine_03"
+									weight = 1.0
 								},
 							]
 						}
@@ -2029,7 +2044,7 @@
 						_class = "Attachment"
 						name = "forward"
 						parent_bone = ""
-						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_origin = [ 52.240799, 0.0, 58.811604 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
