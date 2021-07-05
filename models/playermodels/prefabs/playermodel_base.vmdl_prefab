@@ -535,6 +535,11 @@
 										root_bone_name = "pelvis"
 										motion_type = "Uniform"
 									},
+									{
+										_class = "AnimSmoothLoop"
+										frames_from_start = 15
+										frames_from_end = 15
+									},
 								]
 								activity_name = ""
 								activity_weight = 1
@@ -549,7 +554,7 @@
 								disable_compression = false
 								source_filename = "models/playermodels/anims/unarmed_run_e_ik.dmx"
 								start_frame = -1
-								end_frame = 21
+								end_frame = 114
 								framerate = -1.0
 								reverse = false
 							},
@@ -569,6 +574,11 @@
 										root_bone_name = "pelvis"
 										motion_type = "Uniform"
 									},
+									{
+										_class = "AnimSmoothLoop"
+										frames_from_start = 15
+										frames_from_end = 15
+									},
 								]
 								activity_name = ""
 								activity_weight = 1
@@ -583,7 +593,7 @@
 								disable_compression = false
 								source_filename = "models/playermodels/anims/unarmed_run_n_ik.dmx"
 								start_frame = -1
-								end_frame = 23
+								end_frame = 114
 								framerate = -1.0
 								reverse = false
 							},
@@ -648,6 +658,11 @@
 										root_bone_name = "pelvis"
 										motion_type = "Uniform"
 									},
+									{
+										_class = "AnimSmoothLoop"
+										frames_from_start = 15
+										frames_from_end = 15
+									},
 								]
 								activity_name = ""
 								activity_weight = 1
@@ -662,7 +677,7 @@
 								disable_compression = false
 								source_filename = "models/playermodels/anims/unarmed_run_w_ik.dmx"
 								start_frame = -1
-								end_frame = 21
+								end_frame = 114
 								framerate = -1.0
 								reverse = false
 							},
@@ -682,6 +697,11 @@
 										root_bone_name = "pelvis"
 										motion_type = "Uniform"
 									},
+									{
+										_class = "AnimSmoothLoop"
+										frames_from_start = 15
+										frames_from_end = 15
+									},
 								]
 								activity_name = ""
 								activity_weight = 1
@@ -696,7 +716,7 @@
 								disable_compression = false
 								source_filename = "models/playermodels/anims/unarmed_run_s_ik.dmx"
 								start_frame = -1
-								end_frame = 20
+								end_frame = 114
 								framerate = -1.0
 								reverse = false
 							},
@@ -1897,7 +1917,7 @@
 								toebone = "ball_L"
 								balloffset = [ -6.42262, 1.225133, 0.855579 ]
 								heeloffset = [ -6.20428, -6.727437, -0.151212 ]
-								autolevel = true
+								autolevel = false
 								traceheight = 40.0
 								traceradius = 4.0
 							},
@@ -1908,13 +1928,13 @@
 								toebone = "ball_R"
 								balloffset = [ 5.045742, 8.186316, 0.039427 ]
 								heeloffset = [ 4.47519, -2.815835, 0.97265 ]
-								autolevel = true
+								autolevel = false
 								traceheight = 40.0
 								traceradius = 4.0
 							},
 						]
-						locktolerance = 0.8
-						heighttolerance = 1.5
+						locktolerance = 0.6
+						heighttolerance = 2.0
 						sanitizetrajectories = true
 					},
 					{
@@ -2023,6 +2043,193 @@
 									weight = 1.0
 								},
 							]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "pelvis"
+							radius = 6.53773
+							point0 = [ 0.988315, 0.022924, -0.999669 ]
+							point1 = [ 1.01169, -0.022924, 0.999669 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "spine_01"
+							radius = 6.94128
+							point0 = [ 5.03811, 2.26818, 0.217871 ]
+							point1 = [ 4.02622, 2.04324, 0.217871 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "spine_03"
+							radius = 5.82718
+							point0 = [ 0.403256, 1.04053, -2.22681 ]
+							point1 = [ 0.398963, 1.05935, 2.19005 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "neck_01"
+							radius = 2.0
+							point0 = [ 1.08087, 0.581718, 0.590812 ]
+							point1 = [ -2.16131, 0.581718, 0.590812 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "head"
+							radius = 4.12579
+							point0 = [ 1.97878, -0.384581, 0.302005 ]
+							point1 = [ -0.243847, 0.030181, 0.231402 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "clavicle_l"
+							radius = 2.83977
+							point0 = [ 6.87264, -0.000039, -2.02162 ]
+							point1 = [ 3.21819, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "upperarm_l"
+							radius = 2.98621
+							point0 = [ 11.9448, 0.0, 0.0 ]
+							point1 = [ 1.79468, -0.088019, -1.528 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "lowerarm_l"
+							radius = 2.65503
+							point0 = [ 10.256, 0.753748, 0.138477 ]
+							point1 = [ 1.32938, 0.753748, 0.138477 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "hand_l"
+							radius = 2.98656
+							point0 = [ 4.82057, 1.33784, 0.0 ]
+							point1 = [ 2.84764, 1.33784, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "clavicle_r"
+							radius = 2.93287
+							point0 = [ -3.65626, 0.0, 0.0 ]
+							point1 = [ -6.45479, 0.000023, 1.39987 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "upperarm_r"
+							radius = 2.9862
+							point0 = [ -1.53449, 0.075258, 1.30651 ]
+							point1 = [ -11.9448, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "lowerarm_r"
+							radius = 2.65503
+							point0 = [ -1.50067, -0.887072, -0.162984 ]
+							point1 = [ -10.1916, -0.887072, -0.162984 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "hand_r"
+							radius = 2.53127
+							point0 = [ 0.0, 0.0, -0.901395 ]
+							point1 = [ -5.25003, 0.0, -0.901395 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "thigh_l"
+							radius = 4.19015
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ -11.4109, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "calf_l"
+							radius = 3.95636
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ -15.8254, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "thigh_r"
+							radius = 4.19018
+							point0 = [ 12.1993, 0.0, 0.0 ]
+							point1 = [ 0.0, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "calf_r"
+							radius = 3.95636
+							point0 = [ 15.8255, 0.0, 0.0 ]
+							point1 = [ 0.0, 0.0, 0.0 ]
 						}
 					},
 				]
