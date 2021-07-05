@@ -40,6 +40,7 @@ namespace SpeedDial {
 		public string[] Soundtracks { get; set; } = {
 			"track01",
 			"track02",
+			"track03",
 			"track03"
 		};
 

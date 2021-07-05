@@ -225,7 +225,7 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		public void SetPlayerBodyGroup(int group, int value) {
-			Log.Info("Set Bodygroup Client");
+			//Log.Info("Set Bodygroup Client");
 			SetBodyGroup(group, value);
 		}
 
