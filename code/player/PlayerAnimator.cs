@@ -22,10 +22,10 @@ namespace SpeedDial.Player {
 			//
 			// Let the animation graph know some shit
 			//
-			bool noclip = HasTag("noclip");
+			// bool noclip = HasTag("noclip");
 
-			SetParam("b_grounded", GroundEntity != null || noclip);
-			SetParam("b_noclip", noclip);
+			// SetParam("b_grounded", GroundEntity != null || noclip);
+			// SetParam("b_noclip", noclip);
 
 			Vector3 aimPos = Pawn.EyePos + Input.Rotation.Forward * 200;
 			Vector3 lookPos = aimPos;
@@ -65,7 +65,7 @@ namespace SpeedDial.Player {
 			//
 			if(change > 1 && WishVelocity.Length <= 1) TimeSinceFootShuffle = 0;
 
-			SetParam("b_shuffle", TimeSinceFootShuffle < 0.1);
+			// SetParam("b_shuffle", TimeSinceFootShuffle < 0.1);
 		}
 
 		void DoWalk(Rotation idealRotation) {
@@ -75,8 +75,8 @@ namespace SpeedDial.Player {
 			// do this - but that ain't how we roll
 			//
 			SetParam("walkspeed_scale", 2.0f / 300.0f);
-			SetParam("runspeed_scale", 2.0f / 300.0f);
-			SetParam("duckspeed_scale", 2.0f / 300.0f);
+			// SetParam("runspeed_scale", 2.0f / 300.0f);
+			// SetParam("duckspeed_scale", 2.0f / 300.0f);
 
 			//
 			// Work out our movement relative to our body rotation

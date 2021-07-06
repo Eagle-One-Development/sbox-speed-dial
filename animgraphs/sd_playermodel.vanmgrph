@@ -370,7 +370,7 @@
 			{
 				_class = "CChoreoAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 4245.0, 3090.0 ]
+				m_vecPosition = [ 4792.0, 3280.0 ]
 				m_nNodeID = 
 				{
 					m_id = 110320125
@@ -710,7 +710,7 @@
 			{
 				_class = "CLookAtAnimNode"
 				m_sName = "aim_at_weapon"
-				m_vecPosition = [ 3899.0, 2942.0 ]
+				m_vecPosition = [ 4446.0, 3132.0 ]
 				m_nNodeID = 
 				{
 					m_id = 533235364
@@ -1231,7 +1231,7 @@
 			{
 				_class = "CSolveIKChainAnimNode"
 				m_sName = "Right Leg IK"
-				m_vecPosition = [ 3974.0, 3348.0 ]
+				m_vecPosition = [ 3752.0, 3324.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1005791570
@@ -1410,7 +1410,7 @@
 			{
 				_class = "CRootAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 4801.0, 2908.0 ]
+				m_vecPosition = [ 5348.0, 3098.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1144694180
@@ -1454,7 +1454,7 @@
 			{
 				_class = "CSolveIKChainAnimNode"
 				m_sName = "Left Leg IK"
-				m_vecPosition = [ 3778.0, 3350.0 ]
+				m_vecPosition = [ 3489.0, 3316.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1188789157
@@ -1505,7 +1505,7 @@
 			{
 				_class = "CLookAtAnimNode"
 				m_sName = "aim_at_weapon_test"
-				m_vecPosition = [ 3890.0, 3073.0 ]
+				m_vecPosition = [ 4514.0, 3255.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1227349843
@@ -1641,7 +1641,7 @@
 			{
 				_class = "CLookAtAnimNode"
 				m_sName = "aim_at_body"
-				m_vecPosition = [ 3717.0, 3084.0 ]
+				m_vecPosition = [ 4153.0, 3197.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1508751947
@@ -1756,7 +1756,7 @@
 			{
 				_class = "CDirectPlaybackAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 4407.0, 3056.0 ]
+				m_vecPosition = [ 4954.0, 3246.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1614409169
@@ -2042,7 +2042,7 @@
 			{
 				_class = "CLookAtAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 4127.0, 2966.0 ]
+				m_vecPosition = [ 4674.0, 3156.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1853237884
@@ -2112,7 +2112,7 @@
 			{
 				_class = "CFootLockAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 4208.0, 3373.0 ]
+				m_vecPosition = [ 3942.0, 3330.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1867007271
