@@ -53,7 +53,7 @@ namespace SpeedDial.UI {
 			bumpScale = bumpScale.LerpTo(1f, Time.Delta * 6f);
 
 			for(int i = 0; i < 4; i++) {
-				PanelTransform pt = new PanelTransform();
+				PanelTransform pt = new();
 
 				pt.AddRotation(0, 0, i * 90f);
 
@@ -73,14 +73,7 @@ namespace SpeedDial.UI {
 				if(i == 3) {
 					pt.AddTranslateX(Length.Pixels(-pixel));
 				}
-
-				if(Local.Pawn.ActiveChild == null) {
-					hairs[i].SetClass("inactive", true);
-				} else {
-					hairs[i].SetClass("inactive", false);
-				}
-
-
+				hairs[i].SetClass("inactive", Local.Pawn.ActiveChild == null);
 				hairs[i].Style.Transform = pt;
 				hairs[i].Style.Dirty();
 			}
