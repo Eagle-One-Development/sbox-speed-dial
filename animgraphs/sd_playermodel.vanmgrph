@@ -331,114 +331,7 @@
 	m_pTagManager = 
 	{
 		_class = "CAnimTagManager"
-		m_tags = 
-		[
-			{
-				_class = "CFootstepLandedAnimTag"
-				m_name = "Left Foot Landed"
-				m_tagID = 
-				{
-					m_id = 2144524926
-				}
-				m_FootstepType = "FOOTSOUND_Left"
-				m_OverrideSoundName = ""
-				m_DebugAnimSourceString = ""
-				m_BoneName = "foot_l"
-			},
-			{
-				_class = "CFootstepLandedAnimTag"
-				m_name = "Right Foot Landed"
-				m_tagID = 
-				{
-					m_id = 1452825464
-				}
-				m_FootstepType = "FOOTSOUND_Right"
-				m_OverrideSoundName = ""
-				m_DebugAnimSourceString = ""
-				m_BoneName = "foot_r"
-			},
-			{
-				_class = "CTaskStatusAnimTag"
-				m_name = "Crouching"
-				m_tagID = 
-				{
-					m_id = 405399751
-				}
-				m_identifierString = ""
-			},
-			{
-				_class = "CStringAnimTag"
-				m_name = "Standing"
-				m_tagID = 
-				{
-					m_id = 1005395870
-				}
-			},
-			{
-				_class = "CRagdollAnimTag"
-				m_name = "Ragdoll"
-				m_tagID = 
-				{
-					m_id = 497947091
-				}
-				m_nPoseControl = "NoPoseControl"
-				m_flFrequency = 10.0
-				m_flDampingRatio = 1.0
-				m_flDecayDuration = -1.0
-				m_flDecayBias = 0.5
-				m_bDestroy = true
-			},
-			{
-				_class = "CTaskStatusAnimTag"
-				m_name = "walk"
-				m_tagID = 
-				{
-					m_id = 419823523
-				}
-				m_identifierString = ""
-			},
-			{
-				_class = "CTaskStatusAnimTag"
-				m_name = "run"
-				m_tagID = 
-				{
-					m_id = 463664489
-				}
-				m_identifierString = ""
-			},
-			{
-				_class = "CStringAnimTag"
-				m_name = "shotgun"
-				m_tagID = 
-				{
-					m_id = 1547268115
-				}
-			},
-			{
-				_class = "CStringAnimTag"
-				m_name = "rifle"
-				m_tagID = 
-				{
-					m_id = 1785330807
-				}
-			},
-			{
-				_class = "CStringAnimTag"
-				m_name = "pistol"
-				m_tagID = 
-				{
-					m_id = 122456278
-				}
-			},
-			{
-				_class = "CStringAnimTag"
-				m_name = "melee"
-				m_tagID = 
-				{
-					m_id = 464849475
-				}
-			},
-		]
+		m_tags = [  ]
 	}
 	m_pMovementManager = 
 	{
@@ -498,10 +391,50 @@
 	}
 	m_previewModels = 
 	[
-		"models/playermodels/character_fallback.vmdl",
+		"models/playermodels/character_jack.vmdl",
 	]
 	m_nodes = 
 	[
+		{
+			key = 
+			{
+				m_id = 21097460
+			}
+			value = 
+			{
+				_class = "CBoneMaskAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ 3124.0, 2853.0 ]
+				m_nNodeID = 
+				{
+					m_id = 21097460
+				}
+				m_networkMode = "ClientPredicted"
+				m_sNote = ""
+				m_weightListName = "clear_weights"
+				m_child1ID = 
+				{
+					m_id = 637503817
+				}
+				m_child2ID = 
+				{
+					m_id = 637503817
+				}
+				m_blendSpace = "BlendSpace_Parent"
+				m_bUseBlendScale = false
+				m_blendValueSource = "Parameter"
+				m_blendParameter = 
+				{
+					m_id = 4294967295
+				}
+				m_timingBehavior = "UseChild2"
+				m_flTimingBlend = 0.5
+				m_flRootMotionBlend = 0.0
+				m_footMotionTiming = "Child2"
+				m_bResetChild1 = true
+				m_bResetChild2 = true
+			}
+		},
 		{
 			key = 
 			{
@@ -913,7 +846,7 @@
 			{
 				_class = "CLookAtAnimNode"
 				m_sName = "aim_at_weapon"
-				m_vecPosition = [ 3930.0, 2994.0 ]
+				m_vecPosition = [ 3897.0, 2942.0 ]
 				m_nNodeID = 
 				{
 					m_id = 533235364
@@ -922,7 +855,7 @@
 				m_sNote = ""
 				m_childID = 
 				{
-					m_id = 1508751947
+					m_id = 1227349843
 				}
 				m_target = "VectorParameter"
 				m_param = 
@@ -947,7 +880,7 @@
 					_class = "CAnimInputDamping"
 					m_speedFunction = "Spring"
 					m_fSpeedScale = 65.0
-					m_fMinSpeed = 20.0
+					m_fMinSpeed = 65.0
 					m_fMaxTension = 1000.0
 				}
 			}
@@ -1027,7 +960,7 @@
 									m_vControlPoint1 = [ 0.5, 0.0 ]
 									m_vControlPoint2 = [ 0.5, 1.0 ]
 								}
-								m_bForceFootPlant = false
+								m_bForceFootPlant = true
 								m_bDisabled = false
 							},
 						]
@@ -1042,7 +975,7 @@
 						{
 							m_id = 821837739
 						}
-						m_position = [ 29.0, 101.0 ]
+						m_position = [ 25.0, 106.0 ]
 						m_bIsStartState = false
 						m_bIsEndtState = false
 						m_bIsPassthrough = false
@@ -1093,13 +1026,13 @@
 						m_name = "Stopped"
 						m_childNodeID = 
 						{
-							m_id = 637503817
+							m_id = 21097460
 						}
 						m_stateID = 
 						{
 							m_id = 703710257
 						}
-						m_position = [ 119.0, -50.0 ]
+						m_position = [ 118.0, -50.0 ]
 						m_bIsStartState = true
 						m_bIsEndtState = false
 						m_bIsPassthrough = false
@@ -1204,116 +1137,6 @@
 				m_footMotionTiming = "Child2"
 				m_bResetChild1 = true
 				m_bResetChild2 = true
-			}
-		},
-		{
-			key = 
-			{
-				m_id = 740187873
-			}
-			value = 
-			{
-				_class = "CFootLockAnimNode"
-				m_sName = "Unnamed"
-				m_vecPosition = [ 4266.0, 3577.0 ]
-				m_nNodeID = 
-				{
-					m_id = 740187873
-				}
-				m_networkMode = "ServerAuthoritative"
-				m_sNote = ""
-				m_childID = 
-				{
-					m_id = 4294967295
-				}
-				m_items = 
-				[
-					{
-						m_footName = "Foot_Left"
-						m_targetBoneName = "foot_L_IK_target_ytrans"
-						m_ikChainName = "IKChain_Leg_Left"
-						m_disableTagID = 
-						{
-							m_id = 4294967295
-						}
-						m_flMaxRotationLeft = 120.0
-						m_flMaxRotationRight = 30.0
-						m_footstepLandedTag = 
-						{
-							m_id = 112047757
-						}
-					},
-					{
-						m_footName = "Foot_Right"
-						m_targetBoneName = "foot_R_IK_target_ytrans"
-						m_ikChainName = "IKChain_Leg_Right"
-						m_disableTagID = 
-						{
-							m_id = 1166997139
-						}
-						m_flMaxRotationLeft = 30.0
-						m_flMaxRotationRight = 120.0
-						m_footstepLandedTag = 
-						{
-							m_id = 1249928187
-						}
-					},
-				]
-				m_hipBoneName = "pelvis_translations"
-				m_flBlendTime = 0.2
-				m_bApplyFootRotationLimits = true
-				m_bResetChild = true
-				m_ikSolverType = "IKSOLVER_TwoBone"
-				m_bAlwaysUseFallbackHinge = true
-				m_flStrideCurveScale = 1.0
-				m_flStrideCurveLimitScale = 0.25
-				m_bEnableVerticalCurvedPaths = true
-				m_bModulateStepHeight = true
-				m_flStepHeightIncreaseScale = 0.0
-				m_flStepHeightDecreaseScale = 1.0
-				m_bEnableHipShift = true
-				m_flHipShiftScale = 0.75
-				m_hipShiftDamping = 
-				{
-					_class = "CAnimInputDamping"
-					m_speedFunction = "Spring"
-					m_fSpeedScale = 8.0
-					m_fMinSpeed = 10.0
-					m_fMaxTension = 1000.0
-				}
-				m_bApplyTilt = false
-				m_flTiltPlanePitchSpringStrength = 5.0
-				m_flTiltPlaneRollSpringStrength = 5.0
-				m_bEnableLockBreaking = false
-				m_flLockBreakTolerance = 0.2
-				m_flLockBreakBlendTime = 0.2
-				m_bEnableStretching = false
-				m_flMaxStretchAmount = 2.0
-				m_flStretchExtensionScale = 0.998
-				m_bEnableGroundTracing = true
-				m_flTraceAngleBlend = 0.0
-				m_bApplyHipDrop = true
-				m_flMaxFootHeight = -10.0
-				m_flExtensionScale = 0.7
-				m_hipDampingSettings = 
-				{
-					_class = "CAnimInputDamping"
-					m_speedFunction = "Spring"
-					m_fSpeedScale = 20.0
-					m_fMinSpeed = 20.0
-					m_fMaxTension = 1000.0
-				}
-				m_bEnableRootHeightDamping = true
-				m_rootHeightDamping = 
-				{
-					_class = "CAnimInputDamping"
-					m_speedFunction = "Spring"
-					m_fSpeedScale = 12.0
-					m_fMinSpeed = 2.0
-					m_fMaxTension = 1000.0
-				}
-				m_flMaxRootHeightOffset = 100.0
-				m_flMinRootHeightOffset = -100.0
 			}
 		},
 		{
@@ -1812,6 +1635,54 @@
 		{
 			key = 
 			{
+				m_id = 1227349843
+			}
+			value = 
+			{
+				_class = "CLookAtAnimNode"
+				m_sName = "aim_at_weapon_test"
+				m_vecPosition = [ 3890.0, 3073.0 ]
+				m_nNodeID = 
+				{
+					m_id = 1227349843
+				}
+				m_networkMode = "ClientPredicted"
+				m_sNote = ""
+				m_childID = 
+				{
+					m_id = 1508751947
+				}
+				m_target = "VectorParameter"
+				m_param = 
+				{
+					m_id = 234233196
+				}
+				m_weightParam = 
+				{
+					m_id = 418183141
+				}
+				m_lookatChainName = "aim_at_weapon"
+				m_attachmentName = "forward"
+				m_flYawLimit = 180.0
+				m_flPitchLimit = 90.0
+				m_bResetBase = true
+				m_bLockWhenWaning = false
+				m_bUseHysteresis = false
+				m_flHysteresisInnerAngle = 1.0
+				m_flHysteresisOuterAngle = 20.0
+				m_damping = 
+				{
+					_class = "CAnimInputDamping"
+					m_speedFunction = "Spring"
+					m_fSpeedScale = 65.0
+					m_fMinSpeed = 65.0
+					m_fMaxTension = 1000.0
+				}
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 1398709792
 			}
 			value = 
@@ -1841,7 +1712,7 @@
 				{
 					m_id = 4294967295
 				}
-				m_timingBehavior = "UseChild2"
+				m_timingBehavior = "UseChild1"
 				m_flTimingBlend = 0.5
 				m_flRootMotionBlend = 0.0
 				m_footMotionTiming = "Child1"
@@ -1906,7 +1777,7 @@
 			{
 				_class = "CLookAtAnimNode"
 				m_sName = "aim_at_body"
-				m_vecPosition = [ 3717.0, 3086.0 ]
+				m_vecPosition = [ 3717.0, 3084.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1508751947
@@ -1939,8 +1810,8 @@
 				{
 					_class = "CAnimInputDamping"
 					m_speedFunction = "Spring"
-					m_fSpeedScale = 20.0
-					m_fMinSpeed = 2.0
+					m_fSpeedScale = 45.0
+					m_fMinSpeed = 15.0
 					m_fMaxTension = 1000.0
 				}
 			}
@@ -2000,14 +1871,14 @@
 				}
 				m_bLoop = true
 				m_bLockBlendOnReset = false
-				m_bLockWhenWaning = true
+				m_bLockWhenWaning = false
 				m_playbackSpeed = 1.0
 				m_damping = 
 				{
 					_class = "CAnimInputDamping"
 					m_speedFunction = "Spring"
-					m_fSpeedScale = 16.0
-					m_fMinSpeed = 10.0
+					m_fSpeedScale = 32.0
+					m_fMinSpeed = 32.0
 					m_fMaxTension = 1000.0
 				}
 			}
@@ -2307,7 +2178,7 @@
 			{
 				_class = "CLookAtAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 4127.0, 2968.0 ]
+				m_vecPosition = [ 4127.0, 2966.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1853237884
@@ -2340,8 +2211,8 @@
 				{
 					_class = "CAnimInputDamping"
 					m_speedFunction = "Spring"
-					m_fSpeedScale = 25.0
-					m_fMinSpeed = 10.0
+					m_fSpeedScale = 1.0
+					m_fMinSpeed = 0.1
 					m_fMaxTension = 1000.0
 				}
 			}
@@ -2377,7 +2248,7 @@
 			{
 				_class = "CFootLockAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 4217.0, 3368.0 ]
+				m_vecPosition = [ 4216.0, 3368.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1867007271
@@ -2398,8 +2269,8 @@
 						{
 							m_id = 4294967295
 						}
-						m_flMaxRotationLeft = 120.0
-						m_flMaxRotationRight = 30.0
+						m_flMaxRotationLeft = 45.0
+						m_flMaxRotationRight = 5.0
 						m_footstepLandedTag = 
 						{
 							m_id = 4294967295
@@ -2413,8 +2284,8 @@
 						{
 							m_id = 4294967295
 						}
-						m_flMaxRotationLeft = 30.0
-						m_flMaxRotationRight = 120.0
+						m_flMaxRotationLeft = 5.0
+						m_flMaxRotationRight = 45.0
 						m_footstepLandedTag = 
 						{
 							m_id = 4294967295
@@ -2422,19 +2293,19 @@
 					},
 				]
 				m_hipBoneName = "pelvis"
-				m_flBlendTime = 0.2
+				m_flBlendTime = 2.0
 				m_bApplyFootRotationLimits = true
 				m_bResetChild = true
 				m_ikSolverType = "IKSOLVER_TwoBone"
 				m_bAlwaysUseFallbackHinge = true
 				m_flStrideCurveScale = 1.0
-				m_flStrideCurveLimitScale = 0.25
+				m_flStrideCurveLimitScale = 0.5
 				m_bEnableVerticalCurvedPaths = true
 				m_bModulateStepHeight = true
 				m_flStepHeightIncreaseScale = 0.0
 				m_flStepHeightDecreaseScale = 1.0
-				m_bEnableHipShift = false
-				m_flHipShiftScale = 0.312
+				m_bEnableHipShift = true
+				m_flHipShiftScale = 0.02
 				m_hipShiftDamping = 
 				{
 					_class = "CAnimInputDamping"
@@ -2447,8 +2318,8 @@
 				m_flTiltPlanePitchSpringStrength = 5.0
 				m_flTiltPlaneRollSpringStrength = 5.0
 				m_bEnableLockBreaking = true
-				m_flLockBreakTolerance = 0.1
-				m_flLockBreakBlendTime = 0.1
+				m_flLockBreakTolerance = 0.2
+				m_flLockBreakBlendTime = 0.2
 				m_bEnableStretching = false
 				m_flMaxStretchAmount = 2.0
 				m_flStretchExtensionScale = 0.98
@@ -2465,7 +2336,7 @@
 					m_fMinSpeed = 20.0
 					m_fMaxTension = 1000.0
 				}
-				m_bEnableRootHeightDamping = false
+				m_bEnableRootHeightDamping = true
 				m_rootHeightDamping = 
 				{
 					_class = "CAnimInputDamping"
