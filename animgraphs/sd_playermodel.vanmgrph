@@ -160,7 +160,7 @@
 				m_bUseMostRecentValue = false
 				m_bAutoReset = false
 				m_bPredicted = true
-				m_defaultValue = [ 0.0, 0.0, 0.0 ]
+				m_defaultValue = [ 100.0, 0.0, 0.0 ]
 				m_bInterpolate = false
 			},
 			{
@@ -935,7 +935,7 @@
 								[
 									{
 										_class = "CParameterAnimCondition"
-										m_comparisonOp = 4
+										m_comparisonOp = 5
 										m_paramID = 
 										{
 											m_id = 1652014548
@@ -943,7 +943,7 @@
 										m_comparisonValue = 
 										{
 											m_nType = 4
-											m_data = 30.0
+											m_data = 50.0
 										}
 									},
 								]
@@ -1000,7 +1000,7 @@
 										m_comparisonValue = 
 										{
 											m_nType = 4
-											m_data = 30.0
+											m_data = 50.0
 										}
 									},
 								]
@@ -2248,7 +2248,7 @@
 			{
 				_class = "CFootLockAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 4216.0, 3368.0 ]
+				m_vecPosition = [ 4208.0, 3373.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1867007271
@@ -2269,8 +2269,8 @@
 						{
 							m_id = 4294967295
 						}
-						m_flMaxRotationLeft = 45.0
-						m_flMaxRotationRight = 5.0
+						m_flMaxRotationLeft = 90.0
+						m_flMaxRotationRight = 30.0
 						m_footstepLandedTag = 
 						{
 							m_id = 4294967295
@@ -2284,8 +2284,8 @@
 						{
 							m_id = 4294967295
 						}
-						m_flMaxRotationLeft = 5.0
-						m_flMaxRotationRight = 45.0
+						m_flMaxRotationLeft = 30.0
+						m_flMaxRotationRight = 90.0
 						m_footstepLandedTag = 
 						{
 							m_id = 4294967295
@@ -2293,15 +2293,15 @@
 					},
 				]
 				m_hipBoneName = "pelvis"
-				m_flBlendTime = 2.0
+				m_flBlendTime = 0.1
 				m_bApplyFootRotationLimits = true
 				m_bResetChild = true
 				m_ikSolverType = "IKSOLVER_TwoBone"
-				m_bAlwaysUseFallbackHinge = true
+				m_bAlwaysUseFallbackHinge = false
 				m_flStrideCurveScale = 1.0
 				m_flStrideCurveLimitScale = 0.5
 				m_bEnableVerticalCurvedPaths = true
-				m_bModulateStepHeight = true
+				m_bModulateStepHeight = false
 				m_flStepHeightIncreaseScale = 0.0
 				m_flStepHeightDecreaseScale = 1.0
 				m_bEnableHipShift = true
@@ -2310,7 +2310,7 @@
 				{
 					_class = "CAnimInputDamping"
 					m_speedFunction = "Spring"
-					m_fSpeedScale = 8.0
+					m_fSpeedScale = 20.0
 					m_fMinSpeed = 10.0
 					m_fMaxTension = 1000.0
 				}
