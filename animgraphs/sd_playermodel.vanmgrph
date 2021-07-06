@@ -2304,7 +2304,7 @@
 				m_bModulateStepHeight = true
 				m_flStepHeightIncreaseScale = 0.0
 				m_flStepHeightDecreaseScale = 1.0
-				m_bEnableHipShift = true
+				m_bEnableHipShift = false
 				m_flHipShiftScale = 0.02
 				m_hipShiftDamping = 
 				{
