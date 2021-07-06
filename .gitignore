@@ -32,7 +32,5 @@ config/speed-dial.fgd
 !sd_motel.vpk
 maps/editor/_bakeresourcecache/toolscene_default_baked/env_cubemap_16.txt
 tools_thumbnail_cache.bin
-tools_thumbnail_cache.bin
 code/code/Properties/launchSettings.json
 maps/editor/_bakeresourcecache/*
-tools_thumbnail_cache.bin
