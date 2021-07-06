@@ -454,8 +454,8 @@
 								balloffset = [ 5.045742, 6.638915, 0.280292 ]
 								heeloffset = [ 4.912509, -2.362074, 0.97265 ]
 								autolevel = true
-								traceheight = 40.0
-								traceradius = 6.0
+								traceheight = 15.0
+								traceradius = 2.0
 							},
 						]
 						locktolerance = 0.6

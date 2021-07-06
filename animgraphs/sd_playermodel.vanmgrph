@@ -2269,8 +2269,8 @@
 						{
 							m_id = 4294967295
 						}
-						m_flMaxRotationLeft = 90.0
-						m_flMaxRotationRight = 30.0
+						m_flMaxRotationLeft = 45.0
+						m_flMaxRotationRight = 5.0
 						m_footstepLandedTag = 
 						{
 							m_id = 4294967295
@@ -2284,8 +2284,8 @@
 						{
 							m_id = 4294967295
 						}
-						m_flMaxRotationLeft = 30.0
-						m_flMaxRotationRight = 90.0
+						m_flMaxRotationLeft = 5.0
+						m_flMaxRotationRight = 45.0
 						m_footstepLandedTag = 
 						{
 							m_id = 4294967295
@@ -2293,13 +2293,13 @@
 					},
 				]
 				m_hipBoneName = "pelvis"
-				m_flBlendTime = 0.0
+				m_flBlendTime = 2.0
 				m_bApplyFootRotationLimits = true
 				m_bResetChild = true
 				m_ikSolverType = "IKSOLVER_TwoBone"
 				m_bAlwaysUseFallbackHinge = true
 				m_flStrideCurveScale = 1.0
-				m_flStrideCurveLimitScale = 0.25
+				m_flStrideCurveLimitScale = 0.5
 				m_bEnableVerticalCurvedPaths = true
 				m_bModulateStepHeight = true
 				m_flStepHeightIncreaseScale = 0.0
