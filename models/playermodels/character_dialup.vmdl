@@ -370,8 +370,8 @@
 								name = "Foot_Left"
 								anklebone = "foot_l"
 								toebone = "ball_L"
-								balloffset = [ -4.742799, 1.225133, -0.595015 ]
-								heeloffset = [ -4.620411, -8.334188, -0.488347 ]
+								balloffset = [ -4.62041, -8.33419, -0.488347 ]
+								heeloffset = [ -4.944138, 2.176758, -0.595015 ]
 								autolevel = true
 								traceheight = 15.0
 								traceradius = 2.0
@@ -381,8 +381,8 @@
 								name = "Foot_Right"
 								anklebone = "foot_r"
 								toebone = "ball_R"
-								balloffset = [ 4.437978, 8.028258, 0.039427 ]
-								heeloffset = [ 4.47519, -1.53138, 0.652621 ]
+								balloffset = [ 4.437978, 6.754201, 0.039427 ]
+								heeloffset = [ 4.899985, -2.06242, 0.585203 ]
 								autolevel = true
 								traceheight = 15.0
 								traceradius = 2.0
