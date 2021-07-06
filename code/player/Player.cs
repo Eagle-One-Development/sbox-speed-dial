@@ -366,9 +366,9 @@ namespace SpeedDial.Player {
 
 			var controller = GetActiveController();
 
-			if(LifeState == LifeState.Alive) {
-				controller?.Simulate(cl, this, GetActiveAnimator());
-			}
+			
+			controller?.Simulate(cl, this, GetActiveAnimator());
+			
 
 			if(Input.ActiveChild != null) {
 				ActiveChild = Input.ActiveChild;
