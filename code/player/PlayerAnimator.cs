@@ -47,9 +47,7 @@ namespace SpeedDial.Player {
 		}
 
 		public virtual void DoRotation(Rotation idealRotation) {
-
 			float turnSpeed = 0.01f;
-
 			//
 			// If we're moving, rotate to our ideal rotation
 			//
@@ -59,13 +57,11 @@ namespace SpeedDial.Player {
 			// Clamp the foot rotation to within 120 degrees of the ideal rotation
 			//
 			Rotation = Rotation.Clamp(idealRotation, 0, out var change);
-
+			// SetParam( "b_shuffle", true );
 			//
 			// If we did restrict, and are standing still, add a foot shuffle
 			//
-			if(change > 1 && WishVelocity.Length <= 1) TimeSinceFootShuffle = 0;
-
-			// SetParam("b_shuffle", TimeSinceFootShuffle < 0.1);
+			// if ( change > 1 && WishVelocity.Length <= 1 ) TimeSinceFootShuffle = 0;
 		}
 
 		void DoWalk(Rotation idealRotation) {
@@ -77,19 +73,21 @@ namespace SpeedDial.Player {
 			SetParam("walkspeed_scale", 2.0f / 300.0f);
 			// SetParam("runspeed_scale", 2.0f / 300.0f);
 			// SetParam("duckspeed_scale", 2.0f / 300.0f);
-
+			var groundspeed = Velocity.WithZ( 0 ).Length;
+			SetParam( "move_groundspeed",groundspeed );
 			//
 			// Work out our movement relative to our body rotation
 			//
-			var moveDir = WishVelocity;
-			var forward = idealRotation.Forward.Dot(moveDir.Normal);
-			var sideward = idealRotation.Right.Dot(moveDir.Normal);
-
+			// var moveDir = WishVelocity;
+			var dir = Velocity;
+			var forward = 300*idealRotation.Forward.Dot( dir.Normal );
+			var sideward = 300*idealRotation.Right.Dot( dir.Normal );
+			var wishDir = WishVelocity;			
 			//
 			// Set our speeds on the animgraph
 			//
 			var speedScale = Pawn.Scale;
-
+			SetParam("velocity",dir);
 			SetParam("forward", forward);
 			SetParam("sideward", sideward);
 			SetParam("wishspeed", speedScale > 0.0f ? WishVelocity.Length / speedScale : 0.0f);

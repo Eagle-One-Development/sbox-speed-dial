@@ -51,8 +51,8 @@
 				m_bAutoReset = false
 				m_bPredicted = true
 				m_fDefaultValue = 0.0
-				m_fMinValue = -1.0
-				m_fMaxValue = 1.0
+				m_fMinValue = -1000.0
+				m_fMaxValue = 1000.0
 				m_bInterpolate = true
 			},
 			{
@@ -68,8 +68,8 @@
 				m_bAutoReset = false
 				m_bPredicted = true
 				m_fDefaultValue = 0.0
-				m_fMinValue = -1.0
-				m_fMaxValue = 1.0
+				m_fMinValue = -1000.0
+				m_fMaxValue = 1000.0
 				m_bInterpolate = true
 			},
 			{
@@ -190,6 +190,71 @@
 				m_bPredicted = false
 				m_bDefaultValue = false
 			},
+			{
+				_class = "CFloatAnimParameter"
+				m_name = "velocity"
+				m_id = 
+				{
+					m_id = 267595347
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = false
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = false
+				m_fDefaultValue = 0.0
+				m_fMinValue = 0.0
+				m_fMaxValue = 1.0
+				m_bInterpolate = false
+			},
+			{
+				_class = "CFloatAnimParameter"
+				m_name = "move_groundspeed"
+				m_id = 
+				{
+					m_id = 271284947
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = true
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = true
+				m_fDefaultValue = 0.0
+				m_fMinValue = 0.0
+				m_fMaxValue = 1000.0
+				m_bInterpolate = true
+			},
+			{
+				_class = "CBoolAnimParameter"
+				m_name = "b_shuffle"
+				m_id = 
+				{
+					m_id = 1945460103
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = true
+				m_bUseMostRecentValue = false
+				m_bAutoReset = true
+				m_bPredicted = true
+				m_bDefaultValue = false
+			},
+			{
+				_class = "CFloatAnimParameter"
+				m_name = "angle"
+				m_id = 
+				{
+					m_id = 1701788576
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = true
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = true
+				m_fDefaultValue = 0.0
+				m_fMinValue = 0.0
+				m_fMaxValue = 360.0
+				m_bInterpolate = true
+			},
 		]
 	}
 	m_pTagManager = 
@@ -209,8 +274,8 @@
 					_class = "CPlayerInputAnimMotor"
 					m_name = "Unnamed Motor"
 					m_bDefault = true
-					m_sampleTimes = [ 1.0, 2.0 ]
-					m_bUseAcceleraion = false
+					m_sampleTimes = [ 0.0, 1.0 ]
+					m_bUseAcceleraion = true
 					m_flSpringConstant = 10.0
 					m_flAnticipationDistance = 36.0
 					m_anticipationPosParam = 
@@ -268,7 +333,7 @@
 			{
 				_class = "CBoneMaskAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 3124.0, 2853.0 ]
+				m_vecPosition = [ 3142.0, 2866.0 ]
 				m_nNodeID = 
 				{
 					m_id = 21097460
@@ -282,7 +347,7 @@
 				}
 				m_child2ID = 
 				{
-					m_id = 637503817
+					m_id = 1810263181
 				}
 				m_blendSpace = "BlendSpace_Parent"
 				m_bUseBlendScale = false
@@ -476,7 +541,7 @@
 			{
 				_class = "CSelectorAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 3190.0, 2357.0 ]
+				m_vecPosition = [ 3048.0, 2261.0 ]
 				m_nNodeID = 
 				{
 					m_id = 304107755
@@ -743,8 +808,8 @@
 				{
 					_class = "CAnimInputDamping"
 					m_speedFunction = "Spring"
-					m_fSpeedScale = 55.0
-					m_fMinSpeed = 55.0
+					m_fSpeedScale = 75.0
+					m_fMinSpeed = 75.0
 					m_fMaxTension = 1000.0
 				}
 			}
@@ -780,7 +845,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = ""
-				m_vecPosition = [ 3199.0, 3250.0 ]
+				m_vecPosition = [ 3198.0, 3250.0 ]
 				m_nNodeID = 
 				{
 					m_id = 610671865
@@ -799,7 +864,7 @@
 								[
 									{
 										_class = "CParameterAnimCondition"
-										m_comparisonOp = 5
+										m_comparisonOp = 4
 										m_paramID = 
 										{
 											m_id = 1652014548
@@ -807,14 +872,27 @@
 										m_comparisonValue = 
 										{
 											m_nType = 4
-											m_data = 50.0
+											m_data = 300.0
+										}
+									},
+									{
+										_class = "CParameterAnimCondition"
+										m_comparisonOp = 4
+										m_paramID = 
+										{
+											m_id = 267595347
+										}
+										m_comparisonValue = 
+										{
+											m_nType = 4
+											m_data = 150.0
 										}
 									},
 								]
 								m_blendDuration = 0.0
 								m_destState = 
 								{
-									m_id = 703710257
+									m_id = 625382716
 								}
 								m_bReset = true
 								m_resetCycleOption = "Beginning"
@@ -824,7 +902,7 @@
 									m_vControlPoint1 = [ 0.5, 0.0 ]
 									m_vControlPoint2 = [ 0.5, 1.0 ]
 								}
-								m_bForceFootPlant = true
+								m_bForceFootPlant = false
 								m_bDisabled = false
 							},
 						]
@@ -839,7 +917,7 @@
 						{
 							m_id = 821837739
 						}
-						m_position = [ 25.0, 106.0 ]
+						m_position = [ -152.0, 177.0 ]
 						m_bIsStartState = false
 						m_bIsEndtState = false
 						m_bIsPassthrough = false
@@ -900,6 +978,95 @@
 						m_bIsStartState = true
 						m_bIsEndtState = false
 						m_bIsPassthrough = false
+						m_bIsRootMotionExclusive = true
+						m_bAlwaysEvaluate = false
+					},
+					{
+						_class = "CAnimState"
+						m_transitions = 
+						[
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CParameterAnimCondition"
+										m_comparisonOp = 2
+										m_paramID = 
+										{
+											m_id = 1652014548
+										}
+										m_comparisonValue = 
+										{
+											m_nType = 4
+											m_data = 0.0
+										}
+									},
+									{
+										_class = "CParameterAnimCondition"
+										m_comparisonOp = 2
+										m_paramID = 
+										{
+											m_id = 267595347
+										}
+										m_comparisonValue = 
+										{
+											m_nType = 4
+											m_data = 100.0
+										}
+									},
+									{
+										_class = "CParameterAnimCondition"
+										m_comparisonOp = 4
+										m_paramID = 
+										{
+											m_id = 271284947
+										}
+										m_comparisonValue = 
+										{
+											m_nType = 4
+											m_data = 5.0
+										}
+									},
+									{
+										_class = "CFinishedCondition"
+										m_comparisonOp = 0
+										m_option = "FinishedConditionOption_OnAlmostFinished"
+										m_bIsFinished = true
+									},
+								]
+								m_blendDuration = 0.0
+								m_destState = 
+								{
+									m_id = 703710257
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = true
+								m_bDisabled = false
+							},
+						]
+						m_tags = [  ]
+						m_tagBehaviors = [  ]
+						m_name = "blend_to_stop"
+						m_childNodeID = 
+						{
+							m_id = 1810263181
+						}
+						m_stateID = 
+						{
+							m_id = 625382716
+						}
+						m_position = [ -116.0, 25.0 ]
+						m_bIsStartState = false
+						m_bIsEndtState = false
+						m_bIsPassthrough = false
 						m_bIsRootMotionExclusive = false
 						m_bAlwaysEvaluate = false
 					},
@@ -917,7 +1084,7 @@
 			{
 				_class = "CBlendAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 802.0, 2743.0 ]
+				m_vecPosition = [ 720.0, 2797.0 ]
 				m_nNodeID = 
 				{
 					m_id = 631636524
@@ -972,7 +1139,7 @@
 			{
 				_class = "CBoneMaskAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 3132.0, 2744.0 ]
+				m_vecPosition = [ 3121.0, 2708.0 ]
 				m_nNodeID = 
 				{
 					m_id = 637503817
@@ -1326,7 +1493,7 @@
 			{
 				_class = "CSelectorAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 2760.0, 3340.0 ]
+				m_vecPosition = [ 2564.0, 3190.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1052691373
@@ -1432,7 +1599,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 2797.0, 2501.0 ]
+				m_vecPosition = [ 2799.0, 2511.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1155626381
@@ -1538,8 +1705,8 @@
 				{
 					_class = "CAnimInputDamping"
 					m_speedFunction = "Spring"
-					m_fSpeedScale = 65.0
-					m_fMinSpeed = 65.0
+					m_fSpeedScale = 75.0
+					m_fMinSpeed = 75.0
 					m_fMaxTension = 1000.0
 				}
 			}
@@ -1553,7 +1720,7 @@
 			{
 				_class = "CBoneMaskAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 2899.0, 3253.0 ]
+				m_vecPosition = [ 2824.0, 3094.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1398709792
@@ -1674,8 +1841,8 @@
 				{
 					_class = "CAnimInputDamping"
 					m_speedFunction = "Spring"
-					m_fSpeedScale = 35.0
-					m_fMinSpeed = 30.0
+					m_fSpeedScale = 55.0
+					m_fMinSpeed = 55.0
 					m_fMaxTension = 1000.0
 				}
 			}
@@ -1689,7 +1856,7 @@
 			{
 				_class = "CBlend2DAnimNode"
 				m_sName = "walk"
-				m_vecPosition = [ 426.0, 2688.0 ]
+				m_vecPosition = [ 423.0, 2688.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1523070790
@@ -1702,25 +1869,31 @@
 						_class = "CBlend2DItem"
 						m_tagSpans = [  ]
 						m_sequenceName = "unarmed_run_e"
-						m_blendValue = [ 1.0, 0.0 ]
+						m_blendValue = [ 200.0, 0.0 ]
 					},
 					{
 						_class = "CBlend2DItem"
 						m_tagSpans = [  ]
 						m_sequenceName = "unarmed_run_n"
-						m_blendValue = [ 0.0, 1.0 ]
+						m_blendValue = [ 0.0, 200.0 ]
 					},
 					{
 						_class = "CBlend2DItem"
 						m_tagSpans = [  ]
 						m_sequenceName = "unarmed_run_s"
-						m_blendValue = [ 0.0, -1.0 ]
+						m_blendValue = [ 0.0, -200.0 ]
 					},
 					{
 						_class = "CBlend2DItem"
 						m_tagSpans = [  ]
 						m_sequenceName = "unarmed_run_w"
-						m_blendValue = [ -1.0, 0.0 ]
+						m_blendValue = [ -200.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "unarmed_idle"
+						m_blendValue = [ 0.0, 0.0 ]
 					},
 				]
 				m_blendSourceX = "Parameter"
@@ -1740,7 +1913,7 @@
 				m_damping = 
 				{
 					_class = "CAnimInputDamping"
-					m_speedFunction = "Spring"
+					m_speedFunction = "NoDamping"
 					m_fSpeedScale = 32.0
 					m_fMinSpeed = 32.0
 					m_fMaxTension = 1000.0
@@ -1981,8 +2154,8 @@
 								m_flFixedCycleValue = 0.0
 								m_blendCurve = 
 								{
-									m_vControlPoint1 = [ 0.0, 0.0 ]
-									m_vControlPoint2 = [ 1.0, 1.0 ]
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
 								}
 								m_bForceFootPlant = false
 								m_bDisabled = false
@@ -2112,7 +2285,7 @@
 			{
 				_class = "CFootLockAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 3942.0, 3330.0 ]
+				m_vecPosition = [ 3940.0, 3332.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1867007271
@@ -2178,7 +2351,7 @@
 					m_fMinSpeed = 10.0
 					m_fMaxTension = 1000.0
 				}
-				m_bApplyTilt = true
+				m_bApplyTilt = false
 				m_flTiltPlanePitchSpringStrength = 5.0
 				m_flTiltPlaneRollSpringStrength = 5.0
 				m_bEnableLockBreaking = true
