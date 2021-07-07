@@ -333,7 +333,7 @@
 			{
 				_class = "CBoneMaskAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 3142.0, 2866.0 ]
+				m_vecPosition = [ 3081.0, 2892.0 ]
 				m_nNodeID = 
 				{
 					m_id = 21097460
@@ -845,7 +845,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = ""
-				m_vecPosition = [ 3198.0, 3250.0 ]
+				m_vecPosition = [ 3198.0, 3249.0 ]
 				m_nNodeID = 
 				{
 					m_id = 610671865
@@ -872,27 +872,14 @@
 										m_comparisonValue = 
 										{
 											m_nType = 4
-											m_data = 300.0
-										}
-									},
-									{
-										_class = "CParameterAnimCondition"
-										m_comparisonOp = 4
-										m_paramID = 
-										{
-											m_id = 267595347
-										}
-										m_comparisonValue = 
-										{
-											m_nType = 4
-											m_data = 150.0
+											m_data = 50.0
 										}
 									},
 								]
 								m_blendDuration = 0.0
 								m_destState = 
 								{
-									m_id = 625382716
+									m_id = 703710257
 								}
 								m_bReset = true
 								m_resetCycleOption = "Beginning"
@@ -917,7 +904,7 @@
 						{
 							m_id = 821837739
 						}
-						m_position = [ -152.0, 177.0 ]
+						m_position = [ -153.0, 175.0 ]
 						m_bIsStartState = false
 						m_bIsEndtState = false
 						m_bIsPassthrough = false
@@ -1038,7 +1025,7 @@
 								m_blendDuration = 0.0
 								m_destState = 
 								{
-									m_id = 703710257
+									m_id = 1858579081
 								}
 								m_bReset = true
 								m_resetCycleOption = "Beginning"
@@ -1049,6 +1036,53 @@
 									m_vControlPoint2 = [ 0.5, 1.0 ]
 								}
 								m_bForceFootPlant = true
+								m_bDisabled = false
+							},
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CParameterAnimCondition"
+										m_comparisonOp = 4
+										m_paramID = 
+										{
+											m_id = 1652014548
+										}
+										m_comparisonValue = 
+										{
+											m_nType = 4
+											m_data = 300.0
+										}
+									},
+									{
+										_class = "CParameterAnimCondition"
+										m_comparisonOp = 4
+										m_paramID = 
+										{
+											m_id = 267595347
+										}
+										m_comparisonValue = 
+										{
+											m_nType = 4
+											m_data = 150.0
+										}
+									},
+								]
+								m_blendDuration = 0.0
+								m_destState = 
+								{
+									m_id = 1858579081
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
 								m_bDisabled = false
 							},
 						]
@@ -1063,7 +1097,28 @@
 						{
 							m_id = 625382716
 						}
-						m_position = [ -116.0, 25.0 ]
+						m_position = [ -211.0, -179.0 ]
+						m_bIsStartState = false
+						m_bIsEndtState = false
+						m_bIsPassthrough = false
+						m_bIsRootMotionExclusive = false
+						m_bAlwaysEvaluate = false
+					},
+					{
+						_class = "CAnimState"
+						m_transitions = [  ]
+						m_tags = [  ]
+						m_tagBehaviors = [  ]
+						m_name = "Unnamed"
+						m_childNodeID = 
+						{
+							m_id = 4294967295
+						}
+						m_stateID = 
+						{
+							m_id = 1858579081
+						}
+						m_position = [ -89.0, -217.0 ]
 						m_bIsStartState = false
 						m_bIsEndtState = false
 						m_bIsPassthrough = false
@@ -1179,7 +1234,7 @@
 			{
 				_class = "CSelectorAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 1128.0, 2682.0 ]
+				m_vecPosition = [ 1160.0, 2545.0 ]
 				m_nNodeID = 
 				{
 					m_id = 827068968
@@ -1856,7 +1911,7 @@
 			{
 				_class = "CBlend2DAnimNode"
 				m_sName = "walk"
-				m_vecPosition = [ 423.0, 2688.0 ]
+				m_vecPosition = [ 299.0, 2631.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1523070790
@@ -1874,7 +1929,7 @@
 					{
 						_class = "CBlend2DItem"
 						m_tagSpans = [  ]
-						m_sequenceName = "unarmed_run_n"
+						m_sequenceName = "run_n_m"
 						m_blendValue = [ 0.0, 200.0 ]
 					},
 					{
@@ -1894,6 +1949,12 @@
 						m_tagSpans = [  ]
 						m_sequenceName = "unarmed_idle"
 						m_blendValue = [ 0.0, 0.0 ]
+					},
+					{
+						_class = "CBlend2DItem"
+						m_tagSpans = [  ]
+						m_sequenceName = "jog_n_male"
+						m_blendValue = [ 0.0, 100.0 ]
 					},
 				]
 				m_blendSourceX = "Parameter"
