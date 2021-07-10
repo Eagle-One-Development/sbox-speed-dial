@@ -1234,6 +1234,15 @@
 						weight = 1.0
 						ignore_rotation = false
 					},
+					{
+						_class = "Attachment"
+						name = "roomclearer_attachment"
+						parent_bone = "hand_r"
+						relative_origin = [ -4.92599, -0.701643, 1.570538 ]
+						relative_angles = [ 2.36239, -170.263, 14.741102 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
 				]
 			},
 			{
