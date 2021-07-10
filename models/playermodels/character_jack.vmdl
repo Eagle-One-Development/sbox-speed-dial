@@ -1334,15 +1334,6 @@
 					},
 					{
 						_class = "Attachment"
-						name = "shotgun_attach"
-						parent_bone = "hand_r"
-						relative_origin = [ -4.925995, -0.701643, 1.570538 ]
-						relative_angles = [ 2.362393, -170.262863, 14.741102 ]
-						weight = 1.0
-						ignore_rotation = false
-					},
-					{
-						_class = "Attachment"
 						name = "melee_bat_attach"
 						parent_bone = "hand_l"
 						relative_origin = [ 2.334858, 1.16357, 1.60859 ]
@@ -1374,6 +1365,15 @@
 						parent_bone = "head"
 						relative_origin = [ 0.0, 0.0, 0.0 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "shotgun_attach"
+						parent_bone = "hand_r"
+						relative_origin = [ -3.484747, -1.75378, -0.477558 ]
+						relative_angles = [ 1.424917, -168.70224, 14.908893 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -3583,7 +3583,6 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
-						disabled = true
 						model_name = "models/weapons/shotgun/prop_shotgun.vmdl"
 						entity_class = ""
 						attachment_type = "attach"

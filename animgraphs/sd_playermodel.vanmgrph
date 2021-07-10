@@ -1929,7 +1929,7 @@
 					{
 						_class = "CBlend2DItem"
 						m_tagSpans = [  ]
-						m_sequenceName = "run_n_m"
+						m_sequenceName = "unarmed_run_n"
 						m_blendValue = [ 0.0, 200.0 ]
 					},
 					{
@@ -1949,12 +1949,6 @@
 						m_tagSpans = [  ]
 						m_sequenceName = "unarmed_idle"
 						m_blendValue = [ 0.0, 0.0 ]
-					},
-					{
-						_class = "CBlend2DItem"
-						m_tagSpans = [  ]
-						m_sequenceName = "jog_n_male"
-						m_blendValue = [ 0.0, 100.0 ]
 					},
 				]
 				m_blendSourceX = "Parameter"

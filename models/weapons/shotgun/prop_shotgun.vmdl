@@ -14,8 +14,8 @@
 						remaps = 
 						[
 							{
-								from = "mi_unlit_military_gear_default.vmat"
-								to = "materials/dev/dev_grating.vmat"
+								from = "textest.vmat"
+								to = "models/weapons/shotgun/shotgun.vmat"
 							},
 						]
 						use_global_default = false
@@ -29,10 +29,10 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/weapons/shotgun/shotgun.dmx"
-						import_translation = [ 0.0, 0.0, 0.0 ]
-						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 1.0
+						filename = "models/weapons/shotgun/Ithaca_LP.obj"
+						import_translation = [ 1.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 180.0, 0.0 ]
+						import_scale = 8.0
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
@@ -50,31 +50,40 @@
 				children = 
 				[
 					{
-						_class = "PhysicsShapeCapsule"
-						parent_bone = "weapon_hand_r"
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						radius = 1.65396
-						point0 = [ -0.000003, 2.126881, -12.51921 ]
-						point1 = [ -0.123019, 2.184862, 14.200461 ]
+						origin = [ 11.191925, 0.0, 2.535338 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 26.196388, 1.0, 1.0 ]
 					},
 					{
-						_class = "PhysicsShapeCapsule"
-						parent_bone = "weapon_hand_r"
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						radius = 1.65396
-						point0 = [ 0.000001, -3.146981, -1.122851 ]
-						point1 = [ -0.123022, 2.012158, 0.643691 ]
+						origin = [ 6.924909, 0.0, 1.300354 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 17.662354, 1.0, 1.219157 ]
 					},
 					{
-						_class = "PhysicsShapeCapsule"
-						parent_bone = "weapon_hand_r"
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						radius = 1.65396
-						point0 = [ 0.000004, -2.249929, 11.787493 ]
-						point1 = [ -0.12302, 2.128892, 11.170243 ]
+						origin = [ -9.207883, 0.075679, -0.224075 ]
+						angles = [ -17.226664, 0.0119, -0.078564 ]
+						dimensions = [ 15.702161, 1.0, 2.68479 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_prop = "default"
+						origin = [ -11.267632, 0.07567, -0.314068 ]
+						angles = [ -2.501749, 0.000241, -0.01107 ]
+						dimensions = [ 11.578733, 1.0, 2.68479 ]
 					},
 				]
 			},
@@ -85,18 +94,18 @@
 					{
 						_class = "Attachment"
 						name = "muzzle"
-						parent_bone = "weapon_hand_r"
-						relative_origin = [ 0.107456, 4.467498, 17.358835 ]
-						relative_angles = [ -89.999962, -0.000036, 0.0 ]
+						parent_bone = ""
+						relative_origin = [ 24.506144, -0.043675, 2.319941 ]
+						relative_angles = [ -0.554864, 0.0, -0.000036 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
 					{
 						_class = "Attachment"
 						name = "ejection_point"
-						parent_bone = "weapon_hand_r"
-						relative_origin = [ -0.773123, 0.956913, -7.719165 ]
-						relative_angles = [ 2.514723, -88.542076, -179.992569 ]
+						parent_bone = ""
+						relative_origin = [ 3.227873, 0.405595, 0.490864 ]
+						relative_angles = [ 88.296593, 31.230278, -58.814724 ]
 						weight = 1.0
 						ignore_rotation = false
 					},

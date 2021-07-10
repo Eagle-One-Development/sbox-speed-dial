@@ -1192,8 +1192,8 @@
 						_class = "Attachment"
 						name = "shotgun_attach"
 						parent_bone = "hand_r"
-						relative_origin = [ -4.925995, -0.701643, 1.570538 ]
-						relative_angles = [ 2.362393, -170.262863, 14.741102 ]
+						relative_origin = [ -3.484747, -1.75378, -0.477558 ]
+						relative_angles = [ 1.424917, -168.70224, 14.908893 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
