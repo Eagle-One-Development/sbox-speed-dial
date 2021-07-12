@@ -22,7 +22,6 @@ namespace SpeedDial {
 			Precache.Add("particles/pistol_ejectbrass.vpcf");
 			Precache.Add("particles/weapon_fx/shotgun_ejectbrass.vpcf");
 
-
 			Precache.Add("animgraphs/sd_playermodel.vanmgrph");
 			Precache.Add("animgraphs/sd_playermodel_test.vanmgrph");
 
@@ -49,32 +48,6 @@ namespace SpeedDial {
 			Precache.Add("sounds/punch/punch04.vsnd");
 			Precache.Add("sounds/punch/woosh_2.vsnd");
 			Precache.Add("sounds/punch/woosh_1.vsnd");
-			Precache.Add("sounds/simpleguns/[draft]sfx_bat_hit_v2-001.vsnd");
-			Precache.Add("sounds/simpleguns/[draft]sfx_bat_hit_v2-002.vsnd");
-			Precache.Add("sounds/simpleguns/[draft]sfx_bat_hit_v2-003.vsnd");
-			Precache.Add("sounds/simpleguns/[draft1]sfx_dryfire.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_beegshotgun_sounds-001.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_beegshotgun_sounds-002.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_beegshotgun_sounds-003.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_beretta_shot-001.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_beretta_shot-002.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_beretta_shot-003.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_famas_shot-001.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_famas_shot-002.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_famas_shot-003.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_mac-10_shot-001.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_mac-10_shot-002.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_mac-10_shot-003.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_mac-10_shot-004.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_mac-10_shot-005.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_mac-10_shot-006.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_ra-23_shot-001.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_ra-23_shot-002.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_ra-23_shot-003.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_shotgun_sounds-001.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_shotgun_sounds-002.vsnd");
-			Precache.Add("sounds/simpleguns/[final1]sfx_shotgun_sounds-003.vsnd");
-			Precache.Add("sounds/simpleguns/descrow_shot_noise.vsnd");
 			Precache.Add("sounds/ui/[draft]sfx_killsecured_long.vsnd");
 			Precache.Add("sounds/ui/[draft]sfx_killsecured_short.vsnd");
 			Precache.Add("sounds/ui/click.vsnd");
@@ -82,12 +55,33 @@ namespace SpeedDial {
 			Precache.Add("sounds/ui/tape_stop.vsnd");
 			Precache.Add("sounds/ui/tape_top.vsnd");
 			Precache.Add("sounds/weapon_fx/spin.vsnd");
-
-
-
-
-
-
+			// bat hit
+			Precache.Add("sounds/simpleguns/bat/sd_bat.hit01.vsnd");
+			Precache.Add("sounds/simpleguns/bat/sd_bat.hit02.vsnd");
+			Precache.Add("sounds/simpleguns/bat/sd_bat.hit03.vsnd");
+			// pistol shoot
+			Precache.Add("sounds/simpleguns/pistol/sd_pistol.shoot01.vsnd");
+			Precache.Add("sounds/simpleguns/pistol/sd_pistol.shoot02.vsnd");
+			Precache.Add("sounds/simpleguns/pistol/sd_pistol.shoot03.vsnd");
+			// rifle shoot
+			Precache.Add("sounds/simpleguns/rifle/sd_rifle.shoot01.vsnd");
+			Precache.Add("sounds/simpleguns/rifle/sd_rifle.shoot02.vsnd");
+			Precache.Add("sounds/simpleguns/rifle/sd_rifle.shoot03.vsnd");
+			// shotgun shoot
+			Precache.Add("sounds/simpleguns/shotgun/sd_shotgun.shoot01.vsnd");
+			Precache.Add("sounds/simpleguns/shotgun/sd_shotgun.shoot02.vsnd");
+			Precache.Add("sounds/simpleguns/shotgun/sd_shotgun.shoot03.vsnd");
+			// smg shoot
+			Precache.Add("sounds/simpleguns/smg/sd_smg.shoot01.vsnd");
+			Precache.Add("sounds/simpleguns/smg/sd_smg.shoot02.vsnd");
+			Precache.Add("sounds/simpleguns/smg/sd_smg.shoot03.vsnd");
+			Precache.Add("sounds/simpleguns/smg/sd_smg.shoot04.vsnd");
+			Precache.Add("sounds/simpleguns/smg/sd_smg.shoot05.vsnd");
+			Precache.Add("sounds/simpleguns/smg/sd_smg.shoot06.vsnd");
+			// sniper shoot
+			Precache.Add("sounds/simpleguns/sniper/sd_sniper.shoot01.vsnd");
+			Precache.Add("sounds/simpleguns/sniper/sd_sniper.shoot02.vsnd");
+			Precache.Add("sounds/simpleguns/sniper/sd_sniper.shoot03.vsnd");
 
 		}
 	}

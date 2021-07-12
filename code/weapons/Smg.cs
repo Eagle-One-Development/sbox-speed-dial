@@ -9,7 +9,7 @@ namespace SpeedDial.Weapons {
 		public override float SecondaryRate => 1.0f;
 		public override int ClipSize => 20;
 		public override string WorldModel => "models/weapons/smg/prop_smg.vmdl";
-		public override string ShootSound => "sd_mac10_shoot";
+		public override string ShootSound => "sd_smg.shoot";
 		public override float BulletSpread => 0.55f;
 		public override float VerticalBulletSpread => 0.35f;
 		public override float BulletForce => 1.5f;
