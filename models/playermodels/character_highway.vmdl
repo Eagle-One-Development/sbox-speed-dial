@@ -3263,6 +3263,7 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
+						disabled = true
 						model_name = "models/weapons/melee/melee.vmdl"
 						entity_class = ""
 						attachment_type = "attach"

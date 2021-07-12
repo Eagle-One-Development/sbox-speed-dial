@@ -3592,6 +3592,7 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
+						disabled = true
 						model_name = "models/weapons/shotgun/prop_shotgun.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
@@ -3633,6 +3634,7 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
+						disabled = true
 						model_name = "models/weapons/melee/melee.vmdl"
 						entity_class = ""
 						attachment_type = "attach"

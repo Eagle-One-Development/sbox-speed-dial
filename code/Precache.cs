@@ -3,14 +3,7 @@ using Sandbox;
 namespace SpeedDial {
 	public partial class SpeedDialGame {
 		private static void PrecacheModels() {
-			Log.Info("Precaching models");
-
-			Precache.Add("models/playermodels/playermodel_base.vmdl");
-
-			Precache.Add("models/playermodels/weapons/prop_pistol.vmdl");
-			Precache.Add("models/playermodels/weapons/prop_rifle.vmdl");
-			Precache.Add("models/playermodels/weapons/prop_shotgun.vmdl");
-			Precache.Add("models/playermodels/weapons/prop_smg.vmdl");
+			Log.Info("Precaching assets");
 
 			Precache.Add("particles/blood/blood_splash.vpcf");
 			Precache.Add("particles/blood/blood_drops.vpcf");
@@ -18,32 +11,45 @@ namespace SpeedDial {
 
 			Precache.Add("particles/pistol_muzzleflash.vpcf");
 			Precache.Add("particles/impact.generic.vpcf");
-			Precache.Add("particles/weapon_fx/bullet_trail.vpcf");
 			Precache.Add("particles/pistol_ejectbrass.vpcf");
 			Precache.Add("particles/weapon_fx/shotgun_ejectbrass.vpcf");
+			Precache.Add("particles/weapon_fx/sd_bullet_trail/sd_bullet_trail.vpcf");
+			Precache.Add("particles/drug_fx/sd_ollie/sd_ollie.vpcf");
+			Precache.Add("particles/drug_fx/sd_polvo/sd_polvo.vpcf");
+			Precache.Add("particles/drug_fx/sd_leaf/sd_leaf.vpcf");
+			Precache.Add("particles/drug_fx/sd_ritindi/sd_ritindi.vpcf");
+
+			// weapon models
+			Precache.Add("models/weapons/rifle/prop_rifle.vmdl");
+			Precache.Add("models/weapons/smg/prop_smg.vmdl");
+			Precache.Add("models/weapons/shotgun/prop_shotgun.vmdl");
+			Precache.Add("models/weapons/shotgun/prop_roomclearer.vmdl");
+			Precache.Add("models/weapons/rifle/prop_rifle.vmdl");
+			Precache.Add("models/weapons/pistol/prop_pistol.vmdl");
+			Precache.Add("models/weapons/melee/melee.vmdl");
+
+			// player models
+			Precache.Add("models/playermodels/playermodel_base.vmdl");
+			Precache.Add("models/playermodels/character_dialup.vmdl");
+			Precache.Add("models/playermodels/character_highway.vmdl");
+			Precache.Add("models/playermodels/character_jack.vmdl");
+			Precache.Add("models/playermodels/character_maria.vmdl");
 
 			Precache.Add("animgraphs/sd_playermodel.vanmgrph");
 			Precache.Add("animgraphs/sd_playermodel_test.vanmgrph");
 
-			Precache.Add("sounds/music_onelesshero.vsnd");
-			Precache.Add("sounds/punch.vsnd");
-			Precache.Add("sounds/punch_2.vsnd");
-			Precache.Add("sounds/spin.vsnd");
-			Precache.Add("sounds/tape_noise.vsnd");
-			Precache.Add("sounds/tape_top.vsnd");
-			Precache.Add("sounds/woosh_1.vsnd");
-			Precache.Add("sounds/woosh_2.vsnd");
-			Precache.Add("sounds/spin.vsnd");
 			Precache.Add("sounds/drukqs/leaf.vsnd");
 			Precache.Add("sounds/drukqs/ollie_2.vsnd");
 			Precache.Add("sounds/drukqs/polvo.vsnd");
 			Precache.Add("sounds/drukqs/ritindi.vsnd");
 			Precache.Add("sounds/kill/draftsfx_killsecured_long (1).vsnd");
 			Precache.Add("sounds/kill/hit01.vsnd");
+			//tracks
 			Precache.Add("sounds/music/[draft]speed-dial_main_theme_bmanedit.vsnd");
 			Precache.Add("sounds/music/[draft]speed-dial_main_theme_climax_10secondsearly_bmanedit.vsnd");
 			Precache.Add("sounds/music/music_onelesshero.vsnd");
 			Precache.Add("sounds/music/mx_speeddial_combat.vsnd");
+
 			Precache.Add("sounds/punch/punch03.vsnd");
 			Precache.Add("sounds/punch/punch04.vsnd");
 			Precache.Add("sounds/punch/woosh_2.vsnd");
@@ -52,7 +58,6 @@ namespace SpeedDial {
 			Precache.Add("sounds/ui/[draft]sfx_killsecured_short.vsnd");
 			Precache.Add("sounds/ui/click.vsnd");
 			Precache.Add("sounds/ui/tape_noise.vsnd");
-			Precache.Add("sounds/ui/tape_stop.vsnd");
 			Precache.Add("sounds/ui/tape_top.vsnd");
 			Precache.Add("sounds/weapon_fx/spin.vsnd");
 			// bat hit
