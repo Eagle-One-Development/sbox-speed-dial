@@ -44,6 +44,7 @@ namespace SpeedDial {
 			Precache.Add("sounds/drukqs/ritindi.vsnd");
 			Precache.Add("sounds/kill/draftsfx_killsecured_long (1).vsnd");
 			Precache.Add("sounds/kill/hit01.vsnd");
+
 			//tracks
 			Precache.Add("sounds/music/[draft]speed-dial_main_theme_bmanedit.vsnd");
 			Precache.Add("sounds/music/[draft]speed-dial_main_theme_climax_10secondsearly_bmanedit.vsnd");
@@ -60,6 +61,7 @@ namespace SpeedDial {
 			Precache.Add("sounds/ui/tape_noise.vsnd");
 			Precache.Add("sounds/ui/tape_top.vsnd");
 			Precache.Add("sounds/weapon_fx/spin.vsnd");
+
 			// bat hit
 			Precache.Add("sounds/simpleguns/bat/sd_bat.hit01.vsnd");
 			Precache.Add("sounds/simpleguns/bat/sd_bat.hit02.vsnd");

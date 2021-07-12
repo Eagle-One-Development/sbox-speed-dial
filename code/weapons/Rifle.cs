@@ -7,7 +7,7 @@ namespace SpeedDial.Weapons {
 
 		public override float PrimaryRate => 2.0f;
 		public override float SecondaryRate => 1.0f;
-		public override int ClipSize => 21;
+		public override int ClipSize => 24;
 		public int burst = 3;
 		private int curBurst = 0;
 		private bool isFiring;
