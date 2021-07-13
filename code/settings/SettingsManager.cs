@@ -30,6 +30,8 @@ namespace SpeedDial.Settings {
 			SettingsChanged?.Invoke();
 		}
 		public static void SetDefaultSettings() {
+			if(Settings == null) Settings = new();
+			Settings.Version = Version;
 			Settings.SettingsItems = new();
 			SetSetting("Sniper Wallbang", true, true);
 			SetSetting("Kill Feed", true);

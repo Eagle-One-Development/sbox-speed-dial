@@ -26,6 +26,7 @@ namespace SpeedDial.UI {
 			label.Text = "Settings";
 			if(SettingsManager.Settings is null) SettingsManager.ReloadSettings();
 			foreach(var item in SettingsManager.Settings.SettingsItems) {
+				if(Client.All[0].NetworkIdent != Local.Client.NetworkIdent && item.Value.ServerOnly) continue;
 				SettingsPanel sp = new();
 				if(item.Value.ServerOnly) sp.Add.Label("Host only", "serveronly");
 				sp.init(item.Value);

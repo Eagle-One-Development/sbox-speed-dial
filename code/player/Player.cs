@@ -122,6 +122,10 @@ namespace SpeedDial.Player {
 		public void onSettingChange() {
 			if(!IsClient) return;
 			//Log.Info($"{Local.DisplayName} Music Changed");
+			if(Client.All[0].NetworkIdent == Local.Client.NetworkIdent)
+				if(Settings.SettingsManager.GetSetting("Sniper Wallbang").TryGetBool(out bool? res)) {
+					SetSetting(res.Value);
+				}
 			if(!GetMusicBool()) {
 
 				SoundTrack?.Stop();
@@ -131,13 +135,6 @@ namespace SpeedDial.Player {
 			if(!SoundtrackPlaying && SpeedDialGame.Instance is not null)
 				_ = PlaySoundtrackAsync(SpeedDialGame.Instance.CurrentSoundtrack, 2.5f);
 
-			if(!IsClientOnly) {
-				if(Settings.SettingsManager.GetSetting("Sniper Wallbang").TryGetBool(out bool? res)) {
-					SetSetting(res.Value);
-					//Log.Info("WallBang Setting changed");
-
-				}
-			};
 		}
 		[ServerCmd]
 		public static void SetSetting(bool val) {
