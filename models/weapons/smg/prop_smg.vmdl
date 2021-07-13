@@ -14,8 +14,8 @@
 						remaps = 
 						[
 							{
-								from = "materials/error.vmat"
-								to = "materials/generic/trim_a_metal.vmat"
+								from = "m_smg11.vmat"
+								to = "models/weapons/smg/mac11.vmat"
 							},
 						]
 						use_global_default = false
@@ -29,10 +29,10 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/weapons/smg/smg.dmx"
+						filename = "models/weapons/smg/sk_smg11_x2.fbx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 1.0
+						import_scale = 0.3937
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
@@ -51,21 +51,21 @@
 				[
 					{
 						_class = "PhysicsShapeCapsule"
-						parent_bone = "weapon_hand_r"
+						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
-						radius = 1.858547
-						point0 = [ -0.000001, 2.257049, -2.597693 ]
-						point1 = [ 0.049256, 2.31816, 6.286453 ]
+						radius = 0.977302
+						point0 = [ 0.011849, -0.194515, -6.158484 ]
+						point1 = [ 0.049256, -0.148106, 0.588312 ]
 					},
 					{
 						_class = "PhysicsShapeCapsule"
-						parent_bone = "weapon_hand_r"
+						parent_bone = ""
 						surface_prop = "default"
 						collision_prop = "default"
 						radius = 1.858547
-						point0 = [ 0.000001, -3.971223, -0.436382 ]
-						point1 = [ 0.049255, 2.128898, -0.009691 ]
+						point0 = [ 5.859547, -0.523547, 3.176058 ]
+						point1 = [ -3.541003, -0.332401, 3.089804 ]
 					},
 				]
 			},
@@ -76,18 +76,18 @@
 					{
 						_class = "Attachment"
 						name = "muzzle"
-						parent_bone = "weapon_hand_r"
-						relative_origin = [ 0.803644, 1.825395, 8.919335 ]
-						relative_angles = [ -89.999962, -0.000036, 0.0 ]
+						parent_bone = ""
+						relative_origin = [ 7.761286, 0.0, 3.178621 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
 					{
 						_class = "Attachment"
 						name = "ejection_point"
-						parent_bone = "weapon_hand_r"
-						relative_origin = [ -0.773121, 1.958356, 0.089216 ]
-						relative_angles = [ 2.515072, -179.999985, 179.999924 ]
+						parent_bone = ""
+						relative_origin = [ 0.262456, -0.84325, 3.155108 ]
+						relative_angles = [ -0.135033, -88.933823, -0.000073 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
