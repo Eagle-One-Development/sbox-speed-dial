@@ -173,6 +173,8 @@ namespace SpeedDial.Weapons {
 				f = 0.25f;
 			}
 
+
+
 			var forward = Owner.EyeRot.Forward;
 			forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f * f;
 			forward = forward.Normal;
@@ -225,6 +227,18 @@ namespace SpeedDial.Weapons {
 			yield return bullet;
 
 			var player = Owner as SpeedDialPlayer;
+
+			if(this is Sniper) {
+				var dir = bullet.EndPos - bullet.StartPos;
+				var penetrate = Trace.Ray(bullet.EndPos + dir.Normal * 60f, bullet.EndPos + dir.Normal * Range)
+						.UseHitboxes()
+						.Ignore(this)
+						.Ignore(bullet.Entity)
+						.Size(radius)
+						.Run();
+
+				yield return penetrate;
+			}
 
 			if(player.MedTaken && player.CurrentDrug == Meds.DrugType.Ollie || Penetrate) {
 				// pierce through the first player hit

@@ -50,6 +50,10 @@ namespace SpeedDial {
 			CurrentSoundtrack = Soundtracks[index];
 		}
 
+		[ClientRpc]
+		public void OnKilledMessage(ulong leftid, string left, ulong rightid, string right, string method, bool IsDom, bool IsMult, bool IsRevenge) {
+			UI.KillFeed.Instance?.AddEntry(leftid, left, rightid, right, method, IsDom, IsMult, IsRevenge);
+		}
 
 
 		[ServerCmd]
@@ -115,7 +119,10 @@ namespace SpeedDial {
 
 			var attackerClient = pawn.LastAttacker?.GetClientOwner();
 
+			
+
 			if(attackerClient == null) {
+				OnKilledMessage(0, "", client.SteamId, client.Name, "died");
 				return;
 			}
 
@@ -187,6 +194,7 @@ namespace SpeedDial {
 				(pawn as SpeedDialPlayer).DrugBump(To.Single(pawn), pawn.LastAttacker.GetClientOwner().Name, "KILLED YOU", false);
 			}
 
+			bool multiKill = false;
 			#endregion
 
 			if(attackerClient != null) {
@@ -199,9 +207,24 @@ namespace SpeedDial {
 					//attacker.KillCombo++;
 
 					attacker.TimeSinceMurdered = 0;
+
+					if(attacker.KillCombo >= 2) {
+						multiKill = true;
+					}
+				
 				}
+			
+			
 			}
 
+			if(pawn.LastAttacker != null) {
+
+				if(attackerClient != null) {
+					OnKilledMessage(attackerClient.SteamId, attackerClient.Name, client.SteamId, client.Name, pawn.LastAttackerWeapon?.ClassInfo?.Name,dominating, multiKill, revenge);
+				} else {
+					OnKilledMessage((ulong)pawn.LastAttacker.NetworkIdent, pawn.LastAttacker.ToString(), client.SteamId, client.Name, "killed", false, false, false);
+				}
+			}
 
 		}
 
