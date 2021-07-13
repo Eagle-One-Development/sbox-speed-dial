@@ -1,5 +1,6 @@
 using Sandbox;
 using Sandbox.UI;
+using SpeedDial.Player;
 
 namespace SpeedDial.UI {
 	[Library]
@@ -21,9 +22,8 @@ namespace SpeedDial.UI {
 			Scoreboard = RootPanel.AddChild<SpeedDialScoreboard<SpeedDialScoreboardEntry>>();
 			RootPanel.AddChild<ChatBox>();
 			RootPanel.AddChild<CrossHair>();
-			RootPanel.AddChild<KillFeed>();
+			if(SpeedDialPlayer.sd_killfeed)
+				RootPanel.AddChild<KillFeed>();
 		}
-
-		
 	}
 }

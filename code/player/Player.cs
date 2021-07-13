@@ -70,6 +70,9 @@ namespace SpeedDial.Player {
 		[ClientVar]
 		public static bool sd_soundtrack { get; set; } = true;
 
+		[ClientVar]
+		public static bool sd_killfeed { get; set; } = false;
+
 		public void InitialSpawn() {
 
 			if(GetClientOwner().SteamId == 76561198000823482) { // bak

@@ -13,7 +13,8 @@ namespace SpeedDial.UI {
 		}
 
 		public Panel AddEntry(ulong lsteamid, string left, ulong rsteamid, string right, string method, bool Dom, bool Mult, bool Rev, COD cod) {
-			Log.Info($"{left} killed {right} using {method}");
+
+			//Log.Info($"{left} killed {right} using {method}");
 
 			var e = AddChild<KillFeedEntry>();
 
@@ -28,7 +29,7 @@ namespace SpeedDial.UI {
 			e.IsRevenge = Rev;
 			e.IsMultiKill = Mult;
 			e.IsDominating = Dom;
-			
+
 			if(cod == COD.Melee) {
 				e.Icon.Texture = Texture.Load("materials/ui/killfeed_melee.png");
 			}
