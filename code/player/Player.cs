@@ -122,7 +122,7 @@ namespace SpeedDial.Player {
 		public void onSettingChange() {
 			if(!IsClient) return;
 			//Log.Info($"{Local.DisplayName} Music Changed");
-			if(Client.All[0].NetworkIdent == Local.Client.NetworkIdent)
+			if(Global.IsListenServer)
 				if(Settings.SettingsManager.GetSetting("Sniper Wallbang").TryGetBool(out bool? res)) {
 					SetSetting(res.Value);
 				}
