@@ -7,7 +7,7 @@ namespace SpeedDial.Weapons {
 
 		public override float PrimaryRate => 2.0f;
 		public override float SecondaryRate => 1.0f;
-		public override int ClipSize => 21;
+		public override int ClipSize => 24;
 		public int burst = 3;
 		private int curBurst = 0;
 		private bool isFiring;
@@ -19,7 +19,7 @@ namespace SpeedDial.Weapons {
 		public override float BulletForce => 1.5f;
 		public override float BulletDamage => 100;
 		public override float BulletSize => 3;
-		public override string ShootSound => "sd_famas_shot";
+		public override string ShootSound => "sd_rifle.shoot";
 		public override string WorldModel => "models/weapons/rifle/prop_rifle.vmdl";
 		public override bool Automatic => true;
 		public override string AttachementName => "rifle_attach";

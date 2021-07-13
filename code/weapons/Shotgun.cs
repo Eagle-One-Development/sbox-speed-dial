@@ -8,8 +8,8 @@ namespace SpeedDial.Weapons {
 		public override int ClipSize => 8;
 		public override int HoldType => 4;
 		public override string WorldModel => "models/weapons/shotgun/prop_shotgun.vmdl";
-		public override string ShootSound => "sd_shotgun";
-		public override float BulletSpread => 0.6f;
+		public override string ShootSound => "sd_shotgun.shoot";
+		public override float BulletSpread => 0.4f;
 		public override float BulletForce => 0.3f;
 		public override float BulletDamage => 100;
 		public override float BulletSize => 3;

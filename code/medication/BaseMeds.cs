@@ -5,7 +5,7 @@ using SpeedDial.Player;
 namespace SpeedDial.Meds {
 	public partial class BaseMedication : ModelEntity, IRespawnableEntity {
 
-		public virtual string WorldModel => "models/abilities/sm_candy.vmdl";
+		public virtual string WorldModel => "models/drugs/leaf/leaf.vmdl";
 		public virtual float RotationSpeed => 75f;
 		public virtual string DrugName => "POLVO";
 		public virtual string DrugFlavor => "vanilla";
