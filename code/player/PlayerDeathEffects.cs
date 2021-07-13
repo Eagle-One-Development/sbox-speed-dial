@@ -163,6 +163,7 @@ namespace SpeedDial.Player {
 					//Log.Info($"TEST { attacker.KillCombo }");
 				}
 				// Note - sending this only to the attacker!
+				
 				attacker.DidDamage(To.Single(attacker), info.Position, info.Damage, Health, CauseOfDeath, attacker.KillCombo);
 
 

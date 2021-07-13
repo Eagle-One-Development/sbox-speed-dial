@@ -81,7 +81,7 @@ namespace SpeedDial.Weapons {
 			AmmoClip = ClipSize;
 
 			PickupTrigger = new();
-			PickupTrigger.SetTriggerSize(26);
+			PickupTrigger.SetTriggerSize(32f);
 			PickupTrigger.Parent = this;
 			PickupTrigger.Position = Position;
 			PickupTrigger.EnableTouchPersists = true;

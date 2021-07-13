@@ -8,7 +8,7 @@ namespace SpeedDial.UI {
 	public partial class KillFeedEntry : Panel {
 		public Label Left { get; internal set; }
 		public Label Right { get; internal set; }
-		public Panel Icon { get; internal set; }
+		public Image Icon { get; internal set; }
 		public bool IsDominating;
 		public bool IsMultiKill;
 		public bool IsRevenge;
@@ -20,7 +20,7 @@ namespace SpeedDial.UI {
 
 		public KillFeedEntry() {
 			Left = Add.Label("", "left");
-			Icon = Add.Panel("icon");
+			Icon = Add.Image("materials/ui/killfeed_generic.png","icon");
 			Right = Add.Label("", "right");
 
 			vhs_green = new	  Color(28f / 255f, 255f / 255f, 176f / 255f, 1.0f);

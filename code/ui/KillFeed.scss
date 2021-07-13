@@ -42,10 +42,12 @@ KillFeedEntry {
     }
 
     .icon {
-        width: 100px;
-        height: 100px;
+        height: 100%;
+        aspect-ratio: 1;
+        margin-left: 25px;
+        margin-right: 25px;
         background-size: 100%;
-        background-image-tint: red;
+        background-image-tint: white;
     }
 
     .left, .right {
