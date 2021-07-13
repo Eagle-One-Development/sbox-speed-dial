@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using SpeedDial.Player;
 using SpeedDial.UI;
 using SpeedDial.Weapons;
+using SpeedDial.Settings;
 
 namespace SpeedDial {
 	public partial class SpeedDialGame : Game {
@@ -44,6 +45,8 @@ namespace SpeedDial {
 			"track03"
 		};
 
+		[Net] public bool SniperCanPenetrate { get; set; } = false;
+
 		public void PickNewSoundtrack() {
 			var random = new Random();
 			int index = random.Next(0, Soundtracks.Length);
@@ -77,6 +80,7 @@ namespace SpeedDial {
 			if(IsServer) {
 				Log.Info("[SV] Gamemode created!");
 				new SpeedDialHud();
+
 			}
 
 			PopulateData();
@@ -84,7 +88,10 @@ namespace SpeedDial {
 			if(IsClient) {
 				Log.Info("[CL] Gamemode created!");
 			}
+
+
 		}
+
 
 		public override void DoPlayerSuicide(Client cl) {
 			if(cl.Pawn.LifeState != LifeState.Alive || (cl.Pawn as SpeedDialPlayer).TimeSinceDied < 2) return;
@@ -119,7 +126,7 @@ namespace SpeedDial {
 
 			var attackerClient = pawn.LastAttacker?.GetClientOwner();
 
-			
+
 
 			if(attackerClient == null) {
 				OnKilledMessage(0, "", client.SteamId, client.Name, "died");
@@ -211,15 +218,15 @@ namespace SpeedDial {
 					if(attacker.KillCombo >= 2) {
 						multiKill = true;
 					}
-				
+
 				}
-			
-			
+
+
 			}
 
 			Log.Info($"LAST ATTACKER: {(pawn.LastAttacker as SpeedDialPlayer).ActiveChild}");
 			if((pawn.LastAttacker as SpeedDialPlayer).ActiveChild != null) {
-				
+
 				if((pawn.LastAttacker as SpeedDialPlayer).ActiveChild.ToString() == "sd_bat") {
 					(pawn as SpeedDialPlayer).CauseOfDeath = COD.Melee;
 					Log.Info("AHHH");
@@ -230,7 +237,7 @@ namespace SpeedDial {
 			if(pawn.LastAttacker != null) {
 
 				if(attackerClient != null) {
-					OnKilledMessage(attackerClient.SteamId, attackerClient.Name, client.SteamId, client.Name, pawn.LastAttackerWeapon?.ClassInfo?.Name,dominating, multiKill, revenge, (pawn as SpeedDialPlayer).CauseOfDeath);
+					OnKilledMessage(attackerClient.SteamId, attackerClient.Name, client.SteamId, client.Name, pawn.LastAttackerWeapon?.ClassInfo?.Name, dominating, multiKill, revenge, (pawn as SpeedDialPlayer).CauseOfDeath);
 				} else {
 					OnKilledMessage((ulong)pawn.LastAttacker.NetworkIdent, pawn.LastAttacker.ToString(), client.SteamId, client.Name, "killed", false, false, false, (pawn as SpeedDialPlayer).CauseOfDeath);
 				}
@@ -316,6 +323,7 @@ namespace SpeedDial {
 
 		public override void PostLevelLoaded() {
 			_ = StartSecondTimer();
+			SettingsManager.ReloadSettings();
 			base.PostLevelLoaded();
 		}
 

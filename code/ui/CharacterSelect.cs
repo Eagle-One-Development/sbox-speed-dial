@@ -5,8 +5,7 @@ using System;
 using System.Threading.Tasks;
 using SpeedDial.Weapons;
 using SpeedDial.Player;
-
-
+using SpeedDial.Settings;
 
 namespace SpeedDial.UI {
 	public class CharacterSelect : Panel {
@@ -48,7 +47,7 @@ namespace SpeedDial.UI {
 		private float leftScale;
 		private float middleScale;
 
-		public Panel SettingsPanel;
+		public SettingsMenu SettingsPanel;
 
 
 		public CharacterSelect() {
@@ -80,9 +79,11 @@ namespace SpeedDial.UI {
 			rightPrompt.SetClass("right", true);
 			spacePrompt.SetClass("middle", true);
 
-			SettingsPanel = Add.Panel("settings");
+			SettingsPanel = AddChild<SettingsMenu>();
 
 			Current = this;
+
+
 		}
 
 		public override void Tick() {
@@ -184,10 +185,12 @@ namespace SpeedDial.UI {
 				(Local.Pawn as SpeedDialPlayer).FadeSoundtrack(0.3f);
 				Sound.FromScreen("tape_stop");
 				tapeSound = Sound.FromScreen("tape_noise");
+				SettingsPanel.ReloadSettings();
 			} else {
 				(Local.Pawn as SpeedDialPlayer).FadeSoundtrack(1);
 				tapeSound.Stop();
 				var sound = Sound.FromScreen("select_confirm");
+				SettingsManager.SaveSettings();
 			}
 		}
 		[Event("buildinput")]
