@@ -48,6 +48,8 @@ namespace SpeedDial.UI {
 		private float leftScale;
 		private float middleScale;
 
+		public Panel SettingsPanel;
+
 
 		public CharacterSelect() {
 			StyleSheet.Load("/ui/CharacterSelect.scss");
@@ -77,6 +79,8 @@ namespace SpeedDial.UI {
 			leftPrompt.SetClass("left", true);
 			rightPrompt.SetClass("right", true);
 			spacePrompt.SetClass("middle", true);
+
+			SettingsPanel = Add.Panel("settings");
 
 			Current = this;
 		}

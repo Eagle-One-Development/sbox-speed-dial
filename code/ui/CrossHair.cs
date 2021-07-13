@@ -38,7 +38,8 @@ namespace SpeedDial.UI {
 			base.Tick();
 
 			//SetClass( "inactive", false );
-			SetClass("active", Global.InGame);
+			SetClass("active",! CharacterSelect.Current.open);
+			
 
 
 
