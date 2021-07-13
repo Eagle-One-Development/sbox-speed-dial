@@ -5,7 +5,7 @@ namespace SpeedDial.Weapons {
 	[Library("sd_shotgun", Title = "Spatz-12")]
 	partial class Shotgun : BaseSpeedDialWeapon {
 		public override float PrimaryRate => 1;
-		public override int ClipSize => 8;
+		public override int ClipSize => 6;
 		public override int HoldType => 4;
 		public override string WorldModel => "models/weapons/shotgun/prop_shotgun.vmdl";
 		public override string ShootSound => "sd_shotgun.shoot";
