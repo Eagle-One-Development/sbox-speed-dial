@@ -216,11 +216,11 @@
 							},
 							{
 								bone = "pelvis"
-								weight = 0.381818
+								weight = 0.454545
 							},
 							{
 								bone = "spine_01"
-								weight = 1.0
+								weight = 0.669091
 							},
 							{
 								bone = "spine_02"
@@ -3657,6 +3657,10 @@
 					{
 						_class = "Prefab"
 						target_file = "models/playermodels/prefabs/new_anims.vmdl_prefab"
+					},
+					{
+						_class = "Prefab"
+						target_file = "models/playermodels/prefabs/playermodel_ik.vmdl_prefab"
 					},
 				]
 			},

@@ -260,7 +260,17 @@
 	m_pTagManager = 
 	{
 		_class = "CAnimTagManager"
-		m_tags = [  ]
+		m_tags = 
+		[
+			{
+				_class = "CStringAnimTag"
+				m_name = "Disable IK"
+				m_tagID = 
+				{
+					m_id = 1824222133
+				}
+			},
+		]
 	}
 	m_pMovementManager = 
 	{
@@ -362,6 +372,57 @@
 				m_footMotionTiming = "Child2"
 				m_bResetChild1 = true
 				m_bResetChild2 = true
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 35397058
+			}
+			value = 
+			{
+				_class = "CSolveIKChainAnimNode"
+				m_sName = "Right Arm IK"
+				m_vecPosition = [ 3537.0, 3336.0 ]
+				m_nNodeID = 
+				{
+					m_id = 35397058
+				}
+				m_networkMode = "ClientPredicted"
+				m_sNote = ""
+				m_childID = 
+				{
+					m_id = 690205509
+				}
+				m_IkChains = 
+				[
+					{
+						_class = "CSolveIKChainAnimNodeChainData"
+						m_IkChain = "IK_RightArm"
+						m_SolverSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
+						m_OverrideSolverSettings = 
+						{
+							m_SolverType = "IKSOLVER_TwoBone"
+						}
+						m_TargetSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
+						m_OverrideTargetSettings = 
+						{
+							m_TargetSource = "Bone"
+							m_Bone = 
+							{
+								m_Name = ""
+							}
+							m_AnimgraphParameterNamePosition = 
+							{
+								m_id = 4294967295
+							}
+							m_TargetCoordSystem = "World Space"
+						}
+						m_DebugSetting = "SOLVEIKCHAINANIMNODEDEBUGSETTING_None"
+						m_flDebugNormalizedLength = 1.0
+						m_vDebugOffset = [ 0.0, 0.0, 0.0 ]
+					},
+				]
 			}
 		},
 		{
@@ -845,7 +906,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = ""
-				m_vecPosition = [ 3198.0, 3249.0 ]
+				m_vecPosition = [ 3130.0, 3203.0 ]
 				m_nNodeID = 
 				{
 					m_id = 610671865
@@ -889,7 +950,7 @@
 									m_vControlPoint1 = [ 0.5, 0.0 ]
 									m_vControlPoint2 = [ 0.5, 1.0 ]
 								}
-								m_bForceFootPlant = false
+								m_bForceFootPlant = true
 								m_bDisabled = false
 							},
 						]
@@ -966,163 +1027,6 @@
 						m_bIsEndtState = false
 						m_bIsPassthrough = false
 						m_bIsRootMotionExclusive = true
-						m_bAlwaysEvaluate = false
-					},
-					{
-						_class = "CAnimState"
-						m_transitions = 
-						[
-							{
-								_class = "CAnimStateTransition"
-								m_conditions = 
-								[
-									{
-										_class = "CParameterAnimCondition"
-										m_comparisonOp = 2
-										m_paramID = 
-										{
-											m_id = 1652014548
-										}
-										m_comparisonValue = 
-										{
-											m_nType = 4
-											m_data = 0.0
-										}
-									},
-									{
-										_class = "CParameterAnimCondition"
-										m_comparisonOp = 2
-										m_paramID = 
-										{
-											m_id = 267595347
-										}
-										m_comparisonValue = 
-										{
-											m_nType = 4
-											m_data = 100.0
-										}
-									},
-									{
-										_class = "CParameterAnimCondition"
-										m_comparisonOp = 4
-										m_paramID = 
-										{
-											m_id = 271284947
-										}
-										m_comparisonValue = 
-										{
-											m_nType = 4
-											m_data = 5.0
-										}
-									},
-									{
-										_class = "CFinishedCondition"
-										m_comparisonOp = 0
-										m_option = "FinishedConditionOption_OnAlmostFinished"
-										m_bIsFinished = true
-									},
-								]
-								m_blendDuration = 0.0
-								m_destState = 
-								{
-									m_id = 1858579081
-								}
-								m_bReset = true
-								m_resetCycleOption = "Beginning"
-								m_flFixedCycleValue = 0.0
-								m_blendCurve = 
-								{
-									m_vControlPoint1 = [ 0.5, 0.0 ]
-									m_vControlPoint2 = [ 0.5, 1.0 ]
-								}
-								m_bForceFootPlant = true
-								m_bDisabled = false
-							},
-							{
-								_class = "CAnimStateTransition"
-								m_conditions = 
-								[
-									{
-										_class = "CParameterAnimCondition"
-										m_comparisonOp = 4
-										m_paramID = 
-										{
-											m_id = 1652014548
-										}
-										m_comparisonValue = 
-										{
-											m_nType = 4
-											m_data = 300.0
-										}
-									},
-									{
-										_class = "CParameterAnimCondition"
-										m_comparisonOp = 4
-										m_paramID = 
-										{
-											m_id = 267595347
-										}
-										m_comparisonValue = 
-										{
-											m_nType = 4
-											m_data = 150.0
-										}
-									},
-								]
-								m_blendDuration = 0.0
-								m_destState = 
-								{
-									m_id = 1858579081
-								}
-								m_bReset = true
-								m_resetCycleOption = "Beginning"
-								m_flFixedCycleValue = 0.0
-								m_blendCurve = 
-								{
-									m_vControlPoint1 = [ 0.5, 0.0 ]
-									m_vControlPoint2 = [ 0.5, 1.0 ]
-								}
-								m_bForceFootPlant = false
-								m_bDisabled = false
-							},
-						]
-						m_tags = [  ]
-						m_tagBehaviors = [  ]
-						m_name = "blend_to_stop"
-						m_childNodeID = 
-						{
-							m_id = 1810263181
-						}
-						m_stateID = 
-						{
-							m_id = 625382716
-						}
-						m_position = [ -211.0, -179.0 ]
-						m_bIsStartState = false
-						m_bIsEndtState = false
-						m_bIsPassthrough = false
-						m_bIsRootMotionExclusive = false
-						m_bAlwaysEvaluate = false
-					},
-					{
-						_class = "CAnimState"
-						m_transitions = [  ]
-						m_tags = [  ]
-						m_tagBehaviors = [  ]
-						m_name = "Unnamed"
-						m_childNodeID = 
-						{
-							m_id = 4294967295
-						}
-						m_stateID = 
-						{
-							m_id = 1858579081
-						}
-						m_position = [ -89.0, -217.0 ]
-						m_bIsStartState = false
-						m_bIsEndtState = false
-						m_bIsPassthrough = false
-						m_bIsRootMotionExclusive = false
 						m_bAlwaysEvaluate = false
 					},
 				]
@@ -1223,6 +1127,57 @@
 				m_footMotionTiming = "Child2"
 				m_bResetChild1 = true
 				m_bResetChild2 = true
+			}
+		},
+		{
+			key = 
+			{
+				m_id = 690205509
+			}
+			value = 
+			{
+				_class = "CSolveIKChainAnimNode"
+				m_sName = "Left Arm IK"
+				m_vecPosition = [ 3357.0, 3354.0 ]
+				m_nNodeID = 
+				{
+					m_id = 690205509
+				}
+				m_networkMode = "ClientPredicted"
+				m_sNote = ""
+				m_childID = 
+				{
+					m_id = 610671865
+				}
+				m_IkChains = 
+				[
+					{
+						_class = "CSolveIKChainAnimNodeChainData"
+						m_IkChain = "IK_LeftArm"
+						m_SolverSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
+						m_OverrideSolverSettings = 
+						{
+							m_SolverType = "IKSOLVER_TwoBone"
+						}
+						m_TargetSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
+						m_OverrideTargetSettings = 
+						{
+							m_TargetSource = "Bone"
+							m_Bone = 
+							{
+								m_Name = ""
+							}
+							m_AnimgraphParameterNamePosition = 
+							{
+								m_id = 4294967295
+							}
+							m_TargetCoordSystem = "World Space"
+						}
+						m_DebugSetting = "SOLVEIKCHAINANIMNODEDEBUGSETTING_None"
+						m_flDebugNormalizedLength = 1.0
+						m_vDebugOffset = [ 0.0, 0.0, 0.0 ]
+					},
+				]
 			}
 		},
 		{
@@ -1453,7 +1408,7 @@
 			{
 				_class = "CSolveIKChainAnimNode"
 				m_sName = "Right Leg IK"
-				m_vecPosition = [ 3752.0, 3324.0 ]
+				m_vecPosition = [ 3806.0, 3429.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1005791570
@@ -1548,7 +1503,7 @@
 			{
 				_class = "CSelectorAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 2564.0, 3190.0 ]
+				m_vecPosition = [ 2534.0, 3174.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1052691373
@@ -1676,7 +1631,7 @@
 			{
 				_class = "CSolveIKChainAnimNode"
 				m_sName = "Left Leg IK"
-				m_vecPosition = [ 3489.0, 3316.0 ]
+				m_vecPosition = [ 3632.0, 3436.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1188789157
@@ -1685,7 +1640,7 @@
 				m_sNote = ""
 				m_childID = 
 				{
-					m_id = 610671865
+					m_id = 35397058
 				}
 				m_IkChains = 
 				[
@@ -2118,7 +2073,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 2587.561768, 2707.799316 ]
+				m_vecPosition = [ 2594.0, 2736.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1810263181
@@ -2204,7 +2159,7 @@
 								{
 									m_id = 510348315
 								}
-								m_bReset = false
+								m_bReset = true
 								m_resetCycleOption = "Beginning"
 								m_flFixedCycleValue = 0.0
 								m_blendCurve = 
@@ -2359,7 +2314,7 @@
 						m_ikChainName = "IK_Leg_Left"
 						m_disableTagID = 
 						{
-							m_id = 4294967295
+							m_id = 1824222133
 						}
 						m_flMaxRotationLeft = 90.0
 						m_flMaxRotationRight = 30.0
@@ -2374,7 +2329,7 @@
 						m_ikChainName = "IK_Leg_Right"
 						m_disableTagID = 
 						{
-							m_id = 4294967295
+							m_id = 1824222133
 						}
 						m_flMaxRotationLeft = 30.0
 						m_flMaxRotationRight = 90.0

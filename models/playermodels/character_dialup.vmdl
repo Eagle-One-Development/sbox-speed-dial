@@ -46,116 +46,6 @@
 				]
 			},
 			{
-				_class = "IKData"
-				children = 
-				[
-					{
-						_class = "IKChain"
-						name = "IK_Leg_Left"
-						children = 
-						[
-							{
-								_class = "IKChainJoint"
-								name = "leg_upper_L"
-								children = 
-								[
-									{
-										_class = "IKChainJoint"
-										name = "leg_lower_L"
-										children = 
-										[
-											{
-												_class = "IKChainJoint"
-												name = "ankle_L"
-												bone = "foot_l"
-											},
-											{
-												_class = "IKJointConstraint_Hinge"
-												constrained_joint = ""
-												hinge_axis = "Down"
-												min_radians = 0.0
-												max_radians = 1.570796
-											},
-										]
-										bone = "calf_l"
-									},
-								]
-								bone = "thigh_l"
-							},
-						]
-						m_bDoBonesOrientAlongPositiveX = true
-						"m_DefaultSolverSettings.m_nNumIterations" = 6
-						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
-						"m_DefaultTargetSettings.m_Bone" = 
-						{
-							m_Name = "foot_L_IK_target"
-						}
-						"m_DefaultTargetSettings.m_TargetSource" = "Bone"
-						"m_Data.m_DefaultTargetSettings.m_AnimgraphParameterNamePosition" = 
-						{
-							m_id = 4294967295
-						}
-						"m_Data.m_EndEffectorFixedOffsetAttachment" = 
-						{
-							m_Name = ""
-						}
-						"m_Data.m_bParentJointRequiresAlignment" = true
-					},
-					{
-						_class = "IKChain"
-						name = "IK_Leg_Right"
-						children = 
-						[
-							{
-								_class = "IKChainJoint"
-								name = "leg_upper_R"
-								children = 
-								[
-									{
-										_class = "IKChainJoint"
-										name = "leg_lower_R"
-										children = 
-										[
-											{
-												_class = "IKChainJoint"
-												name = "ankle_R"
-												bone = "foot_r"
-											},
-											{
-												_class = "IKJointConstraint_Hinge"
-												constrained_joint = ""
-												hinge_axis = "Down"
-												min_radians = 0.0
-												max_radians = 1.570796
-											},
-										]
-										bone = "calf_r"
-									},
-								]
-								bone = "thigh_r"
-							},
-						]
-						m_bDoBonesOrientAlongPositiveX = true
-						"m_DefaultSolverSettings.m_nNumIterations" = 6
-						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
-						"m_DefaultTargetSettings.m_Bone" = 
-						{
-							m_Name = "foot_R_IK_target"
-						}
-						"m_DefaultTargetSettings.m_TargetSource" = "Bone"
-						"m_Data.m_DefaultTargetSettings.m_AnimgraphParameterNamePosition" = 
-						{
-							m_id = 4294967295
-						}
-						"m_Data.m_EndEffectorFixedOffsetAttachment" = 
-						{
-							m_Name = ""
-						}
-						"m_Data.m_bParentJointRequiresAlignment" = true
-					},
-				]
-			},
-			{
 				_class = "BoneMarkupList"
 				children = 
 				[
@@ -180,76 +70,6 @@
 				_class = "WeightListList"
 				children = 
 				[
-					{
-						_class = "WeightList"
-						name = "upper_body"
-						default_weight = 0.0
-						weights = 
-						[
-							{
-								bone = "ball_l"
-								weight = 0.0
-							},
-							{
-								bone = "calf_l"
-								weight = 0.0
-							},
-							{
-								bone = "clavicle_l"
-								weight = 1.0
-							},
-							{
-								bone = "clavicle_r"
-								weight = 1.0
-							},
-							{
-								bone = "foot_L_IK_target"
-								weight = 0.0
-							},
-							{
-								bone = "foot_R_IK_target"
-								weight = 0.0
-							},
-							{
-								bone = "foot_l"
-								weight = 0.0
-							},
-							{
-								bone = "pelvis"
-								weight = 0.381818
-							},
-							{
-								bone = "spine_01"
-								weight = 1.0
-							},
-							{
-								bone = "spine_02"
-								weight = 1.0
-							},
-							{
-								bone = "spine_03"
-								weight = 1.0
-							},
-							{
-								bone = "thigh_l"
-								weight = 0.0
-							},
-							{
-								bone = "thigh_r"
-								weight = 0.0
-							},
-							{
-								bone = "upperarm_l"
-								weight = 1.0
-							},
-							{
-								bone = "upperarm_r"
-								weight = 1.0
-							},
-						]
-						master_morph_weight = -1.0
-						morph_weights = [  ]
-					},
 					{
 						_class = "WeightList"
 						name = "upper_body_smg"
@@ -315,6 +135,76 @@
 							{
 								bone = "upperarm_r"
 								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "upper_bodyS"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "ball_l"
+								weight = 0.0
+							},
+							{
+								bone = "calf_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_l"
+								weight = 1.0
+							},
+							{
+								bone = "clavicle_r"
+								weight = 1.0
+							},
+							{
+								bone = "foot_L_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_R_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_l"
+								weight = 0.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.454545
+							},
+							{
+								bone = "spine_01"
+								weight = 0.669091
+							},
+							{
+								bone = "spine_02"
+								weight = 1.0
+							},
+							{
+								bone = "spine_03"
+								weight = 1.0
+							},
+							{
+								bone = "thigh_l"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_l"
+								weight = 1.0
+							},
+							{
+								bone = "upperarm_r"
+								weight = 1.0
 							},
 						]
 						master_morph_weight = -1.0
@@ -3278,6 +3168,16 @@
 				]
 				hide_materialgroup_in_tools = false
 				hide_rendercolor_in_tools = false
+			},
+			{
+				_class = "PrefabList"
+				children = 
+				[
+					{
+						_class = "Prefab"
+						target_file = "models/playermodels/prefabs/playermodel_ik.vmdl_prefab"
+					},
+				]
 			},
 		]
 		model_archetype = ""
