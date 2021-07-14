@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using SpeedDial.Player;
 using SpeedDial.UI;
 using SpeedDial.WeaponSpawns;
+using SpeedDial.Settings;
 
 namespace SpeedDial.Weapons {
 	[Hammer.Skip]
@@ -229,17 +230,19 @@ namespace SpeedDial.Weapons {
 
 			var player = Owner as SpeedDialPlayer;
 
-			//if(this is Sniper) {
-			//	var dir = bullet.EndPos - bullet.StartPos;
-			//	var penetrate = Trace.Ray(bullet.EndPos + dir.Normal * 60f, bullet.EndPos + dir.Normal * Range)
-			//			.UseHitboxes()
-			//			.Ignore(this)
-			//			.Ignore(bullet.Entity)
-			//			.Size(radius)
-			//			.Run();
-			//
-			//	yield return penetrate;
-			//}
+			//Log.Info(SpeedDialGame.Instance.SniperCanPenetrate);
+
+			if(this is Sniper && SpeedDialGame.Instance.SniperCanPenetrate) {
+				var dir = bullet.EndPos - bullet.StartPos;
+				var penetrate = Trace.Ray(bullet.EndPos + dir.Normal * 60f, bullet.EndPos + dir.Normal * Range)
+						.UseHitboxes()
+						.Ignore(this)
+						.Ignore(bullet.Entity)
+						.Size(radius)
+						.Run();
+
+				yield return penetrate;
+			}
 
 			if(player.MedTaken && player.CurrentDrug == Meds.DrugType.Ollie || Penetrate) {
 				// pierce through the first player hit

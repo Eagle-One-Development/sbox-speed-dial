@@ -7,6 +7,7 @@ using SpeedDial.UI;
 using SpeedDial.Meds;
 using System.Threading.Tasks;
 using SpeedDial.GameSound;
+using System.Linq;
 
 namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer : Sandbox.Player {
@@ -70,8 +71,6 @@ namespace SpeedDial.Player {
 		[ClientVar]
 		public static bool sd_soundtrack { get; set; } = true;
 
-		[ClientVar]
-		public static bool sd_killfeed { get; set; } = false;
 
 		public void InitialSpawn() {
 
@@ -114,9 +113,38 @@ namespace SpeedDial.Player {
 			//PlaySoundtrack(To.Single(this), "track01");
 		}
 
+		private bool GetMusicBool() {
+			if(Settings.SettingsManager.GetSetting("Music On").TryGetBool(out bool? res)) {
+				return res.Value;
+			}
+			return false;
+		}
+		public void onSettingChange() {
+			if(!IsClient) return;
+			//Log.Info($"{Local.DisplayName} Music Changed");
+			if(Global.IsListenServer)
+				if(Settings.SettingsManager.GetSetting("Sniper Wallbang").TryGetBool(out bool? res)) {
+					SetSetting(res.Value);
+				}
+			if(!GetMusicBool()) {
+
+				SoundTrack?.Stop();
+				SoundtrackPlaying = false;
+				return;
+			}
+			if(!SoundtrackPlaying && SpeedDialGame.Instance is not null)
+				_ = PlaySoundtrackAsync(SpeedDialGame.Instance.CurrentSoundtrack, 2.5f);
+
+		}
+		[ServerCmd]
+		public static void SetSetting(bool val) {
+			SpeedDialGame.Instance.SniperCanPenetrate = val;
+			Log.Info(SpeedDialGame.Instance.SniperCanPenetrate);
+		}
+
 		[ClientRpc]
 		public void PlayRoundendClimax() {
-			if(!sd_soundtrack) return;
+			if(!GetMusicBool()) return;
 			SoundTrack.FromScreen("climax");
 			_ = StopSoundtrackAsync();
 		}
@@ -130,7 +158,7 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		public void PlaySoundtrack() {
-			if(!sd_soundtrack) return;
+			if(!GetMusicBool()) return;
 			_ = PlaySoundtrackAsync(SpeedDialGame.Instance.CurrentSoundtrack, 2.5f);
 		}
 
@@ -145,7 +173,7 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		public void StopSoundtrack(bool instant = false) {
-			if(!sd_soundtrack) return;
+			if(!GetMusicBool()) return;
 			if(instant) {
 				SoundTrack?.Stop();
 				SoundtrackPlaying = false;
@@ -157,7 +185,7 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		public void FadeSoundtrack(float volumeTo) {
-			if(!sd_soundtrack) return;
+			if(!GetMusicBool()) return;
 			SoundTrack?.FadeVolumeTo(volumeTo);
 		}
 

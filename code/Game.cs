@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using SpeedDial.Player;
 using SpeedDial.UI;
 using SpeedDial.Weapons;
+using SpeedDial.Settings;
 
 namespace SpeedDial {
 	public partial class SpeedDialGame : Game {
@@ -44,6 +45,8 @@ namespace SpeedDial {
 			"track03"
 		};
 
+		[Net] public bool SniperCanPenetrate { get; set; } = false;
+
 		public void PickNewSoundtrack() {
 			var random = new Random();
 			int index = random.Next(0, Soundtracks.Length);
@@ -77,6 +80,7 @@ namespace SpeedDial {
 			if(IsServer) {
 				Log.Info("[SV] Gamemode created!");
 				new SpeedDialHud();
+
 			}
 
 			PopulateData();
@@ -84,7 +88,10 @@ namespace SpeedDial {
 			if(IsClient) {
 				Log.Info("[CL] Gamemode created!");
 			}
+
+
 		}
+
 
 		public override void DoPlayerSuicide(Client cl) {
 			if(cl.Pawn.LifeState != LifeState.Alive || (cl.Pawn as SpeedDialPlayer).TimeSinceDied < 2) return;
@@ -315,6 +322,7 @@ namespace SpeedDial {
 
 		public override void PostLevelLoaded() {
 			_ = StartSecondTimer();
+			SettingsManager.ReloadSettings();
 			base.PostLevelLoaded();
 		}
 

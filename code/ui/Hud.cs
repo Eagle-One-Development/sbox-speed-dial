@@ -22,8 +22,7 @@ namespace SpeedDial.UI {
 			Scoreboard = RootPanel.AddChild<SpeedDialScoreboard<SpeedDialScoreboardEntry>>();
 			RootPanel.AddChild<ChatBox>();
 			RootPanel.AddChild<CrossHair>();
-			if(SpeedDialPlayer.sd_killfeed)
-				RootPanel.AddChild<KillFeed>();
+			RootPanel.AddChild<KillFeed>();
 		}
 	}
 }
