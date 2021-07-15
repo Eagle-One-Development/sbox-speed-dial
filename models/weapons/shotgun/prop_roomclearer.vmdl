@@ -52,7 +52,7 @@
 					{
 						_class = "PhysicsShapeBox"
 						parent_bone = ""
-						surface_prop = "default"
+						surface_prop = "metal.weapon"
 						collision_prop = "default"
 						origin = [ 0.763158, -0.094094, 2.197079 ]
 						angles = [ 0.0, 0.0, 0.0 ]
@@ -61,7 +61,7 @@
 					{
 						_class = "PhysicsShapeBox"
 						parent_bone = ""
-						surface_prop = "default"
+						surface_prop = "metal.weapon"
 						collision_prop = "default"
 						origin = [ -0.054844, -0.094094, -0.798114 ]
 						angles = [ 0.0, 0.0, 0.0 ]
@@ -70,7 +70,7 @@
 					{
 						_class = "PhysicsShapeBox"
 						parent_bone = ""
-						surface_prop = "default"
+						surface_prop = "metal.weapon"
 						collision_prop = "default"
 						origin = [ 11.727776, -0.006859, -0.798114 ]
 						angles = [ 0.0, 0.0, 0.0 ]
