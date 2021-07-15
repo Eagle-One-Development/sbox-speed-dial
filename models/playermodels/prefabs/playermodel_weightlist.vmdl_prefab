@@ -319,6 +319,20 @@
 						master_morph_weight = -1.0
 						morph_weights = [  ]
 					},
+					{
+						_class = "WeightList"
+						name = "upper_body_attacking"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "spine_01"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
 				]
 			},
 		]
