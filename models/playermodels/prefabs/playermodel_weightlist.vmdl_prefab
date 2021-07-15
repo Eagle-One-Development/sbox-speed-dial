@@ -1,0 +1,329 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "WeightListList"
+				children = 
+				[
+					{
+						_class = "WeightList"
+						name = "upper_body"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "ball_l"
+								weight = 0.0
+							},
+							{
+								bone = "calf_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_l"
+								weight = 1.0
+							},
+							{
+								bone = "clavicle_r"
+								weight = 1.0
+							},
+							{
+								bone = "foot_L_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_R_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_l"
+								weight = 0.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.454545
+							},
+							{
+								bone = "spine_01"
+								weight = 0.669091
+							},
+							{
+								bone = "spine_02"
+								weight = 1.0
+							},
+							{
+								bone = "spine_03"
+								weight = 1.0
+							},
+							{
+								bone = "thigh_l"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_l"
+								weight = 1.0
+							},
+							{
+								bone = "upperarm_r"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "upper_body_smg"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "ball_l"
+								weight = 0.0
+							},
+							{
+								bone = "calf_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_l"
+								weight = 0.138182
+							},
+							{
+								bone = "clavicle_r"
+								weight = 0.0
+							},
+							{
+								bone = "foot_L_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_R_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_l"
+								weight = 0.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.0
+							},
+							{
+								bone = "spine_01"
+								weight = 0.0
+							},
+							{
+								bone = "spine_02"
+								weight = 0.010909
+							},
+							{
+								bone = "spine_03"
+								weight = 0.043636
+							},
+							{
+								bone = "thigh_l"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_l"
+								weight = 0.516364
+							},
+							{
+								bone = "upperarm_r"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "clear_weights"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "ball_l"
+								weight = 0.0
+							},
+							{
+								bone = "calf_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_r"
+								weight = 0.0
+							},
+							{
+								bone = "foot_L_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_R_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_l"
+								weight = 0.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.0
+							},
+							{
+								bone = "spine_01"
+								weight = 0.0
+							},
+							{
+								bone = "spine_02"
+								weight = 0.0
+							},
+							{
+								bone = "spine_03"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_l"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_l"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_r"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "lower_body"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "ball_l"
+								weight = 1.0
+							},
+							{
+								bone = "calf_l"
+								weight = 1.0
+							},
+							{
+								bone = "clavicle_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_r"
+								weight = 0.0
+							},
+							{
+								bone = "foot_L_IK_target"
+								weight = 1.0
+							},
+							{
+								bone = "foot_L_IK_target_end_end"
+								weight = 1.0
+							},
+							{
+								bone = "foot_R_IK_target"
+								weight = 1.0
+							},
+							{
+								bone = "foot_l"
+								weight = 1.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.0
+							},
+							{
+								bone = "spine_01"
+								weight = 0.0
+							},
+							{
+								bone = "spine_02"
+								weight = 0.0
+							},
+							{
+								bone = "spine_03"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_l"
+								weight = 1.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 1.0
+							},
+							{
+								bone = "upperarm_l"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_r"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "spine_motion"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "clavicle_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_r"
+								weight = 0.0
+							},
+							{
+								bone = "neck_01"
+								weight = 0.0
+							},
+							{
+								bone = "spine_01"
+								weight = 0.410909
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+	}
+}

@@ -40,7 +40,7 @@ namespace SpeedDial.Player {
 			if(Pawn.ActiveChild is BaseCarriable carry) {
 				carry.SimulateAnimator(this);
 			} else {
-				SetParam("holdtype", 5);
+				SetParam("holdtype", 0);
 				SetParam("aimat_weight", 0.5f);
 			}
 
