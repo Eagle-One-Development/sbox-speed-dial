@@ -2,7 +2,7 @@ using Sandbox;
 using SpeedDial.Player;
 
 namespace SpeedDial.Weapons {
-	[Library("sd_sniper", Title = "Sniper Rifle (TEST)")]
+	[Library("sd_sniper", Title = "Sniper")]
 	partial class Sniper : BaseSpeedDialWeapon {
 		public override float PrimaryRate => 1.0f;
 		public override int ClipSize => 5;

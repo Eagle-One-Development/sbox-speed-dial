@@ -217,13 +217,15 @@ namespace SpeedDial.Weapons {
 			}
 		}
 
-		public virtual IEnumerable<TraceResult> TraceBullet(Vector3 start, Vector3 end, float radius = 2.0f) {
+		public virtual float MaxWallbangDistance => 20;
+
+		public virtual IEnumerable<TraceResult> TraceBullet(Vector3 start, Vector3 end, float size = 2.0f, float wallBangedDistance = 0) {
 
 			var bullet = Trace.Ray(start, end)
 					.UseHitboxes()
 					.Ignore(Owner)
 					.Ignore(this)
-					.Size(radius)
+					.Size(size)
 					.Run();
 
 			yield return bullet;
@@ -233,15 +235,52 @@ namespace SpeedDial.Weapons {
 			//Log.Info(SpeedDialGame.Instance.SniperCanPenetrate);
 
 			if(this is Sniper && SpeedDialGame.Instance.SniperCanPenetrate) {
-				var dir = bullet.EndPos - bullet.StartPos;
-				var penetrate = Trace.Ray(bullet.EndPos + dir.Normal * 60f, bullet.EndPos + dir.Normal * Range)
-						.UseHitboxes()
-						.Ignore(this)
-						.Ignore(bullet.Entity)
-						.Size(radius)
-						.Run();
+				var dir = (bullet.EndPos - bullet.StartPos).Normal;
+				if(bullet.Hit && wallBangedDistance < MaxWallbangDistance) {
+					var inNormal = bullet.Normal;
+					var inPoint = bullet.EndPos - inNormal * (size / 2);
+					//bullet
+					//DebugOverlay.Line(start, inPoint, Color.Green, 10, false);
+					//inpoint
+					//DebugOverlay.Sphere(inPoint, 0.5f, Color.Green, false, 10);
+					// normal
+					//DebugOverlay.Line(inPoint, inPoint + inNormal * 3, Color.Magenta, 10, false);
 
-				yield return penetrate;
+					// adding dir to not be inside the inPoint
+					var wallbangTest = Trace.Ray(inPoint + dir, inPoint + dir * (MaxWallbangDistance - 1))
+									.HitLayer(CollisionLayer.WORLD_GEOMETRY)
+									.Ignore(Owner)
+									.Ignore(this)
+									.Size(1)
+									.Run();
+
+					if(wallbangTest.Hit) {
+						var outNormal = wallbangTest.Normal;
+						var outPoint = wallbangTest.EndPos - outNormal * 0.5f;
+
+						//outpoint
+						//DebugOverlay.Sphere(outPoint, 0.1f, Color.Red, false, 10);
+
+						if(outNormal != Vector3.Zero && inNormal.Dot(outNormal) >= 0) {
+							//normal
+							//DebugOverlay.Line(outPoint, outPoint + outNormal * 3, Color.Magenta, 10, false);
+
+							//wallbang
+							//DebugOverlay.Line(inPoint, outPoint, Color.Cyan, 10, false);
+
+							var distance = (inPoint - outPoint).Length;
+							var totalDistance = wallBangedDistance + distance;
+
+							Log.Info($"{distance} {totalDistance}");
+
+							if(totalDistance < MaxWallbangDistance) {
+								foreach(var bullet2 in TraceBullet(outPoint + dir * 2, outPoint + dir * 1000, 1, totalDistance)) {
+									yield return bullet2;
+								}
+							}
+						}
+					}
+				}
 			}
 
 			if(player.MedTaken && player.CurrentDrug == Meds.DrugType.Ollie || Penetrate) {
@@ -252,7 +291,7 @@ namespace SpeedDial.Weapons {
 							.UseHitboxes()
 							.Ignore(this)
 							.Ignore(bullet.Entity)
-							.Size(radius)
+							.Size(size)
 							.Run();
 
 					yield return penetrate;
@@ -267,7 +306,7 @@ namespace SpeedDial.Weapons {
 								.UseHitboxes()
 								.Ignore(Owner)
 								.Ignore(this)
-								.Size(radius)
+								.Size(size)
 								.Run();
 
 						yield return ricochet;

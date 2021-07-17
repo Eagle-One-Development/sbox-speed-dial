@@ -2,7 +2,7 @@ using Sandbox;
 using System;
 
 namespace SpeedDial.Weapons {
-	[Library("sd_roomclearer", Title = "The Room Clearer (TEST)")]
+	[Library("sd_roomclearer", Title = "The Room Clearer")]
 	partial class RoomClearer : BaseSpeedDialWeapon {
 		public override float PrimaryRate => 1;
 		public override int ClipSize => 2;
