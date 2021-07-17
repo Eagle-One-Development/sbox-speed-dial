@@ -29,14 +29,15 @@ namespace SpeedDial {
 			Precache.Add("models/weapons/melee/melee.vmdl");
 
 			// player models
-			Precache.Add("models/playermodels/playermodel_base.vmdl");
 			Precache.Add("models/playermodels/character_dialup.vmdl");
 			Precache.Add("models/playermodels/character_highway.vmdl");
 			Precache.Add("models/playermodels/character_jack.vmdl");
 			Precache.Add("models/playermodels/character_maria.vmdl");
 
 			Precache.Add("animgraphs/sd_playermodel.vanmgrph");
-			Precache.Add("animgraphs/sd_playermodel_test.vanmgrph");
+
+			Precache.Add("sounds/weapon_fx/weapon.pickup_empty.vsnd");
+			Precache.Add("sounds/weapon_fx/weapon.pickup_loaded.vsnd");
 
 			Precache.Add("sounds/drukqs/leaf.vsnd");
 			Precache.Add("sounds/drukqs/ollie_2.vsnd");
@@ -89,6 +90,10 @@ namespace SpeedDial {
 			Precache.Add("sounds/simpleguns/sniper/sd_sniper.shoot01.vsnd");
 			Precache.Add("sounds/simpleguns/sniper/sd_sniper.shoot02.vsnd");
 			Precache.Add("sounds/simpleguns/sniper/sd_sniper.shoot03.vsnd");
+			// room clearer
+			Precache.Add("sounds/simpleguns/room-clearer/roomclearer.shoot01.vsnd");
+			Precache.Add("sounds/simpleguns/room-clearer/roomclearer.shoot02.vsnd");
+			Precache.Add("sounds/simpleguns/room-clearer/roomclearer.shoot03.vsnd");
 
 		}
 	}

@@ -50,22 +50,22 @@
 				children = 
 				[
 					{
-						_class = "PhysicsShapeCapsule"
+						_class = "PhysicsShapeBox"
 						parent_bone = ""
-						surface_prop = "default"
+						surface_prop = "metal.weapon"
 						collision_prop = "default"
-						radius = 0.977302
-						point0 = [ 0.011849, -0.194515, -6.158484 ]
-						point1 = [ 0.049256, -0.148106, 0.588312 ]
+						origin = [ -0.550157, 0.0, -2.608723 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 2.402015, 1.0, 8.900699 ]
 					},
 					{
-						_class = "PhysicsShapeCapsule"
+						_class = "PhysicsShapeBox"
 						parent_bone = ""
-						surface_prop = "default"
+						surface_prop = "metal.weapon"
 						collision_prop = "default"
-						radius = 1.858547
-						point0 = [ 5.859547, -0.523547, 3.176058 ]
-						point1 = [ -3.541003, -0.332401, 3.089804 ]
+						origin = [ 0.519719, -0.02196, 3.339382 ]
+						angles = [ 88.845711, 180.0, 180.0 ]
+						dimensions = [ 3.437074, 1.655556, 11.020033 ]
 					},
 				]
 			},
@@ -96,6 +96,22 @@
 			{
 				_class = "BoneMarkupList"
 				bone_cull_type = "None"
+			},
+			{
+				_class = "PhysicsBodyMarkupList"
+				children = 
+				[
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "undefined"
+						mass_override = 1.58
+						inertia_scale = 1.0
+						linear_damping = 0.0
+						angular_damping = 0.0
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+				]
 			},
 		]
 		model_archetype = ""

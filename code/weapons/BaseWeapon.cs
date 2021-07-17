@@ -51,7 +51,7 @@ namespace SpeedDial.Weapons {
 		public virtual float Range => 4096;
 		public virtual int AmmoPerShot => 1;
 		public virtual float DeployTime => 0.6f;
-		public virtual int HoldType => 1;
+		public virtual int HoldType => 2;
 		public virtual string AttachementName => "pistol_attach";
 		public virtual string EjectionParticle => "particles/pistol_ejectbrass.vpcf";
 		public virtual bool Penetrate => false;
