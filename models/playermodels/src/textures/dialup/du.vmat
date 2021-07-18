@@ -11,12 +11,12 @@ Layer0
 	//---- Ambient Occlusion ----
 	g_flAmbientOcclusionDirectDiffuse "0.000"
 	g_flAmbientOcclusionDirectSpecular "0.000"
-	TextureAmbientOcclusion "models/playermodels/src/textures/dialup/du_ao.png"
+	TextureAmbientOcclusion "models/playermodels/src/textures/dialup/dialup_ao.png"
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "models/playermodels/src/textures/dialup/du_color.png"
+	TextureColor "models/playermodels/src/textures/dialup/dialup_color.png"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -29,13 +29,13 @@ Layer0
 	g_flDirectionalLightmapStrength "1.000"
 
 	//---- Metalness ----
-	TextureMetalness "models/playermodels/src/textures/dialup/du_metal.png"
+	TextureMetalness "models/playermodels/src/textures/dialup/dialup_metal.png"
 
 	//---- Normal ----
-	TextureNormal "models/playermodels/src/textures/dialup/du_normal.png"
+	TextureNormal "models/playermodels/src/textures/dialup/dialup_normal.png"
 
 	//---- Roughness ----
-	TextureRoughness "models/playermodels/src/textures/dialup/du_rough.png"
+	TextureRoughness "models/playermodels/src/textures/dialup/dialup_rough.png"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"
