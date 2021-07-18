@@ -14,7 +14,7 @@
 						remaps = 
 						[
 							{
-								from = "du.vmat"
+								from = "dialup.vmat"
 								to = "models/playermodels/src/textures/dialup/du.vmat"
 							},
 						]
