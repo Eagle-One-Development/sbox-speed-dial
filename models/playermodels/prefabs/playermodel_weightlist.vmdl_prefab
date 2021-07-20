@@ -45,11 +45,11 @@
 							},
 							{
 								bone = "pelvis"
-								weight = 0.454545
+								weight = 0.0
 							},
 							{
 								bone = "spine_01"
-								weight = 0.669091
+								weight = 1.0
 							},
 							{
 								bone = "spine_02"
