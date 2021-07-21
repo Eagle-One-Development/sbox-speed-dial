@@ -4,17 +4,10 @@ Layer0
 {
 	shader "vr_simple.vfx"
 
-	//---- PBR ----
-	F_AMBIENT_OCCLUSION_TEXTURE 1
-	F_METALNESS_TEXTURE 1
-
-	//---- Ambient Occlusion ----
-	TextureAmbientOcclusion "models/environment/src/textures/frame_02_ao.png"
-
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "models/environment/src/textures/frame_02_color.png"
+	TextureColor "models/playermodels/src/textures/teeth/teeth_diffuse.png"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -27,13 +20,13 @@ Layer0
 	g_flDirectionalLightmapStrength "1.000"
 
 	//---- Metalness ----
-	TextureMetalness "models/environment/src/textures/frame_02_metal.png"
+	g_flMetalness "0.000"
 
 	//---- Normal ----
-	TextureNormal "models/environment/src/textures/frame_02_normal.png"
+	TextureNormal "models/playermodels/src/textures/teeth/teeth_normal.png"
 
 	//---- Roughness ----
-	TextureRoughness "models/environment/src/textures/frame_02_rough.png"
+	TextureRoughness "[0.149020 0.149020 0.149020 0.000000]"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"

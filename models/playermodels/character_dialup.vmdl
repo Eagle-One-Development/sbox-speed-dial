@@ -17,6 +17,14 @@
 								from = "dialup.vmat"
 								to = "models/playermodels/src/textures/dialup/du.vmat"
 							},
+							{
+								from = "teeth_simple.vmat"
+								to = "models/playermodels/src/textures/teeth/teeth.vmat"
+							},
+							{
+								from = "tounge.vmat"
+								to = "models/playermodels/src/textures/teeth/tongue.vmat"
+							},
 						]
 						use_global_default = false
 						global_default_material = ""
