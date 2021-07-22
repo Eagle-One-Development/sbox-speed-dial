@@ -349,7 +349,7 @@ namespace SpeedDial {
 		}
 
 		public static void MoveToSpawn(SpeedDialPlayer respawnPlayer) {
-			if(Host.IsServer) {
+			if(Host.IsServer) { 
 
 				//info_player_start as spawnpoint (Sandbox.SpawnPoint)
 				var spawnpoints = All.Where((s) => s is SpawnPoint);
