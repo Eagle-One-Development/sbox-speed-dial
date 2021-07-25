@@ -4,32 +4,6 @@
 	m_layers = 
 	[
 		{
-			_class = "CColorBalanceColorCorrectionLayer"
-			m_name = "Color Balance 0"
-			m_nOpacityPercent = 100
-			m_bVisible = true
-			m_pLayerMask = null
-			m_nRedCyanBalS = 0
-			m_nRedCyanBalM = -13
-			m_nRedCyanBalH = 0
-			m_nGreenMagentaBalS = 0
-			m_nGreenMagentaBalM = 3
-			m_nGreenMagentaBalH = 0
-			m_nBlueYellowBalS = 0
-			m_nBlueYellowBalM = 5
-			m_nBlueYellowBalH = 0
-			m_bPreserveLuminosity = true
-		},
-		{
-			_class = "CVibranceColorCorrectionLayer"
-			m_name = "Saturation/Vibrance 0"
-			m_nOpacityPercent = 100
-			m_bVisible = true
-			m_pLayerMask = null
-			m_nVibrance = 6
-			m_nSaturation = 0
-		},
-		{
 			_class = "CBloomLayer"
 			m_name = "Bloom 0"
 			m_nOpacityPercent = 100
