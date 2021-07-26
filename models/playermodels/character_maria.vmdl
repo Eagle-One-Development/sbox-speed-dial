@@ -14,8 +14,16 @@
 						remaps = 
 						[
 							{
-								from = "defaultmat.vmat"
+								from = "maria.vmat"
 								to = "models/playermodels/src/textures/maria/mariatex.vmat"
+							},
+							{
+								from = "teeth_simple.vmat"
+								to = "models/playermodels/src/textures/teeth/teeth.vmat"
+							},
+							{
+								from = "tounge.vmat"
+								to = "models/playermodels/src/textures/teeth/tongue.vmat"
 							},
 						]
 						use_global_default = false
