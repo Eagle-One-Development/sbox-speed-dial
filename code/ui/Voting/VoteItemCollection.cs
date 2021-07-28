@@ -25,14 +25,7 @@ namespace SpeedDial.UI {
 
 			for(int i = 0; i < mapItems.Length; i++) {
 				MapItem item = mapItems[i];
-				var vitem = new VoteItem(i);
-				AddChild(vitem);
-				var idk = Package.Fetch(item.id, false);
-				await idk;
-				if(idk.Result == null) continue;
-				vitem.MapInfo = idk.Result;
-				vitem.initwithOffset((i + 1) * 500);
-				items.Add(vitem);
+				FetchAndCreate(item, i);
 			}
 
 			VoteItem backItem = new(mapItems.Length);
@@ -46,9 +39,9 @@ namespace SpeedDial.UI {
 			var pakfetch = Package.Fetch(mapNameFixed, false);
 			await pakfetch;
 			if(pakfetch.Result == null) {
-				Log.Error("Current Map not Found.... This should not happen.");
+				Log.Warning("Current Map not Found.... This should not happen.");
 				//backItem.Delete(true);
-				backItem.MapInfo = items[0].MapInfo;
+				backItem.MapInfo = new();
 				backItem.initwithOffset(500);
 				items.Add(backItem);
 				return;
@@ -62,6 +55,17 @@ namespace SpeedDial.UI {
 				item.initwithOffset((i + 1) * 500);
 				items.Add(item);
 			} */
+		}
+
+		private async void FetchAndCreate(MapItem mim, int i) {
+			var idk = Package.Fetch(mim.id, false);
+			await idk;
+			if(idk.Result == null) return;
+			var vitem = new VoteItem(i);
+			AddChild(vitem);
+			vitem.MapInfo = idk.Result;
+			vitem.initwithOffset((i + 1) * 500);
+			items.Add(vitem);
 		}
 
 	}

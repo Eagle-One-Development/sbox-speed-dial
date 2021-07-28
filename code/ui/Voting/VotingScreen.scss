@@ -109,6 +109,20 @@ VotingScreen{
                     background-size: cover;
                     background-position: center;
                 }
+                .MapTitle{
+                    pixel-snap :0;
+                    bottom: 0px;
+                    left: 0px;
+                    position: absolute;
+                    font-size: 20%;
+                    transform: rotateZ(-20deg) translateY(-100%);
+                    text-align: right;
+
+                    text-shadow: 0px 0px white; 
+
+                    color :black;
+
+                }
                 .VoteCount{
                     width: 100%;
                     text-align: center;

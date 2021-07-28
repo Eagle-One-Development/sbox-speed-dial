@@ -23,6 +23,7 @@ namespace SpeedDial.UI {
 			VoteCount = Center.Add.Label("0", "VoteCount");
 		}
 		public async void initwithOffset(int ms) {
+			Center.Add.Label(MapInfo.Title, "MapTitle");
 			await GameTask.DelayRealtime(ms);
 			MapThumb.SetTexture(MapInfo.Thumb);
 			SetClass("Active", true);
