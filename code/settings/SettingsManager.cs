@@ -11,7 +11,7 @@ namespace SpeedDial.Settings {
 
 		private const string SettingsPath = "speed-dial";
 		// the Setting Version. Should be changed when adding new Settings. so it updates on downloaded versions too.
-		private const string Version = "1";
+		private const string Version = "2";
 
 		public static SettingInstance Settings { get; set; }
 		public static Action SettingsChanged;
@@ -36,6 +36,7 @@ namespace SpeedDial.Settings {
 			SetSetting("Sniper Wallbang", true, true);
 			SetSetting("Kill Feed", true);
 			SetSetting("Music On", true);
+			SetSetting("Viewshift Toggle", false);
 			//SetSetting("Music Volume", 100);
 			//SetSetting("SFX On", true);
 			//SetSetting("SFX Volume", 100);

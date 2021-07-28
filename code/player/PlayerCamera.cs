@@ -18,6 +18,11 @@ namespace SpeedDial.Player {
 		private Vector3 camOffset;
 		private Vector3 camOffsetTarget;
 
+		public SpeedDialCamera() {
+			Settings.SettingsManager.SettingsChanged += onSettingChange;
+		}
+
+
 		public bool CameraShift { get; set; }
 
 		[Net, Local, Predicted]
@@ -80,6 +85,11 @@ namespace SpeedDial.Player {
 
 			input.ViewAngles = ang;
 			input.InputDirection = input.AnalogMove;
+		}
+
+		private void onSettingChange() {
+			if(Host.IsClient && Settings.SettingsManager.GetSetting("Viewshift Toggle").TryGetBool(out bool? res))
+				sd_viewshift_toggle = res.Value;
 		}
 
 		public override void Update() {
