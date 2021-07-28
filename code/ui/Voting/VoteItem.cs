@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Text.Json.Serialization;
 using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
@@ -52,6 +53,8 @@ namespace SpeedDial.UI {
 	}
 
 	public class MapItem {
-		public string id { get; set; }
+		public string organization { get; set; }
+		public string name { get; set; }
+		public int roundsPlayed { get; set; }
 	}
 }

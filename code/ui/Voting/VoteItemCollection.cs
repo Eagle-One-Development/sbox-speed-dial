@@ -11,8 +11,14 @@ using Sandbox.UI.Construct;
 namespace SpeedDial.UI {
 	public class VoteItemCollection : Panel {
 
+		public static VoteItemCollection instance;
+
 		public static bool Voted = false;
 		public static List<VoteItem> items = new();
+
+		public VoteItemCollection() {
+			instance = this;
+		}
 
 		public async void FetchItems() {
 			if(items.Count != 0) {
@@ -21,7 +27,26 @@ namespace SpeedDial.UI {
 				}
 			}
 			items = new();
-			var mapItems = JsonSerializer.Deserialize<MapItem[]>(FileSystem.Mounted.ReadAllText("/data/localMapList.json"));
+
+			if(Global.IsListenServer) {
+				Sandbox.Internal.Http client = new(new("https://us-central1-eagle-one-web.cloudfunctions.net/speeddial-maplist"));
+				var tas = client.GetStringAsync();
+				await tas;
+				VoteRound.RefreshMapSelection(tas.Result);
+			}
+
+			/* for(int i = 0; i < 5; i++) {
+				var item = AddChild<VoteItem>();
+				item.initwithOffset((i + 1) * 500);
+				items.Add(item);
+			} */
+		}
+
+
+		public async void SetDataAndRecreate(string json) {
+			var mapItems = JsonSerializer.Deserialize<MapItem[]>(json, new() {
+				NumberHandling = System.Text.Json.Serialization.JsonNumberHandling.AllowReadingFromString,
+			});
 
 			for(int i = 0; i < mapItems.Length; i++) {
 				MapItem item = mapItems[i];
@@ -49,16 +74,10 @@ namespace SpeedDial.UI {
 			backItem.MapInfo = pakfetch.Result;
 			backItem.initwithOffset(500);
 			items.Add(backItem);
-
-			/* for(int i = 0; i < 5; i++) {
-				var item = AddChild<VoteItem>();
-				item.initwithOffset((i + 1) * 500);
-				items.Add(item);
-			} */
 		}
 
 		private async void FetchAndCreate(MapItem mim, int i) {
-			var idk = Package.Fetch(mim.id, false);
+			var idk = Package.Fetch(mim.organization + "." + mim.name, false);
 			await idk;
 			if(idk.Result == null) return;
 			var vitem = new VoteItem(i);

@@ -36,8 +36,8 @@ namespace SpeedDial.UI {
 			if(VoteTimeLeft is not null) VoteTimeLeft.Delete(true);
 			VoteTimeLeft = Add.Label("Time left to vote", "VoteTimeLeft");
 
-
-			VoteItemCollection.FetchItems();
+			if(SpeedDialGame.Instance.Round is VoteRound)
+				VoteItemCollection.FetchItems();
 		}
 		public override void Tick() {
 			base.Tick();
