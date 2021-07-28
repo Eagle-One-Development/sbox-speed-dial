@@ -73,7 +73,9 @@ namespace SpeedDial.UI {
 				if(Winner.votes == item.votes && Rand.Int(0, 1) == 0) continue;
 				else if(Winner.votes <= item.votes) Winner = item;
 			}
-			if(Global.IsListenServer && Host.IsClient && !Winner.MapInfo.FullIdent.Equals(Global.MapName))
+			if(Winner.votes == 0) return;
+
+			if(Global.IsListenServer && Host.IsClient && !Winner.MapInfo.FullIdent.Equals(Global.MapName) && !Winner.HasClass("Back"))
 				Log.Info($"changelevel {Winner.MapInfo.FullIdent}");
 		}
 	}

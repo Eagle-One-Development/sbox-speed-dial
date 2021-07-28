@@ -6,6 +6,7 @@ using Sandbox.DataModel;
 using Sandbox;
 using Sandbox.Utility;
 using System.Threading.Tasks;
+using Sandbox.UI.Construct;
 
 namespace SpeedDial.UI {
 	public class VoteItemCollection : Panel {
@@ -33,6 +34,28 @@ namespace SpeedDial.UI {
 				vitem.initwithOffset((i + 1) * 500);
 				items.Add(vitem);
 			}
+
+			VoteItem backItem = new(mapItems.Length);
+			backItem.AddClass("Back");
+			backItem.Add.Label("Stay", "Stay");
+			AddChild(backItem);
+			Log.Info(Global.MapName);
+			string mapNameFixed = Global.MapName;
+			if(!mapNameFixed.Contains(".")) mapNameFixed = "local." + mapNameFixed;
+			Log.Info(mapNameFixed);
+			var pakfetch = Package.Fetch(mapNameFixed, false);
+			await pakfetch;
+			if(pakfetch.Result == null) {
+				Log.Error("Current Map not Found.... This should not happen.");
+				//backItem.Delete(true);
+				backItem.MapInfo = items[0].MapInfo;
+				backItem.initwithOffset(500);
+				items.Add(backItem);
+				return;
+			}
+			backItem.MapInfo = pakfetch.Result;
+			backItem.initwithOffset(500);
+			items.Add(backItem);
 
 			/* for(int i = 0; i < 5; i++) {
 				var item = AddChild<VoteItem>();

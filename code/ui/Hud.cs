@@ -11,7 +11,6 @@ namespace SpeedDial.UI {
 		public SpeedDialHud() {
 			if(!IsClient)
 				return;
-
 			RootPanel.AddChild<GamePanel>();
 			RootPanel.AddChild<DrugEffects>();
 			RootPanel.AddChild<AmmoPanel>();

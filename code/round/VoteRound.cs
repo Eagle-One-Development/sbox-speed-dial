@@ -5,7 +5,7 @@ namespace SpeedDial {
 
 	public partial class VoteRound : BaseRound {
 		public override string RoundName => "Voting";
-		public override int RoundDuration => 10000;
+		public override int RoundDuration => 15;
 
 		protected override void OnStart() {
 			if(Host.IsServer)

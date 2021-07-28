@@ -13,22 +13,26 @@ VotingScreen{
     justify-content:center;
     align-items:center;
 
+    label{
+        font-family: VCR_OSD_MONO;
+        color: white;
+        text-shadow: 2px 2px black; 
+    }
+
     &.Active{
         opacity: 1;
         pointer-events: all;
-        
-        
     }
     .VoteTimeLeft,
     .timer{
-        font-family: VCR_OSD_MONO;
+        
         width: 40%;
         text-align: center;
         position: absolute;
         top: 10px;
-        color: white;
+        
         font-size: 100%;
-
+        
         background-color: rgba(255, 255, 255, 0.123);
     }
     .VoteTimeLeft{
@@ -37,13 +41,11 @@ VotingScreen{
         background-color: rgba(255, 255, 255, 0);
     }
     .date{
-        font-family: VCR_OSD_MONO;
         width: 40%;
         text-align: right;
         position: absolute;
         bottom: 10px;
         right: 50px;
-        color: white;
         font-size: 60%;
     }
 
@@ -58,12 +60,11 @@ VotingScreen{
     }
     VoteItemCollection{
         align-self: center;
-        justify-self: center;
-        place-self: center;
         width: 90%;
         height: 75%;
         background-color: rgba(116, 116, 116, 0.301);
         flex-wrap: wrap;
+        
         align-content: center;
         justify-content: center;
 
@@ -82,7 +83,7 @@ VotingScreen{
             background-color: black;
             align-content: center;
             justify-content: center;
-            padding: 2%;
+            padding: 1%;
 
             opacity: 0;
             transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -102,7 +103,6 @@ VotingScreen{
                     margin: 2%;
                     width: 70%;
                     aspect-ratio: 1.5;
-                    justify-self: center;
                     align-self: center;
                     
                     background-repeat: no-repeat;
@@ -113,8 +113,25 @@ VotingScreen{
                     width: 100%;
                     text-align: center;
                     font-size: 40%;
+                    color: rgb(255, 255, 255); 
                 }
 
+            }
+            &.Back{
+                position: absolute;
+                bottom: 0px;
+                right: 0px;
+
+                width: 20%;
+                height: 15%;
+
+                .Stay{
+                    pointer-events: none;
+                    position: absolute;
+                    top: -50%;
+                    font-size: 60px;
+                    text-align: center;
+                }
             }
             &:hover{
                 background-color: rgb(47, 49, 25);
