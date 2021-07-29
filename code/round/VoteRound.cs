@@ -1,5 +1,5 @@
 using System;
-using System.IO;
+using System.Collections.Generic;
 using Sandbox;
 using SpeedDial.UI;
 
@@ -32,12 +32,15 @@ namespace SpeedDial {
 			if(Host.IsServer && game.Round.RoundDuration > 0) {
 				game.Round.RoundEndTime = Sandbox.Time.Now + game.Round.RoundDuration;
 				VoteRound.mapsReceived = true;
+
 			}
 		}
-		[ClientRpc]
+
+		[ClientRpc()]
 		public static void RunVotingEvent(string VoteEvent) {
 			Event.Run($"SDEvent.Voting.{VoteEvent}");
 		}
+
 		[ClientRpc]
 		public static void RefreshMapSelection(string json) {
 			VoteItemCollection.instance.SetDataAndRecreate(json);
@@ -49,10 +52,15 @@ namespace SpeedDial {
 			if(Host.IsServer)
 				RunVotingEvent(To.Everyone, "End");
 
-
-
-
+			mapsReceived = false;
 			SpeedDialGame.Instance.ChangeRound(new WarmUpRound());
 		}
+
+
+
+
 	}
+
+
+
 }

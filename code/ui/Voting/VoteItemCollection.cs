@@ -15,6 +15,7 @@ namespace SpeedDial.UI {
 
 		public static bool Voted = false;
 		public static List<VoteItem> items = new();
+		public static VoteItem StayOption;
 
 		public VoteItemCollection() {
 			instance = this;
@@ -53,7 +54,7 @@ namespace SpeedDial.UI {
 				FetchAndCreate(item, i);
 			}
 
-			VoteItem backItem = new(mapItems.Length);
+			VoteItem backItem = new(-1);
 			backItem.AddClass("Back");
 			backItem.Add.Label("Stay", "Stay");
 			AddChild(backItem);
@@ -63,17 +64,17 @@ namespace SpeedDial.UI {
 			Log.Info(mapNameFixed);
 			var pakfetch = Package.Fetch(mapNameFixed, false);
 			await pakfetch;
+
+			StayOption = backItem;
 			if(pakfetch.Result == null) {
 				Log.Warning("Current Map not Found.... This should not happen.");
 				//backItem.Delete(true);
 				backItem.MapInfo = new();
 				backItem.initwithOffset(500);
-				items.Add(backItem);
 				return;
 			}
 			backItem.MapInfo = pakfetch.Result;
 			backItem.initwithOffset(500);
-			items.Add(backItem);
 		}
 
 		private async void FetchAndCreate(MapItem mim, int i) {

@@ -34,8 +34,11 @@ namespace SpeedDial.UI {
 			VoteCount.Text = votes.ToString();
 		}
 		protected override void OnClick(MousePanelEvent e) {
-			if(!VoteItemCollection.Voted) {
+			if(!VoteItemCollection.Voted && !HasClass("Back")) {
 				AddVotesForItem(voteItemID);
+				VoteItemCollection.Voted = true;
+			} else if(!VoteItemCollection.Voted) {
+				AddVotesForStay();
 				VoteItemCollection.Voted = true;
 			}
 		}
@@ -44,9 +47,17 @@ namespace SpeedDial.UI {
 		public static void AddVotesForItem(int voteItemID) {
 			SetVotesForItem(voteItemID, 1);
 		}
+		[ServerCmd]
+		public static void AddVotesForStay() {
+			SetVotesForStaying();
+		}
 		[ClientRpc]
 		public static void SetVotesForItem(int voteItemID, int Votes) {
 			VoteItemCollection.items[voteItemID].votes += Votes;
+		}
+		[ClientRpc]
+		public static void SetVotesForStaying() {
+			VoteItemCollection.StayOption.votes += 1;
 		}
 
 
