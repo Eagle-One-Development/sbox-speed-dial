@@ -82,7 +82,7 @@ namespace SpeedDial {
 				IncludeFields = true
 			}));
 
-			return;
+			//return;
 			if(!client.IsConnected)
 				await client.Connect($"ws://34.69.127.70:6969");
 
