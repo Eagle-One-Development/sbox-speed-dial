@@ -16,6 +16,18 @@ namespace SpeedDial {
 				}
 			}
 		}
+		public static class PostRound {
+			public class StartAttribute : EventAttribute {
+				public StartAttribute()
+					: base("SDEvent.PostRound.Start") {
+				}
+			}
+			public class EndAttribute : EventAttribute {
+				public EndAttribute()
+					: base("SDEvent.PostRound.End") {
+				}
+			}
+		}
 
 	}
 }

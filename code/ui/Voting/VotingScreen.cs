@@ -35,9 +35,6 @@ namespace SpeedDial.UI {
 
 			if(VoteTimeLeft is not null) VoteTimeLeft.Delete(true);
 			VoteTimeLeft = Add.Label("Time left to vote", "VoteTimeLeft");
-
-			if(SpeedDialGame.Instance.Round is VoteRound)
-				VoteItemCollection.FetchItems();
 		}
 		public override void Tick() {
 			base.Tick();
@@ -74,10 +71,9 @@ namespace SpeedDial.UI {
 				else if(Winner.votes <= item.votes) Winner = item;
 			}
 			if(Winner.votes == 0) return;
-			if(Winner.votes < VoteItemCollection.StayOption.votes) Winner = VoteItemCollection.StayOption;
 
 			if(Global.IsListenServer && Host.IsClient && !Winner.MapInfo.FullIdent.Equals(Global.MapName) && !Winner.HasClass("Back"))
-				Log.Info($"changelevel {Winner.MapInfo.FullIdent}");
+				ConsoleSystem.Run($"changelevel {Winner.MapInfo.FullIdent}");
 		}
 	}
 }

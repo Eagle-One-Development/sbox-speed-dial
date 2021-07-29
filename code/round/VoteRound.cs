@@ -36,14 +36,14 @@ namespace SpeedDial {
 			}
 		}
 
-		[ClientRpc()]
+		[ClientRpc]
 		public static void RunVotingEvent(string VoteEvent) {
 			Event.Run($"SDEvent.Voting.{VoteEvent}");
 		}
 
 		[ClientRpc]
 		public static void RefreshMapSelection(string json) {
-			VoteItemCollection.instance.SetDataAndRecreate(json);
+			VoteItemCollection.SetDataAndRecreate(json);
 			if(Global.IsListenServer)
 				StartTimer();
 		}

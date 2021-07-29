@@ -8,8 +8,6 @@ using Sandbox.UI.Construct;
 namespace SpeedDial.UI {
 	public partial class VoteItem : Panel {
 
-		public int voteItemID;
-
 		public Package MapInfo;
 
 		public Panel Center;
@@ -17,8 +15,7 @@ namespace SpeedDial.UI {
 		public Label VoteCount;
 		public int votes = 0;
 
-		public VoteItem(int id) {
-			voteItemID = id;
+		public VoteItem() {
 			Center = AddChild<Panel>("Center");
 			MapThumb = Center.Add.Image(classname: "MapName");
 			VoteCount = Center.Add.Label("0", "VoteCount");
@@ -34,30 +31,20 @@ namespace SpeedDial.UI {
 			VoteCount.Text = votes.ToString();
 		}
 		protected override void OnClick(MousePanelEvent e) {
-			if(!VoteItemCollection.Voted && !HasClass("Back")) {
-				AddVotesForItem(voteItemID);
-				VoteItemCollection.Voted = true;
-			} else if(!VoteItemCollection.Voted) {
-				AddVotesForStay();
+			if(!VoteItemCollection.Voted) {
+				AddVotesForItem(MapInfo.FullIdent);
 				VoteItemCollection.Voted = true;
 			}
 		}
 
 		[ServerCmd]
-		public static void AddVotesForItem(int voteItemID) {
-			SetVotesForItem(voteItemID, 1);
-		}
-		[ServerCmd]
-		public static void AddVotesForStay() {
-			SetVotesForStaying();
+		public static void AddVotesForItem(string voteItemID) {
+			SetVotesForItem(voteItemID);
 		}
 		[ClientRpc]
-		public static void SetVotesForItem(int voteItemID, int Votes) {
-			VoteItemCollection.items[voteItemID].votes += Votes;
-		}
-		[ClientRpc]
-		public static void SetVotesForStaying() {
-			VoteItemCollection.StayOption.votes += 1;
+		public static void SetVotesForItem(string voteItemID) {
+			var item = VoteItemCollection.items.Find((e) => e.MapInfo.FullIdent.Equals(voteItemID));
+			item.votes += 1;
 		}
 
 
