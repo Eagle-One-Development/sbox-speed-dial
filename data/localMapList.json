@@ -1,14 +1,32 @@
 [
   {
-    "id": "eagleone.sd_lair"
+    "name": "sd_lair",
+    "organization": "eagleone",
+    "roundsPlayed": 10
   },
   {
-    "id": "eagleone.sd_club"
+    "name": "sd_club",
+    "organization": "eagleone",
+    "roundsPlayed": 1000
   },
   {
-    "id": "eagleone.sd_bank"
+    "name": "sd_bank",
+    "organization": "eagleone",
+    "roundsPlayed": 727
   },
   {
-    "id": "eagleone.sd_den"
+    "name": "sd_lab",
+    "organization": "gvar",
+    "roundsPlayed": 52
+  },
+  {
+    "name": "sd_office",
+    "organization": "baks",
+    "roundsPlayed": 230292
+  },
+  {
+    "name": "sd_den",
+    "organization": "eagleone",
+    "roundsPlayed": 1
   }
 ]

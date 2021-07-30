@@ -29,12 +29,15 @@ namespace SpeedDial.UI {
 			SideInfoPanel = AddChild<SideInfoPanel>();
 			SideInfoPanel.Collection = VoteItemCollection;
 			if(timer is not null) timer.Delete(true);
-			timer = Add.Label("00:00", "timer");
+			timer = Add.Label("00:00", "timer Defaultlabel");
 			if(date is not null) date.Delete(true);
-			date = Add.Label("00:00:00", "date");
+			date = Add.Label("00:00:00", "date Defaultlabel");
 
 			if(VoteTimeLeft is not null) VoteTimeLeft.Delete(true);
-			VoteTimeLeft = Add.Label("Time left to vote", "VoteTimeLeft");
+			VoteTimeLeft = Add.Label("Time left to vote", "VoteTimeLeft Defaultlabel");
+
+			if(SpeedDialGame.Instance?.Round is VoteRound)
+				VoteItemCollection.FetchItems(); //DEV ONLY
 		}
 		public override void Tick() {
 			base.Tick();

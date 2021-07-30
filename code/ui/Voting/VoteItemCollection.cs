@@ -7,6 +7,8 @@ using Sandbox;
 using Sandbox.Utility;
 using System.Threading.Tasks;
 using Sandbox.UI.Construct;
+using System.IO.Compression;
+using System.Linq;
 
 namespace SpeedDial.UI {
 	public class VoteItemCollection : Panel {
@@ -36,6 +38,10 @@ namespace SpeedDial.UI {
 			if(Global.IsListenServer && !FetchingItems) {
 				Log.Info("Fetching Map Selection");
 				FetchingItems = true;
+
+				VoteRound.RefreshMapSelection(FileSystem.Mounted.ReadAllText("/data/localMapList.json"));
+				FetchingItems = false;
+				return; //DEV ONLY
 				try {
 					Sandbox.Internal.Http client = new(new("https://us-central1-eagle-one-web.cloudfunctions.net/speeddial-maplist"));
 					var tas = client.GetStringAsync();
@@ -66,7 +72,7 @@ namespace SpeedDial.UI {
 
 			for(int i = 0; i < mapItems.Length; i++) {
 				MapItem item = mapItems[i];
-				if(item.organization +"."+item.name == Global.MapName) continue;
+				if(item.organization + "." + item.name == Global.MapName) continue;
 				FetchAndCreate(item, i);
 			}
 
@@ -80,17 +86,23 @@ namespace SpeedDial.UI {
 			Log.Info(mapNameFixed);
 			var pakfetch = Package.Fetch(mapNameFixed, false);
 			await pakfetch;
+			backItem.MapItem = mapItems.FirstOrDefault((e) => e.name == mapNameFixed.Split('.')?[1]);
 			if(pakfetch.Result == null) {
 				Log.Warning("Current Map not Found.... This should not happen.");
 				//backItem.Delete(true);
 				backItem.MapInfo = new();
-				backItem.initwithOffset(100);
+				backItem.InitReturnButton();
 				return;
 			}
 			backItem.MapInfo = pakfetch.Result;
-			backItem.initwithOffset(100);
+			backItem.InitReturnButton();
 
 			items.Add(backItem);
+
+		}
+
+		public void AddChildToFront(Panel p) {
+			AddChild(p);
 
 		}
 
@@ -102,8 +114,9 @@ namespace SpeedDial.UI {
 				return;
 			}
 			var vitem = new VoteItem();
-			VoteItemCollection.instance.AddChild(vitem);
+			VoteItemCollection.instance.AddChildToFront(vitem);
 			vitem.MapInfo = idk.Result;
+			vitem.MapItem = mim;
 			vitem.initwithOffset((i + 1) * 100);
 			items.Add(vitem);
 		}

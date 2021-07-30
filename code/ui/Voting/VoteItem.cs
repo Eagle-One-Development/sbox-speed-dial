@@ -6,25 +6,68 @@ using Sandbox.UI;
 using Sandbox.UI.Construct;
 
 namespace SpeedDial.UI {
-	public partial class VoteItem : Panel {
+	public partial class VoteItem : Image {
 
 		public Package MapInfo;
 
-		public Panel Center;
+		public MapItem MapItem;
+
+		public Image Center;
 		public Image MapThumb;
 		public Label VoteCount;
+
+		public Image Sticker;
+		public Label MapTitle;
+		public Label MapPlayCount;
+
+		public Panel Move;
+		public Image Cassette;
+		public Image CassetteMapThumb;
+
+		public Texture MapThumbnail;
+
 		public int votes = 0;
 
 		public VoteItem() {
-			Center = AddChild<Panel>("Center");
+			SetTexture("/UI/MapSelection/Cassetteblankwithback.png");
+			Cassette = Add.Image("/UI/MapSelection/Cassetteblank.png", "Cassette");
+			CassetteMapThumb = Cassette.Add.Image(classname: "CassetteMapThumb");
+
+
+			Center = Add.Image("/UI/MapSelection/Cassetteblankwithoutback.png", "Center");
 			MapThumb = Center.Add.Image(classname: "MapName");
-			VoteCount = Center.Add.Label("0", "VoteCount");
+
+			Sticker = Center.Add.Image("/UI/MapSelection/Cassettesticker.png", "Sticker");
+			VoteCount = Sticker.Add.Label("0", "VoteCount");
+			MapTitle = Center.Add.Label("Map - Org", "MapTitle");
+			MapPlayCount = Center.Add.Label("P-0", "PlayCount");
+
 		}
 		public async void initwithOffset(int ms) {
-			Center.Add.Label(MapInfo.Title, "MapTitle");
+			Log.Info("initing Vote Item");
+			MapTitle.Text = MapInfo.Title + " - " + MapInfo.Org.Ident;
+			MapThumbnail = Texture.Load(MapInfo.Thumb);
+			MapThumb.Texture = MapThumbnail;
+			CassetteMapThumb.Texture = MapThumbnail;
+
+			MapPlayCount.Text = "P-" + MapItem.roundsPlayed.ToString();
 			await GameTask.DelayRealtime(ms);
-			MapThumb.SetTexture(MapInfo.Thumb);
 			SetClass("Active", true);
+			Log.Info("Finished Vote Item");
+
+		}
+
+		public void InitReturnButton() {
+
+			DeleteChildren(true);
+
+			VoteCount = Add.Label("0", "VoteCount DefaultLabel");
+
+			Add.Label("STAY", "Stay DefaultLabel");
+			Add.Icon("fast_rewind", "ReturnIcon DefaultLabel");
+			Texture = null;
+
+
 		}
 		public override void Tick() {
 			base.Tick();

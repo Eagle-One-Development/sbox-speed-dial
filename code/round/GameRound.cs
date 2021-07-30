@@ -9,7 +9,7 @@ using SpeedDial.UI;
 namespace SpeedDial {
 	public class GameRound : BaseRound {
 		public override string RoundName => "Game Round";
-		public override int RoundDuration => 20; // 300
+		public override int RoundDuration => 1; // 300
 
 		//private bool _roundStarted;
 

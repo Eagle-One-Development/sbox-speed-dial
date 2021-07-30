@@ -10,7 +10,7 @@ using SpeedDial.Player;
 namespace SpeedDial {
 	public partial class PostRound : BaseRound {
 		public override string RoundName => "Post Round";
-		public override int RoundDuration => 10;//10
+		public override int RoundDuration => 1;//10
 
 		private static WebSocket client = new();
 
@@ -82,7 +82,7 @@ namespace SpeedDial {
 				IncludeFields = true
 			}));
 
-			//return;
+			return; //DEV ONLY
 			if(!client.IsConnected)
 				await client.Connect($"ws://34.69.127.70:6969");
 

@@ -9,11 +9,10 @@ VotingScreen{
     width: 100%;
     height: 100%;
 
-    display:flex;
     justify-content:center;
     align-items:center;
 
-    label{
+    .Defaultlabel{
         font-family: VCR_OSD_MONO;
         color: white;
         text-shadow: 2px 2px black; 
@@ -60,13 +59,20 @@ VotingScreen{
     }
     VoteItemCollection{
         align-self: center;
-        width: 90%;
-        height: 75%;
+        width: 100%;
+        height: 80%;
+        top: 3%;
         background-color: rgba(116, 116, 116, 0.301);
-        flex-wrap: wrap;
+
+
+        flex-direction: row-reverse;
+
+
         
         align-content: center;
         justify-content: center;
+        align-items: center;
+
 
         font-family: VCR_OSD_MONO;
         border: 5px;
@@ -76,79 +82,179 @@ VotingScreen{
         backdrop-filter-blur: 100px;
 
         VoteItem{
+            pixel-snap: 0;
             pointer-events: all;
-            width: 30%;
-            height: 25%;
-            margin: 1%;
-            background-color: black;
-            align-content: center;
-            justify-content: center;
-            padding: 1%;
+            height: 55%;
+            aspect-ratio: 0.607;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            margin-right: 1%;
+            background-color: rgba(0, 0, 0, 0);
+
+
 
             opacity: 0;
             transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
             &.Active{
                 opacity: 1;
             }
+            .Cassette{
+                pointer-events: none;
+
+                left: 0px;
+                transition: all 2s ease;
+
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+
+                align-content: center;
+                justify-content: center;
+                align-items: center;
+
+
+                .CassetteMapThumb{
+                    position: absolute;
+                    width: 65%;
+                    height: 25%;
+                    left: 9%;
+                    top: 35%;
+
+                    background-image-tint:#9b64fa;
+
+                    background-position: center;
+                    background-size: cover;
+                    transform: rotateZ(90deg);
+                }
+
+                
+            }
             
 
             .Center{
-                width: 50%;
+                
+                position: absolute;
+                width: 100%;
                 height: 100%;
-                background-color: rgb(255, 255, 255);
                 flex-direction: column;
-                justify-content: center;
-                align-content: center;
+
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+
                 .MapName{
-                    margin: 2%;
-                    width: 70%;
-                    aspect-ratio: 1.5;
-                    align-self: center;
-                    
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    background-position: center;
-                }
-                .MapTitle{
-                    pixel-snap :0;
-                    bottom: 0px;
-                    left: 0px;
                     position: absolute;
-                    font-size: 20%;
-                    transform: rotateZ(-20deg) translateY(-100%);
-                    text-align: right;
+                    width: 83%;
+                    height: 33%;
 
-                    text-shadow: 0px 0px white; 
+                    bottom: 40%;
+                    left: 3%;
 
-                    color :black;
+                    background-position: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
 
+                    background-image-tint:#ed66ff;
                 }
-                .VoteCount{
-                    width: 100%;
-                    text-align: center;
-                    font-size: 40%;
-                    color: rgb(255, 255, 255); 
+
+                .MapTitle{
+                    position: absolute;
+                    font-size: 27%;
+                    left: 5%;
+                    top: 15%;
+                    width: 55%;
+
+                    font-family: Haettenschweiler;
+                    font-weight: 400;
+
+
+                    text-transform: uppercase;
                 }
+                .PlayCount{
+                    position: absolute;
+                    font-size: 50%;
+                    left: 5%;
+                    top: 30%;
+                    width: 55%;
+
+                    font-family: Haettenschweiler;
+                    font-weight: 900;
+
+
+                    text-transform: uppercase;
+                }
+                
+                .Sticker{
+                    position: absolute;
+                    width: 35%;
+                    height: 35%;
+
+                    background-position: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+
+                    align-content: center;
+                    justify-content: center;
+                    align-items: center;
+
+                    bottom: 15%;
+                    right: 20%;
+                    transform: rotateZ(8deg);
+                    .VoteCount{
+                        font-size: 50%;
+                        
+                    }
+                }
+                
+
+                
 
             }
             &.Back{
+                pointer-events: all;
                 position: absolute;
+                opacity: 1;
                 bottom: 0px;
-                right: 0px;
-
-                width: 20%;
                 height: 15%;
+                width: 20%;
+                align-content: center;
+                justify-content: center;
+
+                background-color: rgba(0, 0, 0, 0.384);
+
+                
+                
 
                 .Stay{
-                    pointer-events: none;
-                    position: absolute;
-                    top: -50%;
-                    font-size: 60px;
-                    text-align: center;
+                    font-size: 60%;
                 }
+                .VoteCount{
+                    position: absolute;
+                    bottom: 0;
+                    font-size: 70%;
+                }
+
+                .ReturnIcon{
+                    font-family: MaterialIcons;
+                    font-size: 100%;
+                    position: absolute;
+                    right: 0;
+                    align-self: center;
+                }
+                &:hover{
+                    background-color: rgba(95, 92, 79, 0.555);
+                }
+
             }
             &:hover{
-                background-color: rgb(47, 49, 25);
+                .Cassette{
+                    left: 80%;
+                }
             }
         }
     }

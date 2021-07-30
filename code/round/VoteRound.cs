@@ -7,7 +7,7 @@ namespace SpeedDial {
 
 	public partial class VoteRound : BaseRound {
 		public override string RoundName => "Voting";
-		public override int RoundDuration => 15;
+		public override int RoundDuration => 1500000;
 		public static bool mapsReceived = false;
 
 		protected override void OnStart() {
@@ -38,11 +38,13 @@ namespace SpeedDial {
 
 		[ClientRpc]
 		public static void RunVotingEvent(string VoteEvent) {
+			if(!Host.IsClient) return;
 			Event.Run($"SDEvent.Voting.{VoteEvent}");
 		}
 
 		[ClientRpc]
 		public static void RefreshMapSelection(string json) {
+			if(!Host.IsClient) return;
 			VoteItemCollection.SetDataAndRecreate(json);
 			if(Global.IsListenServer)
 				StartTimer();
