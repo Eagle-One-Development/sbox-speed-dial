@@ -31,6 +31,7 @@ namespace SpeedDial.UI {
 		public int votes = 0;
 
 		public VoteItem() {
+			SetTexture("/UI/MapSelection/Cassetteblankwithback.png");
 
 			Cassette = Add.Image("/UI/MapSelection/Cassetteblank.png", "Cassette");
 			CassetteMapThumb = Cassette.Add.Image(classname: "CassetteMapThumb");
