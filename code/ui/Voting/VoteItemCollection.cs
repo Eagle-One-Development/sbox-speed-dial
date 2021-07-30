@@ -39,9 +39,9 @@ namespace SpeedDial.UI {
 				Log.Info("Fetching Map Selection");
 				FetchingItems = true;
 
-				VoteRound.RefreshMapSelection(FileSystem.Mounted.ReadAllText("/data/localMapList.json"));
+				/* VoteRound.RefreshMapSelection(FileSystem.Mounted.ReadAllText("/data/localMapList.json"));
 				FetchingItems = false;
-				return; //DEV ONLY
+				return; //DEV ONLY  */
 				try {
 					Sandbox.Internal.Http client = new(new("https://us-central1-eagle-one-web.cloudfunctions.net/speeddial-maplist"));
 					var tas = client.GetStringAsync();

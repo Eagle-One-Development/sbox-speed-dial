@@ -13,6 +13,8 @@ namespace SpeedDial.UI {
 
 		public Label date;
 
+		Sound tapeSound;
+
 		public VotingScreen() {
 			StyleSheet.Load("/ui/Voting/VotingScreen.scss");
 			Init();
@@ -61,10 +63,13 @@ namespace SpeedDial.UI {
 			SetClass("Active", true);
 			Log.Info("opened");
 			CharacterSelect.Current.open = true;
+
+			tapeSound = Sound.FromScreen("tape_noise");
 		}
 		[SDEvent.Voting.End]
 		private void Close() {
-			SetClass("Active", false);
+
+			tapeSound.Stop();
 			CharacterSelect.Current.open = false;
 
 			VoteItem Winner = VoteItemCollection.items[0];
@@ -76,7 +81,23 @@ namespace SpeedDial.UI {
 			if(Winner.votes == 0) return;
 
 			if(Global.IsListenServer && Host.IsClient && !Winner.MapInfo.FullIdent.Equals(Global.MapName) && !Winner.HasClass("Back"))
-				ConsoleSystem.Run($"changelevel {Winner.MapInfo.FullIdent}");
+				PlayEnd(Winner);
+			else
+				PlayEnd(null);
+
+		}
+
+		private async void PlayEnd(VoteItem winner = null) {
+			if(winner is VoteItem vi) {
+				var sound = Sound.FromScreen("fastforward_map_selection");
+				await GameTask.DelayRealtimeSeconds(1.25f);
+				ConsoleSystem.Run($"changelevel {vi.MapInfo.FullIdent}");
+			} else {
+				var sound = Sound.FromScreen("rewind_map_selection");
+				await GameTask.DelayRealtimeSeconds(1.25f);
+			}
+			SetClass("Active", false);
+
 		}
 	}
 }

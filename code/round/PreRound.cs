@@ -10,7 +10,7 @@ using SpeedDial.UI;
 namespace SpeedDial {
 	public class PreRound : BaseRound {
 		public override string RoundName => "Pre-Round";
-		public override int RoundDuration => 1;//8
+		public override int RoundDuration => 8;//8
 
 		//private bool _roundStarted;
 

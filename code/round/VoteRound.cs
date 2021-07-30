@@ -7,8 +7,8 @@ namespace SpeedDial {
 
 	public partial class VoteRound : BaseRound {
 		public override string RoundName => "Voting";
-		public override int RoundDuration => 1500000;
-		public static bool mapsReceived = false;
+		public override int RoundDuration => 30;
+		[Net] public static bool mapsReceived { get; set; } = false;
 
 		protected override void OnStart() {
 			if(Host.IsServer)
@@ -50,11 +50,12 @@ namespace SpeedDial {
 				StartTimer();
 		}
 
-		protected override void OnTimeUp() {
+		protected override async void OnTimeUp() {
 			if(Host.IsServer)
 				RunVotingEvent(To.Everyone, "End");
 
 			mapsReceived = false;
+			await GameTask.DelayRealtimeSeconds(1.25f);
 			SpeedDialGame.Instance.ChangeRound(new WarmUpRound());
 		}
 

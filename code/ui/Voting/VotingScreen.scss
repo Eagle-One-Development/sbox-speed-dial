@@ -82,6 +82,13 @@ VotingScreen{
         backdrop-filter-blur: 100px;
 
         VoteItem{
+
+            .HoverItem{
+                pointer-events: all;
+                width: 100%;
+                height: 500%;
+                top: -250%;
+            }
             pixel-snap: 0;
             pointer-events: all;
             height: 55%;
@@ -96,7 +103,7 @@ VotingScreen{
 
 
             opacity: 0;
-            transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+            transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
             &.Active{
                 opacity: 1;
             }
@@ -104,7 +111,7 @@ VotingScreen{
                 pointer-events: none;
 
                 left: 0px;
-                transition: all 2s ease;
+                transition: left 1s ease;
 
                 position: absolute;
                 width: 100%;
@@ -119,11 +126,10 @@ VotingScreen{
 
 
                 .CassetteMapThumb{
-                    position: absolute;
                     width: 65%;
                     height: 25%;
-                    left: 9%;
-                    top: 35%;
+                    left: -9%;
+                    top: -2%;
 
                     background-image-tint:#9b64fa;
 
@@ -204,7 +210,7 @@ VotingScreen{
 
                     bottom: 15%;
                     right: 20%;
-                    transform: rotateZ(8deg);
+                    transform: rotateZ(8deg) ;
                     .VoteCount{
                         font-size: 50%;
                         
@@ -215,6 +221,19 @@ VotingScreen{
                 
 
             }
+            &:not(.Back):hover{
+                sound-in:cassette-out;
+                sound-out:cassette-in;
+
+                top: -5%;
+
+
+                .Cassette{
+                    left: 80%;
+                }
+
+            }
+            
             &.Back{
                 pointer-events: all;
                 position: absolute;
@@ -226,6 +245,8 @@ VotingScreen{
                 justify-content: center;
 
                 background-color: rgba(0, 0, 0, 0.384);
+
+                transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
                 
                 
@@ -247,15 +268,11 @@ VotingScreen{
                     align-self: center;
                 }
                 &:hover{
-                    background-color: rgba(95, 92, 79, 0.555);
-                }
-
-            }
-            &:hover{
-                .Cassette{
-                    left: 80%;
+                    background-color: rgba(95, 92, 79, 0.685);
+                    sound-in:select_click;
                 }
             }
+            
         }
     }
 }

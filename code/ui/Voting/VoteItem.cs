@@ -26,10 +26,12 @@ namespace SpeedDial.UI {
 
 		public Texture MapThumbnail;
 
+		public Panel HoverItem;
+
 		public int votes = 0;
 
 		public VoteItem() {
-			SetTexture("/UI/MapSelection/Cassetteblankwithback.png");
+
 			Cassette = Add.Image("/UI/MapSelection/Cassetteblank.png", "Cassette");
 			CassetteMapThumb = Cassette.Add.Image(classname: "CassetteMapThumb");
 
@@ -42,9 +44,11 @@ namespace SpeedDial.UI {
 			MapTitle = Center.Add.Label("Map - Org", "MapTitle");
 			MapPlayCount = Center.Add.Label("P-0", "PlayCount");
 
+			HoverItem = Add.Panel("HoverItem");
+
 		}
 		public async void initwithOffset(int ms) {
-			Log.Info("initing Vote Item");
+			//Log.Info("initing Vote Item");
 			MapTitle.Text = MapInfo.Title + " - " + MapInfo.Org.Ident;
 			MapThumbnail = Texture.Load(MapInfo.Thumb);
 			MapThumb.Texture = MapThumbnail;
@@ -53,7 +57,7 @@ namespace SpeedDial.UI {
 			MapPlayCount.Text = "P-" + MapItem.roundsPlayed.ToString();
 			await GameTask.DelayRealtime(ms);
 			SetClass("Active", true);
-			Log.Info("Finished Vote Item");
+			//Log.Info("Finished Vote Item");
 
 		}
 
