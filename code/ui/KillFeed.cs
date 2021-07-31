@@ -12,9 +12,8 @@ namespace SpeedDial.UI {
 			StyleSheet.Load("/ui/KillFeed.scss");
 			Instance = this;
 
-			SettingsManager.SettingsChanged += onSettingChange;
 		}
-
+		[Event("SDEvents.Settings.Changed")]
 		public void onSettingChange() {
 			//Log.Info("Kill feed CHanged");
 			if(SettingsManager.GetSetting("Kill Feed").TryGetBool(out bool? res)) {

@@ -110,8 +110,6 @@ namespace SpeedDial.Player {
 
 			Respawn();
 
-			Settings.SettingsManager.ReloadSettings();
-
 			//PlaySoundtrack(To.Single(this), "track01");
 		}
 

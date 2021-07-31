@@ -27,7 +27,7 @@ namespace SpeedDial.Settings {
 			Settings = JsonSerializer.Deserialize<SettingInstance>(FileSystem.OrganizationData.ReadAllText(SettingsPath + "/setting.json"));
 			if(Settings.Version is null || !Settings.Version.Equals(Version)) SetDefaultSettings();
 			Log.Info("Settings Loaded");
-			SettingsChanged?.Invoke();
+			Event.Run("SDEvents.Settings.Changed");
 		}
 		public static void SetDefaultSettings() {
 			if(Settings == null) Settings = new();
