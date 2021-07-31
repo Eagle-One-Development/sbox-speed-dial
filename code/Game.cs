@@ -296,6 +296,16 @@ namespace SpeedDial {
 			player.InitialSpawn();
 		}
 
+		public override void ClientSpawn() {
+			base.ClientSpawn();
+			Host.AssertClient();
+			ReloadSettingsAfterDelay();
+		}
+		private static async void ReloadSettingsAfterDelay() {
+			await GameTask.NextPhysicsFrame();
+			Settings.SettingsManager.ReloadSettings();
+		}
+
 		public async Task StartTickTimer() {
 			while(true) {
 				await GameTask.NextPhysicsFrame();
@@ -322,7 +332,6 @@ namespace SpeedDial {
 
 		public override void PostLevelLoaded() {
 			_ = StartSecondTimer();
-			SettingsManager.ReloadSettings();
 			base.PostLevelLoaded();
 		}
 
@@ -349,7 +358,7 @@ namespace SpeedDial {
 		}
 
 		public static void MoveToSpawn(SpeedDialPlayer respawnPlayer) {
-			if(Host.IsServer) { 
+			if(Host.IsServer) {
 
 				//info_player_start as spawnpoint (Sandbox.SpawnPoint)
 				var spawnpoints = All.Where((s) => s is SpawnPoint);

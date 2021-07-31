@@ -14,7 +14,6 @@ namespace SpeedDial.UI {
 		public SettingsMenu() {
 
 			StyleSheet.Load("/ui/SettingsMenu.scss");
-			ReloadSettings();
 		}
 		public override void OnHotloaded() {
 			base.OnHotloaded();
