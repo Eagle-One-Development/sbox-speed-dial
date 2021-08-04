@@ -170,7 +170,7 @@ VotingScreen{
 
                 .MapTitle{
                     position: absolute;
-                    font-size: 27%;
+                    font-size: 28px;
                     left: 5%;
                     top: 15%;
                     width: 55%;
@@ -183,7 +183,7 @@ VotingScreen{
                 }
                 .PlayCount{
                     position: absolute;
-                    font-size: 50%;
+                    font-size:  50px;
                     left: 5%;
                     top: 30%;
                     width: 55%;
@@ -212,7 +212,7 @@ VotingScreen{
                     right: 20%;
                     transform: rotateZ(8deg) ;
                     .VoteCount{
-                        font-size: 50%;
+                        font-size: 50px;
                         
                     }
                 }
@@ -252,12 +252,12 @@ VotingScreen{
                 
 
                 .Stay{
-                    font-size: 60%;
+                    font-size: 60px;
                 }
                 .VoteCount{
                     position: absolute;
                     bottom: 0;
-                    font-size: 70%;
+                    font-size: 70px;
                 }
 
                 .ReturnIcon{
