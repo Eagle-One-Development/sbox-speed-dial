@@ -162,6 +162,7 @@ namespace SpeedDial.Weapons {
 				// clientside shoot effects
 				ShootEffects(); // muzzle and brass eject
 				PlaySound(ShootSound); // shoot sound
+				Log.Info("TESTER TESTY");
 				(Owner as AnimEntity).SetAnimBool("b_attack", true); // shoot anim
 
 			}
@@ -317,6 +318,7 @@ namespace SpeedDial.Weapons {
 
 		[ClientRpc]
 		protected virtual void ShootEffects() {
+			Host.AssertClient();
 			Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
 			Particles.Create(EjectionParticle, EffectEntity, "ejection_point");
 
