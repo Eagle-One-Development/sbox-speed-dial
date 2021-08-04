@@ -104,10 +104,10 @@ namespace SpeedDial.UI {
 				return;
 			}
 			var vitem = new VoteItem();
-			VoteItemCollection.instance.AddChildToFront(vitem);
 			vitem.MapInfo = idk.Result;
 			vitem.MapItem = mim;
 			vitem.initwithOffset((i + 1) * 100);
+			VoteItemCollection.instance.AddChild(vitem);
 			items.Add(vitem);
 		}
 

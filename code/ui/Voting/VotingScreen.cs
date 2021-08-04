@@ -56,7 +56,6 @@ namespace SpeedDial.UI {
 		}
 		[SDEvent.Voting.Start]
 		private void Open() {
-			Init();
 			SetClass("Active", true);
 			Log.Info("opened");
 			CharacterSelect.Current.open = true;
