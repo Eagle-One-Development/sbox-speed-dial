@@ -58,6 +58,7 @@ namespace SpeedDial {
 				RunVotingEvent(To.Everyone, "End");
 
 			mapsReceived = false;
+			VoteItemCollection.Voted = false;
 			await GameTask.DelayRealtimeSeconds(1.25f);
 			SpeedDialGame.Instance.ChangeRound(new WarmUpRound());
 		}
