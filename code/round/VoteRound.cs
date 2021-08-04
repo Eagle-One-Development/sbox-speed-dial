@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Sandbox;
+using SpeedDial.Player;
 using SpeedDial.UI;
 
 namespace SpeedDial {
@@ -41,10 +42,14 @@ namespace SpeedDial {
 			Event.Run($"SDEvent.Voting.{VoteEvent}");
 		}
 
+		static string currentJson;
+
 		[ServerCmd]
 		public static void RefreshMapSelection(string json) {
 			RefreshMapSelectionClient(json);
+			currentJson = json;
 		}
+
 		[ClientRpc]
 		public static void RefreshMapSelectionClient(string json) {
 			Log.Info(json);
@@ -67,6 +72,18 @@ namespace SpeedDial {
 		[ClientRpc]
 		public static void ResetVotingState() {
 			VoteItemCollection.Voted = false;
+		}
+
+		public override void OnPlayerSpawn(SpeedDialPlayer player) {
+			base.OnPlayerSpawn(player);
+			//Log.Error("Player joined");
+			RefreshMapSelectionClient(To.Single(player), currentJson);
+			PlayerJoinedDuringVote();
+		}
+		[ClientRpc]
+		public static void PlayerJoinedDuringVote() {
+			RunVotingEvent("Start");
+
 		}
 
 

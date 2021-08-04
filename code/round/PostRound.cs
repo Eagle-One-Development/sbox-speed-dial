@@ -49,6 +49,13 @@ namespace SpeedDial {
 			base.OnTimeUp();
 		}
 
+		public override void OnPlayerSpawn(SpeedDialPlayer player) {
+			base.OnPlayerSpawn(player);
+
+			player.Freeze();
+			RunPostRoundEvent("Start");
+		}
+
 		[ClientRpc]
 		public static void RunPostRoundEvent(string RoundEvent) {
 			Event.Run($"SDEvent.PostRound.{RoundEvent}");
