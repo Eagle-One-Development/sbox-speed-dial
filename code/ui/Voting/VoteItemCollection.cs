@@ -80,21 +80,11 @@ namespace SpeedDial.UI {
 			backItem.AddClass("Back");
 			backItem.Add.Label("Stay", "Stay");
 			VoteItemCollection.instance.AddChild(backItem);
-			Log.Info(Global.MapName);
-			string mapNameFixed = Global.MapName;
-			if(!mapNameFixed.Contains(".")) mapNameFixed = "local." + mapNameFixed;
-			Log.Info(mapNameFixed);
-			var pakfetch = Package.Fetch(mapNameFixed, false);
-			await pakfetch;
-			backItem.MapItem = mapItems.FirstOrDefault((e) => e.name == mapNameFixed.Split('.')?[1]);
-			if(pakfetch.Result == null) {
-				Log.Warning("Current Map not Found.... This should not happen.");
-				//backItem.Delete(true);
-				backItem.MapInfo = new();
-				backItem.InitReturnButton();
-				return;
-			}
-			backItem.MapInfo = pakfetch.Result;
+
+			backItem.MapInfo = new();
+			backItem.MapInfo.Org = new();
+			backItem.MapInfo.Org.Ident = "idc";
+			backItem.MapInfo.Ident = "lmao";
 			backItem.InitReturnButton();
 
 			items.Add(backItem);
