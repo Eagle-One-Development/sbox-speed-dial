@@ -154,28 +154,33 @@ namespace SpeedDial.Weapons {
 
 				// shoot the bullets, bulletcount for something like a shotgun with multiple bullets
 				for(int i = 0; i < BulletCount; i++) {
-					ShootBullet(BulletSpread, BulletForce, BulletDamage, BulletSize);
+					
+					this.ShootBullet(BulletSpread, BulletForce, BulletDamage, BulletSize, i);
 				}
 			}
 
 			if(!overrideShootEffects) {
+
 				// clientside shoot effects
-				ShootEffects(); // muzzle and brass eject
+				if(IsServer) {
+					Log.Info("TWICE?!?!");
+					ShootEffects(); // muzzle and brass eject
+				}
 				PlaySound(ShootSound); // shoot sound
-				Log.Info("TESTER TESTY");
+
 				(Owner as AnimEntity).SetAnimBool("b_attack", true); // shoot anim
 
 			}
 		}
 
-		public virtual void ShootBullet(float spread, float force, float damage, float bulletSize) {
+		public virtual void ShootBullet(float spread, float force, float damage, float bulletSize, int seed) {
 			float f = 1f;
 			var player = Owner as SpeedDialPlayer;
 			if(player.MedTaken && player.CurrentDrug == Meds.DrugType.Ritindi) {
 
 				f = 0.25f;
 			}
-
+			Rand.SetSeed(Time.Tick + seed);
 
 
 			var forward = Owner.EyeRot.Forward;
@@ -196,10 +201,12 @@ namespace SpeedDial.Weapons {
 					ps?.SetForward(0, tr.Normal);
 				}
 
-				if(index == 0) {
-					BulletTracer(EffectEntity.GetAttachment("muzzle", true).Value.Position, tr.EndPos);
-				} else {
-					BulletTracer(tr.StartPos, tr.EndPos);
+				if(IsServer) {
+					if(index == 0) {
+						BulletTracer(EffectEntity.GetAttachment("muzzle", true).Value.Position, tr.EndPos);
+					} else {
+						BulletTracer(tr.StartPos, tr.EndPos);
+					}
 				}
 
 				index++;
@@ -321,7 +328,7 @@ namespace SpeedDial.Weapons {
 			Host.AssertClient();
 			Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
 			Particles.Create(EjectionParticle, EffectEntity, "ejection_point");
-
+			Log.Info("TEST PLEASE");
 			if(IsLocalPawn) {
 				_ = new Sandbox.ScreenShake.Perlin(ScreenShakeParameters.x, ScreenShakeParameters.y, ScreenShakeParameters.z, ScreenShakeParameters.w);
 			}
