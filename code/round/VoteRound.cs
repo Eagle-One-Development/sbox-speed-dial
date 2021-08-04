@@ -54,13 +54,19 @@ namespace SpeedDial {
 		}
 
 		protected override async void OnTimeUp() {
-			if(Host.IsServer)
+			if(Host.IsServer) {
+				ResetVotingState(To.Everyone);
 				RunVotingEvent(To.Everyone, "End");
+			}
 
 			mapsReceived = false;
-			VoteItemCollection.Voted = false;
 			await GameTask.DelayRealtimeSeconds(1.25f);
 			SpeedDialGame.Instance.ChangeRound(new WarmUpRound());
+		}
+
+		[ClientRpc]
+		public static void ResetVotingState() {
+			VoteItemCollection.Voted = false;
 		}
 
 
