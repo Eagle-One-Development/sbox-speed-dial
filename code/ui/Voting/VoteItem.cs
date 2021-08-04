@@ -92,6 +92,7 @@ namespace SpeedDial.UI {
 		[ClientRpc]
 		public static void SetVotesForItem(string voteItemID) {
 			var item = VoteItemCollection.items.Find((e) => e.MapInfo.FullIdent.Equals(voteItemID));
+			if(item == null) return;
 			item.votes += 1;
 		}
 
