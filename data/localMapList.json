@@ -1,0 +1,37 @@
+[
+  {
+    "name": "sd_lair",
+    "organization": "eagleone",
+    "roundsPlayed": 10
+  },
+  {
+    "name": "sd_club",
+    "organization": "eagleone",
+    "roundsPlayed": 1000
+  },
+  {
+    "name": "sd_bank",
+    "organization": "eagleone",
+    "roundsPlayed": 727
+  },
+  {
+    "name": "sd_lab",
+    "organization": "gvar",
+    "roundsPlayed": 52
+  },
+  {
+    "name": "sd_office",
+    "organization": "baks",
+    "roundsPlayed": 230292
+  },
+  {
+    "name": "sd_office",
+    "organization": "baks",
+    "roundsPlayed": 230292
+  },
+  {
+    "name": "sd_den",
+    "organization": "eagleone",
+    "roundsPlayed": 1
+  }
+]

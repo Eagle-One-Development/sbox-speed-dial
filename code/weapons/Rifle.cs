@@ -43,7 +43,7 @@ namespace SpeedDial.Weapons {
 
 					ShootEffects();
 					PlaySound(ShootSound);
-					ShootBullet(BulletSpread * (float)((curBurst * 1.5) + 1), BulletForce, BulletDamage, BulletSize);
+					ShootBullet(BulletSpread * (float)((curBurst * 1.5) + 1), BulletForce, BulletDamage, BulletSize, 0);
 					burstTimer = 0;
 				}
 
