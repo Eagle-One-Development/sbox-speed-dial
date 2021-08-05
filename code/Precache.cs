@@ -19,6 +19,12 @@ namespace SpeedDial {
 			Precache.Add("particles/drug_fx/sd_leaf/sd_leaf.vpcf");
 			Precache.Add("particles/drug_fx/sd_ritindi/sd_ritindi.vpcf");
 
+			// drug models
+			Precache.Add("models/drugs/leaf/leaf.vmdl");
+			Precache.Add("models/drugs/ollie/ollie.vmdl");
+			Precache.Add("models/drugs/polvo/polvo.vmdl");
+			Precache.Add("models/drugs/ritindi/ritindi.vmdl");
+
 			// weapon models
 			Precache.Add("models/weapons/rifle/prop_rifle.vmdl");
 			Precache.Add("models/weapons/smg/prop_smg.vmdl");
