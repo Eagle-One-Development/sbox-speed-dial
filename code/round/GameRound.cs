@@ -26,7 +26,7 @@ namespace SpeedDial {
 		}
 
 		protected override void OnStart() {
-			Log.Info("GAME ROUND START");
+			Log.Info("Game Round Started");
 			var players = Client.All;
 			foreach(var p in players.ToArray()) {
 				if(p.Pawn != null) {

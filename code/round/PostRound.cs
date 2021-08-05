@@ -20,7 +20,7 @@ namespace SpeedDial {
 		}
 
 		protected override void OnStart() {
-			Log.Info("POST ROUND START");
+			Log.Info("Post Round Started");
 			var players = Client.All;
 			foreach(var p in players.ToArray()) {
 
@@ -62,11 +62,11 @@ namespace SpeedDial {
 		}
 
 		private static async void SendGameInfo() {
-			Log.Info("Sending Game Info");
+			//Log.Info("Sending Game Info");
 			ScoreMessage sm = new();
 			string[] splitMessage = Global.MapName.Split('.');
-			Log.Info(splitMessage.ToString());
-			Log.Info(splitMessage[0]);
+			//Log.Info(splitMessage.ToString());
+			//Log.Info(splitMessage[0]);
 			sm.mapOrg = splitMessage[0];
 			if(splitMessage.Length > 1)
 				sm.mapName = Global.MapName[(Global.MapName.IndexOf('.') + 1)..];
@@ -83,11 +83,12 @@ namespace SpeedDial {
 					steamid = item.SteamId.ToString()
 				});
 			}
-			Log.Info(sm.ToString());
-
+			//Log.Info(sm.ToString());
+			/*
 			Log.Info(JsonSerializer.Serialize(sm, new() {
 				IncludeFields = true
 			}));
+			*/
 
 			//return; //DEV ONLY
 			if(!client.IsConnected)
@@ -99,7 +100,7 @@ namespace SpeedDial {
 
 
 
-			Log.Info("Sent Round Info");
+			//Log.Info("Sent Round Info");
 
 
 		}

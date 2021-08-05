@@ -22,7 +22,7 @@ namespace SpeedDial.UI {
 
 		[Event.Hotload]
 		private void Init() {
-			Log.Info("initiating");
+			//Log.Info("initiating");
 
 			if(VoteItemCollection is not null) VoteItemCollection.Delete(true);
 			VoteItemCollection = AddChild<VoteItemCollection>();
@@ -57,7 +57,7 @@ namespace SpeedDial.UI {
 		[SDEvent.Voting.Start]
 		private void Open() {
 			SetClass("Active", true);
-			Log.Info("opened");
+			//Log.Info("opened");
 			CharacterSelect.Current.open = true;
 
 			tapeSound = Sound.FromScreen("tape_noise");

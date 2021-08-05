@@ -228,7 +228,7 @@ namespace SpeedDial {
 
 				if((pawn.LastAttacker as SpeedDialPlayer).ActiveChild.ToString() == "sd_bat") {
 					(pawn as SpeedDialPlayer).CauseOfDeath = COD.Melee;
-					Log.Info("AHHH");
+					//("AHHH");
 				}
 			}
 

@@ -36,7 +36,7 @@ namespace SpeedDial.UI {
 			items = new();
 
 			if(Global.IsListenServer && !FetchingItems) {
-				Log.Info("Fetching Map Selection");
+				//Log.Info("Fetching Map Selection");
 				FetchingItems = true;
 
 				/* VoteRound.RefreshMapSelection(FileSystem.Mounted.ReadAllText("/data/localMapList.json"));

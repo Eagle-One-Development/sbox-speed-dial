@@ -139,7 +139,7 @@ namespace SpeedDial.Player {
 		[ServerCmd]
 		public static void SetSetting(bool val) {
 			SpeedDialGame.Instance.SniperCanPenetrate = val;
-			Log.Info(SpeedDialGame.Instance.SniperCanPenetrate);
+			//Log.Info(SpeedDialGame.Instance.SniperCanPenetrate);
 		}
 
 		[ClientRpc]

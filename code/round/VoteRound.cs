@@ -52,7 +52,7 @@ namespace SpeedDial {
 
 		[ClientRpc]
 		public static void RefreshMapSelectionClient(string json) {
-			Log.Info(json);
+			//Log.Info(json);
 			VoteItemCollection.SetDataAndRecreate(json);
 			if(Global.IsListenServer)
 				StartTimer();

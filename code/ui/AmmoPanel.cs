@@ -206,7 +206,7 @@ namespace SpeedDial.UI {
 					if(!dominators[i].target.IsValid()) {
 						dominators[i].DeleteChildren(true);
 						dominators[i].Delete(true);
-						Log.Info("DELETED");
+						//Log.Info("DELETED");
 						dominators.RemoveAt(i);
 						continue;
 					}
