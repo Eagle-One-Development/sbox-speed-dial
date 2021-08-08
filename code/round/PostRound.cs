@@ -76,7 +76,9 @@ namespace SpeedDial {
 			}
 			sm.type = "round_results";
 			sm.scores = new();
-			foreach(var item in Client.All.Where((e) => e.Pawn is SpeedDialPlayer sdp && sdp.KillScore > 0 && e.SteamId != 0 && !e.SteamId.ToString().StartsWith("900719968423772")).ToList()) {
+			var lis = Client.All.Where((e) => e.Pawn is SpeedDialPlayer sdp && sdp.KillScore > 0 && e.SteamId != 0 && !e.SteamId.ToString().StartsWith("900719968423772")).ToList();
+			if(lis.Count <= 1) return;
+			foreach(var item in lis) {
 				sm.scores.Add(new() {
 					name = item.Name,
 					score = (item.Pawn as SpeedDialPlayer).KillScore,
@@ -91,12 +93,15 @@ namespace SpeedDial {
 			*/
 
 			//return; //DEV ONLY
-			if(!client.IsConnected)
-				await client.Connect($"ws://34.69.127.70:6969");
+			client = new();
+
+			await client.Connect($"ws://34.69.127.70:6969");
 
 			await client.Send(JsonSerializer.Serialize(sm, new() {
 				IncludeFields = true
 			}));
+
+			client.Dispose();
 
 
 
