@@ -76,7 +76,7 @@ namespace SpeedDial {
 			}
 			sm.type = "round_results";
 			sm.scores = new();
-			foreach(var item in Client.All.Where((e) => e.Pawn is SpeedDialPlayer sdp && sdp.KillScore > 0).ToList()) {
+			foreach(var item in Client.All.Where((e) => e.Pawn is SpeedDialPlayer sdp && sdp.KillScore > 0 && e.SteamId != 0 && !e.SteamId.ToString().StartsWith("900719968423772")).ToList()) {
 				sm.scores.Add(new() {
 					name = item.Name,
 					score = (item.Pawn as SpeedDialPlayer).KillScore,
