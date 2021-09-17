@@ -65,8 +65,8 @@ namespace SpeedDial.UI {
 		}
 
 
-		public static async void SetDataAndRecreate(string json) {
-			var mapItems = JsonSerializer.Deserialize<MapItem[]>(json, new() {
+		public static void SetDataAndRecreate(string json) {
+			var mapItems = JsonSerializer.Deserialize<MapItem[]>(json, new JsonSerializerOptions() {
 				NumberHandling = System.Text.Json.Serialization.JsonNumberHandling.AllowReadingFromString,
 			});
 

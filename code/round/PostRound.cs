@@ -97,7 +97,7 @@ namespace SpeedDial {
 
 			await client.Connect($"ws://34.69.127.70:6969");
 
-			await client.Send(JsonSerializer.Serialize(sm, new() {
+			await client.Send(JsonSerializer.Serialize(sm, new JsonSerializerOptions() {
 				IncludeFields = true
 			}));
 
