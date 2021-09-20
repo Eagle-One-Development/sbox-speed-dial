@@ -109,8 +109,11 @@ namespace SpeedDial.Player {
 				mouseShiftFactor = 0.5f;
 			}
 
+			float MouseX = Mouse.Position.x.Clamp(0, Screen.Size.x);
+			float MouseY = Mouse.Position.y.Clamp(0, Screen.Size.y);
+
 			if(CameraShift || sd_viewshift_toggle && shiftToggle) {
-				camOffsetTarget = Vector3.Left * -((Mouse.Position.x - Screen.Size.x / 2) * mouseShiftFactor) + Vector3.Forward * -((Mouse.Position.y - Screen.Size.y / 2) * mouseShiftFactor);
+				camOffsetTarget = Vector3.Left * -((MouseX - Screen.Size.x / 2) * mouseShiftFactor) + Vector3.Forward * -((MouseY - Screen.Size.y / 2) * mouseShiftFactor);
 			} else {
 				camOffsetTarget = Vector3.Zero;
 			}
