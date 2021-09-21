@@ -1,0 +1,3564 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "ModelModifierList"
+				children = 
+				[
+					{
+						_class = "ModelModifier_ScaleAndMirror"
+						scale = 100.0
+						mirror_x = false
+						mirror_y = false
+						mirror_z = false
+						flip_bone_forward = false
+						swap_left_and_right_bones = false
+					},
+				]
+			},
+			{
+				_class = "WeightListList"
+				children = 
+				[
+					{
+						_class = "WeightList"
+						name = "upper_body"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "Hips"
+								weight = 0.161943
+							},
+							{
+								bone = "Spine"
+								weight = 0.204276
+							},
+							{
+								bone = "Spine1"
+								weight = 0.344418
+							},
+							{
+								bone = "Spine2"
+								weight = 1.0
+							},
+							{
+								bone = "ball_l"
+								weight = 0.0
+							},
+							{
+								bone = "calf_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_l"
+								weight = 1.0
+							},
+							{
+								bone = "clavicle_r"
+								weight = 1.0
+							},
+							{
+								bone = "foot_L_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_R_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_l"
+								weight = 0.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.0
+							},
+							{
+								bone = "spine_01"
+								weight = 1.0
+							},
+							{
+								bone = "spine_02"
+								weight = 1.0
+							},
+							{
+								bone = "spine_03"
+								weight = 1.0
+							},
+							{
+								bone = "thigh_l"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_l"
+								weight = 1.0
+							},
+							{
+								bone = "upperarm_r"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "upper_body_smg"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "ball_l"
+								weight = 0.0
+							},
+							{
+								bone = "calf_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_l"
+								weight = 0.138182
+							},
+							{
+								bone = "clavicle_r"
+								weight = 0.0
+							},
+							{
+								bone = "foot_L_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_R_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_l"
+								weight = 0.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.0
+							},
+							{
+								bone = "spine_01"
+								weight = 0.0
+							},
+							{
+								bone = "spine_02"
+								weight = 0.010909
+							},
+							{
+								bone = "spine_03"
+								weight = 0.043636
+							},
+							{
+								bone = "thigh_l"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_l"
+								weight = 0.516364
+							},
+							{
+								bone = "upperarm_r"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "clear_weights"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "ball_l"
+								weight = 0.0
+							},
+							{
+								bone = "calf_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_r"
+								weight = 0.0
+							},
+							{
+								bone = "foot_L_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_R_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_l"
+								weight = 0.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.0
+							},
+							{
+								bone = "spine_01"
+								weight = 0.0
+							},
+							{
+								bone = "spine_02"
+								weight = 0.0
+							},
+							{
+								bone = "spine_03"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_l"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_l"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_r"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "lower_body"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "Hips"
+								weight = 0.044534
+							},
+							{
+								bone = "LeftUpLeg"
+								weight = 1.0
+							},
+							{
+								bone = "RightUpLeg"
+								weight = 1.0
+							},
+							{
+								bone = "Spine"
+								weight = 0.125506
+							},
+							{
+								bone = "ball_l"
+								weight = 1.0
+							},
+							{
+								bone = "calf_l"
+								weight = 1.0
+							},
+							{
+								bone = "clavicle_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_r"
+								weight = 0.0
+							},
+							{
+								bone = "foot_L_IK_target"
+								weight = 1.0
+							},
+							{
+								bone = "foot_L_IK_target_end_end"
+								weight = 1.0
+							},
+							{
+								bone = "foot_R_IK_target"
+								weight = 1.0
+							},
+							{
+								bone = "foot_l"
+								weight = 1.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.0
+							},
+							{
+								bone = "spine_01"
+								weight = 0.0
+							},
+							{
+								bone = "spine_02"
+								weight = 0.0
+							},
+							{
+								bone = "spine_03"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_l"
+								weight = 1.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 1.0
+							},
+							{
+								bone = "upperarm_l"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_r"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "spine_motion"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "clavicle_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_r"
+								weight = 0.0
+							},
+							{
+								bone = "neck_01"
+								weight = 0.0
+							},
+							{
+								bone = "spine_01"
+								weight = 0.410909
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "upper_body_attacking"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "spine_01"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+				]
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "MovementSettings"
+						movementsettings = 
+						{
+							name = ""
+							speeds = [  ]
+							runspeed = 320.0
+							walkspeed = 190.0
+							maxSpringTension = 100.0
+							springConstant = 10.0
+							useSmoothPaths = true
+							useMotionDamping = true
+							sharpStartAngle = 180.0
+							m_vTraceScale = [ 1.0, 1.0, 1.0 ]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "Head_LookAt_Chain"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "head"
+									weight = 1.0
+								},
+								{
+									name = "Neck"
+									weight = 0.785
+								},
+							]
+						}
+					},
+					{
+						_class = "Feet"
+						children = 
+						[
+							{
+								_class = "Foot"
+								name = "Foot_Left"
+								anklebone = "LeftFoot"
+								toebone = "LeftToeBase"
+								balloffset = [ -5.400901, -6.72744, -0.458325 ]
+								heeloffset = [ -5.07596, 2.630161, -0.925963 ]
+								autolevel = true
+								traceheight = 40.0
+								traceradius = 6.0
+							},
+							{
+								_class = "Foot"
+								name = "Foot_Right"
+								anklebone = "RightFoot"
+								toebone = "RightToeBase"
+								balloffset = [ 5.045742, 6.002652, 0.280292 ]
+								heeloffset = [ 5.152318, -2.509351, 0.97265 ]
+								autolevel = true
+								traceheight = 15.0
+								traceradius = 2.0
+							},
+						]
+						locktolerance = 0.6
+						heighttolerance = 2.0
+						sanitizetrajectories = true
+					},
+					{
+						_class = "GenericGameData"
+						name = "AO_Proxy_Foot_Left"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "LeftFoot"
+							radius = 2.75591
+							point0 = [ -4.34026, -7.0429, 0.031398 ]
+							point1 = [ -4.17106, 0.555447, 0.205879 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = "AO_Proxy_Foot_Right"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "RightFoot"
+							radius = 2.75816
+							point0 = [ 3.80171, -0.693547, -0.186959 ]
+							point1 = [ 4.44462, 6.89748, -0.442323 ]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "AimAt"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "Spine2"
+									weight = 1.0
+								},
+								{
+									name = "Spine1"
+									weight = 0.75
+								},
+								{
+									name = "Spine"
+									weight = 0.5
+								},
+								{
+									name = "Hips"
+									weight = 0.25
+								},
+							]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "AimChain"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "Spine2"
+									weight = 0.821
+								},
+								{
+									name = "Spine1"
+									weight = 0.446
+								},
+								{
+									name = "Spine"
+									weight = 0.196
+								},
+							]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "HeadAim"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "head"
+									weight = 0.696
+								},
+								{
+									name = "Neck"
+									weight = 0.339
+								},
+							]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "aim_at_weapon"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "Spine2"
+									weight = 1.0
+								},
+							]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "Hips"
+							radius = 6.53773
+							point0 = [ 0.988315, 0.022924, -0.999669 ]
+							point1 = [ 1.01169, -0.022924, 0.999669 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "Spine"
+							radius = 6.94128
+							point0 = [ 5.03811, 2.26818, 0.217871 ]
+							point1 = [ 4.02622, 2.04324, 0.217871 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "Spine2"
+							radius = 5.82718
+							point0 = [ 0.403256, 1.04053, -2.22681 ]
+							point1 = [ 0.398963, 1.05935, 2.19005 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "Neck"
+							radius = 2.0
+							point0 = [ 1.08087, 0.581718, 0.590812 ]
+							point1 = [ -2.16131, 0.581718, 0.590812 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "head"
+							radius = 4.12579
+							point0 = [ 1.97878, -0.384581, 0.302005 ]
+							point1 = [ -0.243847, 0.030181, 0.231402 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "LeftShoulder"
+							radius = 2.83977
+							point0 = [ 6.87264, -0.000039, -2.02162 ]
+							point1 = [ 3.21819, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "LeftArm"
+							radius = 2.98621
+							point0 = [ 11.9448, 0.0, 0.0 ]
+							point1 = [ 1.79468, -0.088019, -1.528 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "LeftForeArm"
+							radius = 2.65503
+							point0 = [ 10.256, 0.753748, 0.138477 ]
+							point1 = [ 1.32938, 0.753748, 0.138477 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "LeftHand"
+							radius = 2.98656
+							point0 = [ 4.82057, 1.33784, 0.0 ]
+							point1 = [ 2.84764, 1.33784, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "RightShoulder"
+							radius = 2.93287
+							point0 = [ -3.65626, 0.0, 0.0 ]
+							point1 = [ -6.45479, 0.000023, 1.39987 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "RightArm"
+							radius = 2.9862
+							point0 = [ -1.53449, 0.075258, 1.30651 ]
+							point1 = [ -11.9448, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "RightForeArm"
+							radius = 2.65503
+							point0 = [ -1.50067, -0.887072, -0.162984 ]
+							point1 = [ -10.1916, -0.887072, -0.162984 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "RightHand"
+							radius = 2.53127
+							point0 = [ 0.0, 0.0, -0.901395 ]
+							point1 = [ -5.25003, 0.0, -0.901395 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "LeftUpLeg"
+							radius = 4.19015
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ -11.4109, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "LeftLeg"
+							radius = 3.95636
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ -15.8254, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "RightUpLeg"
+							radius = 4.19018
+							point0 = [ 12.1993, 0.0, 0.0 ]
+							point1 = [ 0.0, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "RightLeg"
+							radius = 3.95636
+							point0 = [ 15.8255, 0.0, 0.0 ]
+							point1 = [ 0.0, 0.0, 0.0 ]
+						}
+					},
+				]
+			},
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "jack_modelmesh.vmat"
+								to = "models/playermodels/src/textures/jack/jack.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "Head_LookAt_Attachment"
+						parent_bone = "head"
+						relative_origin = [ 1.453108, 1.35191, 5.584012 ]
+						relative_angles = [ -90.0, 90.0, -90.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "forward"
+						parent_bone = ""
+						relative_origin = [ 52.240799, 0.0, 58.811604 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "aim_R"
+						parent_bone = "RightHand"
+						relative_origin = [ -0.428734, 0.80463, 0.194565 ]
+						relative_angles = [ -0.000391, 82.094208, 0.000039 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "pistol_attach"
+						parent_bone = "RightHand"
+						relative_origin = [ -3.893547, -2.058931, 1.475361 ]
+						relative_angles = [ 1.251167, -161.96637, 21.70899 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "smg_attach"
+						parent_bone = "RightHand"
+						relative_origin = [ -4.0756, -1.838148, 0.67173 ]
+						relative_angles = [ 5.955971, -156.901871, 1.629869 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "rifle_attach"
+						parent_bone = "RightHand"
+						relative_origin = [ -2.291302, -1.1572, 0.998192 ]
+						relative_angles = [ 13.363872, -169.675278, -2.20414 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "melee_bat_attach"
+						parent_bone = "LeftHand"
+						relative_origin = [ 2.334858, 1.16357, 1.60859 ]
+						relative_angles = [ -4.407339, -96.651741, -156.617065 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "melee_pan_attach"
+						parent_bone = "LeftHand"
+						relative_origin = [ 2.33486, 1.16357, 1.60859 ]
+						relative_angles = [ -4.40734, -96.651703, -156.617004 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "melee_pipe_attach"
+						parent_bone = "LeftHand"
+						relative_origin = [ 2.33486, 1.16357, 1.60859 ]
+						relative_angles = [ -4.40734, -96.651703, -156.617004 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "head_blood"
+						parent_bone = "head"
+						relative_origin = [ 0.298675, 1.306507, 4.635858 ]
+						relative_angles = [ -67.470764, 69.089035, -59.541164 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "shotgun_attach"
+						parent_bone = "RightHand"
+						relative_origin = [ -3.195538, -1.450809, 1.072334 ]
+						relative_angles = [ 8.24758, -171.074341, 32.05743 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "roomclearer_attachment"
+						parent_bone = "RightHand"
+						relative_origin = [ -4.92599, -0.701643, 1.570538 ]
+						relative_angles = [ 2.36239, -170.263, 14.741102 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+				]
+			},
+			{
+				_class = "HitboxSetList"
+				children = 
+				[
+					{
+						_class = "HitboxSet"
+						name = "default"
+						children = 
+						[
+							{
+								_class = "Hitbox"
+								name = "pelvis"
+								parent_bone = "Hips"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -9.735192, -4.848153, -8.455885 ]
+								hitbox_maxs = [ 4.255459, 5.179291, 8.455879 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "spine_01"
+								parent_bone = "Spine"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -4.561958, -4.878212, -6.540155 ]
+								hitbox_maxs = [ 7.431221, 5.147192, 6.540135 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "spine_02"
+								parent_bone = "Spine1"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -9.402112, -3.746232, -6.981263 ]
+								hitbox_maxs = [ 14.254874, 6.425011, 7.03468 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "spine_03"
+								parent_bone = "Spine2"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -0.5, -2.723645, -3.311396 ]
+								hitbox_maxs = [ 11.141526, 3.380358, 3.311423 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "clavicle_l"
+								parent_bone = "LeftShoulder"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -2.840411, -1.167004, -1.464236 ]
+								hitbox_maxs = [ 6.214491, 5.229228, 1.982976 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "upperarm_l"
+								parent_bone = "LeftArm"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -1.333088, -2.104991, -1.460163 ]
+								hitbox_maxs = [ 11.587278, 1.733938, 2.482166 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "lowerarm_l"
+								parent_bone = "LeftForeArm"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -5.289092, -2.255386, -1.188097 ]
+								hitbox_maxs = [ 12.123621, 2.646874, 2.699146 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "hand_l"
+								parent_bone = "LeftHand"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -0.5, -1.323102, -2.873097 ]
+								hitbox_maxs = [ 5.60118, 2.571623, 2.742524 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "clavicle_r"
+								parent_bone = "RightShoulder"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -9.762604, -5.229218, -3.949471 ]
+								hitbox_maxs = [ 3.613098, 1.167015, 1.464284 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "upperarm_r"
+								parent_bone = "RightArm"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -13.979404, -2.008388, -2.487686 ]
+								hitbox_maxs = [ 2.29068, 1.265958, 0.58197 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "lowerarm_r"
+								parent_bone = "RightForeArm"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -13.166355, -1.187577, -3.595371 ]
+								hitbox_maxs = [ 0.912943, 2.584404, 2.368464 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "hand_r"
+								parent_bone = "RightHand"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -4.82048, -0.935062, -1.828048 ]
+								hitbox_maxs = [ 0.5, 0.5, 0.999062 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "neck_01"
+								parent_bone = "Neck"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -1.966933, -4.169708, -3.311389 ]
+								hitbox_maxs = [ 9.893145, 4.807557, 3.31143 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "thigh_l"
+								parent_bone = "LeftUpLeg"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -25.234251, -4.238742, -4.367587 ]
+								hitbox_maxs = [ 4.370314, 5.611876, 5.451716 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "calf_l"
+								parent_bone = "LeftLeg"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -19.695076, -5.855942, -3.322603 ]
+								hitbox_maxs = [ 6.863595, 4.233788, 4.134234 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "foot_l"
+								parent_bone = "LeftFoot"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -5.649068, -9.68335, -2.849932 ]
+								hitbox_maxs = [ 3.822172, 2.8468, 3.554361 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "thigh_r"
+								parent_bone = "RightUpLeg"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -4.370234, -5.611873, -5.311981 ]
+								hitbox_maxs = [ 22.642679, 4.238739, 4.367569 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "calf_r"
+								parent_bone = "RightLeg"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -4.582476, -3.910362, -3.82079 ]
+								hitbox_maxs = [ 19.14794, 5.067885, 3.235627 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "foot_r"
+								parent_bone = "RightFoot"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -2.089417, -2.736543, -2.800483 ]
+								hitbox_maxs = [ 5.649014, 9.683338, 2.850003 ]
+							},
+						]
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						filename = "models/playermodels/character_jack_2/jack.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "crouching_turn_90_left"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/crouching_turn_90_left.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "crouching_turn_90_right"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/crouching_turn_90_right.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "death_crouching_headshot_front"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/death_crouching_headshot_front.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "death_from_back_headshot"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/death_from_back_headshot.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "death_from_front_headshot"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/death_from_front_headshot.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "death_from_right"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/death_from_right.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "death_from_the_back"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/death_from_the_back.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "death_from_the_front"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/death_from_the_front.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "idle"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/idle.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "idle_aiming"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/idle_aiming.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "idle_crouching"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/idle_crouching.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "idle_crouching_aiming"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/idle_crouching_aiming.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "jump_down"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/jump_down.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "jump_loop"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/jump_loop.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "jump_up"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/jump_up.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "turn_90_left"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/turn_90_left.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "turn_90_right"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/rifle/turn_90_right.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "Folder"
+						name = "walk"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "walk_backward"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/walk_backward.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_backward_left"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/walk_backward_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_backward_right"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/walk_backward_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_crouching_backward"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/walk_crouching_backward.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_crouching_backward_left"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/walk_crouching_backward_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_crouching_backward_right"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/walk_crouching_backward_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_crouching_forward"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/walk_crouching_forward.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_crouching_forward_left"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/walk_crouching_forward_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_crouching_forward_right"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/walk_crouching_forward_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_crouching_left"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/walk_crouching_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_crouching_right"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/walk_crouching_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_forward"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/walk_forward.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_forward_left"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/walk_forward_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_forward_right"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/walk_forward_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_left"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/walk_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_right"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/walk_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "sprint"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "sprint_backward"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/sprint_backward.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "sprint_backward_left"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/sprint_backward_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "sprint_backward_right"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/sprint_backward_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "sprint_forward"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/sprint_forward.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "sprint_forward_left"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/sprint_forward_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "sprint_forward_right"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/sprint_forward_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "sprint_left"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/sprint_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "sprint_right"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/sprint_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "run"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "run_backward"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/run_backward.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "run_backward_left"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/run_backward_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "run_backward_right"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/run_backward_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "run_forward"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/run_forward.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "run_forward_left"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/run_forward_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "run_forward_right"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/run_forward_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "run_left"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/run_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "run_right"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/rifle/run_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "Pistol"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "pistol_idle"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/pistol/pistol_idle.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "pistol_idle_add"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = "upper_body"
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/character_jack_2/pistol/pistol_idle.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								reverse = false
+							},
+							{
+								_class = "Folder"
+								name = "pistol_run"
+								children = 
+								[
+									{
+										_class = "AnimFile"
+										name = "pistol_run_e"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/run_right.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_run_w"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/run_left.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_run_s"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/run_backward.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_run_sw"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/run_backward_left.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_run_se"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/run_backward_right.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_run_n"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/run_forward.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_run_nw"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/run_forward_left.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_run_ne"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/run_forward_right.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+								]
+							},
+							{
+								_class = "Folder"
+								name = "pistol_walk"
+								children = 
+								[
+									{
+										_class = "AnimFile"
+										name = "pistol_walk_s"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/walk_backward.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_walk_sw"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/walk_backward_left.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_walk_se"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/walk_backward_right.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_walk_n"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/walk_forward.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_walk_nw"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/walk_forward_left.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_walk_ne"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/walk_forward_right.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_walk_w"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/walk_left.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_walk_e"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/walk_right.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+								]
+							},
+							{
+								_class = "Folder"
+								name = "pistol_sprint"
+								children = 
+								[
+									{
+										_class = "AnimFile"
+										name = "pistol_sprint_s"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/sprint_backward.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_sprint_sw"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/sprint_backward_left.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_sprint_se"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/sprint_backward_right.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_sprint_n"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/sprint_forward.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_sprint_nw"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/sprint_forward_left.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_sprint_ne"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/sprint_forward_right.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_sprint_w"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/sprint_left.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+									{
+										_class = "AnimFile"
+										name = "pistol_sprint_e"
+										children = 
+										[
+											{
+												_class = "ExtractMotion"
+												extract_tx = true
+												extract_ty = true
+												extract_tz = false
+												extract_rz = false
+												linear = false
+												quadratic = false
+												root_bone_name = "Hips"
+												motion_type = "Uniform"
+											},
+											{
+												_class = "AnimAddLayer"
+												anim_name = "pistol_idle_add"
+											},
+										]
+										activity_name = ""
+										activity_weight = 1
+										weight_list_name = ""
+										fade_in_time = 0.2
+										fade_out_time = 0.2
+										looping = false
+										delta = false
+										worldSpace = false
+										hidden = false
+										anim_markup_ordered = false
+										disable_compression = false
+										source_filename = "models/playermodels/character_jack_2/rifle/sprint_right.fbx"
+										start_frame = -1
+										end_frame = -1
+										framerate = -1.0
+										reverse = false
+									},
+								]
+							},
+						]
+					},
+				]
+				default_root_bone_name = ""
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = "animgraphs/sd_playermodel_jack.vanmgrph"
+	}
+}
