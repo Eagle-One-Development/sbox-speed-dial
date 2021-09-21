@@ -380,6 +380,100 @@
 						master_morph_weight = -1.0
 						morph_weights = [  ]
 					},
+					{
+						_class = "WeightList"
+						name = "upper_body_subtle"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "Hips"
+								weight = 0.5
+							},
+							{
+								bone = "LeftUpLeg"
+								weight = 0.0
+							},
+							{
+								bone = "RightUpLeg"
+								weight = 0.0
+							},
+							{
+								bone = "Spine"
+								weight = 0.5
+							},
+							{
+								bone = "Spine1"
+								weight = 0.5
+							},
+							{
+								bone = "Spine2"
+								weight = 0.5
+							},
+							{
+								bone = "ball_l"
+								weight = 0.0
+							},
+							{
+								bone = "calf_l"
+								weight = 0.0
+							},
+							{
+								bone = "clavicle_l"
+								weight = 1.0
+							},
+							{
+								bone = "clavicle_r"
+								weight = 1.0
+							},
+							{
+								bone = "foot_L_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_R_IK_target"
+								weight = 0.0
+							},
+							{
+								bone = "foot_l"
+								weight = 0.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.0
+							},
+							{
+								bone = "spine_01"
+								weight = 1.0
+							},
+							{
+								bone = "spine_02"
+								weight = 1.0
+							},
+							{
+								bone = "spine_03"
+								weight = 1.0
+							},
+							{
+								bone = "thigh_l"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 0.0
+							},
+							{
+								bone = "upperarm_l"
+								weight = 1.0
+							},
+							{
+								bone = "upperarm_r"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
 				]
 			},
 			{
