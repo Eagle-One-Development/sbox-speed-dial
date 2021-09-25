@@ -8,6 +8,7 @@ using SpeedDial.Meds;
 using System.Threading.Tasks;
 using SpeedDial.GameSound;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace SpeedDial.Player {
 	public enum BotMoveStates {
@@ -16,10 +17,25 @@ namespace SpeedDial.Player {
 		GOTO_MED,
 	}
 
+	public enum BotDifficulties {
+		Easy,
+		Medium,
+		Hard,
+		Impossible
+	}
+
+	public struct BotProperties {
+		public float ShootRange;
+		public float ShootDelay;
+		public float ReactionDelay;
+		public float DropEmptyGunTime;
+	}
+
 	public partial class SpeedDialBotPlayer : SpeedDialPlayer {
 		public bool Debug => SpeedDialGame.BotDebugEnabled;
 
 		BotMoveStates State { get; set; }
+		BotDifficulties Difficulty => SpeedDialGame.BotDifficulty;
 		SpeedDialPlayer ClosestPlayer { get; set; }
 		BaseMedication ClosestPickup { get; set; }
 		BaseSpeedDialWeapon ClosestWeapon { get; set; }
@@ -28,9 +44,59 @@ namespace SpeedDial.Player {
 		float ClosePickupDist { get; set; }
 		float CloseWeaponDist { get; set; }
 
-		bool HasWeapon { get; set; }
+		public static Dictionary<BotDifficulties, BotProperties> Difficulties => new Dictionary<BotDifficulties, BotProperties>() {
+			{
+				BotDifficulties.Easy,
+				new BotProperties() {
+					ShootRange = 250f,
+					ShootDelay = 0.6f,
+					ReactionDelay = 1f,
+					DropEmptyGunTime = 2f,
+				}
+			},
+
+			{
+				BotDifficulties.Medium,
+				new BotProperties() {
+					ShootRange = 350f,
+					ShootDelay = 0.2f,
+					ReactionDelay = 0.5f,
+					DropEmptyGunTime = 0.8f,
+				}
+			},
+
+			{
+				BotDifficulties.Hard,
+				new BotProperties() {
+					ShootRange = 450f,
+					ShootDelay = 0.1f,
+					ReactionDelay = 0.2f,
+					DropEmptyGunTime = 0.4f,
+				}
+			},
+
+			{
+				BotDifficulties.Impossible,
+				new BotProperties() {
+					ShootRange = 750f,
+					ShootDelay = 0f,
+					ReactionDelay = 0f,
+					DropEmptyGunTime = 0f,
+				}
+			},
+		};
+
+		public float ShootRange => Difficulties[Difficulty].ShootRange;
+		public float ShootDelay => Difficulties[Difficulty].ShootDelay;
+		public float ReactionDelay => Difficulties[Difficulty].ReactionDelay;
+		public float DropEmptyGunTime => Difficulties[Difficulty].DropEmptyGunTime;
+
+
+		public TimeSince TimeSinceShoot;
+		public TimeSince TimeSinceSeePlayer;
+		public TimeSince TimeSinceEmptyClip;
+		private bool HasWeapon { get; set; }
 		public bool ShootAtPlayer { get; set; }
-		float ShootRange => 300f;
 
 		public TimeSince TimeSinceUpdate;
 		public float UpdateInterval => 0.5f;
@@ -51,12 +117,14 @@ namespace SpeedDial.Player {
 
 			//Set a default character
 			MedTaken = false;
-			character = SpeedDialGame.Instance.characters[0];
+			character = SpeedDialGame.Instance.characters[Rand.Int(0, SpeedDialGame.Instance.characters.Count - 1)];
 
 			Respawn();
 		}
 
 		public override void Respawn() {
+			character = SpeedDialGame.Instance.characters[Rand.Int(0, SpeedDialGame.Instance.characters.Count - 1)];
+
 			if(character == null) {
 				SetModel("models/playermodels/character_fallback.vmdl");
 			} else {
@@ -212,7 +280,15 @@ namespace SpeedDial.Player {
 
 			if(ClosestPlayer != null && ClosestPlayer.IsValid) {
 				if(ClosePlayerDist <= ShootRange && ClosestPlayer.LifeState == LifeState.Alive) {
-					ShootAtPlayer = true;
+					if (Difficulty == BotDifficulties.Impossible) {
+						ShootAtPlayer = true;
+					} else {
+						if(TimeSinceSeePlayer >= ReactionDelay + 1f)
+							TimeSinceSeePlayer = 0f;
+
+						if(TimeSinceSeePlayer >= ReactionDelay)
+							ShootAtPlayer = true;
+					}
 				} else {
 					ShootAtPlayer = false;
 				}
@@ -417,7 +493,13 @@ namespace SpeedDial.Player {
 		public void HandleGunGrabbingThrowing() {
 			TryGrabWeapon();
 			if(ActiveChild != null && (ActiveChild as BaseSpeedDialWeapon).AmmoClip <= 0) {
-				ThrowWeapon();
+				if (TimeSinceEmptyClip > DropEmptyGunTime + 1f) {
+					TimeSinceEmptyClip = 0f;
+				}
+
+				if (TimeSinceEmptyClip >= DropEmptyGunTime) {
+					ThrowWeapon();
+				}
 			}
 		}
 

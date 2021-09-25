@@ -27,6 +27,9 @@ namespace SpeedDial {
 		[ServerVar("sdial_bot_debug_enable", Help = "Enable Speed Dial Bot Debug mode.")]
 		public static bool BotDebugEnabled { get; set; } = false;
 
+		[ServerVar("sdial_bot_difficulty", Help = "Difficulty of bots.")]
+		public static BotDifficulties BotDifficulty { get; set; } = BotDifficulties.Medium;
+
 		[ServerVar("sdial_score_base", Help = "Set the base value for score calculations.")]
 		public static int ScoreBase { get; set; } = 100;
 
