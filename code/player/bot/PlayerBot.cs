@@ -271,28 +271,10 @@ namespace SpeedDial.Player {
 				HasWeapon = false;
 			}
 
+			// Simulate input
 			var controller = Controller as SpeedDialBotController;
-			//var local = Transform.NormalToLocal(InputVelocity.Normal);
 			controller.Forward = InputVelocity.x;
 			controller.Left = InputVelocity.y;
-
-			if(ClosestPlayer != null && ClosestPlayer.IsValid) {
-				Vector3 dirToClosestPlayer = ClosestPlayer.Position - Position;
-				ClosePlayerDist = dirToClosestPlayer.LengthSquared;
-				ClosePlayerDist = MathF.Sqrt(ClosePlayerDist);
-			}
-
-			if(ClosestWeapon != null && ClosestWeapon.IsValid) {
-				Vector3 dirToClosestWeapon = ClosestWeapon.Position - Position;
-				CloseWeaponDist = dirToClosestWeapon.LengthSquared;
-				CloseWeaponDist = MathF.Sqrt(CloseWeaponDist);
-			}
-
-			if(ClosestPickup != null && ClosestPickup.IsValid) {
-				Vector3 dirToClosestMed = ClosestPickup.Position - Position;
-				ClosePickupDist = dirToClosestMed.LengthSquared;
-				ClosePickupDist = MathF.Sqrt(ClosePickupDist);
-			}
 
 			if(ClosestPlayer != null && ClosestPlayer.IsValid) {
 				if(ClosePlayerDist <= ShootRange && ClosestPlayer.LifeState == LifeState.Alive) {
@@ -341,6 +323,9 @@ namespace SpeedDial.Player {
 			base.FrameSimulate(cl);
 		}
 
+		/// <summary>
+		/// Weigh your options and decide where to go next
+		/// </summary>
 		public void Scores() {
 			float playerScore = 0f;
 			float pickupScore = 0f;
@@ -442,6 +427,10 @@ namespace SpeedDial.Player {
 
 		}
 
+		/// <summary>
+		/// Get the position to go to
+		/// </summary>
+		/// <returns></returns>
 		public Vector3 GetTarget() {
 			var target = Vector3.Zero;
 			if(State == BotMoveStates.GOTO_PLAYER && ClosestPlayer != null && ClosestPlayer.IsValid) {
@@ -519,6 +508,9 @@ namespace SpeedDial.Player {
 			}
 		}
 
+		/// <summary>
+		/// Handles grabbing and throwing weapons
+		/// </summary>
 		public void HandleGunGrabbingThrowing() {
 			TryGrabWeapon();
 			if(ActiveChild != null && (ActiveChild as BaseSpeedDialWeapon).AmmoClip <= 0) {
@@ -575,12 +567,37 @@ namespace SpeedDial.Player {
 			}
 		}
 
+		/// <summary>
+		/// Get the closest player, weapon, and med
+		/// </summary>
 		public void UpdateClosests() {
 			TimeSinceUpdate = 0;
 
 			ClosestPlayer = GetClosestPlayer();
 			ClosestWeapon = GetClosestWeapon();
 			ClosestPickup = GetClosestPickup();
+
+			//
+			// Distances
+			//
+
+			if(ClosestPlayer != null && ClosestPlayer.IsValid) {
+				Vector3 dirToClosestPlayer = ClosestPlayer.Position - Position;
+				ClosePlayerDist = dirToClosestPlayer.LengthSquared;
+				ClosePlayerDist = MathF.Sqrt(ClosePlayerDist);
+			}
+
+			if(ClosestWeapon != null && ClosestWeapon.IsValid) {
+				Vector3 dirToClosestWeapon = ClosestWeapon.Position - Position;
+				CloseWeaponDist = dirToClosestWeapon.LengthSquared;
+				CloseWeaponDist = MathF.Sqrt(CloseWeaponDist);
+			}
+
+			if(ClosestPickup != null && ClosestPickup.IsValid) {
+				Vector3 dirToClosestMed = ClosestPickup.Position - Position;
+				ClosePickupDist = dirToClosestMed.LengthSquared;
+				ClosePickupDist = MathF.Sqrt(ClosePickupDist);
+			}
 		}
 
 		SpeedDialPlayer GetClosestPlayer() {
