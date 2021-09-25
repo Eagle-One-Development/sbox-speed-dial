@@ -5,7 +5,7 @@ using System.Buffers;
 
 public class NavSteer
 {
-	protected NavPath Path { get; private set; }
+	public NavPath Path { get; private set; }
 
 	public NavSteer()
 	{

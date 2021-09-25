@@ -15,13 +15,14 @@ namespace SpeedDial.Player {
 		GOTO_PLAYER,
 		GOTO_GUN,
 		GOTO_MED,
+		WANDER,
 	}
 
 	public enum BotDifficulties {
-		Easy,
-		Medium,
-		Hard,
-		Impossible
+		Easy = 0,
+		Medium = 1,
+		Hard = 2,
+		Impossible = 3,
 	}
 
 	public struct BotProperties {
@@ -29,6 +30,7 @@ namespace SpeedDial.Player {
 		public float ShootDelay;
 		public float ReactionDelay;
 		public float DropEmptyGunTime;
+		public float WanderRange;
 	}
 
 	public partial class SpeedDialBotPlayer : SpeedDialPlayer {
@@ -52,6 +54,7 @@ namespace SpeedDial.Player {
 					ShootDelay = 0.6f,
 					ReactionDelay = 1f,
 					DropEmptyGunTime = 2f,
+					WanderRange = 400f,
 				}
 			},
 
@@ -59,9 +62,10 @@ namespace SpeedDial.Player {
 				BotDifficulties.Medium,
 				new BotProperties() {
 					ShootRange = 350f,
-					ShootDelay = 0.2f,
+					ShootDelay = 0.4f,
 					ReactionDelay = 0.5f,
 					DropEmptyGunTime = 0.8f,
+					WanderRange = 550f,
 				}
 			},
 
@@ -69,9 +73,10 @@ namespace SpeedDial.Player {
 				BotDifficulties.Hard,
 				new BotProperties() {
 					ShootRange = 450f,
-					ShootDelay = 0.1f,
+					ShootDelay = 0.2f,
 					ReactionDelay = 0.2f,
 					DropEmptyGunTime = 0.4f,
+					WanderRange = 700f,
 				}
 			},
 
@@ -82,6 +87,7 @@ namespace SpeedDial.Player {
 					ShootDelay = 0f,
 					ReactionDelay = 0f,
 					DropEmptyGunTime = 0f,
+					WanderRange = float.MaxValue,
 				}
 			},
 		};
@@ -90,6 +96,7 @@ namespace SpeedDial.Player {
 		public float ShootDelay => Difficulties[Difficulty].ShootDelay;
 		public float ReactionDelay => Difficulties[Difficulty].ReactionDelay;
 		public float DropEmptyGunTime => Difficulties[Difficulty].DropEmptyGunTime;
+		public float WanderRange => Difficulties[Difficulty].WanderRange;
 
 
 		public TimeSince TimeSinceShoot;
@@ -101,7 +108,6 @@ namespace SpeedDial.Player {
 		public TimeSince TimeSinceUpdate;
 		public float UpdateInterval => 0.5f;
 
-		NavPath Path = new NavPath();
 		public NavSteer Steer;
 
 		Vector3 InputVelocity;
@@ -242,7 +248,17 @@ namespace SpeedDial.Player {
 
 			if(Steer != null) {
 				Steer.Tick(Position);
-				Steer.Target = GetTarget();
+
+				if(State == BotMoveStates.WANDER) {
+					if(Steer is not Sandbox.Nav.Wander) {
+						Steer = new Sandbox.Nav.Wander();
+					}
+				} else {
+					Steer.Target = GetTarget();
+					if(Steer is Sandbox.Nav.Wander) {
+						Steer = new NavSteer();
+					}
+				}
 
 				if(!Steer.Output.Finished) {
 					InputVelocity = Steer.Output.Direction.Normal;
@@ -363,22 +379,35 @@ namespace SpeedDial.Player {
 				score += MathF.Pow(distT, 2);
 				if(!HasWeapon) {
 					score += 1.2f;
-				} else {
-					score = 0f;
 				}
 				if(ClosestWeapon.AmmoClip <= 0) {
 					score = 0f;
+				}
+				if (HasWeapon && ClosestWeapon.AmmoClip > (ActiveChild as BaseSpeedDialWeapon).AmmoClip) {
+					score += 1.2f;
 				}
 				weaponScore = score;
 			}
 
 			float highestScore = new[] { playerScore, pickupScore, weaponScore }.Max();
 			if(highestScore == playerScore) {
-				State = BotMoveStates.GOTO_PLAYER;
+				if(ClosePlayerDist <= WanderRange) {
+					State = BotMoveStates.GOTO_PLAYER;
+				} else {
+					State = BotMoveStates.WANDER;
+				}
 			} else if(highestScore == pickupScore) {
-				State = BotMoveStates.GOTO_MED;
+				if(ClosePickupDist <= WanderRange) {
+					State = BotMoveStates.GOTO_MED;
+				} else {
+					State = BotMoveStates.WANDER;
+				}
 			} else if(highestScore == weaponScore) {
-				State = BotMoveStates.GOTO_GUN;
+				if(CloseWeaponDist <= WanderRange) {
+					State = BotMoveStates.GOTO_GUN;
+				} else {
+					State = BotMoveStates.WANDER;
+				}
 			}
 
 			if(Debug) {
