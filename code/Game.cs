@@ -29,6 +29,16 @@ namespace SpeedDial {
 
 		[ServerVar("sdial_bot_difficulty", Help = "Difficulty of bots.")]
 		public static BotDifficulties BotDifficulty { get; set; } = BotDifficulties.Medium;
+		[ServerCmd]
+		public static void SetBotDifficulty(BotDifficulties difficulty) {
+			BotDifficulty = difficulty;
+			ConsoleSystem.SetValue("sdial_bot_difficulty", difficulty);
+			//Log.Error(difficulty);
+		}
+		[ServerCmd]
+		public static void AddBot() {
+			ConsoleSystem.Run("bot_add");
+		}
 
 		[ServerVar("sdial_score_base", Help = "Set the base value for score calculations.")]
 		public static int ScoreBase { get; set; } = 100;
