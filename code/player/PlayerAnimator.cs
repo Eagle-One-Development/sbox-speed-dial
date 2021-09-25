@@ -36,7 +36,6 @@ namespace SpeedDial.Player {
 			SetLookAt("lookat_pos", lookPos);
 			SetLookAt("aimat_pos", aimPos);
 
-
 			if(Pawn.ActiveChild is BaseCarriable carry) {
 				carry.SimulateAnimator(this);
 			} else {

@@ -26,9 +26,9 @@ namespace SpeedDial.Player {
 
 		[Net]
 		public bool pickup { get; set; }
-		private Entity pickUpEntity;
+		protected Entity pickUpEntity;
 
-		TimeSince timeSinceDropped;
+		protected TimeSince timeSinceDropped;
 
 		[Net, Local, Predicted]
 		public TimeSince TimeSinceMelee { get; set; }
@@ -66,13 +66,13 @@ namespace SpeedDial.Player {
 		public SoundTrack SoundTrack { get; set; }
 		public bool SoundtrackPlaying { get; set; }
 
-		private bool screenOpen = false;
+		protected bool screenOpen = false;
 
 		[ClientVar]
 		public static bool sd_soundtrack { get; set; } = true;
 
 
-		public void InitialSpawn() {
+		public virtual void InitialSpawn() {
 
 			if(GetClientOwner().SteamId == 76561198000823482) { // bak
 				PlayerColor = new Color32(250, 176, 3);
@@ -305,7 +305,7 @@ namespace SpeedDial.Player {
 		/// <summary>
 		/// Handles Punching
 		/// </summary>
-		async Task HandleMelee() {
+		protected virtual async Task HandleMelee() {
 			if(Input.Pressed(InputButton.Attack1)) {
 				if(TimeSinceMelee > 0.5f) {
 					ResetTimeSinceMelee = true;

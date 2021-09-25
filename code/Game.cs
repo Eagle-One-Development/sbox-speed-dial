@@ -24,6 +24,9 @@ namespace SpeedDial {
 		[ServerVar("sdial_debug_enable", Help = "Enable Speed Dial Debug mode.")]
 		public static bool DebugEnabled { get; set; } = false;
 
+		[ServerVar("sdial_bot_debug_enable", Help = "Enable Speed Dial Bot Debug mode.")]
+		public static bool BotDebugEnabled { get; set; } = false;
+
 		[ServerVar("sdial_score_base", Help = "Set the base value for score calculations.")]
 		public static int ScoreBase { get; set; } = 100;
 
@@ -290,7 +293,7 @@ namespace SpeedDial {
 		public override void ClientJoined(Client client) {
 			base.ClientJoined(client);
 
-			var player = new SpeedDialPlayer();
+			var player = client.IsBot ? new SpeedDialBotPlayer() : new SpeedDialPlayer();
 			client.Pawn = player;
 
 			player.InitialSpawn();
