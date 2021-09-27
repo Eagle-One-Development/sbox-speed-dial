@@ -12,31 +12,18 @@ namespace SpeedDial {
 	public partial class SpeedDialGame : Game {
 
 		public List<BaseSpeedDialCharacter> characters;
-
-		[Net]
-		public BaseRound Round { get; private set; }
-
-		//private BaseRound _lastRound;
-
+		[Net] public BaseRound Round { get; private set; }
 		[ServerVar("sdial_min_players", Help = "The minimum players required to start the game.")]
 		public static int MinPlayers { get; set; } = 1;
-
 		[ServerVar("sdial_debug_enable", Help = "Enable Speed Dial Debug mode.")]
 		public static bool DebugEnabled { get; set; } = false;
-
 		[ServerVar("sdial_score_base", Help = "Set the base value for score calculations.")]
 		public static int ScoreBase { get; set; } = 100;
-
 		[ServerVar("sdial_combo_time", Help = "Set the combo time window in seconds.")]
 		public static float ComboTime { get; set; } = 5f;
-
 		[ServerVar("sdial_debug_infinite_ammo")]
-		[Net]
-		public static bool InfiniteAmmo { get; set; } = false;
-
-		[Net]
-		public string CurrentSoundtrack { get; set; } = "track01";
-
+		[Net] public static bool InfiniteAmmo { get; set; } = false;
+		[Net] public string CurrentSoundtrack { get; set; } = "track01";
 		[Net]
 		public string[] Soundtracks { get; set; } = {
 			"track01",
@@ -44,7 +31,6 @@ namespace SpeedDial {
 			"track03",
 			"track03"
 		};
-
 		[Net] public bool SniperCanPenetrate { get; set; } = false;
 
 		public void PickNewSoundtrack() {
@@ -58,11 +44,9 @@ namespace SpeedDial {
 			UI.KillFeed.Instance?.AddEntry(leftid, left, rightid, right, method, IsDom, IsMult, IsRevenge, cod);
 		}
 
-
 		[ServerCmd]
 		public List<SpeedDialPlayer> SortedPlayerList() {
-
-			return Entity.All.OfType<SpeedDialPlayer>().OrderByDescending(x => x.KillScore).ToList<SpeedDialPlayer>();
+			return All.OfType<SpeedDialPlayer>().OrderByDescending(x => x.KillScore).ToList();
 		}
 
 		public static SpeedDialGame Instance { get; private set; }
@@ -79,8 +63,7 @@ namespace SpeedDial {
 
 			if(IsServer) {
 				Log.Info("[SV] Gamemode created!");
-				new SpeedDialHud();
-
+				_ = new SpeedDialHud();
 			}
 
 			PopulateData();
@@ -88,10 +71,7 @@ namespace SpeedDial {
 			if(IsClient) {
 				Log.Info("[CL] Gamemode created!");
 			}
-
-
 		}
-
 
 		public override void DoPlayerSuicide(Client cl) {
 			if(cl.Pawn.LifeState != LifeState.Alive || (cl.Pawn as SpeedDialPlayer).TimeSinceDied < 2) return;
@@ -103,8 +83,6 @@ namespace SpeedDial {
 
 
 		public override void OnKilled(Client client, Entity pawn) {
-			//base.OnKilled(client, pawn);
-
 			if(pawn is SpeedDialPlayer ply) {
 				if(ply.Inventory.DropActive() is BaseSpeedDialWeapon dropped && dropped != null) {
 					dropped.Position = pawn.EyePos;
@@ -125,8 +103,6 @@ namespace SpeedDial {
 			}
 
 			var attackerClient = pawn.LastAttacker?.GetClientOwner();
-
-
 
 			if(attackerClient == null) {
 				OnKilledMessage(0, "", client.SteamId, client.Name, "died");
@@ -217,10 +193,7 @@ namespace SpeedDial {
 					if(attacker.KillCombo >= 2) {
 						multiKill = true;
 					}
-
 				}
-
-
 			}
 
 			Log.Info($"LAST ATTACKER: {(pawn.LastAttacker as SpeedDialPlayer).ActiveChild}");
@@ -228,10 +201,8 @@ namespace SpeedDial {
 
 				if((pawn.LastAttacker as SpeedDialPlayer).ActiveChild.ToString() == "sd_bat") {
 					(pawn as SpeedDialPlayer).CauseOfDeath = COD.Melee;
-					//("AHHH");
 				}
 			}
-
 
 			if(pawn.LastAttacker != null) {
 
@@ -274,9 +245,6 @@ namespace SpeedDial {
 			}
 
 			ent.Position = owner.EyePos;
-
-
-			//Log.Info( $"ent: {ent}" );
 		}
 
 		private void PopulateData() {
@@ -303,7 +271,7 @@ namespace SpeedDial {
 		}
 		private static async void ReloadSettingsAfterDelay() {
 			await GameTask.NextPhysicsFrame();
-			Settings.SettingsManager.ReloadSettings();
+			SettingsManager.ReloadSettings();
 		}
 
 		public async Task StartTickTimer() {
