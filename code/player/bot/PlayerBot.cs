@@ -243,7 +243,7 @@ namespace SpeedDial.Player {
 		}
 
 		[Event.Tick.Server]
-		public void Tick() {
+		public virtual void Tick() {
 			InputVelocity = 0;
 
 			if(Steer != null) {
@@ -298,17 +298,9 @@ namespace SpeedDial.Player {
 					LookRot = Rotation.Slerp(LookRot, targetRot, Time.Delta * 5f);
 				}
 			} else {
-				if(State == BotMoveStates.GOTO_GUN) {
-					if(ClosestWeapon != null && ClosestWeapon.IsValid) {
-						var targetRot = Rotation.LookAt(ClosestWeapon.Position - Position);
-						LookRot = Rotation.Slerp(LookRot, targetRot, Time.Delta * 5f);
-					}
-				} else if(State == BotMoveStates.GOTO_MED) {
-					if(ClosestPickup != null && ClosestPickup.IsValid) {
-						var targetRot = Rotation.LookAt(ClosestPickup.Position - Position);
-						LookRot = Rotation.Slerp(LookRot, targetRot, Time.Delta * 5f);
-					}
-				}
+				var targetRot = Rotation.LookAt(GetTarget() - Position);
+				targetRot = Rotation.From(0, targetRot.Yaw(), 0);
+				LookRot = Rotation.Slerp(LookRot, targetRot, Time.Delta * 5f);
 			}
 
 			if(TimeSinceUpdate >= UpdateInterval) {
@@ -365,10 +357,10 @@ namespace SpeedDial.Player {
 				if(!HasWeapon) {
 					score += 1.2f;
 				}
-				if(ClosestWeapon.AmmoClip <= 0) {
+				if(ClosestWeapon != null && ClosestWeapon.AmmoClip <= 0) {
 					score = 0f;
 				}
-				if (HasWeapon && ClosestWeapon.AmmoClip > (ActiveChild as BaseSpeedDialWeapon).AmmoClip) {
+				if (HasWeapon && ClosestWeapon != null && ClosestWeapon.AmmoClip > (ActiveChild as BaseSpeedDialWeapon).AmmoClip) {
 					score += 1.2f;
 				}
 				weaponScore = score;
@@ -431,7 +423,7 @@ namespace SpeedDial.Player {
 		/// Get the position to go to
 		/// </summary>
 		/// <returns></returns>
-		public Vector3 GetTarget() {
+		public virtual Vector3 GetTarget() {
 			var target = Vector3.Zero;
 			if(State == BotMoveStates.GOTO_PLAYER && ClosestPlayer != null && ClosestPlayer.IsValid) {
 				if(ActiveChild == null || ActiveChild is BaseballBat) {
