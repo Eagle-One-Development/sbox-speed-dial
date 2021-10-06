@@ -90,7 +90,8 @@ namespace SpeedDial.UI {
 			if(winner is VoteItem vi) {
 				var sound = Sound.FromScreen("fastforward_map_selection");
 				await GameTask.DelayRealtimeSeconds(1.25f);
-				ConsoleSystem.Run($"changelevel {vi.MapInfo.FullIdent}");
+				//ConsoleSystem.Run($"changelevel {vi.MapInfo.FullIdent}");
+				Global.ChangeLevel($"{vi.MapInfo.FullIdent}");
 			} else {
 				var sound = Sound.FromScreen("rewind_map_selection");
 				await GameTask.DelayRealtimeSeconds(1.25f);
