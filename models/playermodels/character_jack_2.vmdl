@@ -502,6 +502,24 @@
 						master_morph_weight = -1.0
 						morph_weights = [  ]
 					},
+					{
+						_class = "WeightList"
+						name = "hips"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "Hips"
+								weight = 1.0
+							},
+							{
+								bone = "Spine"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
 				]
 			},
 			{
@@ -533,12 +551,24 @@
 							bones = 
 							[
 								{
-									name = "head"
+									name = "LeftHand"
 									weight = 1.0
 								},
 								{
-									name = "Neck"
-									weight = 0.785
+									name = "RightHand"
+									weight = 1.0
+								},
+								{
+									name = "Spine2"
+									weight = 0.517
+								},
+								{
+									name = "Spine1"
+									weight = 0.375
+								},
+								{
+									name = "Hips"
+									weight = 0.16
 								},
 							]
 						}
@@ -628,6 +658,7 @@
 					{
 						_class = "LookAtChain"
 						name = "AimChain"
+						disabled = true
 						lookat_chain = 
 						{
 							name = ""
@@ -651,6 +682,7 @@
 					{
 						_class = "LookAtChain"
 						name = "HeadAim"
+						disabled = true
 						lookat_chain = 
 						{
 							name = ""
@@ -670,6 +702,7 @@
 					{
 						_class = "LookAtChain"
 						name = "aim_at_weapon"
+						disabled = true
 						lookat_chain = 
 						{
 							name = ""
@@ -4782,6 +4815,122 @@
 								reverse = false
 							},
 						]
+					},
+					{
+						_class = "AnimFile"
+						name = "lean_matrix"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/test/lean_matrix.dmx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "lean_matrix2"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/test/lean_matrix2.dmx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "lean_matrix3"
+						children = 
+						[
+							{
+								_class = "AnimSubtract"
+								anim_name = "ref"
+								frame = 0
+							},
+						]
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/test/lean_matrix3.dmx"
+						start_frame = -1
+						end_frame = 9
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "ref"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/jack.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "pistol_retract_test"
+						children = 
+						[
+							{
+								_class = "AnimSubtract"
+								anim_name = "pistol_idle"
+								frame = 0
+							},
+						]
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/playermodels/character_jack_2/pistol/pistol_retract_test.fbx"
+						start_frame = -1
+						end_frame = 8
+						framerate = -1.0
+						reverse = false
 					},
 				]
 				default_root_bone_name = ""

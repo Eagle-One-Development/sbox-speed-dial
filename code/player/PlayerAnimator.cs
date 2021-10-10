@@ -72,21 +72,21 @@ namespace SpeedDial.Player {
 			SetParam("walkspeed_scale", 2.0f / 300.0f);
 			// SetParam("runspeed_scale", 2.0f / 300.0f);
 			// SetParam("duckspeed_scale", 2.0f / 300.0f);
-			var groundspeed = Velocity.WithZ( 0 ).Length;
-			SetParam( "move_groundspeed",groundspeed );
+			var groundspeed = Velocity.WithZ(0).Length;
+			SetParam("move_groundspeed", groundspeed);
 			//
 			// Work out our movement relative to our body rotation
 			//
 			// var moveDir = WishVelocity;
 			var dir = Velocity;
-			var forward = 300*idealRotation.Forward.Dot( dir.Normal );
-			var sideward = 300*idealRotation.Right.Dot( dir.Normal );
-			var wishDir = WishVelocity;			
+			var forward = 300 * idealRotation.Forward.Dot(dir.Normal);
+			var sideward = 300 * idealRotation.Right.Dot(dir.Normal);
+			var wishDir = WishVelocity;
 			//
 			// Set our speeds on the animgraph
 			//
 			var speedScale = Pawn.Scale;
-			SetParam("velocity",dir);
+			SetParam("velocity", dir);
 			SetParam("forward", forward);
 			SetParam("sideward", sideward);
 			SetParam("wishspeed", speedScale > 0.0f ? WishVelocity.Length / speedScale : 0.0f);

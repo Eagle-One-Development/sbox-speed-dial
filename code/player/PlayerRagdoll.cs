@@ -17,10 +17,7 @@ namespace SpeedDial.Player {
 			ent.SetInteractsWith(CollisionLayer.WORLD_GEOMETRY);
 			ent.SetInteractsExclude(CollisionLayer.Player | CollisionLayer.Debris);
 
-			ent.SetModel(this.GetModel());
-
-			//.SetBodyGroup(1, BodyGroup);
-			//ent.RenderColor = PlayerColor;
+			ent.SetModel(GetModel());
 
 			ent.CopyBonesFrom(this);
 			ent.TakeDecalsFrom(this);

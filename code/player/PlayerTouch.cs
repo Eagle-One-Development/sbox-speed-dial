@@ -49,7 +49,6 @@ namespace SpeedDial.Player {
 					} else {
 						//Since Leaf lets you take an extra hit we don't need to do any kind of effect over time so we can just set the health to 200
 						Health = 500f;
-
 					}
 
 					DrugParticles = Particles.Create(drug.ParticleName);
@@ -72,7 +71,6 @@ namespace SpeedDial.Player {
 			if(p == Local.Pawn) {
 				DrugBump(s, f, true);
 			}
-
 		}
 
 		public override void Touch(Entity other) {

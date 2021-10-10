@@ -56,37 +56,19 @@ namespace SpeedDial.Player {
 		}
 
 		public Particles DrugParticles { get; set; }
-
-		[Net]
-		public BaseSpeedDialCharacter character { get; set; }
-
-		[Net, Local, Predicted]
-		public bool Frozen { get; set; } = false; // sorry for naming differences
-
+		[Net] public BaseSpeedDialCharacter character { get; set; }
+		[Net, Local, Predicted] public bool Frozen { get; set; } = false; // sorry for naming differences
 		public SoundTrack SoundTrack { get; set; }
 		public bool SoundtrackPlaying { get; set; }
 
 		protected bool screenOpen = false;
+		[ClientVar] public static bool sd_soundtrack { get; set; } = true;
 
-		[ClientVar]
-		public static bool sd_soundtrack { get; set; } = true;
-
+		public SpeedDialPlayer() {
+			Inventory = new SpeedDialInventory(this);
+		}
 
 		public virtual void InitialSpawn() {
-
-			if(GetClientOwner().SteamId == 76561198000823482) { // bak
-				PlayerColor = new Color32(250, 176, 3);
-			} else if(GetClientOwner().SteamId == 76561198203314521) { // gurke
-				PlayerColor = new Color32(70, 0, 70);
-			} else if(GetClientOwner().SteamId == 76561198095231052) { // generic
-				PlayerColor = new Color32(27, 49, 63);
-			} else if(GetClientOwner().SteamId == 76561198257053769) { // whimsy
-				PlayerColor = Color.Cyan;
-			} else {
-				PlayerColor = Color.Random;
-			}
-
-			BodyGroup = Rand.Int(0, 9);
 
 			Controller = new SpeedDialController();
 			Camera = new SpeedDialCamera();
@@ -95,8 +77,6 @@ namespace SpeedDial.Player {
 			MedTaken = false;
 			character = SpeedDialGame.Instance.characters[0];
 
-
-			//PlayUISound("track01");
 			SpeedDialGame.Instance.Round?.OnPlayerSpawn(this);
 
 			if(SpeedDialGame.Instance.Round is PreRound) {
@@ -104,13 +84,9 @@ namespace SpeedDial.Player {
 				Frozen = true;
 				StopSoundtrack(To.Single(this), true);
 				PlaySoundtrack(To.Single(this));
-
 			}
 
-
 			Respawn();
-
-			//PlaySoundtrack(To.Single(this), "track01");
 		}
 
 		private bool GetMusicBool() {
@@ -119,27 +95,25 @@ namespace SpeedDial.Player {
 			}
 			return false;
 		}
+
 		public void onSettingChange() {
 			if(!IsClient) return;
-			//Log.Info($"{Local.DisplayName} Music Changed");
 			if(Global.IsListenServer)
 				if(Settings.SettingsManager.GetSetting("Sniper Wallbang").TryGetBool(out bool? res)) {
 					SetSetting(res.Value);
 				}
 			if(!GetMusicBool()) {
-
 				SoundTrack?.Stop();
 				SoundtrackPlaying = false;
 				return;
 			}
 			if(!SoundtrackPlaying && SpeedDialGame.Instance is not null)
 				_ = PlaySoundtrackAsync(SpeedDialGame.Instance.CurrentSoundtrack, 2.5f);
-
 		}
+
 		[ServerCmd]
 		public static void SetSetting(bool val) {
 			SpeedDialGame.Instance.SniperCanPenetrate = val;
-			//Log.Info(SpeedDialGame.Instance.SniperCanPenetrate);
 		}
 
 		[ClientRpc]
@@ -201,12 +175,6 @@ namespace SpeedDial.Player {
 				SetModel(character.Model);
 			}
 
-			SetBodyGroup(0, BodyGroup);
-
-			RenderColor = Color.White;
-
-
-
 			(Camera as SpeedDialCamera).Freeze = false;
 			(Controller as SpeedDialController).Freeze = false;
 			Animator = new PlayerAnimator();
@@ -232,8 +200,6 @@ namespace SpeedDial.Player {
 			CreateHull();
 			ResetInterpolation();
 			SpeedDialGame.MoveToSpawn(this);
-
-
 		}
 
 		/// <summary>
@@ -252,7 +218,6 @@ namespace SpeedDial.Player {
 				SetModel(character.Model);
 			}
 		}
-
 
 		[ClientRpc]
 		public void SetPlayerBodyGroup(int group, int value) {
@@ -325,8 +290,6 @@ namespace SpeedDial.Player {
 					}
 
 					SetAnimBool("b_attack", true);
-
-					//DebugOverlay.Line(EyePos + Vector3.Down * 20, tr.EndPos, Color.White, 1, false);
 
 					if(!IsServer) return;
 					if(!tr.Entity.IsValid()) return;
@@ -419,14 +382,13 @@ namespace SpeedDial.Player {
 				}
 			}
 
-			SetAnimBool("b_polvo", MedTaken && CurrentDrug == Meds.DrugType.Polvo);
+			SetAnimBool("b_polvo", MedTaken && CurrentDrug == DrugType.Polvo);
 
 			if(Input.Pressed(InputButton.Attack2)) {
 				var dropped = Inventory.DropActive();
 				if(dropped != null) {
 					ResetInterpolation();
 					dropped.Position = EyePos;
-					//dropped.Rotation = Rotation.Identity;
 					if(dropped.PhysicsGroup != null) {
 						if(dropped is BaseSpeedDialWeapon wep) {
 							wep.ApplyThrowVelocity(EyeRot.Forward);
