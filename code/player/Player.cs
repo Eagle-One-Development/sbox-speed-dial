@@ -51,10 +51,6 @@ namespace SpeedDial.Player {
 		[Net]
 		public DrugType CurrentDrug { get; set; }
 
-		public SpeedDialPlayer() {
-			Inventory = new SpeedDialInventory(this);
-		}
-
 		public Particles DrugParticles { get; set; }
 		[Net] public BaseSpeedDialCharacter character { get; set; }
 		[Net, Local, Predicted] public bool Frozen { get; set; } = false; // sorry for naming differences
