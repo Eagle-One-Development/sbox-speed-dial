@@ -17,6 +17,23 @@ namespace SpeedDial {
 		public static int MinPlayers { get; set; } = 1;
 		[ServerVar("sdial_debug_enable", Help = "Enable Speed Dial Debug mode.")]
 		public static bool DebugEnabled { get; set; } = false;
+
+		[ServerVar("sdial_bot_debug_enable", Help = "Enable Speed Dial Bot Debug mode.")]
+		public static bool BotDebugEnabled { get; set; } = false;
+
+		[ServerVar("sdial_bot_difficulty", Help = "Difficulty of bots.")]
+		public static BotDifficulties BotDifficulty { get; set; } = BotDifficulties.Medium;
+		[ServerCmd]
+		public static void SetBotDifficulty(BotDifficulties difficulty) {
+			BotDifficulty = difficulty;
+			ConsoleSystem.SetValue("sdial_bot_difficulty", difficulty);
+			//Log.Error(difficulty);
+		}
+		[ServerCmd]
+		public static void AddBot() {
+			ConsoleSystem.Run("bot_add");
+		}
+
 		[ServerVar("sdial_score_base", Help = "Set the base value for score calculations.")]
 		public static int ScoreBase { get; set; } = 100;
 		[ServerVar("sdial_combo_time", Help = "Set the combo time window in seconds.")]
@@ -258,7 +275,7 @@ namespace SpeedDial {
 		public override void ClientJoined(Client client) {
 			base.ClientJoined(client);
 
-			var player = new SpeedDialPlayer();
+			var player = client.IsBot ? new SpeedDialBotPlayer() : new SpeedDialPlayer();
 			client.Pawn = player;
 
 			player.InitialSpawn();

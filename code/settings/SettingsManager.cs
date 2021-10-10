@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sandbox;
+using SpeedDial.Player;
 
 namespace SpeedDial.Settings {
 	public static class SettingsManager {
 
 		private const string SettingsPath = "speed-dial";
 		// the Setting Version. Should be changed when adding new Settings. so it updates on downloaded versions too.
-		private const string Version = "2";
+		private const string Version = "3";
 
 		public static SettingInstance Settings { get; set; }
 		public static Action SettingsChanged;
@@ -33,6 +34,7 @@ namespace SpeedDial.Settings {
 			if(Settings == null) Settings = new();
 			Settings.Version = Version;
 			Settings.SettingsItems = new();
+			SetSetting("Bot Difficulty", BotDifficulties.Medium, true);
 			SetSetting("Sniper Wallbang", true, true);
 			SetSetting("Kill Feed", true);
 			SetSetting("Music On", true);

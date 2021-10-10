@@ -91,7 +91,7 @@ namespace SpeedDial.Weapons {
 		public void ApplyThrowVelocity(Vector3 rot) {
 			PhysicsBody.Velocity = Velocity + rot * 500;
 			PhysicsBody.AngularVelocity = new Vector3(0, 0, 100f);
-			PhysicsBody.GravityScale = 0.0f;
+			PhysicsBody.GravityScale = 1.0f;
 			_ = SetGravity();
 		}
 
@@ -104,8 +104,8 @@ namespace SpeedDial.Weapons {
 
 		async Task SetGravity() {
 			await GameTask.DelaySeconds(0.2f);
-			if(PhysicsBody?.IsValid() ?? false)
-				PhysicsBody.GravityScale = 1.0f;
+			//if(PhysicsBody?.IsValid() ?? false)
+				//PhysicsBody.GravityScale = 1.0f;
 		}
 
 		public override void SimulateAnimator(PawnAnimator anim) {
@@ -134,7 +134,11 @@ namespace SpeedDial.Weapons {
 		}
 
 		public virtual bool CanPrimaryAttack() {
-			if(!Owner.IsValid() || (Automatic && !Input.Down(InputButton.Attack1)) || (!Automatic && !Input.Pressed(InputButton.Attack1))) return false;
+			if (Owner is not SpeedDialBotPlayer) {
+				if(!Owner.IsValid() || (Automatic && !Input.Down(InputButton.Attack1)) || (!Automatic && !Input.Pressed(InputButton.Attack1))) return false;
+			} else {
+				if(!Owner.IsValid() || (Automatic && !(Owner as SpeedDialBotPlayer).ShootAtPlayer) || (!Automatic && !(Owner as SpeedDialBotPlayer).ShootAtPlayer) || (Owner as SpeedDialBotPlayer).TimeSinceShoot < (Owner as SpeedDialBotPlayer).ShootDelay) return false;
+			}
 
 			var rate = PrimaryRate;
 			if(rate <= 0) return true;
@@ -144,6 +148,9 @@ namespace SpeedDial.Weapons {
 
 		public virtual void AttackPrimary(bool overrideBullet = false, bool overrideShootEffects = false) {
 			TimeSincePrimaryAttack = 0;
+			if (Owner is SpeedDialBotPlayer bot) {
+				bot.TimeSinceShoot = 0f;
+			}
 
 			if(!overrideBullet) {
 				if(!TakeAmmo(AmmoPerShot)) {

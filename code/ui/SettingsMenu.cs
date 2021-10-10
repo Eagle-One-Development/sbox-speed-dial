@@ -13,7 +13,7 @@ namespace SpeedDial.UI {
 
 		public SettingsMenu() {
 
-			StyleSheet.Load("/ui/SettingsMenu.scss");
+
 		}
 		public override void OnHotloaded() {
 			base.OnHotloaded();
@@ -21,9 +21,22 @@ namespace SpeedDial.UI {
 		}
 		public void ReloadSettings() {
 			DeleteChildren(true);
+			FindRootPanel().StyleSheet.Load("/ui/SettingsMenu.scss");
 			var label = AddChild<Label>("SettingsText");
 			label.Text = "Settings";
 			if(SettingsManager.Settings is null) SettingsManager.ReloadSettings();
+			if(Global.IsListenServer) {
+				Panel sp = new();
+				sp.AddClass("SettingItem");
+				sp.Add.Label("Host only", "serveronly");
+				sp.Add.Label("Add Bot", "SettingItemLabel");
+
+				sp.Add.Button("Add New Bot", "botbutton", () => {
+					SpeedDialGame.AddBot();
+				});
+
+				AddChild(sp);
+			}
 			foreach(var item in SettingsManager.Settings.SettingsItems) {
 				if(!Global.IsListenServer && item.Value.ServerOnly) continue;
 				SettingsPanel sp = new();
@@ -34,6 +47,13 @@ namespace SpeedDial.UI {
 
 			}
 		}
+		[Event("SDEvents.Settings.Changed")]
+		public void OnSettingChanged() {
+			if(Local.Client.IsListenServerHost && SettingsManager.GetSetting("Bot Difficulty").TryGetInt(out int? val)) {
+				SpeedDialGame.SetBotDifficulty((BotDifficulties)val.Value);
+			}
+		}
+
 
 	}
 	public class SettingsPanel : Panel {
@@ -42,7 +62,8 @@ namespace SpeedDial.UI {
 			Float,
 			Int,
 			Bool,
-			String
+			String,
+			Enum
 		}
 		public delegate PanelType GetPanelType();
 
@@ -70,6 +91,12 @@ namespace SpeedDial.UI {
 				() => {
 					return PanelType.String;
 				}
+			},
+			{
+				typeof(Enum),
+				() => {
+					return PanelType.Enum;
+				}
 			}
 		};
 
@@ -82,11 +109,16 @@ namespace SpeedDial.UI {
 		Checkbox checkbox;
 		TextEntry textEntry;
 
+		DropDown dropDown;
+
 		public void init(SettingsItem item) {
 			SettingsItem = item;
 			Type t = Type.GetType(item.TypeofValue);
 			//Log.Info(t.ToString());
-			ownPanelType = TypeDictionary[t]();
+			if(t.IsEnum)
+				ownPanelType = PanelType.Enum;
+			else
+				ownPanelType = TypeDictionary[t]();
 			settingLabel = AddChild<Label>("SettingItemLabel");
 			settingLabel.SetText(item.PropertyName);
 			switch(ownPanelType) {
@@ -98,6 +130,9 @@ namespace SpeedDial.UI {
 					break;
 				case PanelType.String:
 					textEntry = AddChild<TextEntry>("string");
+					break;
+				case PanelType.Enum:
+					dropDown = AddChild<DropDown>("dropdown");
 					break;
 				default:
 					break;
@@ -112,7 +147,18 @@ namespace SpeedDial.UI {
 			if(checkbox is not null) {
 				item.TryGetBool(out bool? res);
 				checkbox.Checked = res.Value;
-				AddEventListener("onchange", (v) => onChanged(v));
+				checkbox.AddEventListener("onchange", (v) => onChanged(v));
+			}
+			if(dropDown is not null && item.TryGetInt(out int? val)) {
+
+				string[] array = t.GetEnumNames();
+				for(int i = 0; i < array.Length; i++) {
+					string titles = array[i];
+					dropDown.Options.Add(new(titles, i));
+				}
+				dropDown.Selected = dropDown.Options[val.Value];
+
+				dropDown.AddEventListener("value.changed", (v) => onChanged(v));
 			}
 		}
 		public override void Tick() {
@@ -121,6 +167,7 @@ namespace SpeedDial.UI {
 		}
 
 		private void onChanged(PanelEvent value) {
+			//Log.Error(value.Value);
 			if(value.Value != null) SettingsItem.SettingValue = value.Value;
 		}
 	}

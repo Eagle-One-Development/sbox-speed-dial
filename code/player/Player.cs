@@ -12,31 +12,59 @@ using System.Linq;
 namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer : Sandbox.Player {
 
-		[Net, Local] public TimeSince TimeSinceDied { get; set; } = 0;
-		[Net, Local] public float RespawnTime { get; set; } = 1f;
-		[Net] public bool pickup { get; set; }
-		private Entity pickUpEntity;
-		TimeSince timeSinceDropped;
-		[Net, Local, Predicted] public TimeSince TimeSinceMelee { get; set; }
-		[Net, Local] public bool ResetTimeSinceMelee { get; set; } = false;
-		[Net, Local, Predicted] public TimeSince TimeSinceMedTaken { get; set; }
-		[Net, Local] public bool ResetTimeSinceMedTaken { get; set; }
-		[Net] public bool MedTaken { get; set; }
-		[Net] public float MedDuration { get; set; }
-		[Net] public DrugType CurrentDrug { get; set; }
+		[Net, Local]
+		public TimeSince TimeSinceDied { get; set; } = 0;
+
+		[Net, Local]
+		public float RespawnTime { get; set; } = 1f;
+
+		[Net]
+		public Color32 PlayerColor { get; set; }
+
+		[Net]
+		public int BodyGroup { get; set; }
+
+		[Net]
+		public bool pickup { get; set; }
+		protected Entity pickUpEntity;
+
+		protected TimeSince timeSinceDropped;
+
+		[Net, Local, Predicted]
+		public TimeSince TimeSinceMelee { get; set; }
+
+		[Net, Local]
+		public bool ResetTimeSinceMelee { get; set; } = false;
+
+		[Net, Local, Predicted]
+		public TimeSince TimeSinceMedTaken { get; set; }
+
+		[Net, Local]
+		public bool ResetTimeSinceMedTaken { get; set; }
+
+		[Net]
+		public bool MedTaken { get; set; }
+
+		[Net]
+		public float MedDuration { get; set; }
+
+		[Net]
+		public DrugType CurrentDrug { get; set; }
+
 		public Particles DrugParticles { get; set; }
 		[Net] public BaseSpeedDialCharacter character { get; set; }
 		[Net, Local, Predicted] public bool Frozen { get; set; } = false; // sorry for naming differences
 		public SoundTrack SoundTrack { get; set; }
 		public bool SoundtrackPlaying { get; set; }
-		private bool screenOpen = false;
+
+		protected bool screenOpen = false;
 		[ClientVar] public static bool sd_soundtrack { get; set; } = true;
 
 		public SpeedDialPlayer() {
 			Inventory = new SpeedDialInventory(this);
 		}
 
-		public void InitialSpawn() {
+		public virtual void InitialSpawn() {
 
 			Controller = new SpeedDialController();
 			Camera = new SpeedDialCamera();
@@ -238,7 +266,7 @@ namespace SpeedDial.Player {
 		/// <summary>
 		/// Handles Punching
 		/// </summary>
-		async Task HandleMelee() {
+		protected virtual async Task HandleMelee() {
 			if(Input.Pressed(InputButton.Attack1)) {
 				if(TimeSinceMelee > 0.5f) {
 					ResetTimeSinceMelee = true;

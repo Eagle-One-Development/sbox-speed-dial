@@ -120,6 +120,7 @@ namespace SpeedDial.Player {
 			//
 			// Work out wish velocity.. just take input, rotate it to view, clamp to -1, 1
 			//
+
 			WishVelocity = new Vector3(Input.Forward, Input.Left, 0);
 			var inSpeed = WishVelocity.Length.Clamp(0, 1);
 
@@ -167,7 +168,7 @@ namespace SpeedDial.Player {
 
 		}
 
-		void WalkMove() {
+		protected void WalkMove() {
 			var wishdir = WishVelocity.Normal;
 			var wishspeed = WishVelocity.Length;
 
@@ -346,7 +347,7 @@ namespace SpeedDial.Player {
 			Velocity = mover.Velocity;
 		}
 
-		void CategorizePosition(bool bStayOnGround) {
+		protected void CategorizePosition(bool bStayOnGround) {
 			SurfaceFriction = 1.0f;
 
 			// Doing this before we move may introduce a potential latency in water detection, but
@@ -462,12 +463,12 @@ namespace SpeedDial.Player {
 			Position = trace.EndPos;
 		}
 
-		void RestoreGroundPos() {
+		protected void RestoreGroundPos() {
 			if(GroundEntity == null || GroundEntity.IsWorld)
 				return;
 		}
 
-		void SaveGroundPos() {
+		protected void SaveGroundPos() {
 			if(GroundEntity == null || GroundEntity.IsWorld)
 				return;
 		}
