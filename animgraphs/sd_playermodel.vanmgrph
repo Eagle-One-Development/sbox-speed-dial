@@ -268,6 +268,20 @@
 				m_bPredicted = false
 				m_bDefaultValue = false
 			},
+			{
+				_class = "CBoolAnimParameter"
+				m_name = "b_cancel_slide"
+				m_id = 
+				{
+					m_id = 667418759
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = false
+				m_bUseMostRecentValue = false
+				m_bAutoReset = true
+				m_bPredicted = false
+				m_bDefaultValue = false
+			},
 		]
 	}
 	m_pTagManager = 
@@ -1098,6 +1112,53 @@
 		{
 			key = 
 			{
+				m_id = 169578208
+			}
+			value = 
+			{
+				_class = "CChoiceAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ 4160.0, 3376.0 ]
+				m_nNodeID = 
+				{
+					m_id = 169578208
+				}
+				m_networkMode = "ClientPredicted"
+				m_sNote = ""
+				m_children = 
+				[
+					{
+						m_nodeID = 
+						{
+							m_id = 924080707
+						}
+						m_name = ""
+						m_weight = 0.0
+						m_blendTime = 0.2
+					},
+					{
+						m_nodeID = 
+						{
+							m_id = 732594709
+						}
+						m_name = ""
+						m_weight = 0.0
+						m_blendTime = 0.2
+					},
+				]
+				m_seed = 996307753
+				m_choiceMethod = "WeightedRandom"
+				m_choiceChangeMethod = "OnReset"
+				m_blendMethod = "SingleBlendTime"
+				m_blendTime = 0.2
+				m_bCrossFade = false
+				m_bResetChosen = true
+				m_bDontResetSameSelection = false
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 193223437
 			}
 			value = 
@@ -1254,7 +1315,7 @@
 			{
 				_class = "CLookAtAnimNode"
 				m_sName = "aim_at_weapon"
-				m_vecPosition = [ 4560.0, 3152.0 ]
+				m_vecPosition = [ 4960.0, 3152.0 ]
 				m_nNodeID = 
 				{
 					m_id = 533235364
@@ -1601,6 +1662,28 @@
 		{
 			key = 
 			{
+				m_id = 732594709
+			}
+			value = 
+			{
+				_class = "CSequenceAnimNode"
+				m_sName = "Unnamed"
+				m_vecPosition = [ 3904.0, 3456.0 ]
+				m_nNodeID = 
+				{
+					m_id = 732594709
+				}
+				m_networkMode = "ClientPredicted"
+				m_sNote = ""
+				m_tagSpans = [  ]
+				m_sequenceName = "running_dive"
+				m_playbackSpeed = 1.0
+				m_bLoop = false
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 822781780
 			}
 			value = 
@@ -1651,7 +1734,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 3984.0, 3408.0 ]
+				m_vecPosition = [ 3904.0, 3376.0 ]
 				m_nNodeID = 
 				{
 					m_id = 924080707
@@ -2544,7 +2627,7 @@
 			{
 				_class = "CRootAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 5072.0, 3152.0 ]
+				m_vecPosition = [ 5488.0, 3152.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1144694180
@@ -2639,7 +2722,7 @@
 			{
 				_class = "CLookAtAnimNode"
 				m_sName = "aim_at_weapon_test"
-				m_vecPosition = [ 4352.0, 3152.0 ]
+				m_vecPosition = [ 4656.0, 3152.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1227349843
@@ -3886,7 +3969,7 @@
 			{
 				_class = "CStateMachineAnimNode"
 				m_sName = "activities"
-				m_vecPosition = [ 4368.0, 3280.0 ]
+				m_vecPosition = [ 4416.0, 3152.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1579682454
@@ -3983,13 +4066,47 @@
 								m_bForceFootPlant = false
 								m_bDisabled = false
 							},
+							{
+								_class = "CAnimStateTransition"
+								m_conditions = 
+								[
+									{
+										_class = "CParameterAnimCondition"
+										m_comparisonOp = 0
+										m_paramID = 
+										{
+											m_id = 667418759
+										}
+										m_comparisonValue = 
+										{
+											m_nType = 1
+											m_data = true
+										}
+									},
+								]
+								m_blendDuration = 0.2
+								m_destState = 
+								{
+									m_id = 1967280173
+								}
+								m_bReset = true
+								m_resetCycleOption = "Beginning"
+								m_flFixedCycleValue = 0.0
+								m_blendCurve = 
+								{
+									m_vControlPoint1 = [ 0.5, 0.0 ]
+									m_vControlPoint2 = [ 0.5, 1.0 ]
+								}
+								m_bForceFootPlant = false
+								m_bDisabled = false
+							},
 						]
 						m_tags = [  ]
 						m_tagBehaviors = [  ]
 						m_name = "slide"
 						m_childNodeID = 
 						{
-							m_id = 924080707
+							m_id = 169578208
 						}
 						m_stateID = 
 						{
@@ -4238,7 +4355,7 @@
 			{
 				_class = "CLookAtAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 4848.0, 3152.0 ]
+				m_vecPosition = [ 5200.0, 3152.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1853237884
