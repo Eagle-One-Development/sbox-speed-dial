@@ -29,8 +29,8 @@ namespace SpeedDial {
 					sp.KillScore = 0;
 					sp.maxCombo = 0;
 					sp.KillCombo = 0;
-					sp.Client.SetScore("score", 0);
-					sp.Client.SetScore("maxcombo", 0);
+					sp.Client.SetValue("score", 0);
+					sp.Client.SetValue("maxcombo", 0);
 				}
 			}
 		}

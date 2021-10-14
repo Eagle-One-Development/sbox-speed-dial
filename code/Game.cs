@@ -202,7 +202,7 @@ namespace SpeedDial {
 					Log.Info($"{attackerClient.Name} killed {client.Name}");
 
 					attacker.KillScore += ScoreBase + (ScoreBase * attacker.KillCombo);
-					attacker.Client.SetScore("score", attacker.KillScore);
+					attacker.Client.SetValue("score", attacker.KillScore);
 					//attacker.KillCombo++;
 
 					attacker.TimeSinceMurdered = 0;
