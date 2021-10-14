@@ -15,9 +15,6 @@ namespace SpeedDial {
 		[Net] public BaseRound Round { get; private set; }
 		[ServerVar("sdial_min_players", Help = "The minimum players required to start the game.")]
 		public static int MinPlayers { get; set; } = 1;
-		[ServerVar("sdial_debug_enable", Help = "Enable Speed Dial Debug mode.")]
-		public static bool DebugEnabled { get; set; } = false;
-
 		[ServerVar("sdial_bot_debug_enable", Help = "Enable Speed Dial Bot Debug mode.")]
 		public static bool BotDebugEnabled { get; set; } = false;
 
@@ -38,8 +35,6 @@ namespace SpeedDial {
 		public static int ScoreBase { get; set; } = 100;
 		[ServerVar("sdial_combo_time", Help = "Set the combo time window in seconds.")]
 		public static float ComboTime { get; set; } = 5f;
-		[ServerVar("sdial_debug_infinite_ammo")]
-		[Net] public static bool InfiniteAmmo { get; set; } = false;
 		[Net] public string CurrentSoundtrack { get; set; } = "track01";
 		[Net]
 		public string[] Soundtracks { get; set; } = {

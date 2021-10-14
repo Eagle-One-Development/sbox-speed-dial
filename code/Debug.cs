@@ -6,6 +6,9 @@ namespace SpeedDial {
 		[ConVar.Replicated("debug_enable")]
 		public static bool Enabled { get; set; }
 
+		[ConVar.Replicated("sdial_debug_infinite_ammo")]
+		public static bool InfiniteAmmo { get; set; }
+
 		public static void Log(object obj) {
 			if(!Debug.Enabled) return;
 

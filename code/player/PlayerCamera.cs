@@ -62,9 +62,7 @@ namespace SpeedDial.Player {
 
 			// aim assist when pointing on a player
 			if(targetTrace.Hit && targetTrace.Entity is SpeedDialPlayer) {
-				if(SpeedDialGame.DebugEnabled) {
-					DebugOverlay.Line(pawn.EyePos, targetTrace.Entity.EyePos + Vector3.Down * 20, Color.Red, 0, true);
-				}
+				Debug.Line(pawn.EyePos, targetTrace.Entity.EyePos + Vector3.Down * 20, Color.Red, 0, true);
 				angles = (targetTrace.Entity.EyePos + Vector3.Down * 20 - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
 			} else {
 				angles = (HitPosition - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
@@ -124,7 +122,7 @@ namespace SpeedDial.Player {
 
 
 			// debug stuff for aim location
-			if(SpeedDialGame.DebugEnabled) {
+			if(Debug.Enabled) {
 				var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rot, Screen.Size);
 				var HitPosition = LinePlaneIntersectionWithHeight(Pos, direction, pawn.EyePos.z);
 				// 

@@ -105,7 +105,7 @@ namespace SpeedDial.Weapons {
 		async Task SetGravity() {
 			await GameTask.DelaySeconds(0.2f);
 			//if(PhysicsBody?.IsValid() ?? false)
-				//PhysicsBody.GravityScale = 1.0f;
+			//PhysicsBody.GravityScale = 1.0f;
 		}
 
 		public override void SimulateAnimator(PawnAnimator anim) {
@@ -134,7 +134,7 @@ namespace SpeedDial.Weapons {
 		}
 
 		public virtual bool CanPrimaryAttack() {
-			if (Owner is not SpeedDialBotPlayer) {
+			if(Owner is not SpeedDialBotPlayer) {
 				if(!Owner.IsValid() || (Automatic && !Input.Down(InputButton.Attack1)) || (!Automatic && !Input.Pressed(InputButton.Attack1))) return false;
 			} else {
 				if(!Owner.IsValid() || (Automatic && !(Owner as SpeedDialBotPlayer).ShootAtPlayer) || (!Automatic && !(Owner as SpeedDialBotPlayer).ShootAtPlayer) || (Owner as SpeedDialBotPlayer).TimeSinceShoot < (Owner as SpeedDialBotPlayer).ShootDelay) return false;
@@ -148,7 +148,7 @@ namespace SpeedDial.Weapons {
 
 		public virtual void AttackPrimary(bool overrideBullet = false, bool overrideShootEffects = false) {
 			TimeSincePrimaryAttack = 0;
-			if (Owner is SpeedDialBotPlayer bot) {
+			if(Owner is SpeedDialBotPlayer bot) {
 				bot.TimeSinceShoot = 0f;
 			}
 
@@ -349,7 +349,7 @@ namespace SpeedDial.Weapons {
 		}
 
 		public bool TakeAmmo(int amount) {
-			if(SpeedDialGame.InfiniteAmmo) return true;
+			if(Debug.InfiniteAmmo) return true;
 			if(AmmoClip < amount)
 				return false;
 
