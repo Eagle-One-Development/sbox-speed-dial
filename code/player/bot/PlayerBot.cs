@@ -202,7 +202,7 @@ namespace SpeedDial.Player {
 
 			if(KillCombo > maxCombo) {
 				maxCombo = KillCombo;
-				cl.SetScore("maxcombo", maxCombo);
+				cl.SetValue("maxcombo", maxCombo);
 			}
 
 			var controller = GetActiveController();
@@ -278,7 +278,7 @@ namespace SpeedDial.Player {
 
 			if(ClosestPlayer != null && ClosestPlayer.IsValid) {
 				if(ClosePlayerDist <= ShootRange && ClosestPlayer.LifeState == LifeState.Alive) {
-					if (Difficulty == BotDifficulties.Impossible) {
+					if(Difficulty == BotDifficulties.Impossible) {
 						ShootAtPlayer = true;
 					} else {
 						if(TimeSinceSeePlayer >= ReactionDelay + 1f)
@@ -360,7 +360,7 @@ namespace SpeedDial.Player {
 				if(ClosestWeapon != null && ClosestWeapon.AmmoClip <= 0) {
 					score = 0f;
 				}
-				if (HasWeapon && ClosestWeapon != null && ClosestWeapon.AmmoClip > (ActiveChild as BaseSpeedDialWeapon).AmmoClip) {
+				if(HasWeapon && ClosestWeapon != null && ClosestWeapon.AmmoClip > (ActiveChild as BaseSpeedDialWeapon).AmmoClip) {
 					score += 1.2f;
 				}
 				weaponScore = score;
@@ -506,11 +506,11 @@ namespace SpeedDial.Player {
 		public void HandleGunGrabbingThrowing() {
 			TryGrabWeapon();
 			if(ActiveChild != null && (ActiveChild as BaseSpeedDialWeapon).AmmoClip <= 0) {
-				if (TimeSinceEmptyClip > DropEmptyGunTime + 1f) {
+				if(TimeSinceEmptyClip > DropEmptyGunTime + 1f) {
 					TimeSinceEmptyClip = 0f;
 				}
 
-				if (TimeSinceEmptyClip >= DropEmptyGunTime) {
+				if(TimeSinceEmptyClip >= DropEmptyGunTime) {
 					ThrowWeapon();
 				}
 			}
@@ -589,6 +589,7 @@ namespace SpeedDial.Player {
 				Vector3 dirToClosestMed = ClosestPickup.Position - Position;
 				ClosePickupDist = dirToClosestMed.LengthSquared;
 				ClosePickupDist = MathF.Sqrt(ClosePickupDist);
+				
 			}
 		}
 
