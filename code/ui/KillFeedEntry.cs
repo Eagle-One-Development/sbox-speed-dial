@@ -20,10 +20,10 @@ namespace SpeedDial.UI {
 
 		public KillFeedEntry() {
 			Left = Add.Label("", "left");
-			Icon = Add.Image("materials/ui/killfeed_generic.png","icon");
+			Icon = Add.Image("materials/ui/killfeed_generic.png", "icon");
 			Right = Add.Label("", "right");
 
-			vhs_green = new	  Color(28f / 255f, 255f / 255f, 176f / 255f, 1.0f);
+			vhs_green = new Color(28f / 255f, 255f / 255f, 176f / 255f, 1.0f);
 			vhs_magenta = new Color(255f / 255f, 89 / 255f, 255f / 255f, 1.0f);
 
 			phase = Rand.Float(100f);
@@ -32,7 +32,7 @@ namespace SpeedDial.UI {
 		}
 
 		public override void Tick() {
-			
+
 			Shadow s1 = new();
 			s1.OffsetX = 2f + MathF.Sin(Time.Now * 2f) * 2f;
 			s1.OffsetY = 0f;
@@ -55,12 +55,9 @@ namespace SpeedDial.UI {
 			var comboTransform = new PanelTransform();
 			float anim = (MathF.Sin(Time.Now * 2f) + 1) / 2;
 			float anim2 = MathF.Sin((Time.Now + phase) * 2f);
-			float f = 0;
-			float k = 0;
-			int c = 0;
 			comboTransform.AddScale(1f + anim * 0.2f);
 			comboTransform.AddRotation(0f, 0f, anim2 * 25f);
-			
+
 
 			if(IsMultiKill && !IsDominating) {
 				Left.Style.Transform = comboTransform;
