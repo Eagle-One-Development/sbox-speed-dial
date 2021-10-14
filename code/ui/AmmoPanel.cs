@@ -85,7 +85,7 @@ namespace SpeedDial.UI {
 
 		public void RemoveDominator(Entity e) {
 			int index = -1;
-			//Log.Info($"ATTEMPTING TO DELETE {e.GetClientOwner().Name}");
+			//Log.Info($"ATTEMPTING TO DELETE {e.Client.Name}");
 			for(int i = 0; i < dominators.Count; i++) {
 				Skull s = dominators[i];
 				if(s.target == e) {

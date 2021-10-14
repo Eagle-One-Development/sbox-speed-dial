@@ -119,7 +119,7 @@ namespace SpeedDial {
 				}
 			}
 
-			var attackerClient = pawn.LastAttacker?.GetClientOwner();
+			var attackerClient = pawn.LastAttacker?.Client;
 
 			if(attackerClient == null) {
 				OnKilledMessage(0, "", client.SteamId, client.Name, "died");
@@ -159,8 +159,8 @@ namespace SpeedDial {
 
 			//Basically if the person that killed us is someone we were dominating, tell them they got revenge and remove the icon fro mtheir HUD
 			if(numKills >= 3) {
-				(pawn.LastAttacker as SpeedDialPlayer).DrugBump(To.Single(pawn.LastAttacker.GetClientOwner()), "REVENGE", "AGAINST " + pawn.GetClientOwner().Name, false);
-				(pawn.LastAttacker as SpeedDialPlayer).Revenge(To.Single(pawn.LastAttacker.GetClientOwner()), pawn);
+				(pawn.LastAttacker as SpeedDialPlayer).DrugBump(To.Single(pawn.LastAttacker.Client), "REVENGE", "AGAINST " + pawn.Client.Name, false);
+				(pawn.LastAttacker as SpeedDialPlayer).Revenge(To.Single(pawn.LastAttacker.Client), pawn);
 				revenge = true;
 			}
 
@@ -176,21 +176,21 @@ namespace SpeedDial {
 				}
 			}
 
-			//Log.Info(pawn.LastAttacker.GetClientOwner().Name + " NUMBER OF KILLS: " + numKills.ToString());
+			//Log.Info(pawn.LastAttacker.Client.Name + " NUMBER OF KILLS: " + numKills.ToString());
 
 			//If it's 3 kills, and they weren't taking revenge on us, then we will say we are dominating them and add an icon to their hud
 			if(numKills == 3 && !revenge) {
-				(pawn.LastAttacker as SpeedDialPlayer).DrugBump(To.Single(pawn.LastAttacker.GetClientOwner()), "DOMINATING", pawn.GetClientOwner().Name, false);
-				(pawn as SpeedDialPlayer).Dominate(To.Single(pawn.GetClientOwner()), pawn.LastAttacker);
+				(pawn.LastAttacker as SpeedDialPlayer).DrugBump(To.Single(pawn.LastAttacker.Client), "DOMINATING", pawn.Client.Name, false);
+				(pawn as SpeedDialPlayer).Dominate(To.Single(pawn.Client), pawn.LastAttacker);
 				dominating = true;
-				Log.Info(pawn.LastAttacker.GetClientOwner().Name + " IS DOMINATING " + pawn.GetClientOwner().Name);
+				Log.Info(pawn.LastAttacker.Client.Name + " IS DOMINATING " + pawn.Client.Name);
 			}
 
 			//Moved the kill messages here so that we can let players know who and when someone is dominating them
 			if(dominating) {
-				(pawn as SpeedDialPlayer).DrugBump(To.Single(pawn), pawn.LastAttacker.GetClientOwner().Name, "IS DOMINATING YOU", false);
+				(pawn as SpeedDialPlayer).DrugBump(To.Single(pawn), pawn.LastAttacker.Client.Name, "IS DOMINATING YOU", false);
 			} else {
-				(pawn as SpeedDialPlayer).DrugBump(To.Single(pawn), pawn.LastAttacker.GetClientOwner().Name, "KILLED YOU", false);
+				(pawn as SpeedDialPlayer).DrugBump(To.Single(pawn), pawn.LastAttacker.Client.Name, "KILLED YOU", false);
 			}
 
 			bool multiKill = false;
@@ -202,7 +202,7 @@ namespace SpeedDial {
 					Log.Info($"{attackerClient.Name} killed {client.Name}");
 
 					attacker.KillScore += ScoreBase + (ScoreBase * attacker.KillCombo);
-					attacker.GetClientOwner().SetScore("score", attacker.KillScore);
+					attacker.Client.SetScore("score", attacker.KillScore);
 					//attacker.KillCombo++;
 
 					attacker.TimeSinceMurdered = 0;
