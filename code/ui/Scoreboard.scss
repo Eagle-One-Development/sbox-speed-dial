@@ -11,15 +11,15 @@
 	align-items: center;
 	justify-content: center;
 	opacity: 0;
-	
+
 	transition: all 0.1s ease-out;
-	transform: scale( 1.05 );
+	transform: scale(1.05);
 	transform-origin: 50% 50%;
-	text-shadow: 3px 3px 5px rgba(#000,0.5);
+	text-shadow: 3px 3px 5px rgba(#000, 0.5);
 
 	&.open {
 		opacity: 1;
-		transform: scale( 1 );
+		transform: scale(1);
 	}
 
 	.name {
@@ -27,7 +27,8 @@
 		width: 240px;
 	}
 
-	.score, .maxcombo {
+	.score,
+	.maxcombo {
 		width: 240px;
 		text-align: center;
 		justify-content: center;
@@ -45,10 +46,9 @@
 		min-height: 50%;
 		min-width: 30%;
 
-
 		.entry {
 			padding-top: 15px;
-			
+
 			color: #ddd;
 			.score {
 			}

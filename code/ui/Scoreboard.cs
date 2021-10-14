@@ -5,13 +5,12 @@ using Sandbox.UI;
 using Sandbox.UI.Construct;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SpeedDial.UI {
 	public partial class SpeedDialScoreboard<T> : Panel where T : SpeedDialScoreboardEntry, new() {
 		public Panel Canvas { get; protected set; }
-		public TextEntry TextInput { get; protected set; }
-
-		Dictionary<int, T> Entries = new();
+		Dictionary<Client, T> Rows = new();
 
 		public Panel Header { get; protected set; }
 
@@ -22,54 +21,47 @@ namespace SpeedDial.UI {
 			AddHeader();
 
 			Canvas = Add.Panel("canvas");
-
-			PlayerScore.OnPlayerAdded += AddPlayer;
-			PlayerScore.OnPlayerUpdated += UpdatePlayer;
-			PlayerScore.OnPlayerRemoved += RemovePlayer;
-
-			foreach(var player in PlayerScore.All) {
-				AddPlayer(player);
-			}
 		}
 
 		public override void Tick() {
 			base.Tick();
 
-			foreach(var (_, value) in Entries) {
-				SpeedDialScoreboardEntry entry = value;
-				entry.FauxTick();
+			SetClass("open", Input.Down(InputButton.Score));
+
+			if(!IsVisible)
+				return;
+
+			//
+			// Clients that were added
+			//
+			foreach(var client in Client.All.Except(Rows.Keys)) {
+				var entry = AddClient(client);
+				Rows[client] = entry;
 			}
 
-			SetClass("open", Input.Down(InputButton.Score));
+			foreach(var client in Rows.Keys.Except(Client.All)) {
+				if(Rows.TryGetValue(client, out var row)) {
+					row?.Delete();
+					Rows.Remove(client);
+				}
+			}
+
+			Canvas.SortChildren((x) => -(x as SpeedDialScoreboardEntry).Client.GetValue("score", 0));
 		}
+
 
 		protected virtual void AddHeader() {
 			Header = Add.Panel("header");
 			Header.Add.Label("Name", "name");
 			Header.Add.Label("Score", "score");
 			Header.Add.Label("Max Combo", "maxcombo");
+			//Header.Add.Label("Ping", "ping");
 		}
 
-		protected virtual void AddPlayer(PlayerScore.Entry entry) {
+		protected virtual T AddClient(Client entry) {
 			var p = Canvas.AddChild<T>();
-			p.UpdateFrom(entry);
-
-			Entries[entry.Id] = p;
-		}
-
-		protected virtual void UpdatePlayer(PlayerScore.Entry entry) {
-			if(Entries.TryGetValue(entry.Id, out var panel)) {
-				panel.UpdateFrom(entry);
-				//sort scoreboard entries by score
-				Canvas.SortChildren((x) => -(x as SpeedDialScoreboardEntry).Entry.Get<int>("score"));
-			}
-		}
-
-		protected virtual void RemovePlayer(PlayerScore.Entry entry) {
-			if(Entries.TryGetValue(entry.Id, out var panel)) {
-				panel.Delete();
-				Entries.Remove(entry.Id);
-			}
+			p.Client = entry;
+			return p;
 		}
 	}
 }
