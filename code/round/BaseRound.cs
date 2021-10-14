@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SpeedDial {
 
-	public abstract partial class BaseRound : NetworkComponent {
+	public abstract partial class BaseRound : BaseNetworkable {
 		/// <summary>
 		/// Duration of a round
 		/// </summary>
