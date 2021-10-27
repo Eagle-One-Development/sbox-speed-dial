@@ -6,8 +6,8 @@ using SpeedDial.Weapons;
 namespace SpeedDial.Player {
 	public partial class SpeedDialCamera : Camera {
 
-		[ClientVar]
-		public static bool sd_viewshift_toggle { get; set; } = false;
+		[ClientVar("sd_viewshift_toggle")]
+		public static bool ViewshiftToggle { get; set; } = false;
 		private bool shiftToggle = false;
 
 		public virtual float CameraHeight => 400;
@@ -36,9 +36,9 @@ namespace SpeedDial.Player {
 				return;
 			}
 
-			if(!sd_viewshift_toggle && input.Down(InputButton.Run)) {
+			if(!ViewshiftToggle && input.Down(InputButton.Run)) {
 				CameraShift = true;
-			} else if(sd_viewshift_toggle && input.Pressed(InputButton.Run)) {
+			} else if(ViewshiftToggle && input.Pressed(InputButton.Run)) {
 				shiftToggle = !shiftToggle;
 			} else {
 				CameraShift = false;
@@ -88,7 +88,7 @@ namespace SpeedDial.Player {
 		[Event("SDEvents.Settings.Changed")]
 		private void onSettingChange() {
 			if(Host.IsClient && Settings.SettingsManager.GetSetting("Viewshift Toggle").TryGetBool(out bool? res))
-				sd_viewshift_toggle = res.Value;
+				ViewshiftToggle = res.Value;
 		}
 
 		public override void Update() {
@@ -110,7 +110,7 @@ namespace SpeedDial.Player {
 			float MouseX = Mouse.Position.x.Clamp(0, Screen.Size.x);
 			float MouseY = Mouse.Position.y.Clamp(0, Screen.Size.y);
 
-			if(CameraShift || sd_viewshift_toggle && shiftToggle) {
+			if(CameraShift || ViewshiftToggle && shiftToggle) {
 				camOffsetTarget = Vector3.Left * -((MouseX - Screen.Size.x / 2) * mouseShiftFactor) + Vector3.Forward * -((MouseY - Screen.Size.y / 2) * mouseShiftFactor);
 			} else {
 				camOffsetTarget = Vector3.Zero;
