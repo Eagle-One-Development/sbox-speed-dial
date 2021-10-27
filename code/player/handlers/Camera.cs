@@ -98,9 +98,9 @@ namespace SpeedDial.Player {
 			if(pawn == null)
 				return;
 
-			Position = pawn.EyePos + Vector3.Down * 20; // relative to pawn eyepos
-			Position += Vector3.Up * CameraHeight; // add camera height
-			Position += -Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle))); // move camera back
+			var _pos = pawn.EyePos + Vector3.Down * 20; // relative to pawn eyepos
+			_pos += Vector3.Up * CameraHeight; // add camera height
+			_pos += -Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle))); // move camera back
 
 			float mouseShiftFactor = 0.3f;//Sniper
 			if(pawn.ActiveChild is Sniper) {
@@ -116,14 +116,17 @@ namespace SpeedDial.Player {
 				camOffsetTarget = Vector3.Zero;
 			}
 			camOffset = Vector3.Lerp(camOffset, camOffsetTarget, Time.Delta * 8f);
-			Position += camOffset;
+
+			_pos += camOffset;
+
+			Position = _pos;
 
 			Rotation = Rotation.FromAxis(Vector3.Left, CameraAngle);
 
 
 			// debug stuff for aim location
 			if(Debug.Enabled) {
-				var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rot, Screen.Size);
+				var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rotation, Screen.Size);
 				var HitPosition = LinePlaneIntersectionWithHeight(Position, direction, pawn.EyePos.z);
 				// 
 				DebugOverlay.ScreenText(new Vector2(300, 300), 2, Color.Green, $"Pos {Position}");
