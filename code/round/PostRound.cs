@@ -43,8 +43,8 @@ namespace SpeedDial {
 			if(Host.IsServer)
 				RunPostRoundEvent("End");
 
-
-			SpeedDialGame.Instance.ChangeRound(new VoteRound());
+			//SpeedDialGame.Instance.ChangeRound(new VoteRound()); 
+			SpeedDialGame.Instance.ChangeRound(new WarmUpRound());
 
 			base.OnTimeUp();
 		}
