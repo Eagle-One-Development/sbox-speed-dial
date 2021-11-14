@@ -32,7 +32,7 @@ namespace Sandbox.UI {
 			Slider = AddChild<Slider>();
 			TextEntry = AddChild<TextEntry>();
 			TextEntry.Numeric = true;
-			TextEntry.Format = "0.###";
+			TextEntry.NumberFormat = "0.###";
 
 			TextEntry.Bind("value", Slider, "Value");
 
