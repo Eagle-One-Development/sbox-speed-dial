@@ -26,7 +26,7 @@ namespace SpeedDial.UI {
 
 		}
 
-		public Panel AddEntry(ulong lsteamid, string left, ulong rsteamid, string right, string method, bool Dom, bool Mult, bool Rev, COD cod) {
+		public Panel AddEntry(long lsteamid, string left, long rsteamid, string right, string method, bool Dom, bool Mult, bool Rev, COD cod) {
 
 			//Log.Info($"{left} killed {right} using {method}");
 
@@ -35,10 +35,10 @@ namespace SpeedDial.UI {
 			e.AddClass(method);
 
 			e.Left.Text = left;
-			e.Left.SetClass("me", lsteamid == (Local.SteamId));
+			e.Left.SetClass("me", lsteamid == (Local.PlayerId));
 
 			e.Right.Text = right;
-			e.Right.SetClass("me", rsteamid == (Local.SteamId));
+			e.Right.SetClass("me", rsteamid == (Local.PlayerId));
 
 			e.IsRevenge = Rev;
 			e.IsMultiKill = Mult;

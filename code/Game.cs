@@ -52,7 +52,7 @@ namespace SpeedDial {
 		}
 
 		[ClientRpc]
-		public void OnKilledMessage(ulong leftid, string left, ulong rightid, string right, string method, bool IsDom, bool IsMult, bool IsRevenge, COD cod) {
+		public void OnKilledMessage(long leftid, string left, long rightid, string right, string method, bool IsDom, bool IsMult, bool IsRevenge, COD cod) {
 			UI.KillFeed.Instance?.AddEntry(leftid, left, rightid, right, method, IsDom, IsMult, IsRevenge, cod);
 		}
 
@@ -117,7 +117,7 @@ namespace SpeedDial {
 			var attackerClient = pawn.LastAttacker?.Client;
 
 			if(attackerClient == null) {
-				OnKilledMessage(0, "", client.SteamId, client.Name, "died");
+				OnKilledMessage(0, "", client.PlayerId, client.Name, "died");
 				return;
 			}
 
@@ -219,9 +219,9 @@ namespace SpeedDial {
 			if(pawn.LastAttacker != null) {
 
 				if(attackerClient != null) {
-					OnKilledMessage(attackerClient.SteamId, attackerClient.Name, client.SteamId, client.Name, pawn.LastAttackerWeapon?.ClassInfo?.Name, dominating, multiKill, revenge, (pawn as SpeedDialPlayer).CauseOfDeath);
+					OnKilledMessage(attackerClient.PlayerId, attackerClient.Name, client.PlayerId, client.Name, pawn.LastAttackerWeapon?.ClassInfo?.Name, dominating, multiKill, revenge, (pawn as SpeedDialPlayer).CauseOfDeath);
 				} else {
-					OnKilledMessage((ulong)pawn.LastAttacker.NetworkIdent, pawn.LastAttacker.ToString(), client.SteamId, client.Name, "killed", false, false, false, (pawn as SpeedDialPlayer).CauseOfDeath);
+					OnKilledMessage((long)pawn.LastAttacker.NetworkIdent, pawn.LastAttacker.ToString(), client.PlayerId, client.Name, "killed", false, false, false, (pawn as SpeedDialPlayer).CauseOfDeath);
 				}
 			}
 
