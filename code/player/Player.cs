@@ -361,6 +361,8 @@ namespace SpeedDial.Player {
 				ActiveChild = Input.ActiveChild;
 			}
 
+			// TODO: refactor melee.
+			// this is stupid
 			if(ActiveChild == null) {
 				_ = HandleMelee();
 			}
@@ -378,8 +380,10 @@ namespace SpeedDial.Player {
 				}
 			}
 
+			// TODO: refactor drug stuff and move this to the animator
 			SetAnimBool("b_polvo", MedTaken && CurrentDrug == DrugType.Polvo);
 
+			// TODO: refactor throwing and move it somewhere else
 			if(Input.Pressed(InputButton.Attack2)) {
 				var dropped = Inventory.DropActive();
 				if(dropped != null) {
@@ -412,6 +416,7 @@ namespace SpeedDial.Player {
 				}
 			}
 
+			// TODO: hold input for pickup too?
 			if(Input.Pressed(InputButton.Attack2) && pickup && pickUpEntity != null && Input.ActiveChild == null) {
 				Inventory?.Add(pickUpEntity, Inventory.Active == null);
 				(pickUpEntity as BaseSpeedDialWeapon).GlowState = GlowStates.GlowStateOff;
