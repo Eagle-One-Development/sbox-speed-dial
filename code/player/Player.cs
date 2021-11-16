@@ -19,9 +19,6 @@ namespace SpeedDial.Player {
 		public float RespawnTime { get; set; } = 1f;
 
 		[Net]
-		public Color32 PlayerColor { get; set; }
-
-		[Net]
 		public int BodyGroup { get; set; }
 
 		[Net]
@@ -56,7 +53,6 @@ namespace SpeedDial.Player {
 		public bool SoundtrackPlaying { get; set; }
 
 		protected bool screenOpen = false;
-		[ClientVar] public static bool sd_soundtrack { get; set; } = true;
 
 		public SpeedDialPlayer() {
 			Inventory = new SpeedDialInventory(this);
@@ -315,6 +311,34 @@ namespace SpeedDial.Player {
 			}
 		}
 
+		public void Throw() {
+			var dropped = Inventory.DropActive();
+			if(dropped != null) {
+				dropped.Position = EyePos;
+				dropped.ResetInterpolation();
+				if(dropped.PhysicsGroup != null && dropped is BaseSpeedDialWeapon wep) {
+					wep.ApplyThrowVelocity(EyeRot.Forward);
+					wep.DespawnAfterTime = true;
+					wep.GlowState = GlowStates.GlowStateOn;
+					wep.GlowDistanceStart = 0;
+					wep.GlowDistanceEnd = 1000;
+					if(wep.AmmoClip > 0)
+						wep.GlowColor = new Color(0.2f, 1, 0.2f, 1);
+					else {
+						if(wep.AmmoClip == -1)
+							wep.GlowColor = new Color(1, 1, 1, 1);
+						else
+							wep.GlowColor = new Color(1, 0.2f, 0.2f, 1);
+					}
+					wep.GlowActive = true;
+					PlaySound("weaponspin");
+				}
+			}
+			if(IsClient) {
+				PlaySound("weaponspin");
+			}
+		}
+
 		public override void Simulate(Client cl) {
 
 			if(SpeedDialGame.Instance.Round is PreRound) {
@@ -360,7 +384,7 @@ namespace SpeedDial.Player {
 			}
 
 			// TODO: refactor melee.
-			// this is stupid
+			// this is stupid, predict this properly
 			if(ActiveChild == null) {
 				_ = HandleMelee();
 			}
@@ -383,31 +407,7 @@ namespace SpeedDial.Player {
 
 			// TODO: refactor throwing and move it somewhere else
 			if(Input.Pressed(InputButton.Attack2) && ActiveChild != null) {
-				var dropped = Inventory.DropActive();
-				if(dropped != null) {
-					dropped.Position = EyePos;
-					dropped.ResetInterpolation();
-					if(dropped.PhysicsGroup != null && dropped is BaseSpeedDialWeapon wep) {
-						wep.ApplyThrowVelocity(EyeRot.Forward);
-						wep.DespawnAfterTime = true;
-						wep.GlowState = GlowStates.GlowStateOn;
-						wep.GlowDistanceStart = 0;
-						wep.GlowDistanceEnd = 1000;
-						if(wep.AmmoClip > 0)
-							wep.GlowColor = new Color(0.2f, 1, 0.2f, 1);
-						else {
-							if(wep.AmmoClip == -1)
-								wep.GlowColor = new Color(1, 1, 1, 1);
-							else
-								wep.GlowColor = new Color(1, 0.2f, 0.2f, 1);
-						}
-						wep.GlowActive = true;
-						PlaySound("weaponspin");
-					}
-				}
-				if(IsClient) {
-					PlaySound("weaponspin");
-				}
+				Throw();
 			}
 
 			// TODO: hold input for pickup too?

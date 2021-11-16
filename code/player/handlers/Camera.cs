@@ -22,7 +22,6 @@ namespace SpeedDial.Player {
 			Event.Register(this);
 		}
 
-
 		public bool CameraShift { get; set; }
 
 		[Net, Local, Predicted]
@@ -68,21 +67,10 @@ namespace SpeedDial.Player {
 				angles = (HitPosition - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
 			}
 
-			// analog input stuff for later maybe
-
-			// if ( (Math.Abs( input.AnalogLook.pitch ) + Math.Abs( input.AnalogLook.yaw )) > 0.0f )
-			// {
-			// 	if ( input.AnalogLook.Length > 0.25f){
-			// 		Angles newDir = new Vector3( input.AnalogLook.pitch / 1.5f * -1.0f, input.AnalogLook.yaw / 1.5f, 0 ).EulerAngles;
-			// 		tarAng.yaw = newDir.yaw;
-			// 	}
-			// }
-
 			tarAng = angles;
 			ang = Angles.Lerp(ang, tarAng, 12 * Time.Delta);
 
 			input.ViewAngles = ang;
-			input.InputDirection = input.AnalogMove;
 		}
 
 		[Event("SDEvents.Settings.Changed")]
@@ -100,7 +88,8 @@ namespace SpeedDial.Player {
 
 			var _pos = pawn.EyePos + Vector3.Down * 20; // relative to pawn eyepos
 			_pos += Vector3.Up * CameraHeight; // add camera height
-			_pos += -Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle))); // move camera back
+											   // why didn't we just do this with Rotation.LookAt????
+			_pos -= Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle))); // move camera back
 
 			float mouseShiftFactor = 0.3f;//Sniper
 			if(pawn.ActiveChild is Sniper) {
@@ -141,11 +130,10 @@ namespace SpeedDial.Player {
 				DebugOverlay.Sphere(HitPosition, 5, Color.Green, false);
 			}
 
-			FieldOfView = 70;
 			Viewer = null;
 		}
 
-		// THIS SHALL NOT BE TOUCHED FOR AS LONG AS IT WORKS, UNDERSTOOD?!?!?
+		// resolve line plane intersect for mouse input
 		public static Vector3 LinePlaneIntersectionWithHeight(Vector3 pos, Vector3 dir, float z) {
 			float px, py, pz;
 
