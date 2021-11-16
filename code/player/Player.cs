@@ -28,8 +28,6 @@ namespace SpeedDial.Player {
 		public bool pickup { get; set; }
 		protected Entity pickUpEntity;
 
-		protected TimeSince timeSinceDropped;
-
 		[Net, Local, Predicted]
 		public TimeSince TimeSinceMelee { get; set; }
 
@@ -384,34 +382,30 @@ namespace SpeedDial.Player {
 			SetAnimBool("b_polvo", MedTaken && CurrentDrug == DrugType.Polvo);
 
 			// TODO: refactor throwing and move it somewhere else
-			if(Input.Pressed(InputButton.Attack2)) {
+			if(Input.Pressed(InputButton.Attack2) && ActiveChild != null) {
 				var dropped = Inventory.DropActive();
 				if(dropped != null) {
-					ResetInterpolation();
 					dropped.Position = EyePos;
-					if(dropped.PhysicsGroup != null) {
-						if(dropped is BaseSpeedDialWeapon wep) {
-							wep.ApplyThrowVelocity(EyeRot.Forward);
-							wep.DespawnAfterTime = true;
-							wep.GlowState = GlowStates.GlowStateOn;
-							wep.GlowDistanceStart = 0;
-							wep.GlowDistanceEnd = 1000;
-							if(wep.AmmoClip > 0)
-								wep.GlowColor = new Color(0.2f, 1, 0.2f, 1);
-							else {
-								if(wep.AmmoClip == -1)
-									wep.GlowColor = new Color(1, 1, 1, 1);
-								else
-									wep.GlowColor = new Color(1, 0.2f, 0.2f, 1);
-							}
-							wep.GlowActive = true;
-							PlaySound("weaponspin");
+					dropped.ResetInterpolation();
+					if(dropped.PhysicsGroup != null && dropped is BaseSpeedDialWeapon wep) {
+						wep.ApplyThrowVelocity(EyeRot.Forward);
+						wep.DespawnAfterTime = true;
+						wep.GlowState = GlowStates.GlowStateOn;
+						wep.GlowDistanceStart = 0;
+						wep.GlowDistanceEnd = 1000;
+						if(wep.AmmoClip > 0)
+							wep.GlowColor = new Color(0.2f, 1, 0.2f, 1);
+						else {
+							if(wep.AmmoClip == -1)
+								wep.GlowColor = new Color(1, 1, 1, 1);
+							else
+								wep.GlowColor = new Color(1, 0.2f, 0.2f, 1);
 						}
+						wep.GlowActive = true;
+						PlaySound("weaponspin");
 					}
-
-					timeSinceDropped = 0;
 				}
-				if(IsClient && ActiveChild != null) {
+				if(IsClient) {
 					PlaySound("weaponspin");
 				}
 			}

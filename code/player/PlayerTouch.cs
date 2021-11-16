@@ -5,37 +5,22 @@ using SpeedDial.Meds;
 namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer {
 		public override void StartTouch(Entity other) {
-			if(timeSinceDropped < 1) return;
-
 			if(IsClient) return;
 
 			if(other is PickupTrigger pt) {
-				if(other.Parent is BaseSpeedDialWeapon wep1) {
-					StartTouch(other.Parent);
+				if(other.Parent is BaseSpeedDialWeapon wep) {
+					StartTouch(other.Parent); // what
 
-					if(wep1.PhysicsBody.IsValid()) {
-						float magnitude = wep1.PhysicsBody.Velocity.Length;
+					if(wep.PhysicsBody.IsValid()) {
+						float magnitude = wep.PhysicsBody.Velocity.Length;
 						//Log.Info($"Velocity: {magnitude}");
-						if(magnitude > 450f && this != wep1.PreviousOwner && wep1.CanKill) {
-
-							wep1.PhysicsBody.EnableAutoSleeping = false;
+						if(magnitude > 450f && this != wep.PreviousOwner && wep.CanKill) {
+							wep.PhysicsBody.EnableAutoSleeping = false;
 							Sound.FromEntity("smack", this);
 							CauseOfDeath = COD.Thrown;
-							KillMyself(wep1.PreviousOwner);
-							wep1.Velocity *= -0.5f;
-							wep1.CanKill = false;
-							//if (wep1.PhysicsBody.Velocity.Normal.Dot(other.EyeRot.Forward.Normal) < 0.4f || Inventory.Active is not BaseSpeedDialWeapon) {
-							//	
-							//} 
-							//else {
-							//	wep1.PhysicsBody.EnableAutoSleeping = false;
-							//	Sound.FromEntity("smack", this);
-							//	Sound.FromEntity("sd_deflect_ricochet", this);
-							//	wep1.Velocity *= -0.5f;
-							//	if(Inventory.DropActive() is BaseSpeedDialWeapon drop) {
-							//		drop.PhysicsBody.ApplyForce(EyeRot.Forward + ((Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 0.8f * 0.25f));
-							//	}
-							//}
+							KillMyself(wep.PreviousOwner);
+							wep.Velocity *= -0.5f;
+							wep.CanKill = false;
 						}
 					}
 				}
@@ -74,9 +59,6 @@ namespace SpeedDial.Player {
 		}
 
 		public override void Touch(Entity other) {
-
-			if(timeSinceDropped < 1f) return;
-
 			if(IsClient) return;
 
 			if(other is PickupTrigger) {

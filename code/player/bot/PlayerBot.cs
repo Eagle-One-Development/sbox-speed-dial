@@ -551,8 +551,6 @@ namespace SpeedDial.Player {
 						PlaySound("weaponspin");
 					}
 				}
-
-				timeSinceDropped = 0;
 			}
 			if(IsClient && ActiveChild != null) {
 				PlaySound("weaponspin");
@@ -589,7 +587,7 @@ namespace SpeedDial.Player {
 				Vector3 dirToClosestMed = ClosestPickup.Position - Position;
 				ClosePickupDist = dirToClosestMed.LengthSquared;
 				ClosePickupDist = MathF.Sqrt(ClosePickupDist);
-				
+
 			}
 		}
 
