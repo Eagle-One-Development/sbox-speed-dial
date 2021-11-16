@@ -1,6 +1,6 @@
 ﻿endround {
     opacity: 0;
-    background-color: rgba(#000,0.8);
+    background-color: rgba(#000, 0.8);
     transition: opacity 0.5s ease-in-out;
     position: absolute;
     width: 100%;
@@ -14,7 +14,6 @@
         height: 100%;
         justify-content: center;
 
-
         .playerimage {
             position: absolute;
             height: 85%;
@@ -22,8 +21,9 @@
             bottom: 0px;
             align-items: center;
             justify-content: center;
-
-
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
 
             &.right {
                 right: 10%;
@@ -65,19 +65,19 @@
                     color: #fff;
                     font-size: 64px;
                     bottom: 64px;
-                    color: #C9B037;
-                    text-shadow: 0px 0px 10px #FFE97C;
-                    
+                    color: #c9b037;
+                    text-shadow: 0px 0px 10px #ffe97c;
+
                     mix-blend-mode: lighten;
 
                     &.right {
-                        color: #D7D7D7;
-                        text-shadow: 0px 0px 10px #FFFFFF;
+                        color: #d7d7d7;
+                        text-shadow: 0px 0px 10px #ffffff;
                     }
 
                     &.left {
-                        color: #CC8D35;
-                        text-shadow: 0px 0px 10px #FF9A0C;
+                        color: #cc8d35;
+                        text-shadow: 0px 0px 10px #ff9a0c;
                     }
                 }
             }

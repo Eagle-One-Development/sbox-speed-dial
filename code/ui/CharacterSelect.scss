@@ -1,5 +1,5 @@
 characterselect {
-    background-color: rgba(65, 65, 65,0.5);
+    background-color: rgba(65, 65, 65, 0.5);
     backdrop-filter-blur: 100px;
     //background: radial-gradient(circle, rgba(145,145,145,0.6026785714285714) 0%, rgba(54, 54, 54, 0.695) 36%, rgba(0,0,0,1) 100%);
     position: absolute;
@@ -13,8 +13,6 @@ characterselect {
         opacity: 1;
         pointer-events: all;
     }
-
-
 
     .bars {
         position: absolute;
@@ -84,6 +82,9 @@ characterselect {
         opacity: 0.5;
         z-index: 1;
         color: #ff0;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 
     .portrait2 {
@@ -94,7 +95,9 @@ characterselect {
         bottom: 0px;
         justify-content: center;
         z-index: 1;
-
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
 
         .prompt {
             position: absolute;
@@ -128,6 +131,9 @@ characterselect {
         align-items: center;
         justify-content: center;
         z-index: 1;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
 
         .title {
             position: absolute;
