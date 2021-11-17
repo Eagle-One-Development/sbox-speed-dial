@@ -71,6 +71,7 @@ namespace SpeedDial.Player {
 			ang = Angles.Lerp(ang, tarAng, 12 * Time.Delta);
 
 			input.ViewAngles = ang;
+			input.InputDirection = input.AnalogMove;
 		}
 
 		[Event("SDEvents.Settings.Changed")]
