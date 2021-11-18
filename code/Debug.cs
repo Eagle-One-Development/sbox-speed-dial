@@ -12,7 +12,7 @@ namespace SpeedDial {
 		public static void Log(object obj) {
 			if(!Debug.Enabled) return;
 
-			Sandbox.Log.Info($"[{(Host.IsClient ? "CL" : "SV")}] {obj}");
+			Sandbox.Internal.GlobalGameNamespace.Log.Info($"[{(Host.IsClient ? "CL" : "SV")}] {obj}");
 		}
 
 		public static void TraceResult(TraceResult traceResult, float duration = 0) {
