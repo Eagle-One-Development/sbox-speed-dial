@@ -118,7 +118,7 @@ namespace SpeedDial.Player {
 
 			Host.AssertServer();
 
-			KillCombo = 0;
+			Client.SetValue("killcombo", 0);
 			MedTaken = false;
 
 			// reset weapon/ammo on spawn
@@ -202,9 +202,8 @@ namespace SpeedDial.Player {
 				ResetTimeSinceMedTaken = false;
 			}
 
-			if(KillCombo > maxCombo) {
-				maxCombo = KillCombo;
-				cl.SetValue("maxcombo", maxCombo);
+			if(Client.GetValue("killcombo", 0) > Client.GetValue("maxcombo", 0)) {
+				cl.SetValue("maxcombo", Client.GetValue("killcombo", 0));
 			}
 
 			var controller = GetActiveController();

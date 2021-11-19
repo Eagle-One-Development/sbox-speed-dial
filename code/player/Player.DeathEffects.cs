@@ -159,12 +159,11 @@ namespace SpeedDial.Player {
 
 			if(info.Attacker is SpeedDialPlayer attacker && attacker != this) {
 				if(Health <= 0) {
-					attacker.KillCombo++;
-					//Log.Info($"TEST { attacker.KillCombo }");
+					attacker.Client.SetValue("killcombo", attacker.Client.GetValue("killcombo", 0) + 1);
 				}
 				// Note - sending this only to the attacker!
 
-				attacker.DidDamage(To.Single(attacker), info.Position, info.Damage, Health, CauseOfDeath, attacker.KillCombo);
+				attacker.DidDamage(To.Single(attacker), info.Position, info.Damage, Health, CauseOfDeath, attacker.Client.GetValue("killcombo", 0));
 
 
 				TookDamage(To.Single(this), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position);

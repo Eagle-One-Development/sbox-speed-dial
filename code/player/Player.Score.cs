@@ -4,16 +4,7 @@ namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer {
 
 		[Net, Local]
-		public int KillCombo { get; set; }
-
-		[Net]
-		public int KillScore { get; set; }
-
-		[Net, Local]
 		public TimeSince TimeSinceMurdered { get; set; }
-
-		[Net]
-		public int maxCombo { get; set; }
 
 		[ClientRpc]
 		public void ComboEvents(Vector3 position, int amt, int combo, COD death) {
@@ -22,11 +13,11 @@ namespace SpeedDial.Player {
 			GamePanel.Current?.Bump();
 		}
 
-		[Event("tick")]
+		[Event.Tick]
 		public void OnTick() {
 			if(IsServer) {
 				if(TimeSinceMurdered >= SpeedDialGame.ComboTime) {
-					KillCombo = 0;
+					Client.SetValue("killcombo", 0);
 				}
 			}
 		}

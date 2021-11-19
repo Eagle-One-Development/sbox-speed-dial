@@ -150,10 +150,10 @@ namespace SpeedDial.UI {
 			float k = 0;
 			int c = 0;
 			if(Local.Pawn is SpeedDialPlayer p) {
-				scoreTar = scoreTar.LerpTo(p.KillScore, Time.Delta * 5f);
+				scoreTar = scoreTar.LerpTo(p.Client.GetValue("score", 0), Time.Delta * 5f);
 				scoreLabel.Text = $"{(int)MathF.Round(scoreTar)} pts";
 
-				comboTar = comboTar.LerpTo(p.KillCombo, Time.Delta * 10f);
+				comboTar = comboTar.LerpTo(p.Client.GetValue("killcombo", 0), Time.Delta * 10f);
 
 				c = (int)MathF.Round(comboTar);
 

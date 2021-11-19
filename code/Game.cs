@@ -58,7 +58,7 @@ namespace SpeedDial {
 
 		[ServerCmd]
 		public List<SpeedDialPlayer> SortedPlayerList() {
-			return All.OfType<SpeedDialPlayer>().OrderByDescending(x => x.KillScore).ToList();
+			return All.OfType<SpeedDialPlayer>().OrderByDescending(x => x.Client.GetValue("score", 0)).ToList();
 		}
 
 		public static SpeedDialGame Instance { get; private set; }
@@ -196,13 +196,12 @@ namespace SpeedDial {
 				if(IsServer) {
 					Log.Info($"{attackerClient.Name} killed {client.Name}");
 
-					attacker.KillScore += ScoreBase + (ScoreBase * attacker.KillCombo);
-					attacker.Client.SetValue("score", attacker.KillScore);
-					//attacker.KillCombo++;
+					attacker.Client.SetValue("score", attacker.Client.GetValue("score", 0) + ScoreBase + (ScoreBase * attacker.Client.GetValue("killcombo", 0)));
+					attacker.Client.SetValue("score", attacker.Client.GetValue("score", 0));
 
 					attacker.TimeSinceMurdered = 0;
 
-					if(attacker.KillCombo >= 2) {
+					if(attacker.Client.GetValue("killcombo", 0) >= 2) {
 						multiKill = true;
 					}
 				}

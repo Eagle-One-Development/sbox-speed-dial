@@ -23,20 +23,20 @@ namespace SpeedDial.UI {
 
 			firstPlace.myLabel.Text = players[0].Client.Name;
 			firstPlace.subLabel.Text = "1st";
-			firstPlace.scoreLabel.Text = players[0].KillScore.ToString() + " pts";
+			firstPlace.scoreLabel.Text = players[0].Client.GetValue("score", 0).ToString() + " pts";
 
 			firstPlace.myImage.Texture = Texture.Load(players[0].character.Portrait);
 
 			if(players.Count > 1) {
 				secondPlace.myLabel.Text = players[1].Client.Name;
-				secondPlace.scoreLabel.Text = players[1].KillScore.ToString() + " pts";
+				secondPlace.scoreLabel.Text = players[1].Client.GetValue("score", 0).ToString() + " pts";
 				secondPlace.myImage.Texture = Texture.Load(players[1].character.Portrait);
 				secondPlace.subLabel.Text = "2nd";
 			}
 
 			if(players.Count > 2) {
 				thirdPlace.myLabel.Text = players[2].Client.Name;
-				thirdPlace.scoreLabel.Text = players[2].KillScore.ToString() + " pts";
+				thirdPlace.scoreLabel.Text = players[2].Client.GetValue("score", 0).ToString() + " pts";
 				thirdPlace.myImage.Texture = Texture.Load(players[2].character.Portrait);
 				thirdPlace.subLabel.Text = "3rd";
 			}

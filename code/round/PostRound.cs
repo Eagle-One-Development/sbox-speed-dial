@@ -75,12 +75,12 @@ namespace SpeedDial {
 			}
 			sm.type = "round_results";
 			sm.scores = new();
-			var lis = Client.All.Where((e) => e.Pawn is SpeedDialPlayer sdp && sdp.KillScore > 0 && e.PlayerId != 0 && !e.PlayerId.ToString().StartsWith("900719968423772")).ToList();
+			var lis = Client.All.Where((e) => e.Pawn is SpeedDialPlayer sdp && sdp.Client.GetValue("score", 0) > 0 && e.PlayerId != 0 && !e.PlayerId.ToString().StartsWith("900719968423772")).ToList();
 			if(lis.Count <= 1) return;
 			foreach(var item in lis) {
 				sm.scores.Add(new() {
 					name = item.Name,
-					score = (item.Pawn as SpeedDialPlayer).KillScore,
+					score = (item.Pawn as SpeedDialPlayer).Client.GetValue("score", 0),
 					steamid = item.PlayerId.ToString()
 				});
 			}

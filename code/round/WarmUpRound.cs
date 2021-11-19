@@ -26,9 +26,7 @@ namespace SpeedDial {
 
 				if(p.Pawn is SpeedDialPlayer sp) {
 					sp.Freeze = false;
-					sp.KillScore = 0;
-					sp.maxCombo = 0;
-					sp.KillCombo = 0;
+					sp.Client.SetValue("killcombo", 0);
 					sp.Client.SetValue("score", 0);
 					sp.Client.SetValue("maxcombo", 0);
 				}
