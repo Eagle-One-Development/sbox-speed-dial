@@ -163,7 +163,7 @@ namespace SpeedDial.Weapons {
 				// shoot the bullets, bulletcount for something like a shotgun with multiple bullets
 				for(int i = 0; i < BulletCount; i++) {
 
-					this.ShootBullet(BulletSpread, BulletForce, BulletDamage, BulletSize, i);
+					ShootBullet(BulletSpread, BulletForce, BulletDamage, BulletSize, i);
 				}
 			}
 
@@ -242,6 +242,7 @@ namespace SpeedDial.Weapons {
 					.Ignore(Owner)
 					.Ignore(this)
 					.Size(size)
+					.UseLagCompensation()
 					.Run();
 
 			yield return bullet;
@@ -268,6 +269,7 @@ namespace SpeedDial.Weapons {
 									.Ignore(Owner)
 									.Ignore(this)
 									.Size(1)
+									.UseLagCompensation()
 									.Run();
 
 					if(wallbangTest.Hit) {
@@ -308,6 +310,7 @@ namespace SpeedDial.Weapons {
 							.Ignore(this)
 							.Ignore(bullet.Entity)
 							.Size(size)
+							.UseLagCompensation()
 							.Run();
 
 					yield return penetrate;
@@ -323,6 +326,7 @@ namespace SpeedDial.Weapons {
 								.Ignore(Owner)
 								.Ignore(this)
 								.Size(size)
+								.UseLagCompensation()
 								.Run();
 
 						yield return ricochet;

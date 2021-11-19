@@ -166,6 +166,8 @@ namespace SpeedDial.Player {
 			EnableHideInFirstPerson = true;
 			EnableShadowInFirstPerson = true;
 
+			LagCompensation = true;
+
 			CauseOfDeath = COD.Gunshot;
 
 			Host.AssertServer();
