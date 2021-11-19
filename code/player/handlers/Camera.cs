@@ -2,6 +2,7 @@ using System.Net;
 using System;
 using Sandbox;
 using SpeedDial.Weapons;
+using SpeedDial.UI;
 
 namespace SpeedDial.Player {
 	public partial class SpeedDialCamera : Camera {
@@ -46,6 +47,10 @@ namespace SpeedDial.Player {
 
 			var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rotation, Screen.Size);
 			var HitPosition = LinePlaneIntersectionWithHeight(Position, direction, pawn.EyePos.z - 20);
+
+			// since we got our cursor in world space because of the plane intersect above, we need to set it for the crosshair
+			var mouse = HitPosition.ToScreen();
+			CrossHair.UpdateMouse(new Vector2(mouse.x * Screen.Width, mouse.y * Screen.Height));
 
 			//trace from camera into mouse direction, essentially gets the world location of the mouse
 			var targetTrace = Trace.Ray(Position, Position + direction * 1000)

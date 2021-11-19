@@ -16,6 +16,8 @@ namespace SpeedDial.UI {
 
 		public static CrossHair Current;
 
+		Vector2 Mouse;
+
 		public float bumpScale;
 
 		public CrossHair() {
@@ -34,13 +36,18 @@ namespace SpeedDial.UI {
 			bumpScale = 0f;
 		}
 
+		[ClientRpc]
+		public static void UpdateMouse(Vector2 mouse) {
+			Current.Mouse = mouse;
+		}
+
 		public override void Tick() {
 			base.Tick();
 
 			SetClass("active", !CharacterSelect.Current.open);
 
-			cross.Style.Left = Length.Fraction(Mouse.Position.x / Screen.Width);
-			cross.Style.Top = Length.Fraction(Mouse.Position.y / Screen.Height);
+			cross.Style.Left = Length.Fraction(Mouse.x / Screen.Width);
+			cross.Style.Top = Length.Fraction(Mouse.y / Screen.Height);
 
 			float f = bumpScale;
 			bumpScale = bumpScale.LerpTo(1f, Time.Delta * 6f);
