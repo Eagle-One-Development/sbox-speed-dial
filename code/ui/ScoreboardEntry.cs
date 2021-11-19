@@ -8,13 +8,11 @@ using System.Collections.Generic;
 
 namespace Sandbox.UI {
 	public partial class SpeedDialScoreboardEntry : Panel {
-
 		public Client Client;
 
 		public Label PlayerName;
 		public Label Score;
 		public Label MaxCombo;
-		//public Label Ping;
 
 		public SpeedDialScoreboardEntry() {
 			AddClass("entry");
@@ -22,7 +20,6 @@ namespace Sandbox.UI {
 			PlayerName = Add.Label("PlayerName", "name");
 			Score = Add.Label("", "score");
 			MaxCombo = Add.Label("", "maxcombo");
-			//Ping = Add.Label("", "ping");
 		}
 
 		RealTimeSince TimeSinceUpdate = 0;
@@ -47,7 +44,7 @@ namespace Sandbox.UI {
 			PlayerName.Text = Client.Name;
 			Score.Text = $"{Client.GetValue("score", 0)}";
 			MaxCombo.Text = $"{Client.GetValue("maxcombo", 0)}";
-			//Ping.Text = Client.Ping.ToString();
+
 			SetClass("me", Client == Local.Client);
 		}
 
