@@ -56,7 +56,6 @@ namespace SpeedDial.UI {
 			if(IsMultiKill && !IsDominating) {
 				Left.Style.Transform = comboTransform;
 				Left.Style.TextShadow = shadows;
-				Left.Style.Dirty();
 			}
 
 			if(IsRevenge && !IsDominating) {

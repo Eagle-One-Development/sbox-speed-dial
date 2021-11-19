@@ -9,7 +9,7 @@ namespace SpeedDial.UI {
 		public static KillFeed Instance;
 
 		public KillFeed() {
-			StyleSheet.Load("/ui/KillFeed.scss");
+			StyleSheet.Load("/ui/killfeed/KillFeed.scss");
 			Instance = this;
 
 		}
