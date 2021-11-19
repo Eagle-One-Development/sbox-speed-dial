@@ -5,9 +5,7 @@ using SpeedDial.Weapons;
 
 namespace SpeedDial.Player {
 	public partial class SpeedDialInventory : BaseInventory {
-		public SpeedDialInventory(Sandbox.Player player) : base(player) {
-
-		}
+		public SpeedDialInventory(Sandbox.Player player) : base(player) { }
 
 		public override bool Add(Entity ent, bool makeActive = false) {
 			var player = Owner as SpeedDialPlayer;
