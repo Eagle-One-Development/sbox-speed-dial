@@ -15,7 +15,7 @@ namespace SpeedDial.UI {
 		public Panel Header { get; protected set; }
 
 		public SpeedDialScoreboard() {
-			StyleSheet.Load("/ui/Scoreboard.scss");
+			StyleSheet.Load("/ui/scoreboard/Scoreboard.scss");
 			AddClass("scoreboard");
 
 			AddHeader();
