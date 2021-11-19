@@ -155,7 +155,7 @@ namespace SpeedDial.Player {
 				dropped.Position = EyePos;
 				dropped.ResetInterpolation();
 				if(dropped.PhysicsGroup != null && dropped is BaseSpeedDialWeapon wep) {
-					wep.ApplyThrowVelocity(EyeRot.Forward);
+					wep.ApplyThrowVelocity(Velocity * 0.75f, EyeRot.Forward);
 					wep.DespawnAfterTime = true;
 					wep.GlowState = GlowStates.GlowStateOn;
 					wep.GlowDistanceStart = 0;

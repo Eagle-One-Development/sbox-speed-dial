@@ -468,7 +468,7 @@ namespace SpeedDial.Player {
 				//dropped.Rotation = Rotation.Identity;
 				if(dropped.PhysicsGroup != null) {
 					if(dropped is BaseSpeedDialWeapon wep) {
-						wep.ApplyThrowVelocity(EyeRot.Forward);
+						wep.ApplyThrowVelocity(Velocity * 0.75f, EyeRot.Forward);
 						wep.DespawnAfterTime = true;
 						wep.GlowState = GlowStates.GlowStateOn;
 						wep.GlowDistanceStart = 0;

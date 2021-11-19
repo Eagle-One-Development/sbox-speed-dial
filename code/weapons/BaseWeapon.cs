@@ -88,8 +88,8 @@ namespace SpeedDial.Weapons {
 			PickupTrigger.EnableTouchPersists = true;
 		}
 
-		public void ApplyThrowVelocity(Vector3 rot) {
-			PhysicsBody.Velocity = Velocity + rot * 500;
+		public void ApplyThrowVelocity(Vector3 baseVelocity, Vector3 rot) {
+			PhysicsBody.Velocity += baseVelocity + rot * 500;
 			PhysicsBody.AngularVelocity = new Vector3(0, 0, 100f);
 			PhysicsBody.GravityScale = 1.0f;
 			_ = SetGravity();
