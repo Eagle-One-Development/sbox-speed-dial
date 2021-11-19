@@ -8,7 +8,7 @@ namespace SpeedDial.Player {
 		public override void StartTouch(Entity other) {
 			if(IsClient) return;
 
-			if(other is PickupTrigger pt) {
+			if(other is PickupTrigger) {
 				if(other.Parent is BaseSpeedDialWeapon wep) {
 					StartTouch(other.Parent); // what
 
@@ -45,17 +45,10 @@ namespace SpeedDial.Player {
 					ResetTimeSinceMedTaken = true;
 					MedTaken = true;
 					MedDuration = drug.DrugDuration;
-					DBump(drug.DrugName, this, drug.DrugFlavor);
+					GamePanel.DrugBump(To.Single(Local.Client), drug.DrugName, drug.DrugFlavor, true);
 
 				}
 				return;
-			}
-		}
-
-		[ClientRpc]
-		public void DBump(string s, SpeedDialPlayer p, string f) {
-			if(p == Local.Pawn) {
-				GamePanel.DrugBump(s, f, true);
 			}
 		}
 

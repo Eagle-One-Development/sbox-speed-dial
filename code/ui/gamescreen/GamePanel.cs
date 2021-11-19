@@ -70,17 +70,17 @@ namespace SpeedDial.UI {
 		}
 
 		[ClientRpc]
-		public static void AddDominator(Entity e) {
-			Skull s = new Skull(e);
+		public static void AddDominator(Entity entity) {
+			Skull s = new Skull(entity);
 			Current.AddChild(s);
 			Current.dominators.Add(s);
 		}
 
 		[ClientRpc]
-		public static void RemoveDominator(Entity e) {
+		public static void RemoveDominator(Entity entity) {
 			for(int i = 0; i < Current.dominators.Count; i++) {
 				Skull s = Current.dominators[i];
-				if(s.target == e) {
+				if(s.target == entity) {
 					Current.dominators[i].DeleteChildren(true);
 					Current.dominators[i].Delete(true);
 					Current.dominators.RemoveAt(i);
@@ -90,14 +90,14 @@ namespace SpeedDial.UI {
 		}
 
 		[ClientRpc]
-		public static void DrugBump(string s, string f, bool b) {
+		public static void DrugBump(string text, string flavorText, bool boolTaken) {
 			Current.wideScale = 0.5f;
 			Current.totalDrugScale = 1.0f;
-			Current.medLabel.Text = s;
-			if(b) {
+			Current.medLabel.Text = text;
+			if(boolTaken) {
 				Current.medLabel.Text += " TAKEN";
 			}
-			Current.medFlavor.Text = f;
+			Current.medFlavor.Text = flavorText;
 		}
 
 		public override void Tick() {
