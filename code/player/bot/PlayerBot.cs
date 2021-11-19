@@ -123,13 +123,13 @@ namespace SpeedDial.Player {
 
 			//Set a default character
 			MedTaken = false;
-			character = SpeedDialGame.Instance.characters[Rand.Int(0, SpeedDialGame.Instance.characters.Count - 1)];
+			character = Character.All.ElementAtOrDefault(Rand.Int(0, Character.All.Count - 1));
 
 			Respawn();
 		}
 
 		public override void Respawn() {
-			character = SpeedDialGame.Instance.characters[Rand.Int(0, SpeedDialGame.Instance.characters.Count - 1)];
+			character = Character.All.ElementAtOrDefault(Rand.Int(0, Character.All.Count - 1));
 
 			if(character == null) {
 				SetModel("models/playermodels/character_fallback.vmdl");

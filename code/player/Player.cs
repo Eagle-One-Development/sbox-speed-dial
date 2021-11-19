@@ -41,7 +41,7 @@ namespace SpeedDial.Player {
 		public DrugType CurrentDrug { get; set; }
 
 		public Particles DrugParticles { get; set; }
-		[Net] public BaseSpeedDialCharacter character { get; set; }
+		[Net] public Character character { get; set; }
 		[Net] public bool Freeze { get; set; } = false; // sorry for naming differences
 
 		protected bool screenOpen = false;
@@ -57,7 +57,7 @@ namespace SpeedDial.Player {
 
 			//Set a default character
 			MedTaken = false;
-			character = SpeedDialGame.Instance.characters[0];
+			character = Character.All.ElementAtOrDefault(Rand.Int(0, Character.All.Count - 1));
 
 			SpeedDialGame.Instance.Round?.OnPlayerSpawn(this);
 
@@ -140,7 +140,7 @@ namespace SpeedDial.Player {
 				return;
 			}
 			Inventory.DeleteContents();
-			BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>(character.Weapon);
+			BaseSpeedDialWeapon weapon = Library.Create<BaseSpeedDialWeapon>(character.WeaponClass);
 			Inventory.Add(weapon, true);
 			if(character == null) {
 				SetModel("models/playermodels/character_fallback.vmdl");

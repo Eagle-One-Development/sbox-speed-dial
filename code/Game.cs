@@ -11,7 +11,6 @@ using SpeedDial.Settings;
 namespace SpeedDial {
 	public partial class SpeedDialGame : Game {
 
-		public List<BaseSpeedDialCharacter> characters;
 		[Net] public BaseRound Round { get; private set; }
 		[ServerVar("sdial_min_players", Help = "The minimum players required to start the game.")]
 		public static int MinPlayers { get; set; } = 1;
@@ -77,8 +76,6 @@ namespace SpeedDial {
 				Log.Info("[SV] Gamemode created!");
 				_ = new SpeedDialHud();
 			}
-
-			PopulateData();
 
 			if(IsClient) {
 				Log.Info("[CL] Gamemode created!");
@@ -238,7 +235,8 @@ namespace SpeedDial {
 		[ServerCmd("set_character")]
 		public static void SetCharacter(int index) {
 			if(ConsoleSystem.Caller.Pawn is SpeedDialPlayer player) {
-				player.character = SpeedDialGame.Instance.characters[index];
+				if(index > Character.All.Count) return;
+				player.character = Character.All.ElementAtOrDefault(index);
 			}
 		}
 
@@ -256,14 +254,6 @@ namespace SpeedDial {
 			}
 
 			ent.Position = owner.EyePos;
-		}
-
-		private void PopulateData() {
-			characters = new();
-			characters.Add(new SD_Jack());
-			characters.Add(new SD_Maria());
-			characters.Add(new SD_Dial_Up());
-			characters.Add(new SD_Highway());
 		}
 
 		public override void ClientJoined(Client client) {

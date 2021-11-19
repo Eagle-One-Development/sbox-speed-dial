@@ -3,6 +3,8 @@ using Sandbox.UI;
 using Sandbox.UI.Construct;
 using System;
 using System.Threading.Tasks;
+using System.Linq;
+
 using SpeedDial.Weapons;
 using SpeedDial.Player;
 using SpeedDial.Settings;
@@ -89,9 +91,9 @@ namespace SpeedDial.UI {
 		public override void Tick() {
 			base.Tick();
 
-			BaseSpeedDialCharacter character = SpeedDialGame.Instance.characters[currentIndex];
+			Character character = Character.All.ElementAtOrDefault(currentIndex);
 
-			title.Text = character.Name;
+			title.Text = character.CharacterName;
 			description.Text = character.Description;
 			portrait.Texture = character.PortraitTexture;
 
@@ -122,7 +124,7 @@ namespace SpeedDial.UI {
 			leftPrompt.Style.Transform = leftBump;
 			spacePrompt.Style.Transform = middleBump;
 
-			string wep = Library.GetAttribute(character.Weapon).Title;
+			string wep = Library.GetAttribute(character.WeaponClass).Title;
 			startLoad.Text = $"Weapon: {wep}";
 
 			var transform = new PanelTransform();
@@ -211,7 +213,7 @@ namespace SpeedDial.UI {
 					rightScale = 1f;
 					right = true;
 					backPortrait.Texture = portrait.Texture;
-					if(currentIndex > SpeedDialGame.Instance.characters.Count - 1) {
+					if(currentIndex > Character.All.Count - 1) {
 						currentIndex = 0;
 					}
 					var sound = Sound.FromScreen("select_click");
@@ -226,7 +228,7 @@ namespace SpeedDial.UI {
 					translate = 0f;
 					backPortrait.Texture = portrait.Texture;
 					if(currentIndex < 0) {
-						currentIndex = SpeedDialGame.Instance.characters.Count - 1;
+						currentIndex = Character.All.Count - 1;
 					}
 					leftScale = 1f;
 					var sound = Sound.FromScreen("select_click");
