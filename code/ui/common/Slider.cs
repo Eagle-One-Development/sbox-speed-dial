@@ -2,13 +2,11 @@
 using System;
 using System.Linq;
 
-namespace Sandbox.UI
-{
+namespace Sandbox.UI {
 	/// <summary>
 	/// A horizontal slider. Can be float or whole number.
 	/// </summary>
-	public class Slider : Panel
-	{
+	public class Slider : Panel {
 		public Panel Track { get; protected set; }
 		public Panel TrackInner { get; protected set; }
 		public Panel Thumb { get; protected set; }
@@ -30,14 +28,13 @@ namespace Sandbox.UI
 		/// </summary>
 		public float Step { get; set; } = 1.0f;
 
-		public Slider()
-		{
-			AddClass( "slider" );
+		public Slider() {
+			AddClass("slider");
 
-			Track = Add.Panel( "track" );
-			TrackInner = Track.Add.Panel( "inner" );
+			Track = Add.Panel("track");
+			TrackInner = Track.Add.Panel("inner");
 
-			Thumb = Add.Panel( "thumb" );
+			Thumb = Add.Panel("thumb");
 		}
 
 		protected float _value = float.MaxValue;
@@ -45,74 +42,65 @@ namespace Sandbox.UI
 		/// <summary>
 		/// The actual value. Setting the value will snap and clamp it.
 		/// </summary>
-		public float Value 
-		{
+		public float Value {
 			get => _value;
-			set
-			{
-				var snapped = Step > 0 ?  value.SnapToGrid( Step ) : value;
-				snapped = snapped.Clamp( MinValue, MaxValue );
+			set {
+				var snapped = Step > 0 ? value.SnapToGrid(Step) : value;
+				snapped = snapped.Clamp(MinValue, MaxValue);
 
-				if ( _value == snapped ) return;
+				if(_value == snapped) return;
 
 				_value = snapped;
 
-				CreateValueEvent( "value", _value );
+				CreateValueEvent("value", _value);
 				UpdateSliderPositions();
 			}
 		}
 
-		public override void SetProperty( string name, string value )
-		{
-			if ( name == "min" && float.TryParse( value, out var floatValue ) )
-			{
+		public override void SetProperty(string name, string value) {
+			if(name == "min" && float.TryParse(value, out var floatValue)) {
 				MinValue = floatValue;
 				return;
 			}
 
-			if ( name == "step" && float.TryParse( value, out floatValue ) )
-			{
+			if(name == "step" && float.TryParse(value, out floatValue)) {
 				Step = floatValue;
 				return;
 			}
 
-			if ( name == "max" && float.TryParse( value, out floatValue ) )
-			{
+			if(name == "max" && float.TryParse(value, out floatValue)) {
 				MaxValue = floatValue;
 				return;
 			}
 
-			if ( name == "value" && float.TryParse( value, out floatValue ) )
-			{
+			if(name == "value" && float.TryParse(value, out floatValue)) {
 				Value = floatValue;
 			}
 
-			base.SetProperty( name, value );
+			base.SetProperty(name, value);
 		}
 
 		/// <summary>
 		/// Convert a screen position to a value. The value is clamped, but not snapped.
 		/// </summary>
-		public virtual float ScreenPosToValue( Vector2 pos )
-		{
-			var localPos = ScreenPositionToPanelPosition( pos );
+		public virtual float ScreenPosToValue(Vector2 pos) {
+			var localPos = ScreenPositionToPanelPosition(pos);
 			var thumbSize = Thumb.Box.Rect.width * 0.5f;
-			var normalized = MathX.LerpInverse( localPos.x, thumbSize, Box.Rect.width - thumbSize, true );
-			var scaled = MathX.LerpTo( MinValue, MaxValue, normalized, true );
-			return Step > 0 ? scaled.SnapToGrid( Step ) : scaled;
+			var normalized = MathX.LerpInverse(localPos.x, thumbSize, Box.Rect.width - thumbSize, true);
+			var scaled = MathX.LerpTo(MinValue, MaxValue, normalized, true);
+			return Step > 0 ? scaled.SnapToGrid(Step) : scaled;
 		}
 
 		/// <summary>
 		/// If we move the mouse while we're being pressed then set the position,
 		/// but skip transitions.
 		/// </summary>
-		protected override void OnMouseMove( MousePanelEvent e )
-		{
-			base.OnMouseMove( e );
+		protected override void OnMouseMove(MousePanelEvent e) {
+			base.OnMouseMove(e);
 
-			if ( !HasActive ) return;
+			if(!HasActive) return;
 
-			Value = ScreenPosToValue( Mouse.Position );
+			Value = ScreenPosToValue(Mouse.Position);
 			UpdateSliderPositions();
 			SkipTransitions();
 			e.StopPropagation();
@@ -121,11 +109,10 @@ namespace Sandbox.UI
 		/// <summary>
 		/// On mouse press jump to that position
 		/// </summary>
-		protected override void OnMouseDown( MousePanelEvent e )
-		{
-			base.OnMouseDown( e );
+		protected override void OnMouseDown(MousePanelEvent e) {
+			base.OnMouseDown(e);
 
-			Value = ScreenPosToValue( Mouse.Position );
+			Value = ScreenPosToValue(Mouse.Position);
 			UpdateSliderPositions();
 			e.StopPropagation();
 		}
@@ -137,30 +124,23 @@ namespace Sandbox.UI
 		/// Note this purposely uses percentages instead of pixels when setting up, this way we don't
 		/// have to worry about parent size, screen scale etc.
 		/// </summary>
-		void UpdateSliderPositions()
-		{
-			var hash = HashCode.Combine( Value, MinValue, MaxValue );
-			if ( hash == positionHash ) return;
+		void UpdateSliderPositions() {
+			var hash = HashCode.Combine(Value, MinValue, MaxValue);
+			if(hash == positionHash) return;
 
 			positionHash = hash;
 
-			var pos = MathX.LerpInverse( Value, MinValue, MaxValue, true );
+			var pos = MathX.LerpInverse(Value, MinValue, MaxValue, true);
 
-			TrackInner.Style.Width = Length.Fraction( pos );
-			Thumb.Style.Left = Length.Fraction( pos );
+			TrackInner.Style.Width = Length.Fraction(pos);
+			Thumb.Style.Left = Length.Fraction(pos);
 
-			TrackInner.Style.Dirty();
-			Thumb.Style.Dirty();
 		}
-
 	}
 
-	namespace Construct
-	{
-		public static class SliderConstructor
-		{
-			public static Slider Slider( this PanelCreator self, float min, float max, float step )
-			{
+	namespace Construct {
+		public static class SliderConstructor {
+			public static Slider Slider(this PanelCreator self, float min, float max, float step) {
 				var control = self.panel.AddChild<Slider>();
 				control.MinValue = min;
 				control.MaxValue = max;
