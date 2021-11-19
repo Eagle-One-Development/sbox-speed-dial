@@ -190,11 +190,6 @@ namespace SpeedDial.Player {
 				screenOpen = true;
 			}
 
-			if(ResetTimeSinceMelee) {
-				TimeSinceMelee = 0;
-				ResetTimeSinceMelee = false;
-			}
-
 			if(ResetTimeSinceMedTaken) {
 				TimeSinceMedTaken = 0;
 				ResetTimeSinceMedTaken = false;
@@ -210,10 +205,6 @@ namespace SpeedDial.Player {
 
 			if(Input.ActiveChild != null) {
 				ActiveChild = Input.ActiveChild;
-			}
-
-			if(ActiveChild == null) {
-				_ = HandleMelee();
 			}
 
 			if(TimeSinceMedTaken > MedDuration) {
@@ -442,62 +433,6 @@ namespace SpeedDial.Player {
 			}
 
 			return target;
-		}
-
-		/// <summary>
-		/// Handles Punching
-		/// </summary>
-		protected override async Task HandleMelee() {
-			if(ShootAtPlayer) {
-				if(TimeSinceMelee > 0.5f) {
-					ResetTimeSinceMelee = true;
-					await GameTask.DelaySeconds(0.1f);
-					var forward = EyeRot.Forward;
-					Vector3 pos = EyePos + Vector3.Down * 20f;
-					var tr = Trace.Ray(pos, pos + forward * 40f)
-					.UseHitboxes()
-					.Ignore(this)
-					.Size(20f)
-					.Run();
-
-					using(Prediction.Off()) {
-						if(IsServer) {
-							PlaySound("woosh");
-						}
-					}
-
-					SetAnimBool("b_attack", true);
-
-					//DebugOverlay.Line(EyePos + Vector3.Down * 20, tr.EndPos, Color.White, 1, false);
-
-					if(!IsServer) return;
-					if(!tr.Entity.IsValid()) return;
-					if(!(LifeState == LifeState.Alive)) return;
-
-					// We turn predictiuon off for this, so any exploding effects don't get culled etc
-					using(Prediction.Off()) {
-
-						var damage = DamageInfo.FromBullet(tr.EndPos, Owner.EyeRot.Forward * 100, 200)
-							.UsingTraceResult(tr)
-							.WithAttacker(Owner)
-							.WithWeapon(this);
-
-						damage.Attacker = this;
-						damage.Position = Position;
-						if(IsServer) {
-							PlaySound("smack");
-						}
-						await GameTask.DelaySeconds(0.2f);
-						if(!(LifeState == LifeState.Alive)) return;
-
-						if(tr.Entity is SpeedDialPlayer player) {
-							player.CauseOfDeath = COD.Melee;
-						}
-
-						tr.Entity.TakeDamage(damage);
-					}
-				}
-			}
 		}
 
 		/// <summary>

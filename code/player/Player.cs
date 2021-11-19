@@ -26,12 +26,6 @@ namespace SpeedDial.Player {
 		protected Entity pickUpEntity;
 
 		[Net, Local, Predicted]
-		public TimeSince TimeSinceMelee { get; set; }
-
-		[Net, Local]
-		public bool ResetTimeSinceMelee { get; set; } = false;
-
-		[Net, Local, Predicted]
 		public TimeSince TimeSinceMedTaken { get; set; }
 
 		[Net, Local]
@@ -236,60 +230,6 @@ namespace SpeedDial.Player {
 			Frozen = freeze;
 		}
 
-		/// <summary>
-		/// Handles Punching
-		/// </summary>
-		protected virtual async Task HandleMelee() {
-			if(Input.Pressed(InputButton.Attack1)) {
-				if(TimeSinceMelee > 0.5f) {
-					ResetTimeSinceMelee = true;
-					await GameTask.DelaySeconds(0.1f);
-					var forward = EyeRot.Forward;
-					Vector3 pos = EyePos + Vector3.Down * 20f;
-					var tr = Trace.Ray(pos, pos + forward * 40f)
-					.UseHitboxes()
-					.Ignore(this)
-					.Size(20f)
-					.Run();
-
-					using(Prediction.Off()) {
-						if(IsServer) {
-							PlaySound("woosh");
-						}
-					}
-
-					SetAnimBool("b_attack", true);
-
-					if(!IsServer) return;
-					if(!tr.Entity.IsValid()) return;
-					if(!(LifeState == LifeState.Alive)) return;
-
-					// We turn predictiuon off for this, so any exploding effects don't get culled etc
-					using(Prediction.Off()) {
-
-						var damage = DamageInfo.FromBullet(tr.EndPos, Owner.EyeRot.Forward * 100, 200)
-							.UsingTraceResult(tr)
-							.WithAttacker(Owner)
-							.WithWeapon(this);
-
-						damage.Attacker = this;
-						damage.Position = Position;
-						if(IsServer) {
-							PlaySound("smack");
-						}
-						await GameTask.DelaySeconds(0.2f);
-						if(!(LifeState == LifeState.Alive)) return;
-
-						if(tr.Entity is SpeedDialPlayer player) {
-							player.CauseOfDeath = COD.Melee;
-						}
-
-						tr.Entity.TakeDamage(damage);
-					}
-				}
-			}
-		}
-
 		public void Throw() {
 			var dropped = Inventory.DropActive();
 			if(dropped != null) {
@@ -340,11 +280,6 @@ namespace SpeedDial.Player {
 				screenOpen = true;
 			}
 
-			if(ResetTimeSinceMelee) {
-				TimeSinceMelee = 0;
-				ResetTimeSinceMelee = false;
-			}
-
 			if(ResetTimeSinceMedTaken) {
 				TimeSinceMedTaken = 0;
 				ResetTimeSinceMedTaken = false;
@@ -362,10 +297,16 @@ namespace SpeedDial.Player {
 				ActiveChild = Input.ActiveChild;
 			}
 
-			// TODO: refactor melee.
-			// this is stupid, predict this properly
-			if(ActiveChild == null) {
-				_ = HandleMelee();
+			Debug.ScreenText($"time since started: {TimeSinceMeleeStarted}", 10, Time.Delta);
+			Debug.ScreenText($"active melee: {ActiveMelee}", 11, Time.Delta);
+			Debug.ScreenText($"time since started: {TimeSinceMeleeStarted}", 12, Time.Delta);
+
+			if(ActiveChild == null && Input.Pressed(InputButton.Attack1) && TimeSinceMeleeStarted >= 0.7f) {
+				StartMelee();
+			}
+
+			if(ActiveMelee) {
+				SimulateMelee();
 			}
 
 			if(TimeSinceMedTaken > MedDuration) {
