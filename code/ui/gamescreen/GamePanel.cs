@@ -20,8 +20,8 @@ namespace SpeedDial.UI {
 		public Panel drugPanel;
 		public Image drugImage;
 
-		public Label medLabel;
-		public Label medFlavor;
+		public Label screenEventLabel;
+		public Label screenEventSubLabel;
 		private TimeSince aTime = 0;
 		public static GamePanel Current;
 
@@ -32,7 +32,7 @@ namespace SpeedDial.UI {
 		private float scale;
 
 		private float wideScale;
-		private float totalDrugScale;
+		private float screenEventScale;
 		private float old;
 		private float oldScale;
 		public Label preRoundCountDownLabel;
@@ -48,8 +48,8 @@ namespace SpeedDial.UI {
 			pickUpPanel = Add.Panel("pickuppanel");
 			pickUpLabel = pickUpPanel.Add.Label("Right Click To Pick Up", "pickuplabel");
 
-			medLabel = pickUpPanel.Add.Label("DRUG TAKEN", "medlabel");
-			medFlavor = medLabel.Add.Label("you feel better", "medFlavor");
+			screenEventLabel = pickUpPanel.Add.Label("DRUG TAKEN", "screenevent");
+			screenEventSubLabel = screenEventLabel.Add.Label("you feel better", "screeneventsub");
 
 			Current = this;
 			scale = 0;
@@ -71,7 +71,7 @@ namespace SpeedDial.UI {
 
 		[ClientRpc]
 		public static void AddDominator(Entity entity) {
-			Skull s = new Skull(entity);
+			Skull s = new(entity);
 			Current.AddChild(s);
 			Current.dominators.Add(s);
 		}
@@ -89,15 +89,16 @@ namespace SpeedDial.UI {
 			}
 		}
 
+		// used for drug pickups and "killed by" popup
 		[ClientRpc]
-		public static void DrugBump(string text, string flavorText, bool boolTaken) {
+		public static void ScreenEvent(string text, string flavorText, bool boolTaken) {
 			Current.wideScale = 0.5f;
-			Current.totalDrugScale = 1.0f;
-			Current.medLabel.Text = text;
+			Current.screenEventScale = 1.0f;
+			Current.screenEventLabel.Text = text;
 			if(boolTaken) {
-				Current.medLabel.Text += " TAKEN";
+				Current.screenEventLabel.Text += " TAKEN";
 			}
-			Current.medFlavor.Text = flavorText;
+			Current.screenEventSubLabel.Text = flavorText;
 		}
 
 		public override void Tick() {
@@ -142,15 +143,15 @@ namespace SpeedDial.UI {
 			pickUpLabel.Style.TextShadow = shadows;
 
 			PanelTransform transform3 = new();
-			transform3.AddScale(new Vector3(totalDrugScale + wideScale, totalDrugScale, totalDrugScale));
+			transform3.AddScale(new Vector3(screenEventScale + wideScale, screenEventScale, screenEventScale));
 
 			wideScale = wideScale.LerpTo(0, Time.Delta * 4f);
 			if(wideScale <= 0.01f) {
-				totalDrugScale = totalDrugScale.LerpTo(0, Time.Delta * 8f);
+				screenEventScale = screenEventScale.LerpTo(0, Time.Delta * 8f);
 			}
 
-			medLabel.Style.Transform = transform3;
-			medLabel.Style.TextShadow = shadows;
+			screenEventLabel.Style.Transform = transform3;
+			screenEventLabel.Style.TextShadow = shadows;
 
 			if(SpeedDialGame.Instance.Round is PreRound gr) {
 				if(gr.TimeLeft >= 0) {

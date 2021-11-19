@@ -45,7 +45,7 @@ namespace SpeedDial.Player {
 					ResetTimeSinceMedTaken = true;
 					MedTaken = true;
 					MedDuration = drug.DrugDuration;
-					GamePanel.DrugBump(To.Single(Local.Client), drug.DrugName, drug.DrugFlavor, true);
+					GamePanel.ScreenEvent(To.Single(Local.Client), drug.DrugName, drug.DrugFlavor, true);
 
 				}
 				return;
