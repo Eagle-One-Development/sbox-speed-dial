@@ -25,8 +25,9 @@ namespace SpeedDial.Player {
 		[Event("tick")]
 		public void OnTick() {
 			if(IsServer) {
-				if(TimeSinceMurdered >= SpeedDialGame.ComboTime)
+				if(TimeSinceMurdered >= SpeedDialGame.ComboTime) {
 					KillCombo = 0;
+				}
 			}
 		}
 	}
