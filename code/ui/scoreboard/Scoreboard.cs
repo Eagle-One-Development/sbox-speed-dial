@@ -15,7 +15,7 @@ namespace SpeedDial.UI {
 		public Panel Header { get; protected set; }
 
 		public SpeedDialScoreboard() {
-			StyleSheet.Load("/ui/Scoreboard.scss");
+			StyleSheet.Load("/ui/scoreboard/SD_Scoreboard.scss");
 			AddClass("scoreboard");
 
 			AddHeader();
@@ -49,13 +49,11 @@ namespace SpeedDial.UI {
 			Canvas.SortChildren((x) => -(x as SpeedDialScoreboardEntry).Client.GetValue("score", 0));
 		}
 
-
 		protected virtual void AddHeader() {
 			Header = Add.Panel("header");
 			Header.Add.Label("Name", "name");
 			Header.Add.Label("Score", "score");
 			Header.Add.Label("Max Combo", "maxcombo");
-			//Header.Add.Label("Ping", "ping");
 		}
 
 		protected virtual T AddClient(Client entry) {
