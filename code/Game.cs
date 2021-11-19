@@ -154,8 +154,8 @@ namespace SpeedDial {
 
 			//Basically if the person that killed us is someone we were dominating, tell them they got revenge and remove the icon fro mtheir HUD
 			if(numKills >= 3) {
-				(pawn.LastAttacker as SpeedDialPlayer).DrugBump(To.Single(pawn.LastAttacker.Client), "REVENGE", "AGAINST " + pawn.Client.Name, false);
-				(pawn.LastAttacker as SpeedDialPlayer).Revenge(To.Single(pawn.LastAttacker.Client), pawn);
+				GamePanel.DrugBump(To.Single(pawn.LastAttacker.Client), "REVENGE", "AGAINST " + pawn.Client.Name, false);
+				GamePanel.RemoveDominator(To.Single(pawn.LastAttacker.Client), pawn);
 				revenge = true;
 			}
 
@@ -175,17 +175,17 @@ namespace SpeedDial {
 
 			//If it's 3 kills, and they weren't taking revenge on us, then we will say we are dominating them and add an icon to their hud
 			if(numKills == 3 && !revenge) {
-				(pawn.LastAttacker as SpeedDialPlayer).DrugBump(To.Single(pawn.LastAttacker.Client), "DOMINATING", pawn.Client.Name, false);
-				(pawn as SpeedDialPlayer).Dominate(To.Single(pawn.Client), pawn.LastAttacker);
+				GamePanel.DrugBump(To.Single(pawn.LastAttacker.Client), "DOMINATING", pawn.Client.Name, false);
+				GamePanel.AddDominator(To.Single(pawn.Client), pawn.LastAttacker);
 				dominating = true;
 				Log.Info(pawn.LastAttacker.Client.Name + " IS DOMINATING " + pawn.Client.Name);
 			}
 
 			//Moved the kill messages here so that we can let players know who and when someone is dominating them
 			if(dominating) {
-				(pawn as SpeedDialPlayer).DrugBump(To.Single(pawn), pawn.LastAttacker.Client.Name, "IS DOMINATING YOU", false);
+				GamePanel.DrugBump(To.Single(pawn), pawn.LastAttacker.Client.Name, "IS DOMINATING YOU", false);
 			} else {
-				(pawn as SpeedDialPlayer).DrugBump(To.Single(pawn), pawn.LastAttacker.Client.Name, "KILLED YOU", false);
+				GamePanel.DrugBump(To.Single(pawn), pawn.LastAttacker.Client.Name, "KILLED YOU", false);
 			}
 
 			bool multiKill = false;

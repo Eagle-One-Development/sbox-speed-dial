@@ -1,6 +1,7 @@
 using Sandbox;
 using SpeedDial.Weapons;
 using SpeedDial.Meds;
+using SpeedDial.UI;
 
 namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer {
@@ -54,7 +55,7 @@ namespace SpeedDial.Player {
 		[ClientRpc]
 		public void DBump(string s, SpeedDialPlayer p, string f) {
 			if(p == Local.Pawn) {
-				DrugBump(s, f, true);
+				GamePanel.DrugBump(s, f, true);
 			}
 		}
 

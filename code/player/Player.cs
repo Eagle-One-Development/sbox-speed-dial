@@ -209,27 +209,6 @@ namespace SpeedDial.Player {
 			}
 		}
 
-		[ClientRpc]
-		public void SetPlayerBodyGroup(int group, int value) {
-			//Log.Info("Set Bodygroup Client");
-			SetBodyGroup(group, value);
-		}
-
-		[ClientRpc]
-		public void DrugBump(string s, string f, bool b) {
-			GamePanel.Current.DrugBump(s, f, b);
-		}
-
-		[ClientRpc]
-		public void Dominate(Entity e) {
-			GamePanel.Current.AddDominator(e);
-		}
-
-		[ClientRpc]
-		public void Revenge(Entity e) {
-			GamePanel.Current.RemoveDominator(e);
-		}
-
 		/// <summary>
 		/// Completely freezes the player. Essentially stops camera, controller and entity from simulating.
 		/// </summary>

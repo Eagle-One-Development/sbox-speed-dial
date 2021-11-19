@@ -10,7 +10,7 @@ using SpeedDial.Meds;
 
 
 namespace SpeedDial.UI {
-	public class GamePanel : Panel {
+	public partial class GamePanel : Panel {
 		public Panel ammoCounter;
 		public Label clipLabel;
 
@@ -69,32 +69,35 @@ namespace SpeedDial.UI {
 			scale = 0.7f;
 		}
 
-		public void AddDominator(Entity e) {
+		[ClientRpc]
+		public static void AddDominator(Entity e) {
 			Skull s = new Skull(e);
-			AddChild(s);
-			dominators.Add(s);
+			Current.AddChild(s);
+			Current.dominators.Add(s);
 		}
 
-		public void RemoveDominator(Entity e) {
-			for(int i = 0; i < dominators.Count; i++) {
-				Skull s = dominators[i];
+		[ClientRpc]
+		public static void RemoveDominator(Entity e) {
+			for(int i = 0; i < Current.dominators.Count; i++) {
+				Skull s = Current.dominators[i];
 				if(s.target == e) {
-					dominators[i].DeleteChildren(true);
-					dominators[i].Delete(true);
-					dominators.RemoveAt(i);
+					Current.dominators[i].DeleteChildren(true);
+					Current.dominators[i].Delete(true);
+					Current.dominators.RemoveAt(i);
 					continue;
 				}
 			}
 		}
 
-		public void DrugBump(string s, string f, bool b) {
-			wideScale = 0.5f;
-			totalDrugScale = 1.0f;
-			medLabel.Text = s;
+		[ClientRpc]
+		public static void DrugBump(string s, string f, bool b) {
+			Current.wideScale = 0.5f;
+			Current.totalDrugScale = 1.0f;
+			Current.medLabel.Text = s;
 			if(b) {
-				medLabel.Text += " TAKEN";
+				Current.medLabel.Text += " TAKEN";
 			}
-			medFlavor.Text = f;
+			Current.medFlavor.Text = f;
 		}
 
 		public override void Tick() {
