@@ -196,7 +196,7 @@ namespace SpeedDial.Weapons {
 			//forward = new Vector3( forward.x, forward.y, forward.z * VerticalBulletSpread );
 			forward.z *= VerticalBulletSpread;
 
-			AmmoPanel.Current?.Bump();
+			GamePanel.Current?.Bump();
 			CrossHair.Current?.Bump();
 			int index = 0;
 			foreach(var tr in TraceBullet(Owner.EyePos, Owner.EyePos + forward * Range, bulletSize)) {

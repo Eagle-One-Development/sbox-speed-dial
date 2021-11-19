@@ -10,7 +10,7 @@ using SpeedDial.Meds;
 
 
 namespace SpeedDial.UI {
-	public class AmmoPanel : Panel {
+	public class GamePanel : Panel {
 		public Panel ammoCounter;
 		public Label clipLabel;
 
@@ -23,7 +23,7 @@ namespace SpeedDial.UI {
 		public Label medLabel;
 		public Label medFlavor;
 		private TimeSince aTime = 0;
-		public static AmmoPanel Current;
+		public static GamePanel Current;
 
 		private float outscale;
 		public float pickedup;
@@ -40,8 +40,8 @@ namespace SpeedDial.UI {
 
 		public List<Skull> dominators;
 
-		public AmmoPanel() {
-			StyleSheet.Load("/ui/AmmoPanel.scss");
+		public GamePanel() {
+			StyleSheet.Load("/ui/gamescreen/GamePanel.scss");
 			ammoCounter = Add.Panel("counter");
 			clipLabel = ammoCounter.Add.Label("0", "ammoLabel");
 
@@ -132,13 +132,11 @@ namespace SpeedDial.UI {
 
 			clipLabel.Style.TextShadow = shadows;
 			clipLabel.Style.Transform = transform;
-			clipLabel.Style.Dirty();
 
 			pickeduptar = pickeduptar.LerpTo(pickedup, Time.Delta * 8f);
 
 			pickUpLabel.Style.Transform = transform2;
 			pickUpLabel.Style.TextShadow = shadows;
-			pickUpLabel.Style.Dirty();
 
 			PanelTransform transform3 = new();
 			transform3.AddScale(new Vector3(totalDrugScale + wideScale, totalDrugScale, totalDrugScale));
@@ -150,7 +148,6 @@ namespace SpeedDial.UI {
 
 			medLabel.Style.Transform = transform3;
 			medLabel.Style.TextShadow = shadows;
-			medLabel.Style.Dirty();
 
 			if(SpeedDialGame.Instance.Round is PreRound gr) {
 				if(gr.TimeLeft >= 0) {
@@ -198,7 +195,6 @@ namespace SpeedDial.UI {
 					var pos = dominators[i].target.EyePos.ToScreen();
 					dominators[i].Style.Left = Length.Fraction(pos.x);
 					dominators[i].Style.Top = Length.Fraction(pos.y);
-					dominators[i].Style.Dirty();
 				}
 			}
 
@@ -226,7 +222,7 @@ namespace SpeedDial.UI {
 			}
 
 
-			PanelTransform pt = new PanelTransform();
+			PanelTransform pt = new();
 			if(f != old) {
 				oldScale = 0.5f;
 			}
@@ -241,9 +237,6 @@ namespace SpeedDial.UI {
 			drugImage.Style.TransformOriginY = Length.Fraction(-1.0f);
 
 			drugImage.Style.Transform = pt;
-
-			drugImage.Style.Dirty();
-			drugPanel.Style.Dirty();
 		}
 	}
 

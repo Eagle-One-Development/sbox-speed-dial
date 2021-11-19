@@ -217,17 +217,17 @@ namespace SpeedDial.Player {
 
 		[ClientRpc]
 		public void DrugBump(string s, string f, bool b) {
-			AmmoPanel.Current.DrugBump(s, f, b);
+			GamePanel.Current.DrugBump(s, f, b);
 		}
 
 		[ClientRpc]
 		public void Dominate(Entity e) {
-			AmmoPanel.Current.AddDominator(e);
+			GamePanel.Current.AddDominator(e);
 		}
 
 		[ClientRpc]
 		public void Revenge(Entity e) {
-			AmmoPanel.Current.RemoveDominator(e);
+			GamePanel.Current.RemoveDominator(e);
 		}
 
 		/// <summary>
@@ -420,11 +420,11 @@ namespace SpeedDial.Player {
 			}
 
 			if(IsClient) {
-				AmmoPanel.Current.pickedup = 0f;
+				GamePanel.Current.pickedup = 0f;
 			}
 
 			if(IsClient && pickup && Input.ActiveChild == null) {
-				AmmoPanel.Current.pickedup = 1f;
+				GamePanel.Current.pickedup = 1f;
 			}
 
 			SimulateActiveChild(cl, ActiveChild);

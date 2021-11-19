@@ -232,11 +232,11 @@ namespace SpeedDial.Player {
 			SetAnimBool("b_polvo", MedTaken && CurrentDrug == Meds.DrugType.Polvo);
 
 			if(IsClient) {
-				AmmoPanel.Current.pickedup = 0f;
+				GamePanel.Current.pickedup = 0f;
 			}
 
 			if(IsClient && pickup && Input.ActiveChild == null) {
-				AmmoPanel.Current.pickedup = 1f;
+				GamePanel.Current.pickedup = 1f;
 			}
 
 			SimulateActiveChild(cl, ActiveChild);
