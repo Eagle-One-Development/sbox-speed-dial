@@ -6,6 +6,9 @@ namespace SpeedDial.UI {
 	[Library]
 	public class SpeedDialHud : HudEntity<RootPanel> {
 
+		public static Color VHS_MAGENTA = new Color(255f / 255f, 89 / 255f, 255f / 255f, 1.0f);
+		public static Color VHS_CYAN = new Color(28f / 255f, 255f / 255f, 176f / 255f, 1.0f);
+
 		[Net]
 		public static SpeedDialScoreboard<SpeedDialScoreboardEntry> Scoreboard { get; private set; }
 		public SpeedDialHud() {

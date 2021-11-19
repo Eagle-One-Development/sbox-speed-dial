@@ -11,12 +11,12 @@ ammopanel {
         width: 64px;
         aspect-ratio: 1;
         transform: translateX(-32px) translateY(-64px);
-        background-image-tint: #B72316;
+        background-image-tint: #b72316;
 
         .icon {
             width: 100%;
-            background-image-tint: #B72316;
-            color: #B72316;
+            background-image-tint: #b72316;
+            color: #b72316;
         }
     }
 
@@ -31,11 +31,6 @@ ammopanel {
         height: 64px;
         width: 64px;
         transform: translatex(-50%) translatey(-150%);
-
-
-
-
-
 
         .drugImage {
             //transform-origin: 50% 50%;
@@ -95,7 +90,6 @@ ammopanel {
             align-items: center;
             justify-content: center;
 
-
             .medFlavor {
                 position: absolute;
                 top: 100px;
@@ -129,8 +123,7 @@ ammopanel {
             color: #fff;
             font-size: 90px;
             text-align: center;
-            //text-shadow: 3px 0px 8px #FFA3FF;
-            //text-shadow: -3px 0px 8px #ADFFE2;
+
             &.ammoLeft {
                 font-size: 32px;
             }

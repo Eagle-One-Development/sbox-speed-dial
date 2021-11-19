@@ -12,8 +12,6 @@ using SpeedDial.Meds;
 namespace SpeedDial.UI {
 	public class AmmoPanel : Panel {
 		public Panel ammoCounter;
-		public Label ammoLabel;
-
 		public Label clipLabel;
 
 		public Panel pickUpPanel;
@@ -26,9 +24,6 @@ namespace SpeedDial.UI {
 		public Label medFlavor;
 		private TimeSince aTime = 0;
 		public static AmmoPanel Current;
-
-		Color vhs_green;
-		Color vhs_magenta;
 
 		private float outscale;
 		public float pickedup;
@@ -65,9 +60,6 @@ namespace SpeedDial.UI {
 			preRoundCountDownLabel = panel.Add.Label("10", "timer");
 			preRoundMenuLabel = panel.Add.Label("PRESS " + Input.GetKeyWithBinding("+iv_duck").ToUpper() + " TO OPEN CHARACTER SELECT", "char");
 
-			vhs_green = new Color(28f / 255f, 255f / 255f, 176f / 255f, 1.0f);//new Color(173f/255f,255f/255f,226f/255f,1.0f);
-			vhs_magenta = new Color(255f / 255f, 89 / 255f, 255f / 255f, 1.0f);//new Color(255f / 255f, 163f / 255f, 255f / 255f, 1.0f);
-
 			drugPanel = Add.Panel("drug");
 			drugImage = drugPanel.Add.Image("materials/ui/smile.png", "drugImage");
 
@@ -84,22 +76,16 @@ namespace SpeedDial.UI {
 		}
 
 		public void RemoveDominator(Entity e) {
-			int index = -1;
-			//Log.Info($"ATTEMPTING TO DELETE {e.Client.Name}");
 			for(int i = 0; i < dominators.Count; i++) {
 				Skull s = dominators[i];
 				if(s.target == e) {
 					dominators[i].DeleteChildren(true);
 					dominators[i].Delete(true);
-					//Log.Info("DELETED");
 					dominators.RemoveAt(i);
-					index = i;
 					continue;
 				}
 			}
 		}
-
-
 
 		public void DrugBump(string s, string f, bool b) {
 			wideScale = 0.5f;
@@ -109,27 +95,27 @@ namespace SpeedDial.UI {
 				medLabel.Text += " TAKEN";
 			}
 			medFlavor.Text = f;
-			//Log.Info("TEST");
 		}
 
 		public override void Tick() {
-			Shadow s1 = new();
-			s1.OffsetX = 2f + MathF.Sin(aTime * 2f) * 2f;
-			s1.OffsetY = 0f;
-			s1.Color = vhs_green;
-			s1.Blur = 1f;
-			s1.Spread = 20f;
 
-			Shadow s2 = new();
-			s2.OffsetX = -2f + MathF.Sin(aTime * 2f) * 2f;
-			s2.OffsetY = 0;
-			s2.Color = vhs_magenta;
-			s2.Blur = 1f;
-			s2.Spread = 20f;
+			Shadow shadow_cyan = new();
+			shadow_cyan.OffsetX = 2f + MathF.Sin(aTime * 2f) * 2f;
+			shadow_cyan.OffsetY = 0f;
+			shadow_cyan.Color = SpeedDialHud.VHS_CYAN;
+			shadow_cyan.Blur = 1f;
+			shadow_cyan.Spread = 20f;
+
+			Shadow shadow_magenta = new();
+			shadow_magenta.OffsetX = -2f + MathF.Sin(aTime * 2f) * 2f;
+			shadow_magenta.OffsetY = 0;
+			shadow_magenta.Color = SpeedDialHud.VHS_MAGENTA;
+			shadow_magenta.Blur = 1f;
+			shadow_magenta.Spread = 20f;
 
 			ShadowList shadows = new();
-			shadows.Add(s1);
-			shadows.Add(s2);
+			shadows.Add(shadow_cyan);
+			shadows.Add(shadow_magenta);
 
 			float anim = (MathF.Sin(aTime * 2f) + 1) / 2;
 			float anim2 = MathF.Sin(aTime * 1f);
@@ -206,7 +192,6 @@ namespace SpeedDial.UI {
 					if(!dominators[i].target.IsValid()) {
 						dominators[i].DeleteChildren(true);
 						dominators[i].Delete(true);
-						//Log.Info("DELETED");
 						dominators.RemoveAt(i);
 						continue;
 					}
@@ -217,11 +202,10 @@ namespace SpeedDial.UI {
 				}
 			}
 
-
 			drugPanel.Style.Left = Length.Fraction(screenPos.x);
 			drugPanel.Style.Top = Length.Fraction(screenPos.y);
 
-			float f = Math.Clamp((MathF.Round((player as SpeedDialPlayer).TimeSinceMedTaken)) / (player as SpeedDialPlayer).MedDuration, 0f, 1f);
+			float f = Math.Clamp(MathF.Round((player as SpeedDialPlayer).TimeSinceMedTaken) / (player as SpeedDialPlayer).MedDuration, 0f, 1f);
 			if((player as SpeedDialPlayer).MedTaken == true && f >= 0.95f) {
 				DrugType dt = (player as SpeedDialPlayer).CurrentDrug;
 				switch(dt) {
@@ -249,23 +233,19 @@ namespace SpeedDial.UI {
 
 			oldScale = oldScale.LerpTo(0, Time.Delta * 4f);
 
-			pt.AddScale((1 - f) + oldScale);
+			pt.AddScale(1 - f + oldScale);
 
 			old = f;
 
 			drugImage.Style.TransformOriginX = Length.Fraction(-0.0f);
 			drugImage.Style.TransformOriginY = Length.Fraction(-1.0f);
 
-
 			drugImage.Style.Transform = pt;
 
 			drugImage.Style.Dirty();
 			drugPanel.Style.Dirty();
-
-
 		}
 	}
-
 
 	public class Skull : Panel {
 		public Entity target;
@@ -274,5 +254,4 @@ namespace SpeedDial.UI {
 			target = t;
 		}
 	}
-
 }

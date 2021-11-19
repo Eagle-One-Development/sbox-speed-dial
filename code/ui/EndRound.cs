@@ -9,48 +9,23 @@ using System.Collections.Generic;
 namespace SpeedDial.UI {
 	public class EndRound : Panel {
 		public Image render;
-
-
-		AnimSceneObject firstAnim;
-		//SceneCapture sceneCapture;
-		Angles CamAngles;
-		Transform firstPlaceTransform;
-
 		public static EndRound Current;
 		public PlayerPanel firstPlace;
 		public PlayerPanel secondPlace;
 		public PlayerPanel thirdPlace;
-
 		private TimeSince animTime;
 		private float[] scale = new float[3];
-
-		Color vhs_green;
-		Color vhs_magenta;
-
 		public TimeSince time;
-
 		public bool characterset;
 
 		public void SetPlayers() {
 			var players = SpeedDialGame.Instance.SortedPlayerList();
 
-			//Log.Info( "------------------" );
-			//int i = 0;
-			//foreach(SpeedDialPlayer p in players )
-			//{
-			//	Log.Info( $"{p.Client.Name} {p.KillScore} {i}" );
-			//	i++;
-			//}
-			//Log.Info( "------------------" );
-
 			firstPlace.myLabel.Text = players[0].Client.Name;
 			firstPlace.subLabel.Text = "1st";
 			firstPlace.scoreLabel.Text = players[0].KillScore.ToString() + " pts";
 
-
 			firstPlace.myImage.Texture = Texture.Load(players[0].character.Portrait);
-
-
 
 			if(players.Count > 1) {
 				secondPlace.myLabel.Text = players[1].Client.Name;
@@ -65,10 +40,6 @@ namespace SpeedDial.UI {
 				thirdPlace.myImage.Texture = Texture.Load(players[2].character.Portrait);
 				thirdPlace.subLabel.Text = "3rd";
 			}
-
-			vhs_green = new Color(28f / 255f, 255f / 255f, 176f / 255f, 1.0f);//new Color(173f/255f,255f/255f,226f/255f,1.0f);
-			vhs_magenta = new Color(255f / 255f, 89 / 255f, 255f / 255f, 1.0f);//new Color(255f / 255f, 163f / 255f, 255f / 255f, 1.0f);
-
 		}
 
 		public EndRound() {
@@ -86,31 +57,28 @@ namespace SpeedDial.UI {
 			scale[2] = 100f;
 		}
 
-		public override void OnDeleted() {
-			base.OnDeleted();
-
-		}
-
 		public override void Tick() {
 			base.Tick();
-			if(SpeedDialGame.Instance.Round is PostRound gr) {
-				Shadow s1 = new();
-				s1.OffsetX = 2f + MathF.Sin(Time.Now * 2f) * 2f;
-				s1.OffsetY = 0f;
-				s1.Color = vhs_green;
-				s1.Blur = 1f;
-				s1.Spread = 20f;
 
-				Shadow s2 = new();
-				s2.OffsetX = -2f + MathF.Sin(Time.Now * 2f) * 2f;
-				s2.OffsetY = 0;
-				s2.Color = vhs_magenta;
-				s2.Blur = 1f;
-				s2.Spread = 20f;
+			// TODO: rpc?
+			if(SpeedDialGame.Instance.Round is PostRound) {
+				Shadow shadow_cyan = new();
+				shadow_cyan.OffsetX = 2f + MathF.Sin(Time.Now * 2f) * 2f;
+				shadow_cyan.OffsetY = 0f;
+				shadow_cyan.Color = SpeedDialHud.VHS_CYAN;
+				shadow_cyan.Blur = 1f;
+				shadow_cyan.Spread = 20f;
+
+				Shadow shadow_magenta = new();
+				shadow_magenta.OffsetX = -2f + MathF.Sin(Time.Now * 2f) * 2f;
+				shadow_magenta.OffsetY = 0;
+				shadow_magenta.Color = SpeedDialHud.VHS_MAGENTA;
+				shadow_magenta.Blur = 1f;
+				shadow_magenta.Spread = 20f;
 
 				ShadowList shadows = new();
-				shadows.Add(s1);
-				shadows.Add(s2);
+				shadows.Add(shadow_cyan);
+				shadows.Add(shadow_magenta);
 
 				SetClass("active", true);
 
@@ -118,26 +86,25 @@ namespace SpeedDial.UI {
 					SetPlayers();
 					characterset = true;
 				}
-				PanelTransform first = new PanelTransform();
+				PanelTransform first = new();
 				first.AddTranslateY(Length.Percent(scale[0]));
 
-				PanelTransform firstLabel = new PanelTransform();
+				PanelTransform firstLabel = new();
 				float anim = MathF.Sin(Time.Now * 4f);
 				float anim2 = MathF.Sin(Time.Now * 2f);
 				firstLabel.AddScale(1f + 0.1f * anim);
 				firstLabel.AddRotation(0, 0, 15 * anim2);
 
-				PanelTransform secondLabel = new PanelTransform();
+				PanelTransform secondLabel = new();
 				anim = MathF.Sin(Time.Now * 4f);
 				anim2 = MathF.Sin(Time.Now * 2f);
 				secondLabel.AddScale(1f + 0.05f * anim);
 				secondLabel.AddRotation(0, 0, 2 * anim2);
 
-				PanelTransform second = new PanelTransform();
+				PanelTransform second = new();
 				second.AddTranslateY(Length.Percent(scale[1]));
 
-
-				PanelTransform third = new PanelTransform();
+				PanelTransform third = new();
 				third.AddTranslateY(Length.Percent(scale[2]));
 
 				float startTime = 0.5f;
@@ -145,8 +112,6 @@ namespace SpeedDial.UI {
 				if(animTime > startTime) {
 					scale[0] = scale[0].LerpTo(0, Time.Delta * 4f);
 				}
-
-
 
 				startTime += 1f;
 
@@ -193,34 +158,6 @@ namespace SpeedDial.UI {
 					thirdPlace.myLabel.Text = "STEAM NAME";
 				}
 			}
-		}
-
-
-		//Depreceated
-		public void CreateWorld() {
-			CamAngles = new Angles(0, 0.0f, 0);
-
-			using(SceneWorld.SetCurrent(new SceneWorld())) {
-				firstPlaceTransform = new Transform(Vector3.Zero, Rotation.FromAxis(Vector3.Up, 180f), 1f);
-				Model m = (Local.Pawn as SpeedDialPlayer).GetModel();
-
-
-				firstAnim = new AnimSceneObject(m, firstPlaceTransform);
-				firstAnim.SetAnimBool("b_grounded", true);
-				firstAnim.MeshGroupMask = 0;
-
-				Light.Point(Vector3.Up * 150.0f, 200.0f, Color.Red * 5000.0f);
-				Light.Point(Vector3.Up * 10.0f + Vector3.Forward * 100.0f, 200, Color.White * 15000.0f);
-				Light.Point(Vector3.Up * 10.0f + Vector3.Backward * 100.0f, 200, Color.Magenta * 15000.0f);
-				Light.Point(Vector3.Up * 10.0f + Vector3.Right * 100.0f, 200, Color.Blue * 15000.0f);
-				Light.Point(Vector3.Up * 10.0f + Vector3.Left * 100.0f, 200, Color.Green * 15000.0f);
-
-
-				//sceneCapture = SceneCapture.Create( "test2", 1280, 720 );
-
-				//sceneCapture.SetCamera( Vector3.Up * 10 + CamAngles.Direction * -50, CamAngles, 90 );
-			}
-			render = Add.Image("scene:test2");
 		}
 	}
 

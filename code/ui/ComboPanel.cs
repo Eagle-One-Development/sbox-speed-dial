@@ -15,19 +15,12 @@ namespace SpeedDial.UI {
 		public Label comboLabel;
 		public Panel scoreContainer;
 		public Panel comboContainer;
-
-		Color vhs_green;
-		Color vhs_magenta;
-
 		private float scoreTar;
 		private float scalemod;
 		private float comboTar;
 		private float endScaleTar;
-
 		public static ComboPanel Current;
-
 		public Panel worldScorePanel;
-
 		private List<WorldScore> scores = new();
 
 		public ComboPanel() {
@@ -38,8 +31,6 @@ namespace SpeedDial.UI {
 
 			comboLabel = comboContainer.Add.Label("x999", "combo");
 			scoreLabel = scoreContainer.Add.Label("0000000", "score");
-			vhs_green = new Color(28f / 255f, 255f / 255f, 176f / 255f, 1.0f);//new Color(173f/255f,255f/255f,226f/255f,1.0f);
-			vhs_magenta = new Color(255f / 255f, 89 / 255f, 255f / 255f, 1.0f);//new Color(255f / 255f, 163f / 255f, 255f / 255f, 1.0f);
 			Current = this;
 			comboTar = 0f;
 
@@ -61,8 +52,6 @@ namespace SpeedDial.UI {
 				}
 			}
 
-			
-
 			if(ws != null) {
 				ws.position = pos;
 				ws.amount = amt;
@@ -74,8 +63,6 @@ namespace SpeedDial.UI {
 
 			float chance = Rand.Float(1);
 			float chanceMod = 0.35f;
-
-
 
 			if(chance > chanceMod || combo < 2) {
 				return;
@@ -91,8 +78,6 @@ namespace SpeedDial.UI {
 				quip = combos[combo - 2];
 			}
 
-			//Log.Info( "CAUSE OF DEATH: " + death.ToString() );
-
 			switch(death) {
 				case COD.Melee:
 					quip = "BRUTAL";
@@ -103,7 +88,6 @@ namespace SpeedDial.UI {
 				case COD.Explosive:
 					quip = "BOMB";
 					break;
-
 			}
 
 			//This is for the qup
@@ -122,10 +106,7 @@ namespace SpeedDial.UI {
 				ws.lifetime = 0;
 				ws.ang = 0;
 				ws.quip = quip;
-
 			}
-
-
 		}
 
 		public void Bump() {
@@ -139,24 +120,25 @@ namespace SpeedDial.UI {
 				w.Tick();
 			}
 
-			Shadow s1 = new();
-			s1.OffsetX = 2f + MathF.Sin(Time.Now * 2f) * 2f;
-			s1.OffsetY = 0f;
-			s1.Color = vhs_green;
-			s1.Blur = 4f;
-			s1.Blur = 1f;
-			s1.Spread = 20f;
-			Shadow s2 = new();
-			s2.OffsetX = -2f + MathF.Sin(Time.Now * 2f) * 2f;
-			s2.OffsetY = 0;
-			s2.Color = vhs_magenta;
-			s2.Blur = 4f;
-			s2.Blur = 1f;
-			s2.Spread = 20f;
+			Shadow shadow_cyan = new();
+			shadow_cyan.OffsetX = 2f + MathF.Sin(Time.Now * 2f) * 2f;
+			shadow_cyan.OffsetY = 0f;
+			shadow_cyan.Color = SpeedDialHud.VHS_CYAN;
+			shadow_cyan.Blur = 4f;
+			shadow_cyan.Blur = 1f;
+			shadow_cyan.Spread = 20f;
+
+			Shadow shadow_magenta = new();
+			shadow_magenta.OffsetX = -2f + MathF.Sin(Time.Now * 2f) * 2f;
+			shadow_magenta.OffsetY = 0;
+			shadow_magenta.Color = SpeedDialHud.VHS_MAGENTA;
+			shadow_magenta.Blur = 4f;
+			shadow_magenta.Blur = 1f;
+			shadow_magenta.Spread = 20f;
 
 			ShadowList shadows = new();
-			shadows.Add(s1);
-			shadows.Add(s2);
+			shadows.Add(shadow_cyan);
+			shadows.Add(shadow_magenta);
 
 			float anim = (MathF.Sin(Time.Now * 2f) + 1) / 2;
 			float anim2 = MathF.Sin(Time.Now * 1f);
@@ -201,9 +183,6 @@ namespace SpeedDial.UI {
 			scoreLabel.Style.TextShadow = shadows;
 			scoreLabel.Style.Transform = transform;
 			comboLabel.Style.Transform = comboTransform;
-
-			comboLabel.Style.Dirty();
-			scoreLabel.Style.Dirty();
 		}
 	}
 }
