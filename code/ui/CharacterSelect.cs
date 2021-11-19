@@ -10,7 +10,7 @@ using SpeedDial.Player;
 using SpeedDial.Settings;
 
 namespace SpeedDial.UI {
-	public class CharacterSelect : Panel {
+	public partial class CharacterSelect : Panel {
 
 		public Image portrait;
 		public Image backPortrait;
@@ -50,6 +50,11 @@ namespace SpeedDial.UI {
 		private float middleScale;
 
 		public SettingsMenu SettingsPanel;
+
+		[ClientRpc]
+		public static void SetInitialIndex(int index) {
+			Current.currentIndex = index;
+		}
 
 
 		public CharacterSelect() {
@@ -189,7 +194,7 @@ namespace SpeedDial.UI {
 				SettingsManager.SaveSettings();
 			}
 		}
-		[Event("buildinput")]
+		[Event.BuildInput]
 		public void ProcessClientInput(InputBuilder input) {
 			if(SpeedDialGame.Instance.Round is GameRound || SpeedDialGame.Instance.Round is PreRound) {
 

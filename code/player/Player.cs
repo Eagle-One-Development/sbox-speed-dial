@@ -57,7 +57,9 @@ namespace SpeedDial.Player {
 
 			//Set a default character
 			MedTaken = false;
-			character = Character.All.ElementAtOrDefault(Rand.Int(0, Character.All.Count - 1));
+			var index = Rand.Int(0, Character.All.Count - 1);
+			CharacterSelect.SetInitialIndex(index);
+			character = Character.All.ElementAtOrDefault(index);
 
 			SpeedDialGame.Instance.Round?.OnPlayerSpawn(this);
 
@@ -213,7 +215,7 @@ namespace SpeedDial.Player {
 				ActiveChild = Input.ActiveChild;
 			}
 
-			if(ActiveChild == null && Input.Pressed(InputButton.Attack1) && TimeSinceMeleeStarted >= 0.7f) {
+			if(ActiveChild == null && Input.Pressed(InputButton.Attack1) && TimeSinceMeleeStarted >= 0.6f) {
 				StartMelee();
 			}
 

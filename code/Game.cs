@@ -236,7 +236,11 @@ namespace SpeedDial {
 		public static void SetCharacter(int index) {
 			if(ConsoleSystem.Caller.Pawn is SpeedDialPlayer player) {
 				if(index > Character.All.Count) return;
-				player.character = Character.All.ElementAtOrDefault(index);
+				var character = Character.All.ElementAtOrDefault(index);
+				player.character = character;
+				if(Instance.Round is PreRound) {
+					player.ResetWeapon();
+				}
 			}
 		}
 
