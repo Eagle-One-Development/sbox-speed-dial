@@ -23,9 +23,6 @@ namespace SpeedDial.Player {
 		public bool Swimming { get; set; } = false;
 		public bool AutoJump { get; set; } = false;
 
-		[Net, Local, Predicted]
-		public bool Freeze { get; set; } = false;
-
 		[Net, Local]
 		public bool fast { get; set; } = false;
 
@@ -74,13 +71,13 @@ namespace SpeedDial.Player {
 
 
 		public override void FrameSimulate() {
-			if(Freeze) return;
+			if((Pawn as SpeedDialPlayer).Freeze) return;
 			base.FrameSimulate();
 			EyeRot = Input.Rotation;
 		}
 
 		public override void Simulate() {
-			if(Freeze) { WishVelocity = Vector3.Zero; return; }
+			if((Pawn as SpeedDialPlayer).Freeze) { WishVelocity = Vector3.Zero; return; }
 			EyePosLocal = Vector3.Up * (EyeHeight * Pawn.Scale);
 			UpdateBBox();
 

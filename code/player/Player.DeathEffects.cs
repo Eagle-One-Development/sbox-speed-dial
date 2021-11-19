@@ -144,8 +144,8 @@ namespace SpeedDial.Player {
 				BloodSplatter();
 			}
 
-			(Controller as SpeedDialController).Freeze = true;
-			(Camera as SpeedDialCamera).Freeze = true;
+			// why?
+			Freeze = true;
 
 			EnableAllCollisions = false;
 			EnableDrawing = false;

@@ -141,8 +141,7 @@ namespace SpeedDial.Player {
 
 			RenderColor = Color.White;
 
-			(Camera as SpeedDialCamera).Freeze = false;
-			(Controller as SpeedDialBotController).Freeze = false;
+			Freeze = false;
 			Animator = new PlayerBotAnimator();
 
 			EnableAllCollisions = true;
@@ -174,7 +173,8 @@ namespace SpeedDial.Player {
 				screenOpen = true;
 			}
 
-			if(Frozen) return;
+			// why?
+			if(Freeze) return;
 
 			if(LifeState == LifeState.Dead) {
 				DrugParticles?.Destroy(false);

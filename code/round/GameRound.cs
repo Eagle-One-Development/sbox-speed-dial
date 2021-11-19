@@ -31,7 +31,7 @@ namespace SpeedDial {
 			foreach(var p in players.ToArray()) {
 				if(p.Pawn != null) {
 					(p.Pawn as SpeedDialPlayer).ResetWeapon();
-					(p.Pawn as SpeedDialPlayer).Unfreeze();
+					(p.Pawn as SpeedDialPlayer).Freeze = false;
 				}
 			}
 			_ = PlayClimaxMusic(RoundDuration - 10);

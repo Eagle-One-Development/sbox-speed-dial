@@ -32,8 +32,7 @@ namespace SpeedDial {
 
 				if(p.Pawn is SpeedDialPlayer jp) {
 					jp.Respawn();
-					(jp.Controller as SpeedDialController).Freeze = true;
-					jp.Frozen = true;
+					jp.Freeze = true;
 
 					SpeedDialGame.Instance.PickNewSoundtrack();
 

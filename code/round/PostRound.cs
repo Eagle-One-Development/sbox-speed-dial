@@ -25,8 +25,7 @@ namespace SpeedDial {
 			foreach(var p in players.ToArray()) {
 
 				if(p.Pawn is SpeedDialPlayer jp) {
-					jp.Freeze();
-					//jp.StopSoundtrack(To.Single(jp));
+					jp.Freeze = true;
 				}
 			}
 
@@ -52,7 +51,7 @@ namespace SpeedDial {
 		public override void OnPlayerSpawn(SpeedDialPlayer player) {
 			base.OnPlayerSpawn(player);
 
-			player.Freeze();
+			player.Freeze = true;
 			RunPostRoundEvent("Start");
 		}
 

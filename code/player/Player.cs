@@ -12,10 +12,10 @@ using System.Linq;
 namespace SpeedDial.Player {
 	public partial class SpeedDialPlayer : Sandbox.Player {
 
-		[Net, Local]
-		public TimeSince TimeSinceDied { get; set; } = 0;
+		[Net]
+		public TimeSince TimeSinceDied { get; set; }
 
-		[Net, Local]
+		[Net]
 		public float RespawnTime { get; set; } = 1f;
 
 		[Net]
@@ -25,10 +25,10 @@ namespace SpeedDial.Player {
 		public bool pickup { get; set; }
 		protected Entity pickUpEntity;
 
-		[Net, Local, Predicted]
+		[Net, Predicted]
 		public TimeSince TimeSinceMedTaken { get; set; }
 
-		[Net, Local]
+		[Net]
 		public bool ResetTimeSinceMedTaken { get; set; }
 
 		[Net]
@@ -42,7 +42,7 @@ namespace SpeedDial.Player {
 
 		public Particles DrugParticles { get; set; }
 		[Net] public BaseSpeedDialCharacter character { get; set; }
-		[Net, Local, Predicted] public bool Frozen { get; set; } = false; // sorry for naming differences
+		[Net] public bool Freeze { get; set; } = false; // sorry for naming differences
 		public SoundTrack SoundTrack { get; set; }
 		public bool SoundtrackPlaying { get; set; }
 
@@ -64,8 +64,7 @@ namespace SpeedDial.Player {
 			SpeedDialGame.Instance.Round?.OnPlayerSpawn(this);
 
 			if(SpeedDialGame.Instance.Round is PreRound) {
-				(Controller as SpeedDialController).Freeze = true;
-				Frozen = true;
+				Freeze = true;
 				StopSoundtrack(To.Single(this), true);
 				PlaySoundtrack(To.Single(this));
 			}
@@ -159,8 +158,7 @@ namespace SpeedDial.Player {
 				SetModel(character.Model);
 			}
 
-			(Camera as SpeedDialCamera).Freeze = false;
-			(Controller as SpeedDialController).Freeze = false;
+			Freeze = false;
 			Animator = new PlayerAnimator();
 
 			EnableAllCollisions = true;
@@ -203,33 +201,6 @@ namespace SpeedDial.Player {
 			}
 		}
 
-		/// <summary>
-		/// Completely freezes the player. Essentially stops camera, controller and entity from simulating.
-		/// </summary>
-		public void Freeze() {
-			(Controller as SpeedDialController).Freeze = true;
-			(Camera as SpeedDialCamera).Freeze = true;
-			Frozen = true;
-		}
-
-		/// <summary>
-		/// Completely unfreezes the player. Resumes camera, controller and entity simulating.
-		/// </summary>
-		public void Unfreeze() {
-			(Controller as SpeedDialController).Freeze = false;
-			(Camera as SpeedDialCamera).Freeze = false;
-			Frozen = false;
-		}
-
-		/// <summary>
-		/// Completely freezes or unfreezes the player. Essentially stops/resumes camera, controller and entity from simulating.
-		/// </summary>
-		public void Freeze(bool freeze) {
-			(Controller as SpeedDialController).Freeze = freeze;
-			(Camera as SpeedDialCamera).Freeze = freeze;
-			Frozen = freeze;
-		}
-
 		public void Throw() {
 			var dropped = Inventory.DropActive();
 			if(dropped != null) {
@@ -264,8 +235,6 @@ namespace SpeedDial.Player {
 				screenOpen = true;
 			}
 
-			if(Frozen) return;
-
 			if(LifeState == LifeState.Dead) {
 				DrugParticles?.Destroy(false);
 				if(TimeSinceDied > RespawnTime && IsServer) {
@@ -297,10 +266,6 @@ namespace SpeedDial.Player {
 				ActiveChild = Input.ActiveChild;
 			}
 
-			Debug.ScreenText($"time since started: {TimeSinceMeleeStarted}", 10, Time.Delta);
-			Debug.ScreenText($"active melee: {ActiveMelee}", 11, Time.Delta);
-			Debug.ScreenText($"time since started: {TimeSinceMeleeStarted}", 12, Time.Delta);
-
 			if(ActiveChild == null && Input.Pressed(InputButton.Attack1) && TimeSinceMeleeStarted >= 0.7f) {
 				StartMelee();
 			}
@@ -326,7 +291,7 @@ namespace SpeedDial.Player {
 			SetAnimBool("b_polvo", MedTaken && CurrentDrug == DrugType.Polvo);
 
 			// TODO: refactor throwing and move it somewhere else
-			if(Input.Pressed(InputButton.Attack2) && ActiveChild != null) {
+			if(Input.Pressed(InputButton.Attack2) && ActiveChild != null && !Freeze) {
 				Throw();
 			}
 

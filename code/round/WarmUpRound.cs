@@ -25,7 +25,7 @@ namespace SpeedDial {
 			foreach(var p in players.ToArray()) {
 
 				if(p.Pawn is SpeedDialPlayer sp) {
-					sp.Unfreeze();
+					sp.Freeze = false;
 					sp.KillScore = 0;
 					sp.maxCombo = 0;
 					sp.KillCombo = 0;

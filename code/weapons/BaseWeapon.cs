@@ -134,6 +134,7 @@ namespace SpeedDial.Weapons {
 		}
 
 		public virtual bool CanPrimaryAttack() {
+			if((Owner as SpeedDialPlayer).Freeze) return false;
 			if(Owner is not SpeedDialBotPlayer) {
 				if(!Owner.IsValid() || (Automatic && !Input.Down(InputButton.Attack1)) || (!Automatic && !Input.Pressed(InputButton.Attack1))) return false;
 			} else {

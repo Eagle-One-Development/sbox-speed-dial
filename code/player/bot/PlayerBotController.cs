@@ -6,12 +6,12 @@ namespace SpeedDial.Player {
 		public float Left { get; set; }
 
 		public override void FrameSimulate() {
-			if(Freeze) return;
+			if((Pawn as SpeedDialPlayer).Freeze) return;
 			base.FrameSimulate();
 		}
 
 		public override void Simulate() {
-			if(Freeze) { WishVelocity = Vector3.Zero; return; }
+			if((Pawn as SpeedDialPlayer).Freeze) { WishVelocity = Vector3.Zero; return; }
 			EyePosLocal = Vector3.Up * (EyeHeight * Pawn.Scale);
 			UpdateBBox();
 

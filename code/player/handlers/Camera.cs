@@ -24,11 +24,9 @@ namespace SpeedDial.Player {
 
 		public bool CameraShift { get; set; }
 
-		[Net, Local, Predicted]
-		public bool Freeze { get; set; } = false;
 
 		public override void BuildInput(InputBuilder input) {
-			if(Freeze) return;
+			//if((Local.Pawn as SpeedDialPlayer).Freeze) return;
 			var client = Local.Pawn;
 
 			if(client == null) {
@@ -81,7 +79,7 @@ namespace SpeedDial.Player {
 		}
 
 		public override void Update() {
-			if(Freeze) return;
+			//if((Local.Pawn as SpeedDialPlayer).Freeze) return;
 			var pawn = Local.Pawn;
 
 			if(pawn == null)

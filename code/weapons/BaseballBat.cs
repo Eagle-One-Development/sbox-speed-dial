@@ -4,12 +4,6 @@ using SpeedDial.Player;
 namespace SpeedDial.Weapons {
 	[Library("sd_bat", Title = "Baseball Bat")]
 	partial class BaseballBat : BaseSpeedDialWeapon {
-		/*
-		*
-		* YES! THIS SHOULD BE ANOTHER BASE CLASS, LIKE BASE MELEE WEAPON
-		* BUT BECAUSE I WAS DUMB AND LAZY, THIS IS HOW IT IS NOW
-		*
-		*/
 		public override float PrimaryRate => 2.0f;
 		public override int HoldType => 1; // need melee holdtype
 		public override int ClipSize => -1; // no ammo hud
