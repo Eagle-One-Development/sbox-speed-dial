@@ -127,24 +127,18 @@ namespace SpeedDial.UI {
 
 				firstPlace.Style.Transform = first;
 				firstPlace.Style.TextShadow = shadows;
-				firstPlace.Style.Dirty();
-
 
 				time = 0f;
 
 				firstPlace.subLabel.Style.Transform = firstLabel;
-				firstPlace.subLabel.Style.Dirty();
 
 				secondPlace.Style.Transform = second;
 				secondPlace.Style.TextShadow = shadows;
-				secondPlace.Style.Dirty();
 
 				secondPlace.subLabel.Style.Transform = secondLabel;
-				secondPlace.subLabel.Style.Dirty();
 
 				thirdPlace.Style.Transform = third;
 				thirdPlace.Style.TextShadow = shadows;
-				thirdPlace.Style.Dirty();
 
 			} else {
 				SetClass("active", false);

@@ -122,10 +122,6 @@ namespace SpeedDial.UI {
 			leftPrompt.Style.Transform = leftBump;
 			spacePrompt.Style.Transform = middleBump;
 
-			rightPrompt.Style.Dirty();
-			leftPrompt.Style.Dirty();
-			spacePrompt.Style.Dirty();
-
 			string wep = Library.GetAttribute(character.Weapon).Title;
 			startLoad.Text = $"Weapon: {wep}";
 
@@ -158,8 +154,6 @@ namespace SpeedDial.UI {
 
 			backPortrait.Style.Transform = transform2;
 			portrait.Style.Transform = transform;
-			portrait.Style.Dirty();
-			backPortrait.Style.Dirty();
 
 			if(Host.IsClient) {
 				if(!open) {

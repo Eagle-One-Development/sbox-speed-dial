@@ -32,7 +32,6 @@ namespace SpeedDial.UI {
 
 			Style.Left = Length.Fraction(screenPosition.x);
 			Style.Top = Length.Fraction(screenPosition.y);
-			Style.Dirty();
 
 			life = 1f;
 			lifetime = 0;
@@ -76,12 +75,10 @@ namespace SpeedDial.UI {
 			}
 
 			lb.Style.TextShadow = shadows;
-			lb.Style.Dirty();
 
 			screenPosition = position.ToScreen();
 			Style.Left = Length.Fraction(screenPosition.x);
 			Style.Top = Length.Fraction(screenPosition.y);
-			Style.Dirty();
 		}
 
 		public void UpdateNumberPosition() {

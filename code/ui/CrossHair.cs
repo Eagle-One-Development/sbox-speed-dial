@@ -37,18 +37,10 @@ namespace SpeedDial.UI {
 		public override void Tick() {
 			base.Tick();
 
-			//SetClass( "inactive", false );
-			SetClass("active",! CharacterSelect.Current.open);
-			
-
-
-
-
-			//Log.Info( $"X: {Mouse.Position.x} Y: {Mouse.Position.y} \b Screen Width: {Screen.Width}" );
+			SetClass("active", !CharacterSelect.Current.open);
 
 			cross.Style.Left = Length.Fraction(Mouse.Position.x / Screen.Width);
 			cross.Style.Top = Length.Fraction(Mouse.Position.y / Screen.Height);
-			cross.Style.Dirty();
 
 			float f = bumpScale;
 			bumpScale = bumpScale.LerpTo(1f, Time.Delta * 6f);
@@ -76,7 +68,6 @@ namespace SpeedDial.UI {
 				}
 				hairs[i].SetClass("inactive", Local.Pawn.ActiveChild == null);
 				hairs[i].Style.Transform = pt;
-				hairs[i].Style.Dirty();
 			}
 		}
 	}

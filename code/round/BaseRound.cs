@@ -88,7 +88,6 @@ namespace SpeedDial {
 					OnTimeUp();
 				} else {
 					TimeLeftFormatted = TimeSpan.FromSeconds(TimeLeft).ToString(@"mm\:ss");
-					//NetworkDirty("TimeLeftFormatted", NetVarGroup.Net);
 				}
 			}
 		}
