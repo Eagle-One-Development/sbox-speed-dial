@@ -21,10 +21,10 @@ namespace SpeedDial.UI {
 			RootPanel.AddChild<CharacterSelect>();
 			RootPanel.AddChild<VotingScreen>();
 			RootPanel.AddChild<EndRound>();
-			Scoreboard = RootPanel.AddChild<SpeedDialScoreboard<SpeedDialScoreboardEntry>>();
 			RootPanel.AddChild<ChatBox>();
-			RootPanel.AddChild<CrossHair>();
 			RootPanel.AddChild<KillFeed>();
+			RootPanel.AddChild<CrossHair>();
+			Scoreboard = RootPanel.AddChild<SpeedDialScoreboard<SpeedDialScoreboardEntry>>();
 		}
 	}
 }
