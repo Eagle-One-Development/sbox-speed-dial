@@ -4,7 +4,7 @@
 	{
 		sounds = 
 		[
-			"sounds/simpleguns/[draft1]sfx_dryfire.vsnd",
+			"sounds/simpleguns/misc/[draft1]sfx_dryfire.vsnd",
 		]
 		UI = false
 		Volume = 0.7
@@ -12,5 +12,6 @@
 		Pitch = 1.0
 		PitchRandom = 0.0
 		DistanceMax = 1000.0
+		selectionmode = "3"
 	}
 }

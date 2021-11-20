@@ -100,6 +100,8 @@ namespace SpeedDial {
 			Precache.Add("sounds/simpleguns/room-clearer/roomclearer.shoot01.vsnd");
 			Precache.Add("sounds/simpleguns/room-clearer/roomclearer.shoot02.vsnd");
 			Precache.Add("sounds/simpleguns/room-clearer/roomclearer.shoot03.vsnd");
+			// dry fire
+			Precache.Add("sounds/simpleguns/misc/[draft1]sfx_dryfire.vsnd");
 
 		}
 	}
