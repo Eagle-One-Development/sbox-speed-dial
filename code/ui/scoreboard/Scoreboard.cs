@@ -3,6 +3,7 @@ using Sandbox;
 using Sandbox.Hooks;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,6 +48,12 @@ namespace SpeedDial.UI {
 			}
 
 			Canvas.SortChildren((x) => -(x as SpeedDialScoreboardEntry).Client.GetValue("score", 0));
+
+			for(int i = 0; i < Canvas.Children.Count(); i++) {
+				var child = Canvas.Children.ElementAt(i);
+				child.SetClass("first", i == 0 && (child as SpeedDialScoreboardEntry).Client.GetValue("score", 0) > 0);
+			}
+
 		}
 
 		protected virtual void AddHeader() {

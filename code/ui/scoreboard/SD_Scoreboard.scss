@@ -1,3 +1,5 @@
+@import "/ui/vars/_sd_colors.scss";
+
 .scoreboard {
 	position: absolute;
 	z-index: 100;
@@ -50,6 +52,11 @@
 			padding-top: 15px;
 
 			color: #ddd;
+
+			&.first {
+				text-shadow: 2px 0px 0.5px $vhs_magenta, -2px 0px 0.5px $vhs_cyan;
+			}
+
 			.score {
 			}
 
@@ -60,7 +67,7 @@
 			}
 
 			&.me {
-				color: #FFFFFF;
+				color: #ffffff;
 			}
 		}
 	}
