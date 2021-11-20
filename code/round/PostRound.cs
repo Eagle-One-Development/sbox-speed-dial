@@ -5,7 +5,9 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Sandbox;
+
 using SpeedDial.Player;
+using SpeedDial.UI;
 
 namespace SpeedDial {
 	public partial class PostRound : BaseRound {
@@ -22,6 +24,7 @@ namespace SpeedDial {
 					jp.Freeze = true;
 				}
 			}
+			CharacterSelect.ForceOpen(To.Everyone, false);
 
 			if(Host.IsServer) {
 				SendGameInfo();
