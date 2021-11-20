@@ -38,6 +38,7 @@ namespace SpeedDial.UI {
 			shadows.Add(shadow_magenta);
 
 			timer.Style.TextShadow = shadows;
+			timer.Style.Dirty();
 
 			if(SpeedDialGame.Instance.Round is GameRound gr) {
 				container.SetClass("active", true);
