@@ -10,6 +10,6 @@ namespace SpeedDial.WeaponSpawns {
 	[Hammer.EditorModel("models/weapons/rifle/prop_rifle.vmdl")]
 	[Hammer.EntityTool("Rifle", "Speed Dial Weapons", "Rifle spawn point")]
 	public class RifleWeaponSpawn : BaseWeaponSpawn {
-		public override string WeaponClass => "sd_tac";
+		public override string WeaponClass => "sd_rifle";
 	}
 }
