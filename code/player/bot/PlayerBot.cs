@@ -141,7 +141,11 @@ namespace SpeedDial.Player {
 
 			RenderColor = Color.White;
 
-			Freeze = false;
+			if(SpeedDialGame.Instance.Round is PreRound) {
+				Freeze = true;
+			} else
+				Freeze = false;
+
 			Animator = new PlayerBotAnimator();
 
 			EnableAllCollisions = true;

@@ -103,7 +103,11 @@ namespace SpeedDial.Player {
 				SetModel(character.Model);
 			}
 
-			Freeze = false;
+			if(SpeedDialGame.Instance.Round is PreRound) {
+				Freeze = true;
+			} else
+				Freeze = false;
+
 			Animator = new PlayerAnimator();
 
 			EnableAllCollisions = true;
