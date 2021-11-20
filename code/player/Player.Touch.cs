@@ -42,7 +42,7 @@ namespace SpeedDial.Player {
 					DrugParticles.SetEntityBone(0, this, GetBoneIndex("head"), Transform.Zero, true);
 
 					CurrentDrug = drug.Drug;
-					ResetTimeSinceMedTaken = true;
+					TimeSinceMedTaken = 0;
 					MedTaken = true;
 					MedDuration = drug.DrugDuration;
 					GamePanel.ScreenEvent(To.Single(Local.Client), drug.DrugName, drug.DrugFlavor, true);

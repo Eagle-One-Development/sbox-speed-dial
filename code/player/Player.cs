@@ -25,11 +25,8 @@ namespace SpeedDial.Player {
 		public bool pickup { get; set; }
 		protected Entity pickUpEntity;
 
-		[Net, Predicted]
-		public TimeSince TimeSinceMedTaken { get; set; }
-
 		[Net]
-		public bool ResetTimeSinceMedTaken { get; set; }
+		public TimeSince TimeSinceMedTaken { get; set; }
 
 		[Net]
 		public bool MedTaken { get; set; }
@@ -187,6 +184,7 @@ namespace SpeedDial.Player {
 
 			if(LifeState == LifeState.Dead) {
 				DrugParticles?.Destroy(false);
+				TimeSinceMedTaken = 0;
 				if(TimeSinceDied > RespawnTime && IsServer) {
 					Respawn();
 				}
@@ -197,11 +195,6 @@ namespace SpeedDial.Player {
 				CharacterSelect.Current?.ToggleOpen();
 
 				screenOpen = true;
-			}
-
-			if(ResetTimeSinceMedTaken) {
-				TimeSinceMedTaken = 0;
-				ResetTimeSinceMedTaken = false;
 			}
 
 			if(Client.GetValue("killcombo", 0) > Client.GetValue("maxcombo", 0)) {
