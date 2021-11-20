@@ -19,14 +19,10 @@ namespace SpeedDial {
 
 			AddPlayer(player);
 
-			//if(_roundStarted) {
-			//}
-
 			base.OnPlayerSpawn(player);
 		}
 
 		protected override void OnStart() {
-			Log.Info("Pre Round Started");
 			var players = Client.All;
 			foreach(var p in players.ToArray()) {
 
@@ -42,12 +38,7 @@ namespace SpeedDial {
 			}
 		}
 
-		protected override void OnFinish() {
-		}
-
 		protected override void OnTimeUp() {
-			Log.Info("Pre Round Up!");
-
 			SpeedDialGame.Instance.ChangeRound(new GameRound());
 
 			base.OnTimeUp();

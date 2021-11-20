@@ -14,11 +14,11 @@ namespace SpeedDial {
 		protected override void OnStart() {
 			if(Host.IsServer)
 				RunVotingEvent(To.Everyone, "Start");
-			Log.Info("VoteRound Started");
 		}
+
 		public override void OnSecond() {
 			if(Host.IsServer && mapsReceived) {
-				if(RoundEndTime > 0 && Sandbox.Time.Now >= RoundEndTime) {
+				if(RoundEndTime > 0 && Time.Now >= RoundEndTime) {
 					RoundEndTime = 0f;
 					OnTimeUp();
 				} else {
@@ -26,13 +26,13 @@ namespace SpeedDial {
 				}
 			}
 		}
+
 		[ServerCmd]
 		public static void StartTimer() {
 			var game = SpeedDialGame.Current as SpeedDialGame;
 			if(Host.IsServer && game.Round.RoundDuration > 0) {
-				game.Round.RoundEndTime = Sandbox.Time.Now + game.Round.RoundDuration;
-				VoteRound.mapsReceived = true;
-
+				game.Round.RoundEndTime = Time.Now + game.Round.RoundDuration;
+				mapsReceived = true;
 			}
 		}
 
@@ -51,7 +51,6 @@ namespace SpeedDial {
 
 		[ClientRpc]
 		public static void RefreshMapSelectionClient(string json) {
-			//Log.Info(json);
 			VoteItemCollection.SetDataAndRecreate(json);
 			if(Global.IsListenServer)
 				StartTimer();
@@ -75,21 +74,13 @@ namespace SpeedDial {
 
 		public override void OnPlayerSpawn(SpeedDialPlayer player) {
 			base.OnPlayerSpawn(player);
-			//Log.Error("Player joined");
 			RefreshMapSelectionClient(To.Single(player), currentJson);
 			PlayerJoinedDuringVote();
 		}
+
 		[ClientRpc]
 		public static void PlayerJoinedDuringVote() {
 			RunVotingEvent("Start");
-
 		}
-
-
-
-
 	}
-
-
-
 }

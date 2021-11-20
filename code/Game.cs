@@ -23,7 +23,6 @@ namespace SpeedDial {
 		public static void SetBotDifficulty(BotDifficulties difficulty) {
 			BotDifficulty = difficulty;
 			ConsoleSystem.SetValue("sdial_bot_difficulty", difficulty);
-			//Log.Error(difficulty);
 		}
 		[ServerCmd]
 		public static void AddBot() {
@@ -83,8 +82,7 @@ namespace SpeedDial {
 		}
 
 		public override void DoPlayerSuicide(Client cl) {
-			if(cl.Pawn.LifeState != LifeState.Alive || (cl.Pawn as SpeedDialPlayer).TimeSinceDied < 2) return;
-			Log.Info($"{cl.Name} committed suicide.");
+			if(cl.Pawn.LifeState != LifeState.Alive || (cl.Pawn as SpeedDialPlayer).TimeSinceDied < 2 || Instance.Round is PreRound or PostRound or VoteRound) return;
 			cl.Pawn.TakeDamage(DamageInfo.Generic(int.MaxValue));
 		}
 
@@ -168,14 +166,11 @@ namespace SpeedDial {
 				}
 			}
 
-			//Log.Info(pawn.LastAttacker.Client.Name + " NUMBER OF KILLS: " + numKills.ToString());
-
 			//If it's 3 kills, and they weren't taking revenge on us, then we will say we are dominating them and add an icon to their hud
 			if(numKills == 3 && !revenge) {
 				GamePanel.ScreenEvent(To.Single(pawn.LastAttacker.Client), "DOMINATING", pawn.Client.Name, false);
 				GamePanel.AddDominator(To.Single(pawn.Client), pawn.LastAttacker);
 				dominating = true;
-				Log.Info(pawn.LastAttacker.Client.Name + " IS DOMINATING " + pawn.Client.Name);
 			}
 
 			//Moved the kill messages here so that we can let players know who and when someone is dominating them
@@ -191,7 +186,6 @@ namespace SpeedDial {
 			if(attackerClient != null) {
 				var attacker = attackerClient.Pawn as SpeedDialPlayer;
 				if(IsServer) {
-					Log.Info($"{attackerClient.Name} killed {client.Name}");
 
 					attacker.Client.SetValue("score", attacker.Client.GetValue("score", 0) + ScoreBase + (ScoreBase * attacker.Client.GetValue("killcombo", 0)));
 					attacker.Client.SetValue("score", attacker.Client.GetValue("score", 0));
@@ -204,7 +198,6 @@ namespace SpeedDial {
 				}
 			}
 
-			Log.Info($"LAST ATTACKER: {(pawn.LastAttacker as SpeedDialPlayer).ActiveChild}");
 			if((pawn.LastAttacker as SpeedDialPlayer).ActiveChild != null) {
 
 				if((pawn.LastAttacker as SpeedDialPlayer).ActiveChild.ToString() == "sd_bat") {

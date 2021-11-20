@@ -226,9 +226,7 @@ namespace SpeedDial.UI {
 
 				if(Q) {
 					right = false;
-
 					currentIndex--;
-					//Log.Info(currentIndex.ToString());
 					translate2 = 100f;
 					translate = 0f;
 					backPortrait.Texture = portrait.Texture;
@@ -241,7 +239,6 @@ namespace SpeedDial.UI {
 
 				if(space) {
 					string[] s = { currentIndex.ToString() };
-					//Log.Info(s[0].ToString());
 					(Local.Pawn as SpeedDialPlayer).FadeSoundtrack(1);
 					ConsoleSystem.Run("set_character", s);
 					open = false;

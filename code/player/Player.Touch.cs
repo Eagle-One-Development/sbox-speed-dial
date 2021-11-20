@@ -14,7 +14,6 @@ namespace SpeedDial.Player {
 
 					if(wep.PhysicsBody.IsValid()) {
 						float magnitude = wep.PhysicsBody.Velocity.Length;
-						//Log.Info($"Velocity: {magnitude}");
 						if(magnitude > 450f && this != wep.PreviousOwner && wep.CanKill) {
 							wep.PhysicsBody.EnableAutoSleeping = false;
 							Sound.FromEntity("smack", this);

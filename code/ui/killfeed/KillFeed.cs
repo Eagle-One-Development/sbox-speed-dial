@@ -15,7 +15,6 @@ namespace SpeedDial.UI {
 		}
 		[Event("SDEvents.Settings.Changed")]
 		public void onSettingChange() {
-			//Log.Info("Kill feed CHanged");
 			if(SettingsManager.GetSetting("Kill Feed").TryGetBool(out bool? res)) {
 				SetClass("enabled", res.Value);
 			}
@@ -27,8 +26,6 @@ namespace SpeedDial.UI {
 		}
 
 		public Panel AddEntry(long lsteamid, string left, long rsteamid, string right, string method, bool Dom, bool Mult, bool Rev, COD cod) {
-
-			//Log.Info($"{left} killed {right} using {method}");
 
 			var e = AddChild<KillFeedEntry>();
 

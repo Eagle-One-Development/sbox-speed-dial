@@ -14,13 +14,7 @@ namespace SpeedDial {
 
 		private static WebSocket client = new();
 
-		protected override void OnFinish() {
-			Log.Info("Finished Game Round");
-
-		}
-
 		protected override void OnStart() {
-			Log.Info("Post Round Started");
 			var players = Client.All;
 			foreach(var p in players.ToArray()) {
 
@@ -33,12 +27,9 @@ namespace SpeedDial {
 				SendGameInfo();
 				RunPostRoundEvent("Start");
 			}
-
-
 		}
 
 		protected override void OnTimeUp() {
-			Log.Info("Post Round Time Up");
 			if(Host.IsServer)
 				RunPostRoundEvent("End");
 
@@ -61,11 +52,9 @@ namespace SpeedDial {
 		}
 
 		private static async void SendGameInfo() {
-			//Log.Info("Sending Game Info");
+			;
 			ScoreMessage sm = new();
 			string[] splitMessage = Global.MapName.Split('.');
-			//Log.Info(splitMessage.ToString());
-			//Log.Info(splitMessage[0]);
 			sm.mapOrg = splitMessage[0];
 			if(splitMessage.Length > 1)
 				sm.mapName = Global.MapName[(Global.MapName.IndexOf('.') + 1)..];
@@ -84,12 +73,6 @@ namespace SpeedDial {
 					steamid = item.PlayerId.ToString()
 				});
 			}
-			//Log.Info(sm.ToString());
-			/*
-			Log.Info(JsonSerializer.Serialize(sm, new() {
-				IncludeFields = true
-			}));
-			*/
 
 			//return; //DEV ONLY
 			client = new();
@@ -101,12 +84,6 @@ namespace SpeedDial {
 			}));
 
 			client.Dispose();
-
-
-
-			//Log.Info("Sent Round Info");
-
-
 		}
 
 		struct ScoreMessage {

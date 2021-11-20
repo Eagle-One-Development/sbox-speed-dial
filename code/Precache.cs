@@ -3,8 +3,6 @@ using Sandbox;
 namespace SpeedDial {
 	public partial class SpeedDialGame {
 		private static void PrecacheModels() {
-			Log.Info("Precaching assets");
-
 			Precache.Add("particles/blood/blood_splash.vpcf");
 			Precache.Add("particles/blood/blood_drops.vpcf");
 			Precache.Add("particles/blood/blood_plip.vpcf");

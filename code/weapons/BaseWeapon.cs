@@ -171,7 +171,6 @@ namespace SpeedDial.Weapons {
 
 				// clientside shoot effects
 				if(IsServer) {
-					//Log.Info("TWICE?!?!");
 					ShootEffects(); // muzzle and brass eject
 				}
 				PlaySound(ShootSound); // shoot sound
@@ -249,8 +248,6 @@ namespace SpeedDial.Weapons {
 
 			var player = Owner as SpeedDialPlayer;
 
-			//Log.Info(SpeedDialGame.Instance.SniperCanPenetrate);
-
 			if(this is Sniper && SpeedDialGame.Instance.SniperCanPenetrate) {
 				var dir = (bullet.EndPos - bullet.StartPos).Normal;
 				if(bullet.Hit && wallBangedDistance < MaxWallbangDistance) {
@@ -288,8 +285,6 @@ namespace SpeedDial.Weapons {
 
 							var distance = (inPoint - outPoint).Length;
 							var totalDistance = wallBangedDistance + distance;
-
-							//Log.Info($"{distance} {totalDistance}");
 
 							if(totalDistance < MaxWallbangDistance) {
 								foreach(var bullet2 in TraceBullet(outPoint + dir * 2, outPoint + dir * 1000, 1, totalDistance)) {
@@ -340,7 +335,6 @@ namespace SpeedDial.Weapons {
 			Host.AssertClient();
 			Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
 			Particles.Create(EjectionParticle, EffectEntity, "ejection_point");
-			//Log.Info("TEST PLEASE");
 			if(IsLocalPawn) {
 				_ = new Sandbox.ScreenShake.Perlin(ScreenShakeParameters.x, ScreenShakeParameters.y, ScreenShakeParameters.z, ScreenShakeParameters.w);
 			}

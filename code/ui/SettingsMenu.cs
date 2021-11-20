@@ -114,7 +114,6 @@ namespace SpeedDial.UI {
 		public void init(SettingsItem item) {
 			SettingsItem = item;
 			Type t = Type.GetType(item.TypeofValue);
-			//Log.Info(t.ToString());
 			if(t.IsEnum)
 				ownPanelType = PanelType.Enum;
 			else
@@ -167,9 +166,7 @@ namespace SpeedDial.UI {
 		}
 
 		private void onChanged(PanelEvent value) {
-			//Log.Error(value.Value);
 			if(value.Value != null) SettingsItem.SettingValue = value.Value;
 		}
 	}
-
 }

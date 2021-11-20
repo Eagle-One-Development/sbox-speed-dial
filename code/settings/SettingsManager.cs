@@ -27,7 +27,6 @@ namespace SpeedDial.Settings {
 			}
 			Settings = JsonSerializer.Deserialize<SettingInstance>(FileSystem.OrganizationData.ReadAllText(SettingsPath + "/setting.json"));
 			if(Settings.Version is null || !Settings.Version.Equals(Version)) SetDefaultSettings();
-			//Log.Info("Settings Loaded");
 			Event.Run("SDEvents.Settings.Changed");
 		}
 		public static void SetDefaultSettings() {
@@ -39,10 +38,6 @@ namespace SpeedDial.Settings {
 			SetSetting("Kill Feed", true);
 			SetSetting("Music On", true);
 			SetSetting("Viewshift Toggle", false);
-			//SetSetting("Music Volume", 100);
-			//SetSetting("SFX On", true);
-			//SetSetting("SFX Volume", 100);
-			//Log.Info("Setting Default Settings");
 			SaveSettings();
 		}
 		public static bool SaveSettings() {

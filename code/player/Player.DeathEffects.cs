@@ -173,7 +173,6 @@ namespace SpeedDial.Player {
 		[ClientRpc]
 		public void DidDamage(Vector3 pos, float amount, float healthinv, COD death, int combo) {
 			if(healthinv <= 0) {
-				//Log.Info(combo);
 				int ScoreBase = SpeedDialGame.ScoreBase;
 				ComboEvents(pos, ScoreBase * combo, combo, death);
 				Sound.FromWorld("kill_confirm", pos); // should this sound play on every kill? maybe a bit too high pitch for that

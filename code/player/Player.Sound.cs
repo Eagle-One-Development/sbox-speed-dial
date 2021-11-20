@@ -31,7 +31,6 @@ namespace SpeedDial.Player {
 		}
 
 		private async Task PlaySoundtrackAsync(string track, float delay) {
-			Log.Info($"NEW TRACK {track}");
 			await GameTask.DelaySeconds(delay);
 			if(!SoundtrackPlaying) {
 				SoundTrack = SoundTrack.FromScreen(track);

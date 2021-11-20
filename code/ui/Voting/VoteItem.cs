@@ -49,7 +49,6 @@ namespace SpeedDial.UI {
 
 		}
 		public async void initwithOffset(int ms) {
-			//Log.Info("initing Vote Item");
 			MapTitle.Text = MapInfo.Title + " - " + MapInfo.Org.Ident;
 			MapThumbnail = Texture.Load(MapInfo.Thumb);
 			MapThumb.Texture = MapThumbnail;
@@ -58,8 +57,6 @@ namespace SpeedDial.UI {
 			MapPlayCount.Text = "P-" + MapItem.roundsPlayed.ToString();
 			await GameTask.DelayRealtime(ms);
 			SetClass("Active", true);
-			//Log.Info("Finished Vote Item");
-
 		}
 
 		public void InitReturnButton() {
