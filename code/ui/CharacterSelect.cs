@@ -180,6 +180,26 @@ namespace SpeedDial.UI {
 				SetClass("active", false);
 			}
 		}
+
+		[ClientRpc]
+		public static void ForceOpen(bool state) {
+			if(Current.open == state) return;
+
+			if(state) {
+				Current.open = true;
+				(Local.Pawn as SpeedDialPlayer).FadeSoundtrack(0.3f);
+				Sound.FromScreen("tape_stop");
+				Current.tapeSound = Sound.FromScreen("tape_noise");
+				Current.SettingsPanel.ReloadSettings();
+			} else {
+				Current.open = false;
+				(Local.Pawn as SpeedDialPlayer).FadeSoundtrack(1);
+				Current.tapeSound.Stop();
+				var sound = Sound.FromScreen("select_confirm");
+				SettingsManager.SaveSettings();
+			}
+		}
+
 		public void ToggleOpen() {
 			open = !open;
 			if(open) {
