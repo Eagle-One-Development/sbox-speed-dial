@@ -4,7 +4,7 @@
 	{
 		sounds = 
 		[
-			"sounds/ui/[final1]rewind_map_selection.vsnd",
+			"sounds/ui/rewind.vsnd",
 		]
 		UI = true
 		Volume = 1.0

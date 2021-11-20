@@ -4,7 +4,7 @@
 	{
 		sounds = 
 		[
-			"sounds/ui/[final1]fastforward_map_selection.vsnd",
+			"sounds/ui/fast_forward.vsnd",
 		]
 		UI = true
 		Volume = 1.0

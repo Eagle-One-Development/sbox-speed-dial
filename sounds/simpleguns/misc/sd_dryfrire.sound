@@ -4,7 +4,7 @@
 	{
 		sounds = 
 		[
-			"sounds/simpleguns/misc/[draft1]sfx_dryfire.vsnd",
+			"sounds/simpleguns/misc/dryfire.vsnd",
 		]
 		UI = false
 		Volume = 0.7

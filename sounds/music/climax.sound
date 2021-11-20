@@ -10,7 +10,8 @@
 		DistanceMax = 1000.0
 		Sounds = 
 		[
-			"sounds/music/[draft]speed-dial_main_theme_climax_10secondsearly_bmanedit.vsnd",
+			"sounds/music/main_theme_ending_10seconds.vsnd",
 		]
+		selectionmode = "3"
 	}
 }

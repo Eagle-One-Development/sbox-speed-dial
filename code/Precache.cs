@@ -49,12 +49,11 @@ namespace SpeedDial {
 			Precache.Add("sounds/drukqs/ollie_2.vsnd");
 			Precache.Add("sounds/drukqs/polvo.vsnd");
 			Precache.Add("sounds/drukqs/ritindi.vsnd");
-			Precache.Add("sounds/kill/draftsfx_killsecured_long (1).vsnd");
 			Precache.Add("sounds/kill/hit01.vsnd");
 
 			//tracks
-			Precache.Add("sounds/music/[draft]speed-dial_main_theme_bmanedit.vsnd");
-			Precache.Add("sounds/music/[draft]speed-dial_main_theme_climax_10secondsearly_bmanedit.vsnd");
+			Precache.Add("sounds/music/main_theme.vsnd");
+			Precache.Add("sounds/music/main_theme_ending_10seconds.vsnd");
 			Precache.Add("sounds/music/music_onelesshero.vsnd");
 			Precache.Add("sounds/music/mx_speeddial_combat.vsnd");
 
@@ -62,12 +61,14 @@ namespace SpeedDial {
 			Precache.Add("sounds/punch/punch04.vsnd");
 			Precache.Add("sounds/punch/woosh_2.vsnd");
 			Precache.Add("sounds/punch/woosh_1.vsnd");
-			Precache.Add("sounds/ui/[draft]sfx_killsecured_long.vsnd");
-			Precache.Add("sounds/ui/[draft]sfx_killsecured_short.vsnd");
+			Precache.Add("sounds/ui/killsecured_long.vsnd");
+			Precache.Add("sounds/ui/killsecured_short.vsnd");
 			Precache.Add("sounds/ui/click.vsnd");
 			Precache.Add("sounds/ui/tape_noise.vsnd");
 			Precache.Add("sounds/ui/tape_top.vsnd");
 			Precache.Add("sounds/weapon_fx/spin.vsnd");
+			Precache.Add("sounds/ui/fast_forward.vsnd");
+			Precache.Add("sounds/ui/rewind.vsnd");
 
 			// bat hit
 			Precache.Add("sounds/simpleguns/bat/sd_bat.hit01.vsnd");
@@ -101,8 +102,7 @@ namespace SpeedDial {
 			Precache.Add("sounds/simpleguns/room-clearer/roomclearer.shoot02.vsnd");
 			Precache.Add("sounds/simpleguns/room-clearer/roomclearer.shoot03.vsnd");
 			// dry fire
-			Precache.Add("sounds/simpleguns/misc/[draft1]sfx_dryfire.vsnd");
-
+			Precache.Add("sounds/simpleguns/misc/dryfire.vsnd");
 		}
 	}
 }

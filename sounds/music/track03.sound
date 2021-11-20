@@ -4,7 +4,7 @@
 	{
 		sounds = 
 		[
-			"sounds/music/[draft]speed-dial_main_theme_bmanedit.vsnd",
+			"sounds/music/main_theme.vsnd",
 		]
 		UI = true
 		Volume = 0.25
@@ -12,5 +12,6 @@
 		Pitch = 1.0
 		PitchRandom = 0.0
 		DistanceMax = 1000.0
+		selectionmode = "3"
 	}
 }

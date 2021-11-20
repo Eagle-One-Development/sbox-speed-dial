@@ -4,8 +4,8 @@
 	{
 		sounds = 
 		[
-			"sounds/ui/[draft]sfx_killsecured_short.vsnd",
-			"sounds/ui/[draft]sfx_killsecured_long.vsnd",
+			"sounds/ui/killsecured_short.vsnd",
+			"sounds/ui/killsecured_long.vsnd",
 		]
 		UI = false
 		Volume = 0.3
@@ -13,5 +13,6 @@
 		Pitch = 0.95
 		PitchRandom = 0.05
 		DistanceMax = 1000.0
+		selectionmode = "3"
 	}
 }
