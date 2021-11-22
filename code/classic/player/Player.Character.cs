@@ -19,7 +19,8 @@ namespace SpeedDial.Classic.Player {
 		public Texture PortraitTexture { get; private set; }
 		protected override void PostLoad() {
 			Portrait = System.IO.Path.ChangeExtension(Portrait, "png");
-			PortraitTexture = Texture.Load(Portrait);
+			if(Host.IsClient)
+				PortraitTexture = Texture.Load(Portrait);
 			All.Add(this);
 			Debug.Log($"loaded character {CharacterName}");
 		}
