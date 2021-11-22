@@ -34,8 +34,8 @@ namespace SpeedDial {
 		[ServerVar("sdial_combo_time", Help = "Set the combo time window in seconds.")]
 		public static float ComboTime { get; set; } = 5f;
 		[Net] public string CurrentSoundtrack { get; set; } = "track01";
-		[Net]
-		public string[] Soundtracks { get; set; } = {
+
+		public string[] Soundtracks { get; } = {
 			"track01",
 			"track02",
 			"track03",
