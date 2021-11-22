@@ -1,8 +1,4 @@
-﻿using Sandbox.UI.Construct;
-using System;
-using System.Linq;
-
-namespace Sandbox.UI {
+﻿namespace Sandbox.UI {
 	/// <summary>
 	/// A horizontal slider with a text entry on the right
 	/// </summary>

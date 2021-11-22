@@ -1,11 +1,8 @@
-﻿using Sandbox;
+﻿using System;
+
+using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
-using System;
-using System.Threading.Tasks;
-using SpeedDial.Classic.Player;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace SpeedDial.Classic.UI {
 	public class EndRound : Panel {

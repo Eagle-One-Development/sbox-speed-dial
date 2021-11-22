@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
+
 using Sandbox;
-using Sandbox.Internal;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
-using Sandbox.UI.Tests;
 
 using SpeedDial.Classic.Player;
 using SpeedDial.Classic.Settings;

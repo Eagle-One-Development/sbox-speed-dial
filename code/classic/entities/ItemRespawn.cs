@@ -1,7 +1,8 @@
-﻿
-using Sandbox;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+
+using Sandbox;
+
 using SpeedDial.Classic.Meds;
 
 namespace SpeedDial.Classic {

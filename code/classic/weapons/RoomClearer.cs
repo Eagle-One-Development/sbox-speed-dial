@@ -1,5 +1,4 @@
 using Sandbox;
-using System;
 
 namespace SpeedDial.Classic.Weapons {
 	[Library("sd_roomclearer", Title = "The Room Clearer")]

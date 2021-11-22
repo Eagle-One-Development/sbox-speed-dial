@@ -1,8 +1,9 @@
-﻿using Sandbox;
+﻿using System.Threading.Tasks;
+using System;
+
+using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
-using System.Threading.Tasks;
-using System;
 
 namespace SpeedDial.Classic.UI {
 	public partial class KillFeedEntry : Panel {

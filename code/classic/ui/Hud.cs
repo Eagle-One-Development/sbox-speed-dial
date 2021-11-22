@@ -1,7 +1,6 @@
 using Sandbox;
 using Sandbox.UI;
 
-using SpeedDial.Classic.Player;
 using SpeedDial.Base.UI;
 
 namespace SpeedDial.Classic.UI {

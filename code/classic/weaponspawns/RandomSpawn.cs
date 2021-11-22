@@ -1,13 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 using Sandbox;
-using Sandbox.UI;
-using Sandbox.UI.Construct;
 
-using SpeedDial.Classic.Player;
 using SpeedDial.Classic.Weapons;
 
 namespace SpeedDial.Classic.WeaponSpawns {

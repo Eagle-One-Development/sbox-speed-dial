@@ -1,16 +1,11 @@
-using Sandbox;
-using Sandbox.UI;
-using Sandbox.UI.Construct;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
 using System.Threading.Tasks;
+
+using Sandbox;
 
 using SpeedDial.Classic.Player;
 using SpeedDial.Classic.UI;
 using SpeedDial.Classic.WeaponSpawns;
-using SpeedDial.Classic.Settings;
 
 namespace SpeedDial.Classic.Weapons {
 	[Hammer.Skip]

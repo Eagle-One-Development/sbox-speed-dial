@@ -1,10 +1,6 @@
-
 using Sandbox;
-using Sandbox.Hooks;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
-using System;
-using System.Collections.Generic;
 
 namespace SpeedDial.Classic.UI {
 	public partial class SpeedDialScoreboardEntry : Panel {

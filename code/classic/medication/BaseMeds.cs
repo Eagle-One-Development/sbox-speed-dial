@@ -1,5 +1,7 @@
 ﻿using System;
+
 using Sandbox;
+
 using SpeedDial.Classic.Player;
 
 namespace SpeedDial.Classic.Meds {

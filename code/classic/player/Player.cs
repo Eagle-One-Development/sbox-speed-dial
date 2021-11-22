@@ -1,14 +1,11 @@
-using System.Numerics;
+using System.Linq;
 
-using System;
 using Sandbox;
+
 using SpeedDial.Base.Player;
 using SpeedDial.Classic.Weapons;
 using SpeedDial.Classic.UI;
 using SpeedDial.Classic.Meds;
-using System.Threading.Tasks;
-using SpeedDial.Classic.GameSound;
-using System.Linq;
 
 namespace SpeedDial.Classic.Player {
 	public partial class SpeedDialPlayer : BasePlayer {

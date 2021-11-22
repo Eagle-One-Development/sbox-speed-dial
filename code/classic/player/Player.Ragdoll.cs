@@ -1,4 +1,3 @@
-using System.Numerics;
 using Sandbox;
 
 namespace SpeedDial.Classic.Player {

@@ -1,5 +1,4 @@
 using Sandbox;
-using Hammer;
 
 using SpeedDial.Base.UI;
 

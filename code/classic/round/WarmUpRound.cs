@@ -1,11 +1,8 @@
-using Sandbox;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Sandbox;
+
 using SpeedDial.Classic.Player;
-using SpeedDial.Classic.UI;
 
 namespace SpeedDial.Classic {
 	public class WarmUpRound : BaseRound {

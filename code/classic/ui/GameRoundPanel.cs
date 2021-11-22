@@ -1,9 +1,8 @@
+using System;
+
 using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
-using System;
-using System.Threading.Tasks;
-using SpeedDial.Base;
 
 namespace SpeedDial.Classic.UI {
 	public class GameRoundPanel : Panel {

@@ -1,7 +1,4 @@
 ﻿using Sandbox;
-using Steamworks;
-using System;
-using System.Buffers;
 
 public class NavSteer {
 	public NavPath Path { get; private set; }

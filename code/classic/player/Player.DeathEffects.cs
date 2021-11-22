@@ -1,10 +1,6 @@
-using System.Numerics;
-using System.Diagnostics;
-using System;
-using Sandbox;
-using SpeedDial.Classic.Weapons;
-using SpeedDial.Classic.UI;
 using System.Threading.Tasks;
+
+using Sandbox;
 
 namespace SpeedDial.Classic.Player {
 	public enum COD {

@@ -1,7 +1,6 @@
-using Sandbox;
-
-using System.Threading;
 using System.Threading.Tasks;
+
+using Sandbox;
 
 using SpeedDial.Classic.GameSound;
 

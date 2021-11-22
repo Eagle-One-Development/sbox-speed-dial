@@ -1,33 +1,25 @@
-﻿
-namespace Sandbox.Nav
-{
+﻿namespace Sandbox.Nav {
 
-	public class Wander : NavSteer
-	{
+	public class Wander : NavSteer {
 		public float MinRadius => 200;
 		public float MaxRadius => 500;
 
-		public Wander()
-		{
+		public Wander() {
 
 		}
 
-		public override void Tick( Vector3 position )
-		{
-			base.Tick( position );
+		public override void Tick(Vector3 position) {
+			base.Tick(position);
 
-			if ( Path.IsEmpty )
-			{
-				FindNewTarget( position );
+			if(Path.IsEmpty) {
+				FindNewTarget(position);
 			}
 		}
 
 
-		public virtual bool FindNewTarget( Vector3 center )
-		{
-			var t = NavMesh.GetPointWithinRadius( center, MinRadius, MaxRadius );
-			if ( t.HasValue )
-			{
+		public virtual bool FindNewTarget(Vector3 center) {
+			var t = NavMesh.GetPointWithinRadius(center, MinRadius, MaxRadius);
+			if(t.HasValue) {
 				Target = t.Value;
 			}
 

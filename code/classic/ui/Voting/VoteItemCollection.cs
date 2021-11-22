@@ -1,14 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Text.Json;
+
 using Sandbox.UI;
-using Sandbox.DataModel;
 using Sandbox;
-using Sandbox.Utility;
-using System.Threading.Tasks;
 using Sandbox.UI.Construct;
-using System.IO.Compression;
-using System.Linq;
 
 namespace SpeedDial.Classic.UI {
 	public class VoteItemCollection : Panel {

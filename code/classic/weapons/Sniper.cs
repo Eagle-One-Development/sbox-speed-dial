@@ -1,5 +1,4 @@
 using Sandbox;
-using SpeedDial.Classic.Player;
 
 namespace SpeedDial.Classic.Weapons {
 	[Library("sd_sniper", Title = "Sniper")]

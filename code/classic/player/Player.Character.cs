@@ -1,8 +1,7 @@
+using System.Collections.Generic;
+
 using Sandbox;
 using Hammer;
-
-using System.Collections.Generic;
-using System.Linq;
 
 namespace SpeedDial.Classic.Player {
 	[Library("sdchar"), AutoGenerate]

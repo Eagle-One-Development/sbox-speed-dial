@@ -1,4 +1,5 @@
 using Sandbox;
+
 using SpeedDial.Classic.Weapons;
 
 namespace SpeedDial.Classic.WeaponSpawns {

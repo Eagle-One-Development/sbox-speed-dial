@@ -1,9 +1,10 @@
-using Sandbox;
 using System;
 using System.Linq;
-using SpeedDial.Classic.Weapons;
+
+using Sandbox;
 
 using SpeedDial.Base.Player;
+using SpeedDial.Classic.Weapons;
 
 namespace SpeedDial.Classic.Player {
 	public partial class SpeedDialInventory : BaseInventory {

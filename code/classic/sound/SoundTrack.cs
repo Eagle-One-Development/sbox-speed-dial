@@ -1,5 +1,6 @@
-using Sandbox;
 using System.Threading.Tasks;
+
+using Sandbox;
 
 namespace SpeedDial.Classic.GameSound {
 	public partial class SoundTrack {

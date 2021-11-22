@@ -1,12 +1,9 @@
-
-using Sandbox;
-using Sandbox.Hooks;
-using Sandbox.UI;
-using Sandbox.UI.Construct;
-
-using System;
 using System.Collections.Generic;
 using System.Linq;
+
+using Sandbox;
+using Sandbox.UI;
+using Sandbox.UI.Construct;
 
 namespace SpeedDial.Classic.UI {
 	public partial class SpeedDialScoreboard<T> : Panel where T : SpeedDialScoreboardEntry, new() {
@@ -16,7 +13,7 @@ namespace SpeedDial.Classic.UI {
 		public Panel Header { get; protected set; }
 
 		public SpeedDialScoreboard() {
-			StyleSheet.Load("/classic/ui/scoreboard/SD_Scoreboard.scss");
+			StyleSheet.Load("/classic/ui/scoreboard/Scoreboard.scss");
 			AddClass("scoreboard");
 
 			AddHeader();

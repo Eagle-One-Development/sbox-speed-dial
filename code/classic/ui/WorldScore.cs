@@ -1,13 +1,8 @@
+using System;
 
 using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
-using System;
-using System.Threading.Tasks;
-using SpeedDial.Classic.Weapons;
-using SpeedDial.Classic.Player;
-using System.Collections.Generic;
-
 
 namespace SpeedDial.Classic.UI {
 	public partial class WorldScore : Panel {
