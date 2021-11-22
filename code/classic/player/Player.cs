@@ -14,9 +14,6 @@ namespace SpeedDial.Classic.Player {
 		public TimeSince TimeSinceDied { get; set; }
 
 		[Net]
-		public float RespawnTime { get; set; } = 1f;
-
-		[Net]
 		public int BodyGroup { get; set; }
 
 		[Net]
