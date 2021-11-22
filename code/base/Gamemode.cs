@@ -32,5 +32,7 @@ namespace SpeedDial.Base {
 		public virtual void GamemodeOnKilled(Client client, Entity pawn) { }
 
 		public virtual void GamemodePostLevelLoaded() { }
+
+		public virtual void GamemodeClientSpawn() { }
 	}
 }

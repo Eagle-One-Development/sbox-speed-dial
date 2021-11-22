@@ -255,7 +255,7 @@ namespace SpeedDial.Classic {
 			player.InitialSpawn();
 		}
 
-		public override void ClientSpawn() {
+		public override void GamemodeClientSpawn() {
 			base.ClientSpawn();
 			Host.AssertClient();
 			ReloadSettingsAfterDelay();

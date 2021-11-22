@@ -4,14 +4,14 @@ using SpeedDial.Base;
 
 namespace SpeedDial {
 
-	public partial class GamemodesGame : Game {
+	public partial class SpeedDialGame : Game {
 
 		[Net] public BaseGamemode Gamemode { get; set; }
 		[Net] private bool Abort { get; set; } = false;
 		public static string GamemodeName { get; } = "sd_classic";
-		public static GamemodesGame Instance { get; protected set; }
+		public static SpeedDialGame Instance { get; protected set; }
 
-		public GamemodesGame() {
+		public SpeedDialGame() {
 			Instance = this;
 			if(IsServer) {
 				Log.Info("[SV] Game created");
@@ -54,8 +54,14 @@ namespace SpeedDial {
 		}
 
 		public override void OnKilled(Client client, Entity pawn) {
-			base.OnKilled();
+			Log.Info($"ent killed {client} {pawn}");
 			Gamemode.GamemodeOnKilled(client, pawn);
+			base.OnKilled();
+		}
+
+		public override void ClientSpawn() {
+			base.ClientSpawn();
+			Gamemode.GamemodeClientSpawn();
 		}
 
 		public override void PostLevelLoaded() {
