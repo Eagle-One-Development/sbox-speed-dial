@@ -2,17 +2,16 @@
 {
 	data = 
 	{
+		ui = true
+		volume = 1.0
+		volumerandom = 0.1
+		pitch = 1.0
+		pitchrandom = 0.1
+		distancemax = 2000.0
 		sounds = 
 		[
-			"sounds/ui/killsecured_short.vsnd",
-			"sounds/ui/killsecured_long.vsnd",
+			"sounds/ui/player_death.vsnd",
 		]
-		UI = true
-		Volume = 0.3
-		VolumeRandom = 0.1
-		Pitch = 0.95
-		PitchRandom = 0.05
-		DistanceMax = 1000.0
 		selectionmode = "3"
 	}
 }

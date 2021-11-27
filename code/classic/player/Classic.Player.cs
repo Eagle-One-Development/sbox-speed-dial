@@ -201,11 +201,13 @@ namespace SpeedDial.Classic.Player {
 			BecomeRagdollOnClient(To.Everyone, new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0));
 			BloodSplatter(To.Everyone);
 			ScreenHints.FireEvent(To.Single(Client), "WHACKED", "+WIP");
+			SoundFromScreen(To.Single(Client), "player_death");
 
 			// give the killer his score etc
 			if(LastRecievedDamage.Attacker is ClassicPlayer attacker) {
 				attacker.TimeSinceMurdered = 0;
 				attacker.AwardKill();
+				SoundFromScreen(To.Single(attacker.Client), "kill_confirm");
 			}
 
 			// reset combo

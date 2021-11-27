@@ -61,6 +61,7 @@ namespace SpeedDial {
 			Precache.Add("sounds/punch/woosh_1.vsnd");
 			Precache.Add("sounds/ui/killsecured_long.vsnd");
 			Precache.Add("sounds/ui/killsecured_short.vsnd");
+			Precache.Add("sounds/ui/player_death.vsnd");
 			Precache.Add("sounds/ui/click.vsnd");
 			Precache.Add("sounds/ui/tape_noise.vsnd");
 			Precache.Add("sounds/ui/tape_top.vsnd");
