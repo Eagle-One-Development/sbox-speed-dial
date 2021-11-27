@@ -83,7 +83,6 @@ namespace SpeedDial.Classic.Player {
 				TimeSincePickup = 0;
 
 				ActiveChild = weapon;
-				weapon.Parent = this;
 				weapon.OnCarryStart(this);
 			}
 

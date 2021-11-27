@@ -16,8 +16,7 @@ namespace SpeedDial.Classic.Weapons {
 		public virtual int ClipSize => 16;
 		public virtual float ReloadTime => 0.17f;
 
-		[Net]
-		public Entity PreviousOwner { get; set; }
+		[Net] public Entity PreviousOwner { get; set; }
 		public ClassicWeaponSpawn WeaponSpawn { get; set; }
 
 		[Net, Predicted]
@@ -355,6 +354,7 @@ namespace SpeedDial.Classic.Weapons {
 				WeaponSpawn = null;
 			}
 
+			Parent = carrier;
 			SetParent(player, AttachementName, Transform.Zero);
 
 			Owner = player;
