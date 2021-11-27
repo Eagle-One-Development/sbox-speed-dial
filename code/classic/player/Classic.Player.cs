@@ -182,6 +182,8 @@ namespace SpeedDial.Classic.Player {
 			base.OnKilled();
 			Frozen = true;
 
+			// reset drug
+			ActiveDrug = false;
 			DrugParticles?.Destroy(true);
 
 			EnableAllCollisions = false;
@@ -200,11 +202,13 @@ namespace SpeedDial.Classic.Player {
 			BloodSplatter(To.Everyone);
 			ScreenHints.FireEvent(To.Single(Client), "WHACKED", "+WIP");
 
+			// give the killer his score etc
 			if(LastRecievedDamage.Attacker is ClassicPlayer attacker) {
 				attacker.TimeSinceMurdered = 0;
 				attacker.AwardKill();
 			}
 
+			// reset combo
 			Client.SetValue("combo", 0);
 		}
 
