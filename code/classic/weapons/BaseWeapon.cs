@@ -23,16 +23,11 @@ namespace SpeedDial.Classic.Weapons {
 		[Net, Predicted]
 		public int AmmoClip { get; set; }
 
-		[Net, Local]
-		public TimeSince TimeSinceDeployed { get; set; }
-
 		public BasePickupTrigger PickupTrigger { get; protected set; }
-		TimeSince TimeSinceAlive;
+		[Net] public TimeSince TimeSinceAlive { get; set; }
 		public bool DespawnAfterTime = false;
-
 		[Net, Predicted]
 		public TimeSince TimeSincePrimaryAttack { get; set; }
-
 		public virtual float PrimaryRate => 5.0f;
 		public virtual int BulletCount => 1;
 		public virtual float BulletSpread => 0.1f;
@@ -46,18 +41,10 @@ namespace SpeedDial.Classic.Weapons {
 		public virtual Vector4 ScreenShakeParameters => new(1, 1, 1, 1);
 		public virtual float Range => 4096;
 		public virtual int AmmoPerShot => 1;
-		public virtual float DeployTime => 0.6f;
 		public virtual int HoldType => 2;
 		public virtual string AttachementName => "pistol_attach";
 		public virtual string EjectionParticle => "particles/pistol_ejectbrass.vpcf";
-		public virtual bool Penetrate => false;
-		[Net]
-		public bool CanImpactKill { get; set; } = true;
-
-		public override void ActiveStart(Entity ent) {
-			base.ActiveStart(ent);
-			TimeSinceDeployed = 0;
-		}
+		[Net] public bool CanImpactKill { get; set; } = true;
 
 		public override void Spawn() {
 			base.Spawn();
@@ -130,9 +117,6 @@ namespace SpeedDial.Classic.Weapons {
 			if(Owner != null) {
 				PreviousOwner = Owner;
 			}
-
-			if(TimeSinceDeployed < DeployTime)
-				return;
 
 			if(CanPrimaryAttack()) {
 				TimeSincePrimaryAttack = 0;
@@ -299,7 +283,7 @@ namespace SpeedDial.Classic.Weapons {
 			// 	}
 			// }
 
-			if(player.ActiveDrug && player.DrugType == DrugType.Ollie || Penetrate) {
+			if(player.ActiveDrug && player.DrugType == DrugType.Ollie) {
 				// pierce through the first player hit
 				if(bullet.Entity is ClassicPlayer) {
 					var dir = bullet.EndPos - bullet.StartPos;
