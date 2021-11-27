@@ -3,14 +3,13 @@ using Sandbox.UI;
 using Sandbox.UI.Construct;
 
 namespace SpeedDial.Classic.UI {
-	public partial class SpeedDialScoreboardEntry : Panel {
+	public partial class ClassicScoreboardEntry : Panel {
 		public Client Client;
-
 		public Label PlayerName;
 		public Label Score;
 		public Label MaxCombo;
 
-		public SpeedDialScoreboardEntry() {
+		public ClassicScoreboardEntry() {
 			AddClass("entry");
 
 			PlayerName = Add.Label("PlayerName", "name");

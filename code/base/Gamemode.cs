@@ -1,38 +1,204 @@
+using System;
+using System.Linq;
+
 using Sandbox;
+using Sandbox.UI;
 
-using SpeedDial.Base.UI;
+//CREDIT: Taken from Espionage.Engine by Jake Wooshito
+namespace SpeedDial {
+	/// <summary> [Server, Client] Gamemode base </summary>
+	[Library(Spawnable = false), Hammer.Skip]
+	public abstract partial class Gamemode : Entity {
+		public Gamemode() {
+			Transmit = TransmitType.Always;
 
-namespace SpeedDial.Base {
-	public abstract class BaseGamemode : Entity {
-
-		public static BaseGamemode Current { get; protected set; }
+			if(IsServer)
+				CreateGamemodeUI();
+		}
 
 		public override void Spawn() {
-			base.Spawn();
-			Transmit = TransmitType.Always;
-			Current = this;
+			Name = ClassInfo.Name;
 		}
 
-		public virtual void GamemodeInitializeUI() {
-			_ = new BaseHud();
+		[Event.Tick.Server]
+		protected virtual void Tick() { }
+
+		public void Start() {
+			MapSettings.Current?.GamemodeStart.Fire(null, ClassInfo.Name);
+			OnStart();
 		}
 
-		public virtual void GamemodeSimulate(Client cl) { }
+		protected virtual void OnStart() { }
 
-		public virtual void GamemodeClientJoined(Client client) { }
-
-		public virtual void GamemodeDoPlayerNoclip(Client player) { }
-
-		public virtual void GamemodeDoPlayerSuicide(Client cl) {
-			if(cl.Pawn == null) return;
-
-			cl.Pawn.Kill();
+		public void Finish() {
+			MapSettings.Current?.GamemodeFinish.Fire(null, ClassInfo.Name);
+			OnFinish();
 		}
 
-		public virtual void GamemodeOnKilled(Client client, Entity pawn) { }
+		protected virtual void OnFinish() { }
 
-		public virtual void GamemodePostLevelLoaded() { }
+		//
+		// Round
+		//
 
-		public virtual void GamemodeClientSpawn() { }
+		[Net] private Round ActiveRound { get; set; }
+
+		/// <summary> [Assert Server] Forcefully change the active round </summary>
+		public void SetRound(Round round) {
+			Host.AssertServer();
+			Assert.NotNull(round);
+
+			ActiveRound?.Finish();
+
+			ActiveRound = round;
+
+			ActiveRound?.Start();
+		}
+
+		/// <summary> [Client Safe] Returns the active round </summary>
+		public Round GetRound() {
+			return ActiveRound;
+		}
+
+		[Event.Frame]
+		protected virtual void RoundDebug() {
+			// Do this for now. To lazy to impliemt UI
+			if(ActiveRound is null)
+				return;
+
+			var r = ActiveRound;
+			DebugOverlay.ScreenText(new Vector2(Screen.Width / 2, 32), r.Finished ? "Finished Round" : ActiveRound.ClassInfo.Name);
+			DebugOverlay.ScreenText(new Vector2(Screen.Width / 2, 48), r.Finished ? "Finished Round" : ActiveRound.TimeLeftFormatted);
+		}
+
+		//
+		// Gamemode UI
+		//
+
+		public HudEntity<RootPanel> GamemodeUI { get; protected set; }
+
+		public virtual void CreateGamemodeUI() { }
+
+		protected override void OnDestroy() {
+			base.OnDestroy();
+
+			Local.Hud = null;
+
+			GamemodeUI?.Delete();
+			GamemodeUI = null;
+		}
+
+		//
+		// Map Logic
+		//
+
+		/// <summary> [Assert Server] Use this to move pawn to position when it has respawned </summary>
+		public virtual void MoveToSpawnpoint(BasePlayer pawn) {
+			Host.AssertServer();
+			var spawnpoints = All.Where((s) => s is SpawnPoint);
+			Entity optimalSpawn = spawnpoints.ToList()[0];
+			float optimalDistance = 0;
+			foreach(var spawn in spawnpoints) {
+				float smallestDistance = 999999;
+				foreach(var player in All.Where((p) => p is BasePlayer)) {
+					var distance = Vector3.DistanceBetween(spawn.Position, player.Position);
+					if(distance < smallestDistance) {
+						smallestDistance = distance;
+					}
+				}
+				if(smallestDistance > optimalDistance) {
+					optimalSpawn = spawn;
+					optimalDistance = smallestDistance;
+				}
+			}
+			pawn.Transform = optimalSpawn.Transform;
+			return;
+		}
+
+		/// <summary> [Assert Server] Use this to validate the gamemode for the active map </summary>
+		public virtual bool ValidGamemode() { return true; }
+
+		//
+		// Pawn States
+		//
+
+		/// <summary> [Assert Server] </summary>
+		public void PawnKilled(BasePlayer pawn) {
+			Host.AssertServer();
+
+			OnPawnKilled(pawn);
+			pawn.TimeSinceDied = 0;
+
+			ActiveRound?.OnPlayerKilled(pawn);
+		}
+
+		/// <summary> [Server Assert] Should this pawn be damaged ? </summary>
+		/// <returns> True if damage should be taken </returns>
+		public bool PawnDamaged(BasePlayer pawn, ref DamageInfo info) {
+			Host.AssertServer();
+
+			return OnPawnDamaged(pawn, ref info);
+		}
+
+		/// <summary> [Assert Server] </summary>
+		public void PawnRespawned(BasePlayer pawn) {
+			Host.AssertServer();
+
+			OnPawnRespawned(pawn);
+			ActiveRound?.OnPlayerRespawned(pawn);
+		}
+
+		/// <summary> [Server] </summary>
+		protected virtual void OnPawnKilled(BasePlayer pawn) { }
+
+		/// <summary> [Server] Should this pawn be damaged ? Default just checks if the teams are the same </summary>
+		/// <returns> True if damage should be taken </returns>
+		protected virtual bool OnPawnDamaged(BasePlayer pawn, ref DamageInfo info) {
+			// if(pawn is null || info.Attacker is null)
+			// 	return true;
+
+			// if(pawn.GetTeam() is null || (info.Attacker is BasePlayer coolPawn && coolPawn.GetTeam() is not null))
+			// 	return true;
+
+			// return pawn.GetTeam().Name != info.Attacker.Cast<BasePlayer>().GetTeam().Name;
+			return true;
+		}
+
+		/// <summary> [Server] </summary>
+		protected virtual void OnPawnRespawned(BasePlayer newPawn) { }
+
+		//
+		// Client States
+		//
+
+		/// <summary> [Assert Server] </summary>
+		public void ClientJoined(Client client) {
+			Host.AssertServer();
+			OnClientJoined(client);
+		}
+
+		/// <summary> [Assert Server] </summary>
+		public void ClientReady(Client client) {
+			Host.AssertServer();
+			OnClientReady(client);
+		}
+
+		/// <summary> [Assert Server] </summary>
+		public void ClientDisconnected(Client client, NetworkDisconnectionReason reason) {
+			Host.AssertServer();
+			OnClientDisconnect(client, reason);
+		}
+
+		/// <summary> [Server] Is called when a client joins the server </summary>
+		protected virtual void OnClientJoined(Client client) { }
+
+		/// <summary> [Server] Is called when a client has chosen a team and wants to spawn
+		/// we should assign a pawn in this callback too </summary>
+		protected virtual void OnClientReady(Client client) {
+			//client.AssignPawn<Specialist>();
+		}
+
+		/// <summary> [Server] Is called when a client has disconnected. Possibly use this for cleanup? </summary>
+		protected virtual void OnClientDisconnect(Client client, NetworkDisconnectionReason reason) { }
 	}
 }

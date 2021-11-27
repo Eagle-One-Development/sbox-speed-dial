@@ -1,0 +1,11 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	data = 
+	{
+		weaponclass = "sdg_smg"
+		charactername = "Dial-Up"
+		description = "Dial-Up assisted many L.A. crime gangs on various counts of cyber-crime. Now he specializes in \'violent corporate cyber espionage\'."
+		portrait = "materials/ui/portraits/hd_me.jpg"
+		model = resource:"models/playermodels/character_dialup.vmdl"
+	}
+}

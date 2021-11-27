@@ -24,21 +24,6 @@
 				]
 			},
 			{
-				_class = "PhysicsShapeList"
-				children = 
-				[
-					{
-						_class = "PhysicsShapeCapsule"
-						parent_bone = ""
-						surface_prop = "default"
-						collision_prop = "default"
-						radius = 4.0
-						point0 = [ 5.56824, 0.0, 5.56824 ]
-						point1 = [ -5.592948, 0.0, -5.592948 ]
-					},
-				]
-			},
-			{
 				_class = "RenderMeshList"
 				children = 
 				[
@@ -57,6 +42,17 @@
 							exclude_by_default = false
 							exception_list = [  ]
 						}
+					},
+				]
+			},
+			{
+				_class = "ModelDataList"
+				children = 
+				[
+					{
+						_class = "Bounds Hull"
+						mins = [ -20.0, -20.0, -20.0 ]
+						maxs = [ 20.0, 20.0, 20.0 ]
 					},
 				]
 			},

@@ -1,23 +1,24 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq;
+using System;
 
 using Sandbox;
 
+using SpeedDial.Classic.Entities;
 using SpeedDial.Classic.Player;
+using SpeedDial.Classic.Drugs;
 using SpeedDial.Classic.UI;
-using SpeedDial.Classic.WeaponSpawns;
 
 namespace SpeedDial.Classic.Weapons {
 	[Hammer.Skip]
-	public partial class BaseSpeedDialWeapon : BaseCarriable {
-		public virtual AmmoType AmmoType => AmmoType.Pistol;
+	[Library(Spawnable = false)]
+	public partial class ClassicBaseWeapon : BaseCarriable {
 		public virtual int ClipSize => 16;
 		public virtual float ReloadTime => 0.17f;
 
 		[Net]
 		public Entity PreviousOwner { get; set; }
-		[Net]
-		public BaseWeaponSpawn WeaponSpawn { get; set; }
+		public ClassicWeaponSpawn WeaponSpawn { get; set; }
 
 		[Net, Predicted]
 		public int AmmoClip { get; set; }
@@ -25,15 +26,14 @@ namespace SpeedDial.Classic.Weapons {
 		[Net, Local]
 		public TimeSince TimeSinceDeployed { get; set; }
 
-		public PickupTrigger PickupTrigger { get; protected set; }
-		TimeSince lifetime;
-		public bool DespawnAfterTime = true;
+		public BasePickupTrigger PickupTrigger { get; protected set; }
+		TimeSince TimeSinceAlive;
+		public bool DespawnAfterTime = false;
 
 		[Net, Predicted]
 		public TimeSince TimeSincePrimaryAttack { get; set; }
 
 		public virtual float PrimaryRate => 5.0f;
-		public virtual float SecondaryRate => 15.0f;
 		public virtual int BulletCount => 1;
 		public virtual float BulletSpread => 0.1f;
 		public virtual float VerticalBulletSpread => 1f;
@@ -42,7 +42,7 @@ namespace SpeedDial.Classic.Weapons {
 		public virtual float BulletSize => 1;
 		public virtual bool Automatic => false;
 		public virtual string ShootSound => "sd_pistol_shoot";
-		public virtual string WorldModel => "models/playermodels/weapons/prop_pistol.vmdl";
+		public virtual string WorldModel => "models/light_arrow.vmdl";
 		public virtual Vector4 ScreenShakeParameters => new(1, 1, 1, 1);
 		public virtual float Range => 4096;
 		public virtual int AmmoPerShot => 1;
@@ -52,15 +52,7 @@ namespace SpeedDial.Classic.Weapons {
 		public virtual string EjectionParticle => "particles/pistol_ejectbrass.vpcf";
 		public virtual bool Penetrate => false;
 		[Net]
-		public bool CanKill { get; set; } = true;
-
-		public int AvailableAmmo() {
-			if(Owner is SpeedDialPlayer owner) {
-				if(owner == null) return 0;
-				return owner.AmmoCount(AmmoType);
-			}
-			return -1;
-		}
+		public bool CanImpactKill { get; set; } = true;
 
 		public override void ActiveStart(Entity ent) {
 			base.ActiveStart(ent);
@@ -78,31 +70,51 @@ namespace SpeedDial.Classic.Weapons {
 			AmmoClip = ClipSize;
 
 			PickupTrigger = new();
-			PickupTrigger.SetTriggerSize(32f);
 			PickupTrigger.Parent = this;
+			PickupTrigger.ParentEntity = this;
 			PickupTrigger.Position = Position;
 			PickupTrigger.EnableTouchPersists = true;
+
+			GlowDistanceStart = 0;
+			GlowDistanceEnd = 1000;
+
+			GlowColor = Color.White;
+
+			GlowState = GlowStates.GlowStateOn;
+			GlowActive = true;
 		}
 
-		public void ApplyThrowVelocity(Vector3 baseVelocity, Vector3 rot) {
-			PhysicsBody.Velocity += baseVelocity + rot * 500;
-			PhysicsBody.AngularVelocity = new Vector3(0, 0, 100f);
-			PhysicsBody.GravityScale = 1.0f;
-			_ = SetGravity();
-		}
+		private void SetGlow(bool state) {
+			if(state) {
+				GlowState = GlowStates.GlowStateOn;
+				GlowActive = true;
 
-		[Event("server.tick")]
-		public void CheckLifeTime() {
-			if(lifetime > 10f && Owner == null && DespawnAfterTime) {
-				Delete();
+				if(AmmoClip > 0)
+					GlowColor = new Color(0.2f, 1, 0.2f, 1);
+				else {
+					if(AmmoClip == -1)
+						GlowColor = new Color(1, 1, 1, 1);
+					else
+						GlowColor = new Color(1, 0.2f, 0.2f, 1);
+				}
+			} else {
+				GlowState = GlowStates.GlowStateOff;
+				GlowActive = false;
 			}
 		}
 
-		async Task SetGravity() {
-			await GameTask.DelaySeconds(0.2f);
-			//if(PhysicsBody?.IsValid() ?? false)
-			//PhysicsBody.GravityScale = 1.0f;
+		[Event.Tick]
+		public void Tick() {
+			if(TimeSinceAlive > 10 && Owner == null && DespawnAfterTime && PickupTrigger.IsValid() && !PickupTrigger.TouchingPlayers.Any()) {
+				if(IsServer)
+					Delete();
+			}
+			if(Debug.Weapons) {
+				if(IsServer)
+					DebugOverlay.Text(Position, $"{GetType().Name}\nalive since: {TimeSinceAlive}\ndespawn: {DespawnAfterTime}", Owner is null ? Color.White : Color.Green, Time.Delta, 1000);
+			}
 		}
+
 
 		public override void SimulateAnimator(PawnAnimator anim) {
 			anim.SetParam("holdtype", HoldType);
@@ -110,8 +122,7 @@ namespace SpeedDial.Classic.Weapons {
 		}
 
 		public override void Simulate(Client owner) {
-
-			lifetime = 0;
+			TimeSinceAlive = 0;
 
 			if(!this.IsValid())
 				return;
@@ -130,12 +141,13 @@ namespace SpeedDial.Classic.Weapons {
 		}
 
 		public virtual bool CanPrimaryAttack() {
-			if((Owner as SpeedDialPlayer).Freeze) return false;
-			if(Owner is not SpeedDialBotPlayer) {
+			if((Owner as ClassicPlayer).Frozen) return false;
+			if(Owner is ClassicPlayer) {
 				if(!Owner.IsValid() || (Automatic && !Input.Down(InputButton.Attack1)) || (!Automatic && !Input.Pressed(InputButton.Attack1))) return false;
-			} else {
-				if(!Owner.IsValid() || (Automatic && !(Owner as SpeedDialBotPlayer).ShootAtPlayer) || (!Automatic && !(Owner as SpeedDialBotPlayer).ShootAtPlayer) || (Owner as SpeedDialBotPlayer).TimeSinceShoot < (Owner as SpeedDialBotPlayer).ShootDelay) return false;
 			}
+			// else {
+			// 	if(!Owner.IsValid() || (Automatic && !(Owner as SpeedDialBotPlayer).ShootAtPlayer) || (!Automatic && !(Owner as SpeedDialBotPlayer).ShootAtPlayer) || (Owner as SpeedDialBotPlayer).TimeSinceShoot < (Owner as SpeedDialBotPlayer).ShootDelay) return false;
+			// }
 
 			var rate = PrimaryRate;
 			if(rate <= 0) return true;
@@ -145,13 +157,12 @@ namespace SpeedDial.Classic.Weapons {
 
 		public virtual void AttackPrimary(bool overrideBullet = false, bool overrideShootEffects = false) {
 			TimeSincePrimaryAttack = 0;
-			if(Owner is SpeedDialBotPlayer bot) {
-				bot.TimeSinceShoot = 0f;
-			}
+			// if(Owner is SpeedDialBotPlayer bot) {
+			// 	bot.TimeSinceShoot = 0f;
+			// }
 
 			if(!overrideBullet) {
 				if(!TakeAmmo(AmmoPerShot)) {
-
 					PlaySound("sd_dryfrire");
 					return;
 				}// no ammo, no shooty shoot
@@ -177,29 +188,24 @@ namespace SpeedDial.Classic.Weapons {
 		}
 
 		public virtual void ShootBullet(float spread, float force, float damage, float bulletSize, int seed) {
-			float f = 1f;
-			var player = Owner as SpeedDialPlayer;
-			if(player.MedTaken && player.CurrentDrug == Meds.DrugType.Ritindi) {
-
-				f = 0.25f;
-			}
 			Rand.SetSeed(Time.Tick + seed);
 
+			var player = Owner as ClassicPlayer;
 
 			var forward = Owner.EyeRot.Forward;
-			forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f * f;
+			forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f * ((player.ActiveDrug && player.DrugType is DrugType.Ritindi) ? 0.25f : 1f);
 			forward = forward.Normal;
 			//forward = new Vector3( forward.x, forward.y, forward.z * VerticalBulletSpread );
 			forward.z *= VerticalBulletSpread;
 
-			GamePanel.Current?.Bump();
-			CrossHair.Current?.Bump();
+			AmmoPanel.Fire();
+			Crosshair.Fire();
 			int index = 0;
 			foreach(var tr in TraceBullet(Owner.EyePos, Owner.EyePos + forward * Range, bulletSize)) {
 				tr.Surface.DoBulletImpact(tr);
 
 				// blood plip where player was hit
-				if(tr.Entity is SpeedDialPlayer hitply) {
+				if(tr.Entity is ClassicPlayer hitply) {
 					var ps = Particles.Create("particles/blood/blood_plip.vpcf", tr.EndPos);
 					ps?.SetForward(0, tr.Normal);
 				}
@@ -242,59 +248,60 @@ namespace SpeedDial.Classic.Weapons {
 
 			yield return bullet;
 
-			var player = Owner as SpeedDialPlayer;
+			var player = Owner as ClassicPlayer;
 
-			if(this is Sniper && ClassicGamemode.Instance.SniperCanPenetrate) {
-				var dir = (bullet.EndPos - bullet.StartPos).Normal;
-				if(bullet.Hit && wallBangedDistance < MaxWallbangDistance) {
-					var inNormal = bullet.Normal;
-					var inPoint = bullet.EndPos - inNormal * (size / 2);
-					//bullet
-					//DebugOverlay.Line(start, inPoint, Color.Green, 10, false);
-					//inpoint
-					//DebugOverlay.Sphere(inPoint, 0.5f, Color.Green, false, 10);
-					// normal
-					//DebugOverlay.Line(inPoint, inPoint + inNormal * 3, Color.Magenta, 10, false);
+			// TODO: sniper
+			// if(this is Sniper && ClassicGamemode.Instance.SniperCanPenetrate) {
+			// 	var dir = (bullet.EndPos - bullet.StartPos).Normal;
+			// 	if(bullet.Hit && wallBangedDistance < MaxWallbangDistance) {
+			// 		var inNormal = bullet.Normal;
+			// 		var inPoint = bullet.EndPos - inNormal * (size / 2);
+			// 		//bullet
+			// 		//DebugOverlay.Line(start, inPoint, Color.Green, 10, false);
+			// 		//inpoint
+			// 		//DebugOverlay.Sphere(inPoint, 0.5f, Color.Green, false, 10);
+			// 		// normal
+			// 		//DebugOverlay.Line(inPoint, inPoint + inNormal * 3, Color.Magenta, 10, false);
 
-					// adding dir to not be inside the inPoint
-					var wallbangTest = Trace.Ray(inPoint + dir, inPoint + dir * (MaxWallbangDistance - 1))
-									.HitLayer(CollisionLayer.WORLD_GEOMETRY)
-									.Ignore(Owner)
-									.Ignore(this)
-									.Size(1)
-									.UseLagCompensation()
-									.Run();
+			// 		// adding dir to not be inside the inPoint
+			// 		var wallbangTest = Trace.Ray(inPoint + dir, inPoint + dir * (MaxWallbangDistance - 1))
+			// 						.HitLayer(CollisionLayer.WORLD_GEOMETRY)
+			// 						.Ignore(Owner)
+			// 						.Ignore(this)
+			// 						.Size(1)
+			// 						.UseLagCompensation()
+			// 						.Run();
 
-					if(wallbangTest.Hit) {
-						var outNormal = wallbangTest.Normal;
-						var outPoint = wallbangTest.EndPos - outNormal * 0.5f;
+			// 		if(wallbangTest.Hit) {
+			// 			var outNormal = wallbangTest.Normal;
+			// 			var outPoint = wallbangTest.EndPos - outNormal * 0.5f;
 
-						//outpoint
-						//DebugOverlay.Sphere(outPoint, 0.1f, Color.Red, false, 10);
+			// 			//outpoint
+			// 			//DebugOverlay.Sphere(outPoint, 0.1f, Color.Red, false, 10);
 
-						if(outNormal != Vector3.Zero && inNormal.Dot(outNormal) >= 0) {
-							//normal
-							//DebugOverlay.Line(outPoint, outPoint + outNormal * 3, Color.Magenta, 10, false);
+			// 			if(outNormal != Vector3.Zero && inNormal.Dot(outNormal) >= 0) {
+			// 				//normal
+			// 				//DebugOverlay.Line(outPoint, outPoint + outNormal * 3, Color.Magenta, 10, false);
 
-							//wallbang
-							//DebugOverlay.Line(inPoint, outPoint, Color.Cyan, 10, false);
+			// 				//wallbang
+			// 				//DebugOverlay.Line(inPoint, outPoint, Color.Cyan, 10, false);
 
-							var distance = (inPoint - outPoint).Length;
-							var totalDistance = wallBangedDistance + distance;
+			// 				var distance = (inPoint - outPoint).Length;
+			// 				var totalDistance = wallBangedDistance + distance;
 
-							if(totalDistance < MaxWallbangDistance) {
-								foreach(var bullet2 in TraceBullet(outPoint + dir * 2, outPoint + dir * 1000, 1, totalDistance)) {
-									yield return bullet2;
-								}
-							}
-						}
-					}
-				}
-			}
+			// 				if(totalDistance < MaxWallbangDistance) {
+			// 					foreach(var bullet2 in TraceBullet(outPoint + dir * 2, outPoint + dir * 1000, 1, totalDistance)) {
+			// 						yield return bullet2;
+			// 					}
+			// 				}
+			// 			}
+			// 		}
+			// 	}
+			// }
 
-			if(player.MedTaken && player.CurrentDrug == Meds.DrugType.Ollie || Penetrate) {
+			if(player.ActiveDrug && player.DrugType == DrugType.Ollie || Penetrate) {
 				// pierce through the first player hit
-				if(bullet.Entity is SpeedDialPlayer) {
+				if(bullet.Entity is ClassicPlayer) {
 					var dir = bullet.EndPos - bullet.StartPos;
 					var penetrate = Trace.Ray(bullet.EndPos, bullet.EndPos + dir.Normal * 100f)
 							.UseHitboxes()
@@ -344,6 +351,7 @@ namespace SpeedDial.Classic.Weapons {
 		}
 
 		public bool TakeAmmo(int amount) {
+			// TODO: debug
 			if(Debug.InfiniteAmmo) return true;
 			if(AmmoClip < amount)
 				return false;
@@ -353,26 +361,33 @@ namespace SpeedDial.Classic.Weapons {
 		}
 
 		public override void OnCarryStart(Entity carrier) {
-			if(IsClient) return;
+			if(IsClient || !carrier.IsValid() || carrier is not BasePlayer player) return;
 
-			CanKill = true;
+			CanImpactKill = true;
 
 			//spawned via a weaponspawn. Tell the spawn that it's cleared up and can start respawning the weapon
-			if(WeaponSpawn != null) {
-				WeaponSpawn.ItemTaken = true;
-				WeaponSpawn.TimeSinceTaken = 0;
+			if(WeaponSpawn is not null) {
+				WeaponSpawn.WeaponTaken();
 				WeaponSpawn = null;
 			}
 
-			SetParent(carrier, AttachementName, Transform.Zero);
+			SetParent(player, AttachementName, Transform.Zero);
 
-			Owner = carrier;
+			Owner = player;
 			MoveType = MoveType.None;
 			EnableAllCollisions = false;
 			EnableDrawing = false;
 
+			SetGlow(false);
+
 			if(PickupTrigger.IsValid()) {
 				PickupTrigger.EnableTouch = false;
+			}
+
+			if(AmmoClip > 0) {
+				BasePlayer.SoundFromWorld(To.Single(player.Client), "sd_pickup.loaded", Position);
+			} else {
+				BasePlayer.SoundFromWorld(To.Single(player.Client), "sd_pickup.empty", Position);
 			}
 		}
 
@@ -382,6 +397,16 @@ namespace SpeedDial.Classic.Weapons {
 			if(PickupTrigger.IsValid()) {
 				PickupTrigger.EnableTouch = true;
 			}
+
+			DespawnAfterTime = true;
+			SetGlow(true);
+		}
+
+		public static Type GetRandomSpawnableType() {
+			// this shit is dumb
+			// ideally I'd use LibraryAttribute's Spawnable for this but it doesn't work with run-time types like this so fuck it, interface it is
+			var types = Library.GetAll<ClassicBaseWeapon>().Where(x => x.GetInterfaces().Contains(typeof(ISpawnable)));
+			return types.Random();
 		}
 	}
 }

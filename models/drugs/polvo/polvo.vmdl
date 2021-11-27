@@ -30,7 +30,7 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "models/drugs/polvo/src/polvo_gameplay.fbx"
-						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_translation = [ 0.0, 0.0, -0.3 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 12.0
 						align_origin_x_type = "None"
@@ -42,6 +42,17 @@
 							exclude_by_default = false
 							exception_list = [  ]
 						}
+					},
+				]
+			},
+			{
+				_class = "ModelDataList"
+				children = 
+				[
+					{
+						_class = "Bounds Hull"
+						mins = [ -20.0, -20.0, -20.0 ]
+						maxs = [ 20.0, 20.0, 20.0 ]
 					},
 				]
 			},

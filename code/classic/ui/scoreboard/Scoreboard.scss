@@ -4,8 +4,8 @@
 	position: absolute;
 	z-index: 100;
 	flex-direction: column;
-	font-family: VCR_OSD_MONO;
-	font-size: 24px;
+	font-family: FFFFORWARD;
+	font-size: 16px;
 	font-weight: 500;
 	color: white;
 	width: 100%;
@@ -54,7 +54,7 @@
 			color: #ddd;
 
 			&.first {
-				text-shadow: 2px 0px 0.5px $vhs_magenta, -2px 0px 0.5px $vhs_cyan;
+				text-shadow: 2px 2px 0.5px $vhs_magenta, -1px -1px 0.5px $vhs_cyan;
 			}
 
 			.score {

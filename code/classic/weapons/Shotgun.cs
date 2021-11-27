@@ -1,8 +1,9 @@
 using Sandbox;
 
 namespace SpeedDial.Classic.Weapons {
-	[Library("sd_shotgun", Title = "Spatz-12")]
-	partial class Shotgun : BaseSpeedDialWeapon {
+	[Library("sdg_shotgun", Title = "Spatz-12", Spawnable = true)]
+	[Hammer.EntityTool("Shotgun", "Speed-Dial Classic Weapons", "Spawns a weapon")]
+	partial class Shotgun : ClassicBaseWeapon, ISpawnable {
 		public override float PrimaryRate => 1;
 		public override int ClipSize => 6;
 		public override int HoldType => 5;

@@ -1,0 +1,325 @@
+
+@BaseClass = BaseProperties_speed_dial
+[
+	parentname(target_destination) [ group="Hierarchy" ] : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+	parentAttachmentName(parentAttachment) [ group="Hierarchy" ] : "Parent Model Bone/Attachment Name" : : "The name of the bone or attachment to attach to on the entity's parent in the movement hierarchy. Use !bonemerge to use bone-merge style attachment."
+
+	useLocalOffset(boolean) [ group="Hierarchy" ] : "Use Model Attachment offsets" : 0 : "Whether to respect the specified local offset when doing the initial hierarchical attachment to its parent."
+	local.origin(vector) [ group="Hierarchy" ] : "Model Attachment position offset" : : "Offset in the local space of the parent model's attachment/bone to use in hierarchy. Not used if you are not using parent attachment."
+	local.angles(angle) [ group="Hierarchy" ] : "Model Attachment angular offset" : : "Angular offset in the local space of the parent model's attachment/bone to use in hierarchy. Not used if you are not using parent attachment."
+	local.scales(vector) [ group="Hierarchy" ] : "Model Attachment scale" : : "Scale in the local space of the parent model's attachment/bone to use in hierarchy. Not used if you are not using parent attachment."
+
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+	tags(tags) : "Tags" : "" : "A list of general purpose tags for this entity, for interactions with other entities such as triggers."
+]
+
+//
+// SpeedDial.MapSettings
+//
+@PointClass base(BaseProperties_speed_dial) 
+metadata
+{
+	entity_tool_name = "Map Settings"
+	entity_tool_group = "Speed-Dial"
+	entity_tool_tip = "Defines information about a map, and its supported gamemodes."
+}
+= sd_map_settings : "An sd_map_settings entity is the central point of any Speed-Dial Map. It has output callbacks for a wide variety of functions in game as well as it stores meta data about a map.  To define which gamemodes this map supports, use the tags, each tag symbolizing the gamemode's name."
+[
+
+	output GamemodeStart(string) : "Gamemode has started, string is the name of the gamemode"
+	output GamemodeFinish(string) : "Gamemode has finished, string is the name of the gamemode"
+	output OnRoundFinished(string) : "Round has finished, string is the name of the round"
+	output OnRoundStarted(string) : "Round has started, string is the name of the round"
+	output OnPawnKilled(string) : "Pawn has died, string is the name of the pawn"
+	output OnPawnRespawned(string) : "Pawn has respawned, string is the name of the pawn"
+	output OnClientReady(string) : "Client is ready, string is the username of the client"
+	output OnClientJoined(string) : "Client has joined, string is the username of the client"
+	output OnClientDisconnected(string) : "Client has disconnected, string is the username of the client"
+]
+
+//
+// SpeedDial.Classic.Entities.ClassicRandomDrugSpawn
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/drugs/leaf/leaf.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Random Drug"
+	entity_tool_group = "Speed-Dial Drugspawns"
+	entity_tool_tip = "Spawns random Drugs."
+}
+= sdg_drugspawn_random : ""
+[
+	respawntime(float) : "Respawn Time" : 10 : ""
+]
+
+//
+// SpeedDial.Classic.Entities.LeafDrugSpawn
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/drugs/leaf/leaf.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Leaf"
+	entity_tool_group = "Speed-Dial Drugspawns"
+	entity_tool_tip = "Spawns Leaf."
+}
+= sdg_drugspawn_leaf : ""
+[
+	respawntime(float) : "Respawn Time" : 10 : ""
+]
+
+//
+// SpeedDial.Classic.Entities.OllieDrugSpawn
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/drugs/ollie/ollie.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Ollie"
+	entity_tool_group = "Speed-Dial Drugspawns"
+	entity_tool_tip = "Spawns Ollie."
+}
+= sdg_drugspawn_ollie : ""
+[
+	respawntime(float) : "Respawn Time" : 10 : ""
+]
+
+//
+// SpeedDial.Classic.Entities.PolvoDrugSpawn
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/drugs/polvo/polvo.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Polvo"
+	entity_tool_group = "Speed-Dial Drugspawns"
+	entity_tool_tip = "Spawns Polvo."
+}
+= sdg_drugspawn_polvo : ""
+[
+	respawntime(float) : "Respawn Time" : 10 : ""
+]
+
+//
+// SpeedDial.Classic.Entities.RitindiDrugSpawn
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/drugs/ritindi/ritindi.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Ritindi"
+	entity_tool_group = "Speed-Dial Drugspawns"
+	entity_tool_tip = "Spawns Ritindi."
+}
+= sdg_drugspawn_ritindi : ""
+[
+	respawntime(float) : "Respawn Time" : 10 : ""
+]
+
+//
+// SpeedDial.Classic.Entities.ClassicRandomWeaponSpawn
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/weapons/rifle/prop_rifle.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Random Weapon"
+	entity_tool_group = "Speed-Dial Weaponspawns"
+	entity_tool_tip = "Spawns random weapons."
+}
+= sdg_weaponspawn_random : ""
+[
+	respawntime(float) : "Respawn Time" : 10 : ""
+]
+
+//
+// SpeedDial.Classic.Entities.PistolWeaponSpawn
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/weapons/pistol/prop_pistol.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Pistol"
+	entity_tool_group = "Speed-Dial Weaponspawns"
+	entity_tool_tip = "Spawns Pistols."
+}
+= sdg_weaponspawn_pistol : ""
+[
+	respawntime(float) : "Respawn Time" : 10 : ""
+]
+
+//
+// SpeedDial.Classic.Entities.RifleWeaponSpawn
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/weapons/rifle/prop_rifle.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Rifle"
+	entity_tool_group = "Speed-Dial Weaponspawns"
+	entity_tool_tip = "Spawns Rifles."
+}
+= sdg_weaponspawn_rifle : ""
+[
+	respawntime(float) : "Respawn Time" : 10 : ""
+]
+
+//
+// SpeedDial.Classic.Entities.SmgWeaponSpawn
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/weapons/smg/prop_smg.vmdl" ) 
+metadata
+{
+	entity_tool_name = "SMG"
+	entity_tool_group = "Speed-Dial Weaponspawns"
+	entity_tool_tip = "Spawns SMGs."
+}
+= sdg_weaponspawn_smg : ""
+[
+	respawntime(float) : "Respawn Time" : 10 : ""
+]
+
+//
+// SpeedDial.Classic.Entities.ShotgunWeaponSpawn
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/weapons/shotgun/prop_shotgun.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Shotgun"
+	entity_tool_group = "Speed-Dial Weaponspawns"
+	entity_tool_tip = "Spawns Shotguns."
+}
+= sdg_weaponspawn_shotgun : ""
+[
+	respawntime(float) : "Respawn Time" : 10 : ""
+]
+
+//
+// SpeedDial.Classic.Weapons.Pistol
+//
+@PointClass base(BaseProperties_speed_dial) 
+metadata
+{
+	entity_tool_name = "Pistol"
+	entity_tool_group = "Speed-Dial Classic Weapons"
+	entity_tool_tip = "Spawns a weapon"
+}
+= sdg_pistol : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
+// SpeedDial.Classic.Weapons.Rifle
+//
+@PointClass base(BaseProperties_speed_dial) 
+metadata
+{
+	entity_tool_name = "Rifle"
+	entity_tool_group = "Speed-Dial Classic Weapons"
+	entity_tool_tip = "Spawns a weapon"
+}
+= sdg_rifle : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
+// SpeedDial.Classic.Weapons.Shotgun
+//
+@PointClass base(BaseProperties_speed_dial) 
+metadata
+{
+	entity_tool_name = "Shotgun"
+	entity_tool_group = "Speed-Dial Classic Weapons"
+	entity_tool_tip = "Spawns a weapon"
+}
+= sdg_shotgun : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
+// SpeedDial.Classic.Weapons.Smg
+//
+@PointClass base(BaseProperties_speed_dial) 
+metadata
+{
+	entity_tool_name = "SMG"
+	entity_tool_group = "Speed-Dial Classic Weapons"
+	entity_tool_tip = "Spawns a weapon"
+}
+= sdg_smg : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
+// SpeedDial.Classic.Drugs.Leaf
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/drugs/leaf/leaf.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Leaf"
+	entity_tool_group = "Speed-Dial Drugs"
+	entity_tool_tip = "Spawns one Leaf."
+}
+= sdg_leaf : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
+// SpeedDial.Classic.Drugs.Ollie
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/drugs/ollie/ollie.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Ollie"
+	entity_tool_group = "Speed-Dial Drugs"
+	entity_tool_tip = "Spawns one Ollie."
+}
+= sdg_ollie : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
+// SpeedDial.Classic.Drugs.Polvo
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/drugs/polvo/polvo.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Polvo"
+	entity_tool_group = "Speed-Dial Drugs"
+	entity_tool_tip = "Spawns one Polvo."
+}
+= sdg_polvo : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
+// SpeedDial.Classic.Drugs.Ritindi
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/drugs/ritindi/ritindi.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Polvo"
+	entity_tool_group = "Speed-Dial Drugs"
+	entity_tool_tip = "Spawns one Ritindi."
+}
+= sdg_ritindi : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+

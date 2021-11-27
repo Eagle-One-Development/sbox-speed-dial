@@ -6,13 +6,13 @@ using Sandbox.UI;
 using Sandbox.UI.Construct;
 
 namespace SpeedDial.Classic.UI {
-	public partial class SpeedDialScoreboard<T> : Panel where T : SpeedDialScoreboardEntry, new() {
+	public partial class ClassicScoreboard<T> : Panel where T : ClassicScoreboardEntry, new() {
 		public Panel Canvas { get; protected set; }
 		Dictionary<Client, T> Rows = new();
 
 		public Panel Header { get; protected set; }
 
-		public SpeedDialScoreboard() {
+		public ClassicScoreboard() {
 			StyleSheet.Load("/classic/ui/scoreboard/Scoreboard.scss");
 			AddClass("scoreboard");
 
@@ -44,11 +44,11 @@ namespace SpeedDial.Classic.UI {
 				}
 			}
 
-			Canvas.SortChildren((x) => -(x as SpeedDialScoreboardEntry).Client.GetValue("score", 0));
+			Canvas.SortChildren((x) => -(x as ClassicScoreboardEntry).Client.GetValue("score", 0));
 
 			for(int i = 0; i < Canvas.Children.Count(); i++) {
 				var child = Canvas.Children.ElementAt(i);
-				child.SetClass("first", i == 0 && (child as SpeedDialScoreboardEntry).Client.GetValue("score", 0) > 0);
+				child.SetClass("first", i == 0 && (child as ClassicScoreboardEntry).Client.GetValue("score", 0) > 0);
 			}
 
 		}

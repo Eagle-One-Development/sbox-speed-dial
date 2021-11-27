@@ -2,11 +2,10 @@ using System;
 
 using Sandbox;
 
-using SpeedDial.Classic.Weapons;
 using SpeedDial.Classic.UI;
 
 namespace SpeedDial.Classic.Player {
-	public partial class SpeedDialCamera : Camera {
+	public partial class ClassicCamera : Camera {
 
 		[ClientVar("sd_viewshift_toggle")]
 		public static bool ViewshiftToggle { get; set; } = false;
@@ -20,7 +19,7 @@ namespace SpeedDial.Classic.Player {
 		private Vector3 camOffset;
 		private Vector3 camOffsetTarget;
 
-		public SpeedDialCamera() {
+		public ClassicCamera() {
 			Event.Register(this);
 		}
 
@@ -28,7 +27,6 @@ namespace SpeedDial.Classic.Player {
 
 
 		public override void BuildInput(InputBuilder input) {
-			//if((Local.Pawn as SpeedDialPlayer).Freeze) return;
 			var client = Local.Pawn;
 
 			if(client == null) {
@@ -51,7 +49,7 @@ namespace SpeedDial.Classic.Player {
 
 			// since we got our cursor in world space because of the plane intersect above, we need to set it for the crosshair
 			var mouse = HitPosition.ToScreen();
-			CrossHair.UpdateMouse(new Vector2(mouse.x * Screen.Width, mouse.y * Screen.Height));
+			Crosshair.UpdateMouse(new Vector2(mouse.x * Screen.Width, mouse.y * Screen.Height));
 
 			//trace from camera into mouse direction, essentially gets the world location of the mouse
 			var targetTrace = Trace.Ray(Position, Position + direction * 1000)
@@ -64,8 +62,9 @@ namespace SpeedDial.Classic.Player {
 			Angles angles;
 
 			// aim assist when pointing on a player
-			if(targetTrace.Hit && targetTrace.Entity is SpeedDialPlayer) {
-				Debug.Line(pawn.EyePos, targetTrace.Entity.EyePos + Vector3.Down * 20, Color.Red, 0, true);
+			if(targetTrace.Hit && targetTrace.Entity is ClassicPlayer) {
+				if(Debug.Camera)
+					DebugOverlay.Line(pawn.EyePos, targetTrace.Entity.EyePos + Vector3.Down * 20, Color.Red, 0, true);
 				angles = (targetTrace.Entity.EyePos + Vector3.Down * 20 - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
 			} else {
 				angles = (HitPosition - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
@@ -78,14 +77,13 @@ namespace SpeedDial.Classic.Player {
 			input.InputDirection = input.AnalogMove;
 		}
 
-		[Event("SDEvents.Settings.Changed")]
-		private void onSettingChange() {
-			if(Host.IsClient && Settings.SettingsManager.GetSetting("Viewshift Toggle").TryGetBool(out bool? res))
-				ViewshiftToggle = res.Value;
-		}
+		// [Event("SDEvents.Settings.Changed")]
+		// private void onSettingChange() {
+		// 	if(Host.IsClient && Settings.SettingsManager.GetSetting("Viewshift Toggle").TryGetBool(out bool? res))
+		// 		ViewshiftToggle = res.Value;
+		// }
 
 		public override void Update() {
-			//if((Local.Pawn as SpeedDialPlayer).Freeze) return;
 			var pawn = Local.Pawn;
 
 			if(pawn == null)
@@ -97,9 +95,9 @@ namespace SpeedDial.Classic.Player {
 			_pos -= Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle))); // move camera back
 
 			float mouseShiftFactor = 0.3f;//Sniper
-			if(pawn.ActiveChild is Sniper) {
-				mouseShiftFactor = 0.5f;
-			}
+										  // if(pawn.ActiveChild is Sniper) {
+										  // 	mouseShiftFactor = 0.5f;
+										  // }
 
 			float MouseX = Mouse.Position.x.Clamp(0, Screen.Size.x);
 			float MouseY = Mouse.Position.y.Clamp(0, Screen.Size.y);
@@ -119,7 +117,7 @@ namespace SpeedDial.Classic.Player {
 
 
 			// debug stuff for aim location
-			if(Debug.Enabled) {
+			if(Debug.Camera) {
 				var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rotation, Screen.Size);
 				var HitPosition = LinePlaneIntersectionWithHeight(Position, direction, pawn.EyePos.z);
 				// 

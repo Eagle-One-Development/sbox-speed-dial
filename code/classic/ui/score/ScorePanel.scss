@@ -1,0 +1,40 @@
+@import "/classic/ui/vars/_sd_colors.scss";
+
+scorepanel {
+    width: auto;
+    height: auto;
+    position: absolute;
+    flex-direction: column;
+
+    left: 50px;
+
+    .score {
+        height: 100px;
+        top: 30px;
+
+        align-items: center;
+        justify-content: center;
+
+        .scorelabel {
+            font-size: 30px;
+        }
+    }
+
+    .combo {
+        height: 100px;
+        top: 5px;
+
+        align-items: center;
+        justify-content: center;
+
+        .combolabel {
+            font-size: 20px;
+        }
+    }
+
+    label {
+        font-family: FFFFORWARD;
+        color: white;
+        text-shadow: -2px -2px 1px $vhs_cyan, 4px 2px 1px $vhs_magenta;
+    }
+}

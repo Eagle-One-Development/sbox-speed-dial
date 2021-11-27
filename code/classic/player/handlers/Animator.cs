@@ -1,9 +1,7 @@
 using Sandbox;
 
 namespace SpeedDial.Classic.Player {
-	public class PlayerAnimator : PawnAnimator {
-		TimeSince TimeSinceFootShuffle = 60;
-
+	public class ClassicAnimator : PawnAnimator {
 		public override void Simulate() {
 			var idealRotation = Rotation.LookAt(Input.Rotation.Forward.WithZ(0), Vector3.Up);
 

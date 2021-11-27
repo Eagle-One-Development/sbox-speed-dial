@@ -1,0 +1,12 @@
+//
+// SpeedDial.Classic.Player.Character
+//
+@BaseClass = sdgchar : ""
+[
+	charactername(string) : "Character Name" :  : ""
+	description(string) : "Description" :  : ""
+	weaponclass(string) : "Weapon Class" :  : ""
+	portrait(string) { editor = "AssetBrowse(png)" } : "Portrait" :  : ""
+	model(resource:vmdl) : "Model" :  : ""
+]
+

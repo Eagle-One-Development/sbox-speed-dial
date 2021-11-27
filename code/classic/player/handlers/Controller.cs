@@ -1,7 +1,11 @@
+using System;
+
 using Sandbox;
 
+using SpeedDial.Classic.Drugs;
+
 namespace SpeedDial.Classic.Player {
-	public partial class SpeedDialController : BasePlayerController {
+	public partial class ClassicController : BasePlayerController {
 		public float DefaultSpeed { get; set; } = 300.0f;
 		public float Acceleration { get; set; } = 10.0f;
 		public float AirAcceleration { get; set; } = 50.0f;
@@ -26,7 +30,7 @@ namespace SpeedDial.Classic.Player {
 		public Unstuck Unstuck;
 
 
-		public SpeedDialController() {
+		public ClassicController() {
 			Unstuck = new Unstuck(this);
 		}
 
@@ -68,13 +72,13 @@ namespace SpeedDial.Classic.Player {
 
 
 		public override void FrameSimulate() {
-			if((Pawn as SpeedDialPlayer).Freeze) return;
+			if((Pawn as ClassicPlayer).Frozen) return;
 			base.FrameSimulate();
 			EyeRot = Input.Rotation;
 		}
 
 		public override void Simulate() {
-			if((Pawn as SpeedDialPlayer).Freeze) { WishVelocity = Vector3.Zero; return; }
+			if((Pawn as ClassicPlayer).Frozen) { WishVelocity = Vector3.Zero; return; }
 			EyePosLocal = Vector3.Up * (EyeHeight * Pawn.Scale);
 			UpdateBBox();
 
@@ -107,10 +111,6 @@ namespace SpeedDial.Classic.Player {
 				}
 			}
 
-			float f = 1f;
-			if((Pawn as SpeedDialPlayer).MedTaken && (Pawn as SpeedDialPlayer).CurrentDrug == Meds.DrugType.Polvo) {
-				f = 2f;
-			}
 			//
 			// Work out wish velocity.. just take input, rotate it to view, clamp to -1, 1
 			//
@@ -120,8 +120,10 @@ namespace SpeedDial.Classic.Player {
 
 			WishVelocity = WishVelocity.WithZ(0);
 
+			var player = Pawn as ClassicPlayer;
 			WishVelocity = WishVelocity.Normal * inSpeed;
-			WishVelocity *= DefaultSpeed * f;
+			// this is dumb
+			WishVelocity *= DefaultSpeed * ((player.ActiveDrug && player.DrugType is DrugType.Polvo) ? 2f : 1f);
 
 
 			bool bStayOnGround = false;
