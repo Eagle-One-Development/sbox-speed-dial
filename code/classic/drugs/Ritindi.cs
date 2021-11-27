@@ -7,7 +7,7 @@ namespace SpeedDial.Classic.Drugs {
 	public class Ritindi : ClassicBaseDrug, ISpawnable {
 		public override string WorldModel => "models/drugs/ritindi/ritindi.vmdl";
 		public override string DrugName => "RITINDI";
-		public override string DrugDescription => "you are speed"; // legs so fast // gotta move // dashing!
+		public override string DrugDescription => "steady hands"; // keep steady // true aim // recoil control
 		public override DrugType DrugType => DrugType.Ritindi;
 		public override string Icon => "materials/ui/pill.png";
 		public override string PickupSound => "sd_ritindi_take";
