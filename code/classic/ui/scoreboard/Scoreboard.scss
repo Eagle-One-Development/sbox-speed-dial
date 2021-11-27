@@ -51,23 +51,14 @@
 		.entry {
 			padding-top: 15px;
 
-			color: #ddd;
+			color: #c5c5c5;
 
 			&.first {
 				text-shadow: 2px 2px 0.5px $vhs_magenta, -1px -1px 0.5px $vhs_cyan;
 			}
 
-			.score {
-			}
-
-			.maxcombo {
-			}
-
-			.name {
-			}
-
 			&.me {
-				color: #ffffff;
+				color: white;
 			}
 		}
 	}
