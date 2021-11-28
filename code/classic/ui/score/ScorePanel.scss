@@ -46,11 +46,11 @@ scorepanel {
         opacity: 0.1;
 
         .right {
-            background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba($vhs_magenta, 1) 90%);
+            background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 70%, rgba($vhs_magenta, 1));
             width: 50%;
         }
         .left {
-            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba($vhs_cyan, 1) 90%);
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 70%, rgba($vhs_cyan, 1));
             width: 50%;
         }
     }
