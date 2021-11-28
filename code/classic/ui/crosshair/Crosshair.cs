@@ -4,9 +4,9 @@ using Sandbox.UI;
 namespace SpeedDial.Classic.UI {
 	public partial class Crosshair : Panel {
 
-		public Panel cross;
+		public readonly Panel cross;
 
-		public Panel[] hairs;
+		public readonly Panel[] hairs;
 
 		public static Crosshair Current;
 

@@ -10,8 +10,8 @@ using SpeedDial.Classic.Weapons;
 namespace SpeedDial.Classic.UI {
 	public partial class WorldHints : Panel {
 		public static WorldHints Current;
-		private Panel PickupPanel;
-		private Label PickupLabel;
+		private readonly Panel PickupPanel;
+		private readonly Label PickupLabel;
 		private ClassicBaseWeapon _lastPickup;
 		private float _pickupScale = 0;
 

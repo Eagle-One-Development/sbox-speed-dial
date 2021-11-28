@@ -9,9 +9,9 @@ namespace SpeedDial.Classic.UI {
 		public static ScreenHints Current;
 		private bool Active;
 		private TimeSince TimeSinceActive;
-		private Panel Banner;
-		private Label Title;
-		private Label Extra;
+		private readonly Panel Banner;
+		private readonly Label Title;
+		private readonly Label Extra;
 		private bool FireExtra;
 		private bool FireBanner;
 
