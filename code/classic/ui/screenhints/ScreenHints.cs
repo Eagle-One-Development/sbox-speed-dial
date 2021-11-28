@@ -25,12 +25,17 @@ namespace SpeedDial.Classic.UI {
 			Banner.Add.Panel("right");
 			Banner.Add.Panel("left");
 
-			Title = Add.Label("THIS SHOULDN'T HAPPEN", "title");
-			Extra = Add.Label("+UH OH.", "extra");
+			Title = Add.Label("IF YOU READ THIS", "title");
+			Extra = Add.Label("+YOU ARE HANDSOME.", "extra");
 
+
+			Banner.BindClass("visible", () => Active && FireBanner);
+			Title.BindClass("visible", () => Active && TimeSinceActive > 0.3f - (FireBanner ? 0 : 0.3f));
+			Extra.BindClass("visible", () => Active && FireExtra && TimeSinceActive > 0.7f - (FireBanner ? 0 : 0.3f));
 		}
 
 		public override void Tick() {
+
 			if(TimeSinceActive > 1.5f) {
 				Active = false;
 				FireExtra = false;
@@ -38,10 +43,6 @@ namespace SpeedDial.Classic.UI {
 
 			// if you're here to find a way to forcefully hide the current 
 			// animation if a new one is played while it's still running... good luck
-
-			Banner.SetClass("visible", Active && FireBanner);
-			Title.SetClass("visible", Active && TimeSinceActive > 0.3f - (FireBanner ? 0 : 0.3f));
-			Extra.SetClass("visible", Active && FireExtra && TimeSinceActive > 0.7f - (FireBanner ? 0 : 0.3f));
 		}
 
 		[ClientRpc]
