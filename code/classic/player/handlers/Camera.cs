@@ -3,6 +3,7 @@ using System;
 using Sandbox;
 
 using SpeedDial.Classic.UI;
+using SpeedDial.Classic.Weapons;
 
 namespace SpeedDial.Classic.Player {
 	public partial class ClassicCamera : Camera {
@@ -95,9 +96,10 @@ namespace SpeedDial.Classic.Player {
 			_pos -= Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle))); // move camera back
 
 			float mouseShiftFactor = 0.3f;//Sniper
-										  // if(pawn.ActiveChild is Sniper) {
-										  // 	mouseShiftFactor = 0.5f;
-										  // }
+			var wep = pawn.ActiveChild as ClassicBaseWeapon;
+			if(wep is not null && wep.Scoped) {
+				mouseShiftFactor = 0.5f;
+			}
 
 			float MouseX = Mouse.Position.x.Clamp(0, Screen.Size.x);
 			float MouseY = Mouse.Position.y.Clamp(0, Screen.Size.y);

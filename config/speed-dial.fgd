@@ -188,6 +188,36 @@ metadata
 ]
 
 //
+// SpeedDial.Classic.Entities.SniperWeaponSpawn
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/weapons/rifle/prop_rifle.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Sniper"
+	entity_tool_group = "Speed-Dial Weaponspawns"
+	entity_tool_tip = "Spawns Snipers."
+}
+= sdg_weaponspawn_sniper : ""
+[
+	respawntime(float) : "Respawn Time" : 10 : ""
+]
+
+//
+// SpeedDial.Classic.Entities.RoomClearerWeaponSpawn
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/weapons/shotgun/prop_roomclearer.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Room-Clearer"
+	entity_tool_group = "Speed-Dial Weaponspawns"
+	entity_tool_tip = "Spawns Room-Clearer Shotguns."
+}
+= sdg_weaponspawn_roomclearer : ""
+[
+	respawntime(float) : "Respawn Time" : 10 : ""
+]
+
+//
 // SpeedDial.Classic.Weapons.Pistol
 //
 @PointClass base(BaseProperties_speed_dial) 
@@ -222,6 +252,23 @@ metadata
 ]
 
 //
+// SpeedDial.Classic.Weapons.RoomClearer
+//
+@PointClass base(BaseProperties_speed_dial) 
+metadata
+{
+	entity_tool_name = "Room-Clearer"
+	entity_tool_group = "Speed-Dial Classic Weapons"
+	entity_tool_tip = "Spawns a Room-Clearer Shotgun"
+}
+= sdg_roomclearer : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
 // SpeedDial.Classic.Weapons.Shotgun
 //
 @PointClass base(BaseProperties_speed_dial) 
@@ -249,6 +296,23 @@ metadata
 	entity_tool_tip = "Spawns a weapon"
 }
 = sdg_smg : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
+// SpeedDial.Classic.Weapons.Sniper
+//
+@PointClass base(BaseProperties_speed_dial) 
+metadata
+{
+	entity_tool_name = "Sniper"
+	entity_tool_group = "Speed-Dial Classic Weapons"
+	entity_tool_tip = "Spawns a Sniper"
+}
+= sdg_sniper : ""
 [
 	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
 

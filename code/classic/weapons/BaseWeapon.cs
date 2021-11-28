@@ -41,9 +41,12 @@ namespace SpeedDial.Classic.Weapons {
 		public virtual float Range => 4096;
 		public virtual int AmmoPerShot => 1;
 		public virtual int HoldType => 2;
+		public virtual bool Scoped => false;
+		public virtual bool Penetrate => false;
 		public virtual string AttachementName => "pistol_attach";
 		public virtual string EjectionParticle => "particles/pistol_ejectbrass.vpcf";
 		[Net] public bool CanImpactKill { get; set; } = true;
+
 
 		public override void Spawn() {
 			base.Spawn();
@@ -217,7 +220,7 @@ namespace SpeedDial.Classic.Weapons {
 			}
 		}
 
-		public virtual float MaxWallbangDistance => 20;
+		public virtual float MaxWallbangDistance => 32;
 
 		public virtual IEnumerable<TraceResult> TraceBullet(Vector3 start, Vector3 end, float size = 2.0f, float wallBangedDistance = 0) {
 
@@ -229,58 +232,52 @@ namespace SpeedDial.Classic.Weapons {
 					.UseLagCompensation()
 					.Run();
 
+			if(Debug.Weapons) {
+				DebugOverlay.TraceResult(bullet, 0.5f);
+			}
+
 			yield return bullet;
 
 			var player = Owner as ClassicPlayer;
 
-			// TODO: sniper
-			// if(this is Sniper && ClassicGamemode.Instance.SniperCanPenetrate) {
-			// 	var dir = (bullet.EndPos - bullet.StartPos).Normal;
-			// 	if(bullet.Hit && wallBangedDistance < MaxWallbangDistance) {
-			// 		var inNormal = bullet.Normal;
-			// 		var inPoint = bullet.EndPos - inNormal * (size / 2);
-			// 		//bullet
-			// 		//DebugOverlay.Line(start, inPoint, Color.Green, 10, false);
-			// 		//inpoint
-			// 		//DebugOverlay.Sphere(inPoint, 0.5f, Color.Green, false, 10);
-			// 		// normal
-			// 		//DebugOverlay.Line(inPoint, inPoint + inNormal * 3, Color.Magenta, 10, false);
+			// TODO: settings
+			if(Penetrate /*&& ClassicGamemode.Instance.SniperCanPenetrate*/) {
+				var dir = (bullet.EndPos - bullet.StartPos).Normal;
+				if(bullet.Hit && wallBangedDistance < MaxWallbangDistance) {
+					var inNormal = bullet.Normal;
+					var inPoint = bullet.EndPos - inNormal * (size / 2);
 
-			// 		// adding dir to not be inside the inPoint
-			// 		var wallbangTest = Trace.Ray(inPoint + dir, inPoint + dir * (MaxWallbangDistance - 1))
-			// 						.HitLayer(CollisionLayer.WORLD_GEOMETRY)
-			// 						.Ignore(Owner)
-			// 						.Ignore(this)
-			// 						.Size(1)
-			// 						.UseLagCompensation()
-			// 						.Run();
+					// adding dir to not be inside the inPoint
+					var wallbangTest = Trace.Ray(inPoint + dir, inPoint + dir * (MaxWallbangDistance - 1))
+									.HitLayer(CollisionLayer.WORLD_GEOMETRY)
+									.Ignore(Owner)
+									.Ignore(this)
+									.Size(1)
+									.UseLagCompensation()
+									.Run();
 
-			// 		if(wallbangTest.Hit) {
-			// 			var outNormal = wallbangTest.Normal;
-			// 			var outPoint = wallbangTest.EndPos - outNormal * 0.5f;
+					if(Debug.Weapons) {
+						DebugOverlay.TraceResult(wallbangTest, 0.5f);
+					}
 
-			// 			//outpoint
-			// 			//DebugOverlay.Sphere(outPoint, 0.1f, Color.Red, false, 10);
+					if(wallbangTest.Hit) {
+						var outNormal = wallbangTest.Normal;
+						var outPoint = wallbangTest.EndPos - outNormal * 0.5f;
 
-			// 			if(outNormal != Vector3.Zero && inNormal.Dot(outNormal) >= 0) {
-			// 				//normal
-			// 				//DebugOverlay.Line(outPoint, outPoint + outNormal * 3, Color.Magenta, 10, false);
+						if(outNormal != Vector3.Zero && inNormal.Dot(outNormal) >= 0) {
 
-			// 				//wallbang
-			// 				//DebugOverlay.Line(inPoint, outPoint, Color.Cyan, 10, false);
+							var distance = (inPoint - outPoint).Length;
+							var totalDistance = wallBangedDistance + distance;
 
-			// 				var distance = (inPoint - outPoint).Length;
-			// 				var totalDistance = wallBangedDistance + distance;
-
-			// 				if(totalDistance < MaxWallbangDistance) {
-			// 					foreach(var bullet2 in TraceBullet(outPoint + dir * 2, outPoint + dir * 1000, 1, totalDistance)) {
-			// 						yield return bullet2;
-			// 					}
-			// 				}
-			// 			}
-			// 		}
-			// 	}
-			// }
+							if(totalDistance < MaxWallbangDistance) {
+								foreach(var bullet2 in TraceBullet(outPoint + dir * 2, outPoint + dir * 1000, 1, totalDistance)) {
+									yield return bullet2;
+								}
+							}
+						}
+					}
+				}
+			}
 
 			if(player.ActiveDrug && player.DrugType == DrugType.Ollie) {
 				// pierce through the first player hit
@@ -293,6 +290,10 @@ namespace SpeedDial.Classic.Weapons {
 							.Size(size)
 							.UseLagCompensation()
 							.Run();
+
+					if(Debug.Weapons) {
+						DebugOverlay.TraceResult(penetrate, 0.5f);
+					}
 
 					yield return penetrate;
 				} else {
@@ -309,6 +310,10 @@ namespace SpeedDial.Classic.Weapons {
 								.Size(size)
 								.UseLagCompensation()
 								.Run();
+
+						if(Debug.Weapons) {
+							DebugOverlay.TraceResult(ricochet, 0.5f);
+						}
 
 						yield return ricochet;
 					}

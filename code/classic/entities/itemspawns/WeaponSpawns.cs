@@ -42,4 +42,18 @@ namespace SpeedDial.Classic.Entities {
 	public class ShotgunWeaponSpawn : ClassicWeaponSpawn {
 		public override string WeaponClass => "sdg_shotgun";
 	}
+
+	[Library("sdg_weaponspawn_sniper")]
+	[Hammer.EditorModel("models/weapons/rifle/prop_rifle.vmdl")]
+	[Hammer.EntityTool("Sniper", "Speed-Dial Weaponspawns", "Spawns Snipers.")]
+	public class SniperWeaponSpawn : ClassicWeaponSpawn {
+		public override string WeaponClass => "sdg_sniper";
+	}
+
+	[Library("sdg_weaponspawn_roomclearer")]
+	[Hammer.EditorModel("models/weapons/shotgun/prop_roomclearer.vmdl")]
+	[Hammer.EntityTool("Room-Clearer", "Speed-Dial Weaponspawns", "Spawns Room-Clearer Shotguns.")]
+	public class RoomClearerWeaponSpawn : ClassicWeaponSpawn {
+		public override string WeaponClass => "sdg_roomclearer";
+	}
 }
