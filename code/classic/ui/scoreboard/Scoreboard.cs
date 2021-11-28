@@ -19,6 +19,8 @@ namespace SpeedDial.Classic.UI {
 			AddHeader();
 
 			Canvas = Add.Panel("canvas");
+
+			BindClass("open", () => Input.Down(InputButton.Score));
 		}
 
 		public override void Tick() {

@@ -18,8 +18,14 @@ namespace SpeedDial.Classic.UI {
 			hairs = new Panel[4];
 			StyleSheet.Load("/classic/ui/crosshair/Crosshair.scss");
 			cross = Add.Panel("cross");
+
+			// TODO: character select
+			//SetClass("active", !CharacterSelect.Current.open);
+			BindClass("active", () => true);
+
 			for(int i = 0; i < 4; i++) {
 				hairs[i] = cross.Add.Panel("hair");
+				hairs[i].BindClass("inactive", () => Local.Pawn.ActiveChild == null);
 			}
 
 			Current = this;
@@ -37,12 +43,6 @@ namespace SpeedDial.Classic.UI {
 		}
 
 		public override void Tick() {
-			base.Tick();
-
-			// TODO: character select
-			//SetClass("active", !CharacterSelect.Current.open);
-			SetClass("active", true);
-
 			cross.Style.Left = Length.Fraction(Mouse.x / Screen.Width);
 			cross.Style.Top = Length.Fraction(Mouse.y / Screen.Height);
 
@@ -70,7 +70,6 @@ namespace SpeedDial.Classic.UI {
 				if(i == 3) {
 					pt.AddTranslateX(Length.Pixels(-pixel));
 				}
-				hairs[i].SetClass("inactive", Local.Pawn.ActiveChild == null);
 				hairs[i].Style.Transform = pt;
 			}
 		}
