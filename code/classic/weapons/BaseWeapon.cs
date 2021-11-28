@@ -334,7 +334,6 @@ namespace SpeedDial.Classic.Weapons {
 		}
 
 		public bool TakeAmmo(int amount) {
-			// TODO: debug
 			if(Debug.InfiniteAmmo) return true;
 			if(AmmoClip < amount)
 				return false;

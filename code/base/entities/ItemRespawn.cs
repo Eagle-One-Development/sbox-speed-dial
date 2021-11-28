@@ -59,7 +59,6 @@ namespace SpeedDial {
 		}
 
 		static async Task RespawnAsync(Record record) {
-			// TODO - Take.Delay In Game Time 
 			await GameTask.DelaySeconds(record.RespawnTime);
 
 			var ent = Library.Create<Entity>(record.ClassName);
