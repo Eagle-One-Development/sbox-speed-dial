@@ -8,9 +8,9 @@
 			"sounds/ui/killsecured_long.vsnd",
 		]
 		UI = true
-		Volume = 0.3
+		Volume = 0.2
 		VolumeRandom = 0.1
-		Pitch = 0.95
+		Pitch = 0.9
 		PitchRandom = 0.05
 		DistanceMax = 1000.0
 		selectionmode = "3"
