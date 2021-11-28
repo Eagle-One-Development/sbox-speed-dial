@@ -206,7 +206,8 @@ namespace SpeedDial.Classic.Player {
 			if(LastRecievedDamage.Attacker is ClassicPlayer attacker) {
 				attacker.TimeSinceMurdered = 0;
 				attacker.AwardKill();
-				SoundFromScreen(To.Single(attacker.Client), "kill_confirm");
+				// TODO: find better kill confirm sound
+				//SoundFromScreen(To.Single(attacker.Client), "kill_confirm");
 			}
 
 			// reset combo
