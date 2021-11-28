@@ -33,7 +33,7 @@ namespace SpeedDial.Classic.UI {
 			{
 				PanelTransform transform = new();
 				// workaround to not have the hint blip in when picking up a gun or throwing your held gun
-				if(_lastPickup.IsValid() && _lastPickup.PreviousOwner == pawn && _lastPickup.TimeSinceAlive < 0.5f || _lastPickup == pawn.ActiveChild) _pickupScale = 0;
+				if(_lastPickup.IsValid() && (_lastPickup.TimeSinceAlive < 0.5f || _lastPickup == pawn.ActiveChild)) _pickupScale = 0;
 				transform.AddScale(_pickupScale);
 				PickupPanel.Style.Transform = transform;
 
