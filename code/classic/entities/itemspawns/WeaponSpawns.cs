@@ -56,4 +56,11 @@ namespace SpeedDial.Classic.Entities {
 	public class RoomClearerWeaponSpawn : ClassicWeaponSpawn {
 		public override string WeaponClass => "sdg_roomclearer";
 	}
+
+	[Library("sdg_weaponspawn_bat")]
+	[Hammer.EditorModel("models/weapons/melee/melee.vmdl")]
+	[Hammer.EntityTool("Baseball Bat", "Speed-Dial Weaponspawns", "Spawns Baseball Bats.")]
+	public class BaseballBatWeaponSpawn : ClassicWeaponSpawn {
+		public override string WeaponClass => "sdg_bat";
+	}
 }
