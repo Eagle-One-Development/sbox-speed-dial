@@ -59,7 +59,7 @@ namespace SpeedDial.Classic.UI {
 			// weapon name
 			{
 				if(weapon is null) {
-					WeaponLabel.Text = $"BEAR HANDS";
+					WeaponLabel.Text = $"FISTS";
 				} else {
 					WeaponLabel.Text = $"{weapon.ClassInfo.Title}";
 				}

@@ -141,12 +141,8 @@ namespace SpeedDial.Classic.Player {
 				.Size(20f)
 				.Run();
 
-				using(Prediction.Off()) {
-					if(IsServer) {
-						PlaySound("woosh");
-					}
-				}
-				
+				PlaySound("woosh");
+
 				SetAnimBool("b_attack", true);
 				if(!IsServer) return;
 				if(!tr.Entity.IsValid()) return;
@@ -157,11 +153,13 @@ namespace SpeedDial.Classic.Player {
 						.UsingTraceResult(tr)
 						.WithAttacker(Owner)
 						.WithWeapon(this);
+
 					damage.Attacker = this;
 					damage.Position = Position;
 					if(IsServer) {
 						PlaySound("smack");
 					}
+
 					if(tr.Entity is ClassicPlayer player) {
 						//TODO: COD
 						//player.CauseOfDeath = COD.Melee;
