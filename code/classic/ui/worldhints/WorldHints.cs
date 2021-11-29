@@ -21,7 +21,6 @@ namespace SpeedDial.Classic.UI {
 			Current = this;
 
 			StyleSheet.Load("/classic/ui/worldhints/WorldHints.scss");
-			AddClass("worldhints");
 
 			PickupPanel = Add.Panel("pickup");
 			PickupPanel.Add.Label($"{Input.GetKeyWithBinding("+iv_attack2").ToUpper()} TO PICK UP", "pickuplabel");

@@ -25,7 +25,6 @@ namespace SpeedDial.Classic.UI {
 			Current = this;
 
 			StyleSheet.Load("/classic/ui/score/ScorePanel.scss");
-			AddClass("scorepanel");
 
 			// TODO: put this in it's own thing to make sure it's behind stuff?
 			IntensityPanel = Add.Panel("intensity");

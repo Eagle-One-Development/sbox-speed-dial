@@ -19,7 +19,6 @@ namespace SpeedDial.Classic.UI {
 			Current = this;
 
 			StyleSheet.Load("/classic/ui/screenhints/ScreenHints.scss");
-			AddClass("screenhints");
 
 			Banner = Add.Panel("banner");
 			Banner.Add.Panel("right");

@@ -218,14 +218,46 @@ metadata
 ]
 
 //
+// SpeedDial.Classic.Entities.BaseballBatWeaponSpawn
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/weapons/melee/melee.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Baseball Bat"
+	entity_tool_group = "Speed-Dial Weaponspawns"
+	entity_tool_tip = "Spawns Baseball Bats."
+}
+= sdg_weaponspawn_bat : ""
+[
+	respawntime(float) : "Respawn Time" : 10 : ""
+]
+
+//
+// SpeedDial.Classic.Weapons.BaseballBat
+//
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/weapons/melee/melee.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Baseball Bat"
+	entity_tool_group = "Speed-Dial Classic Weapons"
+	entity_tool_tip = "Spawns a Baseball Bat."
+}
+= sdg_bat : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
 // SpeedDial.Classic.Weapons.Pistol
 //
-@PointClass base(BaseProperties_speed_dial) 
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/weapons/pistol/prop_pistol.vmdl" ) 
 metadata
 {
 	entity_tool_name = "Pistol"
 	entity_tool_group = "Speed-Dial Classic Weapons"
-	entity_tool_tip = "Spawns a weapon"
+	entity_tool_tip = "Spawns a Pistol."
 }
 = sdg_pistol : ""
 [
@@ -237,12 +269,12 @@ metadata
 //
 // SpeedDial.Classic.Weapons.Rifle
 //
-@PointClass base(BaseProperties_speed_dial) 
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/weapons/rifle/prop_rifle.vmdl" ) 
 metadata
 {
 	entity_tool_name = "Rifle"
 	entity_tool_group = "Speed-Dial Classic Weapons"
-	entity_tool_tip = "Spawns a weapon"
+	entity_tool_tip = "Spawns a Rifle."
 }
 = sdg_rifle : ""
 [
@@ -254,7 +286,7 @@ metadata
 //
 // SpeedDial.Classic.Weapons.RoomClearer
 //
-@PointClass base(BaseProperties_speed_dial) 
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/weapons/shotgun/prop_roomclearer.vmdl" ) 
 metadata
 {
 	entity_tool_name = "Room-Clearer"
@@ -271,12 +303,12 @@ metadata
 //
 // SpeedDial.Classic.Weapons.Shotgun
 //
-@PointClass base(BaseProperties_speed_dial) 
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/weapons/shotgun/prop_shotgun.vmdl" ) 
 metadata
 {
 	entity_tool_name = "Shotgun"
 	entity_tool_group = "Speed-Dial Classic Weapons"
-	entity_tool_tip = "Spawns a weapon"
+	entity_tool_tip = "Spawns a Shotgun."
 }
 = sdg_shotgun : ""
 [
@@ -288,12 +320,12 @@ metadata
 //
 // SpeedDial.Classic.Weapons.Smg
 //
-@PointClass base(BaseProperties_speed_dial) 
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/weapons/smg/prop_smg.vmdl" ) 
 metadata
 {
 	entity_tool_name = "SMG"
 	entity_tool_group = "Speed-Dial Classic Weapons"
-	entity_tool_tip = "Spawns a weapon"
+	entity_tool_tip = "Spawns an SMG."
 }
 = sdg_smg : ""
 [
@@ -305,12 +337,12 @@ metadata
 //
 // SpeedDial.Classic.Weapons.Sniper
 //
-@PointClass base(BaseProperties_speed_dial) 
+@PointClass base(BaseProperties_speed_dial) editormodel( "models/weapons/rifle/prop_rifle.vmdl" ) 
 metadata
 {
 	entity_tool_name = "Sniper"
 	entity_tool_group = "Speed-Dial Classic Weapons"
-	entity_tool_tip = "Spawns a Sniper"
+	entity_tool_tip = "Spawns a Sniper."
 }
 = sdg_sniper : ""
 [

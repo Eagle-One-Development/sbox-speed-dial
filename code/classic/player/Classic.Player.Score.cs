@@ -7,7 +7,6 @@ namespace SpeedDial.Classic.Player {
 		public void AwardKill(ClassicPlayer killed) {
 			ScorePanel.AwardKill();
 
-
 			// add to current combo
 			Client.SetValue("combo", Client.GetValue("combo", 0) + 1);
 

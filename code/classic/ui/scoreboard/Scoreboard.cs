@@ -29,8 +29,6 @@ namespace SpeedDial.Classic.UI {
 		}
 
 		public override void Tick() {
-			base.Tick();
-
 			if(!IsVisible)
 				return;
 

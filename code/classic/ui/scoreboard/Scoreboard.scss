@@ -1,10 +1,10 @@
-@import "/classic/ui/_vars/_sd_colors.scss";
+@import "/classic/ui/_vars/globals.scss";
 
 .scoreboard {
 	position: absolute;
 	z-index: 100;
 	flex-direction: column;
-	font-family: FFFFORWARD;
+	font-family: $font;
 	font-size: 16px;
 	font-weight: 500;
 	color: white;

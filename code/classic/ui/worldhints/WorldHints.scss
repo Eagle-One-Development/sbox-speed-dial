@@ -1,4 +1,4 @@
-@import "/classic/ui/_vars/_sd_colors.scss";
+@import "/classic/ui/_vars/globals.scss";
 
 worldhints {
     width: 100%;
@@ -7,7 +7,7 @@ worldhints {
 
     label {
         color: white;
-        font-family: FFFFORWARD;
+        font-family: $font;
         text-shadow: -1px -1px 1px $vhs_cyan, 2px 2px 1px $vhs_magenta;
     }
 

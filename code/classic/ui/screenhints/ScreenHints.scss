@@ -1,4 +1,4 @@
-@import "/classic/ui/_vars/_sd_colors.scss";
+@import "/classic/ui/_vars/globals.scss";
 
 screenhints {
     width: 100%;
@@ -72,7 +72,7 @@ screenhints {
     }
 
     label {
-        font-family: FFFFORWARD;
+        font-family: $font;
         color: white;
     }
 }
