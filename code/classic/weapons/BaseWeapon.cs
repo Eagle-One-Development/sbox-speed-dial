@@ -184,8 +184,9 @@ namespace SpeedDial.Classic.Weapons {
 			//forward = new Vector3( forward.x, forward.y, forward.z * VerticalBulletSpread );
 			forward.z *= VerticalBulletSpread;
 
-			AmmoPanel.Fire();
+			WeaponPanel.Fire();
 			Crosshair.Fire();
+
 			int index = 0;
 			foreach(var tr in TraceBullet(Owner.EyePos, Owner.EyePos + forward * Range, bulletSize)) {
 				tr.Surface.DoBulletImpact(tr);
@@ -372,6 +373,7 @@ namespace SpeedDial.Classic.Weapons {
 				PickupTrigger.EnableTouch = false;
 			}
 
+			// TODO: get pickup sound for weapons without ammo (bat)
 			if(AmmoClip > 0) {
 				BasePlayer.SoundFromWorld(To.Single(player.Client), "sd_pickup.loaded", Position);
 			} else {

@@ -8,11 +8,15 @@ namespace SpeedDial.Classic.UI {
 		public ClassicHud() {
 			if(!IsClient) return;
 			RootPanel.AddChild<ChatBox>();
-			RootPanel.AddChild<Crosshair>();
-			RootPanel.AddChild<AmmoPanel>();
-			RootPanel.AddChild<ScorePanel>();
+
 			RootPanel.AddChild<WorldHints>();
+
+			RootPanel.AddChild<WeaponPanel>();
+			RootPanel.AddChild<ScorePanel>();
+
 			RootPanel.AddChild<ScreenHints>();
+
+			RootPanel.AddChild<Crosshair>();
 			RootPanel.AddChild<ClassicScoreboard<ClassicScoreboardEntry>>();
 		}
 	}
