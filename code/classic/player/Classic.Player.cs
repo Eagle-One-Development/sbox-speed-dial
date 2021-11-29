@@ -140,11 +140,13 @@ namespace SpeedDial.Classic.Player {
 				.Ignore(this)
 				.Size(20f)
 				.Run();
+
 				using(Prediction.Off()) {
 					if(IsServer) {
 						PlaySound("woosh");
 					}
 				}
+				
 				SetAnimBool("b_attack", true);
 				if(!IsServer) return;
 				if(!tr.Entity.IsValid()) return;

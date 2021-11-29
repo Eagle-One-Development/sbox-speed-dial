@@ -12,11 +12,9 @@ scorepanel {
         flex-direction: column;
 
         left: 50px;
+        top: 30px;
 
         .score {
-            height: 100px;
-            top: 30px;
-
             align-items: center;
             justify-content: center;
 
@@ -26,8 +24,7 @@ scorepanel {
         }
 
         .combo {
-            height: 100px;
-            top: 5px;
+            top: 10px;
 
             align-items: center;
             justify-content: center;
