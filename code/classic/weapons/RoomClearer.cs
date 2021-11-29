@@ -1,7 +1,8 @@
 using Sandbox;
 
 namespace SpeedDial.Classic.Weapons {
-	[Library("sdg_roomclearer", Title = "Room-Clearer", Spawnable = true)]
+	[Library("sdg_roomclearer", Title = "ROOM-CLEARER", Spawnable = true)]
+	[Hammer.EditorModel("models/weapons/shotgun/prop_roomclearer.vmdl")]
 	[Hammer.EntityTool("Room-Clearer", "Speed-Dial Classic Weapons", "Spawns a Room-Clearer Shotgun")]
 	partial class RoomClearer : ClassicBaseWeapon, ISpawnable {
 		public override float PrimaryRate => 1;
