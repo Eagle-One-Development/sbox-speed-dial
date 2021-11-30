@@ -95,8 +95,14 @@ namespace SpeedDial.Classic.Weapons {
 		[Event.Tick]
 		public void Tick() {
 			if(TimeSinceAlive > 10 && Owner == null && DespawnAfterTime && PickupTrigger.IsValid() && !PickupTrigger.TouchingPlayers.Any()) {
-				if(IsServer)
+				if(IsAuthority)
 					Delete();
+			}
+			var attach = GetAttachment("throw_pivot");
+			if(attach is not null) {
+				DebugOverlay.Line(attach.Value.Position, attach.Value.Position + attach.Value.Rotation.Forward * 10, Color.Red, Time.Delta, false);
+				DebugOverlay.Line(Position, Position + Rotation.Forward * 10, Color.Green, Time.Delta, false);
+				DebugOverlay.Line(Position, Position + Vector3.Up * 10, Color.Blue, Time.Delta, false);
 			}
 			if(Debug.Weapons) {
 				if(IsServer)
