@@ -40,7 +40,7 @@ namespace SpeedDial.Classic.UI {
 			Score.Text = $"{Client.GetValue("score", 0)}";
 			MaxCombo.Text = $"{Client.GetValue("maxcombo", 0)}";
 
-			SetClass("me", Client == Local.Client);
+			SetClass("me", Client == Local.Client && Client.All.Count > 1);
 		}
 
 		public virtual void UpdateFrom(Client client) {
