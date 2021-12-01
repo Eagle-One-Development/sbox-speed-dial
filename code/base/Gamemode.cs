@@ -66,9 +66,9 @@ namespace SpeedDial {
 			if(ActiveRound is null)
 				return;
 
-			var r = ActiveRound;
-			DebugOverlay.ScreenText(new Vector2(Screen.Width / 2, 32), r.Finished ? "Finished Round" : ActiveRound.ClassInfo.Name);
-			DebugOverlay.ScreenText(new Vector2(Screen.Width / 2, 48), r.Finished ? "Finished Round" : ActiveRound.TimeLeftFormatted);
+			//var r = ActiveRound;
+			//DebugOverlay.ScreenText(new Vector2(Screen.Width / 2, 32), r.Finished ? "Finished Round" : ActiveRound.ClassInfo.Name);
+			//DebugOverlay.ScreenText(new Vector2(Screen.Width / 2, 48), r.Finished ? "Finished Round" : ActiveRound.TimeElapsedFormatted);
 		}
 
 		//
