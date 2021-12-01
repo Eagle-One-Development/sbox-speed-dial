@@ -19,7 +19,7 @@ namespace SpeedDial.Classic.UI {
 			var e = Current.AddChild<KillFeedEntry>();
 
 			e.Left.Text = left;
-			if(e.Left.Text == "") {
+			if(string.IsNullOrWhiteSpace(e.Left.Text)) {
 				e.Left.AddClass("noname");
 			}
 			e.Left.SetClass("me", lsteamid == (Local.Client?.PlayerId));
@@ -35,7 +35,7 @@ namespace SpeedDial.Classic.UI {
 
 
 			e.Right.Text = right;
-			if(e.Right.Text == "") {
+			if(string.IsNullOrWhiteSpace(e.Right.Text)) {
 				e.Right.AddClass("noname");
 			}
 			e.Right.SetClass("me", rsteamid == (Local.Client?.PlayerId));
