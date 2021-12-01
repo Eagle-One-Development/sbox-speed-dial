@@ -25,6 +25,7 @@ namespace SpeedDial.Classic {
 		}
 
 		protected override void OnPawnKilled(BasePlayer pawn) {
+			// killfeed population
 			if(pawn is ClassicPlayer player) {
 				var client = player.Client;
 				if(player.LastAttacker != null) {
@@ -34,7 +35,7 @@ namespace SpeedDial.Classic {
 						KillFeed.AddDeath(player.LastAttacker.NetworkIdent, player.LastAttacker.ToString(), client.PlayerId, client.Name, player.DeathCause.ToString());
 					}
 				} else {
-					KillFeed.AddDeath(0, "", client.PlayerId, client.Name, player.DeathCause.ToString());
+					KillFeed.AddDeath(client.PlayerId, client.Name, 0, "", player.DeathCause.ToString());
 				}
 			}
 		}
