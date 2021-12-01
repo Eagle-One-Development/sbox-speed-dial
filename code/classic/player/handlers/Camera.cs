@@ -72,7 +72,7 @@ namespace SpeedDial.Classic.Player {
 			}
 
 			tarAng = angles;
-			ang = Angles.Lerp(ang, tarAng, 12 * Time.Delta);
+			ang = Angles.Lerp(ang, tarAng, 24 * Time.Delta);
 
 			input.ViewAngles = ang;
 			input.InputDirection = input.AnalogMove;
