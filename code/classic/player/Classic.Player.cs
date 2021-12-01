@@ -65,7 +65,7 @@ namespace SpeedDial.Classic.Player {
 				ThrowWeapon();
 			}
 
-			if(ActiveChild == null && Input.Pressed(InputButton.Attack1) && TimeSinceMeleeStarted >= 0.6f) {
+			if(ActiveChild == null && Input.Down(InputButton.Attack1) && TimeSinceMeleeStarted >= 0.6f) {
 				StartMelee();
 			}
 

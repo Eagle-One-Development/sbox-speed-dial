@@ -6,7 +6,9 @@ namespace SpeedDial.Classic.Weapons {
 	[Hammer.EditorModel("models/weapons/melee/melee.vmdl")]
 	[Hammer.EntityTool("Baseball Bat", "Speed-Dial Classic Weapons", "Spawns a Baseball Bat.")]
 	partial class BaseballBat : ClassicBaseWeapon, ISpawnable {
-		public override float PrimaryRate => 2.0f;
+		public override float PrimaryRate => 100;
+		public float HitDelay => 0.8f;
+		public override bool Automatic => true;
 		public override int HoldType => 1; // need melee holdtype
 		public override int ClipSize => -1; // no ammo hud
 		public override string WorldModel => "models/weapons/melee/melee.vmdl";
@@ -19,7 +21,7 @@ namespace SpeedDial.Classic.Weapons {
 		public TimeSince TimeSinceSwing { get; set; }
 
 		public override void AttackPrimary(bool _ = false, bool __ = false) {
-			if(TimeSinceSwing > 1) {
+			if(TimeSinceSwing > HitDelay) {
 				TimeSinceSwing = 0;
 				Hitting = true;
 				(Owner as AnimEntity).SetAnimBool("b_attack", true);
