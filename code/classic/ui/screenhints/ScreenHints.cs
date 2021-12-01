@@ -29,8 +29,8 @@ namespace SpeedDial.Classic.UI {
 
 
 			Banner.BindClass("visible", () => Active && FireBanner);
-			Title.BindClass("visible", () => Active && TimeSinceActive > 0.3f - (FireBanner ? 0 : 0.3f));
-			Extra.BindClass("visible", () => Active && FireExtra && TimeSinceActive > 0.7f - (FireBanner ? 0 : 0.3f));
+			Title.BindClass("visible", () => Active && TimeSinceActive > 0.05f - (FireBanner ? 0 : 0.05f));
+			Extra.BindClass("visible", () => Active && FireExtra && TimeSinceActive > 0.5f - (FireBanner ? 0 : 0.05f));
 		}
 
 		public override void Tick() {
