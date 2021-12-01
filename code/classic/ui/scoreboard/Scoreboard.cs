@@ -32,14 +32,13 @@ namespace SpeedDial.Classic.UI {
 			if(!IsVisible)
 				return;
 
-			//
-			// Clients that were added
-			//
+			// Clients that joined
 			foreach(var client in Client.All.Except(Rows.Keys)) {
 				var entry = AddClient(client);
 				Rows[client] = entry;
 			}
 
+			// clients that left
 			foreach(var client in Rows.Keys.Except(Client.All)) {
 				if(Rows.TryGetValue(client, out var row)) {
 					row?.Delete();
