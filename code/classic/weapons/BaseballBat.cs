@@ -55,7 +55,6 @@ namespace SpeedDial.Classic.Weapons {
 									.WithAttacker(Owner)
 									.WithWeapon(this);
 
-								// need bonk sound pls
 								PlaySound("sd_bat.hit");
 
 								tr.Entity.TakeDamage(damageInfo);
