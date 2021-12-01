@@ -6,6 +6,7 @@ Layer0
 
 	//---- PBR ----
 	F_SELF_ILLUM 1
+	F_SPECULAR 1
 
 	//---- Ambient Occlusion ----
 	g_flAmbientOcclusionDirectDiffuse "0.000"
@@ -37,7 +38,7 @@ Layer0
 	TextureRoughness "models/drugs/leaf/textures/leaf_defaultmaterial_roughness.png"
 
 	//---- Self Illum ----
-	g_flSelfIllumAlbedoFactor "1.000"
+	g_flSelfIllumAlbedoFactor "0.950"
 	g_flSelfIllumBrightness "6.078"
 	g_flSelfIllumScale "1.000"
 	g_vSelfIllumScrollSpeed "[0.000 0.000]"
