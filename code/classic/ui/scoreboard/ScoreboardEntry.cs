@@ -37,7 +37,9 @@ namespace SpeedDial.Classic.UI {
 
 		public virtual void UpdateData() {
 			PlayerName.Text = Client.Name;
-			Score.Text = $"{Client.GetValue("score", 0)}";
+			// globalizing like this so it's dots instead of commas cause it looks better with the font
+			var scoreFormatted = string.Format(System.Globalization.CultureInfo.GetCultureInfo("de-DE"), "{0:#,##0}", Client.GetValue("score", 0));
+			Score.Text = $"{scoreFormatted}";
 			MaxCombo.Text = $"{Client.GetValue("maxcombo", 0)}";
 
 			SetClass("me", Client == Local.Client && Client.All.Count > 1);
