@@ -43,9 +43,12 @@ namespace SpeedDial.Classic.UI {
 			// score
 			{
 				var score = Local.Client.GetValue("score", 0);
-				_score = _score.LerpTo(score, Time.Delta * 7f);
+				//_score = _score.LerpTo(score, Time.Delta * 7f);
 				//ScoreLabel.Text = $"{(int)(_score + 0.5f)} PTS";
-				ScoreLabel.Text = $"{score} PTS";
+
+				// globalizing like this so it's dots instead of commas cause it looks better with the font
+				var scoreFormatted = string.Format(System.Globalization.CultureInfo.GetCultureInfo("de-DE"), "{0:#,##0}", score);
+				ScoreLabel.Text = $"{scoreFormatted} PTS";
 			}
 
 			// combo
