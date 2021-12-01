@@ -46,6 +46,7 @@ namespace SpeedDial.Classic.Weapons {
 		public virtual string AttachementName => "pistol_attach";
 		public virtual string EjectionParticle => "particles/pistol_ejectbrass.vpcf";
 		[Net] public bool CanImpactKill { get; set; } = true;
+		public virtual float PanelBumpScale => 1;
 
 
 		public override void Spawn() {
@@ -163,7 +164,7 @@ namespace SpeedDial.Classic.Weapons {
 
 				// why? this shit seems to be culled for no reason, client doesn't get it
 				using(Prediction.Off()) {
-					WeaponPanel.Fire(To.Single(Owner.Client));
+					WeaponPanel.Fire(To.Single(Owner.Client), PanelBumpScale);
 					Crosshair.Fire(To.Single(Owner.Client));
 				}
 

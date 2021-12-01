@@ -19,5 +19,6 @@ namespace SpeedDial.Classic.Weapons {
 		public override Vector4 ScreenShakeParameters => new(1, 1.5f, 2, 1);
 		public override string AttachementName => "shotgun_attach";
 		public override string EjectionParticle => "particles/weapon_fx/shotgun_ejectbrass.vpcf";
+		public override float PanelBumpScale => 3;
 	}
 }

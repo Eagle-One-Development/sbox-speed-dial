@@ -19,5 +19,6 @@ namespace SpeedDial.Classic.Weapons {
 		public override string AttachementName => "roomclearer_attachment";
 		public override float VerticalBulletSpread => 0.2f;
 		public override string EjectionParticle => "particles/weapon_fx/shotgun_ejectbrass.vpcf";
+		public override float PanelBumpScale => 5;
 	}
 }

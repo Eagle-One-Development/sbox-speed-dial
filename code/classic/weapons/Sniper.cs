@@ -17,5 +17,6 @@ namespace SpeedDial.Classic.Weapons {
 		public override string AttachementName => "rifle_attach";
 		public override bool Scoped => true;
 		public override bool Penetrate => true;
+		public override float PanelBumpScale => 2;
 	}
 }
