@@ -14,6 +14,7 @@ namespace SpeedDial.Classic.UI {
 			RootPanel.AddChild<WeaponPanel>();
 			RootPanel.AddChild<ScorePanel>();
 			RootPanel.AddChild<DrugPanel>();
+			RootPanel.AddChild<RoundPanel>();
 
 			RootPanel.AddChild<ScreenHints>();
 
