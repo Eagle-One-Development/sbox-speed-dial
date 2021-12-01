@@ -232,6 +232,17 @@ namespace SpeedDial.Classic.Player {
 			}
 		}
 
+		[ServerCmd("set_score")]
+		public static void SetScore(int score) {
+			if(ConsoleSystem.Caller.Pawn is ClassicPlayer player) {
+				if(!Debug.Enabled) {
+					Log.Warning("Debug mode needs to be enabled for this command.");
+					return;
+				}
+				player.Client.SetValue("score", score.Clamp(0, int.MaxValue));
+			}
+		}
+
 		[ServerCmd("set_char")]
 		public static void SetCharacter(int index) {
 			if(ConsoleSystem.Caller.Pawn is ClassicPlayer player) {
