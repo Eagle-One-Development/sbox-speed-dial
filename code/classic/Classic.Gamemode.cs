@@ -16,5 +16,27 @@ namespace SpeedDial.Classic {
 		public override void CreateGamemodeUI() {
 			GamemodeUI = new ClassicHud();
 		}
+
+		public override bool OnClientSuicide(Client client) {
+			if(client.Pawn is ClassicPlayer player) {
+				player.DeathCause = ClassicPlayer.CauseOfDeath.Suicide;
+			}
+			return true;
+		}
+
+		protected override void OnPawnKilled(BasePlayer pawn) {
+			if(pawn is ClassicPlayer player) {
+				var client = player.Client;
+				if(player.LastAttacker != null) {
+					if(player.LastAttacker.Client != null) {
+						KillFeed.AddDeath(player.LastAttacker.Client.PlayerId, player.LastAttacker.Client.Name, client.PlayerId, client.Name, player.DeathCause.ToString());
+					} else {
+						KillFeed.AddDeath(player.LastAttacker.NetworkIdent, player.LastAttacker.ToString(), client.PlayerId, client.Name, player.DeathCause.ToString());
+					}
+				} else {
+					KillFeed.AddDeath(0, "", client.PlayerId, client.Name, player.DeathCause.ToString());
+				}
+			}
+		}
 	}
 }

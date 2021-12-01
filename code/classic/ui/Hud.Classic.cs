@@ -17,6 +17,7 @@ namespace SpeedDial.Classic.UI {
 
 			RootPanel.AddChild<ScreenHints>();
 
+			RootPanel.AddChild<KillFeed>();
 
 			RootPanel.AddChild<Crosshair>();
 			RootPanel.AddChild<ClassicScoreboard<ClassicScoreboardEntry>>();

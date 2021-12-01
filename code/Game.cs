@@ -167,7 +167,12 @@ namespace SpeedDial {
 		}
 
 		public virtual void PawnSuicide(Client client) {
-			client.Pawn.Kill();
+			if(ActiveGamemode is not null) {
+				if(ActiveGamemode.OnClientSuicide(client))
+					client.Pawn.Kill();
+			} else {
+				client.Pawn.Kill();
+			}
 		}
 
 		//

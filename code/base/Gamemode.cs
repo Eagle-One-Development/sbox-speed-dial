@@ -167,6 +167,10 @@ namespace SpeedDial {
 		/// <summary> [Server] </summary>
 		protected virtual void OnPawnRespawned(BasePlayer newPawn) { }
 
+		public virtual bool OnClientSuicide(Client client) {
+			return true;
+		}
+
 		//
 		// Client States
 		//

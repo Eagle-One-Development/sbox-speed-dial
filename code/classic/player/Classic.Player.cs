@@ -31,6 +31,7 @@ namespace SpeedDial.Classic.Player {
 
 			LifeState = LifeState.Alive;
 			Health = 100;
+			DeathCause = CauseOfDeath.Generic;
 			Velocity = Vector3.Zero;
 
 			CreateHull();
@@ -144,25 +145,19 @@ namespace SpeedDial.Classic.Player {
 				PlaySound("woosh");
 
 				SetAnimBool("b_attack", true);
-				if(!IsServer) return;
-				if(!tr.Entity.IsValid()) return;
-				if(!(LifeState == LifeState.Alive)) return;
+
+				if(!IsServer || !tr.Entity.IsValid() || !this.Alive()) return;
 
 				using(Prediction.Off()) {
-					var damage = DamageInfo.FromBullet(tr.EndPos, Owner.EyeRot.Forward * 100, 200)
+					var damage = DamageInfo.FromBullet(tr.EndPos, EyeRot.Forward * 100, 200)
 						.UsingTraceResult(tr)
-						.WithAttacker(Owner)
-						.WithWeapon(this);
+						.WithAttacker(this);
 
-					damage.Attacker = this;
 					damage.Position = Position;
-					if(IsServer) {
-						PlaySound("smack");
-					}
+					PlaySound("smack");
 
 					if(tr.Entity is ClassicPlayer player) {
-						//TODO: COD
-						//player.CauseOfDeath = COD.Melee;
+						player.DeathCause = CauseOfDeath.Punch;
 					}
 					tr.Entity.TakeDamage(damage);
 				}
@@ -177,43 +172,6 @@ namespace SpeedDial.Classic.Player {
 			base.TakeDamage(info);
 		}
 
-		public override void OnKilled() {
-			base.OnKilled();
-			Frozen = true;
-
-			// reset drug
-			ActiveDrug = false;
-			DrugParticles?.Destroy(true);
-
-			EnableAllCollisions = false;
-			EnableDrawing = false;
-
-			// chuck weapon away in a random direction
-			DropWeapon(out var weapon);
-			if(weapon.IsValid()) {
-				weapon.Velocity += Vector3.Random.WithZ(0).Normal * 150 + Vector3.Up * 150;
-				weapon.PhysicsBody.AngularVelocity = new Vector3(0, 0, 60f);
-				weapon.CanImpactKill = false;
-			}
-
-			// death effects, body + particles/decals, screen hint
-			BecomeRagdollOnClient(To.Everyone, new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0));
-			BloodSplatter(To.Everyone);
-			ScreenHints.FireEvent(To.Single(Client), "WHACKED", "+WIP");
-			SoundFromScreen(To.Single(Client), "player_death");
-
-			// give the killer his score etc
-			if(LastRecievedDamage.Attacker is ClassicPlayer attacker) {
-				attacker.TimeSinceMurdered = 0;
-				attacker.AwardKill(this);
-				// TODO: find better kill confirm sound
-				//SoundFromScreen(To.Single(attacker.Client), "kill_confirm");
-			}
-
-			// reset combo
-			Client.SetValue("combo", 0);
-		}
-
 		public override void StartTouch(Entity other) {
 			// this is a pickuptrigger, we could pick it up
 			if(other is BasePickupTrigger trigger) {
@@ -226,9 +184,7 @@ namespace SpeedDial.Classic.Player {
 				if(wep.PhysicsBody.IsValid()) {
 					if(wep.CanImpactKill && this != wep.PreviousOwner && wep.Velocity.Length > 450f) {
 						Sound.FromEntity("smack", this);
-						// TODO: COD
-						//CauseOfDeath = COD.Thrown;
-						ImpactKill(wep.PreviousOwner);
+						ImpactKill(wep.PreviousOwner, wep);
 
 						// bounce off the body
 						wep.Velocity *= -0.3f;
@@ -238,10 +194,14 @@ namespace SpeedDial.Classic.Player {
 			}
 		}
 
-		public void ImpactKill(Entity attacker) {
+		public void ImpactKill(Entity attacker, Entity weapon) {
+			DeathCause = CauseOfDeath.Impact;
 			DamageInfo info = new();
 			info.Damage = 200;
 			info.Attacker = attacker;
+			// don't set the weapon because otherwise it'd count as a bullet death cause...
+			// this should probably be done better
+			//info.Weapon = weapon;
 			TakeDamage(info);
 			PlaySound("smack");
 		}

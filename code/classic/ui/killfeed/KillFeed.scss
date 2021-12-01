@@ -1,0 +1,66 @@
+﻿@import "/classic/ui/_vars/globals.scss";
+
+killfeed {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	flex-direction: column-reverse;
+	width: 500px;
+	font-family: $font;
+	font-size: 12px;
+	font-weight: 500;
+	align-items: flex-end;
+}
+
+KillFeedEntry {
+	background-color: black;
+	margin-bottom: 5px;
+	color: white;
+	transition: all 0.2s ease-out;
+	opacity: 1;
+	flex-shrink: 0;
+	flex-grow: 0;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	height: 30px;
+	position: relative;
+	border-radius: 10px;
+
+	&:intro {
+		padding-top: 0;
+		padding-bottom: 0;
+		margin-bottom: 0;
+		height: 0;
+		opacity: 0;
+	}
+
+	&:outro {
+		right: -20px;
+		opacity: 0;
+		transition: all 0.2s ease-in;
+	}
+
+	// method
+	image {
+		width: 25px;
+		height: 25px;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	.left,
+	.right {
+		padding: 12px;
+
+		&.me {
+			color: $vhs_cyan;
+		}
+
+		&.noname {
+			padding-left: -12px;
+			width: 0px;
+		}
+	}
+}

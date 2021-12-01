@@ -2,11 +2,70 @@ using System.Threading.Tasks;
 
 using Sandbox;
 
+using SpeedDial.Classic.UI;
+using SpeedDial.Classic.Weapons;
+
 namespace SpeedDial.Classic.Player {
 	public partial class ClassicPlayer {
 		static EntityLimit RagdollLimit = new EntityLimit { MaxTotal = 20 };
-
 		public ModelEntity Corpse { get; set; }
+		[Net] public CauseOfDeath DeathCause { get; set; } = CauseOfDeath.Generic;
+
+		public enum CauseOfDeath {
+			Generic, // any damage that isn't one of the below
+			Bullet, // guns
+			Melee, // for melee weapons (bat)
+			Punch, // for fists
+			Impact, // thrown guns
+			Suicide // kill command
+		}
+
+		public override void OnKilled() {
+			Frozen = true;
+
+			// reset drug
+			ActiveDrug = false;
+			DrugParticles?.Destroy(true);
+
+			EnableAllCollisions = false;
+			EnableDrawing = false;
+
+			// chuck weapon away in a random direction
+			DropWeapon(out var weapon);
+			if(weapon.IsValid()) {
+				weapon.Velocity += Vector3.Random.WithZ(0).Normal * 150 + Vector3.Up * 150;
+				weapon.PhysicsBody.AngularVelocity = new Vector3(0, 0, 60f);
+				weapon.CanImpactKill = false;
+			}
+
+			// death effects, body + particles/decals, screen hint
+			BecomeRagdollOnClient(To.Everyone, new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0));
+			BloodSplatter(To.Everyone);
+			ScreenHints.FireEvent(To.Single(Client), "WHACKED", "+WIP");
+			SoundFromScreen(To.Single(Client), "player_death");
+
+			// give the killer his score etc
+			if(LastRecievedDamage.Attacker is ClassicPlayer attacker) {
+				attacker.TimeSinceMurdered = 0;
+				attacker.AwardKill(this);
+				// TODO: find better kill confirm sound
+				//SoundFromScreen(To.Single(attacker.Client), "kill_confirm");
+			}
+
+			if(LastRecievedDamage.Weapon is ClassicBaseWeapon wep) {
+				// HACK. this should be done better... too bad!
+				if(wep is BaseballBat) {
+					DeathCause = CauseOfDeath.Melee;
+				} else {
+					DeathCause = CauseOfDeath.Bullet;
+				}
+			}
+
+			// reset combo
+			Client.SetValue("combo", 0);
+
+			base.OnKilled();
+		}
 
 		[ClientRpc]
 		void BecomeRagdollOnClient(Vector3 force, int forceBone) {
