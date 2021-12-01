@@ -64,7 +64,7 @@ namespace SpeedDial.Classic.UI {
 				PanelTransform transform = new();
 				// clamp it so it doesn't go ape mode on higher combos
 				var _effectMultiplier = combo.Clamp(0, 25);
-				transform.AddScale(ComboScale + 0.05f * _combo + ((MathF.Sin(Time.Now * _effectMultiplier) + 1) / 2 * combo * 0.05f));
+				transform.AddScale(ComboScale + 0.05f * _combo + ((MathF.Sin(Time.Now * _effectMultiplier) + 1) / 2 * _effectMultiplier * 0.05f));
 				transform.AddRotation(0, 0, MathF.Sin(Time.Now * _effectMultiplier * 1.234f) * _effectMultiplier * 0.5f);
 				ComboLabel.Style.Transform = transform;
 
