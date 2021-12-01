@@ -123,7 +123,7 @@ namespace SpeedDial.Classic.Player {
 			var player = Pawn as ClassicPlayer;
 			WishVelocity = WishVelocity.Normal * inSpeed;
 			// this is dumb
-			WishVelocity *= DefaultSpeed * ((player.ActiveDrug && player.DrugType is DrugType.Polvo) ? 2f : 1f);
+			WishVelocity *= DefaultSpeed * ((player.ActiveDrug && player.DrugType is DrugType.Polvo) ? 1.5f : 1f);
 
 
 			bool bStayOnGround = false;
