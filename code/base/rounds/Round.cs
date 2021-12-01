@@ -6,101 +6,86 @@ using Sandbox;
 
 //CREDIT: Taken from Espionage.Engine by Jake Wooshito
 namespace SpeedDial {
+	/// <summary> Round </summary>
 	public abstract partial class Round : BaseNetworkable {
-		/// <summary>
-		/// Duration of a round
-		/// </summary>
-		public virtual int RoundDuration => 0;
-		/// <summary>
-		/// Name of The round
-		/// </summary>
-		public virtual string RoundName => "";
+		/// <summary> how long are think ticks in seconds? </summary>
+		protected virtual float ThinkTime => 1;
 
-		//When the end of the round occurs relative to the Time.Now of the start of the round
-		[Net, Predicted]
-		public float RoundEndTime { get; set; }
-
+		/// <summary> Call Finish() to finish a round </summary>
 		[Net] public bool Finished { get; private set; }
 
-		/// <summary>
-		/// Time left in the round
-		/// </summary>
-		[Net, Predicted]
-		public float TimeLeft {
-			get {
-				return RoundEndTime - Time.Now;
-			}
-		}
+		[Net] public float StartTime { get; private set; }
 
 		/// <summary>
-		/// Formatted version of the time left in the round in seconds
+		/// Formatted version of the time elapsed in the round in seconds
 		/// </summary>
 		[Net]
-		public string TimeLeftFormatted { get; set; } = "";
+		public string TimeElapsedFormatted { get; set; } = "";
 
 		/// <summary> [Server Assert] Start the round </summary>
-		public void Start() {
+		public virtual void Start() {
 			Host.AssertServer();
 			MapSettings.Current?.OnRoundStarted.Fire(null, ClassInfo.Name);
 
 			Log.Info($"Round started {GetType()}");
 
-			if(Host.IsServer && RoundDuration > 0) {
-				RoundEndTime = Time.Now + RoundDuration;
-			}
+			_ = ThinkTimer();
 
-			_ = SecondTimer();
-
+			StartTime = Time.Now;
 			OnStart();
 		}
 
+		public TimeSpan GetElapsedTime() {
+			if(!Finished)
+				return TimeSpan.FromSeconds(Time.Now - StartTime);
+			else
+				return TimeSpan.Zero;
+		}
+
+		public virtual TimeSpan GetTime() {
+			return GetElapsedTime();
+		}
+
 		/// <summary> [Server Assert] Finish the round </summary>
-		public void Finish() {
+		public virtual void Finish() {
 			Host.AssertServer();
 
 			if(Finished)
 				return;
 
-			Log.Info($"Round ended {GetType()}");
+			MapSettings.Current?.OnRoundFinished.Fire(null, ClassInfo.Name);
 
-			RoundEndTime = 0f;
+			Log.Info($"Round ended {GetType()}");
 
 			Finished = true;
 			OnFinish();
 		}
 
-		/// <summary> [Server] On Server Tick </summary>
-		[Event.Tick.Server]
-		public virtual void OnTick() { }
-
-		public virtual void OnSecond() {
-			if(Host.IsServer) {
-				if(RoundEndTime > 0 && Time.Now >= RoundEndTime) {
-					RoundEndTime = 0f;
-					OnFinish();
-				} else {
-					TimeLeftFormatted = TimeSpan.FromSeconds(TimeLeft).ToString(@"mm\:ss");
-				}
-			}
-		}
-
-		private async Task SecondTimer() {
+		private async Task ThinkTimer() {
 			while(!Finished) {
-				OnSecond();
-				await GameTask.DelaySeconds(1);
+				OnThink();
+				await GameTask.DelaySeconds(ThinkTime);
 			}
 		}
 
 		/// <summary> [Server] Will invoke when the round has started </summary>
 		protected virtual void OnStart() { }
 
+		/// <summary> [Server] Will invoke every think tick, which can be defined by overriding "ThinkTime" </summary>
+		protected virtual void OnThink() {
+			TimeElapsedFormatted = GetElapsedTime().ToString(@"mm\:ss");
+		}
+
+		/// <summary> [Server] On Server Tick </summary>
+		protected virtual void OnTick() { }
+
 		/// <summary> [Server] Will invoke when the round has finished </summary>
 		protected virtual void OnFinish() { }
 
-		/// <summary> [Server] Will invoke when a pawn has been killed </summary>
+		/// <summary> [Server] Will when a pawn has been killed </summary>
 		public virtual void OnPlayerKilled(BasePlayer pawn) { }
 
-		/// <summary> [Server] Willinvoke when a pawn has respawned </summary>
+		/// <summary> [Server] Will when a pawn has respawned </summary>
 		public virtual void OnPlayerRespawned(BasePlayer newPawn) { }
 	}
 }

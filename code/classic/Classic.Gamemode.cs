@@ -5,10 +5,16 @@ using Sandbox;
 
 using SpeedDial.Classic.UI;
 using SpeedDial.Classic.Player;
+using SpeedDial.Classic.Rounds;
 
 namespace SpeedDial.Classic {
 	[Library("sd_classic"), Hammer.Skip]
 	public partial class ClassicGamemode : Gamemode {
+
+		protected override void OnStart() {
+			SetRound(new TestRound());
+		}
+
 		protected override void OnClientReady(Client client) {
 			client.AssignPawn<ClassicPlayer>(true);
 		}
