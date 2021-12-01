@@ -1,5 +1,7 @@
 using Sandbox;
 
+using SpeedDial.Classic.UI;
+
 namespace SpeedDial.Classic.Weapons {
 	[Library("sdg_rifle", Title = "BURST-RIFLE", Spawnable = true)]
 	[Hammer.EditorModel("models/weapons/rifle/prop_rifle.vmdl")]
@@ -42,6 +44,11 @@ namespace SpeedDial.Classic.Weapons {
 
 					ShootEffects();
 					PlaySound(ShootSound);
+					
+					using(Prediction.Off()) {
+						WeaponPanel.Fire(To.Single(Owner.Client), PanelBumpScale);
+						Crosshair.Fire(To.Single(Owner.Client));
+					}
 					ShootBullet(BulletSpread * (float)((curBurst * 1.5) + 1), BulletForce, BulletDamage, BulletSize, 0);
 					burstTimer = 0;
 				}
