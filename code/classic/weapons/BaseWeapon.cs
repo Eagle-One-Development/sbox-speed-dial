@@ -159,6 +159,14 @@ namespace SpeedDial.Classic.Weapons {
 					return;
 				}// no ammo, no shooty shoot
 
+				Log.Info($"fire {Owner.Client?.Name}");
+
+				// why? this shit seems to be culled for no reason, client doesn't get it
+				using(Prediction.Off()) {
+					WeaponPanel.Fire(To.Single(Owner.Client));
+					Crosshair.Fire(To.Single(Owner.Client));
+				}
+
 				// shoot the bullets, bulletcount for something like a shotgun with multiple bullets
 				for(int i = 0; i < BulletCount; i++) {
 
@@ -175,7 +183,6 @@ namespace SpeedDial.Classic.Weapons {
 				PlaySound(ShootSound); // shoot sound
 
 				(Owner as AnimEntity).SetAnimBool("b_attack", true); // shoot anim
-
 			}
 		}
 
@@ -189,9 +196,6 @@ namespace SpeedDial.Classic.Weapons {
 			forward = forward.Normal;
 			//forward = new Vector3( forward.x, forward.y, forward.z * VerticalBulletSpread );
 			forward.z *= VerticalBulletSpread;
-
-			WeaponPanel.Fire();
-			Crosshair.Fire();
 
 			int index = 0;
 			foreach(var tr in TraceBullet(Owner.EyePos, Owner.EyePos + forward * Range, bulletSize)) {
