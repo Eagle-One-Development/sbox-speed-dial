@@ -19,7 +19,6 @@ namespace SpeedDial.Classic.UI {
 
 		public override void Tick() {
 			if(Local.Pawn is ClassicPlayer player) {
-				//Log.Info($"{player.DrugType.ToString().ToUpper()}");
 				if(player.ActiveDrug) {
 					var progress = 1 - player.TimeSinceDrugTaken / player.DrugDuration;
 					ProgressBar.Style.Width = Length.Percent(progress * 100);
