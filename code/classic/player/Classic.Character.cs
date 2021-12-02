@@ -17,10 +17,16 @@ namespace SpeedDial.Classic.Player {
 
 		[Skip]
 		public Texture PortraitTexture { get; private set; }
+		[Skip]
+		public Model CharacterModel { get; private set; }
+
 		protected override void PostLoad() {
 			Portrait = System.IO.Path.ChangeExtension(Portrait, "png");
 			if(Host.IsClient)
 				PortraitTexture = Texture.Load(Portrait);
+
+			CharacterModel = Sandbox.Model.Load(Model);
+
 			All.Add(this);
 			Debug.Log($"loaded character {CharacterName}");
 		}

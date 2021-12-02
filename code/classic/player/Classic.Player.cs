@@ -27,7 +27,7 @@ namespace SpeedDial.Classic.Player {
 		public override void Respawn() {
 			Host.AssertServer();
 
-			SetModel(Character.Model);
+			SetModel(Character.CharacterModel);
 
 			LifeState = LifeState.Alive;
 			Health = 100;
@@ -111,7 +111,7 @@ namespace SpeedDial.Classic.Player {
 		}
 
 		public void RefreshCharacter() {
-			SetModel(Character.Model);
+			SetModel(Character.CharacterModel);
 			GiveWeapon<ClassicBaseWeapon>(Character.WeaponClass);
 		}
 
