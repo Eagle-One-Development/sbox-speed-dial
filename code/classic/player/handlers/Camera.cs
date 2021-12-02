@@ -135,6 +135,7 @@ namespace SpeedDial.Classic.Player {
 				DebugOverlay.Sphere(HitPosition, 5, Color.Green, false);
 			}
 
+			FieldOfView = 70;
 			Viewer = null;
 		}
 
