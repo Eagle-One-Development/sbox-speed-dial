@@ -76,7 +76,7 @@ namespace SpeedDial.Classic.UI {
 			if(!IsVisible)
 				return;
 
-			if(TimeSinceToggled < 0.1f) {
+			if(TimeSinceToggled > 0.1f) {
 				if(Left || Right) {
 					Sound.FromScreen("select_click");
 				}
