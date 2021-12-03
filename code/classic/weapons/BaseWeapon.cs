@@ -70,13 +70,13 @@ namespace SpeedDial.Classic.Weapons {
 
 			GlowColor = Color.White;
 
-			GlowState = GlowStates.GlowStateOn;
+			GlowState = GlowStates.On;
 			GlowActive = true;
 		}
 
 		private void SetGlow(bool state) {
 			if(state) {
-				GlowState = GlowStates.GlowStateOn;
+				GlowState = GlowStates.On;
 				GlowActive = true;
 
 				if(AmmoClip > 0)
@@ -88,7 +88,7 @@ namespace SpeedDial.Classic.Weapons {
 						GlowColor = new Color(1, 0.2f, 0.2f, 1);
 				}
 			} else {
-				GlowState = GlowStates.GlowStateOff;
+				GlowState = GlowStates.Off;
 				GlowActive = false;
 			}
 		}
@@ -175,14 +175,20 @@ namespace SpeedDial.Classic.Weapons {
 
 			if(!overrideShootEffects) {
 
-				// clientside shoot effects
-				if(IsServer) {
-					ShootEffects(); // muzzle and brass eject
-				}
-				PlaySound(ShootSound); // shoot sound
+				ShootEffects();
 
 				(Owner as AnimEntity).SetAnimBool("b_attack", true); // shoot anim
 			}
+		}
+
+		public virtual void ShootEffects() {
+			// clientside shoot effects
+			if(IsLocalPawn) {
+				_ = new Sandbox.ScreenShake.Perlin(ScreenShakeParameters.x, ScreenShakeParameters.y, ScreenShakeParameters.z, ScreenShakeParameters.w);
+			}
+			Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
+			Particles.Create(EjectionParticle, EffectEntity, "ejection_point");
+			PlaySound(ShootSound); // shoot sound
 		}
 
 		public virtual void ShootBullet(float spread, float force, float damage, float bulletSize, int seed) {
@@ -206,13 +212,19 @@ namespace SpeedDial.Classic.Weapons {
 					ps?.SetForward(0, tr.Normal);
 				}
 
-				if(IsServer) {
-					if(index == 0) {
-						BulletTracer(EffectEntity.GetAttachment("muzzle", true).Value.Position, tr.EndPos);
-					} else {
-						BulletTracer(tr.StartPos, tr.EndPos);
-					}
+				//if(IsServer) {
+				if(index == 0) {
+					//BulletTracer(, );
+					var ps = Particles.Create("particles/weapon_fx/sd_bullet_trail/sd_bullet_trail.vpcf", tr.EndPos);
+					ps.SetPosition(0, EffectEntity.GetAttachment("muzzle", true).Value.Position);
+					ps.SetPosition(1, tr.EndPos);
+				} else {
+					//BulletTracer(tr.StartPos, tr.EndPos);
+					var ps = Particles.Create("particles/weapon_fx/sd_bullet_trail/sd_bullet_trail.vpcf", tr.EndPos);
+					ps.SetPosition(0, tr.StartPos);
+					ps.SetPosition(1, tr.EndPos);
 				}
+				//}
 
 				index++;
 
@@ -329,23 +341,6 @@ namespace SpeedDial.Classic.Weapons {
 					}
 				}
 			}
-		}
-
-		[ClientRpc]
-		protected virtual void ShootEffects() {
-			Host.AssertClient();
-			Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
-			Particles.Create(EjectionParticle, EffectEntity, "ejection_point");
-			if(IsLocalPawn) {
-				_ = new Sandbox.ScreenShake.Perlin(ScreenShakeParameters.x, ScreenShakeParameters.y, ScreenShakeParameters.z, ScreenShakeParameters.w);
-			}
-		}
-
-		[ClientRpc]
-		protected virtual void BulletTracer(Vector3 from, Vector3 to) {
-			var ps = Particles.Create("particles/weapon_fx/sd_bullet_trail/sd_bullet_trail.vpcf", to);
-			ps.SetPosition(0, from);
-			ps.SetPosition(1, to);
 		}
 
 		public bool TakeAmmo(int amount) {

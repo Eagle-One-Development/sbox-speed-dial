@@ -107,9 +107,9 @@ namespace SpeedDial.Classic.UI {
 			}
 
 			Character1.Index = startIndex;
-			Character2.Index = SetIndex(startIndex, 1);
-			Character3.Index = SetIndex(startIndex, 2);
-			Character4.Index = SetIndex(startIndex, 3);
+			Character2.Index = startIndex + 1;
+			Character3.Index = startIndex + 2;
+			Character4.Index = startIndex + 3;
 
 			// clamp scale
 			PromptLeftScale = PromptLeftScale.Clamp(0, 1.5f);
@@ -128,13 +128,6 @@ namespace SpeedDial.Classic.UI {
 			// lerp to base scale
 			PromptLeftScale = PromptLeftScale.LerpTo(1, Time.Delta * 7f);
 			PromptRightScale = PromptRightScale.LerpTo(1, Time.Delta * 7f);
-		}
-
-		private static int SetIndex(int index, int add) {
-			if(index > Character.All.Count - 1) {
-				index = 0;
-			}
-			return index + add;
 		}
 
 		private bool Select;
