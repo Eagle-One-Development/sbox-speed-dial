@@ -160,8 +160,6 @@ namespace SpeedDial.Classic.Weapons {
 					return;
 				}// no ammo, no shooty shoot
 
-				Log.Info($"fire {Owner.Client?.Name}");
-
 				// why? this shit seems to be culled for no reason, client doesn't get it
 				using(Prediction.Off()) {
 					WeaponPanel.Fire(To.Single(Owner.Client), PanelBumpScale);
