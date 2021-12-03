@@ -13,14 +13,18 @@ namespace SpeedDial.Classic.Player {
 		[Net] public bool Pickup { get; set; }
 
 		public void ThrowWeapon() {
-			if(!DropWeapon(out ClassicBaseWeapon dropped)) return;
+			if(IsServer) {
+				if(!DropWeapon(out ClassicBaseWeapon dropped)) return;
 
-			dropped.Position = EyePos;
-			dropped.ResetInterpolation();
-			if(dropped.PhysicsGroup != null && dropped is ClassicBaseWeapon weapon) {
-				weapon.PhysicsBody.Velocity += EyeRot.Forward * 700;
-				weapon.PhysicsBody.AngularVelocity = new Vector3(0, 0, 100f);
-				weapon.PlaySound("weaponspin");
+				dropped.Position = EyePos;
+				dropped.ResetInterpolation();
+				if(dropped.PhysicsGroup != null && dropped is ClassicBaseWeapon weapon) {
+					weapon.PhysicsBody.Velocity += EyeRot.Forward * 700;
+					weapon.PhysicsBody.AngularVelocity = new Vector3(0, 0, 100f);
+					using(Prediction.Off()) {
+						weapon.PlaySound("weaponspin");
+					}
+				}
 			}
 		}
 
@@ -63,9 +67,11 @@ namespace SpeedDial.Classic.Player {
 			weapon.Parent = null;
 			weapon.OnCarryDrop(this);
 
-			weapon.Position = EyePos;
-			weapon.Velocity = Velocity * 0.75f;
-			weapon.ResetInterpolation();
+			if(IsServer) {
+				weapon.Position = EyePos;
+				weapon.Velocity = Velocity * 0.75f;
+				weapon.ResetInterpolation();
+			}
 			ActiveChild = null;
 
 			return weapon;

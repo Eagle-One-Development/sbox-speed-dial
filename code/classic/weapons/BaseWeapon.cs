@@ -138,9 +138,6 @@ namespace SpeedDial.Classic.Weapons {
 			if(Owner is ClassicPlayer) {
 				if(!Owner.IsValid() || (Automatic && !Input.Down(InputButton.Attack1)) || (!Automatic && !Input.Pressed(InputButton.Attack1))) return false;
 			}
-			// else {
-			// 	if(!Owner.IsValid() || (Automatic && !(Owner as SpeedDialBotPlayer).ShootAtPlayer) || (!Automatic && !(Owner as SpeedDialBotPlayer).ShootAtPlayer) || (Owner as SpeedDialBotPlayer).TimeSinceShoot < (Owner as SpeedDialBotPlayer).ShootDelay) return false;
-			// }
 
 			var rate = PrimaryRate;
 			if(rate <= 0) return true;
@@ -148,6 +145,7 @@ namespace SpeedDial.Classic.Weapons {
 			return TimeSincePrimaryAttack > (1 / rate);
 		}
 
+		// this is retarded, why aren't these just virtual methods???
 		public virtual void AttackPrimary(bool overrideBullet = false, bool overrideShootEffects = false) {
 			TimeSincePrimaryAttack = 0;
 			// if(Owner is SpeedDialBotPlayer bot) {
@@ -369,7 +367,6 @@ namespace SpeedDial.Classic.Weapons {
 			Owner = player;
 			MoveType = MoveType.None;
 			EnableAllCollisions = false;
-			EnableDrawing = false;
 
 			SetGlow(false);
 

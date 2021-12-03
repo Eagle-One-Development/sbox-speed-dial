@@ -14,10 +14,10 @@ namespace SpeedDial.Classic.Weapons {
 		public override string WorldModel => "models/weapons/melee/melee.vmdl";
 		public override string AttachementName => "melee_bat_attach";
 
-		[Net, Predicted, Local]
+		[Net, Predicted]
 		public bool Hitting { get; set; } = false;
 
-		[Net, Predicted, Local]
+		[Net, Predicted]
 		public TimeSince TimeSinceSwing { get; set; }
 
 		public override void AttackPrimary(bool _ = false, bool __ = false) {
@@ -25,11 +25,7 @@ namespace SpeedDial.Classic.Weapons {
 				TimeSinceSwing = 0;
 				Hitting = true;
 				(Owner as AnimEntity).SetAnimBool("b_attack", true);
-				using(Prediction.Off()) {
-					if(IsServer) {
-						PlaySound("woosh");
-					}
-				}
+				PlaySound("woosh");
 			}
 		}
 
@@ -39,23 +35,22 @@ namespace SpeedDial.Classic.Weapons {
 			if(EffectEntity.GetAttachment("melee_start") is Transform start && EffectEntity.GetAttachment("melee_end") is Transform end) {
 
 				// hardcoded values cause I suck
-				if(TimeSinceSwing <= 0.25f && Hitting) {
+				if(TimeSinceSwing <= 0.20f && Hitting) {
 					//DebugOverlay.Line(start.Position, end.Position, Color.Green, 0.1f, false);
 					foreach(var tr in TraceBullet(start.Position, end.Position, 4)) {
 						if(tr.Entity is ClassicPlayer hitPlayer) {
 							var ps = Particles.Create("particles/blood/blood_plip.vpcf", tr.EndPos);
 							ps?.SetForward(0, tr.Normal);
 
+							PlaySound("sd_bat.hit");
+
 							if(!IsServer) continue;
-							if(!tr.Entity.IsValid()) continue;
 
 							using(Prediction.Off()) {
 								var damageInfo = DamageInfo.FromBullet(tr.EndPos, 1000, 100)
 									.UsingTraceResult(tr)
 									.WithAttacker(Owner)
 									.WithWeapon(this);
-
-								PlaySound("sd_bat.hit");
 
 								tr.Entity.TakeDamage(damageInfo);
 							}
