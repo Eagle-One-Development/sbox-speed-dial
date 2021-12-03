@@ -10,7 +10,8 @@ using SpeedDial.Classic.UI;
 namespace SpeedDial.Classic.Player {
 	public partial class ClassicPlayer : BasePlayer {
 		[Net] public bool Frozen { get; set; }
-		[Net] public Character Character { get; set; }
+		public Character Character { get { return Character.All.ElementAtOrDefault(CharacterIndex); } }
+		[Net] public int CharacterIndex { get; set; }
 		[Net] public bool ActiveDrug { get; set; }
 		[Net] public DrugType DrugType { get; set; }
 		[Net] public TimeSince TimeSinceDrugTaken { get; set; }
@@ -20,7 +21,7 @@ namespace SpeedDial.Classic.Player {
 		[Net] TimeSince TimeSinceMurdered { get; set; }
 
 		public override void InitialRespawn() {
-			Character = Character.All.Random();
+			CharacterIndex = Rand.Int(0, Character.All.Count - 1);
 			Respawn();
 		}
 
@@ -246,13 +247,9 @@ namespace SpeedDial.Classic.Player {
 		[ServerCmd("set_char")]
 		public static void SetCharacter(int index) {
 			if(ConsoleSystem.Caller.Pawn is ClassicPlayer player) {
-				if(index > Character.All.Count) return;
-				var character = Character.All.ElementAtOrDefault(index);
-				if(character is null) {
-					Log.Warning("character index invalid");
-					return;
-				}
-				player.Character = character;
+				Debug.Log($"char index set to {index}");
+				index = index.Clamp(0, Character.All.Count);
+				player.CharacterIndex = index;
 				// if(Instance.Round is PreRound) 
 				player.RefreshCharacter();
 			}
