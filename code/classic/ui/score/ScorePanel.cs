@@ -6,7 +6,7 @@ using Sandbox.UI.Construct;
 
 namespace SpeedDial.Classic.UI {
 	public partial class ScorePanel : Panel {
-		public static ScorePanel Current;
+		public static ScorePanel Current { get; private set; }
 		private readonly Panel Score;
 		private readonly Panel Combo;
 		private readonly Label ScoreLabel;

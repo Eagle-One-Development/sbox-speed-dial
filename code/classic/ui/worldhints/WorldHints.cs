@@ -11,7 +11,7 @@ using SpeedDial.Classic.Weapons;
 
 namespace SpeedDial.Classic.UI {
 	public partial class WorldHints : Panel {
-		public static WorldHints Current;
+		public static WorldHints Current { get; private set; }
 		private readonly Panel PickupPanel;
 		private ClassicBaseWeapon _lastPickup;
 		public List<Panel> WorldTexts = new();

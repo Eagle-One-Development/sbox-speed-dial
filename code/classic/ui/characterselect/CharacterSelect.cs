@@ -9,7 +9,7 @@ using SpeedDial.Classic.Player;
 namespace SpeedDial.Classic.UI {
 	[UseTemplate]
 	public partial class CharacterSelect : Panel {
-		public static CharacterSelect Current;
+		public static CharacterSelect Current { get; private set; }
 		// bindings for HTML
 		public string HeaderTitle => "SELECT A CRIMINAL";
 		public string SelectHeader => $"[{Input.GetKeyWithBinding("+iv_jump").ToUpper()}] TO SELECT";

@@ -6,7 +6,7 @@ using Sandbox.UI.Construct;
 
 namespace SpeedDial.Classic.UI {
 	public partial class ScreenHints : Panel {
-		public static ScreenHints Current;
+		public static ScreenHints Current { get; private set; }
 		private bool Active;
 		private TimeSince TimeSinceActive;
 		private readonly Panel Banner;

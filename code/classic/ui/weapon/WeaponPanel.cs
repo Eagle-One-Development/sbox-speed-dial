@@ -8,7 +8,7 @@ using SpeedDial.Classic.Weapons;
 
 namespace SpeedDial.Classic.UI {
 	public partial class WeaponPanel : Panel {
-		private static WeaponPanel Current;
+		public static WeaponPanel Current { get; private set; }
 		private readonly Label AmmoLabel;
 		private readonly Label WeaponLabel;
 		private readonly Panel Panel;

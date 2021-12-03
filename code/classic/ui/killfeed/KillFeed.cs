@@ -7,7 +7,7 @@ using Sandbox.UI.Construct;
 
 namespace SpeedDial.Classic.UI {
 	public partial class KillFeed : Panel {
-		public static KillFeed Current;
+		public static KillFeed Current { get; private set; }
 
 		public KillFeed() {
 			Current = this;

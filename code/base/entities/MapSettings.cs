@@ -12,7 +12,7 @@ namespace SpeedDial {
 	[Library("sd_map_settings", Title = "Speed-Dial Map")]
 	[Hammer.EntityTool("Map Settings", "Speed-Dial", "Defines information about a map, and its supported gamemodes.")]
 	public partial class MapSettings : Entity {
-		public static MapSettings Current { get; set; }
+		public static MapSettings Current { get; private set; }
 
 		public MapSettings() {
 			if(Current is not null)
