@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="/classic/ui/characterselect/CharacterSelect.scss" />
+
+<div>
+    <div class="header">
+        <div><text class="headertitle" @text="HeaderTitle"></text></div>
+        <div><text class="selectheader" @text="SelectHeader"></text></div>
+    </div>
+
+    <div class="body">
+        <div class="prompt left">
+            <text class="promptlabel" @ref="PromptLeftLabel" @text="PromptLeft"></text>
+        </div>
+        <div class="characters">
+            <CharacterPanel @ref="Character1"></CharacterPanel>
+            <CharacterPanel @ref="Character2"></CharacterPanel>
+            <CharacterPanel @ref="Character3"></CharacterPanel>
+            <CharacterPanel @ref="Character4"></CharacterPanel>
+        </div>
+        <div class="prompt right">
+            <text class="promptlabel" @ref="PromptRightLabel" @text="PromptRight"></text>
+        </div>
+    </div>
+</div>

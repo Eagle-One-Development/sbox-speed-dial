@@ -1,0 +1,75 @@
+@import "/classic/ui/_vars/globals.scss";
+
+characterselect {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    flex-direction: column;
+
+    background-color: rgba(black, 0.9);
+
+    opacity: 0;
+    bottom: -100%;
+    transition: all 0.5s ease-in-out;
+
+    &.open {
+        opacity: 1;
+        bottom: 0%;
+    }
+
+    &:intro {
+        opacity: 0;
+        bottom: -100%;
+    }
+
+    .header {
+        width: 100%;
+        height: 20%;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+        .headertitle {
+            font-size: 50px;
+            text-shadow: -2px -2px 1px $vhs_cyan, 4px 2px 1px $vhs_magenta;
+        }
+
+        .selectheader {
+            font-size: 25px;
+        }
+    }
+    .body {
+        width: 100%;
+        height: 100%;
+        .prompt {
+            width: 300px;
+            align-items: center;
+            padding: 20px;
+
+            &.left {
+                justify-content: flex-end;
+            }
+            &.right {
+                justify-content: flex-start;
+            }
+
+            .promptlabel {
+                font-size: 40px;
+                text-shadow: -2px -2px 1px $vhs_cyan, 4px 2px 1px $vhs_magenta;
+            }
+        }
+
+        .characters {
+            width: 100%;
+            flex-direction: row;
+        }
+
+        padding-bottom: 50px;
+    }
+
+    text {
+        font-family: $font;
+        color: white;
+    }
+}

@@ -20,6 +20,8 @@ namespace SpeedDial.Classic.UI {
 
 			RootPanel.AddChild<KillFeed>();
 
+			RootPanel.AddChild<CharacterSelect>();
+
 			RootPanel.AddChild<ClassicScoreboard<ClassicScoreboardEntry>>();
 			RootPanel.AddChild<Crosshair>();
 		}
