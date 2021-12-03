@@ -3,10 +3,11 @@
 //
 @BaseClass = sdgchar : ""
 [
-	charactername(string) : "Character Name" :  : ""
-	description(string) : "Description" :  : ""
-	weaponclass(string) : "Weapon Class" :  : ""
-	portrait(string) { editor = "AssetBrowse(png)" } : "Portrait" :  : ""
-	model(resource:vmdl) : "Model" :  : ""
+	charactername(string) : "Character Name" : "name" : ""
+	description(string) : "Description" : "desc" : ""
+	weaponclass(string) : "Weapon Class" : "sdg_pistol" : ""
+	portrait(string) { editor = "AssetBrowse(png)" } : "Portrait" : "materials/ui/portraits/jack_hd.jpg" : ""
+	weapon(string) { editor = "AssetBrowse(png)" } : "Weapon" : "materials/ui/weapons/pistol.jpg" : ""
+	model(resource:vmdl) : "Model" : "models/playermodels/character_jack.vmdl" : ""
 ]
 

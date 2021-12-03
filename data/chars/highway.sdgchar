@@ -3,9 +3,10 @@
 	data = 
 	{
 		charactername = "Highway"
-		description = "Nobody knows who Highway is or what their goal is. Stories tell of a drifter who comes in and out of towns, leaving bodies in their wake."
+		description = "Smooth Operator"
 		weaponclass = "sdg_shotgun"
-		portrait = "materials/ui/portraits/highway_hd.jpg"
+		portrait = "materials/ui/portraits/portrait_highway.jpg"
 		model = resource:"models/playermodels/character_highway.vmdl"
+		weapon = "materials/ui/weapons/pistol.jpg"
 	}
 }
