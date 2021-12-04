@@ -90,10 +90,7 @@ namespace SpeedDial.Classic.Player {
 			if(Unstuck.TestAndFix())
 				return;
 
-
-			//
 			// Start Gravity
-			//
 			Velocity -= new Vector3(0, 0, Gravity * 0.5f) * Time.Delta;
 			Velocity += new Vector3(0, 0, BaseVelocity.z) * Time.Delta;
 			BaseVelocity = BaseVelocity.WithZ(0);
@@ -101,7 +98,6 @@ namespace SpeedDial.Classic.Player {
 			// Fricion is handled before we add in any base velocity. That way, if we are on a conveyor, 
 			//  we don't slow when standing still, relative to the conveyor.
 			bool bStartOnGround = GroundEntity != null;
-			//bool bDropSound = false;
 			if(bStartOnGround) {
 
 				Velocity = Velocity.WithZ(0);
@@ -111,10 +107,7 @@ namespace SpeedDial.Classic.Player {
 				}
 			}
 
-			//
 			// Work out wish velocity.. just take input, rotate it to view, clamp to -1, 1
-			//
-
 			WishVelocity = new Vector3(Input.Forward, Input.Left, 0);
 			var inSpeed = WishVelocity.Length.Clamp(0, 1);
 
@@ -122,9 +115,9 @@ namespace SpeedDial.Classic.Player {
 
 			var player = Pawn as ClassicPlayer;
 			WishVelocity = WishVelocity.Normal * inSpeed;
+
 			// this is dumb
 			WishVelocity *= DefaultSpeed * ((player.ActiveDrug && player.DrugType is DrugType.Polvo) ? 1.5f : 1f);
-
 
 			bool bStayOnGround = false;
 			if(GroundEntity != null) {
@@ -138,8 +131,6 @@ namespace SpeedDial.Classic.Player {
 
 			// FinishGravity
 			Velocity -= new Vector3(0, 0, Gravity * 0.5f) * Time.Delta;
-
-
 
 			if(GroundEntity != null) {
 				Velocity = Velocity.WithZ(0);
@@ -161,7 +152,6 @@ namespace SpeedDial.Classic.Player {
 				DebugOverlay.ScreenText(lineOffset + 4, $" SurfaceFriction: {SurfaceFriction}");
 				DebugOverlay.ScreenText(lineOffset + 5, $"    WishVelocity: {WishVelocity}");
 			}
-
 		}
 
 		protected void WalkMove() {
@@ -209,30 +199,22 @@ namespace SpeedDial.Classic.Player {
 			var startPos = Position;
 			var startVel = Velocity;
 
-			//
 			// First try walking straight to where they want to go.
-			//
 			TryPlayerMove();
 
-			//
 			// mv now contains where they ended up if they tried to walk straight there.
 			// Save those results for use later.
-			//	
 			var withoutStepPos = Position;
 			var withoutStepVel = Velocity;
 
-			//
 			// Try again, this time step up and move across
-			//
 			Position = startPos;
 			Velocity = startVel;
 			var trace = TraceBBox(Position, Position + Vector3.Up * (StepSize + DistEpsilon));
 			if(!trace.StartedSolid) Position = trace.EndPos;
 			TryPlayerMove();
 
-			//
 			// If we move down from here, did we land on ground?
-			//
 			trace = TraceBBox(Position, Position + Vector3.Down * (StepSize + DistEpsilon * 2));
 			if(!trace.Hit || Vector3.GetAngle(Vector3.Up, trace.Normal) > GroundAngle) {
 				// didn't step on ground, so just use the original attempt without stepping
@@ -240,7 +222,6 @@ namespace SpeedDial.Classic.Player {
 				Velocity = withoutStepVel;
 				return;
 			}
-
 
 			if(!trace.StartedSolid)
 				Position = trace.EndPos;
@@ -250,9 +231,7 @@ namespace SpeedDial.Classic.Player {
 			float withoutStep = (withoutStepPos - startPos).WithZ(0).Length;
 			float withStep = (withStepPos - startPos).WithZ(0).Length;
 
-			//
 			// We went further without the step, so lets use that
-			//
 			if(withoutStep > withStep) {
 				Position = withoutStepPos;
 				Velocity = withoutStepVel;
@@ -264,10 +243,6 @@ namespace SpeedDial.Classic.Player {
 		/// Add our wish direction and speed onto our velocity
 		/// </summary>
 		public virtual void Accelerate(Vector3 wishdir, float wishspeed, float speedLimit, float acceleration) {
-			// This gets overridden because some games (CSPort) want to allow dead (observer) players
-			// to be able to move around.
-			// if ( !CanAccelerate() )
-			//     return;
 
 			if(speedLimit > 0 && wishspeed > speedLimit)
 				wishspeed = speedLimit;
@@ -316,7 +291,6 @@ namespace SpeedDial.Classic.Player {
 				newspeed /= speed;
 				Velocity *= newspeed;
 			}
-
 		}
 
 		public virtual void AirMove() {
@@ -346,26 +320,18 @@ namespace SpeedDial.Classic.Player {
 		protected void CategorizePosition(bool bStayOnGround) {
 			SurfaceFriction = 1.0f;
 
-			// Doing this before we move may introduce a potential latency in water detection, but
-			// doing it after can get us stuck on the bottom in water if the amount we move up
-			// is less than the 1 pixel 'threshold' we're about to snap to.	Also, we'll call
-			// this several times per frame, so we really need to avoid sticking to the bottom of
-			// water on each call, and the converse case will correct itself if called twice.
-			//CheckWater();
-
 			var point = Position - Vector3.Up * 2;
 			var vBumpOrigin = Position;
 
-			//
 			//  Shooting up really fast.  Definitely not on ground trimed until ladder shit
-			//
 			bool bMovingUpRapidly = Velocity.z > MaxNonJumpVelocity;
-			bool bMovingUp = Velocity.z > 0;
+
+
 
 			bool bMoveToEndPos = false;
 
-			if(GroundEntity != null) // and not underwater
-			{
+			// and not underwater
+			if(GroundEntity != null) {
 				bMoveToEndPos = true;
 				point.z -= StepSize;
 			} else if(bStayOnGround) {
@@ -373,10 +339,29 @@ namespace SpeedDial.Classic.Player {
 				point.z -= StepSize;
 			}
 
-			if(bMovingUpRapidly || Swimming) // or ladder and moving up
-			{
+			// or ladder and moving up
+			if(bMovingUpRapidly || Swimming) {
 				ClearGroundEntity();
 				return;
+			}
+
+			// falling
+			bool bMovingDownRapidly = Velocity.z < -Gravity;
+			if(bMovingDownRapidly) {
+				var downTrace = Trace.Ray(Position, Position + Vector3.Down * 10000)
+							.WorldAndEntities()
+							.HitLayer(CollisionLayer.All, false)
+							.HitLayer(CollisionLayer.Solid, true)
+							.HitLayer(CollisionLayer.GRATE, true)
+							.HitLayer(CollisionLayer.PLAYER_CLIP, true)
+							.Run();
+
+				// falling in the void, kill the player
+				if(!downTrace.Hit) {
+					if(Host.IsServer)
+						Pawn.Kill();
+					return;
+				}
 			}
 
 			var pm = TraceBBox(vBumpOrigin, point, 4.0f);
