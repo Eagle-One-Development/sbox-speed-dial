@@ -9,10 +9,10 @@ namespace SpeedDial.Classic.Weapons {
 	partial class Rifle : ClassicBaseWeapon, ISpawnable {
 		public override float PrimaryRate => 2.0f;
 		public override int ClipSize => 24;
-		public int burst = 3;
-		private int curBurst = 0;
-		private bool isFiring;
-		public TimeSince burstTimer;
+		public virtual int BurstLength => 3;
+		private int Burst = 0;
+		private bool Firing;
+		public TimeSince TimeSinceBurst;
 		public override int HoldType => 4;
 		public override Vector4 ScreenShakeParameters => new(0.5f, 4.0f, 1.0f, 0.5f);
 		public override float BulletSpread => 0.05f;
@@ -30,32 +30,27 @@ namespace SpeedDial.Classic.Weapons {
 
 			base.Simulate(owner);
 
-			if(isFiring) {
-				if(burstTimer > 0.07f && curBurst < burst) {
-					curBurst++;
+			if(Firing) {
+				if(TimeSinceBurst > 0.07f && Burst < BurstLength) {
+					Burst++;
 					if(!TakeAmmo(1)) {
-						burstTimer = 0;
-						curBurst = 0;
-						isFiring = false;
+						TimeSinceBurst = 0;
+						Burst = 0;
+						Firing = false;
 						PlaySound("sd_dryfrire");
 						return;
 					}
-					(Owner as AnimEntity).SetAnimBool("b_attack", true);
 
 					ShootEffects();
 
-					using(Prediction.Off()) {
-						WeaponPanel.Fire(To.Single(Owner.Client), PanelBumpScale);
-						Crosshair.Fire(To.Single(Owner.Client));
-					}
-					ShootBullet(BulletSpread * (float)((curBurst * 1.5) + 1), BulletForce, BulletDamage, BulletSize, 0);
-					burstTimer = 0;
+					ShootBullet(BulletSpread * (float)((Burst * 1.5) + 1), BulletForce, BulletDamage, BulletSize, 0);
+					TimeSinceBurst = 0;
 				}
 
-				if(curBurst >= burst) {
-					burstTimer = 0;
-					curBurst = 0;
-					isFiring = false;
+				if(Burst >= BurstLength) {
+					TimeSinceBurst = 0;
+					Burst = 0;
+					Firing = false;
 				}
 			}
 		}
@@ -63,8 +58,8 @@ namespace SpeedDial.Classic.Weapons {
 		public override void AttackPrimary() {
 			TimeSincePrimaryAttack = 0;
 
-			if(!isFiring) {
-				isFiring = true;
+			if(!Firing) {
+				Firing = true;
 			}
 		}
 	}

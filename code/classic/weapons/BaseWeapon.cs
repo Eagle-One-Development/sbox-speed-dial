@@ -111,7 +111,6 @@ namespace SpeedDial.Classic.Weapons {
 			}
 		}
 
-
 		public override void SimulateAnimator(PawnAnimator anim) {
 			anim.SetParam("holdtype", HoldType);
 			anim.SetParam("aimat_weight", 1.0f);
@@ -153,11 +152,6 @@ namespace SpeedDial.Classic.Weapons {
 				return;
 			}// no ammo, no shooty shoot
 
-			using(Prediction.Off()) {
-				WeaponPanel.Fire(To.Single(Owner.Client), PanelBumpScale);
-				Crosshair.Fire(To.Single(Owner.Client));
-			}
-
 			// shoot the bullets, bulletcount for something like a shotgun with multiple bullets
 			for(int i = 0; i < BulletCount; i++) {
 				ShootBullet(BulletSpread, BulletForce, BulletDamage, BulletSize, i);
@@ -169,6 +163,8 @@ namespace SpeedDial.Classic.Weapons {
 		public virtual void ShootEffects() {
 			if(IsLocalPawn) {
 				_ = new Sandbox.ScreenShake.Perlin(ScreenShakeParameters.x, ScreenShakeParameters.y, ScreenShakeParameters.z, ScreenShakeParameters.w);
+				WeaponPanel.Fire(PanelBumpScale);
+				Crosshair.Fire();
 			}
 			Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
 			Particles.Create(EjectionParticle, EffectEntity, "ejection_point");
