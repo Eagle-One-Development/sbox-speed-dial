@@ -122,8 +122,8 @@ namespace SpeedDial.Classic.Player {
 			}
 		}
 
-		[Net, Predicted] public TimeSince TimeSinceMeleeStarted { get; set; } = 0;
-		[Net, Predicted] public bool ActiveMelee { get; set; } = false;
+		[Net, Predicted] public TimeSince TimeSinceMeleeStarted { get; set; }
+		[Net, Predicted] public bool ActiveMelee { get; set; }
 
 		public void StartMelee() {
 			ActiveMelee = true;
