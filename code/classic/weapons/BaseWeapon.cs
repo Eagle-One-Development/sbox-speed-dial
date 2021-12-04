@@ -145,48 +145,35 @@ namespace SpeedDial.Classic.Weapons {
 			return TimeSincePrimaryAttack > (1 / rate);
 		}
 
-		// this is retarded, why aren't these just virtual methods???
-		public virtual void AttackPrimary(bool overrideBullet = false, bool overrideShootEffects = false) {
+		public virtual void AttackPrimary() {
 			TimeSincePrimaryAttack = 0;
-			// if(Owner is SpeedDialBotPlayer bot) {
-			// 	bot.TimeSinceShoot = 0f;
-			// }
 
-			if(!overrideBullet) {
-				if(!TakeAmmo(AmmoPerShot)) {
-					PlaySound("sd_dryfrire");
-					return;
-				}// no ammo, no shooty shoot
+			if(!TakeAmmo(AmmoPerShot)) {
+				PlaySound("sd_dryfrire");
+				return;
+			}// no ammo, no shooty shoot
 
-				// why? this shit seems to be culled for no reason, client doesn't get it
-				using(Prediction.Off()) {
-					WeaponPanel.Fire(To.Single(Owner.Client), PanelBumpScale);
-					Crosshair.Fire(To.Single(Owner.Client));
-				}
-
-				// shoot the bullets, bulletcount for something like a shotgun with multiple bullets
-				for(int i = 0; i < BulletCount; i++) {
-
-					ShootBullet(BulletSpread, BulletForce, BulletDamage, BulletSize, i);
-				}
+			using(Prediction.Off()) {
+				WeaponPanel.Fire(To.Single(Owner.Client), PanelBumpScale);
+				Crosshair.Fire(To.Single(Owner.Client));
 			}
 
-			if(!overrideShootEffects) {
-
-				ShootEffects();
-
-				(Owner as AnimEntity).SetAnimBool("b_attack", true); // shoot anim
+			// shoot the bullets, bulletcount for something like a shotgun with multiple bullets
+			for(int i = 0; i < BulletCount; i++) {
+				ShootBullet(BulletSpread, BulletForce, BulletDamage, BulletSize, i);
 			}
+
+			ShootEffects();
 		}
 
 		public virtual void ShootEffects() {
-			// clientside shoot effects
 			if(IsLocalPawn) {
 				_ = new Sandbox.ScreenShake.Perlin(ScreenShakeParameters.x, ScreenShakeParameters.y, ScreenShakeParameters.z, ScreenShakeParameters.w);
 			}
 			Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
 			Particles.Create(EjectionParticle, EffectEntity, "ejection_point");
-			PlaySound(ShootSound); // shoot sound
+			PlaySound(ShootSound);
+			(Owner as AnimEntity).SetAnimBool("b_attack", true); // shoot anim
 		}
 
 		public virtual void ShootBullet(float spread, float force, float damage, float bulletSize, int seed) {
@@ -197,7 +184,6 @@ namespace SpeedDial.Classic.Weapons {
 			var forward = Owner.EyeRot.Forward;
 			forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f * ((player.ActiveDrug && player.DrugType is DrugType.Ritindi) ? 0.25f : 1f);
 			forward = forward.Normal;
-			//forward = new Vector3( forward.x, forward.y, forward.z * VerticalBulletSpread );
 			forward.z *= VerticalBulletSpread;
 
 			int index = 0;
@@ -210,19 +196,11 @@ namespace SpeedDial.Classic.Weapons {
 					ps?.SetForward(0, tr.Normal);
 				}
 
-				//if(IsServer) {
 				if(index == 0) {
-					//BulletTracer(, );
-					var ps = Particles.Create("particles/weapon_fx/sd_bullet_trail/sd_bullet_trail.vpcf", tr.EndPos);
-					ps.SetPosition(0, EffectEntity.GetAttachment("muzzle", true).Value.Position);
-					ps.SetPosition(1, tr.EndPos);
+					BulletTracer(EffectEntity.GetAttachment("muzzle", true).Value.Position, tr.EndPos);
 				} else {
-					//BulletTracer(tr.StartPos, tr.EndPos);
-					var ps = Particles.Create("particles/weapon_fx/sd_bullet_trail/sd_bullet_trail.vpcf", tr.EndPos);
-					ps.SetPosition(0, tr.StartPos);
-					ps.SetPosition(1, tr.EndPos);
+					BulletTracer(tr.StartPos, tr.EndPos);
 				}
-				//}
 
 				index++;
 
@@ -238,6 +216,12 @@ namespace SpeedDial.Classic.Weapons {
 					tr.Entity.TakeDamage(damageInfo);
 				}
 			}
+		}
+
+		public virtual void BulletTracer(Vector3 from, Vector3 to) {
+			var ps = Particles.Create("particles/weapon_fx/sd_bullet_trail/sd_bullet_trail.vpcf", to);
+			ps.SetPosition(0, from);
+			ps.SetPosition(1, to);
 		}
 
 		public virtual float MaxWallbangDistance => 32;

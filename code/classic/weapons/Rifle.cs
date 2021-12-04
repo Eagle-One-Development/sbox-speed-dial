@@ -43,8 +43,7 @@ namespace SpeedDial.Classic.Weapons {
 					(Owner as AnimEntity).SetAnimBool("b_attack", true);
 
 					ShootEffects();
-					PlaySound(ShootSound);
-					
+
 					using(Prediction.Off()) {
 						WeaponPanel.Fire(To.Single(Owner.Client), PanelBumpScale);
 						Crosshair.Fire(To.Single(Owner.Client));
@@ -61,8 +60,8 @@ namespace SpeedDial.Classic.Weapons {
 			}
 		}
 
-		public override void AttackPrimary(bool overrideBullet = false, bool overrideShootEffects = false) {
-			base.AttackPrimary(true, true);
+		public override void AttackPrimary() {
+			TimeSincePrimaryAttack = 0;
 
 			if(!isFiring) {
 				isFiring = true;

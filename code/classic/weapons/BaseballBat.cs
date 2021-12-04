@@ -20,7 +20,7 @@ namespace SpeedDial.Classic.Weapons {
 		[Net, Predicted]
 		public TimeSince TimeSinceSwing { get; set; }
 
-		public override void AttackPrimary(bool _ = false, bool __ = false) {
+		public override void AttackPrimary() {
 			if(TimeSinceSwing > HitDelay) {
 				TimeSinceSwing = 0;
 				Hitting = true;
@@ -38,7 +38,7 @@ namespace SpeedDial.Classic.Weapons {
 				if(TimeSinceSwing <= 0.20f && Hitting) {
 					//DebugOverlay.Line(start.Position, end.Position, Color.Green, 0.1f, false);
 					foreach(var tr in TraceBullet(start.Position, end.Position, 4)) {
-						if(tr.Entity is ClassicPlayer hitPlayer) {
+						if(tr.Entity is ClassicPlayer hitPlayer && hitPlayer.IsValid()) {
 							var ps = Particles.Create("particles/blood/blood_plip.vpcf", tr.EndPos);
 							ps?.SetForward(0, tr.Normal);
 
