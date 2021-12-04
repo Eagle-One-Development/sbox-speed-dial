@@ -92,9 +92,6 @@ namespace SpeedDial.Classic.Player {
 				SimulateDrug();
 			}
 
-			// this should probably be in a better place... too bad!
-			SetAnimBool("b_polvo", ActiveDrug && DrugType is DrugType.Polvo);
-
 			// DEBUG: spawn a random gun
 			if(Debug.Enabled && Input.Pressed(InputButton.Zoom)) {
 				using(Prediction.Off()) {
@@ -117,6 +114,7 @@ namespace SpeedDial.Classic.Player {
 		}
 
 		public void SimulateDrug() {
+			SetAnimBool("b_polvo", ActiveDrug && DrugType is DrugType.Polvo);
 			if(TimeSinceDrugTaken >= DrugDuration) {
 				ActiveDrug = false;
 				DrugParticles?.Destroy();
@@ -147,20 +145,23 @@ namespace SpeedDial.Classic.Player {
 
 				SetAnimBool("b_attack", true);
 
-				if(!IsServer || !tr.Entity.IsValid() || !this.Alive()) return;
+				if(!tr.Entity.IsValid() || !this.Alive()) return;
 
 				using(Prediction.Off()) {
-					var damage = DamageInfo.FromBullet(tr.EndPos, EyeRot.Forward * 100, 200)
-						.UsingTraceResult(tr)
-						.WithAttacker(this);
+					if(IsServer) {
+						var damage = DamageInfo.FromBullet(tr.EndPos, EyeRot.Forward * 100, 200)
+							.UsingTraceResult(tr)
+							.WithAttacker(this);
 
-					damage.Position = Position;
-					PlaySound("smack");
-
-					if(tr.Entity is ClassicPlayer player) {
-						player.DeathCause = CauseOfDeath.Punch;
+						damage.Position = Position;
+						tr.Entity.TakeDamage(damage);
 					}
-					tr.Entity.TakeDamage(damage);
+				}
+
+				PlaySound("smack");
+
+				if(tr.Entity is ClassicPlayer player) {
+					player.DeathCause = CauseOfDeath.Punch;
 				}
 			}
 		}
