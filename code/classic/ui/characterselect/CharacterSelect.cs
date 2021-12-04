@@ -91,7 +91,8 @@ namespace SpeedDial.Classic.UI {
 					if(SelectedIndex < startIndex) {
 						startIndex--;
 					}
-				} else if(Right) {
+				}
+				if(Right) {
 					PromptRightScale += 0.3f;
 					SelectedIndex++;
 					SelectedIndex = SelectedIndex.Clamp(0, Character.All.Count - 1);
@@ -135,32 +136,51 @@ namespace SpeedDial.Classic.UI {
 			PromptRightScale = PromptRightScale.LerpTo(1, Time.Delta * 7f);
 		}
 
-		private bool Select;
 		private bool Left;
+		private bool LeftReleased = true;
 		private bool Right;
+		private bool RightReleased = true;
+		private bool Select;
+		private bool SelectReleased = true;
 		private bool Toggle;
-		private TimeSince TimeSinceInputProcessed;
+		private bool ToggleReleased = true;
+
 
 		// this is stupid but for some reason Input.Pressed is called multiple times in ui, probably a tick vs frame thing
 		private void TickInput() {
-			if(Select)
-				Select = false;
-			if(Left)
-				Left = false;
-			if(Right)
-				Right = false;
-			if(Toggle)
-				Toggle = false;
+			Left = Input.Pressed(InputButton.Menu) && LeftReleased;
+			Right = Input.Pressed(InputButton.Use) && RightReleased;
+			Select = Input.Pressed(InputButton.Jump) && SelectReleased;
+			Toggle = Input.Pressed(InputButton.Duck) && ToggleReleased;
 
-			// wait a tick
-			if(TimeSinceInputProcessed < Global.TickInterval) return;
+			if(Left) {
+				LeftReleased = false;
+			}
+			if(Right) {
+				RightReleased = false;
+			}
+			if(Select) {
+				SelectReleased = false;
+			}
+			if(Toggle) {
+				ToggleReleased = false;
+			}
 
-			Select = Input.Pressed(InputButton.Jump);
-			Left = Input.Pressed(InputButton.Menu);
-			Right = Input.Pressed(InputButton.Use);
-			Toggle = Input.Pressed(InputButton.Duck);
+			if(Input.Released(InputButton.Menu)) {
+				LeftReleased = true;
+			}
 
-			TimeSinceInputProcessed = 0;
+			if(Input.Released(InputButton.Use)) {
+				RightReleased = true;
+			}
+
+			if(Input.Released(InputButton.Jump)) {
+				SelectReleased = true;
+			}
+
+			if(Input.Released(InputButton.Duck)) {
+				ToggleReleased = true;
+			}
 		}
 	}
 }
