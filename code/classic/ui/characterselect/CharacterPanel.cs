@@ -22,10 +22,10 @@ namespace SpeedDial.Classic.UI {
 
 			SetClass("selected", Index == CharacterSelect.SelectedIndex);
 
+			// redundancy clamp
 			Index = Index.Clamp(0, Character.All.Count - 1);
 
 			var character = Character.All.ElementAtOrDefault(Index);
-
 			Portrait.Texture = character.PortraitTexture;
 			CharacterName.Text = $"{character.CharacterName.ToUpper()}";
 			Description.Text = $"\"{character.Description.ToUpper()}\"";

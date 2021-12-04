@@ -56,9 +56,11 @@ namespace SpeedDial.Classic.UI {
 			} else {
 				Sound.FromScreen("tape_stop");
 				MenuSound = Sound.FromScreen("tape_noise");
+				// make sure equipped character is the selected one
 				SelectedIndex = (Local.Pawn as ClassicPlayer).CharacterIndex;
 				// character is outside of the first 4 characters
 				if(SelectedIndex > 3) {
+					// adjust start index so that selected index is at the right edge
 					startIndex = SelectedIndex - 3;
 				}
 			}
@@ -85,6 +87,7 @@ namespace SpeedDial.Classic.UI {
 					PromptLeftScale += 0.3f;
 					SelectedIndex--;
 					SelectedIndex = SelectedIndex.Clamp(0, Character.All.Count - 1);
+					// reached left end of current lineup, shove start index to the left
 					if(SelectedIndex < startIndex) {
 						startIndex--;
 					}
@@ -92,6 +95,7 @@ namespace SpeedDial.Classic.UI {
 					PromptRightScale += 0.3f;
 					SelectedIndex++;
 					SelectedIndex = SelectedIndex.Clamp(0, Character.All.Count - 1);
+					// reached right end of current lineup, shove start index to the right
 					if(SelectedIndex > startIndex + 3) {
 						startIndex++;
 					}
@@ -106,6 +110,7 @@ namespace SpeedDial.Classic.UI {
 				}
 			}
 
+			// set panel indices, start index is first panel on the left
 			Character1.Index = startIndex;
 			Character2.Index = startIndex + 1;
 			Character3.Index = startIndex + 2;
