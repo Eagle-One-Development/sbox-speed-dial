@@ -24,15 +24,11 @@ namespace SpeedDial.Classic.UI {
 			}
 			e.Left.SetClass("me", lsteamid == (Local.Client?.PlayerId));
 
-			Log.Info($"death with {method.ToLower()}");
-
 			// set kill icon based on Cause Of Death
 			e.Method.SetTexture($"materials/ui/killicons/{method.ToLower()}.png");
 			if(e.Method.Texture is null) {
 				e.Method.SetTexture("materials/ui/killicons/generic.png");
 			}
-
-
 
 			e.Right.Text = right;
 			if(string.IsNullOrWhiteSpace(e.Right.Text)) {
