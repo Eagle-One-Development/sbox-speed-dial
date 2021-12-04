@@ -7,9 +7,9 @@ namespace SpeedDial.Classic.Weapons {
 	[Hammer.EntityTool("Baseball Bat", "Speed-Dial Classic Weapons", "Spawns a Baseball Bat.")]
 	partial class BaseballBat : ClassicBaseWeapon, ISpawnable {
 		public override float PrimaryRate => 100;
-		public float HitDelay => 0.8f;
+		public virtual float HitDelay => 0.8f;
 		public override bool Automatic => true;
-		public override int HoldType => 1; // need melee holdtype
+		public override int HoldType => 1;
 		public override int ClipSize => -1; // no ammo hud
 		public override string WorldModel => "models/weapons/melee/melee.vmdl";
 		public override string AttachementName => "melee_bat_attach";
@@ -33,10 +33,7 @@ namespace SpeedDial.Classic.Weapons {
 			base.Simulate(owner);
 
 			if(EffectEntity.GetAttachment("melee_start") is Transform start && EffectEntity.GetAttachment("melee_end") is Transform end) {
-
-				// hardcoded values cause I suck
 				if(TimeSinceSwing <= 0.20f && Hitting) {
-					//DebugOverlay.Line(start.Position, end.Position, Color.Green, 0.1f, false);
 					foreach(var tr in TraceBullet(start.Position, end.Position, 4)) {
 						if(tr.Entity is ClassicPlayer hitPlayer && hitPlayer.IsValid()) {
 							var ps = Particles.Create("particles/blood/blood_plip.vpcf", tr.EndPos);
@@ -44,15 +41,15 @@ namespace SpeedDial.Classic.Weapons {
 
 							PlaySound("sd_bat.hit");
 
-							if(!IsServer) continue;
+							if(IsServer) {
+								using(Prediction.Off()) {
+									var damageInfo = DamageInfo.FromBullet(tr.EndPos, 1000, 100)
+										.UsingTraceResult(tr)
+										.WithAttacker(Owner)
+										.WithWeapon(this);
 
-							using(Prediction.Off()) {
-								var damageInfo = DamageInfo.FromBullet(tr.EndPos, 1000, 100)
-									.UsingTraceResult(tr)
-									.WithAttacker(Owner)
-									.WithWeapon(this);
-
-								tr.Entity.TakeDamage(damageInfo);
+									tr.Entity.TakeDamage(damageInfo);
+								}
 							}
 						}
 					}
