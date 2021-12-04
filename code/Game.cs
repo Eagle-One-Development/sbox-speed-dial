@@ -7,7 +7,7 @@ namespace SpeedDial {
 	public partial class Game : GameBase {
 
 		public static Game Current { get; protected set; }
-		public static string GamemodeName { get; } = "sd_classic";
+		public static string GamemodeName { get; } = "classic";
 
 		public Game() {
 			Transmit = TransmitType.Always;
@@ -26,7 +26,6 @@ namespace SpeedDial {
 				if(ActiveGamemode is null) {
 					Log.Error("GAMEMODES", $"COULDN'T INITIALIZE GAMEMODE {GamemodeName}");
 					Log.Info("GAMEMODES", $"COULDN'T INITIALIZE GAMEMODE {GamemodeName}");
-					return;
 				}
 			}
 			if(MapSettings.Current is null) {

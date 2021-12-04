@@ -8,7 +8,7 @@ using SpeedDial.Classic.Player;
 using SpeedDial.Classic.Rounds;
 
 namespace SpeedDial.Classic {
-	[Library("sd_classic"), Hammer.Skip]
+	[Library("classic"), Hammer.Skip]
 	public partial class ClassicGamemode : Gamemode {
 
 		protected override void OnStart() {
