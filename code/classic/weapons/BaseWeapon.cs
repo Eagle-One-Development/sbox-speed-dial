@@ -127,8 +127,10 @@ namespace SpeedDial.Classic.Weapons {
 			}
 
 			if(CanPrimaryAttack()) {
-				TimeSincePrimaryAttack = 0;
-				AttackPrimary();
+				using(LagCompensation()) {
+					TimeSincePrimaryAttack = 0;
+					AttackPrimary();
+				}
 			}
 		}
 
@@ -229,7 +231,6 @@ namespace SpeedDial.Classic.Weapons {
 					.Ignore(Owner)
 					.Ignore(this)
 					.Size(size)
-					.UseLagCompensation()
 					.Run();
 
 			if(Debug.Weapons) {
@@ -253,7 +254,6 @@ namespace SpeedDial.Classic.Weapons {
 									.Ignore(Owner)
 									.Ignore(this)
 									.Size(1)
-									.UseLagCompensation()
 									.Run();
 
 					if(Debug.Weapons) {
@@ -288,7 +288,6 @@ namespace SpeedDial.Classic.Weapons {
 							.Ignore(this)
 							.Ignore(bullet.Entity)
 							.Size(size)
-							.UseLagCompensation()
 							.Run();
 
 					if(Debug.Weapons) {
@@ -308,7 +307,6 @@ namespace SpeedDial.Classic.Weapons {
 								.Ignore(Owner)
 								.Ignore(this)
 								.Size(size)
-								.UseLagCompensation()
 								.Run();
 
 						if(Debug.Weapons) {
