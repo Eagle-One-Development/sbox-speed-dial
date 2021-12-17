@@ -46,7 +46,7 @@ namespace SpeedDial.Classic.Player {
 			EnableDrawing = true;
 			EnableHideInFirstPerson = true;
 			EnableShadowInFirstPerson = true;
-			LagCompensation = true;
+			EnableLagCompensation = true;
 
 			Frozen = false;
 			GiveWeapon<ClassicBaseWeapon>(Character.WeaponClass);
