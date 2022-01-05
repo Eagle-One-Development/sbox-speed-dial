@@ -45,7 +45,6 @@ namespace SpeedDial.Classic.Player {
 			weapon.Parent = this;
 			weapon.OnCarryStart(this);
 			ActiveChild = weapon;
-			Log.Info("weapon given");
 		}
 
 		public void GiveWeapon<T>(bool drop = false) where T : ClassicBaseWeapon, new() {
