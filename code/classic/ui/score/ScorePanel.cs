@@ -14,7 +14,7 @@ namespace SpeedDial.Classic.UI {
 		private readonly Panel IntensityPanel;
 		private float ComboScale = 0;
 		private float _combo = 0;
-		private float _score = 0;
+		//private float _score = 0;
 
 		[ClientRpc]
 		public static void AwardKill() {
