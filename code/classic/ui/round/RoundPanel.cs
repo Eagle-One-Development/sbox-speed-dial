@@ -17,7 +17,7 @@ namespace SpeedDial.Classic.UI {
 			StyleSheet.Load("/classic/ui/round/RoundPanel.scss");
 			AddClass("roundpanel");
 			Timer = Add.Panel("timer");
-			TimeLabel = Timer.Add.Label("00:00", "timelabel");
+			TimeLabel = Timer.Add.Label("69:69", "timelabel");
 			TopPlayers = Add.Panel("players");
 		}
 
