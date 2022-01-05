@@ -53,8 +53,8 @@ namespace SpeedDial.Classic.Player {
 			}
 
 			if(LastRecievedDamage.Weapon is ClassicBaseWeapon wep) {
-				// HACK. this should be done better... too bad!
-				if(wep is BaseballBat) {
+				// HACK. this could be done better... too bad!
+				if(wep is IMelee) {
 					DeathCause = CauseOfDeath.Melee;
 				} else {
 					DeathCause = CauseOfDeath.Bullet;

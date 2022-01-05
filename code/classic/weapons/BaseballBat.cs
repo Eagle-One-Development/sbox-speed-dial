@@ -5,7 +5,7 @@ namespace SpeedDial.Classic.Weapons {
 	[Library("sdg_bat", Title = "BASEBALL BAT", Spawnable = true)]
 	[Hammer.EditorModel("models/weapons/melee/melee.vmdl")]
 	[Hammer.EntityTool("Baseball Bat", "Speed-Dial Classic Weapons", "Spawns a Baseball Bat.")]
-	partial class BaseballBat : ClassicBaseWeapon, ISpawnable {
+	partial class BaseballBat : ClassicBaseWeapon, ISpawnable, IMelee {
 		public override float PrimaryRate => 100;
 		public virtual float HitDelay => 0.8f;
 		public override bool Automatic => true;
