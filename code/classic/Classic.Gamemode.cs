@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 
 using Sandbox;
 
@@ -44,6 +45,62 @@ namespace SpeedDial.Classic {
 					KillFeed.AddDeath(client.PlayerId, client.Name, 0, "", player.DeathCause.ToString());
 				}
 			}
+
+			// handle domination/revenge stuff
+			var killevent = HandleDomination(pawn);
+
+			ScreenHints.FireEvent(To.Single(pawn.Client), "WHACKED", killevent == KillEvent.Domination ? "+DOMINATED" : "");
+			// TODO: tell killer if he's taken revenge when killevent == KillEvent.Revenge
+			// TODO: tell victim he's being dominated by someone when killevent == KillEvent.Domination
 		}
+
+		public enum KillEvent {
+			Domination,
+			Revenge,
+			None
+		}
+
+		public List<Kill> Kills { get; set; } = new();
+
+		public KillEvent HandleDomination(BasePlayer pawn) {
+
+			// add new kill to list
+			var kill = new Kill(pawn.LastRecievedDamage.Attacker, pawn);
+			Kills.Add(kill);
+
+			// clear out kills with disconnected/invalid attacker or victim entity
+			Kills.RemoveAll(x => !x.Attacker.IsValid() || !x.Victim.IsValid);
+
+			// amount of times last attacker has killed us recently
+			var attackerkills = Kills.Where(x => x.Attacker == pawn.LastRecievedDamage.Attacker && x.Victim == pawn).Count();
+			// amount of times we killed the attacker recently
+			var victimkills = Kills.Where(x => x.Attacker == pawn && x.Victim == pawn.LastRecievedDamage.Attacker).Count();
+
+			// remove all kill entries where the pawn was the attacker and the current attacker was the victim, ends possible domination streaks
+			Kills.RemoveAll(x => x.Attacker == pawn && x.Victim == pawn.LastRecievedDamage.Attacker);
+
+			if(victimkills >= 3) {
+				Debug.Log($"REVENGE FROM {pawn.LastRecievedDamage.Attacker.Client.Name} AGAINST {pawn.Client.Name}");
+				return KillEvent.Revenge;
+			}
+
+			// dominate on exactly 3 consecutive kills
+			if(attackerkills == 3) {
+				Debug.Log($"DOMINATION FROM {pawn.LastRecievedDamage.Attacker.Client.Name} AGAINST {pawn.Client.Name}");
+				return KillEvent.Domination;
+			}
+
+			return KillEvent.None;
+		}
+	}
+
+	public class Kill {
+		public Kill(Entity attacker, Entity victim) {
+			Attacker = attacker;
+			Victim = victim;
+		}
+
+		public Entity Attacker;
+		public Entity Victim;
 	}
 }

@@ -118,7 +118,7 @@ namespace SpeedDial {
 			Game.Current.PawnKilled(this, LastRecievedDamage);
 		}
 
-		protected DamageInfo LastRecievedDamage { get; set; }
+		public DamageInfo LastRecievedDamage { get; set; }
 
 		public override void TakeDamage(DamageInfo info) {
 			// If this pawn is allowed to take damage. Then take damage

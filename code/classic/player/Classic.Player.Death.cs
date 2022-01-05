@@ -1,4 +1,6 @@
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 
 using Sandbox;
 
@@ -38,10 +40,9 @@ namespace SpeedDial.Classic.Player {
 				weapon.CanImpactKill = false;
 			}
 
-			// death effects, body + particles/decals, screen hint
+			// death effects, body + particles/decals
 			BecomeRagdollOnClient(To.Everyone, new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0));
 			BloodSplatter(To.Everyone);
-			ScreenHints.FireEvent(To.Single(Client), "WHACKED", "+WIP");
 			SoundFromScreen(To.Single(Client), "player_death");
 
 			// give the killer his score etc
