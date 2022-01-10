@@ -27,8 +27,8 @@ namespace SpeedDial.Classic.Player {
 			Portrait = System.IO.Path.ChangeExtension(Portrait, "png");
 			Weapon = System.IO.Path.ChangeExtension(Weapon, "png");
 			if(Host.IsClient) {
-				PortraitTexture = Texture.Load(Portrait);
-				WeaponTexture = Texture.Load(Weapon);
+				PortraitTexture = Texture.Load(FileSystem.Mounted, Portrait);
+				WeaponTexture = Texture.Load(FileSystem.Mounted, Weapon);
 			}
 
 			CharacterModel = Sandbox.Model.Load(Model);
