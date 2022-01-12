@@ -13,8 +13,6 @@ namespace SpeedDial.Classic.UI {
 		public Label DrugName { get; set; }
 
 		public DrugPanel() {
-			StyleSheet.Load("/classic/ui/drug/DrugPanel.scss");
-
 			DrugName.BindClass("show", () => (Local.Pawn as ClassicPlayer).ActiveDrug && (Local.Pawn as ClassicPlayer).TimeSinceDrugTaken >= 1.5f);
 		}
 
