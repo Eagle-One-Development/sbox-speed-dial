@@ -16,12 +16,22 @@ namespace SpeedDial.Classic.UI {
 		private bool FireExtra;
 		private bool FireBanner;
 
+		// killer info
+		public string KilledBy => $"KILLED BY:";
+		public string KillerName => $"EAGLE ONE DEVELOPMENT TEAM";
+		public Image KillerAvatar { get; set; }
+
 		public ScreenHints() {
 			Current = this;
 
 			Banner.BindClass("visible", () => Active && FireBanner);
 			Title.BindClass("visible", () => Active && TimeSinceActive > 0.05f - (FireBanner ? 0 : 0.05f));
 			Extra.BindClass("visible", () => Active && FireExtra && TimeSinceActive > 0.5f - (FireBanner ? 0 : 0.05f));
+		}
+
+		protected override void PostTemplateApplied() {
+			base.PostTemplateApplied();
+			KillerAvatar.SetTexture($"avatar:76561198203314521");
 		}
 
 		public override void Tick() {
