@@ -5,28 +5,19 @@ using Sandbox.UI;
 using Sandbox.UI.Construct;
 
 namespace SpeedDial.Classic.UI {
+	[UseTemplate]
 	public partial class ScreenHints : Panel {
 		public static ScreenHints Current { get; private set; }
 		private bool Active;
 		private TimeSince TimeSinceActive;
-		private readonly Panel Banner;
-		private readonly Label Title;
-		private readonly Label Extra;
+		public Panel Banner { get; set; }
+		public Label Title { get; set; }
+		public Label Extra { get; set; }
 		private bool FireExtra;
 		private bool FireBanner;
 
 		public ScreenHints() {
 			Current = this;
-
-			StyleSheet.Load("/classic/ui/screenhints/ScreenHints.scss");
-
-			Banner = Add.Panel("banner");
-			Banner.Add.Panel("right");
-			Banner.Add.Panel("left");
-
-			Title = Add.Label("IF YOU READ THIS", "title");
-			Extra = Add.Label("+YOU ARE HANDSOME.", "extra");
-
 
 			Banner.BindClass("visible", () => Active && FireBanner);
 			Title.BindClass("visible", () => Active && TimeSinceActive > 0.05f - (FireBanner ? 0 : 0.05f));
