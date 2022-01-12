@@ -7,18 +7,21 @@ using Sandbox.UI.Construct;
 using SpeedDial.Classic.Player;
 
 namespace SpeedDial.Classic.UI {
+	[UseTemplate]
 	public partial class DrugPanel : Panel {
-		private readonly Panel ProgressBar;
+		public Panel ProgressBar { get; set; }
+		public Label DrugName { get; set; }
 
 		public DrugPanel() {
 			StyleSheet.Load("/classic/ui/drug/DrugPanel.scss");
 
-			ProgressBar = Add.Panel("progressbar");
-			ProgressBar.Add.Panel("gradient");
+			DrugName.BindClass("show", () => (Local.Pawn as ClassicPlayer).ActiveDrug);
 		}
 
 		public override void Tick() {
 			if(Local.Pawn is ClassicPlayer player) {
+				
+				DrugName.Text = $"{player.DrugType.ToString().ToUpper()}";
 				if(player.ActiveDrug) {
 					var progress = 1 - player.TimeSinceDrugTaken / player.DrugDuration;
 					ProgressBar.Style.Width = Length.Percent(progress * 100);

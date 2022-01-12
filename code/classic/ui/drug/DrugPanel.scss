@@ -4,14 +4,12 @@ drugpanel {
     width: 100%;
     height: 100%;
     position: absolute;
-
     justify-content: flex-start;
 
     .progressbar {
         width: 100%;
         height: 15px;
         position: absolute;
-
         bottom: 0px;
         overflow: hidden;
 
@@ -19,10 +17,30 @@ drugpanel {
             width: 100vw;
             height: 15px;
             position: absolute;
-
             bottom: 0px;
             left: 0px;
             background-image: linear-gradient(to left, rgba($vhs_cyan, 1), rgba($vhs_magenta, 1));
         }
+    }
+
+    .druglabel {
+
+        &.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        transition: all 0.1s ease-out;
+        transform: scale(0.5);
+        transform-origin: 0% 100%;
+
+        opacity: 0;
+        position: absolute;
+        font-family: $font;
+        color: white;
+        font-size: 50px;
+        left: 30px;
+        bottom: 20px;
+        text-shadow: -3px -2px 1px $vhs_cyan, 5px 2px 1px $vhs_magenta;
     }
 }
