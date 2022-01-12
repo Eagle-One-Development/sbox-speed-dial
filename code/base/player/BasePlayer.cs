@@ -5,7 +5,7 @@ namespace SpeedDial {
 	public partial class BasePlayer : AnimEntity {
 
 		public virtual float RespawnTime => 1;
-		public virtual string Model { get; set; } = "models/citizen/citizen.vmdl";
+		public virtual string ModelPath { get; set; } = "models/citizen/citizen.vmdl";
 		[Net] public float MaxHealth { get; set; } = 100;
 		[Net] public TimeSince TimeSinceDied { get; set; }
 		[Predicted] Entity LastActiveChild { get; set; }
@@ -100,7 +100,7 @@ namespace SpeedDial {
 		public virtual void Respawn() {
 			Host.AssertServer();
 
-			SetModel(Model);
+			SetModel(ModelPath);
 
 			LifeState = LifeState.Alive;
 			Health = 100;
