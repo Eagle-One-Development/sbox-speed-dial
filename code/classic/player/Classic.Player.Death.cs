@@ -80,7 +80,7 @@ namespace SpeedDial.Classic.Player {
 			ent.SetInteractsWith(CollisionLayer.WORLD_GEOMETRY);
 			ent.SetInteractsExclude(CollisionLayer.Player | CollisionLayer.Debris);
 
-			ent.SetModel(GetModel());
+			ent.Model = Model;
 
 			ent.CopyBonesFrom(this);
 			ent.TakeDecalsFrom(this);
