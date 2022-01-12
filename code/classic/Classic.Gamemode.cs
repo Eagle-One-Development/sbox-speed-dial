@@ -49,7 +49,7 @@ namespace SpeedDial.Classic {
 			// handle domination/revenge stuff
 			var killevent = HandleDomination(pawn);
 
-			ScreenHints.FireEvent(To.Single(pawn.Client), "WHACKED", killevent == KillEvent.Domination ? "+DOMINATED" : "");
+			ScreenHints.FireEvent(To.Single(pawn.Client), "WHACKED", killevent == KillEvent.Domination ? "+DOMINATED" : "+WIP");
 			// TODO: tell killer if he's taken revenge when killevent == KillEvent.Revenge
 			// TODO: tell victim he's being dominated by someone when killevent == KillEvent.Domination
 		}
