@@ -6,13 +6,13 @@ namespace SpeedDial {
 		[ConVar.Replicated("debug_enable")]
 		public static bool Enabled { get; set; }
 
-		[ConVar.Replicated("sdial_debug_camera")]
+		[ConVar.Replicated("sd_debug_camera")]
 		public static bool Camera { get; set; }
 
-		[ConVar.Replicated("sdial_debug_weapons")]
+		[ConVar.Replicated("sd_debug_weapons")]
 		public static bool Weapons { get; set; }
 
-		[ConVar.Replicated("sdial_debug_infinite_ammo")]
+		[ConVar.Replicated("sd_debug_infinite_ammo")]
 		public static bool InfiniteAmmo { get; set; }
 
 		public static void Log(object obj) {
