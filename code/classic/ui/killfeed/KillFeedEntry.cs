@@ -6,24 +6,18 @@ using Sandbox.UI;
 using Sandbox.UI.Construct;
 
 namespace SpeedDial.Classic.UI {
+	[UseTemplate]
 	public partial class KillFeedEntry : Panel {
-		public Label Left { get; internal set; }
-		public Label Right { get; internal set; }
-		//public Label Method { get; internal set; }
-		public Image Method { get; internal set; }
+		public Label Left { get; set; }
+		public Label Right { get; set; }
+		public Image Method { get; set; }
 
-		public RealTimeSince TimeSinceBorn = 0;
-
-		public KillFeedEntry() {
-			Left = Add.Label("", "left");
-			Method = Add.Image("materials/ui/killicons/generic.png", "method");
-			Right = Add.Label("", "right");
-		}
+		public RealTimeSince TimeSinceCreated = 0;
 
 		public override void Tick() {
 			base.Tick();
 
-			if(TimeSinceBorn > 6) {
+			if(TimeSinceCreated > 6) {
 				Delete();
 			}
 		}
