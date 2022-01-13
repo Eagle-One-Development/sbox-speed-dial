@@ -9,18 +9,25 @@ namespace SpeedDial {
 	/// <summary> Round </summary>
 	public abstract partial class Round : BaseNetworkable {
 		/// <summary> how long are think ticks in seconds? </summary>
-		protected virtual float ThinkTime => 1;
+		protected virtual float ThinkTime => 0.1f;
 
 		/// <summary> Call Finish() to finish a round </summary>
 		[Net] public bool Finished { get; private set; }
 
 		[Net] public float StartTime { get; private set; }
+		public virtual string RoundText => "Round";
 
 		/// <summary>
 		/// Formatted version of the time elapsed in the round in seconds
 		/// </summary>
 		[Net]
 		public string TimeElapsedFormatted { get; set; } = "";
+
+		public Round() {
+			// ui gets update on tick, round thinks 10 times a second
+			// set it before start runs so ui doesn't look whack
+			StartTime = Time.Now;
+		}
 
 		/// <summary> [Server Assert] Start the round </summary>
 		public virtual void Start() {

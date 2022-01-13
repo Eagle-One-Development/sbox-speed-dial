@@ -6,6 +6,7 @@ using Sandbox;
 using SpeedDial.Classic.Drugs;
 using SpeedDial.Classic.Weapons;
 using SpeedDial.Classic.UI;
+using SpeedDial.Classic.Rounds;
 
 namespace SpeedDial.Classic.Player {
 	public partial class ClassicPlayer : BasePlayer {
@@ -22,7 +23,7 @@ namespace SpeedDial.Classic.Player {
 
 		public override void InitialRespawn() {
 			CharacterIndex = Rand.Int(0, Character.All.Count - 1);
-			PlaySoundtrack(To.Single(Client));
+			//PlaySoundtrack(To.Single(Client));
 			Respawn();
 		}
 
@@ -261,8 +262,9 @@ namespace SpeedDial.Classic.Player {
 				Debug.Log($"char index set to {index}");
 				index = index.Clamp(0, Character.All.Count);
 				player.CharacterIndex = index;
-				// if(Instance.Round is PreRound) 
-				player.RefreshCharacter();
+
+				if(Gamemode.Instance.ActiveRound is PreRound or WarmupRound) 
+					player.RefreshCharacter();
 			}
 		}
 	}

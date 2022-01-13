@@ -5,7 +5,6 @@ using Sandbox;
 namespace SpeedDial {
 	/// <summary> Timed Round </summary>
 	public abstract partial class TimedRound : Round {
-		protected sealed override float ThinkTime => 1f;
 
 		/// <summary> How long does this round go for? </summary>
 		public virtual TimeSpan RoundDuration { get => TimeSpan.FromSeconds(60); }

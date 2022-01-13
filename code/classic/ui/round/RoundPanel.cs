@@ -13,16 +13,20 @@ namespace SpeedDial.Classic.UI {
 		public Panel Timer { get; set; }
 		public Label TimeLabel { get; set; }
 		public Panel TopPlayers { get; set; }
+		public Label RoundText { get; set; }
 
 		Dictionary<Client, PlayerEntry> Players = new();
 
 		public override void Tick() {
-			if(Game.Current.GetGamemode() is Gamemode gamemode) {
-				if(gamemode.GetRound() is TimedRound timedRound) {
+			var gamemode = Game.Current.ActiveGamemode;
+			if(gamemode is not null && gamemode.ActiveRound is not null) {
+				if(gamemode.ActiveRound is TimedRound timedRound) {
 					TimeLabel.Text = $"-{timedRound.TimeLeftFormatted}";
-				} else if(gamemode.GetRound() is Round round) {
+				} else if(gamemode.ActiveRound is Round round) {
 					TimeLabel.Text = $"+{round.TimeElapsedFormatted}";
 				}
+
+				RoundText.Text = $"{gamemode.ActiveRound.RoundText}";
 			}
 
 			// Clients that joined

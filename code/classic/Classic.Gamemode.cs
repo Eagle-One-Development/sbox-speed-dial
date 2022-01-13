@@ -30,7 +30,7 @@ namespace SpeedDial.Classic {
 		public static ClassicGamemode Current => Instance as ClassicGamemode;
 
 		protected override void OnStart() {
-			SetRound(new TestRound());
+			SetRound(new WarmupRound());
 			PickNewSoundtrack();
 		}
 

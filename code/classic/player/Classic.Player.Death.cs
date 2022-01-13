@@ -6,6 +6,7 @@ using Sandbox;
 
 using SpeedDial.Classic.UI;
 using SpeedDial.Classic.Weapons;
+using SpeedDial.Classic.Rounds;
 
 namespace SpeedDial.Classic.Player {
 	public partial class ClassicPlayer {
@@ -45,7 +46,7 @@ namespace SpeedDial.Classic.Player {
 			BloodSplatter(To.Everyone);
 			SoundFromScreen(To.Single(Client), "player_death");
 
-			// give the killer his score etc
+			// give the killer his score etc during gameplay
 			if(LastRecievedDamage.Attacker is ClassicPlayer attacker) {
 				attacker.TimeSinceMurdered = 0;
 				attacker.AwardKill(this);

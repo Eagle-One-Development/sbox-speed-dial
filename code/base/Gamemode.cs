@@ -46,7 +46,7 @@ namespace SpeedDial {
 		// Round
 		//
 
-		[Net] private Round ActiveRound { get; set; }
+		[Net] public Round ActiveRound { get; private set; }
 
 		/// <summary> [Assert Server] Forcefully change the active round </summary>
 		public void SetRound(Round round) {
@@ -58,11 +58,6 @@ namespace SpeedDial {
 			ActiveRound = round;
 
 			ActiveRound?.Start();
-		}
-
-		/// <summary> [Client Safe] Returns the active round </summary>
-		public Round GetRound() {
-			return ActiveRound;
 		}
 
 		[Event.Frame]

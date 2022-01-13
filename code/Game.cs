@@ -9,6 +9,9 @@ namespace SpeedDial {
 		public static Game Current { get; protected set; }
 		public static string GamemodeName { get; } = "classic";
 
+		[ServerVar("sd_min_players", Help = "The minimum players required to start the game.")]
+		public static int MinPlayers { get; set; } = 2;
+
 		public Game() {
 			Transmit = TransmitType.Always;
 			Current = this;
@@ -275,7 +278,7 @@ namespace SpeedDial {
 		//
 
 		[Net]
-		private Gamemode ActiveGamemode { get; set; }
+		public Gamemode ActiveGamemode { get; private set; }
 
 		/// <summary> [Server Assert] Change the gamemode </summary>
 		/// <param name="gamemode"> Gamemode to change to </param>
@@ -285,11 +288,6 @@ namespace SpeedDial {
 			ActiveGamemode?.Finish();
 			ActiveGamemode = gamemode;
 			ActiveGamemode?.Start();
-		}
-
-		/// <summary> Returns the active gamemode </summary>
-		public Gamemode GetGamemode() {
-			return ActiveGamemode;
 		}
 	}
 }
