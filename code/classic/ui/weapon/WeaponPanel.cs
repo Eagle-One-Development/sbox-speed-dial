@@ -7,21 +7,18 @@ using Sandbox.UI.Construct;
 using SpeedDial.Classic.Weapons;
 
 namespace SpeedDial.Classic.UI {
+	[UseTemplate]
 	public partial class WeaponPanel : Panel {
 		public static WeaponPanel Current { get; private set; }
-		private readonly Label AmmoLabel;
-		private readonly Label WeaponLabel;
-		private readonly Panel Panel;
-		private float AmmoScale = 1;
 
+		public Label AmmoLabel { get; set; }
+		public Label WeaponLabel { get; set; }
+		public Panel Panel { get; set; }
+
+		private float AmmoScale = 1;
 
 		public WeaponPanel() {
 			Current = this;
-
-			StyleSheet.Load("/classic/ui/weapon/WeaponPanel.scss");
-			Panel = Add.Panel("weapon");
-			AmmoLabel = Panel.Add.Label("0", "clip");
-			WeaponLabel = Panel.Add.Label("WEAPON", "weaponname");
 		}
 
 		[ClientRpc]
