@@ -6,13 +6,12 @@ using Sandbox.UI;
 using Sandbox.UI.Construct;
 
 namespace SpeedDial.Classic.UI {
+	[UseTemplate]
 	public partial class KillFeed : Panel {
 		public static KillFeed Current { get; private set; }
 
 		public KillFeed() {
 			Current = this;
-
-			StyleSheet.Load("/classic/ui/killfeed/KillFeed.scss");
 		}
 
 		public virtual Panel AddEntry(long lsteamid, string left, long rsteamid, string right, string method) {
