@@ -19,12 +19,7 @@ namespace SpeedDial.Classic.Player {
 		private Vector3 camOffset;
 		private Vector3 camOffsetTarget;
 
-		public ClassicCamera() {
-			Event.Register(this);
-		}
-
 		public bool CameraShift { get; set; }
-
 
 		public override void BuildInput(InputBuilder input) {
 			var client = Local.Pawn;
@@ -76,12 +71,6 @@ namespace SpeedDial.Classic.Player {
 			input.ViewAngles = ang;
 			input.InputDirection = input.AnalogMove;
 		}
-
-		// [Event("SDEvents.Settings.Changed")]
-		// private void onSettingChange() {
-		// 	if(Host.IsClient && Settings.SettingsManager.GetSetting("Viewshift Toggle").TryGetBool(out bool? res))
-		// 		ViewshiftToggle = res.Value;
-		// }
 
 		public override void Update() {
 			var pawn = Local.Pawn;
