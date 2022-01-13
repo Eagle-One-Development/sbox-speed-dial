@@ -5,17 +5,12 @@ using Sandbox.UI;
 using Sandbox.UI.Construct;
 
 namespace SpeedDial.Classic.UI {
+	[UseTemplate]
 	public partial class PlayerEntry : Panel {
 		public Client Client;
-		private readonly Image Avatar;
-		private readonly Label Score;
 
-		public PlayerEntry() {
-			AddClass("player");
-
-			Avatar = Add.Image($"", "avatar");
-			Score = Add.Label("000", "score");
-		}
+		public Image Avatar { get; set; }
+		public Label Score { get; set; }
 
 		RealTimeSince TimeSinceUpdate = 0;
 

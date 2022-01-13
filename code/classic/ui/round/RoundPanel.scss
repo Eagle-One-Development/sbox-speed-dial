@@ -1,6 +1,6 @@
 @import "/classic/ui/_vars/globals.scss";
 
-.roundpanel {
+roundpanel {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -21,7 +21,7 @@
         }
     }
 
-    label {
+    text, label {
         color: white;
         font-family: $font;
         //text-stroke: 10px black;
@@ -36,7 +36,7 @@
     }
 
     .players {
-        top: 5px;
+        top: 10px;
         .player {
             margin: 3px;
 

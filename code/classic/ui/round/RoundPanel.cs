@@ -7,19 +7,14 @@ using Sandbox.UI;
 using Sandbox.UI.Construct;
 
 namespace SpeedDial.Classic.UI {
-	public partial class RoundPanel<T> : Panel where T : PlayerEntry, new() {
-		private readonly Panel Timer;
-		private readonly Label TimeLabel;
-		private readonly Panel TopPlayers;
-		Dictionary<Client, T> Players = new();
+	[UseTemplate]
+	public partial class RoundPanel : Panel {
 
-		public RoundPanel() {
-			StyleSheet.Load("/classic/ui/round/RoundPanel.scss");
-			AddClass("roundpanel");
-			Timer = Add.Panel("timer");
-			TimeLabel = Timer.Add.Label("69:69", "timelabel");
-			TopPlayers = Add.Panel("players");
-		}
+		public Panel Timer { get; set; }
+		public Label TimeLabel { get; set; }
+		public Panel TopPlayers { get; set; }
+
+		Dictionary<Client, PlayerEntry> Players = new();
 
 		public override void Tick() {
 			if(Game.Current.GetGamemode() is Gamemode gamemode) {
@@ -53,8 +48,8 @@ namespace SpeedDial.Classic.UI {
 			}
 		}
 
-		protected virtual T AddClient(Client entry) {
-			var p = TopPlayers.AddChild<T>();
+		protected virtual PlayerEntry AddClient(Client entry) {
+			var p = TopPlayers.AddChild<PlayerEntry>();
 			p.Client = entry;
 			return p;
 		}
