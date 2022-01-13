@@ -7,23 +7,7 @@ namespace SpeedDial.Classic.UI {
 		public static Color VHS_CYAN = new(0f / 255f, 210f / 255f, 255f / 255f, 1.0f);
 		public ClassicHud() {
 			if(!IsClient) return;
-			RootPanel.AddChild<ChatBox>();
-
-			RootPanel.AddChild<WorldHints>();
-
-			RootPanel.AddChild<WeaponPanel>();
-			RootPanel.AddChild<ScorePanel>();
-			RootPanel.AddChild<DrugPanel>();
-			RootPanel.AddChild<RoundPanel>();
-
-			RootPanel.AddChild<ScreenHints>();
-
-			RootPanel.AddChild<KillFeed>();
-
-			RootPanel.AddChild<CharacterSelect>();
-
-			RootPanel.AddChild<ClassicScoreboard>();
-			RootPanel.AddChild<Crosshair>();
+			RootPanel.SetTemplate("/classic/ui/Hud.Classic.html");
 		}
 	}
 }
