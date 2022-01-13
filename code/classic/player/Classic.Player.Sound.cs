@@ -12,6 +12,7 @@ namespace SpeedDial.Classic.Player {
 
 		[ClientRpc]
 		public void PlayRoundendClimax() {
+			if(!Settings.MusicEnabled) return;
 			SoundTrack.FromScreen("climax");
 			_ = StopSoundtrackAsync();
 		}
@@ -25,10 +26,12 @@ namespace SpeedDial.Classic.Player {
 
 		[ClientRpc]
 		public void PlaySoundtrack() {
+			if(!Settings.MusicEnabled) return;
 			_ = PlaySoundtrackAsync(ClassicGamemode.Current.CurrentSoundtrack, 2.5f);
 		}
 
 		private async Task PlaySoundtrackAsync(string track, float delay) {
+			if(!Settings.MusicEnabled) return;
 			await GameTask.DelaySeconds(delay);
 			if(!SoundtrackPlaying) {
 				SoundTrack = SoundTrack.FromScreen(track);
