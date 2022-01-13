@@ -5,13 +5,16 @@ using Sandbox.UI;
 using Sandbox.UI.Construct;
 
 namespace SpeedDial.Classic.UI {
+	[UseTemplate]
 	public partial class ScorePanel : Panel {
 		public static ScorePanel Current { get; private set; }
-		private readonly Panel Score;
-		private readonly Panel Combo;
-		private readonly Label ScoreLabel;
-		private readonly Label ComboLabel;
-		private readonly Panel IntensityPanel;
+
+		public Panel Score { get; set; }
+		public Panel Combo { get; set; }
+		public Label ScoreLabel { get; set; }
+		public Label ComboLabel { get; set; }
+		public Panel IntensityPanel { get; set; }
+
 		private float ComboScale = 0;
 		private float _combo = 0;
 		//private float _score = 0;
@@ -23,20 +26,6 @@ namespace SpeedDial.Classic.UI {
 
 		public ScorePanel() {
 			Current = this;
-
-			StyleSheet.Load("/classic/ui/score/ScorePanel.scss");
-
-			// TODO: put this in it's own thing to make sure it's behind stuff?
-			IntensityPanel = Add.Panel("intensity");
-			IntensityPanel.Add.Panel("right");
-			IntensityPanel.Add.Panel("left");
-
-			var pan = Add.Panel("scoreCombo");
-			Score = pan.Add.Panel("score");
-			ScoreLabel = Score.Add.Label("0 PTS", "scorelabel");
-
-			Combo = pan.Add.Panel("combo");
-			ComboLabel = Combo.Add.Label("x0", "combolabel");
 		}
 
 		public override void Tick() {
