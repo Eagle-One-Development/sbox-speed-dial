@@ -50,11 +50,15 @@ namespace SpeedDial.Classic {
 
 				string killtext;
 				if(killevent == KillEvent.Domination) {
+					// last attacker dominates pawn, highlight them for pawn
+					ClassicPlayer.UpdateGlow(To.Single(pawn.Client), player.LastAttacker as ModelEntity, GlowStates.On, Color.Red);
 					killtext = "+DOMINATION";
 				} else if(killevent == KillEvent.Revenge) {
+					// last attacker has taken revenge against pawn; pawn no longer dominates last attacker
+					ClassicPlayer.UpdateGlow(To.Single(player.LastAttacker.Client), pawn, GlowStates.Off, Color.Black);
 					killtext = "+REVENGE";
 				} else {
-					killtext = "+WIP";
+					killtext = "";
 				}
 
 				// only show killer if we got killed by a player
@@ -63,10 +67,6 @@ namespace SpeedDial.Classic {
 				} else {
 					ScreenHints.FireEvent(To.Single(pawn.Client), "WHACKED", killtext, true, player.LastAttacker.Client, killevent == KillEvent.Domination || killevent == KillEvent.Revenge);
 				}
-				
-				// TODO: tell killer if he's taken revenge when killevent == KillEvent.Revenge
-				// TODO: tell victim he's being dominated by someone when killevent == KillEvent.Domination
-
 			}
 		}
 

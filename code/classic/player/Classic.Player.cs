@@ -53,6 +53,9 @@ namespace SpeedDial.Classic.Player {
 
 			Game.Current.PawnRespawned(this);
 			Game.Current.MoveToSpawnpoint(this);
+
+			// we died, so there's no way anybody still has a highlight on us
+			UpdateGlow(To.Everyone, this, GlowStates.Off, Color.Black);
 		}
 
 		public override void Simulate(Client cl) {
@@ -111,6 +114,12 @@ namespace SpeedDial.Classic.Player {
 		public void RefreshCharacter() {
 			Model = Character.CharacterModel;
 			GiveWeapon<ClassicBaseWeapon>(Character.WeaponClass);
+		}
+
+		[ClientRpc]
+		public static void UpdateGlow(ModelEntity ent, GlowStates state, Color col) {
+			ent.GlowState = state;
+			ent.GlowColor = col;
 		}
 
 		public void SimulateDrug() {
