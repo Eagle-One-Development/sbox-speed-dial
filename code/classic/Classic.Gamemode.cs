@@ -58,7 +58,7 @@ namespace SpeedDial.Classic {
 				}
 
 				// only show killer if we got killed by a player
-				if(player.DeathCause == ClassicPlayer.CauseOfDeath.Suicide) {
+				if(player.DeathCause == ClassicPlayer.CauseOfDeath.Suicide || player.LastAttacker is null) {
 					ScreenHints.FireEvent(To.Single(pawn.Client), "WHACKED", killtext);
 				} else {
 					ScreenHints.FireEvent(To.Single(pawn.Client), "WHACKED", killtext, true, player.LastAttacker.Client, killevent == KillEvent.Domination || killevent == KillEvent.Revenge);
