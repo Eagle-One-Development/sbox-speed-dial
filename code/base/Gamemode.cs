@@ -9,8 +9,13 @@ namespace SpeedDial {
 	/// <summary> [Server, Client] Gamemode base </summary>
 	[Library(Spawnable = false), Hammer.Skip]
 	public abstract partial class Gamemode : Entity {
+
+		public static Gamemode Instance;
+
 		public Gamemode() {
 			Transmit = TransmitType.Always;
+
+			Instance = this;
 
 			if(IsServer)
 				CreateGamemodeUI();

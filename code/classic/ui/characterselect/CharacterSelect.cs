@@ -51,11 +51,14 @@ namespace SpeedDial.Classic.UI {
 
 		private void SetState(bool state) {
 			if(!state) {
-				MenuSound.Stop();
 				Sound.FromScreen("select_confirm");
+				MenuSound.Stop();
+				(Local.Pawn as ClassicPlayer).FadeSoundtrack(1);
 			} else {
 				Sound.FromScreen("tape_stop");
 				MenuSound = Sound.FromScreen("tape_noise");
+				(Local.Pawn as ClassicPlayer).FadeSoundtrack(0.3f);
+
 				// make sure equipped character is the selected one
 				SelectedIndex = (Local.Pawn as ClassicPlayer).CharacterIndex;
 				// character is outside of the first 4 characters

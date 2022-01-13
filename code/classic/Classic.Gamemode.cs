@@ -12,8 +12,26 @@ namespace SpeedDial.Classic {
 	[Library("classic"), Hammer.Skip]
 	public partial class ClassicGamemode : Gamemode {
 
+		[Net] public string CurrentSoundtrack { get; set; } = "track01";
+
+		public string[] Soundtracks { get; } = {
+			"track01",
+			"track02",
+			"track03",
+			"track03"
+		};
+
+		public void PickNewSoundtrack() {
+			var random = new Random();
+			int index = random.Next(0, Soundtracks.Length);
+			CurrentSoundtrack = Soundtracks[index];
+		}
+
+		public static ClassicGamemode Current => Instance as ClassicGamemode;
+
 		protected override void OnStart() {
 			SetRound(new TestRound());
+			PickNewSoundtrack();
 		}
 
 		protected override void OnClientReady(Client client) {

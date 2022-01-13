@@ -22,6 +22,7 @@ namespace SpeedDial.Classic.Player {
 
 		public override void InitialRespawn() {
 			CharacterIndex = Rand.Int(0, Character.All.Count - 1);
+			PlaySoundtrack(To.Single(Client));
 			Respawn();
 		}
 
