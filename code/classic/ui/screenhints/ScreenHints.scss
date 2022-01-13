@@ -67,8 +67,24 @@ screenhints {
     }
 
     .killercontainer {
+
+        &.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        &.dominating {
+            text {
+                text-shadow: -1px -1px 1px $vhs_cyan, 1px 1px 1px $vhs_magenta;
+            }
+        }
+
+        opacity: 0;
+        transition: all 0.3s ease-out;
+        transform: scale(1.05);
+        transform-origin: 50% 100%;
         position: absolute;
-        top: 650px;
+        bottom: 20px;
         justify-content: center;
         align-items: center;
         width: auto;

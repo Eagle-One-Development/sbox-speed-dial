@@ -44,14 +44,30 @@ namespace SpeedDial.Classic {
 				} else {
 					KillFeed.AddDeath(client.PlayerId, client.Name, 0, "", player.DeathCause.ToString());
 				}
+
+				// handle domination/revenge stuff
+				var killevent = HandleDomination(pawn);
+
+				string killtext;
+				if(killevent == KillEvent.Domination) {
+					killtext = "+DOMINATION";
+				} else if(killevent == KillEvent.Revenge) {
+					killtext = "+REVENGE";
+				} else {
+					killtext = "+WIP";
+				}
+
+				// only show killer if we got killed by a player
+				if(player.DeathCause == ClassicPlayer.CauseOfDeath.Suicide) {
+					ScreenHints.FireEvent(To.Single(pawn.Client), "WHACKED", killtext);
+				} else {
+					ScreenHints.FireEvent(To.Single(pawn.Client), "WHACKED", killtext, true, player.LastAttacker.Client, killevent == KillEvent.Domination || killevent == KillEvent.Revenge);
+				}
+				
+				// TODO: tell killer if he's taken revenge when killevent == KillEvent.Revenge
+				// TODO: tell victim he's being dominated by someone when killevent == KillEvent.Domination
+
 			}
-
-			// handle domination/revenge stuff
-			var killevent = HandleDomination(pawn);
-
-			ScreenHints.FireEvent(To.Single(pawn.Client), "WHACKED", killevent == KillEvent.Domination ? "+DOMINATED" : "+WIP");
-			// TODO: tell killer if he's taken revenge when killevent == KillEvent.Revenge
-			// TODO: tell victim he's being dominated by someone when killevent == KillEvent.Domination
 		}
 
 		public enum KillEvent {
@@ -62,6 +78,11 @@ namespace SpeedDial.Classic {
 
 		public List<Kill> Kills { get; set; } = new();
 
+		/// <summary>
+		/// Handle current domination and return the dimination event for the passed killed pawn
+		/// </summary>
+		/// <param name="pawn">killed pawn</param>
+		/// <returns>returns KillEvent.Domination if the pawn is dominated by its last attacker. returns KillEvent.Revenge if the last attacker has taken revenge against pawn. returns KillEvent.None on a normal kill</returns>
 		public KillEvent HandleDomination(BasePlayer pawn) {
 
 			// add new kill to list
@@ -84,8 +105,8 @@ namespace SpeedDial.Classic {
 				return KillEvent.Revenge;
 			}
 
-			// dominate on exactly 3 consecutive kills
-			if(attackerkills == 3) {
+			// domination on three or more kills
+			if(attackerkills >= 3) {
 				Debug.Log($"DOMINATION FROM {pawn.LastRecievedDamage.Attacker.Client.Name} AGAINST {pawn.Client.Name}");
 				return KillEvent.Domination;
 			}
