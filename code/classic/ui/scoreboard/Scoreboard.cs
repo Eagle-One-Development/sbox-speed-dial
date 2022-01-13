@@ -6,25 +6,15 @@ using Sandbox.UI;
 using Sandbox.UI.Construct;
 
 namespace SpeedDial.Classic.UI {
-	public partial class ClassicScoreboard<T> : Panel where T : ClassicScoreboardEntry, new() {
-		private readonly Panel Canvas;
-		Dictionary<Client, T> Rows = new();
+	[UseTemplate]
+	public partial class ClassicScoreboard : Panel {
+		
+		Dictionary<Client, ClassicScoreboardEntry> Rows = new();
 
-		private readonly Panel Header;
+		public Panel Header { get; set; }
+		public Panel Canvas { get; set; }
 
 		public ClassicScoreboard() {
-			StyleSheet.Load("/classic/ui/scoreboard/Scoreboard.scss");
-			AddClass("scoreboard");
-
-			// Add header
-			Header = Add.Panel("header");
-			Header.Add.Label("Name", "name");
-			Header.Add.Label("Score", "score");
-			Header.Add.Label("Max Combo", "maxcombo");
-			//
-
-			Canvas = Add.Panel("canvas");
-
 			BindClass("open", () => Input.Down(InputButton.Score));
 		}
 
@@ -54,8 +44,8 @@ namespace SpeedDial.Classic.UI {
 			}
 		}
 
-		protected virtual T AddClient(Client entry) {
-			var p = Canvas.AddChild<T>();
+		protected virtual ClassicScoreboardEntry AddClient(Client entry) {
+			var p = Canvas.AddChild<ClassicScoreboardEntry>();
 			p.Client = entry;
 			return p;
 		}

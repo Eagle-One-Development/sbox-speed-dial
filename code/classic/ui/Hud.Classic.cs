@@ -22,7 +22,7 @@ namespace SpeedDial.Classic.UI {
 
 			RootPanel.AddChild<CharacterSelect>();
 
-			RootPanel.AddChild<ClassicScoreboard<ClassicScoreboardEntry>>();
+			RootPanel.AddChild<ClassicScoreboard>();
 			RootPanel.AddChild<Crosshair>();
 		}
 	}

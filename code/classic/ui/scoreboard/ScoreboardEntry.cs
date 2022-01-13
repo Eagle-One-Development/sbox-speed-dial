@@ -3,19 +3,13 @@ using Sandbox.UI;
 using Sandbox.UI.Construct;
 
 namespace SpeedDial.Classic.UI {
+	[UseTemplate]
 	public partial class ClassicScoreboardEntry : Panel {
 		public Client Client;
-		public Label PlayerName;
-		public Label Score;
-		public Label MaxCombo;
 
-		public ClassicScoreboardEntry() {
-			AddClass("entry");
-
-			PlayerName = Add.Label("PlayerName", "name");
-			Score = Add.Label("", "score");
-			MaxCombo = Add.Label("", "maxcombo");
-		}
+		public Label PlayerName { get; set; }
+		public Label Score { get; set; }
+		public Label MaxCombo { get; set; }
 
 		RealTimeSince TimeSinceUpdate = 0;
 
