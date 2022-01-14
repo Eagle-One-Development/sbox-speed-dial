@@ -110,6 +110,7 @@ namespace SpeedDial.Classic.UI {
 					Open = false;
 					MenuSound.Stop();
 					Sound.FromScreen("select_confirm");
+					(Local.Pawn as ClassicPlayer).FadeSoundtrack(1);
 					return;
 				}
 			}
@@ -148,8 +149,7 @@ namespace SpeedDial.Classic.UI {
 		private bool Toggle;
 		private bool ToggleReleased = true;
 
-
-		// this is stupid but for some reason Input.Pressed is called multiple times in ui, probably a tick vs frame thing
+		// this is stupid but works and I don't wanna use build input
 		private void TickInput() {
 			Left = Input.Pressed(InputButton.Menu) && LeftReleased;
 			Right = Input.Pressed(InputButton.Use) && RightReleased;
