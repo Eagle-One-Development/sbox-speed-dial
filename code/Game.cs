@@ -27,8 +27,8 @@ namespace SpeedDial {
 			if(IsServer) {
 				SetGamemode(Library.Create<Gamemode>(GamemodeName));
 				if(ActiveGamemode is null) {
-					Log.Error("GAMEMODES", $"COULDN'T INITIALIZE GAMEMODE {GamemodeName}");
-					Log.Info("GAMEMODES", $"COULDN'T INITIALIZE GAMEMODE {GamemodeName}");
+					Log.Error( $"COULDN'T INITIALIZE GAMEMODE {GamemodeName}");
+					Log.Info($"COULDN'T INITIALIZE GAMEMODE {GamemodeName}");
 				}
 			}
 			if(MapSettings.Current is null) {
