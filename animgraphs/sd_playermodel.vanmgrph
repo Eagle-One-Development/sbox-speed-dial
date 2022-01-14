@@ -1662,6 +1662,27 @@
 		{
 			key = 
 			{
+				m_id = 690563649
+			}
+			value = 
+			{
+				_class = "CCommentAnimNode"
+				m_sName = "Dastardly Stride Retargeting"
+				m_vecPosition = [ 3824.0, 3104.0 ]
+				m_nNodeID = 
+				{
+					m_id = 690563649
+				}
+				m_networkMode = "ServerAuthoritative"
+				m_sNote = ""
+				m_commentText = ""
+				m_size = [ 208.0, 112.0 ]
+				m_color = [ 49, 139, 146, 255 ]
+			}
+		},
+		{
+			key = 
+			{
 				m_id = 732594709
 			}
 			value = 
@@ -3256,7 +3277,7 @@
 			{
 				_class = "CLookAtAnimNode"
 				m_sName = "aim_at_body"
-				m_vecPosition = [ 4112.0, 3152.0 ]
+				m_vecPosition = [ 4096.0, 3152.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1508751947
@@ -3265,7 +3286,7 @@
 				m_sNote = ""
 				m_childID = 
 				{
-					m_id = 1867007271
+					m_id = 1005791570
 				}
 				m_target = "VectorParameter"
 				m_param = 
@@ -4424,8 +4445,8 @@
 			value = 
 			{
 				_class = "CFootLockAnimNode"
-				m_sName = "Unnamed"
-				m_vecPosition = [ 3904.0, 3152.0 ]
+				m_sName = "Dastardly Stride Retargeting"
+				m_vecPosition = [ 3856.0, 3152.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1867007271
@@ -4434,7 +4455,7 @@
 				m_sNote = ""
 				m_childID = 
 				{
-					m_id = 1005791570
+					m_id = 4294967295
 				}
 				m_items = 
 				[
