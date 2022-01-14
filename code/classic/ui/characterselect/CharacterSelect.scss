@@ -5,9 +5,7 @@ characterselect {
     height: 100%;
     position: absolute;
     flex-direction: column;
-
     background-color: rgba(black, 0.9);
-
     opacity: 0;
     bottom: -100%;
     transition: all 0.5s ease-in-out;
@@ -22,11 +20,28 @@ characterselect {
         bottom: -100%;
     }
 
+    .gradient {
+        width: 100%;
+        height: 100%;
+        flex-direction: row;
+        position: absolute;
+        opacity: 0.3;
+
+        .right {
+            background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 70%, rgba($vhs_magenta, 1));
+            width: 50%;
+        }
+
+        .left {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 70%, rgba($vhs_cyan, 1));
+            width: 50%;
+        }
+    }
+
     .header {
         width: 100%;
         height: 20%;
         flex-direction: column;
-
         justify-content: center;
         align-items: center;
 
@@ -43,6 +58,7 @@ characterselect {
     .body {
         width: 100%;
         height: 100%;
+
         .prompt {
             width: 300px;
             align-items: center;
@@ -51,6 +67,7 @@ characterselect {
             &.left {
                 justify-content: flex-end;
             }
+
             &.right {
                 justify-content: flex-start;
             }
