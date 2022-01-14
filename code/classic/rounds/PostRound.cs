@@ -9,7 +9,7 @@ using SpeedDial.Classic.UI;
 namespace SpeedDial.Classic.Rounds {
 	public partial class PostRound: TimedRound {
 		public override TimeSpan RoundDuration => TimeSpan.FromSeconds(11);
-		public override string RoundText => "Round over.";
+		public override string RoundText => "";
 
 		protected override void OnStart() {
 			base.OnStart();

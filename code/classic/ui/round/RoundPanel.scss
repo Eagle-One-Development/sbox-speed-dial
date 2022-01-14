@@ -8,21 +8,15 @@ roundpanel {
     justify-content: flex-start;
     flex-direction: column;
 
-    .timer {
-        align-items: center;
-        justify-content: center;
-        top: 10px;
-        flex-direction: column;
+    .timelabel {
+        margin-top: 10px;
+        font-size: 25px;
+        text-shadow: -2px -2px 1px $vhs_cyan, 4px 2px 1px $vhs_magenta;
+    }
 
-        .timelabel {
-            font-size: 25px;
-            text-shadow: -2px -2px 1px $vhs_cyan, 4px 2px 1px $vhs_magenta;
-        }
-
-        .roundtext {
-            font-size: 13px;
-            //text-shadow: -2px -2px 1px $vhs_cyan, 4px 2px 1px $vhs_magenta;
-        }
+    .roundtext {
+        font-size: 13px;
+        //text-shadow: -2px -2px 1px $vhs_cyan, 4px 2px 1px $vhs_magenta;
     }
 
     image {
@@ -31,7 +25,6 @@ roundpanel {
     }
 
     .players {
-        top: 10px;
 
         .player {
             margin: 3px;
