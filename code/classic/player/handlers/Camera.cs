@@ -22,9 +22,9 @@ namespace SpeedDial.Classic.Player {
 		public bool CameraShift { get; set; }
 
 		public override void BuildInput(InputBuilder input) {
-			var client = Local.Pawn;
+			var pawn = Local.Pawn;
 
-			if(client == null) {
+			if(pawn == null) {
 				return;
 			}
 
@@ -35,9 +35,6 @@ namespace SpeedDial.Classic.Player {
 			} else {
 				CameraShift = false;
 			}
-
-			var pawn = Local.Pawn;
-			if(pawn == null) return;
 
 			var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rotation, Screen.Size);
 			var HitPosition = LinePlaneIntersectionWithHeight(Position, direction, pawn.EyePos.z - 20);
