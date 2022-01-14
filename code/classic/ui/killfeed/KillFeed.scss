@@ -38,7 +38,6 @@ KillFeedEntry {
 		opacity: 0;
 		transition: all 0.2s ease-in;
 	}
-
 	// method
 	image {
 		width: 25px;
@@ -47,7 +46,7 @@ KillFeedEntry {
 
 	.method {
 		&.domination {
-			// TODO: MAKE ME RED
+			background-image-tint: #FF1919;
 		}
 	}
 
