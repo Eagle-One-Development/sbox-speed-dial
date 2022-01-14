@@ -13,8 +13,11 @@ namespace SpeedDial.Classic.Rounds {
 		protected override void OnStart() {
 			base.OnStart();
 
-			if(Host.IsServer)
+			if(Host.IsServer) {
 				ClassicGamemode.Current.PickNewSoundtrack();
+				// clear kills list to clear domination info
+				ClassicGamemode.Current.Kills.Clear();
+			}
 
 			foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
 				var pawn = client.Pawn as ClassicPlayer;
