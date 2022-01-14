@@ -218,8 +218,10 @@ namespace SpeedDial.Classic.Weapons {
 
 		public virtual void BulletTracer(Vector3 from, Vector3 to) {
 			var ps = Particles.Create("particles/weapon_fx/sd_bullet_trail/sd_bullet_trail.vpcf", to);
-			ps.SetPosition(0, from);
-			ps.SetPosition(1, to);
+			if(ps is not null) {
+				ps.SetPosition(0, from);
+				ps.SetPosition(1, to);
+			}
 		}
 
 		public virtual float MaxWallbangDistance => 32;
