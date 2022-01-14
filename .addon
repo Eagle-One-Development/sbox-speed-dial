@@ -1,3 +1,15 @@
 {
-    "sharedassets": "*.*"
+  "SharedAssets": null,
+  "Title": "Speed Dial",
+  "Type": "game",
+  "Org": "local",
+  "Ident": "speed-dial",
+  "FullIdent": "local.speed-dial",
+  "Schema": 1,
+  "NeedsUpgrade": false,
+  "HasAssets": true,
+  "AssetsPath": "",
+  "HasCode": true,
+  "CodePath": "code",
+  "RootNamespace": "Sandbox"
 }
