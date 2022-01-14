@@ -14,7 +14,7 @@ namespace SpeedDial.Classic.Player {
 		public void PlayRoundendClimax() {
 			if(!Settings.MusicEnabled) return;
 			SoundTrack.FromScreen("climax");
-			_ = StopSoundtrackAsync();
+			_ = StopSoundtrackAsync(3);
 		}
 
 		private async Task StopSoundtrackAsync(int delay = 5) {
