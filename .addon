@@ -1,5 +1,5 @@
 {
-  "SharedAssets": null,
+  "SharedAssets": "*",
   "Title": "Speed-Dial",
   "Type": "game",
   "Org": "local",
