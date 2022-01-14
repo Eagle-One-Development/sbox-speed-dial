@@ -120,6 +120,7 @@ namespace SpeedDial.Classic.Player {
 
 		[ClientRpc]
 		public static void UpdateGlow(ModelEntity ent, GlowStates state, Color col) {
+			if(!ent.IsValid()) return;
 			ent.GlowState = state;
 			ent.GlowColor = col;
 		}
