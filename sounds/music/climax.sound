@@ -10,7 +10,7 @@
 		DistanceMax = 1000.0
 		Sounds = 
 		[
-			"sounds/music/music_onelesshero.vsnd",
+			"sounds/music/main_theme_ending_10seconds.vsnd",
 		]
 		selectionmode = "3"
 	}
