@@ -8,7 +8,7 @@ using SpeedDial.Classic.Player;
 
 namespace SpeedDial.Classic.Rounds {
 	public partial class GameRound : TimedRound {
-		public override TimeSpan RoundDuration => TimeSpan.FromMinutes(1);
+		public override TimeSpan RoundDuration => TimeSpan.FromMinutes(5);
 		public override string RoundText => "Round active.";
 
 		protected override void OnStart() {
