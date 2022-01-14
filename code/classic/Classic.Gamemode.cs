@@ -61,7 +61,10 @@ namespace SpeedDial.Classic {
 				// handle killfeed entry accordingly
 				if(player.LastAttacker != null) {
 					if(player.LastAttacker.Client != null) {
-						KillFeed.AddDeath(player.LastAttacker.Client.PlayerId, player.LastAttacker.Client.Name, client.PlayerId, client.Name, player.DeathCause.ToString(), killevent == KillEvent.Domination);
+						// tell everyone else about the kill like usual
+						KillFeed.AddDeath(To.Multiple(Client.All.Except(new Client[] { pawn.Client, pawn.LastAttacker.Client })), player.LastAttacker.Client.PlayerId, player.LastAttacker.Client.Name, client.PlayerId, client.Name, player.DeathCause.ToString());
+						// only tell the people involved about domination
+						KillFeed.AddDeath(To.Multiple(new Client[] { pawn.Client, pawn.LastAttacker.Client }), player.LastAttacker.Client.PlayerId, player.LastAttacker.Client.Name, client.PlayerId, client.Name, player.DeathCause.ToString(), killevent == KillEvent.Domination);
 					} else {
 						KillFeed.AddDeath(player.LastAttacker.NetworkIdent, player.LastAttacker.ToString(), client.PlayerId, client.Name, player.DeathCause.ToString());
 					}
