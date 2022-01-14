@@ -22,8 +22,7 @@ namespace SpeedDial.Classic {
 		};
 
 		public void PickNewSoundtrack() {
-			var random = new Random();
-			int index = random.Next(0, Soundtracks.Length);
+			int index = Rand.Int(0, Soundtracks.Length);
 			CurrentSoundtrack = Soundtracks[index];
 		}
 
@@ -72,24 +71,28 @@ namespace SpeedDial.Classic {
 					KillFeed.AddDeath(client.PlayerId, client.Name, 0, "", player.DeathCause.ToString());
 				}
 
-				string killtext;
+				string killtextextra;
 				if(killevent == KillEvent.Domination) {
 					// last attacker dominates pawn, highlight them for pawn
 					ClassicPlayer.UpdateGlow(To.Single(pawn.Client), player.LastAttacker as ModelEntity, GlowStates.On, Color.Red);
-					killtext = "+DOMINATION";
+					killtextextra = "+DOMINATION";
 				} else if(killevent == KillEvent.Revenge) {
 					// last attacker has taken revenge against pawn; pawn no longer dominates last attacker
 					ClassicPlayer.UpdateGlow(To.Single(player.LastAttacker.Client), pawn, GlowStates.Off, Color.Black);
-					killtext = "+REVENGE";
+					killtextextra = "+REVENGE";
 				} else {
-					killtext = "";
+					killtextextra = "";
 				}
+
+				// get random awesome kill message
+				int index = Rand.Int(0, KillMessages.Length);
+				string killtext = KillMessages[index];
 
 				// only show killer if we got killed by a player
 				if(player.DeathCause == ClassicPlayer.CauseOfDeath.Suicide || player.LastAttacker is null) {
-					ScreenHints.FireEvent(To.Single(pawn.Client), "WHACKED", killtext);
+					ScreenHints.FireEvent(To.Single(pawn.Client), killtext, killtextextra);
 				} else {
-					ScreenHints.FireEvent(To.Single(pawn.Client), "WHACKED", killtext, true, player.LastAttacker.Client, killevent == KillEvent.Domination || killevent == KillEvent.Revenge);
+					ScreenHints.FireEvent(To.Single(pawn.Client), killtext, killtextextra, true, player.LastAttacker.Client, killevent == KillEvent.Domination || killevent == KillEvent.Revenge);
 				}
 			}
 		}
@@ -137,6 +140,94 @@ namespace SpeedDial.Classic {
 
 			return KillEvent.None;
 		}
+
+		public string[] KillMessages { get; } = {
+			"WHACKED",
+			"DESTROYED",
+			"BROKEN",
+			"ELIMINATED",
+			"EXTERMINATED",
+			"RUINED",
+			"SLAPPED",
+			"DECIMATED",
+			"MINCED",
+			"SMACKED",
+			"VAPORIZED",
+			"DRILLED",
+			"404'D",
+			"EMANCIPATED",
+			"SMEARED",
+			"TERMINATED",
+			"OUTSOURCED",
+			"CLAPPED",
+			"CAPPED",
+			"CARPE DIEM'D",
+			"WASTED",
+			"SHOT",
+			"COMPLEXED",
+			"BLASTED",
+			"RDM'D",
+			"ERADICATED",
+			"BLASTED",
+			"OBLITERATED",
+			"DISCONNECTED",
+			"RAZED",
+			"SACKED",
+			"TOTALLED",
+			"SMOKED",
+			"YOU ARE DEAD.",
+			"MURDERED",
+			"DESECRATED",
+			"SPLITTED",
+			"JACKED OUT",
+			"RETROACTED",
+			"ATE SHIT",
+			"NAE NAE'D",
+			"SHAT ON",
+			"REDACTED",
+			"BACK SCRATCHED",
+			"DELETED",
+			"REMOVED",
+			"UNPLUGGED",
+			"ZONKED",
+			"BONKED",
+			"CYBERSPACED",
+			"SMIT",
+			"YOU'RE ASS",
+			"LAYED OUT",
+			"LAID OUT",
+			"ATOMIZED",
+			"DUSTED",
+			"BECAME A NEWMAN",
+			"LAID LAD",
+			"CRAYZED",
+			"EVISCERATED",
+			"CANCELLED",
+			"GAME OVER",
+			"TAKEN HOME",
+			"BURST",
+			"YOU SUCK",
+			"AWFUL SKILL",
+			"GIT GUD",
+			"SKILL ISSUE",
+			"SLIPSTREAM'D",
+			"JETBALL'D",
+			"BOUNTY'D",
+			"QUAKED",
+			"1984'D",
+			"KILLED",
+			"GET BENT",
+			"DUNKED ON",
+			"KILL MESSAGE",
+			"SNAPSHOT'D",
+			"WALKED THE PLANK",
+			"SLICED",
+			"DICED",
+			"JACKASS'D",
+			"DEFEATED",
+			"FRIED"
+		};
+
 	}
 
 	public class Kill {
