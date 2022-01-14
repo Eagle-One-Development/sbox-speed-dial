@@ -5,9 +5,7 @@ worldhints {
     height: 100%;
     position: absolute;
 
-    label {
-        color: white;
-        font-family: $font;
+    text, label {
         text-shadow: -1px -1px 1px $vhs_cyan, 2px 2px 1px $vhs_magenta;
     }
 

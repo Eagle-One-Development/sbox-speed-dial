@@ -6,7 +6,6 @@ killfeed {
 	right: 15px;
 	flex-direction: column-reverse;
 	width: 500px;
-	font-family: $font;
 	font-size: 12px;
 	font-weight: 500;
 	align-items: flex-end;
@@ -15,7 +14,6 @@ killfeed {
 KillFeedEntry {
 	background-color: black;
 	margin-bottom: 5px;
-	color: white;
 	transition: all 0.2s ease-out;
 	opacity: 1;
 	flex-shrink: 0;
@@ -45,9 +43,6 @@ KillFeedEntry {
 	image {
 		width: 25px;
 		height: 25px;
-		background-position: center;
-		background-size: cover;
-		background-repeat: no-repeat;
 	}
 
 	.left,

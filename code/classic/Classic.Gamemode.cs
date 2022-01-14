@@ -40,6 +40,7 @@ namespace SpeedDial.Classic {
 
 		public override void CreateGamemodeUI() {
 			GamemodeUI = new ClassicHud();
+			Local.Hud = GamemodeUI;
 		}
 
 		public override bool OnClientSuicide(Client client) {

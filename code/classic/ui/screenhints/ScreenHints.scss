@@ -74,7 +74,7 @@ screenhints {
         }
 
         &.dominating {
-            text {
+            text, label {
                 text-shadow: -1px -1px 1px $vhs_cyan, 1px 1px 1px $vhs_magenta;
             }
         }
@@ -113,10 +113,5 @@ screenhints {
                 font-size: 15px;
             }
         }
-    }
-
-    text {
-        font-family: $font;
-        color: white;
     }
 }

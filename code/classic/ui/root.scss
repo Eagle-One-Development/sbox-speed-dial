@@ -1,0 +1,26 @@
+﻿@import "/classic/ui/_vars/globals.scss";
+
+.override-state {
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transition: opacity 0.4s ease-in;
+}
+
+.state-visible {
+	opacity: 1;
+}
+
+text, label {
+	font-family: $font;
+	color: white;
+}
+
+image {
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}

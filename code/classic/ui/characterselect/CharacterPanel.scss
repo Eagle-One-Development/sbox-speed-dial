@@ -16,15 +16,8 @@ characterpanel {
         }
     }
 
-    text {
-        font-family: $font;
+    text, label {
         margin: 5px;
-    }
-
-    image {
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
     }
 
     .portraitcontainer {

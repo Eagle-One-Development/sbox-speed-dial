@@ -25,18 +25,9 @@ roundpanel {
         }
     }
 
-    text, label {
-        color: white;
-        font-family: $font;
-        //text-stroke: 10px black;
-    }
-
     image {
         width: 45px;
         height: 45px;
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
     }
 
     .players {

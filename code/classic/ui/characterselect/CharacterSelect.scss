@@ -39,6 +39,7 @@ characterselect {
             font-size: 25px;
         }
     }
+
     .body {
         width: 100%;
         height: 100%;
@@ -66,10 +67,5 @@ characterselect {
         }
 
         padding-bottom: 50px;
-    }
-
-    text {
-        font-family: $font;
-        color: white;
     }
 }

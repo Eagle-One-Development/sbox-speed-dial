@@ -17,7 +17,7 @@ namespace SpeedDial {
 
 			Instance = this;
 
-			if(IsServer)
+			if(IsClient)
 				CreateGamemodeUI();
 		}
 
@@ -75,7 +75,7 @@ namespace SpeedDial {
 		// Gamemode UI
 		//
 
-		public HudEntity<RootPanel> GamemodeUI { get; protected set; }
+		public RootPanel GamemodeUI { get; protected set; }
 
 		public virtual void CreateGamemodeUI() { }
 

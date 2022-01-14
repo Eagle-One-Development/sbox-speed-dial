@@ -4,7 +4,6 @@
 	position: absolute;
 	z-index: 100;
 	flex-direction: column;
-	font-family: $font;
 	font-size: 16px;
 	font-weight: 500;
 	color: white;
@@ -51,8 +50,6 @@
 
 		.entry {
 			padding-top: 15px;
-
-			color: white;
 
 			&.first {
 				//text-shadow: 2px 2px 0.5px $vhs_magenta, -1px -1px 0.5px $vhs_cyan;
