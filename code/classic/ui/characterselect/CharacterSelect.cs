@@ -5,6 +5,7 @@ using Sandbox.UI;
 using Sandbox.UI.Construct;
 
 using SpeedDial.Classic.Player;
+using SpeedDial.Classic.Rounds;
 
 namespace SpeedDial.Classic.UI {
 	[UseTemplate]
@@ -44,20 +45,24 @@ namespace SpeedDial.Classic.UI {
 		}
 
 		private void ToggleMenu() {
-			Open = !Open;
 			TimeSinceToggled = 0;
-			SetState(Open);
+			SetState(!Open);
 		}
 
 		private void SetState(bool state) {
 			if(!state) {
-				Sound.FromScreen("select_confirm");
-				MenuSound.Stop();
-				(Local.Pawn as ClassicPlayer).FadeSoundtrack(1);
+				if(Open != state) {
+					Sound.FromScreen("select_confirm");
+					MenuSound.Stop();
+					(Local.Pawn as ClassicPlayer).FadeSoundtrack(1);
+				}
+				Open = state;
 			} else {
-				Sound.FromScreen("tape_stop");
-				MenuSound = Sound.FromScreen("tape_noise");
-				(Local.Pawn as ClassicPlayer).FadeSoundtrack(0.3f);
+				if(Open != state) {
+					Sound.FromScreen("tape_stop");
+					MenuSound = Sound.FromScreen("tape_noise");
+					(Local.Pawn as ClassicPlayer).FadeSoundtrack(0.3f);
+				}
 
 				// make sure equipped character is the selected one
 				SelectedIndex = (Local.Pawn as ClassicPlayer).CharacterIndex;
@@ -66,6 +71,7 @@ namespace SpeedDial.Classic.UI {
 					// adjust start index so that selected index is at the right edge
 					startIndex = SelectedIndex - 3;
 				}
+				Open = state;
 			}
 		}
 
@@ -73,7 +79,7 @@ namespace SpeedDial.Classic.UI {
 			TickInput();
 
 			// handle open/close
-			if(Toggle && TimeSinceToggled > 0.3f) {
+			if(Toggle && TimeSinceToggled > 0.3f && ClassicGamemode.Current.ActiveRound is not PostRound) {
 				ToggleMenu();
 			}
 			SetClass("open", Open);
