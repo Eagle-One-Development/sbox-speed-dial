@@ -17,7 +17,6 @@ namespace SpeedDial.Classic.UI {
 
 		public override void Tick() {
 			base.Tick();
-			//SetClass("state-visible", Input.Down(InputButton.Run));
 			GameCanvas?.SetClass("state-visible", ClassicGamemode.Current.ActiveRound is not PostRound);
 		}
 	}
