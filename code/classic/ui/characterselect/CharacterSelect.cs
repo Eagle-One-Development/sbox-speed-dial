@@ -14,8 +14,8 @@ namespace SpeedDial.Classic.UI {
 		// bindings for HTML
 		public string HeaderTitle => "SELECT A CRIMINAL";
 		public string SelectHeader => $"[{Input.GetKeyWithBinding("+iv_jump").ToUpper()}] TO SELECT";
-		public string PromptLeft => $"<{Input.GetKeyWithBinding("+iv_menu").ToUpper()}";
-		public string PromptRight => $"{Input.GetKeyWithBinding("+iv_use").ToUpper()}>";
+		public string PromptLeft => $"< {Input.GetKeyWithBinding("+iv_menu").ToUpper()}";
+		public string PromptRight => $"{Input.GetKeyWithBinding("+iv_use").ToUpper()} >";
 
 		public bool Open = false;
 		private TimeSince TimeSinceToggled;
