@@ -225,7 +225,12 @@ namespace SpeedDial.Classic {
 			"DICED",
 			"JACKASS'D",
 			"DEFEATED",
-			"FRIED"
+			"FRIED",
+			"MOTEL'D",
+			"BELTALOWDA'D",
+			"RAGE QUIT",
+			"ALT+F4'D",
+			"LOOPED"
 		};
 
 	}
