@@ -14,7 +14,7 @@ namespace SpeedDial.Classic.UI {
 			Current = this;
 		}
 
-		public virtual Panel AddEntry(long lsteamid, string left, long rsteamid, string right, string method) {
+		public virtual Panel AddEntry(long lsteamid, string left, long rsteamid, string right, string method, bool domination = false) {
 			var e = Current.AddChild<KillFeedEntry>();
 
 			e.Left.Text = left;
@@ -24,6 +24,7 @@ namespace SpeedDial.Classic.UI {
 			e.Left.SetClass("me", lsteamid == (Local.Client?.PlayerId));
 
 			// set kill icon based on Cause Of Death
+			e.Method.SetClass("domination", domination);
 			e.Method.SetTexture($"materials/ui/killicons/{method.ToLower()}.png");
 			if(e.Method.Texture is null) {
 				e.Method.SetTexture("materials/ui/killicons/generic.png");
@@ -41,6 +42,11 @@ namespace SpeedDial.Classic.UI {
 		[ClientRpc]
 		public static void AddDeath(long lsteamid, string left, long rsteamid, string right, string method) {
 			Current.AddEntry(lsteamid, left, rsteamid, right, method);
+		}
+
+		[ClientRpc]
+		public static void AddDeath(long lsteamid, string left, long rsteamid, string right, string method, bool domination) {
+			Current.AddEntry(lsteamid, left, rsteamid, right, method, domination);
 		}
 	}
 }

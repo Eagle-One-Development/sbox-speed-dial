@@ -54,18 +54,20 @@ namespace SpeedDial.Classic {
 			// killfeed population
 			if(pawn is ClassicPlayer player) {
 				var client = player.Client;
+				
+				// handle domination/revenge stuff
+				var killevent = HandleDomination(pawn);
+
+				// handle killfeed entry accordingly
 				if(player.LastAttacker != null) {
 					if(player.LastAttacker.Client != null) {
-						KillFeed.AddDeath(player.LastAttacker.Client.PlayerId, player.LastAttacker.Client.Name, client.PlayerId, client.Name, player.DeathCause.ToString());
+						KillFeed.AddDeath(player.LastAttacker.Client.PlayerId, player.LastAttacker.Client.Name, client.PlayerId, client.Name, player.DeathCause.ToString(), killevent == KillEvent.Domination);
 					} else {
 						KillFeed.AddDeath(player.LastAttacker.NetworkIdent, player.LastAttacker.ToString(), client.PlayerId, client.Name, player.DeathCause.ToString());
 					}
 				} else {
 					KillFeed.AddDeath(client.PlayerId, client.Name, 0, "", player.DeathCause.ToString());
 				}
-
-				// handle domination/revenge stuff
-				var killevent = HandleDomination(pawn);
 
 				string killtext;
 				if(killevent == KillEvent.Domination) {

@@ -45,6 +45,12 @@ KillFeedEntry {
 		height: 25px;
 	}
 
+	.method {
+		&.domination {
+			// TODO: MAKE ME RED
+		}
+	}
+
 	.left,
 	.right {
 		padding: 12px;
