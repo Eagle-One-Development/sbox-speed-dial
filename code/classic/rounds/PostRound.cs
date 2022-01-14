@@ -4,6 +4,7 @@ using System.Linq;
 using Sandbox;
 
 using SpeedDial.Classic.Player;
+using SpeedDial.Classic.UI;
 
 namespace SpeedDial.Classic.Rounds {
 	public partial class PostRound: TimedRound {
@@ -17,6 +18,7 @@ namespace SpeedDial.Classic.Rounds {
 				var pawn = client.Pawn as ClassicPlayer;
 
 				pawn.Frozen = true;
+				CharacterSelect.ForceState(To.Single(client), false);
 			}
 		}
 
