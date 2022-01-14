@@ -128,8 +128,6 @@ namespace SpeedDial {
 
 			OnPawnKilled(pawn);
 			pawn.TimeSinceDied = 0;
-
-			ActiveRound?.OnPlayerKilled(pawn);
 		}
 
 		/// <summary> [Server Assert] Should this pawn be damaged ? </summary>
@@ -145,7 +143,6 @@ namespace SpeedDial {
 			Host.AssertServer();
 
 			OnPawnRespawned(pawn);
-			ActiveRound?.OnPlayerRespawned(pawn);
 		}
 
 		/// <summary> [Server] </summary>

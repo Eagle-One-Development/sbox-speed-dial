@@ -11,8 +11,14 @@ namespace SpeedDial {
 		/// <summary> how long are think ticks in seconds? </summary>
 		protected virtual float ThinkTime => 0.1f;
 
-		/// <summary> Call Finish() to finish a round </summary>
+		/// <summary>
+		/// Call Finish() to finish a round
+		/// </summary>
 		[Net] public bool Finished { get; private set; }
+		/// <summary>
+		/// Call Start() to finish a round
+		/// </summary>
+		[Net] public bool Started { get; private set; }
 
 		[Net] public float StartTime { get; private set; }
 		public virtual string RoundText => "Round";
@@ -23,22 +29,22 @@ namespace SpeedDial {
 		[Net]
 		public string TimeElapsedFormatted { get; set; } = "";
 
-		public Round() {
-			// ui gets update on tick, round thinks 10 times a second
-			// set it before start runs so ui doesn't look whack
-			StartTime = Time.Now;
-		}
-
 		/// <summary> [Server Assert] Start the round </summary>
 		public virtual void Start() {
 			Host.AssertServer();
+
+			if(Started)
+				return;
+
 			MapSettings.Current?.OnRoundStarted.Fire(null, ClassInfo.Name);
 
-			Log.Info($"Round started {GetType()}");
+			Debug.Log($"Round start {ClassInfo.Name}");
+
+			Started = true;
+			StartTime = Time.Now;
 
 			_ = ThinkTimer();
 
-			StartTime = Time.Now;
 			OnStart();
 		}
 
@@ -57,26 +63,27 @@ namespace SpeedDial {
 		public virtual void Finish() {
 			Host.AssertServer();
 
-			if(Finished)
+			if(Finished || !Started)
 				return;
 
 			MapSettings.Current?.OnRoundFinished.Fire(null, ClassInfo.Name);
 
-			Log.Info($"Round ended {GetType()}");
+			Debug.Log($"Round finish {ClassInfo.Name}");
 
 			Finished = true;
+			Started = false;
 			OnFinish();
 		}
 
 		private async Task ThinkTimer() {
-			while(!Finished) {
+			while(!Finished && Started) {
 				OnThink();
 				await GameTask.DelaySeconds(ThinkTime);
 			}
 		}
 
 		/// <summary> [Server] Will invoke when the round has started </summary>
-		protected virtual void OnStart() { }
+		protected virtual void OnStart() { Debug.Log($"Round on start {ClassInfo.Name}"); }
 
 		/// <summary> [Server] Will invoke every think tick, which can be defined by overriding "ThinkTime" </summary>
 		protected virtual void OnThink() {
@@ -87,12 +94,6 @@ namespace SpeedDial {
 		protected virtual void OnTick() { }
 
 		/// <summary> [Server] Will invoke when the round has finished </summary>
-		protected virtual void OnFinish() { }
-
-		/// <summary> [Server] Will when a pawn has been killed </summary>
-		public virtual void OnPlayerKilled(BasePlayer pawn) { }
-
-		/// <summary> [Server] Will when a pawn has respawned </summary>
-		public virtual void OnPlayerRespawned(BasePlayer newPawn) { }
+		protected virtual void OnFinish() { Debug.Log($"Round on finish {ClassInfo.Name}"); }
 	}
 }
