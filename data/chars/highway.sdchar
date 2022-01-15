@@ -4,7 +4,7 @@
 	{
 		charactername = "Highway"
 		description = "Smooth Operator"
-		weaponclass = "sdg_shotgun"
+		weaponclass = "sd_shotgun"
 		portrait = "materials/ui/portraits/portrait_highway.jpg"
 		model = resource:"models/playermodels/character_highway.vmdl"
 		weapon = "materials/ui/weapons/pistol.jpg"

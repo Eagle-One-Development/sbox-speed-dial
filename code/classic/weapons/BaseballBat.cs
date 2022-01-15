@@ -2,7 +2,7 @@ using Sandbox;
 using SpeedDial.Classic.Player;
 
 namespace SpeedDial.Classic.Weapons {
-	[Library("sdg_bat", Title = "BASEBALL BAT", Spawnable = true)]
+	[Library("sd_bat", Title = "BASEBALL BAT", Spawnable = true)]
 	[Hammer.EditorModel("models/weapons/melee/melee.vmdl")]
 	[Hammer.EntityTool("Baseball Bat", "Speed-Dial Classic Weapons", "Spawns a Baseball Bat.")]
 	partial class BaseballBat : ClassicBaseWeapon, ISpawnable, IMelee {

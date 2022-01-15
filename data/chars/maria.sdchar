@@ -4,7 +4,7 @@
 	{
 		charactername = "Maria"
 		description = "Luchador Lady"
-		weaponclass = "sdg_rifle"
+		weaponclass = "sd_rifle"
 		portrait = "materials/ui/portraits/portrait_maria.jpg"
 		model = resource:"models/playermodels/character_maria.vmdl"
 		weapon = "materials/ui/weapons/pistol.jpg"

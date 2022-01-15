@@ -2,7 +2,7 @@
 {
 	data = 
 	{
-		weaponclass = "sdg_smg"
+		weaponclass = "sd_smg"
 		charactername = "Dial-Up"
 		description = "The Busboy"
 		portrait = "materials/ui/portraits/portrait_dialup.jpg"

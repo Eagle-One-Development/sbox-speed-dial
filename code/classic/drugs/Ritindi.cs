@@ -1,7 +1,7 @@
 using Sandbox;
 
 namespace SpeedDial.Classic.Drugs {
-	[Library("sdg_ritindi")]
+	[Library("sd_ritindi")]
 	[Hammer.EditorModel("models/drugs/ritindi/ritindi.vmdl")]
 	[Hammer.EntityTool("Polvo", "Speed-Dial Drugs", "Spawns one Ritindi.")]
 	public class Ritindi : ClassicBaseDrug, ISpawnable {

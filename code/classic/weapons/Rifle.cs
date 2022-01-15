@@ -3,7 +3,7 @@ using Sandbox;
 using SpeedDial.Classic.UI;
 
 namespace SpeedDial.Classic.Weapons {
-	[Library("sdg_rifle", Title = "BURST-RIFLE", Spawnable = true)]
+	[Library("sd_rifle", Title = "BURST-RIFLE", Spawnable = true)]
 	[Hammer.EditorModel("models/weapons/rifle/prop_rifle.vmdl")]
 	[Hammer.EntityTool("Rifle", "Speed-Dial Classic Weapons", "Spawns a Rifle.")]
 	partial class Rifle : ClassicBaseWeapon, ISpawnable {

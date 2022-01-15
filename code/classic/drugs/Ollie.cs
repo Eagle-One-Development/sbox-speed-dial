@@ -1,7 +1,7 @@
 using Sandbox;
 
 namespace SpeedDial.Classic.Drugs {
-	[Library("sdg_ollie")]
+	[Library("sd_ollie")]
 	[Hammer.EditorModel("models/drugs/ollie/ollie.vmdl")]
 	[Hammer.EntityTool("Ollie", "Speed-Dial Drugs", "Spawns one Ollie.")]
 	public class Ollie : ClassicBaseDrug, ISpawnable {

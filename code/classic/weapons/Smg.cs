@@ -1,7 +1,7 @@
 using Sandbox;
 
 namespace SpeedDial.Classic.Weapons {
-	[Library("sdg_smg", Title = "SMG", Spawnable = true)]
+	[Library("sd_smg", Title = "SMG", Spawnable = true)]
 	[Hammer.EditorModel("models/weapons/smg/prop_smg.vmdl")]
 	[Hammer.EntityTool("SMG", "Speed-Dial Classic Weapons", "Spawns an SMG.")]
 	partial class Smg : ClassicBaseWeapon, ISpawnable {

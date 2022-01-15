@@ -4,11 +4,11 @@ using Sandbox;
 using Hammer;
 
 namespace SpeedDial.Classic.Player {
-	[Library("sdgchar"), AutoGenerate]
+	[Library("sdchar"), AutoGenerate]
 	public partial class Character : Asset {
 		public string CharacterName { get; set; } = "name";
 		public string Description { get; set; } = "desc";
-		public string WeaponClass { get; set; } = "sdg_pistol";
+		public string WeaponClass { get; set; } = "sd_pistol";
 		[ResourceType("png")] public string Portrait { get; set; } = "materials/ui/portraits/jack_hd.jpg";
 		[ResourceType("png")] public string Weapon { get; set; } = "materials/ui/weapons/pistol.jpg";
 		[ResourceType("vmdl")] public string Model { get; set; } = "models/playermodels/character_jack.vmdl";
