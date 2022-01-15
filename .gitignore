@@ -26,4 +26,4 @@ omnisharp.json
 *.vpcf_c
 *.fgd
 
-!sdg_test.vpk
+!sd_test.vpk
