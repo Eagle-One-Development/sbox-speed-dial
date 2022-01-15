@@ -21,6 +21,9 @@ namespace SpeedDial.Classic {
 			"track03"
 		};
 
+		/// <summary>
+		/// Set ClassicGamemode.CurrentSoundtrack to a random soundtrack from the Soundtracks array
+		/// </summary>
 		public void PickNewSoundtrack() {
 			int index = Rand.Int(0, Soundtracks.Length - 1);
 			CurrentSoundtrack = Soundtracks[index];
