@@ -47,7 +47,7 @@ namespace SpeedDial.Classic {
 				}
 
 				// get random awesome kill message
-				int index = Rand.Int(0, KillMessages.Length);
+				int index = Rand.Int(0, KillMessages.Length - 1);
 				string killtext = KillMessages[index];
 
 				// only show killer if we got killed by a player

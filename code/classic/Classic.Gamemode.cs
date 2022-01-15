@@ -22,7 +22,7 @@ namespace SpeedDial.Classic {
 		};
 
 		public void PickNewSoundtrack() {
-			int index = Rand.Int(0, Soundtracks.Length);
+			int index = Rand.Int(0, Soundtracks.Length - 1);
 			CurrentSoundtrack = Soundtracks[index];
 		}
 
