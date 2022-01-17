@@ -10,6 +10,7 @@ namespace SpeedDial.Classic.UI {
 		public static Color VHS_CYAN = new(0f / 255f, 210f / 255f, 255f / 255f, 1.0f);
 
 		public Panel GameCanvas { get; set; }
+		public Panel CrossHair { get; set; }
 
 		public ClassicHud() {
 			if(!Host.IsClient) return;
@@ -18,6 +19,7 @@ namespace SpeedDial.Classic.UI {
 		public override void Tick() {
 			base.Tick();
 			GameCanvas?.SetClass("state-visible", ClassicGamemode.Current.ActiveRound is not PostRound);
+			CrossHair?.SetClass("state-visible", !Input.UsingController);
 		}
 	}
 }
