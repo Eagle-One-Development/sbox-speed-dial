@@ -13,9 +13,9 @@ namespace SpeedDial.Classic.UI {
 		public static CharacterSelect Current { get; private set; }
 		// bindings for HTML
 		public string HeaderTitle => "SELECT A CRIMINAL";
-		public string SelectHeader => $"[{Input.GetKeyWithBinding("+iv_jump").ToUpper()}] TO SELECT";
-		public string PromptLeft => $"< {Input.GetKeyWithBinding("+iv_menu").ToUpper()}";
-		public string PromptRight => $"{Input.GetKeyWithBinding("+iv_use").ToUpper()} >";
+		public string SelectHeader => $"[{Input.GetButtonOrigin(InputButton.Jump).ToUpper()}] TO SELECT";
+		public string PromptLeft => $"< {(Input.UsingController ? "" : Input.GetButtonOrigin(InputButton.Menu).ToUpper())}";
+		public string PromptRight => $"{(Input.UsingController ? "" : Input.GetButtonOrigin(InputButton.Use).ToUpper())} >";
 
 		public bool Open = false;
 		private TimeSince TimeSinceToggled;
@@ -76,8 +76,6 @@ namespace SpeedDial.Classic.UI {
 		}
 
 		public override void Tick() {
-			TickInput();
-
 			// handle open/close
 			if(Toggle && TimeSinceToggled > 0.3f && ClassicGamemode.Current.ActiveRound is not PostRound) {
 				ToggleMenu();
@@ -155,41 +153,13 @@ namespace SpeedDial.Classic.UI {
 		private bool Toggle;
 		private bool ToggleReleased = true;
 
-		// this is stupid but works and I don't wanna use build input
-		private void TickInput() {
-			Left = Input.Pressed(InputButton.Menu) && LeftReleased;
-			Right = Input.Pressed(InputButton.Use) && RightReleased;
-			Select = Input.Pressed(InputButton.Jump) && SelectReleased;
-			Toggle = Input.Pressed(InputButton.Duck) && ToggleReleased;
 
-			if(Left) {
-				LeftReleased = false;
-			}
-			if(Right) {
-				RightReleased = false;
-			}
-			if(Select) {
-				SelectReleased = false;
-			}
-			if(Toggle) {
-				ToggleReleased = false;
-			}
-
-			if(Input.Released(InputButton.Menu)) {
-				LeftReleased = true;
-			}
-
-			if(Input.Released(InputButton.Use)) {
-				RightReleased = true;
-			}
-
-			if(Input.Released(InputButton.Jump)) {
-				SelectReleased = true;
-			}
-
-			if(Input.Released(InputButton.Duck)) {
-				ToggleReleased = true;
-			}
+		[Event.BuildInput]
+		public void BuildInput(InputBuilder input) {
+			Left = input.UsingController ? input.Pressed(InputButton.SlotPrev) || input.Pressed(InputButton.Slot1) : input.Pressed(InputButton.Menu) && LeftReleased;
+			Right = input.UsingController ? input.Pressed(InputButton.SlotNext) || input.Pressed(InputButton.Slot2) : input.Pressed(InputButton.Use) && RightReleased;
+			Select = input.Pressed(InputButton.Jump) && SelectReleased;
+			Toggle = input.Pressed(InputButton.Duck) && ToggleReleased;
 		}
 	}
 }

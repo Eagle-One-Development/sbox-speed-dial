@@ -28,45 +28,72 @@ namespace SpeedDial.Classic.Player {
 				return;
 			}
 
-			if(!Settings.ViewshiftToggle && input.Down(InputButton.Run)) {
-				CameraShift = true;
-			} else if(Settings.ViewshiftToggle && input.Pressed(InputButton.Run)) {
-				shiftToggle = !shiftToggle;
-			} else {
-				CameraShift = false;
-			}
-
-			var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rotation, Screen.Size);
-			var HitPosition = LinePlaneIntersectionWithHeight(Position, direction, pawn.EyePos.z - 20);
-
-			// since we got our cursor in world space because of the plane intersect above, we need to set it for the crosshair
-			var mouse = HitPosition.ToScreen();
-			Crosshair.UpdateMouse(new Vector2(mouse.x * Screen.Width, mouse.y * Screen.Height));
-
-			//trace from camera into mouse direction, essentially gets the world location of the mouse
-			var targetTrace = Trace.Ray(Position, Position + direction * 1000)
-				.UseHitboxes()
-				.EntitiesOnly()
-				.Size(1)
-				.Ignore(pawn)
-				.Run();
-
 			Angles angles;
 
-			// aim assist when pointing on a player
-			if(targetTrace.Hit && targetTrace.Entity is ClassicPlayer) {
-				if(Debug.Camera)
-					DebugOverlay.Line(pawn.EyePos, targetTrace.Entity.EyePos + Vector3.Down * 20, Color.Red, 0, true);
-				angles = (targetTrace.Entity.EyePos + Vector3.Down * 20 - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
+			// always set movement input
+			input.InputDirection = input.AnalogMove;
+
+			// handle look input
+			if(!input.UsingController) {
+
+				if(!Settings.ViewshiftToggle && input.Down(InputButton.Run)) {
+					CameraShift = true;
+				} else if(Settings.ViewshiftToggle && input.Pressed(InputButton.Run)) {
+					shiftToggle = !shiftToggle;
+				} else {
+					CameraShift = false;
+				}
+
+				var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rotation, Screen.Size);
+				var HitPosition = LinePlaneIntersectionWithHeight(Position, direction, pawn.EyePos.z - 20);
+
+				// since we got our cursor in world space because of the plane intersect above, we need to set it for the crosshair
+				var mouse = HitPosition.ToScreen();
+				Crosshair.UpdateMouse(new Vector2(mouse.x * Screen.Width, mouse.y * Screen.Height));
+
+				//trace from camera into mouse direction, essentially gets the world location of the mouse
+				var targetTrace = Trace.Ray(Position, Position + direction * 1000)
+					.UseHitboxes()
+					.EntitiesOnly()
+					.Size(1)
+					.Ignore(pawn)
+					.Run();
+
+				// aim assist when pointing on a player
+				if(targetTrace.Hit && targetTrace.Entity is ClassicPlayer) {
+					if(Debug.Camera)
+						DebugOverlay.Line(pawn.EyePos, targetTrace.Entity.EyePos + Vector3.Down * 20, Color.Red, 0, true);
+					angles = (targetTrace.Entity.EyePos + Vector3.Down * 20 - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
+				} else {
+					angles = (HitPosition - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
+				}
+
 			} else {
-				angles = (HitPosition - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
+				// shift on clicking in joystick
+				if(!Settings.ViewshiftToggle && input.Down(InputButton.View)) {
+					CameraShift = true;
+				} else if(Settings.ViewshiftToggle && input.Pressed(InputButton.View)) {
+					shiftToggle = !shiftToggle;
+				} else {
+					CameraShift = false;
+				}
+
+				if(MathF.Abs(input.AnalogLook.pitch) + MathF.Abs(input.AnalogLook.yaw) > 0) {
+					//var angle = MathF.Atan2(input.AnalogLook.pitch, input.AnalogLook.yaw).RadianToDegree();
+					Angles newDir = new Vector3(input.AnalogLook.pitch / 1.5f * -1.0f, input.AnalogLook.yaw / 1.5f, 0).EulerAngles;
+					angles = newDir;
+				} else {
+					// not moving joystick, don't update angles
+					return;
+				}
+				
 			}
 
 			tarAng = angles;
 			ang = Angles.Lerp(ang, tarAng, 24 * Time.Delta);
 
 			input.ViewAngles = ang;
-			input.InputDirection = input.AnalogMove;
+			
 		}
 
 		public override void Update() {
