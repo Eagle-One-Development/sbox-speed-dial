@@ -81,6 +81,7 @@ namespace SpeedDial.Classic.Player {
 				if(MathF.Abs(input.AnalogLook.pitch) + MathF.Abs(input.AnalogLook.yaw) > 0) {
 					//var angle = MathF.Atan2(input.AnalogLook.pitch, input.AnalogLook.yaw).RadianToDegree();
 					Angles newDir = new Vector3(input.AnalogLook.pitch / 1.5f * -1.0f, input.AnalogLook.yaw / 1.5f, 0).EulerAngles;
+					ControllerLookInput = new Vector2(input.AnalogLook.yaw, -input.AnalogLook.pitch).Normal;
 					angles = newDir;
 				} else {
 					// not moving joystick, don't update angles
@@ -96,6 +97,8 @@ namespace SpeedDial.Classic.Player {
 			
 		}
 
+		private Vector2 ControllerLookInput { get; set; } = Vector2.Zero;
+
 		public override void Update() {
 			var pawn = Local.Pawn;
 
@@ -105,6 +108,7 @@ namespace SpeedDial.Classic.Player {
 			var _pos = pawn.EyePos + Vector3.Down * 20; // relative to pawn eyepos
 			_pos += Vector3.Up * CameraHeight; // add camera height
 											   // why didn't we just do this with Rotation.LookAt????
+											   // [DOC] answer: cause we (I) wanted a fixed/clearly defined angle
 			_pos -= Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle))); // move camera back
 
 			float mouseShiftFactor = 0.3f;//Sniper
@@ -117,7 +121,11 @@ namespace SpeedDial.Classic.Player {
 			float MouseY = Mouse.Position.y.Clamp(0, Screen.Size.y);
 
 			if(CameraShift || Settings.ViewshiftToggle && shiftToggle) {
-				camOffsetTarget = Vector3.Left * -((MouseX - Screen.Size.x / 2) * mouseShiftFactor) + Vector3.Forward * -((MouseY - Screen.Size.y / 2) * mouseShiftFactor);
+				if(Input.UsingController) {
+					camOffsetTarget = Vector3.Left * (ControllerLookInput.x * Screen.Size.x / 2) * mouseShiftFactor + Vector3.Forward * (ControllerLookInput.y * Screen.Size.y / 2) * mouseShiftFactor;
+				} else {
+					camOffsetTarget = Vector3.Left * -((MouseX - Screen.Size.x / 2) * mouseShiftFactor) + Vector3.Forward * -((MouseY - Screen.Size.y / 2) * mouseShiftFactor);
+				}
 			} else {
 				camOffsetTarget = Vector3.Zero;
 			}
