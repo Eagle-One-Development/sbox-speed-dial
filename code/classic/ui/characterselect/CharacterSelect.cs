@@ -13,7 +13,7 @@ namespace SpeedDial.Classic.UI {
 		public static CharacterSelect Current { get; private set; }
 		// bindings for HTML
 		public string HeaderTitle => "SELECT A CRIMINAL";
-		public string SelectHeader => $"[{Input.GetButtonOrigin(InputButton.Jump).ToUpper()}] TO SELECT";
+		public string SelectHeader => $" TO SELECT";
 		public string PromptLeft => $"< {(Input.UsingController ? "" : Input.GetButtonOrigin(InputButton.Menu).ToUpper())}";
 		public string PromptRight => $"{(Input.UsingController ? "" : Input.GetButtonOrigin(InputButton.Use).ToUpper())} >";
 
