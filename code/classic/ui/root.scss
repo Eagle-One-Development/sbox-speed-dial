@@ -12,6 +12,12 @@ classichud {
 			opacity: 1;
 		}
 	}
+
+	&.state-visible-warmup {
+		.override-state-warmup {
+			opacity: 1;
+		}
+	}
 }
 
 .override-state-game {
@@ -25,6 +31,16 @@ classichud {
 }
 
 .override-state-cursor {
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transition: opacity 0.2s ease-in;
+}
+
+.override-state-warmup {
 	opacity: 0;
 	width: 100%;
 	height: 100%;
