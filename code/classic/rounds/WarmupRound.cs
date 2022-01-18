@@ -16,11 +16,6 @@ namespace SpeedDial.Classic.Rounds {
 			foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
 				var pawn = client.Pawn as ClassicPlayer;
 
-				// reset scores and stuff from possible previous round
-				client.SetValue("score", 0);
-				client.SetValue("maxcombo", 0);
-				client.SetValue("combo", 0);
-
 				pawn.Frozen = false;
 			}
 		}

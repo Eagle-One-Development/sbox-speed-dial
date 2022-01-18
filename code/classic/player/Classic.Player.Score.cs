@@ -1,10 +1,12 @@
 using Sandbox;
 
 using SpeedDial.Classic.UI;
+using SpeedDial.Classic.Rounds;
 
 namespace SpeedDial.Classic.Player {
 	public partial class ClassicPlayer {
 		public void AwardKill(ClassicPlayer killed) {
+			if(ClassicGamemode.Current.ActiveRound is not GameRound) return;
 			ScorePanel.AwardKill();
 
 			// add to current combo
