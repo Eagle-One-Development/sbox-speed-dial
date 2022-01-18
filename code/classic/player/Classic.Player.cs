@@ -23,10 +23,18 @@ namespace SpeedDial.Classic.Player {
 
 		public override void InitialRespawn() {
 			CharacterIndex = Rand.Int(0, Character.All.Count - 1);
-			// user joined during round, start music for them
-			if(ClassicGamemode.Current.ActiveRound is PreRound or GameRound)
-				PlaySoundtrack(To.Single(Client));
 			Respawn();
+
+			// apply round specific stuff after normal respawn runs so we can override shit
+
+			// user joined during round, start music for them
+			if(ClassicGamemode.Current.ActiveRound is PreRound or GameRound) {
+				PlaySoundtrack(To.Single(Client));
+			}
+			if(ClassicGamemode.Current.ActiveRound is PreRound or PostRound) {
+				Frozen = true;
+			}
+			
 		}
 
 		public override void Respawn() {
