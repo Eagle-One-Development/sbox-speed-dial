@@ -693,7 +693,7 @@
 				m_networkMode = "ClientPredicted"
 				m_sNote = ""
 				m_sequenceName = "lean_matrix3"
-				m_flMaxValue = 9999.0
+				m_flMaxValue = 300.0
 				m_blendSource = "Acceleration"
 				m_param = 
 				{
@@ -1443,7 +1443,7 @@
 			{
 				_class = "CBoneMaskAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 5424.0, 3728.0 ]
+				m_vecPosition = [ 5424.0, 3712.0 ]
 				m_nNodeID = 
 				{
 					m_id = 781760763
@@ -1705,7 +1705,7 @@
 				{
 					m_id = 1020985200
 				}
-				m_networkMode = "ServerAuthoritative"
+				m_networkMode = "ClientPredicted"
 				m_sNote = ""
 				m_states = 
 				[
