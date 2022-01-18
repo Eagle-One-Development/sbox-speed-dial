@@ -47,14 +47,14 @@ namespace SpeedDial.Classic.UI {
 				ComboLabel.Text = $"x{(int)(_combo + 0.5f)}";
 
 				// intensity gradients at the left and right side
-				IntensityPanel.Style.Opacity = _combo.Clamp(0, 25) * 0.02f; // 25 * 0.04 = 0.5
+				IntensityPanel.Style.Opacity = _combo.Clamp(0, 15) * 0.1f; // 25 * 0.04 = 0.5
 
 				// combo text scaling + rotating for intensity that scales with combo amount
 				PanelTransform transform = new();
 				// clamp it so it doesn't go ape mode on higher combos
-				var _effectMultiplier = combo.Clamp(0, 25);
-				transform.AddScale(ComboScale + 0.05f * _combo + ((MathF.Sin(Time.Now * _effectMultiplier) + 1) / 2 * _effectMultiplier * 0.05f));
-				transform.AddRotation(0, 0, MathF.Sin(Time.Now * _effectMultiplier * 1.234f) * _effectMultiplier * 0.5f);
+				var _effectMultiplier = combo.Clamp(0, 15) * 3;
+				transform.AddScale(ComboScale + 0.05f * _effectMultiplier + ((MathF.Sin(Time.Now * _effectMultiplier) + 1) / 2 * _effectMultiplier * 0.05f));
+				transform.AddRotation(0, 0, MathF.Sin(Time.Now * _effectMultiplier  * 1.234f) * _effectMultiplier * 0.5f);
 				ComboLabel.Style.Transform = transform;
 
 				if(combo <= 0) {
