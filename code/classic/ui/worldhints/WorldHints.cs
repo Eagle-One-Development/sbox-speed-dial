@@ -20,7 +20,7 @@ namespace SpeedDial.Classic.UI {
 		private float _pickupScale = 0;
 
 		public Panel PickupPanel { get; set; }
-		public string PickupText => $"{Input.GetButtonOrigin(InputButton.Attack2).ToUpper()} TO PICK UP";
+		public string PickupText => $" TO PICK UP";
 
 		public WorldHints() {
 			Current = this;
@@ -40,7 +40,7 @@ namespace SpeedDial.Classic.UI {
 
 				if(_lastPickup.IsValid()) {
 					var pos = _lastPickup.Position.ToScreen();
-					PickupPanel.Style.Left = Length.Fraction(pos.x);
+					PickupPanel.Style.Left = Length.Fraction(pos.x - 0.05f); // this is dumb and doesn't work well on weird aspect ratios (4:3)
 					PickupPanel.Style.Top = Length.Fraction(pos.y);
 				}
 

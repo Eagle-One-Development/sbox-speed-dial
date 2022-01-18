@@ -18,7 +18,12 @@ worldhints {
 
         .pickuplabel {
             font-size: 13px;
-            transform: translateX(-50%);
+        }
+
+        .glyph {
+            top: 1px;
+            right: 1px;
+            height: 25px;
         }
     }
 }
