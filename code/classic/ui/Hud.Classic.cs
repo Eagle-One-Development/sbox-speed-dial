@@ -9,17 +9,16 @@ namespace SpeedDial.Classic.UI {
 		public static Color VHS_MAGENTA = new(255f / 255f, 43f / 255f, 112f / 255f, 1.0f);
 		public static Color VHS_CYAN = new(0f / 255f, 210f / 255f, 255f / 255f, 1.0f);
 
-		public Panel GameCanvas { get; set; }
-		public Panel CrossHair { get; set; }
-
 		public ClassicHud() {
 			if(!Host.IsClient) return;
 		}
 
 		public override void Tick() {
 			base.Tick();
-			GameCanvas?.SetClass("state-visible", ClassicGamemode.Current.ActiveRound is not PostRound);
-			CrossHair?.SetClass("state-visible", !Input.UsingController);
+			// game panels hide in post round
+			SetClass("state-visible-game", ClassicGamemode.Current.ActiveRound is not PostRound);
+			// cursor only shows when using mouse input
+			SetClass("state-visible-cursor", !Input.UsingController);
 		}
 	}
 }

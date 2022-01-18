@@ -1,6 +1,20 @@
 ﻿@import "/classic/ui/_vars/globals.scss";
 
-.override-state {
+classichud {
+	&.state-visible-game {
+		.override-state-game {
+			opacity: 1;
+		}
+	}
+
+	&.state-visible-cursor {
+		.override-state-cursor {
+			opacity: 1;
+		}
+	}
+}
+
+.override-state-game {
 	opacity: 0;
 	width: 100%;
 	height: 100%;
@@ -10,18 +24,14 @@
 	transition: opacity 0.4s ease-in;
 }
 
-.override-state-fast {
+.override-state-cursor {
 	opacity: 0;
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	left: 0;
 	top: 0;
-	transition: opacity 0.1s ease-in;
-}
-
-.state-visible {
-	opacity: 1;
+	transition: opacity 0.2s ease-in;
 }
 
 text, label {
