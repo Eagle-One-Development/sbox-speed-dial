@@ -10,20 +10,20 @@ using SpeedDial.Classic.Player;
 using SpeedDial.Classic.Weapons;
 
 namespace SpeedDial.Classic.UI {
+	[UseTemplate]
 	public partial class WorldHints : Panel {
 		public static WorldHints Current { get; private set; }
-		private readonly Panel PickupPanel;
-		private ClassicBaseWeapon _lastPickup;
+
 		public List<Panel> WorldTexts = new();
+
+		private ClassicBaseWeapon _lastPickup;
 		private float _pickupScale = 0;
+
+		public Panel PickupPanel { get; set; }
+		public string PickupText => $"{Input.GetButtonOrigin(InputButton.Attack2).ToUpper()} TO PICK UP";
 
 		public WorldHints() {
 			Current = this;
-
-			StyleSheet.Load("/classic/ui/worldhints/WorldHints.scss");
-
-			PickupPanel = Add.Panel("pickup");
-			PickupPanel.Add.Label($"{Input.GetKeyWithBinding("+iv_attack2").ToUpper()} TO PICK UP", "pickuplabel");
 		}
 
 		public override void Tick() {
