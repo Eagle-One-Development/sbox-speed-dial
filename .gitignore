@@ -27,3 +27,4 @@ omnisharp.json
 *.fgd
 
 !sd_test.vpk
+!sd_bank.vpk
