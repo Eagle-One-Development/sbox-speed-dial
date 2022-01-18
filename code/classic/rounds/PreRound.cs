@@ -26,6 +26,11 @@ namespace SpeedDial.Classic.Rounds {
 				pawn.StopSoundtrack(To.Single(client), true);
 				pawn.PlaySoundtrack(To.Single(client));
 
+				// reset scores etc from potential last round
+				client.SetValue("score", 0);
+				client.SetValue("maxcombo", 0);
+				client.SetValue("combo", 0);
+
 				pawn.Frozen = true;
 			}
 		}
