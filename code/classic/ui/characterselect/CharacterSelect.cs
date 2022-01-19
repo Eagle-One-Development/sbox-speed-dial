@@ -145,21 +145,17 @@ namespace SpeedDial.Classic.UI {
 		}
 
 		private bool Left;
-		private bool LeftReleased = true;
 		private bool Right;
-		private bool RightReleased = true;
 		private bool Select;
-		private bool SelectReleased = true;
 		private bool Toggle;
-		private bool ToggleReleased = true;
 
 
 		[Event.BuildInput]
 		public void BuildInput(InputBuilder input) {
-			Left = input.UsingController ? input.Pressed(InputButton.SlotPrev) || input.Pressed(InputButton.Slot1) : input.Pressed(InputButton.Menu) && LeftReleased;
-			Right = input.UsingController ? input.Pressed(InputButton.SlotNext) || input.Pressed(InputButton.Slot2) : input.Pressed(InputButton.Use) && RightReleased;
-			Select = input.Pressed(InputButton.Jump) && SelectReleased;
-			Toggle = input.Pressed(InputButton.Duck) && ToggleReleased;
+			Left = input.UsingController ? input.Pressed(InputButton.SlotPrev) || input.Pressed(InputButton.Slot1) : input.Pressed(InputButton.Menu);
+			Right = input.UsingController ? input.Pressed(InputButton.SlotNext) || input.Pressed(InputButton.Slot2) : input.Pressed(InputButton.Use);
+			Select = input.Pressed(InputButton.Jump);
+			Toggle = input.Pressed(InputButton.Duck);
 		}
 	}
 }
