@@ -36,6 +36,8 @@ namespace SpeedDial.Classic.UI {
 			}
 			e.Right.SetClass("me", rsteamid == (Local.Client?.PlayerId));
 
+			e.Important = lsteamid == (Local.Client?.PlayerId) || rsteamid == (Local.Client?.PlayerId);
+
 			return e;
 		}
 

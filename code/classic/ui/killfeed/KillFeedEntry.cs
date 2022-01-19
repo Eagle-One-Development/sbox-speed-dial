@@ -11,13 +11,14 @@ namespace SpeedDial.Classic.UI {
 		public Label Left { get; set; }
 		public Label Right { get; set; }
 		public Image Method { get; set; }
+		public bool Important { get; set; }
 
 		public RealTimeSince TimeSinceCreated = 0;
 
 		public override void Tick() {
 			base.Tick();
 
-			if(TimeSinceCreated > 6) {
+			if(TimeSinceCreated > (Important ? 10 : 6)) {
 				Delete();
 			}
 		}
