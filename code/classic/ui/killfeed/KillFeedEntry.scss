@@ -1,0 +1,55 @@
+﻿@import "/classic/ui/_vars/globals.scss";
+
+killfeedentry {
+    background-color: black;
+    margin-bottom: 5px;
+    transition: all 0.2s ease-out;
+    opacity: 1;
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    height: 30px;
+    position: relative;
+    border-radius: 3px;
+
+    &:intro {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        height: 0;
+        opacity: 0;
+    }
+
+    &:outro {
+        right: -20px;
+        opacity: 0;
+        transition: all 0.2s ease-in;
+    }
+    // method
+    image {
+        width: 25px;
+        height: 25px;
+    }
+
+    .method {
+        &.domination {
+            background-image-tint: #FF1919;
+        }
+    }
+
+    .left,
+    .right {
+        padding: 12px;
+
+        &.me {
+            color: $vhs_cyan;
+        }
+
+        &.noname {
+            padding-right: -12px;
+            width: 0px;
+        }
+    }
+}
