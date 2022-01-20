@@ -78,12 +78,14 @@ namespace SpeedDial.Classic.Player {
 		}
 
 		public override void Simulate() {
-			if((Pawn as ClassicPlayer).Frozen) { WishVelocity = Vector3.Zero; return; }
+			// do this stuff first so EyePos is valid when frozen
 			EyePosLocal = Vector3.Up * (EyeHeight * Pawn.Scale);
 			UpdateBBox();
 
 			EyePosLocal += TraceOffset;
 			EyeRot = Input.Rotation;
+
+			if((Pawn as ClassicPlayer).Frozen) { WishVelocity = Vector3.Zero; return; }
 
 			RestoreGroundPos();
 
