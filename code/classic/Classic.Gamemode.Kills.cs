@@ -240,7 +240,8 @@ namespace SpeedDial.Classic {
 			"SMASHED",
 			"WRECKED",
 			"CONSUMED",
-			"DEVOURED"
+			"DEVOURED",
+			"GET FUCKED"
 		};
 	}
 
