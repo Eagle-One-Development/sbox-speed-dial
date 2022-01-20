@@ -34,6 +34,7 @@ namespace SpeedDial {
 
 			// animgraph
 			Precache.Add("animgraphs/sd_playermodel.vanmgrph");
+			Precache.Add("animgraphs/sd_playermodel_jack.vanmgrph");
 
 			// pickup sounds
 			Precache.Add("sounds/weapon_fx/weapon.pickup_empty.vsnd");

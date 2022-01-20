@@ -359,6 +359,7 @@
 	m_previewModels = 
 	[
 		"models/playermodels/character_jack_2.vmdl",
+		"models/playermodels/playerstart/player_start.vmdl",
 	]
 	m_nodes = 
 	[
@@ -685,7 +686,7 @@
 			{
 				_class = "CLeanMatrixAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 5360.0, 3584.0 ]
+				m_vecPosition = [ 5248.0, 3440.0 ]
 				m_nNodeID = 
 				{
 					m_id = 357030177
@@ -709,83 +710,6 @@
 					m_fMinSpeed = 25.0
 					m_fMaxTension = 1000.0
 				}
-			}
-		},
-		{
-			key = 
-			{
-				m_id = 431945601
-			}
-			value = 
-			{
-				_class = "CSolveIKChainAnimNode"
-				m_sName = "Unnamed"
-				m_vecPosition = [ 5002.591797, 3876.851318 ]
-				m_nNodeID = 
-				{
-					m_id = 431945601
-				}
-				m_networkMode = "ClientPredicted"
-				m_sNote = ""
-				m_childID = 
-				{
-					m_id = 1276920813
-				}
-				m_IkChains = 
-				[
-					{
-						_class = "CSolveIKChainAnimNodeChainData"
-						m_IkChain = "foot_ik_L"
-						m_SolverSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
-						m_OverrideSolverSettings = 
-						{
-							m_SolverType = "IKSOLVER_TwoBone"
-						}
-						m_TargetSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
-						m_OverrideTargetSettings = 
-						{
-							m_TargetSource = "Bone"
-							m_Bone = 
-							{
-								m_Name = ""
-							}
-							m_AnimgraphParameterNamePosition = 
-							{
-								m_id = 4294967295
-							}
-							m_TargetCoordSystem = "World Space"
-						}
-						m_DebugSetting = "SOLVEIKCHAINANIMNODEDEBUGSETTING_None"
-						m_flDebugNormalizedLength = 1.0
-						m_vDebugOffset = [ 0.0, 0.0, 0.0 ]
-					},
-					{
-						_class = "CSolveIKChainAnimNodeChainData"
-						m_IkChain = "foot_ik_r"
-						m_SolverSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
-						m_OverrideSolverSettings = 
-						{
-							m_SolverType = "IKSOLVER_TwoBone"
-						}
-						m_TargetSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
-						m_OverrideTargetSettings = 
-						{
-							m_TargetSource = "Bone"
-							m_Bone = 
-							{
-								m_Name = ""
-							}
-							m_AnimgraphParameterNamePosition = 
-							{
-								m_id = 4294967295
-							}
-							m_TargetCoordSystem = "World Space"
-						}
-						m_DebugSetting = "SOLVEIKCHAINANIMNODEDEBUGSETTING_None"
-						m_flDebugNormalizedLength = 1.0
-						m_vDebugOffset = [ 0.0, 0.0, 0.0 ]
-					},
-				]
 			}
 		},
 		{
@@ -1541,7 +1465,7 @@
 			{
 				_class = "CBoneMaskAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 5920.0, 3584.0 ]
+				m_vecPosition = [ 5744.0, 3440.0 ]
 				m_nNodeID = 
 				{
 					m_id = 781760763
@@ -1851,7 +1775,7 @@
 						m_name = "Unnamed"
 						m_childNodeID = 
 						{
-							m_id = 781760763
+							m_id = 1983634410
 						}
 						m_stateID = 
 						{
@@ -2824,7 +2748,7 @@
 			{
 				_class = "CAddAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 5664.0, 3584.0 ]
+				m_vecPosition = [ 5488.0, 3440.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1825438126
@@ -3015,7 +2939,7 @@
 				m_sNote = ""
 				m_childID = 
 				{
-					m_id = 431945601
+					m_id = 1276920813
 				}
 				m_target = "VectorParameter"
 				m_param = 
@@ -3028,7 +2952,7 @@
 				}
 				m_lookatChainName = "Head_LookAt_Chain"
 				m_attachmentName = "Head_LookAt_Attachment"
-				m_flYawLimit = 90.0
+				m_flYawLimit = 180.0
 				m_flPitchLimit = 0.0
 				m_bResetBase = true
 				m_bLockWhenWaning = false
@@ -3038,7 +2962,7 @@
 				m_damping = 
 				{
 					_class = "CAnimInputDamping"
-					m_speedFunction = "Spring"
+					m_speedFunction = "NoDamping"
 					m_fSpeedScale = 15.0
 					m_fMinSpeed = 15.0
 					m_fMaxTension = 1000.0

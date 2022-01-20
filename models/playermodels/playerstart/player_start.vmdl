@@ -982,8 +982,8 @@
 						_class = "Attachment"
 						name = "pistol_attach"
 						parent_bone = "RightHand"
-						relative_origin = [ -3.893547, -2.058931, 1.475361 ]
-						relative_angles = [ 1.251167, -161.96637, 21.70899 ]
+						relative_origin = [ 1.388031, 6.554726, 1.735924 ]
+						relative_angles = [ -1.722037, 89.295448, 87.78347 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -991,8 +991,8 @@
 						_class = "Attachment"
 						name = "smg_attach"
 						parent_bone = "RightHand"
-						relative_origin = [ -4.0756, -1.838148, 0.67173 ]
-						relative_angles = [ 5.955971, -156.901871, 1.629869 ]
+						relative_origin = [ 2.503128, 5.189922, 1.94927 ]
+						relative_angles = [ -14.633294, 86.278633, 104.161469 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -1000,8 +1000,8 @@
 						_class = "Attachment"
 						name = "rifle_attach"
 						parent_bone = "RightHand"
-						relative_origin = [ -2.291302, -1.1572, 0.998192 ]
-						relative_angles = [ 13.363872, -169.675278, -2.20414 ]
+						relative_origin = [ 1.391575, 5.637663, 2.18293 ]
+						relative_angles = [ -5.429009, 93.966652, 82.262054 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -1045,8 +1045,8 @@
 						_class = "Attachment"
 						name = "shotgun_attach"
 						parent_bone = "RightHand"
-						relative_origin = [ -3.195538, -1.450809, 1.072334 ]
-						relative_angles = [ 8.24758, -171.074341, 32.05743 ]
+						relative_origin = [ 1.39157, 5.63766, 2.18293 ]
+						relative_angles = [ -5.42901, 93.966698, 82.2621 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -1054,8 +1054,8 @@
 						_class = "Attachment"
 						name = "roomclearer_attachment"
 						parent_bone = "RightHand"
-						relative_origin = [ -4.92599, -0.701643, 1.570538 ]
-						relative_angles = [ 2.36239, -170.263, 14.741102 ]
+						relative_origin = [ 1.39157, 5.63766, 2.18293 ]
+						relative_angles = [ -5.42901, 93.966698, 82.2621 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
