@@ -7,6 +7,6 @@
 		description = "The Busboy"
 		portrait = "materials/ui/portraits/portrait_dialup.jpg"
 		model = resource:"models/playermodels/character_dialup.vmdl"
-		weapon = "materials/ui/weapons/pistol.jpg"
+		weapon = "materials/ui/weapons/smg.jpg"
 	}
 }
