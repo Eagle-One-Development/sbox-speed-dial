@@ -84,11 +84,13 @@ characterselect {
             }
         }
 
+        align-items: center;
+
         .characters {
             width: 100%;
             flex-direction: row;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
         }
 
         padding-bottom: 50px;
