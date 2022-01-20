@@ -95,6 +95,8 @@ namespace SpeedDial {
 
 		public virtual void InitialRespawn() {
 			Respawn();
+			// call round stuff after respawn to potentially override stuff in it
+			Game.Current.ActiveGamemode?.ActiveRound?.OnPawnJoined(this);
 		}
 
 		public virtual void Respawn() {
@@ -111,6 +113,7 @@ namespace SpeedDial {
 
 			Game.Current.PawnRespawned(this);
 			Game.Current.MoveToSpawnpoint(this);
+			Game.Current.ActiveGamemode?.ActiveRound?.OnPawnRespawned(this);
 		}
 
 		public override void OnKilled() {

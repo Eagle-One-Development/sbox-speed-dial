@@ -23,18 +23,7 @@ namespace SpeedDial.Classic.Player {
 
 		public override void InitialRespawn() {
 			CharacterIndex = Rand.Int(0, Character.All.Count - 1);
-			Respawn();
-
-			// apply round specific stuff after normal respawn runs so we can override shit
-
-			// user joined during round, start music for them
-			if(ClassicGamemode.Current.ActiveRound is PreRound or GameRound) {
-				PlaySoundtrack(To.Single(Client));
-			}
-			if(ClassicGamemode.Current.ActiveRound is PreRound or PostRound) {
-				Frozen = true;
-			}
-			
+			base.InitialRespawn();
 		}
 
 		public override void Respawn() {
@@ -65,6 +54,7 @@ namespace SpeedDial.Classic.Player {
 
 			Game.Current.PawnRespawned(this);
 			Game.Current.MoveToSpawnpoint(this);
+			Game.Current.ActiveGamemode?.ActiveRound?.OnPawnRespawned(this);
 
 			// we died, so there's no way anybody still has a highlight on us
 			UpdateGlow(To.Everyone, this, GlowStates.Off, Color.Black);

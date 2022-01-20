@@ -95,5 +95,9 @@ namespace SpeedDial {
 
 		/// <summary> [Server] Will invoke when the round has finished </summary>
 		protected virtual void OnFinish() { Debug.Log($"Round on finish {ClassInfo.Name}"); }
+		/// <summary> A pawn joined for the first time during this round. </summary>
+		public virtual void OnPawnJoined(BasePlayer pawn) { }
+		/// <summary> A pawn respawned during this round. </summary>
+		public virtual void OnPawnRespawned(BasePlayer pawn) { }
 	}
 }

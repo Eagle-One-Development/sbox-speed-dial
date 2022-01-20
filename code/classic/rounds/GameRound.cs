@@ -38,5 +38,12 @@ namespace SpeedDial.Classic.Rounds {
 				pawn.PlayRoundendClimax(To.Single(client));
 			}
 		}
+
+		public override void OnPawnJoined(BasePlayer pawn) {
+			base.OnPawnJoined(pawn);
+			if(pawn is ClassicPlayer player) {
+				player.PlaySoundtrack(To.Single(player.Client));
+			}
+		}
 	}
 }

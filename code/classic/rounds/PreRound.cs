@@ -39,5 +39,13 @@ namespace SpeedDial.Classic.Rounds {
 			base.OnFinish();
 			Game.Current.ActiveGamemode?.SetRound(new GameRound());
 		}
+
+		public override void OnPawnJoined(BasePlayer pawn) {
+			base.OnPawnJoined(pawn);
+			if(pawn is ClassicPlayer player) {
+				player.PlaySoundtrack(To.Single(player.Client));
+				player.Frozen = true;
+			}
+		}
 	}
 }
