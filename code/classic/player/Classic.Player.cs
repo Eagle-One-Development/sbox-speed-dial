@@ -71,7 +71,7 @@ namespace SpeedDial.Classic.Player {
 				ThrowWeapon();
 			}
 
-			if(ActiveChild == null && Input.Down(InputButton.Attack1) && TimeSinceMeleeStarted >= 0.6f && ClassicGamemode.Current.ActiveRound is not PostRound) {
+			if(ActiveChild == null && Input.Down(InputButton.Attack1) && TimeSinceMeleeStarted >= 0.6f && !Frozen) {
 				StartMelee();
 			}
 
@@ -261,13 +261,17 @@ namespace SpeedDial.Classic.Player {
 		[ServerCmd("set_char")]
 		public static void SetCharacter(int index) {
 			if(ConsoleSystem.Caller.Pawn is ClassicPlayer player) {
-				Debug.Log($"char index set to {index}");
-				index = index.Clamp(0, Character.All.Count);
-				player.CharacterIndex = index;
-
-				if(Gamemode.Instance.ActiveRound is PreRound or WarmupRound) 
-					player.RefreshCharacter();
+				player.OnSetCharacter(index);
 			}
+		}
+
+		public virtual void OnSetCharacter(int index) {
+			Debug.Log($"char index set to {index}");
+			index = index.Clamp(0, Character.All.Count);
+			CharacterIndex = index;
+
+			if(Gamemode.Instance.ActiveRound is PreRound or WarmupRound)
+				RefreshCharacter();
 		}
 	}
 }
