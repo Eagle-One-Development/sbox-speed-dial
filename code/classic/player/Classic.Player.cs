@@ -103,6 +103,8 @@ namespace SpeedDial.Classic.Player {
 				weapon.OnCarryStart(this);
 			}
 
+			SetAnimBool("b_polvo", ActiveDrug && DrugType is DrugType.Polvo);
+
 			if(ActiveDrug) {
 				SimulateDrug();
 			}
@@ -136,7 +138,6 @@ namespace SpeedDial.Classic.Player {
 		}
 
 		public void SimulateDrug() {
-			SetAnimBool("b_polvo", ActiveDrug && DrugType is DrugType.Polvo);
 			if(TimeSinceDrugTaken >= DrugDuration) {
 				ActiveDrug = false;
 				DrugParticles?.Destroy();
