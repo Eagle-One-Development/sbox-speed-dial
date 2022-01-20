@@ -36,6 +36,14 @@ namespace SpeedDial.Classic {
 			PickNewSoundtrack();
 		}
 
+		protected override void OnFinish() {
+			foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
+				client.Pawn.Kill();
+				client.Pawn.Delete();
+				client.Pawn = null;
+			}
+		}
+
 		protected override void OnClientReady(Client client) {
 			client.AssignPawn<ClassicPlayer>(true);
 		}
