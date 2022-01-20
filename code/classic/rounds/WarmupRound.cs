@@ -8,7 +8,7 @@ using SpeedDial.Classic.Player;
 namespace SpeedDial.Classic.Rounds {
 	public partial class WarmupRound : Round {
 
-		public override string RoundText => "Waiting for players...";
+		public override string RoundText => $"Waiting for players... [{Client.All.Count}/{Game.MinPlayers}]";
 
 		protected override void OnStart() {
 			base.OnStart();
