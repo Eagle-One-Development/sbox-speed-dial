@@ -14,10 +14,8 @@ namespace SpeedDial.Classic.UI {
 		// bindings for HTML
 		public string HeaderTitle => "SELECT A CRIMINAL";
 		public string SelectHeader => $" TO SELECT";
-		private string IndicatorLeft { get; set; } = "<";
-		private string IndicatorRight { get; set; } = ">";
-		public string PromptLeft => $"{IndicatorLeft} {(Input.UsingController ? "" : Input.GetButtonOrigin(InputButton.Menu).ToUpper())}";
-		public string PromptRight => $"{(Input.UsingController ? "" : Input.GetButtonOrigin(InputButton.Use).ToUpper())} {IndicatorRight}";
+		public string PromptLeft => $"< {(Input.UsingController ? "" : Input.GetButtonOrigin(InputButton.Menu).ToUpper())}";
+		public string PromptRight => $"{(Input.UsingController ? "" : Input.GetButtonOrigin(InputButton.Use).ToUpper())} >";
 
 		public bool Open = false;
 		private TimeSince TimeSinceToggled;
@@ -94,29 +92,11 @@ namespace SpeedDial.Classic.UI {
 				// characters beyond the left num: (startIndex)
 				if(startIndex > 0) {
 					//moreLeft = true;
-					//if(startIndex >= 2) {
-					//	IndicatorLeft = "<<";
-					//} else {
-					//	IndicatorLeft = "<";
-					//}
-					IndicatorLeft = "<";
-				} else {
-					IndicatorLeft = "";
 				}
 				// characters beyond the right num: (Character.All.Count - (startIndex + 4))
 				if(startIndex < Character.All.Count - 4) {
 					//moreRight = true;
-					//if(Character.All.Count - (startIndex + 4) >= 2) {
-					//	IndicatorRight = ">>";
-					//} else {
-					//	IndicatorRight= ">";
-					//}
-					IndicatorRight = ">";
-				} else {
-					IndicatorRight = "";
 				}
-
-				Log.Info($"{Character.All.Count - (startIndex + 4)} | {startIndex}");
 
 				if(Left) {
 					// don't bump when we hit the end
