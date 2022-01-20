@@ -4,7 +4,7 @@
 	{
 		charactername = "Jack_2"
 		description = "Homeless Vet"
-		weaponclass = "sd_pistol"
+		weaponclass = "sd_sniper"
 		portrait = "materials/ui/portraits/portrait_jack.jpg"
 		model = resource:"models/playermodels/character_jack_2.vmdl"
 		weapon = "materials/ui/weapons/pistol.jpg"
