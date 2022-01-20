@@ -32,7 +32,7 @@ namespace SpeedDial {
 				}
 			}
 			if(MapSettings.Current is null) {
-				Log.Error("This map was not made for speed dial or is missing an 'sd_map_settings' entity! Gameplay might be affected!");
+				//Log.Error("This map was not made for speed dial or is missing an 'sd_map_settings' entity! Gameplay might be affected!");
 			}
 		}
 
@@ -199,11 +199,6 @@ namespace SpeedDial {
 			if(!cl.Pawn.IsValid())
 				return;
 
-			// Block Simulate from running clientside
-			// if we're not predictable.
-			if(!cl.Pawn.IsAuthority)
-				return;
-
 			cl.Pawn?.FrameSimulate(cl);
 		}
 
@@ -243,7 +238,6 @@ namespace SpeedDial {
 		}
 
 		public override void PostCameraSetup(ref CameraSetup camSetup) {
-			//camSetup.FieldOfView = Settings.DefaultFOV;
 
 			if(Local.Pawn != null) {
 				// VR anchor default is at the pawn's location
