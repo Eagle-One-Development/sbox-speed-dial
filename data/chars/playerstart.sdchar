@@ -5,7 +5,7 @@
 		charactername = "Player Start"
 		description = "info_player_start"
 		weaponclass = "sd_pistol"
-		portrait = "materials/ui/portraits/player_start.jpg"
+		portrait = "materials/ui/portraits/portrait_test.jpg"
 		model = resource:"models/playermodels/playerstart/player_start.vmdl"
 		weapon = "materials/ui/weapons/pistol.jpg"
 	}
