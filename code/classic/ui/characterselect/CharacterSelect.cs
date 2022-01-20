@@ -86,12 +86,25 @@ namespace SpeedDial.Classic.UI {
 				return;
 
 			if(TimeSinceToggled > 0.1f) {
-				if(Left || Right) {
-					Sound.FromScreen("select_click");
+				bool moreLeft = false;
+				bool moreRight = false;
+
+				// characters beyond the left num: (Character.All.Count - (startIndex + 4))
+				if(startIndex > 0) {
+					moreLeft = true;
+				}
+				// characters beyond the right num: (startIndex)
+				if(startIndex < Character.All.Count - 4) {
+					moreRight = true;
 				}
 
 				if(Left) {
-					PromptLeftScale += 0.3f;
+					// don't bump when we hit the end
+					if(SelectedIndex > 0) {
+						Sound.FromScreen("select_click");
+						PromptLeftScale += 0.3f;
+					}
+					
 					SelectedIndex--;
 					SelectedIndex = SelectedIndex.Clamp(0, Character.All.Count - 1);
 					// reached left end of current lineup, shove start index to the left
@@ -100,7 +113,11 @@ namespace SpeedDial.Classic.UI {
 					}
 				}
 				if(Right) {
-					PromptRightScale += 0.3f;
+					if(SelectedIndex < Character.All.Count - 1) {
+						Sound.FromScreen("select_click");
+						PromptRightScale += 0.3f;
+					}
+					
 					SelectedIndex++;
 					SelectedIndex = SelectedIndex.Clamp(0, Character.All.Count - 1);
 					// reached right end of current lineup, shove start index to the right
