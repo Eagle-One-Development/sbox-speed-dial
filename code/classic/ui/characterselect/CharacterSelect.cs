@@ -30,6 +30,8 @@ namespace SpeedDial.Classic.UI {
 		private CharacterPanel Character3 { get; set; }
 		private CharacterPanel Character4 { get; set; }
 
+		private Panel Progress { get; set; }
+
 		private int startIndex = 0;
 		public static int SelectedIndex = 0;
 
@@ -84,6 +86,10 @@ namespace SpeedDial.Classic.UI {
 
 			if(!IsVisible)
 				return;
+
+			// progress bar at the bottom
+			Progress.Style.Width = Length.Fraction((1 / (float)Character.All.Count) * 4);
+			Progress.Style.Left = Length.Fraction((1 / (float)Character.All.Count) * startIndex);
 
 			if(TimeSinceToggled > 0.1f) {
 				//bool moreLeft = false;
