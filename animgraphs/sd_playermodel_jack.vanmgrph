@@ -431,7 +431,7 @@
 							m_id = 1277728535
 						}
 						m_name = ""
-						m_blendValue = 0.0
+						m_blendValue = 25.0
 					},
 					{
 						m_nodeID = 
@@ -450,8 +450,8 @@
 				m_blendKeyType = "BlendKey_UserValue"
 				m_bLockBlendOnReset = false
 				m_bSyncCycles = true
-				m_bLoop = true
-				m_bLockWhenWaning = true
+				m_bLoop = false
+				m_bLockWhenWaning = false
 				m_damping = 
 				{
 					_class = "CAnimInputDamping"
@@ -2226,7 +2226,7 @@
 			{
 				_class = "CSequenceAnimNode"
 				m_sName = "Unnamed"
-				m_vecPosition = [ 3296.0, 3776.0 ]
+				m_vecPosition = [ 3264.0, 3792.0 ]
 				m_nNodeID = 
 				{
 					m_id = 1479656907
