@@ -26,10 +26,6 @@ namespace SpeedDial.Classic.Player {
 		public override void OnKilled() {
 			Frozen = true;
 
-			// reset drug
-			ActiveDrug = false;
-			DrugParticles?.Destroy(true);
-
 			EnableAllCollisions = false;
 			EnableDrawing = false;
 

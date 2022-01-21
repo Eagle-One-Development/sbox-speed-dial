@@ -49,6 +49,10 @@ namespace SpeedDial.Classic.Player {
 			EnableShadowInFirstPerson = true;
 			EnableLagCompensation = true;
 
+			// reset drug
+			ActiveDrug = false;
+			DrugParticles?.Destroy(true);
+
 			Frozen = false;
 			GiveWeapon<ClassicBaseWeapon>(Character.WeaponClass);
 
