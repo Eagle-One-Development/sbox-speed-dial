@@ -85,7 +85,7 @@ namespace SpeedDial.Classic.UI {
 			}
 			SetClass("open", Open);
 
-			if(!IsVisible)
+			if(!IsVisible || !Open)
 				return;
 
 			// progress bar at the bottom
@@ -94,17 +94,6 @@ namespace SpeedDial.Classic.UI {
 			ProgressBar.SetClass("hidden", Character.All.Count <= 4);
 
 			if(TimeSinceToggled > 0.1f) {
-				//bool moreLeft = false;
-				//bool moreRight = false;
-
-				// characters beyond the left num: (startIndex)
-				if(startIndex > 0) {
-					//moreLeft = true;
-				}
-				// characters beyond the right num: (Character.All.Count - (startIndex + 4))
-				if(startIndex < Character.All.Count - 4) {
-					//moreRight = true;
-				}
 
 				if(Left) {
 					// don't bump when we hit the end
@@ -121,6 +110,7 @@ namespace SpeedDial.Classic.UI {
 					}
 				}
 				if(Right) {
+					// don't bump when we hit the end
 					if(SelectedIndex < Character.All.Count - 1) {
 						Sound.FromScreen("select_click");
 						PromptRightScale += 0.3f;
