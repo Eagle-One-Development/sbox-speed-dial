@@ -19,8 +19,6 @@ namespace SpeedDial.Classic.UI {
 			SetClass("state-visible-game", ClassicGamemode.Current.ActiveRound is not PostRound);
 			// cursor only shows when using mouse input
 			SetClass("state-visible-cursor", !Input.UsingController);
-			// hide score in warmup AND post round
-			SetClass("state-visible-warmup", ClassicGamemode.Current.ActiveRound is not WarmupRound or PostRound);
 		}
 	}
 }
