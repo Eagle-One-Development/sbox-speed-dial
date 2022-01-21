@@ -7,8 +7,6 @@ using Sandbox;
 namespace SpeedDial {
 	public partial class BasePickupTrigger : ModelEntity {
 		public List<BasePlayer> TouchingPlayers = new();
-		// in case we don't want to have to parent it
-		public Entity ParentEntity;
 
 		public override void Spawn() {
 			base.Spawn();

@@ -61,7 +61,6 @@ namespace SpeedDial.Classic.Weapons {
 
 			PickupTrigger = new();
 			PickupTrigger.Parent = this;
-			PickupTrigger.ParentEntity = this;
 			PickupTrigger.Position = Position;
 			PickupTrigger.EnableTouchPersists = true;
 

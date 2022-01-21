@@ -34,11 +34,10 @@ namespace SpeedDial.Classic.Drugs {
 			GlowDistanceStart = 0;
 			GlowDistanceEnd = 1000;
 			GlowColor = HighlightColor;
-			GlowActive = true;
 
 			PickupTrigger = new();
 			PickupTrigger.Position = Position;
-			PickupTrigger.ParentEntity = this;
+			PickupTrigger.Parent = this;
 			PickupTrigger.ResetInterpolation();
 			PickupTrigger.EnableTouchPersists = true;
 			PickupTrigger.EnableTouch = true;
@@ -75,10 +74,6 @@ namespace SpeedDial.Classic.Drugs {
 
 			Effect(player);
 
-			// workaround since we don't actually parent the trigger right now
-			PickupTrigger.EnableAllCollisions = false;
-			PickupTrigger.Delete();
-
 			Delete();
 		}
 
@@ -89,14 +84,15 @@ namespace SpeedDial.Classic.Drugs {
 
 		[Event.Tick.Server]
 		public void ServerTick() {
-			Rotation = Rotation.RotateAroundAxis(Vector3.Up, Time.Delta * 20f);
-			Position += Vector3.Up * MathF.Sin(Time.Now) * 0.15f;
+			//Rotation = Rotation.RotateAroundAxis(Vector3.Up, Time.Delta * 20f);
+			//Position += Vector3.Up * MathF.Sin(Time.Now) * 0.15f;
 		}
 
 		[Event.Frame]
 		public void Frame() {
-			//SceneObject.Rotation = SceneObject.Rotation.RotateAroundAxis(Vector3.Up, Time.Delta * 20f);
-			//SceneObject.Position += Vector3.Up * MathF.Sin(Time.Now) * 0.15f;
+			if(SceneObject is null) return;
+			SceneObject.Rotation = SceneObject.Rotation.RotateAroundAxis(Vector3.Up, Time.Delta * 20f);
+			SceneObject.Position += Vector3.Up * MathF.Sin(Time.Now) * 7 * Time.Delta;
 		}
 
 		public static Type GetRandomSpawnableType() {

@@ -194,7 +194,7 @@ namespace SpeedDial.Classic.Player {
 		public override void StartTouch(Entity other) {
 			// this is a pickuptrigger, we could pick it up
 			if(other is BasePickupTrigger trigger) {
-				if(trigger.ParentEntity is ClassicBaseWeapon weapon) {
+				if(trigger.Parent is ClassicBaseWeapon weapon) {
 					PickupWeapon = weapon;
 					Pickup = true;
 				}
@@ -227,14 +227,14 @@ namespace SpeedDial.Classic.Player {
 
 		public override void Touch(Entity other) {
 			if(other is BasePickupTrigger trigger) {
-				if(trigger.ParentEntity is ClassicBaseWeapon weapon) {
+				if(trigger.Parent is ClassicBaseWeapon weapon) {
 					if(PickupWeapon is null || !Pickup) {
 						PickupWeapon = weapon;
 						Pickup = true;
 					}
 					// handle drugs
 					// do this in touch since drugs can run out while we're standing on one
-				} else if(trigger.ParentEntity is ClassicBaseDrug drug && !ActiveDrug) {
+				} else if(trigger.Parent is ClassicBaseDrug drug && !ActiveDrug) {
 					drug.Taken(this);
 				}
 			}
@@ -242,7 +242,7 @@ namespace SpeedDial.Classic.Player {
 
 		public override void EndTouch(Entity other) {
 			if(other is BasePickupTrigger trigger) {
-				if(trigger.ParentEntity is ClassicBaseWeapon weapon) {
+				if(trigger.Parent is ClassicBaseWeapon weapon) {
 					if(weapon == PickupWeapon) {
 						PickupWeapon = null;
 						Pickup = false;
