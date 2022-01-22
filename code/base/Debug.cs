@@ -6,6 +6,9 @@ namespace SpeedDial {
 		[ConVar.Replicated("debug_enable")]
 		public static bool Enabled { get; set; }
 
+		[ConVar.Replicated("sd_debug_ui")]
+		public static bool UI { get; set; }
+
 		[ConVar.Replicated("sd_debug_camera")]
 		public static bool Camera { get; set; }
 

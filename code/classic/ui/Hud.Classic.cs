@@ -16,7 +16,7 @@ namespace SpeedDial.Classic.UI {
 		public override void Tick() {
 			base.Tick();
 			// game panels hide in post round
-			SetClass("state-visible-game", ClassicGamemode.Current.ActiveRound is not PostRound);
+			SetClass("state-visible-game", ClassicGamemode.Current.ActiveRound is not PostRound && !Debug.UI);
 			// cursor only shows when using mouse input
 			SetClass("state-visible-cursor", !Input.UsingController);
 		}
