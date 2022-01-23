@@ -19,12 +19,17 @@ namespace SpeedDial.Classic.Rounds {
 
 				pawn.Frozen = true;
 				CharacterSelect.ForceState(To.Single(client), false);
+				WinScreen.SetState(To.Single(client), true);
 			}
 		}
 
 		protected override void OnFinish() {
 			base.OnFinish();
 			Game.Current.ActiveGamemode?.SetRound(new PreRound());
+
+			foreach(var client in Client.All) {
+				WinScreen.SetState(To.Single(client), false);
+			}
 		}
 
 		public override void OnPawnJoined(BasePlayer pawn) {

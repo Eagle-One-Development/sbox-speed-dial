@@ -4,18 +4,18 @@
     <div class="container">
         <div class="portraitcontainer">
             <div class="portraitback" />
-            <image class="portrait" src="materials/ui/portraits/portrait_jack.png" />
+            <image class="portrait" @ref="Portrait" />
         </div>
-        <text class="score" text="119.300 PTS"/>
+        <text class="score" @ref="Score"/>
     </div>
     <div class="player">
         <div class="imagecontainer">
-            <image class="avatar" src="materials/ui/profilepic.jpg"/>
-            <image class="icon" src="materials/ui/killicons/suicide.png" />
+            <image class="avatar" @ref="Avatar" />
+            <image class="icon" @ref="Icon" src="materials/ui/killicons/suicide.png" />
         </div>
         <div class="textcontainer">
-            <text class="position" text="WINNER"/>
-            <text class="name" text="EAGLE ONE DEVELOPMENT..."/>
+            <text class="position" @ref="Position" />
+            <text class="name" @ref="Name" />
         </div>
     </div>
 </div>

@@ -5,10 +5,20 @@ winscreen {
     height: 100%;
     position: absolute;
     flex-direction: column;
+
     justify-content: center;
     align-items: center;
+
     backdrop-filter: blur(20px);
     //background-color: rgba(0,0,0, .5);
+    transition: all 3s ease-in-out;
+    opacity: 0;
+    bottom: -100%;
+
+    &.open {
+        opacity: 1;
+        bottom: 0%;
+    }
 
     .header {
         justify-content: center;

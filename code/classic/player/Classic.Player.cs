@@ -60,6 +60,9 @@ namespace SpeedDial.Classic.Player {
 			Game.Current.MoveToSpawnpoint(this);
 			Game.Current.ActiveGamemode?.ActiveRound?.OnPawnRespawned(this);
 
+			// just in case this was left open for some reason
+			WinScreen.SetState(To.Single(Client), false);
+
 			// we died, so there's no way anybody still has a highlight on us
 			UpdateGlow(To.Everyone, this, GlowStates.Off, Color.Black);
 		}
