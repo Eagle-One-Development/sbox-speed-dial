@@ -31,8 +31,6 @@ namespace SpeedDial.Classic.Drugs {
 			MoveType = MoveType.None;
 
 			GlowState = GlowStates.On;
-			GlowDistanceStart = 0;
-			GlowDistanceEnd = 1000;
 			GlowColor = HighlightColor;
 
 			PickupTrigger = new();
