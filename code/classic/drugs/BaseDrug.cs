@@ -57,20 +57,21 @@ namespace SpeedDial.Classic.Drugs {
 			player.DrugType = DrugType;
 			player.TimeSinceDrugTaken = 0;
 
-			var particle = Particles.Create(ParticleName);
-			particle.SetForward(0, Vector3.Up);
-			particle.SetEntityBone(0, player, player.GetBoneIndex("head"), Transform.Zero, true);
-			player.DrugParticles = particle;
-
-			BasePlayer.SoundFromScreen(To.Single(player.Client), PickupSound);
-
 			Effect(player);
 
 			Delete();
 		}
 
 		public virtual void Effect(ClassicPlayer player) {
-			// call ui effects and shit
+			var particle = Particles.Create(ParticleName);
+			if(particle is not null) {
+				particle.SetForward(0, Vector3.Up);
+				particle.SetEntityBone(0, player, player.GetBoneIndex("head"), Transform.Zero, true);
+				player.DrugParticles = particle;
+			}
+
+			BasePlayer.SoundFromScreen(To.Single(player.Client), PickupSound);
+
 			ScreenHints.FireEvent(To.Single(player.Client), $"{DrugName}", $"{DrugDescription}", false);
 		}
 
