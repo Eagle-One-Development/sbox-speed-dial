@@ -12,10 +12,6 @@ namespace SpeedDial.Classic.Entities {
 			ent.Transform = Transform;
 			ent.DrugSpawn = this;
 
-			//workaround since we don't actually parent the pickuptrigger right now
-			ent.PickupTrigger.Position = Position;
-			ent.PickupTrigger.ResetInterpolation();
-
 			ent.ResetInterpolation();
 		}
 	}
