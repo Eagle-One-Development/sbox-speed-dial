@@ -41,18 +41,12 @@ namespace SpeedDial.Classic.Drugs {
 			PickupTrigger.ResetInterpolation();
 			PickupTrigger.EnableTouchPersists = true;
 			PickupTrigger.EnableTouch = true;
-			PickupTrigger.EnableAllCollisions = true;
 			PickupTrigger.SetTriggerSize(25);
 
-			TimeSinceSpawned = 0;
-		}
+			// workaround with spawning
+			PickupTrigger.EnableAllCollisions = false;
 
-		[Event.Tick]
-		public void Tick() {
-			if(PickupTrigger is null) return;
-			Debug.Sphere(Position, 5, Color.Green, 0.01f, false);
-			Debug.Sphere(PickupTrigger.Position, 10, Color.Red, 0.01f, false);
-			Debug.Line(Position, PickupTrigger.Position, Color.Yellow, 0.01f, false);
+			TimeSinceSpawned = 0;
 		}
 
 		public void Taken(ClassicPlayer player) {
@@ -84,8 +78,9 @@ namespace SpeedDial.Classic.Drugs {
 
 		[Event.Tick.Server]
 		public void ServerTick() {
-			//Rotation = Rotation.RotateAroundAxis(Vector3.Up, Time.Delta * 20f);
-			//Position += Vector3.Up * MathF.Sin(Time.Now) * 0.15f;
+			if(TimeSinceSpawned >= 0.5f) {
+				PickupTrigger.EnableAllCollisions = true;
+			}
 		}
 
 		[Event.Frame]
@@ -95,8 +90,16 @@ namespace SpeedDial.Classic.Drugs {
 			SceneObject.Position += Vector3.Up * MathF.Sin(Time.Now) * 7 * Time.Delta;
 		}
 
+		[Event.Tick]
+		public void Tick() {
+			if(PickupTrigger is null) return;
+			Debug.Sphere(Position, 5, Color.Green, 0.01f, false);
+			Debug.Sphere(PickupTrigger.Position, 10, Color.Red, 0.01f, false);
+			Debug.Line(Position, PickupTrigger.Position, Color.Yellow, 0.01f, false);
+		}
+
 		public static Type GetRandomSpawnableType() {
-			// this shit is dumb
+			// GURKE: this shit is dumb
 			// ideally I'd use LibraryAttribute's Spawnable for this but it doesn't work with run-time types like this so fuck it, interface it is
 			var types = Library.GetAll<ClassicBaseDrug>().Where(x => x.GetInterfaces().Contains(typeof(ISpawnable)));
 			return types.Random();
