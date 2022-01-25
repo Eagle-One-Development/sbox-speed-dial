@@ -10,7 +10,8 @@
 		DistanceMax = 1000.0
 		Sounds = 
 		[
-			"sounds/drukqs/ollie_2.vsnd",
+			"sounds/drukqs/ollie.vsnd",
 		]
+		selectionmode = "3"
 	}
 }

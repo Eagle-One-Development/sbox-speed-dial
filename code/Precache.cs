@@ -1,8 +1,8 @@
 using Sandbox;
 
 namespace SpeedDial {
-	public partial class SpeedDialGame {
-		private static void PrecacheModels() {
+	public partial class Game {
+		private static void PrecacheAssets() {
 			Precache.Add("particles/blood/blood_splash.vpcf");
 			Precache.Add("particles/blood/blood_drops.vpcf");
 			Precache.Add("particles/blood/blood_plip.vpcf");
@@ -32,22 +32,19 @@ namespace SpeedDial {
 			Precache.Add("models/weapons/pistol/prop_pistol.vmdl");
 			Precache.Add("models/weapons/melee/melee.vmdl");
 
-			// player models
-			Precache.Add("models/playermodels/character_dialup.vmdl");
-			Precache.Add("models/playermodels/character_highway.vmdl");
-			Precache.Add("models/playermodels/character_jack.vmdl");
-			Precache.Add("models/playermodels/character_maria.vmdl");
-
+			// animgraph
 			Precache.Add("animgraphs/sd_playermodel.vanmgrph");
+			Precache.Add("animgraphs/sd_playermodel_jack.vanmgrph");
 
+			// pickup sounds
 			Precache.Add("sounds/weapon_fx/weapon.pickup_empty.vsnd");
 			Precache.Add("sounds/weapon_fx/weapon.pickup_loaded.vsnd");
 
+			// drug sounds
 			Precache.Add("sounds/drukqs/leaf.vsnd");
-			Precache.Add("sounds/drukqs/ollie_2.vsnd");
+			Precache.Add("sounds/drukqs/ollie.vsnd");
 			Precache.Add("sounds/drukqs/polvo.vsnd");
 			Precache.Add("sounds/drukqs/ritindi.vsnd");
-			Precache.Add("sounds/kill/hit01.vsnd");
 
 			//tracks
 			Precache.Add("sounds/music/main_theme.vsnd");
@@ -55,12 +52,14 @@ namespace SpeedDial {
 			Precache.Add("sounds/music/music_onelesshero.vsnd");
 			Precache.Add("sounds/music/mx_speeddial_combat.vsnd");
 
+			// sounds
 			Precache.Add("sounds/punch/punch03.vsnd");
 			Precache.Add("sounds/punch/punch04.vsnd");
 			Precache.Add("sounds/punch/woosh_2.vsnd");
 			Precache.Add("sounds/punch/woosh_1.vsnd");
 			Precache.Add("sounds/ui/killsecured_long.vsnd");
 			Precache.Add("sounds/ui/killsecured_short.vsnd");
+			Precache.Add("sounds/ui/player_death.vsnd");
 			Precache.Add("sounds/ui/click.vsnd");
 			Precache.Add("sounds/ui/tape_noise.vsnd");
 			Precache.Add("sounds/ui/tape_top.vsnd");

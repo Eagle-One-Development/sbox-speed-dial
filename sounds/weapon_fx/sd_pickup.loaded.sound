@@ -3,7 +3,7 @@
 	data = 
 	{
 		UI = false
-		Volume = 1.5
+		Volume = 0.8
 		VolumeRandom = 0.1
 		Pitch = 1.0
 		PitchRandom = 0.1
@@ -12,5 +12,6 @@
 		[
 			"sounds/weapon_fx/weapon.pickup_loaded.vsnd",
 		]
+		selectionmode = "3"
 	}
 }

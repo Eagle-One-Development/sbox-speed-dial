@@ -24,21 +24,6 @@
 				]
 			},
 			{
-				_class = "PhysicsShapeList"
-				children = 
-				[
-					{
-						_class = "PhysicsShapeCapsule"
-						parent_bone = ""
-						surface_prop = "default"
-						collision_prop = "default"
-						radius = 4.0
-						point0 = [ 5.56824, 0.0, 5.56824 ]
-						point1 = [ -5.592948, 0.0, -5.592948 ]
-					},
-				]
-			},
-			{
 				_class = "RenderMeshList"
 				children = 
 				[
@@ -59,6 +44,35 @@
 						}
 					},
 				]
+			},
+			{
+				_class = "ModelDataList"
+				children = 
+				[
+					{
+						_class = "Bounds Hull"
+						mins = [ -20.0, -20.0, -20.0 ]
+						maxs = [ 20.0, 20.0, 20.0 ]
+					},
+				]
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = ""
+							radius = 5.0
+							point0 = [ -6.11603, 0.0, -5.5859 ]
+							point1 = [ 5.62106, 0.0, 5.3031 ]
+						}
+					},
+				]
+				disabled = true
 			},
 		]
 		model_archetype = ""

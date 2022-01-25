@@ -3,9 +3,10 @@
 	data = 
 	{
 		charactername = "Jack"
-		description = "Addicted to polvo, with a vendetta to settle, Jack is a rogue violent vigilante making his way through L.A. one crimeboss at a time."
+		description = "Homeless Vet"
 		weaponclass = "sd_pistol"
-		portrait = "materials/ui/portraits/jack_hd.jpg"
+		portrait = "materials/ui/portraits/portrait_jack.jpg"
 		model = resource:"models/playermodels/character_jack.vmdl"
+		weapon = "materials/ui/weapons/pistol.jpg"
 	}
 }

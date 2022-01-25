@@ -30,7 +30,7 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "models/drugs/polvo/src/polvo_gameplay.fbx"
-						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_translation = [ 0.0, 0.0, -0.3 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 12.0
 						align_origin_x_type = "None"
@@ -44,6 +44,35 @@
 						}
 					},
 				]
+			},
+			{
+				_class = "ModelDataList"
+				children = 
+				[
+					{
+						_class = "Bounds Hull"
+						mins = [ -20.0, -20.0, -20.0 ]
+						maxs = [ 20.0, 20.0, 20.0 ]
+					},
+				]
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_box"
+						game_keys = 
+						{
+							bonename = ""
+							dimensions = [ 27.5338, 34.2919, 9.6848 ]
+							offset_origin = [ 0.09232, -0.192744, 0.610771 ]
+							offset_angles = [ 0.0, -43.6497, 0.0 ]
+						}
+					},
+				]
+				disabled = true
 			},
 		]
 		model_archetype = ""

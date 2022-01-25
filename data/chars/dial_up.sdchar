@@ -4,8 +4,9 @@
 	{
 		weaponclass = "sd_smg"
 		charactername = "Dial-Up"
-		description = "Dial-Up assisted many L.A. crime gangs on various counts of cyber-crime. Now he specializes in \'violent corporate cyber espionage\'."
-		portrait = "materials/ui/portraits/hd_me.jpg"
+		description = "The Busboy"
+		portrait = "materials/ui/portraits/portrait_dialup.jpg"
 		model = resource:"models/playermodels/character_dialup.vmdl"
+		weapon = "materials/ui/weapons/smg.jpg"
 	}
 }

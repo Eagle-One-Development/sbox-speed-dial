@@ -1,0 +1,122 @@
+@import "/classic/ui/_vars/globals.scss";
+
+characterselect {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    flex-direction: column;
+    background-color: rgba(black, 0.9);
+    backdrop-filter: blur(25px);
+    opacity: 0;
+    bottom: -100%;
+    transition: all 0.5s ease-in-out;
+
+    &.open {
+        opacity: 1;
+        bottom: 0%;
+    }
+
+    &:intro {
+        opacity: 0;
+        bottom: -100%;
+    }
+
+    .gradient {
+        width: 100%;
+        height: 100%;
+        flex-direction: row;
+        position: absolute;
+        opacity: 0.3;
+
+        .right {
+            background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 70%, rgba($vhs_magenta, 1));
+            width: 50%;
+        }
+
+        .left {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 70%, rgba($vhs_cyan, 1));
+            width: 50%;
+        }
+    }
+
+    .header {
+        width: 100%;
+        height: 20%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .headertitle {
+            font-size: 50px;
+            text-shadow: -2px -2px 1px $vhs_cyan, 4px 2px 1px $vhs_magenta;
+        }
+
+        .glyph {
+            top: 2px;
+            height: 35px;
+        }
+
+        .selectheader {
+            font-size: 25px;
+        }
+    }
+
+    .body {
+        width: 100%;
+        height: 100%;
+
+        .prompt {
+            width: 300px;
+            align-items: center;
+            padding: 20px;
+
+            &.left {
+                justify-content: flex-end;
+            }
+
+            &.right {
+                justify-content: flex-start;
+            }
+
+            .promptlabel {
+                font-size: 40px;
+                text-shadow: -2px -2px 1px $vhs_cyan, 4px 2px 1px $vhs_magenta;
+            }
+        }
+
+        align-items: center;
+
+        .characters {
+            width: 100%;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        padding-bottom: 50px;
+    }
+
+    justify-content: center;
+    align-items: center;
+
+
+    .progresslimit {
+        width: 75%;
+        bottom: 10px;
+        height: 20px;
+        border: 2px white;
+        background-color: black;
+        opacity: 1;
+
+        .progress {
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to left, rgba($vhs_cyan, 1), rgba($vhs_magenta, 1));
+            transition: all 0.2s ease-in-out;
+        }
+
+        &.hidden {
+            opacity: 0;
+        }
+    }
+}

@@ -1,16 +1,13 @@
 {
-    "name": "speed-dial",
-    "version": "0.420",
-    "sharedassets": "*.*",
-    "depends": [
-        "base",
-        "citizen"
-    ],
-    "gamemodes": [
-        {
-            "name": "speed-dial",
-            "title": "Speed-Dial",
-            "description": "Speed-Dial is a high octane top down deathmatch shooter taking place in a series of maps centered around the seedy California drug ring iconography."
-        }
-    ]
+  "SharedAssets": "*",
+  "Title": "Speed-Dial",
+  "Type": "game",
+  "Org": "eagleone",
+  "Ident": "speed_dial",
+  "Schema": 1,
+  "HasAssets": true,
+  "AssetsPath": "",
+  "HasCode": true,
+  "CodePath": "code",
+  "RootNamespace": "Sandbox"
 }

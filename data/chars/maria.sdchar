@@ -3,9 +3,10 @@
 	data = 
 	{
 		charactername = "Maria"
-		description = "The former right hand of an L.A. crime gang, Maria now spends her days as muscle available to the highest bidder."
+		description = "Luchador Lady"
 		weaponclass = "sd_rifle"
-		portrait = "materials/ui/portraits/maria_hd.jpg"
+		portrait = "materials/ui/portraits/portrait_maria.jpg"
 		model = resource:"models/playermodels/character_maria.vmdl"
+		weapon = "materials/ui/weapons/rifle.jpg"
 	}
 }

@@ -30,7 +30,7 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "models/drugs/leaf/src/leaf.fbx"
-						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_translation = [ 0.0, 0.0, -30.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.397
 						align_origin_x_type = "None"
@@ -44,6 +44,35 @@
 						}
 					},
 				]
+			},
+			{
+				_class = "ModelDataList"
+				children = 
+				[
+					{
+						_class = "Bounds Hull"
+						mins = [ -20.0, -20.0, -20.0 ]
+						maxs = [ 20.0, 20.0, 20.0 ]
+					},
+				]
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = ""
+							radius = 3.92369
+							point0 = [ -14.7097, 0.0, -4.29546 ]
+							point1 = [ 15.4587, 0.0, 5.32325 ]
+						}
+					},
+				]
+				disabled = true
 			},
 		]
 		model_archetype = ""
