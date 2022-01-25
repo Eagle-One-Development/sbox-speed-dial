@@ -10,7 +10,7 @@ namespace SpeedDial.Classic.Drugs {
 		// these are kinda lame, not sure how to get the armor with weed into context lol
 		public override string DrugDescription => "you feel less pain, bro"; // lizard skin (?) // tough as steel // armadillo/turtle mode // 
 		public override DrugType DrugType => DrugType.Leaf;
-		public override string Icon => "materials/ui/leaf.png";
+		public override string Icon => "materials/ui/drugs/leaf.png";
 		public override string PickupSound => "sd_leaf_take";
 		public override Color HighlightColor => new(0.1f, 1, 0.1f, 1);
 		public override string ParticleName => "particles/drug_fx/sd_leaf/sd_leaf.vpcf";
