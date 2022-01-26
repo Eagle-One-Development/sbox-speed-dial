@@ -15,8 +15,11 @@ FEATURES
     #include "common/features.hlsl"
 
     Feature( F_IRIDESCENCE, 0..1, "Iridescence" );
+    Feature( F_DEBUG_IRIDESCENCE, 0..1, "Debug" );
 
-    // Feature( F_DEBUG, 0..1, "Debug" );
+    FeatureRule( Requires1( F_DEBUG_IRIDESCENCE, F_IRIDESCENCE ), "Emissive must be used with baked self illumination" );
+
+
 }
 
 //=========================================================================================================================
@@ -74,10 +77,13 @@ PS
     #include "common/pixel.hlsl"
 
     StaticCombo( S_IRIDESCENCE, F_IRIDESCENCE, Sys( PC ) );
+    StaticCombo( S_DEBUG_IRIDESCENCE, F_DEBUG_IRIDESCENCE, Sys( PC ) );
 
     #if S_IRIDESCENCE
-
-        // float2 g_flDebugSplit < Default2(500.0f, 500.0f); Range2(0.0f, 0.0f, 1000.0f, 1000.f); UiGroup("Iridescence Debug,10/1");>;
+        #if (S_DEBUG_IRIDESCENCE)
+            //Debug Settings
+            float2 g_flDebugSplit < Default2(500.0f, 500.0f); Range2(0.0f, 0.0f, 1000.0f, 1000.f); UiGroup("Iridescence Debug,10/1");>;
+        #endif
 
         float g_flIridescenceFresnelExponent < Default(2.0f); Range(0.0, 10.0); UiGroup("Iridescence,10/1");>;
         float g_flIridescenceAlbedoFactor < Default(1.0f); Range(0.0, 1.0); UiGroup("Iridescence,10/2");>;
@@ -122,9 +128,7 @@ PS
             float iMetal = Tex2DS(g_tIridescenceMask, g_sBilinearWrap, i.vTextureCoords.xy).g;
             m.Metalness = lerp(m.Metalness, iMetal, mask);
 
-            /*
-            StaticCombo( S_DEBUG, F_DEBUG, Sys( PC ) );
-            #if (S_DEBUG)
+            #if (S_DEBUG_IRIDESCENCE)
                 if (i.vPositionSs.x < g_flDebugSplit.x)
                 {
                     if (i.vPositionSs.y < g_flDebugSplit.y)
@@ -153,7 +157,6 @@ PS
                 }
                 return o;
             #endif
-            */
 
         #endif
 
