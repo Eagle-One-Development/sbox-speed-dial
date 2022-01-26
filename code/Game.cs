@@ -54,9 +54,10 @@ namespace SpeedDial {
 			ActiveGamemode?.ClientDisconnected(cl, reason);
 			MapSettings.Current?.OnClientDisconnected.Fire(null, cl.Name);
 
-			if(cl.Pawn.IsValid()) {
-				cl.Pawn.Delete();
-				cl.Pawn = null;
+			if(cl.Pawn.IsValid() && cl.Pawn is BasePlayer player) {
+				player.OnClientDisconnected();
+				player.Delete();
+				player = null;
 			}
 		}
 

@@ -132,6 +132,11 @@ namespace SpeedDial {
 			}
 		}
 
+		/// <summary>
+		///  called before the pawn gets cleaned up upon a client disconnect
+		/// </summary>
+		public virtual void OnClientDisconnected() { }
+
 		//
 		// Controller
 		//
