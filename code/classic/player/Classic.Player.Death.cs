@@ -65,6 +65,22 @@ namespace SpeedDial.Classic.Player {
 			base.OnKilled();
 		}
 
+		public override void OnClientDisconnected() {
+			// chuck weapon away in a random direction
+			DropWeapon(out var weapon);
+			if(weapon.IsValid()) {
+				weapon.Velocity += Vector3.Random.WithZ(0).Normal * 150 + Vector3.Up * 150;
+				weapon.PhysicsBody.AngularVelocity = new Vector3(0, 0, 60f);
+				weapon.CanImpactKill = false;
+			}
+
+			// death effects, body + particles/decals
+			BecomeRagdollOnClient(To.Everyone, new Vector3(Velocity.x / 2, Velocity.y / 2, 300), GetHitboxBone(0));
+			BloodSplatter(To.Everyone);
+
+			DrugParticles?.Destroy(true);
+		}
+
 		[ClientRpc]
 		void BecomeRagdollOnClient(Vector3 force, int forceBone) {
 
