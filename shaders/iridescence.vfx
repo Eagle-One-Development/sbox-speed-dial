@@ -35,6 +35,9 @@ COMMON
 {
 	#include "common/shared.hlsl"
 	#include "vr_common.fxc"
+
+	#define VS_INPUT_HAS_TANGENT_BASIS 1
+    #define PS_INPUT_HAS_TANGENT_BASIS 1
 }
 
 //=========================================================================================================================
@@ -72,7 +75,7 @@ VS
 PS
 {
     #include "common/pixel.hlsl"
-    float g_flFresnelExponent < Default(2.0f); Range(0.0, 64.0); UiGroup("Iridescence,10/1");>;
+    float g_flFresnelExponent < Default(2.0f); Range(0.0, 10.0); UiGroup("Iridescence,10/1");>;
     float g_flAlbedoFactor < Default(1.0f); Range(0.0, 1.0); UiGroup("Iridescence,10/2");>;
     float2 g_flDebugSplit < Default2(500.0f, 500.0f); Range2(0.0f, 0.0f, 1000.0f, 1000.f); UiGroup("Debug,10/1");>;
 	
@@ -97,7 +100,7 @@ PS
 		Material m = GatherMaterial( i );
 
 		// Dot Product With Normal Mapping
-		float3 normal = normalize( (m.Normal - float3(0.5, 0.5, 0.5)) + i.vNormalWs);
+		float3 normal = Vec3TsToWsNormalized(m.Normal * 2.0f - 1.0f, i.vNormalWs.xyz, i.vTangentUWs, i.vTangentVWs);
 		float d = saturate( 1 - pow( abs( dot( normalize( g_vWorldToCameraOffset ), normal ) ), g_flFresnelExponent ) );
 
 
