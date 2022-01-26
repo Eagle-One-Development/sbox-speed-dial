@@ -1,0 +1,106 @@
+//=========================================================================================================================
+// Optional
+//=========================================================================================================================
+HEADER
+{
+	CompileTargets = ( IS_SM_50 && ( PC || VULKAN ) );
+	Description = "Iridescene";
+	DevShader = true;
+}
+
+//=========================================================================================================================
+// Optional
+//=========================================================================================================================
+FEATURES
+{
+    #include "common/features.hlsl"
+}
+
+//=========================================================================================================================
+// Optional
+//=========================================================================================================================
+MODES
+{
+    VrForward();													// Indicates this shader will be used for main rendering
+    Depth( "vr_depth_only.vfx" ); 									// Shader that will be used for shadowing and depth prepass
+    ToolsVis( S_MODE_TOOLS_VIS ); 									// Ability to see in the editor
+    ToolsWireframe( "vr_tools_wireframe.vfx" ); 					// Allows for mat_wireframe to work
+	ToolsShadingComplexity( "vr_tools_shading_complexity.vfx" ); 	// Shows how expensive drawing is in debug view
+}
+
+//=========================================================================================================================
+COMMON
+{
+	#include "common/shared.hlsl"
+	#include "vr_common.fxc"
+}
+
+//=========================================================================================================================
+
+struct VertexInput
+{
+	#include "common/vertexinput.hlsl"
+};
+
+//=========================================================================================================================
+
+struct PixelInput
+{
+	#include "common/pixelinput.hlsl"
+};
+
+//=========================================================================================================================
+
+VS
+{
+	#include "common/vertex.hlsl"
+	//
+	// Main
+	//
+	PixelInput MainVs( INSTANCED_SHADER_PARAMS( VS_INPUT i ) )
+	{
+		PixelInput o = ProcessVertex( i );
+		// Add your vertex manipulation functions here
+		return FinalizeVertex( o );
+	}
+}
+
+//=========================================================================================================================
+
+PS
+{
+    #include "common/pixel.hlsl"
+    float g_flFresnelExponent < Default(2.0f); Range(0.0, 64.0); UiGroup("Iridescence,10/1");>;
+	CreateInputTexture2D( TextureGradient,            Srgb,   8, "",                 "_color",  "Iridescence,10/2", Default3( 1.0, 1.0, 1.0 ) );
+	CreateTexture2DWithoutSampler( g_tIridescenceGradient ) < Channel( RGBA, Box( TextureGradient ), Srgb ); OutputFormat( BC7 ); SrgbRead( true ); >;
+
+	CreateInputTexture2D( TextureMask,            Linear,   8, "",                 "_mask",  "Iridescence,10/3", Default3( 1.0, 1.0, 1.0 ) );
+	CreateTexture2DWithoutSampler( g_tMask ) < Channel( RGBA, Box( TextureMask ), Linear ); OutputFormat( BC7 ); SrgbRead( false ); >;
+    SamplerState g_sBilinearWrap < Filter( BILINEAR ); AddressU( WRAP ); AddressV( WRAP ); >;
+
+	//
+	// Main
+	//
+	PixelOutput MainPs( PixelInput i )
+	{
+		PixelOutput o;
+
+		Material m = GatherMaterial( i );
+
+		// Dot Product With Normal Mapping
+		float3 normal = m.Normal * i.vNormalWs;
+		float d = saturate(pow(1 + dot(normalize(g_vWorldToCameraOffset), normal), g_flFresnelExponent));
+
+		// Gradient mapping
+		float3 colorGradient = Tex2DS(g_tIridescenceGradient, g_sBilinearWrap, float2(d, 0.0));
+		
+		// Effect mask
+		float mask = Tex2DS(g_tMask, g_sBilinearWrap, i.vTextureCoords.xy).rgbr;
+
+		// Albedo
+		m.Albedo = lerp(m.Albedo, m.Albedo * colorGradient, mask);
+		m.Metalness = lerp(m.Metalness, 1.0, mask);
+
+		return FinalizePixelMaterial( i, m );
+	}
+}
