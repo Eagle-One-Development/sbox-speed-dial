@@ -2,20 +2,17 @@
 
 Layer0
 {
-	shader "iridescence.vfx"
+	shader "speed-dial_character.vfx"
 
 	//---- Animation ----
 	F_MORPH_SUPPORTED 1
 
-	//---- Debug ----
-	F_DEBUG 1
+	//---- Iridescence ----
+	F_IRIDESCENCE 1
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-
-	//---- Debug ----
-	g_flDebugSplit "[1000.000 1000.000]"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -24,10 +21,12 @@ Layer0
 	g_bFogEnabled "1"
 
 	//---- Iridescence ----
-	g_flFresnelExponent "2.000"
-	TextureGradient "models/playermodels/src/textures/dialup/dialup_iridescence_gradient_color.png"
-	TextureIridescenceMetal "[1.000000 1.000000 1.000000 0.000000]"
-	TextureMask "materials/default/default_mask.tga"
+	g_flIridescenceAlbedoFactor "1.000"
+	g_flIridescenceFresnelExponent "2.000"
+	g_flIridescenceFresnelReflectance "0.000"
+	IridescenceMetal "[1.000000 1.000000 1.000000 0.000000]"
+	IridescenceTextureGradient "models/playermodels/src/textures/dialup/dialup_iridescence_gradient_color.png"
+	IridescenceTextureMask "models/playermodels/src/textures/dialup/dialup_metal.png"
 
 	//---- Lighting ----
 	g_flDirectionalLightmapMinZ "0.050"
