@@ -71,11 +71,16 @@ PS
 {
     #include "common/pixel.hlsl"
     float g_flFresnelExponent < Default(2.0f); Range(0.0, 64.0); UiGroup("Iridescence,10/1");>;
+	
+	//Gradient Map
 	CreateInputTexture2D( TextureGradient,            Srgb,   8, "",                 "_color",  "Iridescence,10/2", Default3( 1.0, 1.0, 1.0 ) );
 	CreateTexture2DWithoutSampler( g_tIridescenceGradient ) < Channel( RGBA, Box( TextureGradient ), Srgb ); OutputFormat( BC7 ); SrgbRead( true ); >;
 
-	CreateInputTexture2D( TextureMask,            Linear,   8, "",                 "_mask",  "Iridescence,10/3", Default3( 1.0, 1.0, 1.0 ) );
-	CreateTexture2DWithoutSampler( g_tMask ) < Channel( RGBA, Box( TextureMask ), Linear ); OutputFormat( BC7 ); SrgbRead( false ); >;
+
+	// Mask and Metal
+	CreateInputTexture2D( TextureMask,            Linear,   8, "",                 "_mask",  "Iridescence,10/4", Default3( 1.0, 1.0, 1.0 ) );
+	CreateInputTexture2D( TextureIridescenceMetal,            Linear,   8, "",                 "_metal",  "Iridescence,10/3", Default3( 1.0, 1.0, 1.0 ) );
+	CreateTexture2DWithoutSampler( g_tMaskMetal ) < Channel( R, Box( TextureMask ), Linear ); Channel( G, Box( TextureIridescenceMetal ), Linear );OutputFormat( BC7 ); SrgbRead( false ); >;
     SamplerState g_sBilinearWrap < Filter( BILINEAR ); AddressU( WRAP ); AddressV( WRAP ); >;
 
 	//
@@ -95,11 +100,14 @@ PS
 		float3 colorGradient = Tex2DS(g_tIridescenceGradient, g_sBilinearWrap, float2(d, 0.0));
 		
 		// Effect mask
-		float mask = Tex2DS(g_tMask, g_sBilinearWrap, i.vTextureCoords.xy).rgbr;
+		float mask = Tex2DS(g_tMaskMetal, g_sBilinearWrap, i.vTextureCoords.xy).r;
 
 		// Albedo
 		m.Albedo = lerp(m.Albedo, m.Albedo * colorGradient, mask);
-		m.Metalness = lerp(m.Metalness, 1.0, mask);
+
+		// Metal
+		float iMetal = Tex2DS(g_tMaskMetal, g_sBilinearWrap, i.vTextureCoords.xy).g;
+		m.Metalness = lerp(m.Metalness, iMetal, mask);
 
 		return FinalizePixelMaterial( i, m );
 	}
