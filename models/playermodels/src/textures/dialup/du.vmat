@@ -24,12 +24,12 @@ Layer0
 	g_bFogEnabled "1"
 
 	//---- Fresnel ----
-	g_flFresnelExponent "4.000"
-	g_flFresnelReflectance "0.000"
-	g_flFresnelThreshold "0.050"
+	g_flFresnelExponent "2.000"
+	g_flFresnelReflectance "0.200"
+	g_flFresnelThreshold "0.500"
 
 	//---- Iridescence ----
-	g_flIridescenceAlbedoFactor "0.000"
+	g_flIridescenceAlbedoFactor "1.000"
 	g_flIridescenceFresnelExponent "2.000"
 	g_flIridescenceFresnelReflectance "0.000"
 	IridescenceMetal "[1.000000 1.000000 1.000000 0.000000]"
