@@ -14,11 +14,11 @@ FEATURES
 {
     #include "common/features.hlsl"
 
+    Feature( F_FRESNEL, 0..1, "Fresnel" );
     Feature( F_IRIDESCENCE, 0..1, "Iridescence" );
     Feature( F_DEBUG_IRIDESCENCE, 0..1, "Debug" );
 
-    FeatureRule( Requires1( F_DEBUG_IRIDESCENCE, F_IRIDESCENCE ), "Emissive must be used with baked self illumination" );
-
+    FeatureRule( Requires1( F_DEBUG_IRIDESCENCE, F_IRIDESCENCE ), "Cannot Debug Iridescence Without Iridescence" );
 
 }
 
@@ -76,11 +76,19 @@ PS
 {
     #include "common/pixel.hlsl"
 
+    StaticCombo( S_FRESNEL, F_FRESNEL, Sys( PC ) );
     StaticCombo( S_IRIDESCENCE, F_IRIDESCENCE, Sys( PC ) );
     StaticCombo( S_DEBUG_IRIDESCENCE, F_DEBUG_IRIDESCENCE, Sys( PC ) );
 
+    #if S_FRESNEL
+        float g_flFresnelExponent < Default(2.0f); Range(0.0, 10.0); UiGroup("Fresnel,10/1");>;
+        float g_flFresnelReflectance < Default(0.0f); Range(-1.0f, 1.0f); UiGroup("Fresnel,10/2"); >;
+        float g_flFresnelThreshold < Default(0.0f); Range(0.0f, 1.0f); UiGroup("Fresnel,10/3"); >;
+        float4 g_vFresnelColor < Default4(1.0f, 1.0f, 1.0f, 1.0f); UiType( Color ); UiGroup("Fresnel,10/4"); >;
+    #endif
+
     #if S_IRIDESCENCE
-        #if (S_DEBUG_IRIDESCENCE)
+        #if S_DEBUG_IRIDESCENCE
             //Debug Settings
             float2 g_flDebugSplit < Default2(500.0f, 500.0f); Range2(0.0f, 0.0f, 1000.0f, 1000.f); UiGroup("Iridescence Debug,10/1");>;
         #endif
@@ -98,7 +106,6 @@ PS
         CreateInputTexture2D( IridescenceMetal,             Linear,     8,  "",     "_metal",   "Iridescence,10/6", Default3( 1.0, 1.0, 1.0 ) );
         CreateTexture2DWithoutSampler( g_tIridescenceMask ) < Channel( R, Box( IridescenceTextureMask ), Linear ); Channel( G, Box( IridescenceMetal ), Linear );OutputFormat( BC7 ); SrgbRead( false ); >;
         SamplerState g_sBilinearWrap < Filter( BILINEAR ); AddressU( WRAP ); AddressV( WRAP ); >;
-
     #endif
 
 	PixelOutput MainPs( PixelInput i ) {
@@ -106,13 +113,12 @@ PS
 
 		Material m = GatherMaterial( i );
 
+        // Normal Map Texture
+        float3 normal = Vec3TsToWsNormalized(m.Normal * 2.0f - 1.0f, i.vNormalWs.xyz, i.vTangentUWs, i.vTangentVWs);
+        float3 vPositionWs = i.vPositionWithOffsetWs.xyz + g_vHighPrecisionLightingOffsetWs.xyz;
+
         #if S_IRIDESCENCE
 
-            // Dot Product With Normal Mapping
-            float3 normal = Vec3TsToWsNormalized(m.Normal * 2.0f - 1.0f, i.vNormalWs.xyz, i.vTangentUWs, i.vTangentVWs);
-            //float d = saturate( 1 - pow( abs( dot( normalize( g_vWorldToCameraOffset ), normal ) ), g_flIridescenceFresnelExponent ) );
-
-            float3 vPositionWs = i.vPositionWithOffsetWs.xyz + g_vHighPrecisionLightingOffsetWs.xyz;
             float fresnel = CalculateFresnel(g_flIridescenceFresnelReflectance, g_flIridescenceFresnelExponent, vPositionWs, normal);
 
             // Gradient mapping
@@ -158,6 +164,18 @@ PS
                 return o;
             #endif
 
+        #endif
+
+        #if S_FRESNEL
+            //Fresnel
+            float f = CalculateFresnel(g_flFresnelReflectance, g_flFresnelExponent, vPositionWs, normal);
+
+            [branch]
+            if (f > g_flFresnelThreshold)
+            {
+                o.vColor = float4(m.Albedo, 1.0);
+                return o;
+            }
         #endif
 
 		return FinalizePixelMaterial( i, m );
