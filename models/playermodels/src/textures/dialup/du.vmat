@@ -7,6 +7,9 @@ Layer0
 	//---- Animation ----
 	F_MORPH_SUPPORTED 1
 
+	//---- Fresnel ----
+	F_FRESNEL 1
+
 	//---- Iridescence ----
 	F_IRIDESCENCE 1
 
@@ -20,8 +23,13 @@ Layer0
 	//---- Fog ----
 	g_bFogEnabled "1"
 
+	//---- Fresnel ----
+	g_flFresnelExponent "4.000"
+	g_flFresnelReflectance "0.000"
+	g_flFresnelThreshold "0.050"
+
 	//---- Iridescence ----
-	g_flIridescenceAlbedoFactor "1.000"
+	g_flIridescenceAlbedoFactor "0.000"
 	g_flIridescenceFresnelExponent "2.000"
 	g_flIridescenceFresnelReflectance "0.000"
 	IridescenceMetal "[1.000000 1.000000 1.000000 0.000000]"
