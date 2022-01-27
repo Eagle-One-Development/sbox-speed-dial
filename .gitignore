@@ -25,6 +25,7 @@ omnisharp.json
 *.vpk
 *.vpcf_c
 *.fgd
+*.vpost_c
 
 !sd_test.vpk
 !sd_bank.vpk
