@@ -1299,664 +1299,6 @@
 				children = 
 				[
 					{
-						_class = "AnimFile"
-						name = "crouching_turn_90_left"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/crouching_turn_90_left.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "crouching_turn_90_right"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/crouching_turn_90_right.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "death_crouching_headshot_front"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/death_crouching_headshot_front.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "death_from_back_headshot"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/death_from_back_headshot.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "death_from_front_headshot"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/death_from_front_headshot.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "death_from_right"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/death_from_right.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "death_from_the_back"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/death_from_the_back.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "death_from_the_front"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/death_from_the_front.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "idle"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/idle.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "idle_aiming"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/idle_aiming.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "idle_crouching"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/idle_crouching.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "idle_crouching_aiming"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/idle_crouching_aiming.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "jump_down"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/jump_down.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "jump_loop"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/jump_loop.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "jump_up"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/jump_up.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "walk_crouching_backward"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/walk_crouching_backward.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "walk_crouching_backward_left"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/walk_crouching_backward_left.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "walk_crouching_backward_right"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/walk_crouching_backward_right.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "walk_crouching_forward"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/walk_crouching_forward.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "walk_crouching_forward_left"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/walk_crouching_forward_left.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "walk_crouching_forward_right"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/walk_crouching_forward_right.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "walk_crouching_left"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/walk_crouching_left.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "walk_crouching_right"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/walk_crouching_right.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "walk_forward"
-						children = 
-						[
-							{
-								_class = "ExtractMotion"
-								extract_tx = true
-								extract_ty = true
-								extract_tz = false
-								extract_rz = false
-								linear = false
-								quadratic = false
-								root_bone_name = "Hips"
-								motion_type = "Uniform"
-							},
-						]
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/walk_forward.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "walk_forward_left"
-						children = 
-						[
-							{
-								_class = "ExtractMotion"
-								extract_tx = true
-								extract_ty = true
-								extract_tz = false
-								extract_rz = false
-								linear = false
-								quadratic = false
-								root_bone_name = "Hips"
-								motion_type = "Uniform"
-							},
-						]
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/walk_forward_left.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "walk_forward_right"
-						children = 
-						[
-							{
-								_class = "ExtractMotion"
-								extract_tx = true
-								extract_ty = true
-								extract_tz = false
-								extract_rz = false
-								linear = false
-								quadratic = false
-								root_bone_name = "Hips"
-								motion_type = "Uniform"
-							},
-						]
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/walk_forward_right.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "walk_left"
-						children = 
-						[
-							{
-								_class = "ExtractMotion"
-								extract_tx = true
-								extract_ty = true
-								extract_tz = false
-								extract_rz = false
-								linear = false
-								quadratic = false
-								root_bone_name = "Hips"
-								motion_type = "Uniform"
-							},
-						]
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/walk_left.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "walk_right"
-						children = 
-						[
-							{
-								_class = "ExtractMotion"
-								extract_tx = true
-								extract_ty = true
-								extract_tz = false
-								extract_rz = false
-								linear = false
-								quadratic = false
-								root_bone_name = "Hips"
-								motion_type = "Uniform"
-							},
-						]
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/walk_right.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
 						_class = "Folder"
 						name = "Pistol"
 						children = 
@@ -3095,28 +2437,826 @@
 								take = 0
 								reverse = false
 							},
+							{
+								_class = "AnimFile"
+								name = "rifle_shoot"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/idle_aiming.fbx"
+								start_frame = -1
+								end_frame = 15
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
 						]
 					},
 					{
-						_class = "AnimFile"
-						name = "rifle_shoot"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/playermodels/playerstart/mixamo/idle_aiming.fbx"
-						start_frame = -1
-						end_frame = 15
-						framerate = -1.0
-						take = 0
-						reverse = false
+						_class = "Folder"
+						name = "Death"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "death_crouching_headshot_front"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/death_crouching_headshot_front.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "death_from_back_headshot"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/death_from_back_headshot.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "death_from_front_headshot"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/death_from_front_headshot.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "death_from_right"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/death_from_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "death_from_the_back"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/death_from_the_back.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "death_from_the_front"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/death_from_the_front.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "Rifle_Walk"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "walk_crouching_backward"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/walk_crouching_backward.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_crouching_backward_left"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/walk_crouching_backward_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_crouching_backward_right"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/walk_crouching_backward_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_crouching_forward"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/walk_crouching_forward.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_crouching_forward_left"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/walk_crouching_forward_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_crouching_forward_right"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/walk_crouching_forward_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_crouching_left"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/walk_crouching_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_crouching_right"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/walk_crouching_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_forward"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/walk_forward.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_forward_left"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/walk_forward_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_forward_right"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/walk_forward_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_left"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/walk_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_right"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = "Hips"
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/walk_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "Idles"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "idle"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/idle.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "idle_aiming"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/idle_aiming.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "idle_crouching"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/idle_crouching.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "idle_crouching_aiming"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/idle_crouching_aiming.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "melee_idle"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/melee/melee_idle.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "fists_idle"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/melee/fists_idle.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "Misc"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "crouching_turn_90_left"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/crouching_turn_90_left.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "crouching_turn_90_right"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/crouching_turn_90_right.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "jump_down"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/jump_down.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "jump_loop"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/jump_loop.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "jump_up"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/jump_up.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "Melee"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "left_hook"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/melee/left_hook.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "melee_attack_horz"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/melee/melee_attack_horz.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "right_hook"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/playermodels/playerstart/mixamo/melee/right_hook.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+						]
 					},
 				]
 				default_root_bone_name = ""
@@ -3426,7 +3566,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "Hips"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 4.845712
 								point0 = [ -2.032739, -3.649093, 0.000315 ]
 								point1 = [ 2.214706, -3.649093, 0.000315 ]
@@ -3435,7 +3578,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "LeftUpLeg"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 3.084743
 								point0 = [ -0.358702, 16.735573, 0.134807 ]
 								point1 = [ 1.419252, 0.007733, -0.002976 ]
@@ -3444,7 +3590,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "LeftLeg"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 2.784302
 								point0 = [ 0.0, 0.0, 0.0 ]
 								point1 = [ 0.050138, 15.403038, 0.784783 ]
@@ -3453,7 +3602,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "LeftFoot"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 2.359673
 								point0 = [ 0.092074, -0.978883, -1.669502 ]
 								point1 = [ -0.333312, 6.895395, 1.068513 ]
@@ -3462,7 +3614,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "RightUpLeg"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 3.210526
 								point0 = [ 0.0, 0.0, 0.0 ]
 								point1 = [ 0.439511, 19.421974, 0.535977 ]
@@ -3471,7 +3626,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "RightLeg"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 2.541441
 								point0 = [ 0.0, 0.0, 0.0 ]
 								point1 = [ -1.606187, 19.335169, -0.955038 ]
@@ -3480,7 +3638,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "RightFoot"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 1.832687
 								point0 = [ -0.177867, -0.100672, -2.374002 ]
 								point1 = [ 0.54074, 6.499444, 2.576766 ]
@@ -3489,7 +3650,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "Spine"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 6.448286
 								point0 = [ -0.267573, -2.240616, -0.254024 ]
 								point1 = [ -0.238346, 0.486854, 0.055433 ]
@@ -3498,7 +3662,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "Spine1"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 5.985118
 								point0 = [ 0.327769, -0.993391, -0.112656 ]
 								point1 = [ 0.382508, 2.411088, 0.27367 ]
@@ -3507,7 +3674,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "Spine2"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 6.756872
 								point0 = [ -0.519853, -2.106041, -0.238826 ]
 								point1 = [ -0.384359, 0.425454, 0.048427 ]
@@ -3516,7 +3686,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "LeftShoulder"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 3.801361
 								point0 = [ -0.629794, 5.854088, 0.332473 ]
 								point1 = [ 1.650027, 0.684424, -0.094684 ]
@@ -3525,7 +3698,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "LeftArm"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 2.522805
 								point0 = [ 0.34164, 8.303503, 0.000163 ]
 								point1 = [ 2.0, 0.0, 0.0 ]
@@ -3534,7 +3710,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "LeftForeArm"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 2.576265
 								point0 = [ 0.00035, 11.184967, 0.000387 ]
 								point1 = [ 0.394765, 0.000064, -0.401118 ]
@@ -3543,7 +3722,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "LeftHand"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 2.161075
 								point0 = [ 0.0, 0.0, 0.0 ]
 								point1 = [ -0.600289, 8.668622, -0.464569 ]
@@ -3552,7 +3734,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "Neck"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 3.289178
 								point0 = [ -0.206194, 0.003894, -0.109864 ]
 								point1 = [ -0.297443, 3.3758, 0.971108 ]
@@ -3561,7 +3746,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "Head"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 5.085898
 								point0 = [ -0.054611, 4.114228, 2.316108 ]
 								point1 = [ -0.071368, 6.615068, 0.000633 ]
@@ -3570,7 +3758,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "RightShoulder"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 3.721279
 								point0 = [ -1.264462, -0.030216, -0.145851 ]
 								point1 = [ -0.186655, 3.458775, -0.800638 ]
@@ -3579,7 +3770,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "RightArm"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 2.720034
 								point0 = [ 0.0, 0.0, 0.0 ]
 								point1 = [ -0.04989, 7.399386, -0.218782 ]
@@ -3588,7 +3782,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "RightForeArm"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 2.300843
 								point0 = [ 0.0, 0.0, 0.0 ]
 								point1 = [ -0.000017, 8.19675, -0.931191 ]
@@ -3597,7 +3794,10 @@
 								_class = "PhysicsShapeCapsule"
 								parent_bone = "RightHand"
 								surface_prop = "default"
-								collision_prop = "default"
+								collision_group = ""
+								collision_interact_as = ""
+								collision_interact_with = ""
+								collision_interact_exclude = ""
 								radius = 2.220193
 								point0 = [ 0.183552, 0.259111, -0.011482 ]
 								point1 = [ 0.616241, 6.58657, -0.361373 ]
@@ -3699,29 +3899,6 @@
 							m_Name = ""
 						}
 						"m_Data.m_bParentJointRequiresAlignment" = true
-					},
-				]
-			},
-			{
-				_class = "Skeleton"
-				children = 
-				[
-					{
-						_class = "Bone"
-						name = "foot_ik_L"
-						children = 
-						[
-							{
-								_class = "Bone"
-								name = "foot_ik_R"
-								origin = [ 0.0, 0.0, 0.0 ]
-								angles = [ 0.0, 0.0, 0.0 ]
-								do_not_discard = true
-							},
-						]
-						origin = [ 0.0, 0.0, 0.0 ]
-						angles = [ 0.0, 0.0, 0.0 ]
-						do_not_discard = true
 					},
 				]
 			},
