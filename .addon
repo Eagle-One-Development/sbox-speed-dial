@@ -1,12 +1,15 @@
 {
   "SharedAssets": "*",
-  "Title": "Speed-Dial",
+  "Title": "Speed Dial",
   "Type": "game",
   "Org": "eagleone",
   "Ident": "speed_dial",
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
+  "ResourcePaths": [
+    "materials/ui/*"
+  ],
   "HasCode": true,
   "CodePath": "code",
   "RootNamespace": "Sandbox"
