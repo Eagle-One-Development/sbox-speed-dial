@@ -31,6 +31,9 @@ namespace SpeedDial {
 		public void Start() {
 			MapSettings.Current?.GamemodeStart.Fire(null, ClassInfo.Name);
 			OnStart();
+			// the gamemode has technically also reset when it starts
+			Event.Run("sd.gamemode.start");
+			Event.Run("sd.gamemode.reset");
 		}
 
 		protected virtual void OnStart() { }
@@ -38,6 +41,7 @@ namespace SpeedDial {
 		public void Finish() {
 			MapSettings.Current?.GamemodeFinish.Fire(null, ClassInfo.Name);
 			OnFinish();
+			Event.Run("sd.gamemode.end");
 		}
 
 		protected virtual void OnFinish() { }

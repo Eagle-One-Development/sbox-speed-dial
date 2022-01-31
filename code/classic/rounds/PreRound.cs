@@ -33,6 +33,9 @@ namespace SpeedDial.Classic.Rounds {
 
 				pawn.Frozen = true;
 			}
+
+			// reset stuff from warmup etc
+			Event.Run("sd.gamemode.reset");
 		}
 
 		protected override void OnFinish() {
