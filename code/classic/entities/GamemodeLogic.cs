@@ -11,21 +11,21 @@ namespace SpeedDial {
 	public partial class GamemodeLogic : GamemodeEntity<Entity> {
 		protected Output OnGamemodeReset { get; set; }
 		public async void GamemodeReset(GamemodeIdentity gamemode) {
-			if(ActiveGamemodes.HasFlag((Gamemodes)(int)gamemode)) {
+			if(!ExcludedGamemodes.HasFlag((Gamemodes)(int)gamemode)) {
 				await OnGamemodeReset.Fire(this);
 			}
 		}
 
 		protected Output OnGamemodeStarted { get; set; }
 		public async void GamemodeStart(GamemodeIdentity gamemode) {
-			if(ActiveGamemodes.HasFlag((Gamemodes)(int)gamemode)) {
+			if(!ExcludedGamemodes.HasFlag((Gamemodes)(int)gamemode)) {
 				await OnGamemodeStarted.Fire(this);
 			}
 		}
 
 		protected Output OnGamemodeEnded { get; set; }
 		public async void GamemodeEnd(GamemodeIdentity gamemode) {
-			if(ActiveGamemodes.HasFlag((Gamemodes)(int)gamemode)) {
+			if(!ExcludedGamemodes.HasFlag((Gamemodes)(int)gamemode)) {
 				await OnGamemodeEnded.Fire(this);
 			}
 		}

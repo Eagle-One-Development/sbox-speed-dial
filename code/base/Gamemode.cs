@@ -11,9 +11,9 @@ namespace SpeedDial {
 	// THE ENUM IN GAMEMODEENTITY.CS AS WELL
 	public enum GamemodeIdentity {
 		Base = int.MinValue,
-		Classic = 0,
-		Koth = 1,
-		Dodgeball = 2
+		Classic = 1,
+		Koth = 2,
+		Dodgeball = 4
 	}
 
 	/// <summary> [Server, Client] Gamemode base </summary>

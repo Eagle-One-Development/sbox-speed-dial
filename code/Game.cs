@@ -292,10 +292,10 @@ namespace SpeedDial {
 		// enable/disable entities according to their Flag
 		protected void UpdateGamemodeEntities(GamemodeIdentity identity) {
 			foreach(var entity in All.OfType<GamemodeEntity<Entity>>()) {
-				if(entity.ActiveGamemodes.HasFlag((GamemodeEntity<Entity>.Gamemodes)(int)identity)) {
-					entity.Enable();
-				} else {
+				if(entity.ExcludedGamemodes.HasFlag((GamemodeEntity<Entity>.Gamemodes)(int)identity)) {
 					entity.Disable();
+				} else {
+					entity.Enable();
 				}
 			}
 		}

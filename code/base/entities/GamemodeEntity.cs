@@ -12,14 +12,17 @@ namespace SpeedDial {
 	[Hammer.Skip]
 	public partial class GamemodeEntity<T> : Entity where T : Entity {
 
-		[Property(Title = "Active Gamemodes"), FGDType("flags")]
-		public Gamemodes ActiveGamemodes { get; set; }
+		[Property("excludedgamemodes", Title = "Excluded Gamemodes"), FGDType("flags")]
+		public Gamemodes ExcludedGamemodes { get; set; }
 
-		public bool Enabled { get; set; }
+		public bool Enabled { get; private set; } = true;
 
 		[Input]
 		public async void Enable() {
+			if(Enabled) return;
+
 			OnEnabled();
+			Enabled = true;
 			await OnEntityEnabled.Fire(this);
 		}
 
@@ -28,7 +31,10 @@ namespace SpeedDial {
 
 		[Input]
 		public async void Disable() {
+			if(!Enabled) return;
+
 			OnDisabled();
+			Enabled = false;
 			await OnEntityDisabled.Fire(this);
 		}
 		
@@ -37,9 +43,9 @@ namespace SpeedDial {
 
 		[Flags] // THIS HAS TO LINE UP WITH THE ENUM IN GAMEMODE.CS
 		public enum Gamemodes {
-			Classic = 0,
-			Koth = 1,
-			Dodgeball = 2
+			Classic = 1,
+			Koth = 2,
+			Dodgeball = 4
 		}
 	}
 }
