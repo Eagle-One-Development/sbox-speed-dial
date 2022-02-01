@@ -35,7 +35,7 @@ namespace SpeedDial.Classic.Rounds {
 			}
 
 			// reset stuff from warmup etc
-			Event.Run("sd.gamemode.reset");
+			Game.Current.ActiveGamemode?.CallResetEvent();
 		}
 
 		protected override void OnFinish() {

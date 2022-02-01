@@ -5,7 +5,7 @@ using Sandbox;
 using SpeedDial.Classic.Weapons;
 
 namespace SpeedDial.Classic.Entities {
-	public partial class ClassicWeaponSpawn : Entity {
+	public partial class ClassicWeaponSpawn : GamemodeEntity<Entity> {
 		public virtual string WeaponClass { get; }
 		[Property]
 		public virtual float RespawnTime { get; set; } = 10;
@@ -15,6 +15,15 @@ namespace SpeedDial.Classic.Entities {
 		public override void Spawn() {
 			base.Spawn();
 			SpawnWeapon();
+		}
+
+		[SpeedDialEvent.Gamemode.Reset]
+		public void GamemodeReset() {
+			// respawn gun on gamemode reset
+			if(Taken) {
+				SpawnWeapon();
+				Taken = false;
+			}
 		}
 
 		public virtual void WeaponTaken() {

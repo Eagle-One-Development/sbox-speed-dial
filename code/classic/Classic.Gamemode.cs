@@ -12,6 +12,8 @@ namespace SpeedDial.Classic {
 	[Library("classic"), Hammer.Skip]
 	public partial class ClassicGamemode : Gamemode {
 
+		public override GamemodeIdentity Identity => GamemodeIdentity.Classic;
+
 		[Net] public string CurrentSoundtrack { get; set; } = "track01";
 
 		public string[] Soundtracks { get; } = {

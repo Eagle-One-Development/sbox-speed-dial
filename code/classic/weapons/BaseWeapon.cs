@@ -73,6 +73,14 @@ namespace SpeedDial.Classic.Weapons {
 			GlowActive = true;
 		}
 
+		[SpeedDialEvent.Gamemode.Reset]
+		public void GamemodeReset() {
+			// despawn any guns laying around
+			if(WeaponSpawn is null && Owner is null) {
+				Delete();
+			}
+		}
+
 		private void SetGlow(bool state) {
 			if(state) {
 				GlowState = GlowStates.On;

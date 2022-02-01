@@ -5,7 +5,7 @@ using Sandbox;
 using SpeedDial.Classic.Drugs;
 
 namespace SpeedDial.Classic.Entities {
-	public partial class ClassicDrugSpawn : Entity {
+	public partial class ClassicDrugSpawn : GamemodeEntity<Entity> {
 		public virtual string DrugClass { get; }
 		[Property]
 		public virtual float RespawnTime { get; set; } = 10;
@@ -15,6 +15,15 @@ namespace SpeedDial.Classic.Entities {
 		public override void Spawn() {
 			base.Spawn();
 			SpawnDrug();
+		}
+
+		[SpeedDialEvent.Gamemode.Reset]
+		public void GamemodeReset() {
+			// respawn drug on gamemode reset
+			if(Taken) {
+				Taken = false;
+				SpawnDrug();
+			}
 		}
 
 		public virtual void DrugTaken() {

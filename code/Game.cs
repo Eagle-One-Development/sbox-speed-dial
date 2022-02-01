@@ -1,3 +1,5 @@
+using System.Linq;
+
 using Sandbox;
 
 using SpeedDial.Classic.Player;
@@ -282,7 +284,20 @@ namespace SpeedDial {
 
 			ActiveGamemode?.Finish();
 			ActiveGamemode = gamemode;
+			// call this before we start the gamemode so entities are valid and enabled when we start
+			UpdateGamemodeEntities(gamemode.Identity);
 			ActiveGamemode?.Start();
+		}
+
+		// enable/disable entities according to their Flag
+		protected void UpdateGamemodeEntities(GamemodeIdentity identity) {
+			foreach(var entity in All.OfType<GamemodeEntity<Entity>>()) {
+				if(entity.ActiveGamemodes.HasFlag((GamemodeEntity<Entity>.Gamemodes)(int)identity)) {
+					entity.Enable();
+				} else {
+					entity.Disable();
+				}
+			}
 		}
 	}
 }

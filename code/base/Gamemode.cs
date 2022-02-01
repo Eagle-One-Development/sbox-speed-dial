@@ -6,11 +6,22 @@ using Sandbox.UI;
 
 //CREDIT: Taken from Espionage.Engine by Jake Wooshito
 namespace SpeedDial {
+
+	// IF YOU ADD TO THIS, MAKE SURE IT LINES UP LIKE A BITFLAG WOULD AND THAT YOU UPDATE 
+	// THE ENUM IN GAMEMODEENTITY.CS AS WELL
+	public enum GamemodeIdentity {
+		Base = int.MinValue,
+		Classic = 0,
+		Koth = 1,
+		Dodgeball = 2
+	}
+
 	/// <summary> [Server, Client] Gamemode base </summary>
 	[Library(Spawnable = false), Hammer.Skip]
 	public abstract partial class Gamemode : Entity {
 
 		public static Gamemode Instance;
+		public virtual GamemodeIdentity Identity => GamemodeIdentity.Base;
 
 		public Gamemode() {
 			Transmit = TransmitType.Always;
@@ -32,8 +43,23 @@ namespace SpeedDial {
 			MapSettings.Current?.GamemodeStart.Fire(null, ClassInfo.Name);
 			OnStart();
 			// the gamemode has technically also reset when it starts
-			Event.Run("sd.gamemode.start");
+			CallStartEvent();
+			CallResetEvent();
+		}
+
+		public void CallResetEvent() {
+			Event.Run("sd.gamemode.reset", Identity);
 			Event.Run("sd.gamemode.reset");
+		}
+
+		public void CallStartEvent() {
+			Event.Run("sd.gamemode.start", Identity);
+			Event.Run("sd.gamemode.start");
+		}
+
+		public void CallEndEvent() {
+			Event.Run("sd.gamemode.end", Identity);
+			Event.Run("sd.gamemode.end");
 		}
 
 		protected virtual void OnStart() { }
@@ -41,7 +67,7 @@ namespace SpeedDial {
 		public void Finish() {
 			MapSettings.Current?.GamemodeFinish.Fire(null, ClassInfo.Name);
 			OnFinish();
-			Event.Run("sd.gamemode.end");
+			CallEndEvent();
 		}
 
 		protected virtual void OnFinish() { }
