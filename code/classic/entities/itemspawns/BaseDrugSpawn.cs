@@ -5,7 +5,7 @@ using Sandbox;
 using SpeedDial.Classic.Drugs;
 
 namespace SpeedDial.Classic.Entities {
-	public partial class ClassicDrugSpawn : GamemodeEntity<Entity> {
+	public partial class ClassicDrugSpawn : GamemodeEntity {
 		public virtual string DrugClass { get; }
 		[Property]
 		public virtual float RespawnTime { get; set; } = 10;

@@ -4,7 +4,7 @@ namespace SpeedDial.Classic.Weapons {
 	[Library("sd_pistol", Title = "PISTOL", Spawnable = true)]
 	[Hammer.EditorModel("models/weapons/pistol/prop_pistol.vmdl")]
 	[Hammer.EntityTool("Pistol", "Speed-Dial Classic Weapons", "Spawns a Pistol.")]
-	partial class Pistol : ClassicBaseWeapon, ISpawnable {
+	public partial class Pistol : ClassicBaseWeapon, ISpawnable {
 		public override float PrimaryRate => 12.0f;
 		public override int ClipSize => 16;
 		public override float BulletSpread => 0.24f;

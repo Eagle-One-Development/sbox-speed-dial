@@ -9,7 +9,7 @@ namespace SpeedDial {
 	public partial class Game : GameBase {
 
 		public static Game Current { get; protected set; }
-		public static string GamemodeName { get; } = "classic";
+		public static string GamemodeName { get; } = "onechamber";
 
 		[ServerVar("sd_min_players", Help = "The minimum players required to start the game.")]
 		public static int MinPlayers { get; set; } = 2;
@@ -284,19 +284,21 @@ namespace SpeedDial {
 
 			ActiveGamemode?.Finish();
 			ActiveGamemode = gamemode;
-			// call this before we start the gamemode so entities are valid and enabled when we start
+			// call this before we start the gamemode so entities are valid and enabled when we start (or disabled)
 			UpdateGamemodeEntities(gamemode.Identity);
 			ActiveGamemode?.Start();
 		}
 
 		// enable/disable entities according to their Flag
 		protected void UpdateGamemodeEntities(GamemodeIdentity identity) {
-			foreach(var entity in All.OfType<GamemodeEntity<Entity>>()) {
-				if(entity.ExcludedGamemodes.HasFlag((GamemodeEntity<Entity>.Gamemodes)(int)identity)) {
-					entity.Disable();
+			foreach(var entity in All.OfType<GamemodeEntity>()) {
+				if(entity.ExcludedGamemodes.HasFlag((GamemodeEntity.Gamemodes)(int)identity)) {
+					ActiveGamemode?.DisableEntity(entity);
 				} else {
-					entity.Enable();
+					ActiveGamemode?.EnableEntity(entity);
 				}
+				// in case the gamemode wants to force some specific shit
+				ActiveGamemode?.HandleGamemodeEntity(entity);
 			}
 		}
 	}

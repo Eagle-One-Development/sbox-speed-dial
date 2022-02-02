@@ -12,13 +12,17 @@ namespace SpeedDial {
 
 		public override void Simulate(Client cl) {
 			if(LifeState == LifeState.Dead) {
-				if(TimeSinceDied > RespawnTime && IsServer) {
+				if(TimeSinceDied > RespawnTime && IsServer && CanRespawn()) {
 					Respawn();
 				}
 			}
 
 			SimulateActiveChild(cl, ActiveChild);
 			GetActiveController()?.Simulate(cl, this, GetActiveAnimator());
+		}
+
+		public virtual bool CanRespawn() {
+			return true;
 		}
 
 		[ClientRpc]

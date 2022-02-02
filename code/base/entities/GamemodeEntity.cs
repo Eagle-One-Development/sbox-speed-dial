@@ -10,7 +10,7 @@ using Sandbox;
 namespace SpeedDial {
 	[Library]
 	[Hammer.Skip]
-	public partial class GamemodeEntity<T> : Entity where T : Entity {
+	public partial class GamemodeEntity : Entity {
 
 		[Property("excludedgamemodes", Title = "Excluded Gamemodes"), FGDType("flags")]
 		public Gamemodes ExcludedGamemodes { get; set; }
@@ -45,7 +45,8 @@ namespace SpeedDial {
 		public enum Gamemodes {
 			Classic = 1,
 			Koth = 2,
-			Dodgeball = 4
+			Dodgeball = 4,
+			OneChamber = 8
 		}
 	}
 }

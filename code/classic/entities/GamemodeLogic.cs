@@ -8,7 +8,7 @@ using Sandbox;
 
 namespace SpeedDial {
 	[Library("sd_gamemode_logic", Description = "Used to handle Gamemode logic. Will fire gamemode start, end and reset event outputs on its Active Gamemodes.")]
-	public partial class GamemodeLogic : GamemodeEntity<Entity> {
+	public partial class GamemodeLogic : GamemodeEntity {
 		protected Output OnGamemodeReset { get; set; }
 		public async void GamemodeReset(GamemodeIdentity gamemode) {
 			if(!ExcludedGamemodes.HasFlag((Gamemodes)(int)gamemode)) {

@@ -5,7 +5,7 @@ using Sandbox;
 using SpeedDial.Classic.Weapons;
 
 namespace SpeedDial.Classic.Entities {
-	public partial class ClassicWeaponSpawn : GamemodeEntity<Entity> {
+	public partial class ClassicWeaponSpawn : GamemodeEntity {
 		public virtual string WeaponClass { get; }
 		[Property]
 		public virtual float RespawnTime { get; set; } = 10;

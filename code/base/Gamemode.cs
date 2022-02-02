@@ -13,7 +13,8 @@ namespace SpeedDial {
 		Base = int.MinValue,
 		Classic = 1,
 		Koth = 2,
-		Dodgeball = 4
+		Dodgeball = 4,
+		OneChamber = 8
 	}
 
 	/// <summary> [Server, Client] Gamemode base </summary>
@@ -60,6 +61,21 @@ namespace SpeedDial {
 		public void CallEndEvent() {
 			Event.Run("sd.gamemode.end", Identity);
 			Event.Run("sd.gamemode.end");
+		}
+
+		// override for gamemode specific rules for ents
+		public virtual void EnableEntity(GamemodeEntity ent) {
+			ent.Enable();
+		}
+
+		// override for gamemode specific rules for ents
+		public virtual void DisableEntity(GamemodeEntity ent) {
+			ent.Disable();
+		}
+
+		// override for gamemode specific rules for ents
+		public virtual void HandleGamemodeEntity(GamemodeEntity ent) {
+
 		}
 
 		protected virtual void OnStart() { }
@@ -124,6 +140,7 @@ namespace SpeedDial {
 
 		/// <summary> [Assert Server] Use this to move pawn to position when it has respawned </summary>
 		public virtual void MoveToSpawnpoint(BasePlayer pawn) {
+			// this shouldn't be in base
 			Host.AssertServer();
 			var spawnpoints = All.Where((s) => s is SpawnPoint);
 			Entity optimalSpawn = spawnpoints.ToList()[0];

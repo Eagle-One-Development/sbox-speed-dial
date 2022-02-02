@@ -12,7 +12,7 @@ namespace SpeedDial.Classic.Player {
 		[Net] public TimeSince TimeSinceWeaponCarried { get; set; }
 		[Net] public bool Pickup { get; set; }
 
-		public void ThrowWeapon() {
+		public virtual void ThrowWeapon() {
 			if(IsServer) {
 				if(!DropWeapon(out ClassicBaseWeapon dropped)) return;
 

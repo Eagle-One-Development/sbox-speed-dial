@@ -19,7 +19,7 @@ namespace SpeedDial.Classic.Player {
 		public Particles DrugParticles;
 		public virtual float DrugDuration => 8f;
 		public override float RespawnTime => 1.5f;
-		[Net] TimeSince TimeSinceMurdered { get; set; }
+		[Net] public TimeSince TimeSinceMurdered { get; set; }
 
 		public override void InitialRespawn() {
 			CharacterIndex = Rand.Int(0, Character.All.Count - 1);
@@ -134,7 +134,7 @@ namespace SpeedDial.Classic.Player {
 			ent.GlowColor = col;
 		}
 
-		public void SimulateDrug() {
+		public virtual void SimulateDrug() {
 			if(TimeSinceDrugTaken >= DrugDuration) {
 				ActiveDrug = false;
 				DrugParticles?.Destroy();
@@ -238,9 +238,13 @@ namespace SpeedDial.Classic.Player {
 					// handle drugs
 					// do this in touch since drugs can run out while we're standing on one
 				} else if(trigger.Parent is ClassicBaseDrug drug && !ActiveDrug) {
-					drug.Taken(this);
+					HandleDrugTaken(drug);
 				}
 			}
+		}
+
+		public virtual void HandleDrugTaken(ClassicBaseDrug drug) {
+			drug.Taken(this);
 		}
 
 		public override void EndTouch(Entity other) {

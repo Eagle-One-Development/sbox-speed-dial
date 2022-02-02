@@ -14,33 +14,20 @@ namespace SpeedDial.Classic {
 		protected override void OnPawnKilled(BasePlayer pawn) {
 			// killfeed population
 			if(pawn is ClassicPlayer player) {
-				var client = player.Client;
 
 				// handle domination/revenge stuff
-				var killevent = HandleDomination(pawn);
+				var killevent = HandleDomination(player);
 
-				// handle killfeed entry accordingly
-				if(player.LastAttacker != null) {
-					if(player.LastAttacker.Client != null) {
-						// tell everyone but the two clients involved about the kill like usual
-						KillFeed.AddDeath(To.Multiple(Client.All.Except(new Client[] { pawn.Client, pawn.LastAttacker.Client })), player.LastAttacker.Client.PlayerId, player.LastAttacker.Client.Name, client.PlayerId, client.Name, player.DeathCause.ToString());
-						// only tell the people involved about domination
-						KillFeed.AddDeath(To.Multiple(new Client[] { pawn.Client, pawn.LastAttacker.Client }), player.LastAttacker.Client.PlayerId, player.LastAttacker.Client.Name, client.PlayerId, client.Name, player.DeathCause.ToString(), killevent == KillEvent.Domination);
-					} else {
-						KillFeed.AddDeath(player.LastAttacker.NetworkIdent, player.LastAttacker.ToString(), client.PlayerId, client.Name, player.DeathCause.ToString());
-					}
-				} else {
-					KillFeed.AddDeath(client.PlayerId, client.Name, 0, "", player.DeathCause.ToString());
-				}
+				HandleKillFeedEntry(player, killevent == KillEvent.Domination);
 
 				string killtextextra;
 				if(killevent == KillEvent.Domination) {
 					// last attacker dominates pawn, highlight them for pawn
-					ClassicPlayer.UpdateGlow(To.Single(pawn.Client), player.LastAttacker as ModelEntity, GlowStates.On, Color.Red);
+					ClassicPlayer.UpdateGlow(To.Single(player.Client), player.LastAttacker as ModelEntity, GlowStates.On, Color.Red);
 					killtextextra = "+DOMINATION";
 				} else if(killevent == KillEvent.Revenge) {
 					// last attacker has taken revenge against pawn; pawn no longer dominates last attacker
-					ClassicPlayer.UpdateGlow(To.Single(player.LastAttacker.Client), pawn, GlowStates.Off, Color.Black);
+					ClassicPlayer.UpdateGlow(To.Single(player.LastAttacker.Client), player, GlowStates.Off, Color.Black);
 					killtextextra = "+REVENGE";
 				} else {
 					killtextextra = "";
@@ -52,10 +39,26 @@ namespace SpeedDial.Classic {
 
 				// only show killer if we got killed by a player
 				if(player.DeathCause == ClassicPlayer.CauseOfDeath.Suicide || player.LastAttacker is null) {
-					ScreenHints.FireEvent(To.Single(pawn.Client), killtext, killtextextra);
+					ScreenHints.FireEvent(To.Single(player.Client), killtext, killtextextra);
 				} else {
-					ScreenHints.FireEvent(To.Single(pawn.Client), killtext, killtextextra, true, player.LastAttacker.Client, killevent == KillEvent.Domination || killevent == KillEvent.Revenge);
+					ScreenHints.FireEvent(To.Single(player.Client), killtext, killtextextra, true, player.LastAttacker.Client, killevent == KillEvent.Domination || killevent == KillEvent.Revenge);
 				}
+			}
+		}
+
+		public virtual void HandleKillFeedEntry(ClassicPlayer victim, bool highlight = false) {
+			// handle killfeed entry accordingly
+			if(victim.LastAttacker != null) {
+				if(victim.LastAttacker.Client != null) {
+					// tell everyone but the two clients involved about the kill like usual
+					KillFeed.AddDeath(To.Multiple(Client.All.Except(new Client[] { victim.Client, victim.LastAttacker.Client })), victim.LastAttacker.Client.PlayerId, victim.LastAttacker.Client.Name, victim.Client.PlayerId, victim.Client.Name, victim.DeathCause.ToString());
+					// only tell the people involved about domination
+					KillFeed.AddDeath(To.Multiple(new Client[] { victim.Client, victim.LastAttacker.Client }), victim.LastAttacker.Client.PlayerId, victim.LastAttacker.Client.Name, victim.Client.PlayerId, victim.Client.Name, victim.DeathCause.ToString(), highlight);
+				} else {
+					KillFeed.AddDeath(victim.LastAttacker.NetworkIdent, victim.LastAttacker.ToString(), victim.Client.PlayerId, victim.Client.Name, victim.DeathCause.ToString());
+				}
+			} else {
+				KillFeed.AddDeath(victim.Client.PlayerId, victim.Client.Name, 0, "", victim.DeathCause.ToString());
 			}
 		}
 
@@ -72,7 +75,7 @@ namespace SpeedDial.Classic {
 		/// </summary>
 		/// <param name="pawn">killed pawn</param>
 		/// <returns>returns KillEvent.Domination if the pawn is dominated by its last attacker. returns KillEvent.Revenge if the last attacker has taken revenge against pawn. returns KillEvent.None on a normal kill</returns>
-		public KillEvent HandleDomination(BasePlayer pawn) {
+		public KillEvent HandleDomination(ClassicPlayer pawn) {
 
 			// add new kill to list
 			var kill = new Kill(pawn.LastRecievedDamage.Attacker, pawn);
