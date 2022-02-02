@@ -8,10 +8,14 @@ namespace SpeedDial.Classic.Entities {
 	[Hammer.EntityTool("Random Weapon", "Speed-Dial Weaponspawns", "Spawns random weapons.")]
 	public partial class ClassicRandomWeaponSpawn : ClassicWeaponSpawn {
 		public override void SpawnWeapon() {
+			Host.AssertServer();
+			if(!Enabled) return;
 			var ent = Library.Create<ClassicBaseWeapon>(ClassicBaseWeapon.GetRandomSpawnableType());
 			ent.Transform = Transform;
 			ent.WeaponSpawn = this;
 			ent.ResetInterpolation();
+
+			SpawnedWeapon = ent;
 		}
 	}
 

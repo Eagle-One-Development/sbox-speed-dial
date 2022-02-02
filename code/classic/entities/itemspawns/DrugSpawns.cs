@@ -8,11 +8,15 @@ namespace SpeedDial.Classic.Entities {
 	[Hammer.EntityTool("Random Drug", "Speed-Dial Drugspawns", "Spawns random Drugs.")]
 	public partial class ClassicRandomDrugSpawn : ClassicDrugSpawn {
 		public override void SpawnDrug() {
+			Host.AssertServer();
+			if(!Enabled) return;
+
 			var ent = Library.Create<ClassicBaseDrug>(ClassicBaseDrug.GetRandomSpawnableType());
 			ent.Transform = Transform;
 			ent.DrugSpawn = this;
-
 			ent.ResetInterpolation();
+
+			SpawnedDrug = ent;
 		}
 	}
 

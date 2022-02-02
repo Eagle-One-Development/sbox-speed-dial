@@ -11,7 +11,7 @@ namespace SpeedDial.Classic.Entities {
 		public virtual float RespawnTime { get; set; } = 10;
 		[Net] private bool Taken { get; set; }
 		[Net] private TimeSince TimeSinceTaken { get; set; }
-		private ClassicBaseDrug SpawnedDrug { get; set; }
+		protected ClassicBaseDrug SpawnedDrug { get; set; }
 
 		public override void Spawn() {
 			base.Spawn();
@@ -21,7 +21,8 @@ namespace SpeedDial.Classic.Entities {
 		[SpeedDialEvent.Gamemode.Reset]
 		public void GamemodeReset() {
 			if(!Enabled) {
-				SpawnedDrug.Delete();
+				SpawnedDrug?.Delete();
+				SpawnedDrug = null;
 				return;
 			}
 			// respawn drug on gamemode reset
@@ -46,15 +47,12 @@ namespace SpeedDial.Classic.Entities {
 		}
 
 		public virtual void SpawnDrug() {
+			Host.AssertServer();
 			if(!Enabled) return;
+
 			var ent = Library.Create<ClassicBaseDrug>(DrugClass);
 			ent.Transform = Transform;
 			ent.DrugSpawn = this;
-
-			//workaround since we don't actually parent the pickuptrigger right now
-			ent.PickupTrigger.Position = Position;
-			ent.PickupTrigger.ResetInterpolation();
-
 			ent.ResetInterpolation();
 
 			SpawnedDrug = ent;
