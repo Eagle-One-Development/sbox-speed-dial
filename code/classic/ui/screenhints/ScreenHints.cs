@@ -59,6 +59,7 @@ namespace SpeedDial.Classic.UI {
 
 		[ClientRpc]
 		public static void FireEvent(string title, string extra, bool banner) {
+			if(Current is null) return;
 			Current.Title.Text = title;
 			Current.Extra.Text = $"{extra}";
 			Current.FireBanner = banner;
@@ -72,6 +73,7 @@ namespace SpeedDial.Classic.UI {
 
 		[ClientRpc]
 		public static void FireEvent(string title, bool banner) {
+			if(Current is null) return;
 			Current.Title.Text = title;
 			Current.FireExtra = false;
 			Current.FireBanner = banner;
@@ -84,6 +86,7 @@ namespace SpeedDial.Classic.UI {
 
 		[ClientRpc]
 		public static void FireEvent(string title, string extra) {
+			if(Current is null) return;
 			Current.Title.Text = title;
 			Current.Extra.Text = $"{extra}";
 			Current.FireExtra = true;
@@ -97,6 +100,7 @@ namespace SpeedDial.Classic.UI {
 
 		[ClientRpc]
 		public static void FireEvent(string title) {
+			if(Current is null) return;
 			Current.Title.Text = title;
 			Current.FireExtra = false;
 			Current.FireBanner = true;
@@ -109,6 +113,7 @@ namespace SpeedDial.Classic.UI {
 
 		[ClientRpc]
 		public static void FireEvent(string title, string extra, bool banner, Client killer) {
+			if(Current is null) return;
 			Current.Title.Text = title;
 			Current.Extra.Text = $"{extra}";
 			Current.FireBanner = banner;
@@ -123,6 +128,7 @@ namespace SpeedDial.Classic.UI {
 
 		[ClientRpc]
 		public static void FireEvent(string title, string extra, bool banner, Client killer, bool domination) {
+			if(Current is null) return;
 			Current.Title.Text = title;
 			Current.Extra.Text = $"{extra}";
 			Current.FireBanner = banner;

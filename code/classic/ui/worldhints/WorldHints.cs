@@ -56,6 +56,7 @@ namespace SpeedDial.Classic.UI {
 
 		[ClientRpc]
 		public static void AddHint(string text, Vector3 position, float duration) {
+			if(Current is null) return;
 			WorldText worldtext = new(text, position, duration, Current);
 			Current.WorldTexts.Add(worldtext);
 		}

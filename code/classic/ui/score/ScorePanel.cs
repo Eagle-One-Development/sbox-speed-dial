@@ -21,6 +21,7 @@ namespace SpeedDial.Classic.UI {
 
 		[ClientRpc]
 		public static void AwardKill() {
+			if(Current is null) return;
 			Current.ComboScale += 0.2f;
 		}
 

@@ -23,11 +23,13 @@ namespace SpeedDial.Classic.UI {
 
 		[ClientRpc]
 		public static void Fire(float scale) {
+			if(Current is null) return;
 			Current.AmmoScale += 0.2f * scale;
 		}
 
 		[ClientRpc]
 		public static void Fire() {
+			if(Current is null) return;
 			Current.AmmoScale += 0.2f;
 		}
 

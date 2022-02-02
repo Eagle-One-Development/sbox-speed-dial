@@ -43,11 +43,13 @@ namespace SpeedDial.Classic.UI {
 
 		[ClientRpc]
 		public static void AddDeath(long lsteamid, string left, long rsteamid, string right, string method) {
+			if(Current is null) return;
 			Current.AddEntry(lsteamid, left, rsteamid, right, method);
 		}
 
 		[ClientRpc]
 		public static void AddDeath(long lsteamid, string left, long rsteamid, string right, string method, bool domination) {
+			if(Current is null) return;
 			Current.AddEntry(lsteamid, left, rsteamid, right, method, domination);
 		}
 	}

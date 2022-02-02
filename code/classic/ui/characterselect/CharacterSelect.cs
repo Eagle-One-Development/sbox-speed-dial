@@ -44,6 +44,7 @@ namespace SpeedDial.Classic.UI {
 
 		[ClientRpc]
 		public static void ForceState(bool state) {
+			if(Current is null) return;
 			Current.SetState(state);
 		}
 

@@ -24,6 +24,8 @@ namespace SpeedDial.Classic.UI {
 
 		[ClientRpc]
 		public static void UpdatePanels() {
+			if(Current is null) return;
+
 			var clients = Client.All.ToList();
 			clients.Sort((x, y) => x.GetValue("score", 0) < y.GetValue("score", 0) ? 1 : -1);
 			Debug.Log("Win Panel Update clients");
@@ -43,6 +45,7 @@ namespace SpeedDial.Classic.UI {
 
 		[ClientRpc]
 		public static void SetState(bool state) {
+			if(Current is null) return;
 			Current.Open = state;
 		}
 

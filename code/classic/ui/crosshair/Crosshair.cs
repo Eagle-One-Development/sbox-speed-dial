@@ -31,11 +31,13 @@ namespace SpeedDial.Classic.UI {
 
 		[ClientRpc]
 		public static void Fire() {
+			if(Current is null) return;
 			Current.BumpScale = 1f;
 		}
 
 		[ClientRpc]
 		public static void UpdateMouse(Vector2 mouse) {
+			if(Current is null) return;
 			// floor to prevent fucky pixel snapping
 			Current.Mouse = new Vector2(mouse.x.Floor(), mouse.y.Floor());
 		}
