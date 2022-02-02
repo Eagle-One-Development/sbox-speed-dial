@@ -36,10 +36,14 @@ namespace SpeedDial.Classic.Player {
 			// handle look input
 			if(!input.UsingController) {
 
-				if(!Settings.ViewshiftToggle && input.Down(InputButton.Run)) {
-					CameraShift = true;
-				} else if(Settings.ViewshiftToggle && input.Pressed(InputButton.Run)) {
-					shiftToggle = !shiftToggle;
+				if(pawn.Alive()) {
+					if(!Settings.ViewshiftToggle && input.Down(InputButton.Run)) {
+						CameraShift = true;
+					} else if(Settings.ViewshiftToggle && input.Pressed(InputButton.Run)) {
+						shiftToggle = !shiftToggle;
+					} else {
+						CameraShift = false;
+					}
 				} else {
 					CameraShift = false;
 				}
