@@ -57,6 +57,10 @@ namespace SpeedDial.OneChamber.Player {
 		}
 
 		public override void Simulate(Client cl) {
+			if(!CanRespawn()) {
+				// simulate dead spectator movement
+				GetActiveController()?.Simulate(cl, this, GetActiveAnimator());
+			}
 			base.Simulate(cl);
 		}
 
@@ -93,7 +97,13 @@ namespace SpeedDial.OneChamber.Player {
 				}
 			}
 
-			base.OnKilled();
+			// lost last live
+			if(!CanRespawn()) {
+				Controller = new ClassicNoclipController();
+			}
+
+			LifeState = LifeState.Dead;
+			Game.Current.PawnKilled(this, LastRecievedDamage);
 		}
 
 		public override void ThrowWeapon() {
