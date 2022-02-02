@@ -11,6 +11,7 @@ namespace SpeedDial.Classic.Entities {
 		public virtual float RespawnTime { get; set; } = 10;
 		[Net] private bool Taken { get; set; }
 		[Net] private TimeSince TimeSinceTaken { get; set; }
+		private ClassicBaseDrug SpawnedDrug { get; set; }
 
 		public override void Spawn() {
 			base.Spawn();
@@ -19,6 +20,10 @@ namespace SpeedDial.Classic.Entities {
 
 		[SpeedDialEvent.Gamemode.Reset]
 		public void GamemodeReset() {
+			if(!Enabled) {
+				SpawnedDrug.Delete();
+				return;
+			}
 			// respawn drug on gamemode reset
 			if(Taken) {
 				Taken = false;
@@ -29,6 +34,7 @@ namespace SpeedDial.Classic.Entities {
 		public virtual void DrugTaken() {
 			TimeSinceTaken = 0;
 			Taken = true;
+			SpawnedDrug = null;
 		}
 
 		[Event.Tick.Server]
@@ -40,6 +46,7 @@ namespace SpeedDial.Classic.Entities {
 		}
 
 		public virtual void SpawnDrug() {
+			if(!Enabled) return;
 			var ent = Library.Create<ClassicBaseDrug>(DrugClass);
 			ent.Transform = Transform;
 			ent.DrugSpawn = this;
@@ -49,6 +56,8 @@ namespace SpeedDial.Classic.Entities {
 			ent.PickupTrigger.ResetInterpolation();
 
 			ent.ResetInterpolation();
+
+			SpawnedDrug = ent;
 		}
 	}
 }
