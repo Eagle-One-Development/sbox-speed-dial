@@ -68,6 +68,9 @@ namespace SpeedDial.Classic {
 			None
 		}
 
+		/// <summary>
+		/// List to track all previous kills, serialized with the attacker and victim of the kill. This is automatically handled and cleared up for the domination system.
+		/// </summary>
 		public List<Kill> Kills { get; set; } = new();
 
 		/// <summary>
@@ -107,6 +110,7 @@ namespace SpeedDial.Classic {
 		}
 
 		public string[] KillMessages { get; } = {
+			"BYPASSED",
 			"WHACKED",
 			"DESTROYED",
 			"BROKEN",

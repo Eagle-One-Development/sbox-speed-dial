@@ -17,31 +17,49 @@ namespace SpeedDial {
 		OneChamber = 8
 	}
 
+	public enum GamemodeState {
+		Waiting,
+		Preparing,
+		Running,
+		Ending,
+		Paused
+	}
+
 	/// <summary> [Server, Client] Gamemode base </summary>
 	[Library(Spawnable = false), Hammer.Skip]
 	public abstract partial class Gamemode : Entity {
 
 		public static Gamemode Instance;
+
+		public GamemodeState State { get; private set; }
+		public bool Waiting => State == GamemodeState.Waiting;
+		public bool Preparing => State == GamemodeState.Preparing;
+		public bool Running => State == GamemodeState.Running;
+		public bool Ending => State == GamemodeState.Ending;
+		public bool Paused => State == GamemodeState.Paused;
+
 		public virtual GamemodeIdentity Identity => GamemodeIdentity.Base;
 
 		public Gamemode() {
 			Transmit = TransmitType.Always;
 
 			Instance = this;
-
-			if(IsClient)
-				CreateGamemodeUI();
 		}
 
 		public override void Spawn() {
 			Name = ClassInfo.Name;
 		}
 
+		public virtual void SetState(GamemodeState state) {
+			Debug.Log($"Gamemode state set to {state}");
+			State = state;
+		}
+
 		[Event.Tick.Server]
 		protected virtual void Tick() { }
 
 		public void Start() {
-			MapSettings.Current?.GamemodeStart.Fire(null, ClassInfo.Name);
+			Debug.Log("gamemode started");
 			OnStart();
 			// the gamemode has technically also reset when it starts
 			CallStartEvent();
@@ -74,16 +92,18 @@ namespace SpeedDial {
 		}
 
 		// override for gamemode specific rules for ents
-		public virtual void HandleGamemodeEntity(GamemodeEntity ent) {
-
-		}
+		public virtual void HandleGamemodeEntity(GamemodeEntity ent) { }
 
 		protected virtual void OnStart() { }
 
 		public void Finish() {
-			MapSettings.Current?.GamemodeFinish.Fire(null, ClassInfo.Name);
+			Debug.Log("gamemode finished");
 			OnFinish();
+			KillRound();
 			CallEndEvent();
+
+			// clear old ui
+			ClearUI(To.Everyone);
 		}
 
 		protected virtual void OnFinish() { }
@@ -95,8 +115,9 @@ namespace SpeedDial {
 		[Net] public Round ActiveRound { get; private set; }
 
 		/// <summary> [Assert Server] Forcefully change the active round </summary>
-		public void SetRound(Round round) {
+		public void ChangeRound(Round round) {
 			Host.AssertServer();
+			Debug.Log("round changed");
 			Assert.NotNull(round);
 
 			ActiveRound?.Finish();
@@ -106,9 +127,16 @@ namespace SpeedDial {
 			ActiveRound?.Start();
 		}
 
+		public void KillRound() {
+			Host.AssertServer();
+			Debug.Log("round killed");
+			ActiveRound?.Kill();
+			ActiveRound = null;
+		}
+
 		[Event.Frame]
 		protected virtual void RoundDebug() {
-			// Do this for now. To lazy to impliemt UI
+			// Do this for now. To lazy to implement UI
 			if(ActiveRound is null)
 				return;
 
@@ -125,11 +153,33 @@ namespace SpeedDial {
 
 		public virtual void CreateGamemodeUI() { }
 
+		[ClientRpc]
+		public static void CreateUI() {
+			Debug.Log("ui created");
+			Instance.CreateGamemodeUI();
+		}
+
+		[ClientRpc]
+		public static void ClearUI() {
+			Debug.Log($"ui cleared");
+			
+			Local.Hud?.Delete();
+			Local.Hud = null;
+			
+			// redundant?
+			Game.Current.ActiveGamemode.GamemodeUI?.Delete();
+			Game.Current.ActiveGamemode.GamemodeUI = null;
+		}
+
 		protected override void OnDestroy() {
 			base.OnDestroy();
 
+			Debug.Log("gamemode destroyed");
+
+			Local.Hud?.Delete();
 			Local.Hud = null;
 
+			// redundant?
 			GamemodeUI?.Delete();
 			GamemodeUI = null;
 		}
@@ -139,28 +189,7 @@ namespace SpeedDial {
 		//
 
 		/// <summary> [Assert Server] Use this to move pawn to position when it has respawned </summary>
-		public virtual void MoveToSpawnpoint(BasePlayer pawn) {
-			// this shouldn't be in base
-			Host.AssertServer();
-			var spawnpoints = All.Where((s) => s is SpawnPoint);
-			Entity optimalSpawn = spawnpoints.ToList()[0];
-			float optimalDistance = 0;
-			foreach(var spawn in spawnpoints) {
-				float smallestDistance = 999999;
-				foreach(var player in All.Where((p) => p is BasePlayer)) {
-					var distance = Vector3.DistanceBetween(spawn.Position, player.Position);
-					if(distance < smallestDistance) {
-						smallestDistance = distance;
-					}
-				}
-				if(smallestDistance > optimalDistance) {
-					optimalSpawn = spawn;
-					optimalDistance = smallestDistance;
-				}
-			}
-			pawn.Transform = optimalSpawn.Transform;
-			return;
-		}
+		public virtual void MoveToSpawnpoint(BasePlayer pawn) { }
 
 		/// <summary> [Assert Server] Use this to validate the gamemode for the active map </summary>
 		public virtual bool ValidGamemode() { return true; }
@@ -228,6 +257,8 @@ namespace SpeedDial {
 		/// <summary> [Assert Server] </summary>
 		public void ClientReady(Client client) {
 			Host.AssertServer();
+			// create ui for this client
+			CreateUI(To.Single(client));
 			OnClientReady(client);
 		}
 

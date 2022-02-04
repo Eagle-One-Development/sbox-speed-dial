@@ -36,8 +36,6 @@ namespace SpeedDial {
 			if(Started)
 				return;
 
-			MapSettings.Current?.OnRoundStarted.Fire(null, ClassInfo.Name);
-
 			Debug.Log($"Round start {ClassInfo.Name}");
 
 			Started = true;
@@ -66,13 +64,16 @@ namespace SpeedDial {
 			if(Finished || !Started)
 				return;
 
-			MapSettings.Current?.OnRoundFinished.Fire(null, ClassInfo.Name);
-
 			Debug.Log($"Round finish {ClassInfo.Name}");
 
 			Finished = true;
 			Started = false;
 			OnFinish();
+		}
+
+		public void Kill() {
+			Host.AssertServer();
+			Finished = true;
 		}
 
 		private async Task ThinkTimer() {

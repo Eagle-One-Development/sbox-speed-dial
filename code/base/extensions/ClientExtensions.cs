@@ -3,7 +3,7 @@ using Sandbox;
 namespace SpeedDial {
 	public static class ClientExtensions {
 		public static T AssignPawn<T>(this Client cl, bool respawn = true) where T : BasePlayer, new() {
-			cl.Pawn?.Kill();
+			cl.Pawn?.Delete();
 
 			var player = new T();
 			cl.Pawn = player;

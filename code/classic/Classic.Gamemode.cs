@@ -14,8 +14,14 @@ namespace SpeedDial.Classic {
 
 		public override GamemodeIdentity Identity => GamemodeIdentity.Classic;
 
+		/// <summary>
+		/// Name of the current soundtrack as listed in the Soundtracks array.
+		/// </summary>
 		[Net] public string CurrentSoundtrack { get; set; } = "track01";
 
+		/// <summary>
+		/// Abailable soundtracks.
+		/// </summary>
 		public string[] Soundtracks { get; } = {
 			"track01",
 			"track02",
@@ -31,22 +37,43 @@ namespace SpeedDial.Classic {
 			CurrentSoundtrack = Soundtracks[index];
 		}
 
+		public override void MoveToSpawnpoint(BasePlayer pawn) {
+			Host.AssertServer();
+			var spawnpoints = All.Where((s) => s is SpawnPoint);
+			Entity optimalSpawn = spawnpoints.ToList()[0];
+			float optimalDistance = 0;
+			foreach(var spawn in spawnpoints) {
+				float smallestDistance = 999999;
+				foreach(var player in All.Where((p) => p is BasePlayer)) {
+					var distance = Vector3.DistanceBetween(spawn.Position, player.Position);
+					if(distance < smallestDistance) {
+						smallestDistance = distance;
+					}
+				}
+				if(smallestDistance > optimalDistance) {
+					optimalSpawn = spawn;
+					optimalDistance = smallestDistance;
+				}
+			}
+			pawn.Transform = optimalSpawn.Transform;
+		}
+
 		public static ClassicGamemode Current => Instance as ClassicGamemode;
 
 		protected override void OnStart() {
-			SetRound(new WarmupRound());
+			ChangeRound(new WarmupRound());
 			PickNewSoundtrack();
 		}
 
 		protected override void OnFinish() {
 			foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
-				client.Pawn.Kill();
-				client.Pawn.Delete();
-				client.Pawn = null;
+				// lol
+				(client.Pawn as ClassicPlayer).StopSoundtrack(To.Single(client));
 			}
 		}
 
 		protected override void OnClientReady(Client client) {
+			Debug.Log("gamemode client ready");
 			client.AssignPawn<ClassicPlayer>(true);
 		}
 

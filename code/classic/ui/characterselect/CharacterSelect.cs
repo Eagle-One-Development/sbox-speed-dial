@@ -81,7 +81,7 @@ namespace SpeedDial.Classic.UI {
 
 		public override void Tick() {
 			// handle open/close
-			if(Toggle && TimeSinceToggled > 0.3f && ClassicGamemode.Current.ActiveRound is not PostRound) {
+			if(Toggle && TimeSinceToggled > 0.3f && !Gamemode.Instance.Ending) {
 				ToggleMenu();
 			}
 			SetClass("open", Open);

@@ -27,14 +27,7 @@ namespace SpeedDial {
 
 		public override void PostLevelLoaded() {
 			if(IsServer) {
-				SetGamemode(Library.Create<Gamemode>(GamemodeName));
-				if(ActiveGamemode is null) {
-					Log.Error( $"COULDN'T INITIALIZE GAMEMODE {GamemodeName}");
-					Log.Info($"COULDN'T INITIALIZE GAMEMODE {GamemodeName}");
-				}
-			}
-			if(MapSettings.Current is null) {
-				//Log.Error("This map was not made for speed dial or is missing an 'sd_map_settings' entity! Gameplay might be affected!");
+				ChangeGamemode(GamemodeName);
 			}
 		}
 
@@ -45,7 +38,6 @@ namespace SpeedDial {
 		public override void ClientJoined(Client cl) {
 			Log.Info($"\"{cl.Name}\" has joined the game");
 			ActiveGamemode?.ClientJoined(cl);
-			MapSettings.Current?.OnClientJoined.Fire(null, cl.Name);
 
 			// TODO: Make a menu for this
 			ClientReady(cl);
@@ -54,18 +46,15 @@ namespace SpeedDial {
 		public override void ClientDisconnect(Client cl, NetworkDisconnectionReason reason) {
 			Log.Info($"\"{cl.Name}\" has left the game ({reason})");
 			ActiveGamemode?.ClientDisconnected(cl, reason);
-			MapSettings.Current?.OnClientDisconnected.Fire(null, cl.Name);
 
 			if(cl.Pawn.IsValid() && cl.Pawn is BasePlayer player) {
 				player.OnClientDisconnected();
 				player.Delete();
-				player = null;
 			}
 		}
 
 		public virtual void ClientReady(Client cl) {
 			ActiveGamemode?.ClientReady(cl);
-			MapSettings.Current?.OnClientReady.Fire(null, cl.Name);
 		}
 
 		//
@@ -78,7 +67,6 @@ namespace SpeedDial {
 			ActiveGamemode?.MoveToSpawnpoint(pawn);
 
 			if(ActiveGamemode is null) {
-				Log.Info("No gamemode - Can't move pawn to a spawn point");
 				pawn.Transform = Transform.Zero;
 			}
 		}
@@ -87,7 +75,6 @@ namespace SpeedDial {
 			Host.AssertServer();
 
 			ActiveGamemode?.PawnRespawned(pawn);
-			MapSettings.Current?.OnPawnRespawned.Fire(pawn, pawn.Client.Name);
 		}
 
 		public virtual bool PawnDamaged(BasePlayer pawn, ref DamageInfo info) {
@@ -108,8 +95,6 @@ namespace SpeedDial {
 			if(ActiveGamemode is not null) {
 				ActiveGamemode.PawnKilled(pawn);
 			}
-
-			MapSettings.Current?.OnPawnKilled.Fire(pawn, pawn.Client.Name);
 		}
 
 		//
@@ -268,28 +253,53 @@ namespace SpeedDial {
 			return true;
 		}
 
+		// maybe pass this to the gamemode?
 		public override void OnVoicePlayed(long steamId, float level) { }
 
 		//
 		// Gamemode
 		//
 
-		[Net]
-		public Gamemode ActiveGamemode { get; private set; }
+		/// <summary>
+		/// The currently active gamemode instance.
+		/// </summary>
+		[Net] public Gamemode ActiveGamemode { get; private set; }
+
+		[ServerCmd("sd_change_gamemode")]
+		public static void ChangeGamemode(string name) {
+			Debug.Log("change gamemode command");
+			var gamemode = Library.Create<Gamemode>(name);
+			if(gamemode is null) {
+				Log.Error($"COULDN'T INITIALIZE GAMEMODE {name}");
+				Log.Info($"COULDN'T INITIALIZE GAMEMODE {name}");
+				return;
+			}
+			Current.SetGamemode(gamemode);
+		}
 
 		/// <summary> [Server Assert] Change the gamemode </summary>
-		/// <param name="gamemode"> Gamemode to change to </param>
+		/// <param name="gamemode">Gamemode name to change to </param>
 		public void SetGamemode(Gamemode gamemode) {
 			Host.AssertServer();
+
+			var clients = Client.All;
 
 			ActiveGamemode?.Finish();
 			ActiveGamemode = gamemode;
 			// call this before we start the gamemode so entities are valid and enabled when we start (or disabled)
 			UpdateGamemodeEntities(gamemode.Identity);
 			ActiveGamemode?.Start();
+
+			// ready all previously playing clients
+			foreach(var client in clients) {
+				ActiveGamemode.ClientReady(client);
+			}
 		}
 
-		// enable/disable entities according to their Flag
+		/// <summary>
+		/// Enable, Disable and Handle all GamemodeEntities according to their set flag and the gamemode identity, assuming the gamemode allows it.
+		/// </summary>
+		/// <param name="identity">The Identity enum of the gamemode</param>
 		protected void UpdateGamemodeEntities(GamemodeIdentity identity) {
 			foreach(var entity in All.OfType<GamemodeEntity>()) {
 				if(entity.ExcludedGamemodes.HasFlag((GamemodeEntity.Gamemodes)(int)identity)) {

@@ -281,7 +281,7 @@ namespace SpeedDial.Classic.Player {
 			index = index.Clamp(0, Character.All.Count);
 			CharacterIndex = index;
 
-			if(Gamemode.Instance.ActiveRound is PreRound or WarmupRound)
+			if(Gamemode.Instance.Preparing || Gamemode.Instance.Waiting)
 				RefreshCharacter();
 		}
 	}

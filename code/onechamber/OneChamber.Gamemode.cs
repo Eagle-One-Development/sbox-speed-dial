@@ -25,6 +25,10 @@ namespace SpeedDial.OneChamber {
 			Local.Hud = GamemodeUI;
 		}
 
+		protected override void OnStart() {
+
+		}
+
 		public override void EnableEntity(GamemodeEntity ent) {
 			// one chamber doesn't have gamemode entities
 			return;

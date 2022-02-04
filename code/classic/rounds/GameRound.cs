@@ -10,10 +10,13 @@ using SpeedDial.Classic.UI;
 namespace SpeedDial.Classic.Rounds {
 	public partial class GameRound : TimedRound {
 		public override TimeSpan RoundDuration => TimeSpan.FromMinutes(5);
+		private ClassicGamemode classic => Game.Current.ActiveGamemode as ClassicGamemode;
 		public override string RoundText => "";
 
 		protected override void OnStart() {
 			base.OnStart();
+
+			classic.SetState(GamemodeState.Running);
 
 			foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
 				var pawn = client.Pawn as ClassicPlayer;
@@ -27,7 +30,7 @@ namespace SpeedDial.Classic.Rounds {
 
 		protected override void OnFinish() {
 			base.OnFinish();
-			Game.Current.ActiveGamemode?.SetRound(new PostRound());
+			Game.Current.ActiveGamemode?.ChangeRound(new PostRound());
 
 			foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
 				WinScreen.UpdatePanels(To.Single(client));

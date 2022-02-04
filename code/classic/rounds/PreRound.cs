@@ -8,15 +8,18 @@ using SpeedDial.Classic.Player;
 namespace SpeedDial.Classic.Rounds {
 	public partial class PreRound : TimedRound {
 		public override TimeSpan RoundDuration => TimeSpan.FromSeconds(11);
+		private ClassicGamemode classic => Game.Current.ActiveGamemode as ClassicGamemode;
 		public override string RoundText => "Round starting...";
 
 		protected override void OnStart() {
 			base.OnStart();
 
+			classic.SetState(GamemodeState.Preparing);
+
 			if(Host.IsServer) {
-				ClassicGamemode.Current.PickNewSoundtrack();
+				classic.PickNewSoundtrack();
 				// clear kills list to clear domination info
-				ClassicGamemode.Current.Kills.Clear();
+				classic.Kills.Clear();
 			}
 
 			foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
@@ -32,6 +35,8 @@ namespace SpeedDial.Classic.Rounds {
 				client.SetValue("combo", 0);
 
 				pawn.Frozen = true;
+
+				Debug.Log("pre round");
 			}
 
 			// reset stuff from warmup etc
@@ -40,7 +45,7 @@ namespace SpeedDial.Classic.Rounds {
 
 		protected override void OnFinish() {
 			base.OnFinish();
-			Game.Current.ActiveGamemode?.SetRound(new GameRound());
+			Game.Current.ActiveGamemode?.ChangeRound(new GameRound());
 		}
 
 		public override void OnPawnJoined(BasePlayer pawn) {

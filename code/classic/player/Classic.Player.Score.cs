@@ -5,8 +5,15 @@ using SpeedDial.Classic.Rounds;
 
 namespace SpeedDial.Classic.Player {
 	public partial class ClassicPlayer {
+		//should this be split up into points/combo and effects?
+
+		/// <summary>
+		/// Apply score and combo awards for a kill and display effects if applicable.
+		/// </summary>
+		/// <param name="killed">The killed player</param>
 		public void AwardKill(ClassicPlayer killed) {
-			if(ClassicGamemode.Current.ActiveRound is not GameRound) return;
+			// only award during main round (not warmup)
+			if(!Gamemode.Instance.Running) return;
 			ScorePanel.AwardKill();
 
 			// add to current combo
