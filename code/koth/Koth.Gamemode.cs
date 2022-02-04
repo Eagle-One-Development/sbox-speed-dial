@@ -13,7 +13,7 @@ using SpeedDial.Koth.UI;
 namespace SpeedDial.OneChamber {
 	[Library("koth"), Hammer.Skip]
 	public partial class KothGamemode : ClassicGamemode {
-		public override GamemodeIdentity Identity => GamemodeIdentity.OneChamber;
+		public override GamemodeIdentity Identity => GamemodeIdentity.Koth;
 
 		protected override void OnClientReady(Client client) {
 			client.AssignPawn<KothPlayer>(true);
