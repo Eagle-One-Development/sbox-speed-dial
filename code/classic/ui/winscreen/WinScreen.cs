@@ -55,10 +55,6 @@ namespace SpeedDial.Classic.UI {
 			FirstPanel?.SetClass("open", Open && FirstPanel.Client.IsValid());
 			SecondPanel?.SetClass("open", Open && SecondPanel.Client.IsValid());
 			ThirdPanel?.SetClass("open", Open && ThirdPanel.Client.IsValid());
-
-			if(Input.Down(InputButton.Walk)) {
-				UpdatePanels();
-			}
 		}
 	}
 }
