@@ -17,11 +17,11 @@ namespace SpeedDial.Classic.Player {
 			ScorePanel.AwardKill();
 
 			// add to current combo
-			Client.SetValue("combo", Client.GetValue("combo", 0) + 1);
+			Client.AddInt("combo", 1);
 
 			//award score
 			var score = 100 * Client.GetValue("combo", 0);
-			Client.SetValue("score", Client.GetValue("score", 0) + score);
+			Client.AddInt("score", score);
 			WorldHints.AddHint(To.Single(Client), $"+{score} pts", killed.EyePos, 1.5f);
 
 			// if combo is bigger than max combo, we have a new max combo
