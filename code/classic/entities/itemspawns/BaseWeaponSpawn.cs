@@ -36,7 +36,6 @@ namespace SpeedDial.Classic.Entities {
 			TimeSinceTaken = 0;
 			Taken = true;
 			SpawnedWeapon = null;
-			Log.Info("wep taken");
 		}
 
 		[Event.Tick.Server]
