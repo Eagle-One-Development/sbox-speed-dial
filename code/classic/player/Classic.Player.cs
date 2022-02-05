@@ -49,16 +49,16 @@ namespace SpeedDial.Classic.Player {
 			EnableShadowInFirstPerson = true;
 			EnableLagCompensation = true;
 
+			Game.Current.PawnRespawned(this);
+			Game.Current.MoveToSpawnpoint(this);
+			Game.Current.ActiveGamemode?.ActiveRound?.OnPawnRespawned(this);
+
 			// reset drug
 			ActiveDrug = false;
 			DrugParticles?.Destroy(true);
 
 			Frozen = false;
 			GiveWeapon<ClassicBaseWeapon>(Character.WeaponClass);
-
-			Game.Current.PawnRespawned(this);
-			Game.Current.MoveToSpawnpoint(this);
-			Game.Current.ActiveGamemode?.ActiveRound?.OnPawnRespawned(this);
 
 			// just in case this was left open for some reason
 			WinScreen.SetState(To.Single(Client), false);

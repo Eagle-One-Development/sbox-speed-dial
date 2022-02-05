@@ -40,12 +40,12 @@ namespace SpeedDial.OneChamber.Player {
 			EnableShadowInFirstPerson = true;
 			EnableLagCompensation = true;
 
-			Frozen = false;
-			GiveWeapon<ClassicBaseWeapon>("oc_gun");
-
 			Game.Current.PawnRespawned(this);
 			Game.Current.MoveToSpawnpoint(this);
 			Game.Current.ActiveGamemode?.ActiveRound?.OnPawnRespawned(this);
+
+			Frozen = false;
+			GiveWeapon<ClassicBaseWeapon>("oc_gun");
 
 			// just in case this was left open for some reason
 			WinScreen.SetState(To.Single(Client), false);
