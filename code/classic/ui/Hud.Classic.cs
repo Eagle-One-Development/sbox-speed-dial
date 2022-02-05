@@ -11,6 +11,7 @@ namespace SpeedDial.Classic.UI {
 
 		public ClassicHud() {
 			if(!Host.IsClient) return;
+			AddClass("root");
 		}
 
 		public override void Tick() {
