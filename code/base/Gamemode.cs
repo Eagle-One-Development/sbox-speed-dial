@@ -51,7 +51,7 @@ namespace SpeedDial {
 		}
 
 		public virtual void SetState(GamemodeState state) {
-			Debug.Log($"Gamemode state set to {state}");
+			Log.Debug($"Gamemode state set to {state}");
 			State = state;
 		}
 
@@ -59,7 +59,7 @@ namespace SpeedDial {
 		protected virtual void Tick() { }
 
 		public void Start() {
-			Debug.Log("gamemode started");
+			Log.Debug("gamemode started");
 			OnStart();
 			// the gamemode has technically also reset when it starts
 			CallStartEvent();
@@ -97,7 +97,7 @@ namespace SpeedDial {
 		protected virtual void OnStart() { }
 
 		public void Finish() {
-			Debug.Log("gamemode finished");
+			Log.Debug("gamemode finished");
 			OnFinish();
 			KillRound();
 			CallEndEvent();
@@ -116,7 +116,7 @@ namespace SpeedDial {
 		/// <summary> [Assert Server] Forcefully change the active round </summary>
 		public void ChangeRound(Round round) {
 			Host.AssertServer();
-			Debug.Log("round changed");
+			Log.Debug("round changed");
 			Assert.NotNull(round);
 
 			ActiveRound?.Finish();
@@ -128,7 +128,7 @@ namespace SpeedDial {
 
 		public void KillRound() {
 			Host.AssertServer();
-			Debug.Log("round killed");
+			Log.Debug("round killed");
 			ActiveRound?.Kill();
 			ActiveRound = null;
 		}
@@ -163,7 +163,7 @@ namespace SpeedDial {
 		protected override void OnDestroy() {
 			base.OnDestroy();
 
-			Debug.Log("gamemode destroyed");
+			Log.Debug("gamemode destroyed");
 
 			DestroyGamemodeUIClient();
 		}

@@ -36,7 +36,7 @@ namespace SpeedDial.Classic.Rounds {
 
 				pawn.Frozen = true;
 
-				Debug.Log("pre round");
+				Log.Debug("pre round");
 			}
 
 			// reset stuff from warmup etc

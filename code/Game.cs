@@ -271,7 +271,7 @@ namespace SpeedDial {
 
 		[ServerCmd("sd_change_gamemode")]
 		public static void ChangeGamemode(string name) {
-			Debug.Log("change gamemode command");
+			Log.Debug("change gamemode command");
 			var gamemode = Library.Create<Gamemode>(name);
 			if(gamemode is null) {
 				Log.Error($"COULDN'T INITIALIZE GAMEMODE {name}");

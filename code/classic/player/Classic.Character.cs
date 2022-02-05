@@ -34,7 +34,7 @@ namespace SpeedDial.Classic.Player {
 			CharacterModel = Sandbox.Model.Load(Model);
 
 			All.Add(this);
-			Debug.Log($"loaded character {CharacterName}");
+			Log.Debug($"loaded character {CharacterName}");
 		}
 	}
 }

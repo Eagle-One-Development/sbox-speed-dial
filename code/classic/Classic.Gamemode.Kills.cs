@@ -96,13 +96,13 @@ namespace SpeedDial.Classic {
 			Kills.RemoveAll(x => x.Attacker == pawn && x.Victim == pawn.LastRecievedDamage.Attacker);
 
 			if(victimkills >= 3) {
-				Debug.Log($"REVENGE FROM {pawn.LastRecievedDamage.Attacker.Client.Name} AGAINST {pawn.Client.Name}");
+				Log.Debug($"REVENGE FROM {pawn.LastRecievedDamage.Attacker.Client.Name} AGAINST {pawn.Client.Name}");
 				return KillEvent.Revenge;
 			}
 
 			// domination on three or more kills
 			if(attackerkills >= 3) {
-				Debug.Log($"DOMINATION FROM {pawn.LastRecievedDamage.Attacker.Client.Name} AGAINST {pawn.Client.Name}");
+				Log.Debug($"DOMINATION FROM {pawn.LastRecievedDamage.Attacker.Client.Name} AGAINST {pawn.Client.Name}");
 				return KillEvent.Domination;
 			}
 

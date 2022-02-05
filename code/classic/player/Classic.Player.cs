@@ -277,7 +277,7 @@ namespace SpeedDial.Classic.Player {
 		}
 
 		public virtual void OnSetCharacter(int index) {
-			Debug.Log($"char index set to {index}");
+			Log.Debug($"char index set to {index}");
 			index = index.Clamp(0, Character.All.Count);
 			CharacterIndex = index;
 

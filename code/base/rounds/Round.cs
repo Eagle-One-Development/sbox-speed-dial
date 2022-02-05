@@ -36,7 +36,7 @@ namespace SpeedDial {
 			if(Started)
 				return;
 
-			Debug.Log($"Round start {ClassInfo.Name}");
+			Log.Debug($"Round start {ClassInfo.Name}");
 
 			Started = true;
 			StartTime = Time.Now;
@@ -64,7 +64,7 @@ namespace SpeedDial {
 			if(Finished || !Started)
 				return;
 
-			Debug.Log($"Round finish {ClassInfo.Name}");
+			Log.Debug($"Round finish {ClassInfo.Name}");
 
 			Finished = true;
 			Started = false;
@@ -84,7 +84,7 @@ namespace SpeedDial {
 		}
 
 		/// <summary> [Server] Will invoke when the round has started </summary>
-		protected virtual void OnStart() { Debug.Log($"Round on start {ClassInfo.Name}"); }
+		protected virtual void OnStart() { Log.Debug($"Round on start {ClassInfo.Name}"); }
 
 		/// <summary> [Server] Will invoke every think tick, which can be defined by overriding "ThinkTime" </summary>
 		protected virtual void OnThink() {
@@ -95,7 +95,7 @@ namespace SpeedDial {
 		protected virtual void OnTick() { }
 
 		/// <summary> [Server] Will invoke when the round has finished </summary>
-		protected virtual void OnFinish() { Debug.Log($"Round on finish {ClassInfo.Name}"); }
+		protected virtual void OnFinish() { Log.Debug($"Round on finish {ClassInfo.Name}"); }
 		/// <summary> A pawn joined for the first time during this round. </summary>
 		public virtual void OnPawnJoined(BasePlayer pawn) { }
 		/// <summary> A pawn respawned during this round. </summary>
