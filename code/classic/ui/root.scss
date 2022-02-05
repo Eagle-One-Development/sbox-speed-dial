@@ -1,6 +1,13 @@
 ﻿@import "/classic/ui/_vars/globals.scss";
 
 classichud {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+
+
 	&.state-visible-game {
 		.override-state-game {
 			opacity: 1;

@@ -18,6 +18,10 @@ namespace SpeedDial {
 			Transmit = TransmitType.Always;
 			Current = this;
 			PrecacheAssets();
+
+			if(IsServer) {
+				_ = new Hud();
+			}
 		}
 
 		public override void Shutdown() {

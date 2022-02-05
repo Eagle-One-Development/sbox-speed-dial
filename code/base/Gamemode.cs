@@ -102,8 +102,7 @@ namespace SpeedDial {
 			KillRound();
 			CallEndEvent();
 
-			// clear old ui
-			ClearUI(To.Everyone);
+			DestroyGamemodeUIClient();
 		}
 
 		protected virtual void OnFinish() { }
@@ -149,39 +148,24 @@ namespace SpeedDial {
 		// Gamemode UI
 		//
 
-		public RootPanel GamemodeUI { get; protected set; }
+		[ClientRpc]
+		internal static void CreateGamemodeUIClient() {
+			Instance?.CreateGamemodeUI();
+		}
+
+		[ClientRpc]
+		internal static void DestroyGamemodeUIClient() {
+			Hud.ClearGamemodeUI();
+		}
 
 		public virtual void CreateGamemodeUI() { }
-
-		[ClientRpc]
-		public static void CreateUI() {
-			Debug.Log("ui created");
-			Instance.CreateGamemodeUI();
-		}
-
-		[ClientRpc]
-		public static void ClearUI() {
-			Debug.Log($"ui cleared");
-			
-			Local.Hud?.Delete();
-			Local.Hud = null;
-			
-			// redundant?
-			Game.Current.ActiveGamemode.GamemodeUI?.Delete();
-			Game.Current.ActiveGamemode.GamemodeUI = null;
-		}
 
 		protected override void OnDestroy() {
 			base.OnDestroy();
 
 			Debug.Log("gamemode destroyed");
 
-			Local.Hud?.Delete();
-			Local.Hud = null;
-
-			// redundant?
-			GamemodeUI?.Delete();
-			GamemodeUI = null;
+			DestroyGamemodeUIClient();
 		}
 
 		//
@@ -258,7 +242,7 @@ namespace SpeedDial {
 		public void ClientReady(Client client) {
 			Host.AssertServer();
 			// create ui for this client
-			CreateUI(To.Single(client));
+			CreateGamemodeUIClient(To.Single(client));
 			OnClientReady(client);
 		}
 

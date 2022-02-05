@@ -21,8 +21,7 @@ namespace SpeedDial.OneChamber {
 		}
 
 		public override void CreateGamemodeUI() {
-			GamemodeUI = new OneChamberHud();
-			Local.Hud = GamemodeUI;
+			Hud.SetGamemodeUI(new OneChamberHud());
 		}
 
 		protected override void OnStart() {
