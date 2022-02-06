@@ -91,9 +91,6 @@ namespace SpeedDial {
 			TimeElapsedFormatted = GetElapsedTime().ToString(@"mm\:ss");
 		}
 
-		/// <summary> [Server] On Server Tick </summary>
-		protected virtual void OnTick() { }
-
 		/// <summary> [Server] Will invoke when the round has finished </summary>
 		protected virtual void OnFinish() { Log.Debug($"Round on finish {ClassInfo.Name}"); }
 		/// <summary> A pawn joined for the first time during this round. </summary>
