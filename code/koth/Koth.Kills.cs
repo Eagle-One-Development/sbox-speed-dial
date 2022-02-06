@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -7,9 +7,11 @@ using Sandbox;
 using SpeedDial.Classic.UI;
 using SpeedDial.Classic.Player;
 using SpeedDial.Classic.Rounds;
+using SpeedDial;
+using SpeedDial.Classic;
 
-namespace SpeedDial.Classic {
-	public partial class ClassicGamemode {
+namespace Sandbox.koth {
+	public partial class KothGamemode : ClassicGamemode {
 
 		protected override void OnPawnKilled(BasePlayer pawn) {
 			// killfeed population
@@ -46,7 +48,7 @@ namespace SpeedDial.Classic {
 			}
 		}
 
-		public virtual void HandleKillFeedEntry(ClassicPlayer victim, bool highlight = false) {
+		public override void HandleKillFeedEntry(ClassicPlayer victim, bool highlight = false) {
 			// handle killfeed entry accordingly
 			if(victim.LastAttacker != null) {
 				if(victim.LastAttacker.Client != null) {
@@ -62,23 +64,15 @@ namespace SpeedDial.Classic {
 			}
 		}
 
-		public enum KillEvent {
-			Domination,
-			Revenge,
-			None
-		}
 
-		/// <summary>
-		/// List to track all previous kills, serialized with the attacker and victim of the kill. This is automatically handled and cleared up for the domination system.
-		/// </summary>
-		public virtual List<Kill> Kills { get; set; } = new();
+
 
 		/// <summary>
 		/// Handle current domination and return the dimination event for the passed killed pawn
 		/// </summary>
 		/// <param name="pawn">killed pawn</param>
 		/// <returns>returns KillEvent.Domination if the pawn is dominated by its last attacker. returns KillEvent.Revenge if the last attacker has taken revenge against pawn. returns KillEvent.None on a normal kill</returns>
-		public virtual KillEvent HandleDomination(ClassicPlayer pawn) {
+		public override KillEvent HandleDomination(ClassicPlayer pawn) {
 
 			// add new kill to list
 			var kill = new Kill(pawn.LastRecievedDamage.Attacker, pawn);
@@ -109,156 +103,8 @@ namespace SpeedDial.Classic {
 			return KillEvent.None;
 		}
 
-		public virtual string[] KillMessages { get; } = {
-			"BYPASSED",
-			"WHACKED",
-			"DESTROYED",
-			"BROKEN",
-			"ELIMINATED",
-			"EXTERMINATED",
-			"RUINED",
-			"SLAPPED",
-			"DECIMATED",
-			"MINCED",
-			"SMACKED",
-			"VAPORIZED",
-			"DRILLED",
-			"404'D",
-			"EMANCIPATED",
-			"SMEARED",
-			"TERMINATED",
-			"OUTSOURCED",
-			"CLAPPED",
-			"CAPPED",
-			"CARPE DIEM'D",
-			"WASTED",
-			"SHOT",
-			"COMPLEXED",
-			"BLASTED",
-			"RDM'D",
-			"ERADICATED",
-			"BLASTED",
-			"OBLITERATED",
-			"DISCONNECTED",
-			"RAZED",
-			"SACKED",
-			"TOTALLED",
-			"SMOKED",
-			"YOU ARE DEAD.",
-			"MURDERED",
-			"DESECRATED",
-			"SPLITTED",
-			"JACKED OUT",
-			"RETROACTED",
-			"ATE SHIT",
-			"NAE NAE'D",
-			"SHAT ON",
-			"REDACTED",
-			"BACK SCRATCHED",
-			"DELETED",
-			"REMOVED",
-			"UNPLUGGED",
-			"ZONKED",
-			"BONKED",
-			"CYBERSPACED",
-			"SMIT",
-			"YOU'RE ASS",
-			"LAYED OUT",
-			"LAID OUT",
-			"ATOMIZED",
-			"DUSTED",
-			"BECAME A NEWMAN",
-			"LAID LAD",
-			"CRAYZED",
-			"EVISCERATED",
-			"CANCELLED",
-			"GAME OVER",
-			"TAKEN HOME",
-			"BURST",
-			"YOU SUCK",
-			"AWFUL SKILL",
-			"GIT GUD",
-			"SKILL ISSUE",
-			"SLIPSTREAM'D",
-			"JETBALL'D",
-			"BOUNTY'D",
-			"QUAKED",
-			"1984'D",
-			"KILLED",
-			"GET BENT",
-			"DUNKED ON",
-			"KILL MESSAGE",
-			"SNAPSHOT'D",
-			"WALKED THE PLANK",
-			"SLICED",
-			"DICED",
-			"JACKASS'D",
-			"DEFEATED",
-			"FRIED",
-			"MOTEL'D",
-			"BELTALOWDA'D",
-			"RAGE QUIT",
-			"ALT+F4'D",
-			"LOOPED",
-			"SAM",
-			"FACE PUNCHED",
-			"LEFT 4 DEAD",
-			"RED DEAD",
-			"DMCA'D",
-			"GREEN DAY'D",
-			"GUMPED ON",
-			"DODGE BALLED",
-			"REFLECTED",
-			"VSNAPPED",
-			"DINNER TIME",
-			"HAMSTER DANCED",
-			"CLEANUP TIME",
-			"SUCKER PUNCHED",
-			"SLAIN",
-			"ZOINKED",
-			"GUMPED",
-			"AVOOFO'D",
-			"CBFLEXED",
-			"MATRIXED",
-			"INSANE'D",
-			"DISHONOURED",
-			"DETHRONED",
-			"GODZILLA'D",
-			"CLOCKED",
-			"WALLED",
-			"DOORED",
-			"WINDOWED",
-			"CHAIRED",
-			"DESKED",
-			"SHELFED",
-			"EJECTED",
-			"SPACED",
-			"OMITTED",
-			"MERGE CONFLICT",
-			"STORAGE FULL",
-			"OBJECT REFERENCE NOT SET TO AN INSTANCE OF AN OBJECT",
-			"FRAGGED",
-			"NULL",
-			"PUSHED",
-			"DEMOLISHED",
-			"DEVASTATED",
-			"RAVAGED",
-			"SHATTERED",
-			"SMASHED",
-			"WRECKED",
-			"CONSUMED",
-			"DEVOURED",
-			"GET FUCKED"
-		};
+		
 	}
 
-	public class Kill {
-		public Kill(Entity attacker, Entity victim) {
-			Attacker = attacker;
-			Victim = victim;
-		}
 
-		public Entity Attacker;
-		public Entity Victim;
-	}
 }

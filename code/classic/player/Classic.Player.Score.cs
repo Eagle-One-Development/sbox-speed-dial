@@ -11,7 +11,7 @@ namespace SpeedDial.Classic.Player {
 		/// Apply score and combo awards for a kill and display effects if applicable.
 		/// </summary>
 		/// <param name="killed">The killed player</param>
-		public void AwardKill(ClassicPlayer killed) {
+		public virtual void AwardKill(ClassicPlayer killed) {
 			// only award during main round (not warmup)
 			if(!Gamemode.Instance.Running) return;
 			ScorePanel.AwardKill();

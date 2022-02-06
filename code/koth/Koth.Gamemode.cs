@@ -9,8 +9,9 @@ using Sandbox;
 using SpeedDial.Classic;
 using SpeedDial.Koth.Player;
 using SpeedDial.Koth.UI;
+using SpeedDial.Koth.Rounds;
 
-namespace SpeedDial.OneChamber {
+namespace SpeedDial.Koth {
 	[Library("koth"), Hammer.Skip]
 	public partial class KothGamemode : ClassicGamemode {
 		public override GamemodeIdentity Identity => GamemodeIdentity.Koth;
@@ -24,7 +25,7 @@ namespace SpeedDial.OneChamber {
 		}
 
 		protected override void OnStart() {
-
+			ChangeRound(new KothWarmupRound());
 		}
 
 		public override void EnableEntity(GamemodeEntity ent) {
