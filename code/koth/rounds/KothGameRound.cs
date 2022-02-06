@@ -9,12 +9,16 @@ using SpeedDial.Koth.UI;
 using SpeedDial.Koth;
 using SpeedDial.Classic.UI;
 using SpeedDial.Koth.Entities;
+using SpeedDial;
 
 namespace SpeedDial.Koth.Rounds {
 	public partial class KothGameRound : TimedRound {
 		public override TimeSpan RoundDuration => TimeSpan.FromMinutes(5);
 		private KothGamemode koth => Game.Current.ActiveGamemode as KothGamemode;
 		public override string RoundText => "";
+
+		[Net]
+		public int LastHillSpawnIdent { get; set; }
 
 		protected override void OnStart() {
 			base.OnStart();
@@ -27,7 +31,7 @@ namespace SpeedDial.Koth.Rounds {
 				pawn.Frozen = false;
 			}
 
-			CreateHill();
+
 
 			// start climax track 10 seconds before round ends
 			_ = PlayClimaxMusic((int)RoundDuration.TotalSeconds - 10);
@@ -35,11 +39,12 @@ namespace SpeedDial.Koth.Rounds {
 
 		public void CreateHill() {
 			if(Entity.All.OfType<HillSpotSpawn>().Any()) {
-				var targetHill = Entity.All.OfType<HillSpotSpawn>().Random();
+				var targetHill = Entity.All.OfType<HillSpotSpawn>().Where(x => x.NetworkIdent != LastHillSpawnIdent).Random();
 
 				var hill = new HillSpot();
 				hill.Position = targetHill.Position;
 				hill.Rotation = targetHill.Rotation;
+				LastHillSpawnIdent = targetHill.NetworkIdent;
 
 			}
 		}
@@ -50,6 +55,24 @@ namespace SpeedDial.Koth.Rounds {
 			foreach(var client in Client.All.Where(x => x.Pawn is KothPlayer)) {
 				WinScreen.UpdatePanels(To.Single(client));
 			}
+			Game.Current.ActiveGamemode.ChangeRound(new KothPostRound());
+		}
+
+		
+		protected override void OnThink() {
+			base.OnThink();
+				
+			if(!Entity.All.OfType<HillSpot>().Any()) {
+
+				CreateHill();
+
+			}
+		}
+
+		protected void ServerTick() {
+
+			
+			
 		}
 
 		private async Task PlayClimaxMusic(int delay) {

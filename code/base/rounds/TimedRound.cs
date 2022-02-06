@@ -43,7 +43,7 @@ namespace SpeedDial {
 			base.Finish();
 		}
 
-		protected sealed override void OnThink() {
+		protected override void OnThink() {
 			if(RoundEndTime > 0 && Time.Now >= RoundEndTime) {
 				RoundEndTime = 0f;
 				OnTimeUp();

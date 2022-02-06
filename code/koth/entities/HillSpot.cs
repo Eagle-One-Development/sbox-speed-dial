@@ -4,11 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sandbox;
+using SpeedDial.Classic.UI;
 
 namespace SpeedDial.Koth.Entities {
-	public class HillSpot : ModelEntity {
+	public partial class HillSpot : ModelEntity {
 
 		public List<BasePlayer> TouchingPlayers = new();
+
+		[Net, Predicted]
+		public TimeSince TimeSinceAlive { get; set; }
+
+		
+
+		[Event.Tick]
+		public void Tick() {
+			if(TimeSinceAlive > 10f) {
+				foreach(Client c in Client.All) {
+					ScreenHints.FireEvent(To.Single(c), "HILL MOVED", "Good luck!");
+				}
+
+				if(IsValid) {
+					Delete();
+				}
+				return;
+			}
+				
+		}
 
 		public override void Spawn() {
 			base.Spawn();
@@ -16,10 +37,11 @@ namespace SpeedDial.Koth.Entities {
 			Transmit = TransmitType.Always;
 			CollisionGroup = CollisionGroup.Trigger;
 			SetupPhysicsFromModel(PhysicsMotionType.Static);
+			TimeSinceAlive = 0f;
 		}
 
 		public override void StartTouch(Entity other) {
-			Log.Info("STARTING TOUCH");
+
 			if(other is BasePlayer player)
 				TouchingPlayers.Add(player);
 		}

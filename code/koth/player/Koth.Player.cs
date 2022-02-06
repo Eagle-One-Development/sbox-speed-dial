@@ -15,7 +15,7 @@ using SpeedDial.Classic.Drugs;
 namespace SpeedDial.Koth.Player {
 	public partial class KothPlayer : ClassicPlayer {
 
-		[Net,Predicted]
+		[Net]
 		public TimeSince TimeSinceCircleScore { get; set; }
 
 		public override void Spawn() {
