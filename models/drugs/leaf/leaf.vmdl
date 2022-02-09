@@ -72,7 +72,6 @@
 						}
 					},
 				]
-				disabled = true
 			},
 		]
 		model_archetype = ""
