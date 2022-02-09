@@ -31,6 +31,7 @@ namespace SpeedDial {
 
 		public static Gamemode Instance;
 
+		[Net]
 		public GamemodeState State { get; private set; }
 		public bool Waiting => State == GamemodeState.Waiting;
 		public bool Preparing => State == GamemodeState.Preparing;
