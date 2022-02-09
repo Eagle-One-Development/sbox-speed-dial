@@ -36,10 +36,5 @@ namespace SpeedDial.Classic.UI {
 			Position.Text = $"{(position == 1 ? "WINNER" : position == 2 ? "2ND" : "3RD")}";
 			Name.Text = $"{client.Name.ToUpper()}";
 		}
-
-		public override void Tick() {
-			base.Tick();
-			SetClass("hidden", !Client.IsValid());
-		}
 	}
 }

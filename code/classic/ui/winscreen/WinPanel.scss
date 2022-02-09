@@ -2,16 +2,10 @@
 
 winpanel {
     transition: all 3.2s ease-in-out;
-    opacity: 0;
     bottom: -100%;
 
     &.open {
-        opacity: 1;
         bottom: 0%;
-    }
-
-    &.hidden {
-        opacity: 0;
     }
 
     &.first {
@@ -98,6 +92,8 @@ winpanel {
         justify-content: center;
         align-items: center;
         bottom: 70px;
+        padding-left: 30px;
+        padding-right: 30px;
 
         .imagecontainer {
             justify-content: center;
