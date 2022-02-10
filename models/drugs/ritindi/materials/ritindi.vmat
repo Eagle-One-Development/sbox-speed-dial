@@ -7,7 +7,7 @@ Layer0
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "models/drugs/ritindi/textures/TX_PillBottles_01a_color.PNG"
+	TextureColor "models/drugs/ritindi/textures/pill_bottle_color.png"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -23,10 +23,10 @@ Layer0
 	g_flMetalness "0.000"
 
 	//---- Normal ----
-	TextureNormal "models/drugs/ritindi/textures/TX_PillBottles_01a_normal.png"
+	TextureNormal "models/drugs/ritindi/textures/pill_bottle_normal.png"
 
 	//---- Roughness ----
-	TextureRoughness "models/drugs/ritindi/textures/TX_PillBottles_01a_rough.png"
+	TextureRoughness "models/drugs/ritindi/textures/pill_bottle_rough.png"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"

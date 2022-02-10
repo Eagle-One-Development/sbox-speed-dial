@@ -15,11 +15,11 @@
 						[
 							{
 								from = "mi_pillbottles_01a.vmat"
-								to = "models/drugs/ritindi/materials/ritindi.vmat"
+								to = ""
 							},
 						]
-						use_global_default = false
-						global_default_material = ""
+						use_global_default = true
+						global_default_material = "models/drugs/ritindi/materials/ritindi.vmat"
 					},
 				]
 			},
@@ -29,10 +29,10 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/drugs/ritindi/meshes/sm_pillbottle_01t.fbx"
-						import_translation = [ 0.0, 1.5, -1.7 ]
+						filename = "models/drugs/ritindi/meshes/pill_bottle.fbx"
+						import_translation = [ 0.0, 1.0, 1.0 ]
 						import_rotation = [ 0.0, 0.0, 35.0 ]
-						import_scale = 5.0
+						import_scale = 10.0
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
@@ -70,9 +70,9 @@
 						game_keys = 
 						{
 							bonename = ""
-							radius = 7.58018
-							point0 = [ 0.0, 5.91998, -5.64527 ]
-							point1 = [ 0.12442, -4.95737, 9.11557 ]
+							radius = 5.70436
+							point0 = [ 0.0, 8.42381, 12.7903 ]
+							point1 = [ 0.125, -1.0721, 25.9106 ]
 						}
 					},
 				]
