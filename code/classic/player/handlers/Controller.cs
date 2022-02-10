@@ -78,7 +78,7 @@ namespace SpeedDial.Classic.Player {
 		}
 
 		public override void Simulate() {
-			// do this stuff first so EyePos is valid when frozen
+			// do this stuff first so EyePosition is valid when frozen
 			EyePosLocal = Vector3.Up * (EyeHeight * Pawn.Scale);
 			UpdateBBox();
 

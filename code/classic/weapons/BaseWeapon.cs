@@ -186,13 +186,13 @@ namespace SpeedDial.Classic.Weapons {
 
 			var player = Owner as ClassicPlayer;
 
-			var forward = Owner.EyeRot.Forward;
+			var forward = Owner.EyeRotation.Forward;
 			forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f * ((player.ActiveDrug && player.DrugType is DrugType.Ritindi) ? 0.25f : 1f);
 			forward = forward.Normal;
 			forward.z *= VerticalBulletSpread;
 
 			int index = 0;
-			foreach(var tr in TraceBullet(Owner.EyePos, Owner.EyePos + forward * Range, bulletSize)) {
+			foreach(var tr in TraceBullet(Owner.EyePosition, Owner.EyePosition + forward * Range, bulletSize)) {
 				tr.Surface.DoBulletImpact(tr);
 
 				// blood plip where player was hit

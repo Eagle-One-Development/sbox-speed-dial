@@ -28,7 +28,7 @@ namespace SpeedDial.Classic.Player {
 			// handle look input
 			if(!input.UsingController) {
 				var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rotation, Screen.Size);
-				var HitPosition = LinePlaneIntersectionWithHeight(Position, direction, pawn.EyePos.z - 20);
+				var HitPosition = LinePlaneIntersectionWithHeight(Position, direction, pawn.EyePosition.z - 20);
 
 				// since we got our cursor in world space because of the plane intersect above, we need to set it for the crosshair
 				var mouse = HitPosition.ToScreen();
@@ -45,10 +45,10 @@ namespace SpeedDial.Classic.Player {
 				// aim assist when pointing on a player
 				if(targetTrace.Hit && targetTrace.Entity is ClassicPlayer) {
 					if(Debug.Camera)
-						DebugOverlay.Line(pawn.EyePos, targetTrace.Entity.EyePos + Vector3.Down * 20, Color.Red, 0, true);
-					angles = (targetTrace.Entity.EyePos + Vector3.Down * 20 - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
+						DebugOverlay.Line(pawn.EyePosition, targetTrace.Entity.EyePosition + Vector3.Down * 20, Color.Red, 0, true);
+					angles = (targetTrace.Entity.EyePosition + Vector3.Down * 20 - (pawn.EyePosition - Vector3.Up * 20)).EulerAngles;
 				} else {
-					angles = (HitPosition - (pawn.EyePos - Vector3.Up * 20)).EulerAngles;
+					angles = (HitPosition - (pawn.EyePosition - Vector3.Up * 20)).EulerAngles;
 				}
 
 			} else {
@@ -74,7 +74,7 @@ namespace SpeedDial.Classic.Player {
 			if(pawn == null)
 				return;
 
-			var _pos = pawn.EyePos + Vector3.Down * 20; // relative to pawn eyepos
+			var _pos = pawn.EyePosition + Vector3.Down * 20; // relative to pawn EyePosition
 			_pos += Vector3.Up * CameraHeight; // add camera height
 											   // why didn't we just do this with Rotation.LookAt????
 											   // [DOC] answer: cause we (I) wanted a fixed/clearly defined angle
@@ -88,15 +88,15 @@ namespace SpeedDial.Classic.Player {
 			// debug stuff for aim location
 			if(Debug.Camera) {
 				var direction = Screen.GetDirection(new Vector2(Mouse.Position.x, Mouse.Position.y), 70, Rotation, Screen.Size);
-				var HitPosition = LinePlaneIntersectionWithHeight(Position, direction, pawn.EyePos.z);
+				var HitPosition = LinePlaneIntersectionWithHeight(Position, direction, pawn.EyePosition.z);
 				// 
 				DebugOverlay.ScreenText(new Vector2(300, 300), 2, Color.Green, $"Pos {Position}");
 				DebugOverlay.ScreenText(new Vector2(300, 300), 3, Color.Green, $"Dir {direction}");
 				DebugOverlay.ScreenText(new Vector2(300, 300), 4, Color.Green, $"HitPos {HitPosition}");
 				// 
-				var Distance = HitPosition - pawn.EyePos;
+				var Distance = HitPosition - pawn.EyePosition;
 				// 
-				DebugOverlay.Line(pawn.EyePos, pawn.EyePos + Distance, Color.Green, 0, false);
+				DebugOverlay.Line(pawn.EyePosition, pawn.EyePosition + Distance, Color.Green, 0, false);
 
 				// TEMP CROSSHAIR
 				DebugOverlay.Sphere(HitPosition, 5, Color.Green, false);

@@ -16,7 +16,7 @@ namespace SpeedDial.Classic.Player {
 			// SetParam("b_grounded", GroundEntity != null || noclip);
 			// SetParam("b_noclip", noclip);
 
-			Vector3 aimPos = Pawn.EyePos + Input.Rotation.Forward * 200;
+			Vector3 aimPos = Pawn.EyePosition + Input.Rotation.Forward * 200;
 			Vector3 lookPos = aimPos;
 
 			//

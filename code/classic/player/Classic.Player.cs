@@ -111,7 +111,7 @@ namespace SpeedDial.Classic.Player {
 				using(Prediction.Off()) {
 					if(IsServer) {
 						var ent = Library.Create<ClassicBaseWeapon>(ClassicBaseWeapon.GetRandomSpawnableType());
-						ent.Position = EyePos;
+						ent.Position = EyePosition;
 					}
 				}
 			}
@@ -153,8 +153,8 @@ namespace SpeedDial.Classic.Player {
 		public void SimulateMelee() {
 			if(TimeSinceMeleeStarted > 0.2f) {
 				ActiveMelee = false;
-				var forward = EyeRot.Forward;
-				Vector3 pos = EyePos + Vector3.Down * 20f;
+				var forward = EyeRotation.Forward;
+				Vector3 pos = EyePosition + Vector3.Down * 20f;
 				var tr = Trace.Ray(pos, pos + forward * 40f)
 				.UseHitboxes()
 				.Ignore(this)
@@ -169,7 +169,7 @@ namespace SpeedDial.Classic.Player {
 
 				using(Prediction.Off()) {
 					if(IsServer) {
-						var damage = DamageInfo.FromBullet(tr.EndPos, EyeRot.Forward * 100, 200)
+						var damage = DamageInfo.FromBullet(tr.EndPos, EyeRotation.Forward * 100, 200)
 							.UsingTraceResult(tr)
 							.WithAttacker(this);
 

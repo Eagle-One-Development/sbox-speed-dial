@@ -22,7 +22,7 @@ namespace SpeedDial.Classic.Player {
 			//award score
 			var score = 100 * Client.GetValue("combo", 0);
 			Client.AddInt("score", score);
-			WorldHints.AddHint(To.Single(Client), $"+{score} pts", killed.EyePos, 1.5f);
+			WorldHints.AddHint(To.Single(Client), $"+{score} pts", killed.EyePosition, 1.5f);
 
 			// if combo is bigger than max combo, we have a new max combo
 			if(Client.GetValue("combo", 0) > Client.GetValue("maxcombo", 0)) {

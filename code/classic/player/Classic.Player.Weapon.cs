@@ -16,10 +16,10 @@ namespace SpeedDial.Classic.Player {
 			if(IsServer) {
 				if(!DropWeapon(out ClassicBaseWeapon dropped)) return;
 
-				dropped.Position = EyePos;
+				dropped.Position = EyePosition;
 				dropped.ResetInterpolation();
 				if(dropped.PhysicsGroup != null && dropped is ClassicBaseWeapon weapon) {
-					weapon.PhysicsBody.Velocity += EyeRot.Forward * 700;
+					weapon.PhysicsBody.Velocity += EyeRotation.Forward * 700;
 					weapon.PhysicsBody.AngularVelocity = new Vector3(0, 0, 100f);
 					using(Prediction.Off()) {
 						weapon.PlaySound("weaponspin");
@@ -99,7 +99,7 @@ namespace SpeedDial.Classic.Player {
 			weapon.OnCarryDrop(this);
 
 			if(IsServer) {
-				weapon.Position = EyePos;
+				weapon.Position = EyePosition;
 				weapon.Velocity = Velocity * 0.75f;
 				weapon.ResetInterpolation();
 			}

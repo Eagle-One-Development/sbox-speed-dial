@@ -125,7 +125,7 @@ namespace SpeedDial.Classic.Player {
 		[ClientRpc]
 		public void BloodSplatter(Vector3 dir) {
 			Host.AssertClient();
-			Vector3 pos = EyePos + Vector3.Down * 20;
+			Vector3 pos = EyePosition + Vector3.Down * 20;
 
 			// splatters around and behind the target, mostly from impact
 			for(int i = 0; i < 10; i++) {
