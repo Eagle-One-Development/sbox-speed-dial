@@ -13,6 +13,8 @@ namespace SpeedDial.Classic.UI {
 
 		public Panel Header { get; set; }
 		public Panel Canvas { get; set; }
+		public Panel Footer { get; set; }
+		public Label GamemodeInfo { get; set; }
 
 		public ClassicScoreboard() {
 			BindClass("open", () => Input.Down(InputButton.Score));
@@ -21,6 +23,9 @@ namespace SpeedDial.Classic.UI {
 		public override void Tick() {
 			if(!IsVisible)
 				return;
+
+			GamemodeInfo.Text = $"Gamemode: {Game.Current.ActiveGamemode?.ClassInfo.Name}";
+			Footer.SetClass("visible", Debug.Enabled);
 
 			// Clients that joined
 			foreach(var client in Client.All.Except(Rows.Keys)) {
