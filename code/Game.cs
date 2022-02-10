@@ -47,15 +47,15 @@ namespace SpeedDial {
 
 		private void InitGamemode() {
 			Host.AssertServer();
-			Log.Info("gamemode init");
+			Log.Debug("gamemode init");
 			// do we have a cookie stored?
 			if(FileSystem.Data.FileExists("sd_lobby_gamemode_cookie.json")) {
-				Log.Info("gamemode cookie found");
+				Log.Debug("gamemode cookie found");
 				// read cookie
 				var data = FileSystem.Data.ReadJson<GamemodeLobbyCookie>("sd_lobby_gamemode_cookie.json");
 				// we have a cookie from this lobby, load the gamemode that's stored there
 				if(data.LobbyId == Global.Lobby.Id) {
-					Log.Info("gamemode cookie from current lobby");
+					Log.Debug("gamemode cookie from current lobby");
 					ChangeGamemode(data.Gamemode);
 					return;
 				}
