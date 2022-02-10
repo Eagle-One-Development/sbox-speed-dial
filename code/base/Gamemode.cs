@@ -22,7 +22,8 @@ namespace SpeedDial {
 		Preparing,
 		Running,
 		Ending,
-		Paused
+		Paused,
+		Voting
 	}
 
 	/// <summary> [Server, Client] Gamemode base </summary>
@@ -38,6 +39,7 @@ namespace SpeedDial {
 		public bool Running => State == GamemodeState.Running;
 		public bool Ending => State == GamemodeState.Ending;
 		public bool Paused => State == GamemodeState.Paused;
+		public bool Voting => State == GamemodeState.Voting;
 
 		public virtual GamemodeIdentity Identity => GamemodeIdentity.Base;
 
