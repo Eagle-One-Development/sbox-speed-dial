@@ -44,6 +44,7 @@ namespace SpeedDial.Koth.Rounds {
 				var hill = new HillSpot();
 				hill.Position = targetHill.Position;
 				hill.Rotation = targetHill.Rotation;
+				hill.Scale = targetHill.Scale;
 				LastHillSpawnIdent = targetHill.NetworkIdent;
 
 			}
