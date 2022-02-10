@@ -9,7 +9,7 @@ namespace SpeedDial {
 	public partial class Game : GameBase {
 
 		public static Game Current { get; protected set; }
-		public static string GamemodeName { get; } = "classic";
+		public static string DefaultGamemode { get; } = "classic";
 
 		[ServerVar("sd_min_players", Help = "The minimum players required to start the game.")]
 		public static int MinPlayers { get; set; } = 2;
@@ -29,10 +29,38 @@ namespace SpeedDial {
 				Current = null;
 		}
 
+		protected override void OnDestroy() {
+			if(IsServer) {
+				Log.Debug($"Exit with gamemode {ActiveGamemode?.ClassInfo?.Name}");
+				var data = new GamemodeLobbyCookie();
+				data.LobbyId = Global.Lobby.Id;
+				data.Gamemode = ActiveGamemode.ClassInfo.Name;
+				FileSystem.Data.WriteJson("sd_lobby_gamemode_cookie.json", data);
+			}
+		}
+
 		public override void PostLevelLoaded() {
 			if(IsServer) {
-				ChangeGamemode(GamemodeName);
+				InitGamemode();
 			}
+		}
+
+		private void InitGamemode() {
+			Host.AssertServer();
+			Log.Info("gamemode init");
+			// do we have a cookie stored?
+			if(FileSystem.Data.FileExists("sd_lobby_gamemode_cookie.json")) {
+				Log.Info("gamemode cookie found");
+				// read cookie
+				var data = FileSystem.Data.ReadJson<GamemodeLobbyCookie>("sd_lobby_gamemode_cookie.json");
+				// we have a cookie from this lobby, load the gamemode that's stored there
+				if(data.LobbyId == Global.Lobby.Id) {
+					Log.Info("gamemode cookie from current lobby");
+					ChangeGamemode(data.Gamemode);
+					return;
+				}
+			}
+			ChangeGamemode(DefaultGamemode);
 		}
 
 		//
@@ -271,7 +299,7 @@ namespace SpeedDial {
 
 		[ServerCmd("sd_change_gamemode")]
 		public static void ChangeGamemode(string name) {
-			Log.Debug("change gamemode command");
+			Log.Debug($"change gamemode {name}");
 			var gamemode = Library.Create<Gamemode>(name);
 			if(gamemode is null) {
 				Log.Error($"COULDN'T INITIALIZE GAMEMODE {name}");
@@ -315,5 +343,10 @@ namespace SpeedDial {
 				ActiveGamemode?.HandleGamemodeEntity(entity);
 			}
 		}
+	}
+
+	public class GamemodeLobbyCookie {
+		public ulong LobbyId { get; set; }
+		public string Gamemode { get; set; }
 	}
 }
