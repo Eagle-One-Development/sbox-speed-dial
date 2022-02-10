@@ -51,10 +51,10 @@ namespace SpeedDial.Classic.UI {
 
 		public override void Tick() {
 			base.Tick();
-			SetClass("open", Open || Debug.UI);
-			FirstPanel?.SetClass("open", (Open || Debug.UI) && FirstPanel.Client.IsValid());
-			SecondPanel?.SetClass("open", (Open || Debug.UI) && SecondPanel.Client.IsValid());
-			ThirdPanel?.SetClass("open", (Open || Debug.UI) && ThirdPanel.Client.IsValid());
+			SetClass("open", Open);
+			FirstPanel?.SetClass("open", Open && FirstPanel.Client.IsValid());
+			SecondPanel?.SetClass("open", Open && SecondPanel.Client.IsValid());
+			ThirdPanel?.SetClass("open", Open && ThirdPanel.Client.IsValid());
 
 			if(Debug.UI && Input.Pressed(InputButton.Walk)) {
 				UpdatePanels();
