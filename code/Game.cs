@@ -55,7 +55,7 @@ namespace SpeedDial {
 				var data = FileSystem.Data.ReadJson<GamemodeLobbyCookie>("sd_lobby_gamemode_cookie.json");
 				// we have a cookie from this lobby, load the gamemode that's stored there
 				if(data.LobbyId == Global.Lobby.Id) {
-					Log.Debug("gamemode cookie from current lobby");
+					Log.Debug($"gamemode cookie from current lobby: {data.Gamemode}");
 					ChangeGamemode(data.Gamemode);
 					return;
 				}
