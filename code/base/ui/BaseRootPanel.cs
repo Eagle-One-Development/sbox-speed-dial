@@ -14,6 +14,8 @@ namespace SpeedDial {
 		public Panel GamemodePanel { get; set; }
 
 		public BaseRootPanel() {
+			StyleSheet.Load("/base/ui/root.scss");
+			AddChild<DevInfo>();
 		}
 	}
 }
