@@ -29,7 +29,7 @@ namespace SpeedDial.Classic.UI {
 			base.Tick();
 
 			if(IsSet) {
-				Texture glyphTexture = Input.GetGlyph(Button, InputGlyphSize.Medium, GlyphStyle.Knockout.WithSolidABXY().WithNeutralColorABXY());
+				Texture glyphTexture = Input.GetGlyph(Button, InputGlyphSize.Medium, GlyphStyle.Knockout.WithNeutralColorABXY());
 
 				Glyph.Texture = glyphTexture;
 				Glyph.Style.AspectRatio = (float) glyphTexture.Width / glyphTexture.Height;
