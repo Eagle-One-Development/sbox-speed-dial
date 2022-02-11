@@ -5,8 +5,8 @@
 		charactername = "Highway"
 		description = "Smooth Operator"
 		weaponclass = "sd_shotgun"
-		portrait = "materials/ui/portraits/portrait_highway.jpg"
+		portrait = "materials/ui/portraits/portrait_highway.png"
 		model = resource:"models/playermodels/character_highway.vmdl"
-		weapon = "materials/ui/weapons/shotgun.jpg"
+		weapon = "materials/ui/weapons/shotgun.png"
 	}
 }

@@ -5,8 +5,8 @@
 		charactername = "Maria"
 		description = "Luchador Lady"
 		weaponclass = "sd_rifle"
-		portrait = "materials/ui/portraits/portrait_maria.jpg"
+		portrait = "materials/ui/portraits/portrait_maria.png"
 		model = resource:"models/playermodels/character_maria.vmdl"
-		weapon = "materials/ui/weapons/rifle.jpg"
+		weapon = "materials/ui/weapons/rifle.png"
 	}
 }

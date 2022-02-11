@@ -6,8 +6,8 @@
 	charactername(string) : "Character Name" : "name" : ""
 	description(string) : "Description" : "desc" : ""
 	weaponclass(string) : "Weapon Class" : "sd_pistol" : ""
-	portrait(string) { editor = "AssetBrowse(png)" } : "Portrait" : "materials/ui/portraits/jack_hd.jpg" : ""
-	weapon(string) { editor = "AssetBrowse(png)" } : "Weapon" : "materials/ui/weapons/pistol.jpg" : ""
+	portrait(string) { editor = "AssetBrowse(png)" } : "Portrait" : "materials/ui/portraits/jack_hd.png" : ""
+	weapon(string) { editor = "AssetBrowse(png)" } : "Weapon" : "materials/ui/weapons/pistol.png" : ""
 	model(resource:vmdl) : "Model" : "models/playermodels/character_jack.vmdl" : ""
 ]
 

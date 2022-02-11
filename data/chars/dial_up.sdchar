@@ -5,8 +5,8 @@
 		weaponclass = "sd_smg"
 		charactername = "Dial-Up"
 		description = "The Busboy"
-		portrait = "materials/ui/portraits/portrait_dialup.jpg"
+		portrait = "materials/ui/portraits/portrait_dialup.png"
 		model = resource:"models/playermodels/character_dialup.vmdl"
-		weapon = "materials/ui/weapons/smg.jpg"
+		weapon = "materials/ui/weapons/smg.png"
 	}
 }

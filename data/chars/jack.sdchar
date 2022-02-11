@@ -5,8 +5,8 @@
 		charactername = "Jack"
 		description = "Homeless Vet"
 		weaponclass = "sd_pistol"
-		portrait = "materials/ui/portraits/portrait_jack.jpg"
+		portrait = "materials/ui/portraits/portrait_jack.png"
 		model = resource:"models/playermodels/character_jack.vmdl"
-		weapon = "materials/ui/weapons/pistol.jpg"
+		weapon = "materials/ui/weapons/pistol.png"
 	}
 }
