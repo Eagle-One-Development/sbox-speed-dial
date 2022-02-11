@@ -30,7 +30,7 @@ namespace SpeedDial {
 		}
 
 		protected override void OnDestroy() {
-			if(IsServer) {
+			if(IsServer && ActiveGamemode is not null) {
 				Log.Debug($"Exit with gamemode {ActiveGamemode?.ClassInfo?.Name}");
 				var data = new GamemodeLobbyCookie();
 				data.LobbyId = Global.Lobby.Id;
