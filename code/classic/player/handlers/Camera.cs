@@ -116,8 +116,8 @@ namespace SpeedDial.Classic.Player {
 			_pos -= Vector3.Forward * (float)(CameraHeight / Math.Tan(MathX.DegreeToRadian(CameraAngle))); // move camera back
 
 			float mouseShiftFactor = 0.3f;//Sniper
-			var wep = pawn.ActiveChild as ClassicBaseWeapon;
-			if(wep is not null && wep.Scoped) {
+			var wep = pawn.ActiveChild as Weapon;
+			if(wep is not null && wep.Template.Scoped) {
 				mouseShiftFactor = 0.5f;
 			}
 

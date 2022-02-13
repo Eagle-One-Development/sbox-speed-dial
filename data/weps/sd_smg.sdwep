@@ -1,0 +1,46 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	data = 
+	{
+		weaponclass = "sd_smg"
+		weapontitle = "SMG"
+		weapondescription = "This is a Speed-Dial Weapon"
+		firemode = "0"
+		firerate = 15.0
+		bulletdamage = 100.0
+		bulletsize = 3.0
+		bulletforce = 1.5
+		bulletrange = 2000.0
+		bulletcount = 1
+		bulletspread = 0.7
+		verticalspreadmultiplier = 0.35
+		ammopershot = 1
+		defaultclip = 20
+		special = "0"
+		burstlength = 3
+		firedelay = 0.3
+		penetrate = false
+		scoped = false
+		randomspawnable = true
+		worldmodelpath = resource:"models/weapons/smg/prop_smg.vmdl"
+		holdtype = "3"
+		holdattach = "smg_attach"
+		muzzleparticle = resource:"particles/pistol_muzzleflash.vpcf"
+		muzzleattach = "muzzle"
+		ejectparticle = resource:"particles/pistol_ejectbrass.vpcf"
+		ejectattach = "ejection_point"
+		screenshakeparameters = 
+		{
+			length = 0.5
+			speed = 4.0
+			size = 1.0
+			rotation = 0.5
+		}
+		uieffectsscalar = 1.0
+		icon = "materials/ui/weapons/smg.png"
+		shootsound = "sounds/simpleguns/smg/sd_smg.shoot.sound"
+		dryfiresound = "sounds/simpleguns/misc/sd_dryfrire.sound"
+		emptypickupsound = "sounds/weapon_fx/sd_pickup.empty.sound"
+		loadedpickupsound = "sounds/weapon_fx/sd_pickup.loaded.sound"
+	}
+}

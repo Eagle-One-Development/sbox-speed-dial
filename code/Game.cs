@@ -1,6 +1,7 @@
-using System.Linq;
+global using Sandbox;
+global using System;
 
-using Sandbox;
+using System.Linq;
 
 using SpeedDial.Classic.Player;
 

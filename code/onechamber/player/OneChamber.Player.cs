@@ -45,7 +45,7 @@ namespace SpeedDial.OneChamber.Player {
 			Game.Current.ActiveGamemode?.ActiveRound?.OnPawnRespawned(this);
 
 			Frozen = false;
-			GiveWeapon<ClassicBaseWeapon>("oc_gun");
+			GiveWeapon("sd_pistol");
 
 			// just in case this was left open for some reason
 			WinScreen.SetState(To.Single(Client), false);
@@ -84,7 +84,7 @@ namespace SpeedDial.OneChamber.Player {
 				//SoundFromScreen(To.Single(attacker.Client), "kill_confirm");
 			}
 
-			if(LastRecievedDamage.Weapon is ClassicBaseWeapon wep) {
+			if(LastRecievedDamage.Weapon is Weapon wep) {
 				// HACK. this could be done better... too bad!
 				if(wep is IMelee) {
 					DeathCause = CauseOfDeath.Melee;

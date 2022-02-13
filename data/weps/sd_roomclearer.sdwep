@@ -1,0 +1,42 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	data = 
+	{
+		weaponclass = "sd_roomclearer"
+		weapontitle = "ROOM-CLEARER"
+		weapondescription = "This is a Speed-Dial Weapon"
+		firemode = "1"
+		firerate = 1.0
+		bulletdamage = 100.0
+		bulletsize = 3.0
+		bulletforce = 0.3
+		bulletrange = 4096.0
+		bulletcount = 16
+		bulletspread = 0.8
+		verticalspreadmultiplier = 0.2
+		ammopershot = 1
+		defaultclip = 2
+		special = "0"
+		burstlength = 3
+		firedelay = 0.3
+		penetrate = false
+		scoped = false
+		randomspawnable = true
+		worldmodelpath = resource:"models/weapons/shotgun/prop_roomclearer.vmdl"
+		holdtype = "5"
+		holdattach = "roomclearer_attachment"
+		muzzleparticle = resource:"particles/pistol_muzzleflash.vpcf"
+		muzzleattach = "muzzle"
+		ejectparticle = resource:"particles/weapon_fx/shotgun_ejectbrass.vpcf"
+		ejectattach = "ejection_point"
+		screenshakeparameters = 
+		{
+		}
+		uieffectsscalar = 5.0
+		icon = "materials/ui/weapons/shotgun.png"
+		shootsound = "sounds/simpleguns/room-clearer/sd_roomclearer.shoot.sound"
+		dryfiresound = "sounds/simpleguns/misc/sd_dryfrire.sound"
+		emptypickupsound = "sounds/weapon_fx/sd_pickup.empty.sound"
+		loadedpickupsound = "sounds/weapon_fx/sd_pickup.loaded.sound"
+	}
+}
