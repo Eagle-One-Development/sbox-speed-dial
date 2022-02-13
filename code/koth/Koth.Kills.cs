@@ -10,7 +10,7 @@ using SpeedDial.Classic.Rounds;
 using SpeedDial;
 using SpeedDial.Classic;
 
-namespace Sandbox.koth {
+namespace SpeedDial.Koth {
 	public partial class KothGamemode : ClassicGamemode {
 
 		protected override void OnPawnKilled(BasePlayer pawn) {
