@@ -43,6 +43,13 @@
 	penetrate(boolean) { group = "Special" } : "Penetrate" : 0 : ""
 	scoped(boolean) { group = "Special" } : "Scoped" : 0 : ""
 	randomspawnable(boolean) { group = "Special" } : "Random Spawnable" : 0 : ""
+	excludedgamemodes(flags) { group = "Special" editor = "BitFlags()" } : "Excluded Gamemodes" : : "" =
+	[
+		1 : "Classic" : 0
+		2 : "Koth" : 0
+		4 : "Dodgeball" : 0
+		8 : "One Chamber" : 0
+	]
 	worldmodelpath(resource:vmdl) { group = "Model" } : "World Model Path" : "models/weapons/pistol/prop_pistol.vmdl" : ""
 	holdtype(choices) { group = "Model" } : "Hold Type" : 2 : "" =
 	[

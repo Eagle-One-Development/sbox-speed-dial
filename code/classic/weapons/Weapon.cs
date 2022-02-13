@@ -72,6 +72,7 @@ public partial class WeaponTemplate : Asset {
 	[Category("Special")] public bool Penetrate { get; set; } = false; // used for wall penetration (ie sniper)
 	[Category("Special")] public bool Scoped { get; set; } = false; // used for extended view shift range
 	[Category("Special")] public bool RandomSpawnable { get; set; } = false;
+	[Category("Special"), BitFlags] public GamemodeEntity.Gamemodes ExcludedGamemodes { get; set; }
 
 	//model
 	[Category("Model"), ResourceType("vmdl")] public string WorldModelPath { get; set; } = "models/weapons/pistol/prop_pistol.vmdl";
