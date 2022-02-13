@@ -248,7 +248,11 @@ namespace SpeedDial.Classic {
 			"WRECKED",
 			"CONSUMED",
 			"DEVOURED",
-			"GET FUCKED"
+			"GET FUCKED",
+			"CONNECTION TERMINATED",
+			"BUILD FAILED",
+			"VRAD3 COMBINE'D",
+			"HANG DETECTED",
 		};
 	}
 
