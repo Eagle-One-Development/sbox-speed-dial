@@ -34,7 +34,7 @@ namespace SpeedDial.Classic.UI {
 		}
 
 		public override void Tick() {
-			var weapon = (ClassicBaseWeapon)Local.Pawn.ActiveChild;
+			var weapon = Local.Pawn.ActiveChild as Weapon;
 
 			// ammo
 			{
@@ -50,7 +50,7 @@ namespace SpeedDial.Classic.UI {
 				if(weapon is null) {
 					AmmoScale = AmmoScale.LerpTo(0, Time.Delta * 7f);
 				} else {
-					if(weapon.ClipSize < 0)
+					if(weapon.Template?.DefaultClip < 0)
 						AmmoLabel.Text = $"";
 					else
 						AmmoLabel.Text = $"{weapon.AmmoClip}";
@@ -65,7 +65,7 @@ namespace SpeedDial.Classic.UI {
 				if(weapon is null) {
 					WeaponLabel.Text = $"FISTS";
 				} else {
-					WeaponLabel.Text = $"{weapon.ClassInfo.Title}";
+					WeaponLabel.Text = $"{weapon.Template.WeaponTitle}";
 				}
 			}
 		}

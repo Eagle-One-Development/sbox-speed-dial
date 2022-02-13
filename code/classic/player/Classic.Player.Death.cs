@@ -50,7 +50,7 @@ namespace SpeedDial.Classic.Player {
 				//SoundFromScreen(To.Single(attacker.Client), "kill_confirm");
 			}
 
-			if(LastRecievedDamage.Weapon is ClassicBaseWeapon wep) {
+			if(LastRecievedDamage.Weapon is Weapon wep) {
 				// HACK. this could be done better... too bad!
 				if(wep is IMelee) {
 					DeathCause = CauseOfDeath.Melee;

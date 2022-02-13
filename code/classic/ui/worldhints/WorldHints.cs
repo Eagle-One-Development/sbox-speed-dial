@@ -16,7 +16,7 @@ namespace SpeedDial.Classic.UI {
 
 		public List<Panel> WorldTexts = new();
 
-		private ClassicBaseWeapon _lastPickup;
+		private Weapon _lastPickup;
 		private float _pickupScale = 0;
 
 		public Panel PickupPanel { get; set; }

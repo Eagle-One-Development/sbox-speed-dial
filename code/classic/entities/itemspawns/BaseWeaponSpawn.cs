@@ -11,7 +11,7 @@ namespace SpeedDial.Classic.Entities {
 		public virtual float RespawnTime { get; set; } = 10;
 		[Net] private bool Taken { get; set; }
 		[Net] private TimeSince TimeSinceTaken { get; set; }
-		protected ClassicBaseWeapon SpawnedWeapon { get; set; }
+		protected Weapon SpawnedWeapon { get; set; }
 
 		public override void Spawn() {
 			base.Spawn();
@@ -50,7 +50,7 @@ namespace SpeedDial.Classic.Entities {
 			Host.AssertServer();
 			if(!Enabled) return;
 
-			var ent = Library.Create<ClassicBaseWeapon>(WeaponClass);
+			var ent = WeaponTemplate.Create(WeaponClass);
 			ent.Transform = Transform;
 			ent.WeaponSpawn = this;
 			ent.ResetInterpolation();

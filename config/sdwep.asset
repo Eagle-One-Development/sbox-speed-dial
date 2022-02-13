@@ -1,0 +1,76 @@
+//
+// SpeedDial.Classic.Weapons.ScreenshakeParameters
+//
+@struct = SpeedDial_Classic_Weapons_ScreenshakeParameters
+[
+	length(float) : "Length" : 1 : ""
+	speed(float) : "Speed" : 1 : ""
+	size(float) : "Size" : 1 : ""
+	rotation(float) : "Rotation" : 1 : ""
+]
+
+//
+// SpeedDial.Classic.Weapons.WeaponTemplate
+//
+@BaseClass = sdwep : ""
+[
+	weaponclass(string) { group = "Info" } : "Weapon Class" : "sd_wep" : ""
+	weapontitle(string) { group = "Info" } : "Weapon Title" : "Speed-Dial Weapon" : ""
+	weapondescription(string) { group = "Info" } : "Weapon Description" : "This is a Speed-Dial Weapon" : ""
+	firemode(choices) { group = "Stats" } : "Fire Mode" : 1 : "" =
+	[
+		0 : "Automatic"
+		1 : "Semi Automatic"
+	]
+	firerate(float) { group = "Stats" } : "Fire Rate" : "5" : ""
+	bulletdamage(float) { group = "Stats" } : "Bullet Damage" : "100" : ""
+	bulletsize(float) { group = "Stats" } : "Bullet Size" : "1" : ""
+	bulletforce(float) { group = "Stats" } : "Bullet Force" : "1" : ""
+	bulletrange(float) { group = "Stats" } : "Bullet Range" : "4096" : ""
+	bulletcount(integer) { group = "Stats" } : "Bullet Count" : 1 : ""
+	bulletspread(float) { group = "Stats" } : "Bullet Spread" : "0.1" : ""
+	verticalspreadmultiplier(float) { group = "Stats" } : "Vertical Spread Multiplier" : "1" : ""
+	ammopershot(integer) { group = "Stats" } : "Ammo Per Shot" : 1 : ""
+	defaultclip(integer) { group = "Stats" } : "Default Clip" : 10 : ""
+	special(choices) { group = "Special" } : "Special" : 0 : "" =
+	[
+		0 : "None"
+		1 : "Burst"
+		2 : "Melee"
+	]
+	burstlength(integer) { group = "Special" } : "Burst Length" : 3 : ""
+	firedelay(float) { group = "Special" } : "Fire Delay" : "0.3" : ""
+	penetrate(boolean) { group = "Special" } : "Penetrate" : 0 : ""
+	scoped(boolean) { group = "Special" } : "Scoped" : 0 : ""
+	randomspawnable(boolean) { group = "Special" } : "Random Spawnable" : 0 : ""
+	excludedgamemodes(flags) { group = "Special" editor = "BitFlags()" } : "Excluded Gamemodes" : : "" =
+	[
+		1 : "Classic" : 0
+		2 : "Koth" : 0
+		4 : "Dodgeball" : 0
+		8 : "One Chamber" : 0
+	]
+	worldmodelpath(resource:vmdl) { group = "Model" } : "World Model Path" : "models/weapons/pistol/prop_pistol.vmdl" : ""
+	holdtype(choices) { group = "Model" } : "Hold Type" : 2 : "" =
+	[
+		0 : "Unarmed"
+		1 : "Melee"
+		2 : "Pistol"
+		3 : "Smg"
+		4 : "Rifle"
+		5 : "Shotgun"
+	]
+	holdattach(string) { group = "Model" } : "Hold Attach" : "pistol_attach" : ""
+	muzzleparticle(resource:vpcf) { group = "VFX" } : "Muzzle Particle" : "particles/pistol_muzzleflash.vpcf" : ""
+	muzzleattach(string) { group = "VFX" } : "Muzzle Attach" : "muzzle" : ""
+	ejectparticle(resource:vpcf) { group = "VFX" } : "Eject Particle" : "particles/pistol_ejectbrass.vpcf" : ""
+	ejectattach(string) { group = "VFX" } : "Eject Attach" : "ejection_point" : ""
+	screenshakeparameters(struct:SpeedDial_Classic_Weapons_ScreenshakeParameters) { group = "VFX" } : "Screenshake Parameters" :  : ""
+	uieffectsscalar(float) { group = "UI" } : "Uieffects Scalar" : 1 : ""
+	icon(string) { group = "UI" editor = "AssetBrowse(png)" } : "Icon" : "materials/ui/weapons/pistol.png" : ""
+	shootsound(string) { group = "Sounds" editor = "AssetBrowse(sound)" } : "Shoot Sound" : "sounds/simpleguns/pistol/sd_pistol.shoot.sound" : ""
+	dryfiresound(string) { group = "Sounds" editor = "AssetBrowse(sound)" } : "Dry Fire Sound" : "sounds/simpleguns/misc/sd_dryfrire.sound" : ""
+	emptypickupsound(string) { group = "Sounds" editor = "AssetBrowse(sound)" } : "Empty Pickup Sound" : "sounds/weapon_fx/sd_pickup.empty.sound" : ""
+	loadedpickupsound(string) { group = "Sounds" editor = "AssetBrowse(sound)" } : "Loaded Pickup Sound" : "sounds/weapon_fx/sd_pickup.loaded.sound" : ""
+]
+

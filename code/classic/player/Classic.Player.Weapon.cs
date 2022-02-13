@@ -7,18 +7,18 @@ using SpeedDial.Classic.Weapons;
 
 namespace SpeedDial.Classic.Player {
 	public partial class ClassicPlayer {
-		[Net] public ClassicBaseWeapon PickupWeapon { get; set; }
+		[Net] public Weapon PickupWeapon { get; set; }
 		[Net] public TimeSince TimeSincePickup { get; set; }
 		[Net] public TimeSince TimeSinceWeaponCarried { get; set; }
 		[Net] public bool Pickup { get; set; }
 
 		public virtual void ThrowWeapon() {
 			if(IsServer) {
-				if(!DropWeapon(out ClassicBaseWeapon dropped)) return;
+				if(!DropWeapon(out Weapon dropped)) return;
 
 				dropped.Position = EyePosition;
 				dropped.ResetInterpolation();
-				if(dropped.PhysicsGroup != null && dropped is ClassicBaseWeapon weapon) {
+				if(dropped.PhysicsGroup != null && dropped is Weapon weapon) {
 					weapon.PhysicsBody.Velocity += EyeRotation.Forward * 700;
 					weapon.PhysicsBody.AngularVelocity = new Vector3(0, 0, 100f);
 					using(Prediction.Off()) {
@@ -31,11 +31,11 @@ namespace SpeedDial.Classic.Player {
 		/// <summary>
 		/// Give the player a weapon
 		/// </summary>
-		/// <typeparam name="T">Type of the weapon</typeparam>
 		/// <param name="weaponclass">Library class name of the weapon</param>
 		/// <param name="drop">Whether to drop the old weapon or simply override it.</param>
-		public void GiveWeapon<T>(string weaponclass, bool drop = false) where T : ClassicBaseWeapon {
-			var weapon = Library.Create<T>(weaponclass);
+		public void GiveWeapon(string weaponclass, bool drop = false) {
+			if(!WeaponTemplate.Exists(weaponclass)) return;
+			var weapon = WeaponTemplate.Create(weaponclass);
 			if(weapon is null) return;
 
 			if(drop) {
@@ -54,33 +54,11 @@ namespace SpeedDial.Classic.Player {
 		}
 
 		/// <summary>
-		/// Give the player a weapon
-		/// </summary>
-		/// <typeparam name="T">The type of the weapon</typeparam>
-		/// <param name="drop">Whether to drop the old weapon or simply override it.</param>
-		public void GiveWeapon<T>(bool drop = false) where T : ClassicBaseWeapon, new() {
-			if(drop) {
-				DropWeapon();
-			} else {
-				if(ActiveChild is not null) {
-					var oldwep = ActiveChild;
-					oldwep.Delete();
-					ActiveChild = null;
-				}
-			}
-
-			T weapon = new();
-			weapon.Parent = this;
-			weapon.OnCarryStart(this);
-			ActiveChild = weapon;
-		}
-
-		/// <summary>
 		/// Drop the current weapon of the player.
 		/// </summary>
 		/// <param name="weapon">[out] the dropped weapon</param>
 		/// <returns>true if we were able to drop a weapon, false otherwise</returns>
-		public bool DropWeapon(out ClassicBaseWeapon weapon) {
+		public bool DropWeapon(out Weapon weapon) {
 			weapon = DropWeapon();
 			if(weapon is null || !weapon.IsValid()) return false;
 			return true;
@@ -90,11 +68,10 @@ namespace SpeedDial.Classic.Player {
 		/// Drop the current weapon of the player
 		/// </summary>
 		/// <returns></returns>
-		public ClassicBaseWeapon DropWeapon() {
-			if(ActiveChild is null) {
+		public Weapon DropWeapon() {
+			if(ActiveChild is null || ActiveChild is not Weapon weapon) {
 				return null;
 			}
-			var weapon = ActiveChild as ClassicBaseWeapon;
 			weapon.Parent = null;
 			weapon.OnCarryDrop(this);
 
