@@ -30,17 +30,19 @@ namespace SpeedDial.Classic.Bot {
 
 		public Entity CurrentTarget { get; private set; }
 		public Entity CurrentPlayer { get; private set; }
+		public Entity CurrentWeapon { get; private set; }
 		public Vector3 InputVelocity { get; private set; }
 
 		#region Static Variables
 		public float UpdateInterval => 1.0f;
 		public float SearchRadius => 400.0f;
 		public float MinWanderRadius => 200;
-		public float MaxWanderRadius => 500;
+		public float MaxWanderRadius => 10000;
 		public float PlayerOrbitDistance => 200;
 		#endregion
 
 		private TimeSince timeSinceUpdate;
+		private Vector3 lastPos;
 
 		public virtual void Tick() {
 			if(Bot.Client.Pawn.LifeState == LifeState.Dead) return;
@@ -58,7 +60,7 @@ namespace SpeedDial.Classic.Bot {
 			if(Steer != null) {
 				if(CurrentTarget != null && CurrentTarget.IsValid) {
 					Steer.Target = EvaulatePositon(CurrentTarget);
-				} else if (Steer.Path.IsEmpty) {
+				} else if (Steer.Path.IsEmpty || Bot.Client.Pawn.Position.IsNearlyEqual(lastPos, 0.01f)) {
 					// Wander
 					var t = NavMesh.GetPointWithinRadius(Bot.Client.Pawn.Position, MinWanderRadius, MaxWanderRadius);
 					if(t.HasValue) Steer.Target = t.Value;
@@ -77,6 +79,8 @@ namespace SpeedDial.Classic.Bot {
 			} else {
 				Steer = new NavSteer();
 			}
+
+			lastPos = Bot.Client.Pawn.Position;
 		}
 		
 		/// <summary>
@@ -87,7 +91,9 @@ namespace SpeedDial.Classic.Bot {
 			var weapon = pawn.ActiveChild as ClassicBaseWeapon;
 
 			Attack1 = CurrentTarget is ClassicPlayer;
-			Attack2 = (weapon == null) || (weapon != null) && (weapon.AmmoClip <= 0) || CurrentTarget != null && CurrentTarget.IsValid && (CurrentTarget is ClassicBaseWeapon target && weapon.AmmoClip < weapon.ClipSize && Vector3.DistanceBetween(pawn.Position, target.Position) <= 10);
+
+			Attack2 = (weapon == null) ||
+				(weapon != null) && (weapon.AmmoClip <= 0);
 
 			var targetView = CurrentPlayer != null && CurrentPlayer.IsValid ? Rotation.LookAt((CurrentPlayer.Position - Bot.Client.Pawn.Position).Normal, Vector3.Up).Angles() :
 					Rotation.LookAt(InputVelocity, Vector3.Up).Angles();
@@ -124,6 +130,7 @@ namespace SpeedDial.Classic.Bot {
 			var closestDrug = GetClosestEntityInSphere<ClassicBaseDrug>(Bot.Client.Pawn.Position, SearchRadius);
 
 			CurrentPlayer = closestPlayer;
+			CurrentWeapon = closestWeapon;
 
 			// random variables
 			var pawn = Bot.Client.Pawn as ClassicPlayer;
