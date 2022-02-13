@@ -19,7 +19,7 @@ namespace SpeedDial.Classic.UI {
 			// game panels hide in post round
 			SetClass("state-visible-game", !Gamemode.Instance.Ending && !Debug.UI);
 			// cursor only shows when using mouse input
-			SetClass("state-visible-cursor", !Input.UsingController);
+			SetClass("state-visible-cursor", !Input.UsingController && !Debug.UI);
 		}
 	}
 }

@@ -1,0 +1,14 @@
+﻿@import "/classic/ui/_vars/globals.scss";
+
+voteitem {
+    width: 200px;
+    height: 100px;
+    background-color: darkblue;
+    border: 2px solid black;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        background-color: blue;
+    }
+}
