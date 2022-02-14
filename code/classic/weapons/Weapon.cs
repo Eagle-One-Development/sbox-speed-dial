@@ -277,55 +277,9 @@ public partial class Weapon : BaseCarriable {
 		}
 
 		if(Template.Special == WeaponSpecial.Burst) {
-			if(Firing) {
-				if(TimeSinceSpecial > Template.FireDelay && Burst < Template.BurstLength) {
-					Burst++;
-					if(!TakeAmmo(1)) {
-						TimeSinceSpecial = 0;
-						Burst = 0;
-						Firing = false;
-						PlaySound("sd_dryfrire");
-						return;
-					}
-
-					ShootEffects();
-
-					ShootBullet(Template.BulletSpread * (float)((Burst * 1.5) + 1), Template.BulletForce, Template.BulletDamage, Template.BulletSize, 0);
-					TimeSinceSpecial = 0;
-				}
-
-				if(Burst >= Template.BurstLength) {
-					TimeSinceSpecial = 0;
-					Burst = 0;
-					Firing = false;
-				}
-			}
+			BurstSimulate();
 		} else if(Template.Special == WeaponSpecial.Melee) {
-			if(EffectEntity.GetAttachment("melee_start") is Transform start && EffectEntity.GetAttachment("melee_end") is Transform end) {
-				if(TimeSinceSpecial <= 0.20f && Firing) {
-					foreach(var tr in TraceBullet(start.Position, end.Position, 4)) {
-						if(tr.Entity is ClassicPlayer hitPlayer && hitPlayer.IsValid()) {
-							var ps = Particles.Create("particles/blood/blood_plip.vpcf", tr.EndPos);
-							ps?.SetForward(0, tr.Normal);
-
-							PlaySound("sd_bat.hit");
-
-							if(IsServer) {
-								using(Prediction.Off()) {
-									var damageInfo = DamageInfo.FromBullet(tr.EndPos, 1000, 100)
-										.UsingTraceResult(tr)
-										.WithAttacker(Owner)
-										.WithWeapon(this);
-
-									tr.Entity.TakeDamage(damageInfo);
-								}
-							}
-						}
-					}
-				} else {
-					Firing = false;
-				}
-			}
+			MeleeSimulate();
 		}
 	}
 
@@ -343,18 +297,9 @@ public partial class Weapon : BaseCarriable {
 
 	public virtual void AttackPrimary() {
 		if(Template.Special == WeaponSpecial.Burst) {
-			TimeSincePrimaryAttack = 0;
-
-			if(!Firing) {
-				Firing = true;
-			}
+			BurstPrimary();
 		} else if(Template.Special == WeaponSpecial.Melee) {
-			if(TimeSinceSpecial > Template.FireDelay) {
-				TimeSinceSpecial = 0;
-				Firing = true;
-				(Owner as AnimEntity).SetAnimBool("b_attack", true);
-				PlaySound("woosh");
-			}
+			MeleePrimary();
 		} else {
 			TimeSincePrimaryAttack = 0;
 
