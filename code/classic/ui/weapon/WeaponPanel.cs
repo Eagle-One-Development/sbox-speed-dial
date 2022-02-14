@@ -50,7 +50,7 @@ namespace SpeedDial.Classic.UI {
 				if(weapon is null) {
 					AmmoScale = AmmoScale.LerpTo(0, Time.Delta * 7f);
 				} else {
-					if(weapon.Template?.DefaultClip < 0)
+					if(weapon.Template?.ClipSize < 0)
 						AmmoLabel.Text = $"";
 					else
 						AmmoLabel.Text = $"{weapon.AmmoClip}";

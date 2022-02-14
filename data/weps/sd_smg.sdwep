@@ -15,7 +15,6 @@
 		bulletspread = 0.7
 		verticalspreadmultiplier = 0.35
 		ammopershot = 1
-		defaultclip = 20
 		special = "0"
 		burstlength = 3
 		firedelay = 0.3
@@ -42,5 +41,7 @@
 		dryfiresound = "sounds/simpleguns/misc/sd_dryfrire.sound"
 		emptypickupsound = "sounds/weapon_fx/sd_pickup.empty.sound"
 		loadedpickupsound = "sounds/weapon_fx/sd_pickup.loaded.sound"
+		clipsize = 20
+		excludedgamemodes = "0"
 	}
 }

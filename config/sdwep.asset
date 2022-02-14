@@ -31,7 +31,7 @@
 	bulletspread(float) { group = "Stats" } : "Bullet Spread" : "0.1" : ""
 	verticalspreadmultiplier(float) { group = "Stats" } : "Vertical Spread Multiplier" : "1" : ""
 	ammopershot(integer) { group = "Stats" } : "Ammo Per Shot" : 1 : ""
-	defaultclip(integer) { group = "Stats" } : "Default Clip" : 10 : ""
+	clipsize(integer) { group = "Stats" } : "Clip Size" : 10 : ""
 	special(choices) { group = "Special" } : "Special" : 0 : "" =
 	[
 		0 : "None"

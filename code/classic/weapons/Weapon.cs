@@ -63,7 +63,7 @@ public partial class WeaponTemplate : Asset {
 	[Category("Stats")] public float BulletSpread { get; set; } = 0.1f;
 	[Category("Stats")] public float VerticalSpreadMultiplier { get; set; } = 1.0f;
 	[Category("Stats")] public int AmmoPerShot { get; set; } = 1;
-	[Category("Stats")] public int DefaultClip { get; set; } = 10;
+	[Category("Stats")] public int ClipSize { get; set; } = 10;
 
 	//special
 	[Category("Special")] public WeaponSpecial Special { get; set; } = WeaponSpecial.None;
@@ -170,7 +170,7 @@ public partial class Weapon : BaseCarriable {
 	public void ApplyTemplate(WeaponTemplate template) {
 		Template = template;
 		Model = template.WorldModel;
-		AmmoClip = Template.DefaultClip;
+		AmmoClip = Template.ClipSize;
 	}
 
 	[Net, Predicted] public int AmmoClip { get; set; }
