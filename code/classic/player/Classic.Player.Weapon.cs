@@ -34,8 +34,8 @@ namespace SpeedDial.Classic.Player {
 		/// <param name="weaponclass">Library class name of the weapon</param>
 		/// <param name="drop">Whether to drop the old weapon or simply override it.</param>
 		public void GiveWeapon(string weaponclass, bool drop = false) {
-			if(!WeaponTemplate.Exists(weaponclass)) return;
-			var weapon = WeaponTemplate.Create(weaponclass);
+			if(!WeaponBlueprint.Exists(weaponclass)) return;
+			var weapon = WeaponBlueprint.Create(weaponclass);
 			if(weapon is null) return;
 
 			if(drop) {

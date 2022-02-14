@@ -117,7 +117,7 @@ namespace SpeedDial.Classic.Player {
 
 			float mouseShiftFactor = 0.3f;//Sniper
 			var wep = pawn.ActiveChild as Weapon;
-			if(wep is not null && wep.Template.Scoped) {
+			if(wep is not null && wep.Blueprint.Scoped) {
 				mouseShiftFactor = 0.5f;
 			}
 

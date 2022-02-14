@@ -50,7 +50,7 @@ namespace SpeedDial.Classic.UI {
 				if(weapon is null) {
 					AmmoScale = AmmoScale.LerpTo(0, Time.Delta * 7f);
 				} else {
-					if(weapon.Template?.ClipSize < 0)
+					if(weapon.Blueprint?.ClipSize < 0)
 						AmmoLabel.Text = $"";
 					else
 						AmmoLabel.Text = $"{weapon.AmmoClip}";
@@ -65,7 +65,7 @@ namespace SpeedDial.Classic.UI {
 				if(weapon is null) {
 					WeaponLabel.Text = $"FISTS";
 				} else {
-					WeaponLabel.Text = $"{weapon.Template.WeaponTitle}";
+					WeaponLabel.Text = $"{weapon.Blueprint.WeaponTitle}";
 				}
 			}
 		}

@@ -110,7 +110,7 @@ namespace SpeedDial.Classic.Player {
 			if(Debug.Enabled && Input.Pressed(InputButton.Zoom)) {
 				using(Prediction.Off()) {
 					if(IsServer) {
-						var ent = WeaponTemplate.Create(WeaponTemplate.GetRandomSpawnable());
+						var ent = WeaponBlueprint.Create(WeaponBlueprint.GetRandomSpawnable());
 						ent.Position = EyePosition;
 					}
 				}

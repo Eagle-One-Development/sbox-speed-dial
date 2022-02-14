@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.ComponentModel;
-
-using Hammer;
 
 using SpeedDial.Classic.Entities;
 using SpeedDial.Classic.Player;
@@ -11,166 +8,14 @@ using SpeedDial.Classic.UI;
 
 namespace SpeedDial.Classic.Weapons;
 
-public struct ScreenshakeParameters {
-	[Property] public float Length { get; set; } = 1;
-	[Property] public float Speed { get; set; } = 1;
-	[Property] public float Size { get; set; } = 1;
-	[Property] public float Rotation { get; set; } = 1;
-
-	public ScreenshakeParameters(float Length, float Speed, float Size, float Rotation) {
-		this.Length = Length;
-		this.Speed = Speed;
-		this.Size = Size;
-		this.Rotation = Rotation;
-	}
-}
-
-public enum WeaponHoldType {
-	Unarmed = 0,
-	Melee = 1,
-	Pistol = 2,
-	Smg = 3,
-	Rifle = 4,
-	Shotgun = 5
-}
-
-public enum WeaponFireMode {
-	Automatic,
-	SemiAutomatic,
-}
-
-public enum WeaponSpecial {
-	None,
-	Burst,
-	Melee
-}
-
-[Library("sdwep"), AutoGenerate]
-public partial class WeaponTemplate : Asset {
-	//important
-	[Category("Info")] public string WeaponClass { get; set; } = "sd_wep";
-	[Category("Info")] public string WeaponTitle { get; set; } = "Speed-Dial Weapon";
-	[Category("Info")] public string WeaponDescription { get; set; } = "This is a Speed-Dial Weapon";
-
-	//stats
-	[Category("Stats")] public WeaponFireMode FireMode { get; set; } = WeaponFireMode.SemiAutomatic;
-	[Category("Stats")] public float FireRate { get; set; } = 5.0f;
-	[Category("Stats")] public float BulletDamage { get; set; } = 100.0f;
-	[Category("Stats")] public float BulletSize { get; set; } = 1.0f;
-	[Category("Stats")] public float BulletForce { get; set; } = 1.0f;
-	[Category("Stats")] public float BulletRange { get; set; } = 4096.0f;
-	[Category("Stats")] public int BulletCount { get; set; } = 1;
-	[Category("Stats")] public float BulletSpread { get; set; } = 0.1f;
-	[Category("Stats")] public float VerticalSpreadMultiplier { get; set; } = 1.0f;
-	[Category("Stats")] public int AmmoPerShot { get; set; } = 1;
-	[Category("Stats")] public int ClipSize { get; set; } = 10;
-
-	//special
-	[Category("Special")] public WeaponSpecial Special { get; set; } = WeaponSpecial.None;
-	[Category("Special")] public int BurstLength { get; set; } = 3; // used for burst
-	[Category("Special")] public float FireDelay { get; set; } = 0.3f; // used for burst or melee
-	[Category("Special")] public bool Penetrate { get; set; } = false; // used for wall penetration (ie sniper)
-	[Category("Special")] public bool Scoped { get; set; } = false; // used for extended view shift range
-	[Category("Special")] public bool RandomSpawnable { get; set; } = false;
-	[Category("Special"), BitFlags] public GamemodeEntity.Gamemodes ExcludedGamemodes { get; set; }
-
-	//model
-	[Category("Model"), ResourceType("vmdl")] public string WorldModelPath { get; set; } = "models/weapons/pistol/prop_pistol.vmdl";
-	[Category("Model")] public WeaponHoldType HoldType { get; set; } = WeaponHoldType.Pistol;
-	[Category("Model")] public string HoldAttach { get; set; } = "pistol_attach";
-
-	//vfx
-	[Category("VFX"), ResourceType("vpcf")] public string MuzzleParticle { get; set; } = "particles/pistol_muzzleflash.vpcf";
-	[Category("VFX")] public string MuzzleAttach { get; set; } = "muzzle";
-	[Category("VFX"), ResourceType("vpcf")] public string EjectParticle { get; set; } = "particles/pistol_ejectbrass.vpcf";
-	[Category("VFX")] public string EjectAttach { get; set; } = "ejection_point";
-	[Category("VFX")] public ScreenshakeParameters ScreenshakeParameters { get; set; }
-
-	//ui
-	[Category("UI")] public float UIEffectsScalar { get; set; } = 1; // used for ui panel bump strength
-	[Category("UI"), ResourceType("png")] public string Icon { get; set; } = "materials/ui/weapons/pistol.png";
-
-	//sounds
-	[Category("Sounds"), ResourceType("sound")] public string ShootSound { get; set; } = "sounds/simpleguns/pistol/sd_pistol.shoot.sound";
-	[Category("Sounds"), ResourceType("sound")] public string DryFireSound { get; set; } = "sounds/simpleguns/misc/sd_dryfrire.sound";
-	[Category("Sounds"), ResourceType("sound")] public string EmptyPickupSound { get; set; } = "sounds/weapon_fx/sd_pickup.empty.sound";
-	[Category("Sounds"), ResourceType("sound")] public string LoadedPickupSound { get; set; } = "sounds/weapon_fx/sd_pickup.loaded.sound";
-
-
-	[Skip] public Model WorldModel { get; private set; }
-	[Skip] public Texture IconTexture { get; private set; }
-
-
-	[Skip] public static List<WeaponTemplate> All = new();
-
-	public static WeaponTemplate GetTemplate(string weaponclass) {
-		return All.FirstOrDefault(x => x.WeaponClass == weaponclass);
-	}
-
-	public static bool Exists(string weaponclass) {
-		return All.Any(x => x.WeaponClass == weaponclass);
-	}
-
-	public static Weapon Create(string name) {
-		var template = GetTemplate(name);
-		return Create(template);
-	}
-
-	public static Weapon Create(WeaponTemplate template) {
-		var wep = new Weapon();
-		wep.ApplyTemplate(template);
-		return wep;
-	}
-
-	public static WeaponTemplate GetRandomSpawnable() {
-		return All.Where(x => x.RandomSpawnable).Random();
-	}
-
-	protected override void PostLoad() {
-		// WeaponClass needs to be set
-		if(string.IsNullOrWhiteSpace(WeaponClass)) {
-			Log.Debug($"unable to load weapon \"{Path}\" due to empty weapon class");
-			return;
-		}
-
-		// WeaponClass needs to be unique
-		if(All.Any(x => x.WeaponClass == WeaponClass)) {
-			Log.Debug($"unable to load weapon \"{Path}\" due to duplicate weapon class");
-			return;
-		}
-
-		// get sound event name from full path
-		ShootSound = System.IO.Path.GetFileNameWithoutExtension(ShootSound);
-		DryFireSound = System.IO.Path.GetFileNameWithoutExtension(DryFireSound);
-		EmptyPickupSound = System.IO.Path.GetFileNameWithoutExtension(EmptyPickupSound);
-		LoadedPickupSound = System.IO.Path.GetFileNameWithoutExtension(LoadedPickupSound);
-
-		// precache particles and sounds
-		Precache.Add(MuzzleParticle);
-		Precache.Add(EjectParticle);
-
-		Precache.Add($"{ShootSound}.sound");
-		Precache.Add($"{DryFireSound}.sound");
-		Precache.Add($"{EmptyPickupSound}.sound");
-		Precache.Add($"{LoadedPickupSound}.sound");
-
-		WorldModel = Model.Load(WorldModelPath);
-		IconTexture = Texture.Load(Icon);
-
-		Log.Debug($"loaded weapon {WeaponClass}");
-
-		All.Add(this);
-	}
-}
-
 public partial class Weapon : BaseCarriable {
-	[Net] public WeaponTemplate Template { get; private set; }
-	public string WeaponClass => Template.WeaponClass;
+	[Net] public WeaponBlueprint Blueprint { get; private set; }
+	public string WeaponClass => Blueprint.WeaponClass;
 
-	public void ApplyTemplate(WeaponTemplate template) {
-		Template = template;
-		Model = template.WorldModel;
-		AmmoClip = Template.ClipSize;
+	public void ApplyBlueprint(WeaponBlueprint blueprint) {
+		Blueprint = blueprint;
+		Model = blueprint.WorldModel;
+		AmmoClip = Blueprint.ClipSize;
 	}
 
 	[Net, Predicted] public int AmmoClip { get; set; }
@@ -255,7 +100,7 @@ public partial class Weapon : BaseCarriable {
 	}
 
 	public override void SimulateAnimator(PawnAnimator anim) {
-		anim.SetParam("holdtype", (int)Template.HoldType);
+		anim.SetParam("holdtype", (int)Blueprint.HoldType);
 		anim.SetParam("aimat_weight", 1.0f);
 	}
 
@@ -276,9 +121,9 @@ public partial class Weapon : BaseCarriable {
 			}
 		}
 
-		if(Template.Special == WeaponSpecial.Burst) {
+		if(Blueprint.Special == WeaponSpecial.Burst) {
 			BurstSimulate();
-		} else if(Template.Special == WeaponSpecial.Melee) {
+		} else if(Blueprint.Special == WeaponSpecial.Melee) {
 			MeleeSimulate();
 		}
 	}
@@ -286,31 +131,31 @@ public partial class Weapon : BaseCarriable {
 	public virtual bool CanPrimaryAttack() {
 		if((Owner as ClassicPlayer).Frozen) return false;
 		if(Owner is ClassicPlayer) {
-			if(!Owner.IsValid() || (Template.FireMode == WeaponFireMode.Automatic && !Input.Down(InputButton.Attack1)) || (!(Template.FireMode == WeaponFireMode.Automatic) && !Input.Pressed(InputButton.Attack1))) return false;
+			if(!Owner.IsValid() || (Blueprint.FireMode == WeaponFireMode.Automatic && !Input.Down(InputButton.Attack1)) || (!(Blueprint.FireMode == WeaponFireMode.Automatic) && !Input.Pressed(InputButton.Attack1))) return false;
 		}
 
-		var rate = Template.FireRate;
+		var rate = Blueprint.FireRate;
 		if(rate <= 0) return true;
 
 		return TimeSincePrimaryAttack > (1 / rate);
 	}
 
 	public virtual void AttackPrimary() {
-		if(Template.Special == WeaponSpecial.Burst) {
+		if(Blueprint.Special == WeaponSpecial.Burst) {
 			BurstPrimary();
-		} else if(Template.Special == WeaponSpecial.Melee) {
+		} else if(Blueprint.Special == WeaponSpecial.Melee) {
 			MeleePrimary();
 		} else {
 			TimeSincePrimaryAttack = 0;
 
-			if(!TakeAmmo(Template.AmmoPerShot)) {
+			if(!TakeAmmo(Blueprint.AmmoPerShot)) {
 				PlaySound("sd_dryfrire");
 				return;
 			}// no ammo, no shooty shoot
 
 			// shoot the bullets, bulletcount for something like a shotgun with multiple bullets
-			for(int i = 0; i < Template.BulletCount; i++) {
-				ShootBullet(Template.BulletSpread, Template.BulletForce, Template.BulletDamage, Template.BulletSize, i);
+			for(int i = 0; i < Blueprint.BulletCount; i++) {
+				ShootBullet(Blueprint.BulletSpread, Blueprint.BulletForce, Blueprint.BulletDamage, Blueprint.BulletSize, i);
 			}
 
 			ShootEffects();
@@ -319,13 +164,13 @@ public partial class Weapon : BaseCarriable {
 
 	public virtual void ShootEffects() {
 		if(IsLocalPawn) {
-			_ = new Sandbox.ScreenShake.Perlin(Template.ScreenshakeParameters.Length, Template.ScreenshakeParameters.Speed, Template.ScreenshakeParameters.Size, Template.ScreenshakeParameters.Rotation);
-			WeaponPanel.Fire(Template.UIEffectsScalar);
+			_ = new Sandbox.ScreenShake.Perlin(Blueprint.ScreenshakeParameters.Length, Blueprint.ScreenshakeParameters.Speed, Blueprint.ScreenshakeParameters.Size, Blueprint.ScreenshakeParameters.Rotation);
+			WeaponPanel.Fire(Blueprint.UIEffectsScalar);
 			Crosshair.Fire();
 		}
-		Particles.Create(Template.MuzzleParticle, EffectEntity, Template.MuzzleAttach);
-		Particles.Create(Template.EjectParticle, EffectEntity, Template.EjectAttach);
-		PlaySound(Template.ShootSound);
+		Particles.Create(Blueprint.MuzzleParticle, EffectEntity, Blueprint.MuzzleAttach);
+		Particles.Create(Blueprint.EjectParticle, EffectEntity, Blueprint.EjectAttach);
+		PlaySound(Blueprint.ShootSound);
 		(Owner as AnimEntity).SetAnimBool("b_attack", true); // shoot anim
 	}
 
@@ -337,10 +182,10 @@ public partial class Weapon : BaseCarriable {
 		var forward = Owner.EyeRotation.Forward;
 		forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f * ((player.ActiveDrug && player.DrugType is DrugType.Ritindi) ? 0.25f : 1f);
 		forward = forward.Normal;
-		forward.z *= Template.VerticalSpreadMultiplier;
+		forward.z *= Blueprint.VerticalSpreadMultiplier;
 
 		int index = 0;
-		foreach(var tr in TraceBullet(Owner.EyePosition, Owner.EyePosition + forward * Template.BulletRange, bulletSize)) {
+		foreach(var tr in TraceBullet(Owner.EyePosition, Owner.EyePosition + forward * Blueprint.BulletRange, bulletSize)) {
 			tr.Surface.DoBulletImpact(tr);
 
 			// blood plip where player was hit
@@ -398,7 +243,7 @@ public partial class Weapon : BaseCarriable {
 
 		var player = Owner as ClassicPlayer;
 
-		if(Template.Penetrate) {
+		if(Blueprint.Penetrate) {
 			var dir = (bullet.EndPos - bullet.StartPos).Normal;
 			if(bullet.Hit && wallBangedDistance < MaxWallbangDistance) {
 				var inNormal = bullet.Normal;
@@ -458,7 +303,7 @@ public partial class Weapon : BaseCarriable {
 
 				if(dot < 0) {
 					var dir = Vector3.Reflect(inDir, bullet.Normal).WithZ(0);
-					var ricochet = Trace.Ray(bullet.EndPos, end + dir * Template.BulletRange)
+					var ricochet = Trace.Ray(bullet.EndPos, end + dir * Blueprint.BulletRange)
 							.UseHitboxes()
 							.Ignore(Owner)
 							.Ignore(this)
@@ -496,7 +341,7 @@ public partial class Weapon : BaseCarriable {
 		}
 
 		Parent = carrier;
-		SetParent(player, Template.HoldAttach, Transform.Zero);
+		SetParent(player, Blueprint.HoldAttach, Transform.Zero);
 
 		Owner = player;
 		MoveType = MoveType.None;

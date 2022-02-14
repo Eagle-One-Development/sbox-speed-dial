@@ -50,7 +50,7 @@ namespace SpeedDial.Classic.Entities {
 			Host.AssertServer();
 			if(!Enabled) return;
 
-			var ent = WeaponTemplate.Create(WeaponClass);
+			var ent = WeaponBlueprint.Create(WeaponClass);
 			ent.Transform = Transform;
 			ent.WeaponSpawn = this;
 			ent.ResetInterpolation();

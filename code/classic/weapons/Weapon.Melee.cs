@@ -10,7 +10,7 @@ namespace SpeedDial.Classic.Weapons;
 
 public partial class Weapon {
 	private void MeleePrimary() {
-		if(TimeSinceSpecial > Template.FireDelay) {
+		if(TimeSinceSpecial > Blueprint.FireDelay) {
 			TimeSinceSpecial = 0;
 			Firing = true;
 			(Owner as AnimEntity).SetAnimBool("b_attack", true);

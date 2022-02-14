@@ -86,7 +86,7 @@ namespace SpeedDial.OneChamber.Player {
 
 			if(LastRecievedDamage.Weapon is Weapon wep) {
 				// HACK. this could be done better... too bad!
-				if(wep.Template.Special == WeaponSpecial.Melee) {
+				if(wep.Blueprint.Special == WeaponSpecial.Melee) {
 					DeathCause = CauseOfDeath.Melee;
 				} else {
 					DeathCause = CauseOfDeath.Bullet;

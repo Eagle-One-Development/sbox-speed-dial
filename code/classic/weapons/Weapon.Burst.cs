@@ -17,7 +17,7 @@ public partial class Weapon {
 
 	private void BurstSimulate() {
 		if(Firing) {
-			if(TimeSinceSpecial > Template.FireDelay && Burst < Template.BurstLength) {
+			if(TimeSinceSpecial > Blueprint.FireDelay && Burst < Blueprint.BurstLength) {
 				Burst++;
 				if(!TakeAmmo(1)) {
 					TimeSinceSpecial = 0;
@@ -29,11 +29,11 @@ public partial class Weapon {
 
 				ShootEffects();
 
-				ShootBullet(Template.BulletSpread * (float)((Burst * 1.5) + 1), Template.BulletForce, Template.BulletDamage, Template.BulletSize, 0);
+				ShootBullet(Blueprint.BulletSpread * (float)((Burst * 1.5) + 1), Blueprint.BulletForce, Blueprint.BulletDamage, Blueprint.BulletSize, 0);
 				TimeSinceSpecial = 0;
 			}
 
-			if(Burst >= Template.BurstLength) {
+			if(Burst >= Blueprint.BurstLength) {
 				TimeSinceSpecial = 0;
 				Burst = 0;
 				Firing = false;

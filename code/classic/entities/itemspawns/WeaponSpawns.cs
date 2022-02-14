@@ -7,7 +7,7 @@ namespace SpeedDial.Classic.Entities {
 	[Hammer.EditorModel("models/weapons/rifle/prop_rifle.vmdl")]
 	[Hammer.EntityTool("Random Weapon", "Speed-Dial Weaponspawns", "Spawns random weapons.")]
 	public partial class ClassicRandomWeaponSpawn : ClassicWeaponSpawn {
-		public override string WeaponClass => WeaponTemplate.GetRandomSpawnable().WeaponClass;
+		public override string WeaponClass => WeaponBlueprint.GetRandomSpawnable().WeaponClass;
 	}
 
 	[Library("sd_weaponspawn_pistol")]

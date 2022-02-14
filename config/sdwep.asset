@@ -10,7 +10,7 @@
 ]
 
 //
-// SpeedDial.Classic.Weapons.WeaponTemplate
+// SpeedDial.Classic.Weapons.WeaponBlueprint
 //
 @BaseClass = sdwep : ""
 [
