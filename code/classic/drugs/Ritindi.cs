@@ -4,7 +4,7 @@ namespace SpeedDial.Classic.Drugs {
 	[Library("sd_ritindi")]
 	[Hammer.EditorModel("models/drugs/ritindi/ritindi.vmdl")]
 	[Hammer.EntityTool("Polvo", "Speed-Dial Drugs", "Spawns one Ritindi.")]
-	public class Ritindi : ClassicBaseDrug, ISpawnable {
+	public class Ritindi : ClassicBaseDrug {
 		public override string WorldModel => "models/drugs/ritindi/ritindi.vmdl";
 		public override string DrugName => "RITINDI";
 		public override string DrugDescription => "steady hands"; // keep steady // true aim // recoil control

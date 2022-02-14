@@ -98,9 +98,7 @@ namespace SpeedDial.Classic.Drugs {
 		}
 
 		public static Type GetRandomSpawnableType() {
-			// GURKE: this shit is dumb
-			// ideally I'd use LibraryAttribute's Spawnable for this but it doesn't work with run-time types like this so fuck it, interface it is
-			var types = Library.GetAll<ClassicBaseDrug>().Where(x => x.GetInterfaces().Contains(typeof(ISpawnable)));
+			var types = Library.GetAll<ClassicBaseDrug>();
 			return types.Random();
 		}
 	}

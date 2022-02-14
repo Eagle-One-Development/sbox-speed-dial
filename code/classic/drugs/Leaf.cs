@@ -4,7 +4,7 @@ namespace SpeedDial.Classic.Drugs {
 	[Library("sd_leaf")]
 	[Hammer.EditorModel("models/drugs/leaf/leaf.vmdl")]
 	[Hammer.EntityTool("Leaf", "Speed-Dial Drugs", "Spawns one Leaf.")]
-	public class Leaf : ClassicBaseDrug, ISpawnable {
+	public class Leaf : ClassicBaseDrug {
 		public override string WorldModel => "models/drugs/leaf/leaf.vmdl";
 		public override string DrugName => "LEAF";
 		// these are kinda lame, not sure how to get the armor with weed into context lol

@@ -4,7 +4,7 @@ namespace SpeedDial.Classic.Drugs {
 	[Library("sd_polvo")]
 	[Hammer.EditorModel("models/drugs/polvo/polvo.vmdl")]
 	[Hammer.EntityTool("Polvo", "Speed-Dial Drugs", "Spawns one Polvo.")]
-	public class Polvo : ClassicBaseDrug, ISpawnable {
+	public class Polvo : ClassicBaseDrug {
 		public override string WorldModel => "models/drugs/polvo/polvo.vmdl";
 		public override string DrugName => "POLVO";
 		public override string DrugDescription => "you are speed"; // legs so fast // gotta move // dashing!

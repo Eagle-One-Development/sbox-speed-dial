@@ -4,7 +4,7 @@ namespace SpeedDial.Classic.Drugs {
 	[Library("sd_ollie")]
 	[Hammer.EditorModel("models/drugs/ollie/ollie.vmdl")]
 	[Hammer.EntityTool("Ollie", "Speed-Dial Drugs", "Spawns one Ollie.")]
-	public class Ollie : ClassicBaseDrug, ISpawnable {
+	public class Ollie : ClassicBaseDrug {
 		public override string WorldModel => "models/drugs/ollie/ollie.vmdl";
 		public override string DrugName => "OLLIE";
 		public override string DrugDescription => "penetrating, richocheting"; // super bullets // uranium slugs // shootin' lazers
