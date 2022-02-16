@@ -27,19 +27,5 @@ namespace SpeedDial.Koth {
 		protected override void OnStart() {
 			ChangeRound(new KothWarmupRound());
 		}
-
-		public override void EnableEntity(GamemodeEntity ent) {
-			// one chamber doesn't have gamemode entities
-			return;
-		}
-
-		public override void DisableEntity(GamemodeEntity ent) {
-			// whatever
-			return;
-		}
-
-		public override void HandleGamemodeEntity(GamemodeEntity ent) {
-			ent.Disable();
-		}
 	}
 }
