@@ -5,6 +5,7 @@ using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
 
+using SpeedDial.Classic.Weapons;
 using SpeedDial.Classic.Player;
 
 namespace SpeedDial.Classic.UI {
@@ -29,7 +30,8 @@ namespace SpeedDial.Classic.UI {
 			Portrait.Texture = character.PortraitTexture;
 			CharacterName.Text = $"{character.CharacterName.ToUpper()}";
 			Description.Text = $"\"{character.Description.ToUpper()}\"";
-			Weapon.Texture = character.WeaponTexture;
+			var wepblueprint = WeaponBlueprint.GetBlueprint(character.WeaponClass);
+			Weapon.Texture = wepblueprint.IconTexture;
 		}
 	}
 }

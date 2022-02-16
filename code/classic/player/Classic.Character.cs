@@ -10,7 +10,6 @@ namespace SpeedDial.Classic.Player {
 		public string Description { get; set; } = "desc";
 		public string WeaponClass { get; set; } = "sd_pistol";
 		[ResourceType("png")] public string Portrait { get; set; } = "materials/ui/portraits/jack_hd.png";
-		[ResourceType("png")] public string Weapon { get; set; } = "materials/ui/weapons/pistol.png";
 		[ResourceType("vmdl")] public string Model { get; set; } = "models/playermodels/character_jack.vmdl";
 
 		[Skip]
@@ -19,14 +18,11 @@ namespace SpeedDial.Classic.Player {
 		[Skip]
 		public Texture PortraitTexture { get; private set; }
 		[Skip]
-		public Texture WeaponTexture { get; private set; }
-		[Skip]
 		public Model CharacterModel { get; private set; }
 
 		protected override void PostLoad() {
 			if(Host.IsClient) {
 				PortraitTexture = Texture.Load(FileSystem.Mounted, Portrait);
-				WeaponTexture = Texture.Load(FileSystem.Mounted, Weapon);
 			}
 
 			CharacterModel = Sandbox.Model.Load(Model);

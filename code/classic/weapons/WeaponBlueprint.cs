@@ -150,7 +150,10 @@ public partial class WeaponBlueprint : Asset {
 		Precache.Add($"{LoadedPickupSound}.sound");
 
 		WorldModel = Model.Load(WorldModelPath);
-		IconTexture = Texture.Load(Icon);
+
+		if(Host.IsClient) {
+			IconTexture = Texture.Load(FileSystem.Mounted, Icon);
+		}
 
 		Log.Debug($"loaded weapon {WeaponClass}");
 

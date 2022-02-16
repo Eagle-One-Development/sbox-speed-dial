@@ -7,6 +7,5 @@
 		weaponclass = "sd_pistol"
 		portrait = "materials/ui/portraits/portrait_jack.png"
 		model = resource:"models/playermodels/character_jack.vmdl"
-		weapon = "materials/ui/weapons/pistol.png"
 	}
 }
