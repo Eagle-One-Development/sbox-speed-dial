@@ -20,16 +20,11 @@ namespace SpeedDial.Classic.Entities {
 
 		[SpeedDialEvent.Gamemode.Reset]
 		public void GamemodeReset() {
-			if(!Enabled) {
-				SpawnedDrug?.Delete();
-				SpawnedDrug = null;
-				return;
-			}
 			// respawn drug on gamemode reset
-			if(Taken) {
-				Taken = false;
-				SpawnDrug();
-			}
+			SpawnedDrug?.Delete();
+			SpawnedDrug = null;
+			
+			SpawnDrug();
 		}
 
 		public virtual void DrugTaken() {
@@ -42,7 +37,6 @@ namespace SpeedDial.Classic.Entities {
 		public void Tick() {
 			if(Taken && TimeSinceTaken > RespawnTime) {
 				SpawnDrug();
-				Taken = false;
 			}
 		}
 
@@ -56,6 +50,7 @@ namespace SpeedDial.Classic.Entities {
 			ent.ResetInterpolation();
 
 			SpawnedDrug = ent;
+			Taken = false;
 		}
 	}
 }

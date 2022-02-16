@@ -20,16 +20,11 @@ namespace SpeedDial.Classic.Entities {
 
 		[SpeedDialEvent.Gamemode.Reset]
 		public void GamemodeReset() {
-			if(!Enabled) {
-				SpawnedWeapon?.Delete();
-				SpawnedWeapon = null;
-				return;
-			}
 			// respawn gun on gamemode reset
-			if(Taken) {
-				SpawnWeapon();
-				Taken = false;
-			}
+			SpawnedWeapon?.Delete();
+			SpawnedWeapon = null;
+			
+			SpawnWeapon();
 		}
 
 		public virtual void WeaponTaken() {
@@ -42,7 +37,6 @@ namespace SpeedDial.Classic.Entities {
 		public void Tick() {
 			if(Taken && TimeSinceTaken > RespawnTime) {
 				SpawnWeapon();
-				Taken = false;
 			}
 		}
 
@@ -56,6 +50,7 @@ namespace SpeedDial.Classic.Entities {
 			ent.ResetInterpolation();
 
 			SpawnedWeapon = ent;
+			Taken = false;
 		}
 	}
 }
