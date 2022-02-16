@@ -70,17 +70,17 @@ namespace SpeedDial {
 		}
 
 		public void CallResetEvent() {
-			Event.Run("sd.gamemode.reset", Identity);
+			//Event.Run("sd.gamemode.reset", Identity);
 			Event.Run("sd.gamemode.reset");
 		}
 
 		public void CallStartEvent() {
-			Event.Run("sd.gamemode.start", Identity);
+			//Event.Run("sd.gamemode.start", Identity);
 			Event.Run("sd.gamemode.start");
 		}
 
 		public void CallEndEvent() {
-			Event.Run("sd.gamemode.end", Identity);
+			//Event.Run("sd.gamemode.end", Identity);
 			Event.Run("sd.gamemode.end");
 		}
 
