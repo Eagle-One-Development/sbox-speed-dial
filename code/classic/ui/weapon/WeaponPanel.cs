@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 using Sandbox;
 using Sandbox.UI;
@@ -52,8 +52,12 @@ namespace SpeedDial.Classic.UI {
 				} else {
 					if(weapon.Blueprint?.ClipSize < 0)
 						AmmoLabel.Text = $"";
-					else
-						AmmoLabel.Text = $"{weapon.AmmoClip}";
+					else {
+						if(Debug.InfiniteAmmo)
+							AmmoLabel.Text = $"∞";
+						else
+							AmmoLabel.Text = $"{weapon.AmmoClip}";
+					}
 
 					// lerp to normal scale
 					AmmoScale = AmmoScale.LerpTo(1, Time.Delta * 7f);
