@@ -73,7 +73,6 @@ namespace SpeedDial.Classic {
 		}
 
 		protected override void OnClientReady(Client client) {
-			Log.Debug("gamemode client ready");
 			client.AssignPawn<ClassicPlayer>(true);
 		}
 
