@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 using SpeedDial.Classic.Player;
 
-namespace SpeedDial.OneChamber.Player {
-	public partial class OneChamberSpectator : ClassicPlayer {
+namespace SpeedDial.Classic.Player {
+	public partial class ClassicSpectator : ClassicPlayer {
 
 		public override void InitialRespawn() {
 			Respawn();

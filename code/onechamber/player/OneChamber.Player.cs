@@ -99,10 +99,10 @@ namespace SpeedDial.OneChamber.Player {
 			// lost last live
 			if(!CanRespawn()) {
 				// swap out pawn for spectator pawn
-				var newpawn = new OneChamberSpectator();
+				var newpawn = new ClassicSpectator();
 				newpawn.Transform = Transform;
 				Client.Pawn = newpawn;
-				Client.GetPawn<OneChamberSpectator>().InitialRespawn();
+				Client.GetPawn<ClassicSpectator>().InitialRespawn();
 				Delete();
 			}
 		}

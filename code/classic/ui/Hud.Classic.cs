@@ -2,6 +2,7 @@ using Sandbox;
 using Sandbox.UI;
 
 using SpeedDial.Classic.Rounds;
+using SpeedDial.Classic.Player;
 
 namespace SpeedDial.Classic.UI {
 	[UseTemplate]
@@ -19,7 +20,7 @@ namespace SpeedDial.Classic.UI {
 			// game panels hide in post round
 			SetClass("state-visible-game", !Gamemode.Instance.Ending && !Debug.UI);
 			// cursor only shows when using mouse input
-			SetClass("state-visible-cursor", !Input.UsingController && !Debug.UI);
+			SetClass("state-visible-cursor", !Input.UsingController && !Debug.UI && Local.Pawn is not ClassicSpectator);
 		}
 	}
 }

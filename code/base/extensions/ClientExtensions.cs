@@ -14,6 +14,19 @@ namespace SpeedDial {
 			return player;
 		}
 
+		public static T SwapPawn<T>(this Client cl) where T : BasePlayer, new() {
+			// swap out pawn for spectator pawn
+			var oldpawn = cl.Pawn;
+			var newpawn = new T();
+			newpawn.Transform = oldpawn.Transform;
+			cl.Pawn = newpawn;
+			newpawn.InitialRespawn();
+			// get rid of old pawn
+			oldpawn.Delete();
+
+			return newpawn;
+		}
+
 		public static T GetPawn<T>(this Client cl) where T : BasePlayer {
 			return cl.Pawn as T;
 		}
