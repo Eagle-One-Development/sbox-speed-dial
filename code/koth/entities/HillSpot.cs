@@ -14,13 +14,18 @@ namespace SpeedDial.Koth.Entities {
 		[Net, Predicted]
 		public TimeSince TimeSinceAlive { get; set; }
 
-		
+		[SpeedDialEvent.Gamemode.Reset]
+		public void HandleGamemodeReset(GamemodeIdentity gamemode) {
+			if(gamemode != GamemodeIdentity.Koth) {
+				Delete();
+			}
+		}
 
 		[Event.Tick]
 		public void Tick() {
 			if(TimeSinceAlive > 10f) {
-				foreach(Client c in Client.All) {
-					ScreenHints.FireEvent(To.Single(c), "HILL MOVED", "Good luck!");
+				foreach(Client client in Client.All) {
+					ScreenHints.FireEvent(To.Single(client), "HILL MOVED", "Good luck!");
 				}
 
 				if(IsValid) {
@@ -28,7 +33,6 @@ namespace SpeedDial.Koth.Entities {
 				}
 				return;
 			}
-				
 		}
 
 		public override void Spawn() {
@@ -41,7 +45,6 @@ namespace SpeedDial.Koth.Entities {
 		}
 
 		public override void StartTouch(Entity other) {
-
 			if(other is BasePlayer player)
 				TouchingPlayers.Add(player);
 		}

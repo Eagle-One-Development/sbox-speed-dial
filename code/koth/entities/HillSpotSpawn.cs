@@ -13,5 +13,14 @@ namespace SpeedDial.Koth.Entities {
 			base.Spawn();
 			Transmit = TransmitType.Always;
 		}
+
+		[SpeedDialEvent.Gamemode.Reset]
+		public void HandleGamemodeReset(GamemodeIdentity gamemode) {
+			if(gamemode == GamemodeIdentity.Koth) {
+				Enable();
+			} else {
+				Disable();
+			}
+		}
 	}
 }
