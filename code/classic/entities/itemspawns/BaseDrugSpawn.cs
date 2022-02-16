@@ -9,7 +9,7 @@ namespace SpeedDial.Classic.Entities {
 		public virtual string DrugClass { get; }
 		[Property]
 		public virtual float RespawnTime { get; set; } = 10;
-		[Net] private bool Taken { get; set; }
+		[Net] protected bool Taken { get; set; }
 		[Net] private TimeSince TimeSinceTaken { get; set; }
 		protected ClassicBaseDrug SpawnedDrug { get; set; }
 

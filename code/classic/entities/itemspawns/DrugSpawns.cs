@@ -17,6 +17,7 @@ namespace SpeedDial.Classic.Entities {
 			ent.ResetInterpolation();
 
 			SpawnedDrug = ent;
+			Taken = false;
 		}
 	}
 
