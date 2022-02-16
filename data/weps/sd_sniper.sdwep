@@ -1,0 +1,43 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	data = 
+	{
+		weaponclass = "sd_sniper"
+		weapontitle = "SNIPER"
+		weapondescription = "This is a Speed-Dial Weapon"
+		firemode = "1"
+		firerate = 1.0
+		bulletdamage = 300.0
+		bulletsize = 5.0
+		bulletforce = 3.5
+		bulletrange = 99999.0
+		bulletcount = 1
+		bulletspread = 0.01
+		verticalspreadmultiplier = 0.1
+		ammopershot = 1
+		special = "0"
+		burstlength = 3
+		firedelay = 0.3
+		penetrate = true
+		scoped = true
+		randomspawnable = true
+		worldmodelpath = resource:"models/weapons/rifle/prop_rifle.vmdl"
+		holdtype = "4"
+		holdattach = "rifle_attach"
+		muzzleparticle = resource:"particles/pistol_muzzleflash.vpcf"
+		muzzleattach = "muzzle"
+		ejectparticle = resource:"particles/pistol_ejectbrass.vpcf"
+		ejectattach = "ejection_point"
+		screenshakeparameters = 
+		{
+		}
+		uieffectsscalar = 1.0
+		icon = "materials/ui/weapons/rifle.png"
+		shootsound = "sounds/simpleguns/sniper/sd_sniper.shoot.sound"
+		dryfiresound = "sounds/simpleguns/misc/sd_dryfrire.sound"
+		emptypickupsound = "sounds/weapon_fx/sd_pickup.empty.sound"
+		loadedpickupsound = "sounds/weapon_fx/sd_pickup.loaded.sound"
+		clipsize = 5
+		excludedgamemodes = "0"
+	}
+}

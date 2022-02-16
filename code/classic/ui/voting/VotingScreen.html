@@ -1,0 +1,19 @@
+﻿<link rel="stylesheet" href="/classic/ui/voting/VotingScreen.scss"/>
+
+<div>
+    <div class="canvas">
+        <div class="header">
+            <text class="title" @text="Title" />
+        </div>
+        <div class="body">
+            <div class="items" @ref="Items">
+                <VoteItem />
+                <VoteItem />
+                <VoteItem />
+            </div>
+        </div>
+        <div class="footer">
+            <div class="players" @ref="Players" />
+        </div>
+    </div>
+</div>

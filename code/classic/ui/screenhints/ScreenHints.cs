@@ -38,11 +38,6 @@ namespace SpeedDial.Classic.UI {
 			KillerInfo.BindClass("dominating", () => Domination);
 		}
 
-		protected override void PostTemplateApplied() {
-			base.PostTemplateApplied();
-			
-		}
-
 		public override void Tick() {
 
 			if(TimeSinceActive > 1.5f) {

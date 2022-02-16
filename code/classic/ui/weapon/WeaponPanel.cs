@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 using Sandbox;
 using Sandbox.UI;
@@ -34,7 +34,7 @@ namespace SpeedDial.Classic.UI {
 		}
 
 		public override void Tick() {
-			var weapon = (ClassicBaseWeapon)Local.Pawn.ActiveChild;
+			var weapon = Local.Pawn.ActiveChild as Weapon;
 
 			// ammo
 			{
@@ -50,10 +50,14 @@ namespace SpeedDial.Classic.UI {
 				if(weapon is null) {
 					AmmoScale = AmmoScale.LerpTo(0, Time.Delta * 7f);
 				} else {
-					if(weapon.ClipSize < 0)
+					if(weapon.Blueprint?.ClipSize < 0)
 						AmmoLabel.Text = $"";
-					else
-						AmmoLabel.Text = $"{weapon.AmmoClip}";
+					else {
+						if(Debug.InfiniteAmmo)
+							AmmoLabel.Text = $"∞";
+						else
+							AmmoLabel.Text = $"{weapon.AmmoClip}";
+					}
 
 					// lerp to normal scale
 					AmmoScale = AmmoScale.LerpTo(1, Time.Delta * 7f);
@@ -65,7 +69,7 @@ namespace SpeedDial.Classic.UI {
 				if(weapon is null) {
 					WeaponLabel.Text = $"FISTS";
 				} else {
-					WeaponLabel.Text = $"{weapon.ClassInfo.Title}";
+					WeaponLabel.Text = $"{weapon.Blueprint.WeaponTitle}";
 				}
 			}
 		}

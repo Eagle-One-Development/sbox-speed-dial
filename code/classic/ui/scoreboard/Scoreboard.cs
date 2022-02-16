@@ -15,6 +15,7 @@ namespace SpeedDial.Classic.UI {
 		public Panel Canvas { get; set; }
 		public Panel Footer { get; set; }
 		public Label GamemodeInfo { get; set; }
+		public Label MapInfo { get; set; }
 
 		public ClassicScoreboard() {
 			BindClass("open", () => Input.Down(InputButton.Score));
@@ -25,7 +26,8 @@ namespace SpeedDial.Classic.UI {
 				return;
 
 			GamemodeInfo.Text = $"Gamemode: {Game.Current.ActiveGamemode?.ClassInfo.Name}";
-			Footer.SetClass("visible", Debug.Enabled);
+			MapInfo.Text = $"Map: {Global.MapName}";
+			Footer.SetClass("visible", true);
 
 			// Clients that joined
 			foreach(var client in Client.All.Except(Rows.Keys)) {

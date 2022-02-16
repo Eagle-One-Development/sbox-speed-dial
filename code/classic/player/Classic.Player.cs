@@ -58,7 +58,7 @@ namespace SpeedDial.Classic.Player {
 			DrugParticles?.Destroy(true);
 
 			Frozen = false;
-			GiveWeapon<ClassicBaseWeapon>(Character.WeaponClass);
+			GiveWeapon(Character.WeaponClass);
 
 			// just in case this was left open for some reason
 			WinScreen.SetState(To.Single(Client), false);
@@ -110,7 +110,7 @@ namespace SpeedDial.Classic.Player {
 			if(Debug.Enabled && Input.Pressed(InputButton.Zoom)) {
 				using(Prediction.Off()) {
 					if(IsServer) {
-						var ent = Library.Create<ClassicBaseWeapon>(ClassicBaseWeapon.GetRandomSpawnableType());
+						var ent = WeaponBlueprint.Create(WeaponBlueprint.GetRandomSpawnable());
 						ent.Position = EyePosition;
 					}
 				}
@@ -124,7 +124,7 @@ namespace SpeedDial.Classic.Player {
 
 		public void RefreshCharacter() {
 			Model = Character.CharacterModel;
-			GiveWeapon<ClassicBaseWeapon>(Character.WeaponClass);
+			GiveWeapon(Character.WeaponClass);
 		}
 
 		[ClientRpc]
@@ -197,12 +197,12 @@ namespace SpeedDial.Classic.Player {
 		public override void StartTouch(Entity other) {
 			// this is a pickuptrigger, we could pick it up
 			if(other is BasePickupTrigger trigger) {
-				if(trigger.Parent is ClassicBaseWeapon weapon) {
+				if(trigger.Parent is Weapon weapon) {
 					PickupWeapon = weapon;
 					Pickup = true;
 				}
 				// this is a gun, it could kill us
-			} else if(other is ClassicBaseWeapon wep) {
+			} else if(other is Weapon wep) {
 				if(wep.PhysicsBody.IsValid()) {
 					if(wep.CanImpactKill && this != wep.PreviousOwner && wep.Velocity.Length > 450f) {
 						Sound.FromEntity("smack", this);
@@ -230,7 +230,7 @@ namespace SpeedDial.Classic.Player {
 
 		public override void Touch(Entity other) {
 			if(other is BasePickupTrigger trigger) {
-				if(trigger.Parent is ClassicBaseWeapon weapon) {
+				if(trigger.Parent is Weapon weapon) {
 					if(PickupWeapon is null || !Pickup) {
 						PickupWeapon = weapon;
 						Pickup = true;
@@ -249,7 +249,7 @@ namespace SpeedDial.Classic.Player {
 
 		public override void EndTouch(Entity other) {
 			if(other is BasePickupTrigger trigger) {
-				if(trigger.Parent is ClassicBaseWeapon weapon) {
+				if(trigger.Parent is Weapon weapon) {
 					if(weapon == PickupWeapon) {
 						PickupWeapon = null;
 						Pickup = false;

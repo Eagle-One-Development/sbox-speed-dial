@@ -7,6 +7,5 @@
 		weaponclass = "sd_rifle"
 		portrait = "materials/ui/portraits/portrait_maria.png"
 		model = resource:"models/playermodels/character_maria.vmdl"
-		weapon = "materials/ui/weapons/rifle.png"
 	}
 }

@@ -11,7 +11,7 @@ namespace SpeedDial.Classic.Entities {
 		public virtual float RespawnTime { get; set; } = 10;
 		[Net] private bool Taken { get; set; }
 		[Net] private TimeSince TimeSinceTaken { get; set; }
-		protected ClassicBaseWeapon SpawnedWeapon { get; set; }
+		protected Weapon SpawnedWeapon { get; set; }
 
 		public override void Spawn() {
 			base.Spawn();
@@ -20,16 +20,11 @@ namespace SpeedDial.Classic.Entities {
 
 		[SpeedDialEvent.Gamemode.Reset]
 		public void GamemodeReset() {
-			if(!Enabled) {
-				SpawnedWeapon?.Delete();
-				SpawnedWeapon = null;
-				return;
-			}
 			// respawn gun on gamemode reset
-			if(Taken) {
-				SpawnWeapon();
-				Taken = false;
-			}
+			SpawnedWeapon?.Delete();
+			SpawnedWeapon = null;
+			
+			SpawnWeapon();
 		}
 
 		public virtual void WeaponTaken() {
@@ -42,7 +37,6 @@ namespace SpeedDial.Classic.Entities {
 		public void Tick() {
 			if(Taken && TimeSinceTaken > RespawnTime) {
 				SpawnWeapon();
-				Taken = false;
 			}
 		}
 
@@ -50,12 +44,13 @@ namespace SpeedDial.Classic.Entities {
 			Host.AssertServer();
 			if(!Enabled) return;
 
-			var ent = Library.Create<ClassicBaseWeapon>(WeaponClass);
+			var ent = WeaponBlueprint.Create(WeaponClass);
 			ent.Transform = Transform;
 			ent.WeaponSpawn = this;
 			ent.ResetInterpolation();
 
 			SpawnedWeapon = ent;
+			Taken = false;
 		}
 	}
 }
