@@ -23,6 +23,11 @@ namespace SpeedDial.Classic.Player {
 
 		public override void InitialRespawn() {
 			CharacterIndex = Rand.Int(0, Character.All.Count - 1);
+
+			Client.SetValue("score", 0);
+			Client.SetValue("maxcombo", 0);
+			Client.SetValue("combo", 0);
+
 			base.InitialRespawn();
 		}
 
