@@ -124,13 +124,13 @@ public partial class WeaponBlueprint : Asset {
 	protected override void PostLoad() {
 		// WeaponClass needs to be set
 		if(string.IsNullOrWhiteSpace(WeaponClass)) {
-			Log.Debug($"unable to load weapon \"{Path}\" due to empty weapon class");
+			Log.Debug($"unable to load weapon \"{Path}\" due to empty weapon class!");
 			return;
 		}
 
 		// WeaponClass needs to be unique
 		if(All.Any(x => x.WeaponClass == WeaponClass)) {
-			Log.Debug($"unable to load weapon \"{Path}\" due to duplicate weapon class");
+			Log.Debug($"unable to load weapon \"{Path}\". it is already loaded!");
 			return;
 		}
 
