@@ -27,7 +27,7 @@ namespace SpeedDial.Classic.UI {
 		}
 
 		public override void Tick() {
-			var pawn = Local.Client.GetPawn<ClassicPlayer>();
+			var pawn = Local.Client.Pawn as ClassicPlayer;
 			if(pawn is null) return;
 
 			// pickup panel

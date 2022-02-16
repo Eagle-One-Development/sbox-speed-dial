@@ -28,7 +28,7 @@ namespace SpeedDial.Classic.UI {
 				return;
 			}
 			Client = client;
-			var pawn = client.GetPawn<ClassicPlayer>();
+			var pawn = client.Pawn as ClassicPlayer;
 			Portrait.Texture = pawn.Character.PortraitTexture;
 			Score.Text = $"{client.GetValue("score", 0)} PTS";
 			Avatar.SetTexture($"avatar:{client.PlayerId}");
