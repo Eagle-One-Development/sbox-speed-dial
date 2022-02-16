@@ -18,7 +18,7 @@ namespace SpeedDial.Classic.UI {
 		public override void Tick() {
 			base.Tick();
 
-			if(TimeSinceCreated > (Important ? 10 : 6)) {
+			if(TimeSinceCreated > (Important ? 12 : 6)) {
 				Delete();
 			}
 		}

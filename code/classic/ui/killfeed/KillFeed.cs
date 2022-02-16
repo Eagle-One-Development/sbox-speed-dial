@@ -18,9 +18,6 @@ namespace SpeedDial.Classic.UI {
 			var e = Current.AddChild<KillFeedEntry>();
 
 			e.Left.Text = left;
-			if(string.IsNullOrWhiteSpace(e.Left.Text)) {
-				e.Left.AddClass("noname");
-			}
 			e.Left.SetClass("me", lsteamid == (Local.Client?.PlayerId));
 
 			// set kill icon based on Cause Of Death
@@ -31,12 +28,28 @@ namespace SpeedDial.Classic.UI {
 			}
 
 			e.Right.Text = right;
-			if(string.IsNullOrWhiteSpace(e.Right.Text)) {
-				e.Right.AddClass("noname");
-			}
 			e.Right.SetClass("me", rsteamid == (Local.Client?.PlayerId));
 
 			e.Important = lsteamid == (Local.Client?.PlayerId) || rsteamid == (Local.Client?.PlayerId);
+
+			e.SetClass("kill", lsteamid == (Local.Client?.PlayerId));
+			e.SetClass("death", rsteamid == (Local.Client?.PlayerId));
+
+			// suicide hack
+			if(method.ToLower() == "suicide") {
+				e.Left.Text = "";
+				e.Right.Text = left;
+				e.Right.SetClass("me", true);
+				e.SetClass("death", true);
+			}
+
+			if(string.IsNullOrWhiteSpace(e.Left.Text)) {
+				e.Left.AddClass("noname");
+			}
+
+			if(string.IsNullOrWhiteSpace(e.Right.Text)) {
+				e.Right.AddClass("noname");
+			}
 
 			return e;
 		}

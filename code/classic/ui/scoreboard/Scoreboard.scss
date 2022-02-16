@@ -22,50 +22,67 @@
 		transform: scale(1);
 	}
 
-	.name {
-		left: 0px;
-		width: 240px;
-	}
-
-	.score,
-	.maxcombo {
-		width: 240px;
-		text-align: center;
-		justify-content: center;
-		align-items: center;
-	}
-
 	.header {
+		background-image: linear-gradient(to right, rgba(1, 1, 1, 0), rgba(1, 1, 1, 0.75) 10%, rgba(1, 1, 1, 0.85) 30%, rgba(1, 1, 1, 0.95) 50%, rgba(1, 1, 1, 0.85) 70%, rgba(1, 1, 1, 0.75) 80%, rgba(1, 1, 1, 0) );
 		font-weight: 200;
 		opacity: 1;
-		min-width: 30%;
+		//min-width: 30%;
+
+		.name {
+			margin-left: 30px;
+			left: 0px;
+			width: 240px;
+			max-width: 300px;
+		}
+
+		.score,
+		.maxcombo {
+			width: 240px;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+		}
 	}
 
 	.canvas {
 		flex-direction: column;
-		min-height: 50%;
-		min-width: 30%;
-		//border-top: 1px white;
 
 		.entry {
-			padding-top: 15px;
+			height: 30px;
+			margin: 3px;
+			background-color: white;
 
-			&.first {
-				//text-shadow: 2px 2px 0.5px $vhs_magenta, -1px -1px 0.5px $vhs_cyan;
+			.name {
+				margin-left: 30px;
+				left: 0px;
+				width: 240px;
+				max-width: 300px;
+			}
+
+			.score,
+			.maxcombo {
+				width: 240px;
+				text-align: center;
+				justify-content: center;
+				align-items: center;
 			}
 
 			&.me {
-				color: $vhs_cyan;
+				background-color: $vhs_cyan;
 			}
+		}
+
+		text, label {
+			color: black;
 		}
 	}
 
 	.footer {
-		justify-content: flex-start;
-		min-width: 30%;
+		justify-content: space-around;
 		opacity: 0;
+		width: 720px;
 
-		&.visible{
+		&.visible {
 			opacity: 1;
 		}
 	}

@@ -29,14 +29,23 @@ killfeedentry {
     }
     // method
     image {
-        width: 25px;
-        height: 25px;
+        width: 23px;
+        height: 23px;
     }
 
     .method {
         &.domination {
             background-image-tint: #FF1919;
         }
+    }
+
+    &.kill {
+        border: 1px solid red;
+    }
+
+    &.death {
+        border: 1px solid red;
+        background-color: darkred;
     }
 
     .left,
