@@ -323,6 +323,8 @@ namespace SpeedDial {
 
 			var clients = Client.All;
 
+			gamemode.Parent = this;
+
 			ActiveGamemode?.Finish();
 			ActiveGamemode = gamemode;
 			// call this before we start the gamemode so entities are valid and enabled when we start (or disabled)
