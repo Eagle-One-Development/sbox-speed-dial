@@ -13,7 +13,7 @@ namespace SpeedDial {
 		private string Info { get; set; }
 		public override void Tick() {
 			SetClass("visible", Debug.Playtest || Debug.Enabled);
-			Info = $"IN-DEV {DateTime.Now.ToString("dd.MM.yyyy")}";
+			Info = $"{(Debug.Playtest ? "PLAYTEST" : "IN-DEV")} {DateTime.Now.ToString("dd.MM.yyyy")}";
 		}
 	}
 }
