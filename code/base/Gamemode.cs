@@ -4,6 +4,8 @@ using System.Linq;
 using Sandbox;
 using Sandbox.UI;
 
+using SpeedDial.Classic.Bot;
+
 //CREDIT: Taken from Espionage.Engine by Jake Wooshito
 namespace SpeedDial {
 
@@ -59,11 +61,9 @@ namespace SpeedDial {
 		}
 
 		/// <summary>
-		/// Called from the sd_bot server command. Use this to spawn your gamemode's custom bot
+		/// Called from the sd_bot server command. Use this to apply your bot behaviour per gamemode
 		/// </summary>
-		public virtual void OnBotAdded() {
-			_ = new Bot(); // default bot
-		}
+		public virtual void OnBotAdded(ClassicBot bot) { }
 
 		[Event.Tick.Server]
 		protected virtual void Tick() { }

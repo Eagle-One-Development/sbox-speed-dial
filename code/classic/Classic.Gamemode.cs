@@ -59,8 +59,8 @@ namespace SpeedDial.Classic {
 			pawn.Transform = optimalSpawn.Transform;
 		}
 
-		public override void OnBotAdded() {
-			_ = new ClassicBot();
+		public override void OnBotAdded(ClassicBot bot) {
+			bot.ApplyBehaviour<ClassicBotBehaviour>();
 		}
 
 		public static ClassicGamemode Current => Instance as ClassicGamemode;

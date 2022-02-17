@@ -10,9 +10,6 @@ using SpeedDial.Classic.Weapons;
 namespace SpeedDial.Classic.Bot {
 	public partial class ClassicBot : Sandbox.Bot {
 		protected ClassicBotBehaviour behaviour;
-		public ClassicBot() {
-			Log.Debug($"Bot added | {this}");
-		}
 
 		public override void BuildInput(InputBuilder builder) {
 			builder.Clear();
@@ -25,10 +22,16 @@ namespace SpeedDial.Classic.Bot {
 			}
 		}
 
+		public virtual void ApplyBehaviour<T>() where T : ClassicBotBehaviour, new() {
+			Log.Debug($"Bot behaviour applied | {typeof(T)}");
+			behaviour = new T {
+				Bot = this
+			};
+		}
+
 		public override void Tick() {
 			if (behaviour is null) {
-				behaviour = new ClassicBotBehaviour();
-				behaviour.Bot = this;
+				return;
 			}
 
 			behaviour.Tick();

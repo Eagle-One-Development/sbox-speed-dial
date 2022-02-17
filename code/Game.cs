@@ -4,6 +4,7 @@ global using System;
 using System.Linq;
 
 using SpeedDial.Classic.Player;
+using SpeedDial.Classic.Bot;
 
 //CREDIT: Taken from Espionage.Engine by Jake Wooshito
 namespace SpeedDial {
@@ -312,7 +313,7 @@ namespace SpeedDial {
 
 		[ServerCmd("sd_bot")]
 		public static void SpawnBot() {
-			Current.ActiveGamemode?.OnBotAdded();
+			Current.ActiveGamemode?.OnBotAdded(new ClassicBot());
 		}
 
 		/// <summary> [Server Assert] Change the gamemode </summary>
