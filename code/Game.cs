@@ -310,6 +310,17 @@ namespace SpeedDial {
 			Current.SetGamemode(gamemode);
 		}
 
+		[ServerCmd("sd_bot")]
+		public static void SpawnBot() {
+			if(Current.ActiveGamemode.BotType.Equals("")) {
+				Log.Warning($"{Current.ActiveGamemode.GetType().Name} does not have a bot specified");
+				return;
+			}
+
+			ConsoleSystem.Run($"sd_bot_{Current.ActiveGamemode.BotType}");
+			Log.Info($"New {Current.ActiveGamemode.BotType.ToUpper()} bot added");
+		}
+
 		/// <summary> [Server Assert] Change the gamemode </summary>
 		/// <param name="gamemode">Gamemode name to change to </param>
 		public void SetGamemode(Gamemode gamemode) {

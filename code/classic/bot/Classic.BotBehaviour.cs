@@ -46,12 +46,12 @@ namespace SpeedDial.Classic.Bot {
 		private Vector3 lastPos;
 
 		public virtual void Tick() {
-			if(Bot.Client.Pawn.LifeState == LifeState.Dead || (Bot.Client.Pawn as ClassicPlayer).Frozen) return;
-
 			if(Debug.Bots) {
 				DebugOverlay.Sphere(Bot.Client.Pawn.Position, SearchRadius, Color.Magenta);
 				DebugOverlay.Text(Bot.Client.Pawn.Position, $"{Bot.GetType().Name}\nFake Client Name: {Bot.Client.Name}\nCurrent Target: {(CurrentTarget != null ? CurrentTarget : "null")}", CurrentTarget != null ? Color.Yellow : Color.White, 0, 1000);
 			}
+
+			if(Bot.Client.Pawn.LifeState == LifeState.Dead || (Bot.Client.Pawn as ClassicPlayer).Frozen) return;
 
 			SetInputs();
 

@@ -13,6 +13,7 @@ namespace SpeedDial.Classic {
 	public partial class ClassicGamemode : Gamemode {
 
 		public override GamemodeIdentity Identity => GamemodeIdentity.Classic;
+		public override string BotType => "classic";
 
 		/// <summary>
 		/// Name of the current soundtrack as listed in the Soundtracks array.

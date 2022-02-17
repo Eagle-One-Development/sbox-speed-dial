@@ -11,7 +11,7 @@ using SpeedDial.Classic.Bot;
 namespace SpeedDial.Koth.Bot {
 	public partial class KothBot : ClassicBot {
 		
-		[AdminCmd("sd_bot_koth")]
+		[ServerCmd("sd_bot_koth")]
 		internal static void SpawnCustomBot() {
 			Host.AssertServer();
 

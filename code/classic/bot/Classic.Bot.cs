@@ -11,7 +11,7 @@ namespace SpeedDial.Classic.Bot {
 	public partial class ClassicBot : Sandbox.Bot {
 		protected ClassicBotBehaviour behaviour;
 		
-		[AdminCmd("sd_bot_classic")]
+		[ServerCmd("sd_bot_classic")]
 		internal static void SpawnCustomBot() {
 			Host.AssertServer();
 
