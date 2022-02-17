@@ -15,8 +15,8 @@ namespace SpeedDial.Koth.Entities {
 		public TimeSince TimeSinceAlive { get; set; }
 
 		[SpeedDialEvent.Gamemode.Reset]
-		public void HandleGamemodeReset() {
-			if(Game.Current.ActiveGamemode.Identity != GamemodeIdentity.Koth) {
+		public void HandleGamemodeReset(GamemodeIdentity ident) {
+			if(ident != GamemodeIdentity.Koth) {
 				Delete();
 			}
 		}
