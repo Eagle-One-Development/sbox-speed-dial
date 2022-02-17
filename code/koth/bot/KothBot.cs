@@ -10,14 +10,6 @@ using SpeedDial.Classic.Bot;
 
 namespace SpeedDial.Koth.Bot {
 	public partial class KothBot : ClassicBot {
-		
-		[ServerCmd("sd_bot_koth")]
-		internal static void SpawnCustomBot() {
-			Host.AssertServer();
-
-			_ = new KothBot();
-		}
-
 		public override void Tick() {
 			if (behaviour is null) {
 				behaviour = new KothBotBehaviour();

@@ -10,12 +10,16 @@ using SpeedDial.Classic;
 using SpeedDial.Koth.Player;
 using SpeedDial.Koth.UI;
 using SpeedDial.Koth.Rounds;
+using SpeedDial.Koth.Bot;
 
 namespace SpeedDial.Koth {
 	[Library("koth"), Hammer.Skip]
 	public partial class KothGamemode : ClassicGamemode {
 		public override GamemodeIdentity Identity => GamemodeIdentity.Koth;
-		public override string BotType => "koth";
+
+		public override void OnBotAdded() {
+			_ = new KothBot();
+		}
 
 		protected override void OnClientReady(Client client) {
 			client.AssignPawn<KothPlayer>(true);

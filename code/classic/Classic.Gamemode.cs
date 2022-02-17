@@ -7,13 +7,13 @@ using Sandbox;
 using SpeedDial.Classic.UI;
 using SpeedDial.Classic.Player;
 using SpeedDial.Classic.Rounds;
+using SpeedDial.Classic.Bot;
 
 namespace SpeedDial.Classic {
 	[Library("classic"), Hammer.Skip]
 	public partial class ClassicGamemode : Gamemode {
 
 		public override GamemodeIdentity Identity => GamemodeIdentity.Classic;
-		public override string BotType => "classic";
 
 		/// <summary>
 		/// Name of the current soundtrack as listed in the Soundtracks array.
@@ -57,6 +57,10 @@ namespace SpeedDial.Classic {
 				}
 			}
 			pawn.Transform = optimalSpawn.Transform;
+		}
+
+		public override void OnBotAdded() {
+			_ = new ClassicBot();
 		}
 
 		public static ClassicGamemode Current => Instance as ClassicGamemode;

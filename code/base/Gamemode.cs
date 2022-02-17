@@ -42,7 +42,6 @@ namespace SpeedDial {
 		public bool Voting => State == GamemodeState.Voting;
 
 		public virtual GamemodeIdentity Identity => GamemodeIdentity.Base;
-		public virtual string BotType => "";
 
 		public Gamemode() {
 			Transmit = TransmitType.Always;
@@ -57,6 +56,13 @@ namespace SpeedDial {
 		public virtual void SetState(GamemodeState state) {
 			Log.Debug($"Gamemode state set to {state}");
 			State = state;
+		}
+
+		/// <summary>
+		/// Called from the sd_bot server command. Use this to spawn your gamemode's custom bot
+		/// </summary>
+		public virtual void OnBotAdded() {
+			_ = new Bot(); // default bot
 		}
 
 		[Event.Tick.Server]

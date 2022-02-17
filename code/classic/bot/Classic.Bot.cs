@@ -10,12 +10,8 @@ using SpeedDial.Classic.Weapons;
 namespace SpeedDial.Classic.Bot {
 	public partial class ClassicBot : Sandbox.Bot {
 		protected ClassicBotBehaviour behaviour;
-		
-		[ServerCmd("sd_bot_classic")]
-		internal static void SpawnCustomBot() {
-			Host.AssertServer();
-
-			_ = new ClassicBot();
+		public ClassicBot() {
+			Log.Debug($"Bot added | {this}");
 		}
 
 		public override void BuildInput(InputBuilder builder) {
