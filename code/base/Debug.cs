@@ -16,6 +16,9 @@ namespace SpeedDial {
 		[ConVar.Replicated("sd_debug_weapons")]
 		public static bool Weapons { get; set; }
 
+		[ConVar.Replicated("sd_debug_bots")]
+		public static bool Bots { get; set; }
+
 		[ConVar.Replicated("sd_debug_infinite_ammo")]
 		public static bool InfiniteAmmo { get; set; }
 		

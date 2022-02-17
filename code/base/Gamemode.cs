@@ -42,6 +42,7 @@ namespace SpeedDial {
 		public bool Voting => State == GamemodeState.Voting;
 
 		public virtual GamemodeIdentity Identity => GamemodeIdentity.Base;
+		public virtual string BotType => "";
 
 		public Gamemode() {
 			Transmit = TransmitType.Always;

@@ -14,7 +14,7 @@ namespace SpeedDial.Classic.Player {
 		public virtual void AwardKill(ClassicPlayer killed) {
 			// only award during main round (not warmup)
 			if(!Gamemode.Instance.Running) return;
-			ScorePanel.AwardKill();
+			ScorePanel.AwardKill(To.Single(Client));
 
 			// add to current combo
 			Client.AddInt("combo", 1);
