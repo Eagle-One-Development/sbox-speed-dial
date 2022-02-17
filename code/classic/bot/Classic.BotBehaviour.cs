@@ -37,7 +37,7 @@ namespace SpeedDial.Classic.Bot {
 		#region Static Variables
 		public float UpdateInterval => 1.0f;
 		public float SearchRadius => 400.0f;
-		public float MinWanderRadius => 200;
+		public float MinWanderRadius => 1000;
 		public float MaxWanderRadius => 10000;
 		public float PlayerOrbitDistance => 200;
 		#endregion
@@ -65,7 +65,7 @@ namespace SpeedDial.Classic.Bot {
 				if(CurrentTarget != null && CurrentTarget.IsValid) {
 					if(Debug.Bots) DebugOverlay.Sphere(EvaulatePositon(CurrentTarget), 30f, Color.Green);
 					Steer.Target = EvaulatePositon(CurrentTarget);
-				} else if (Steer.Path.IsEmpty || Bot.Client.Pawn.Position.IsNearlyEqual(lastPos, 0.01f)) {
+				} else if (Steer.Path.IsEmpty || Bot.Client.Pawn.Position.IsNearlyEqual(lastPos, 0.1f)) {
 					// Wander
 					var t = NavMesh.GetPointWithinRadius(Bot.Client.Pawn.Position, MinWanderRadius, MaxWanderRadius);
 					if(t.HasValue) Steer.Target = t.Value;
