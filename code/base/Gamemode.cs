@@ -65,7 +65,7 @@ namespace SpeedDial {
 		/// </summary>
 		public virtual void OnBotAdded(ClassicBot bot) { }
 
-		[SpeedDialEvent.Gamemode.Reset]
+		[SpeedDialEvent.Gamemode.Start]
 		public static void BotReset() {
 			// apply gamemode behaviour to all bots
 			foreach(var bot in Bot.All) {
