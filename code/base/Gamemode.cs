@@ -65,6 +65,14 @@ namespace SpeedDial {
 		/// </summary>
 		public virtual void OnBotAdded(ClassicBot bot) { }
 
+		[SpeedDialEvent.Gamemode.Reset]
+		public static void BotReset() {
+			// apply gamemode behaviour to all bots
+			foreach(var bot in Bot.All) {
+				Instance.OnBotAdded(bot as ClassicBot);
+			}
+		}
+
 		[Event.Tick.Server]
 		protected virtual void Tick() { }
 
