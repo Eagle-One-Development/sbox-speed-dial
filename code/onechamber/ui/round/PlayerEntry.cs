@@ -1,3 +1,5 @@
+using System;
+
 using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
@@ -6,11 +8,11 @@ using SpeedDial.OneChamber.Player;
 
 namespace SpeedDial.OneChamber.UI {
 	[UseTemplate]
-	public partial class OneChamberScoreboardEntry : Panel {
+	public partial class OneChamberPlayerEntry : Panel {
 		public Client Client;
 
-		public Label PlayerName { get; set; }
-		public Label Lives { get; set; }
+		public Image Avatar { get; set; }
+		public Label Score { get; set; }
 
 		RealTimeSince TimeSinceUpdate = 0;
 
@@ -31,15 +33,17 @@ namespace SpeedDial.OneChamber.UI {
 		}
 
 		public virtual void UpdateData() {
-			PlayerName.Text = Client.Name;
 			if(Client.Pawn is OneChamberPlayer player) {
-				Lives.Text = $"{player.Lives}";
+				Score.Text = $"{player.Lives}";
 			} else {
-				Lives.Text = "-";
-				AddClass("dead");
+				Score.Text = $"-";
 			}
 			
-			SetClass("me", Client == Local.Client && Client.All.Count > 1);
+			if(Avatar.Texture is null) {
+				Avatar.SetTexture($"avatar:{Client.PlayerId}");
+			}
+
+			Score.SetClass("me", Client == Local.Client);
 		}
 
 		public virtual void UpdateFrom(Client client) {

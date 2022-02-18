@@ -10,6 +10,7 @@ using SpeedDial.Classic;
 
 using SpeedDial.OneChamber.Player;
 using SpeedDial.OneChamber.UI;
+using SpeedDial.OneChamber.Rounds;
 
 namespace SpeedDial.OneChamber {
 	[Library("onechamber"), Hammer.Skip]
@@ -30,7 +31,7 @@ namespace SpeedDial.OneChamber {
 		}
 
 		protected override void OnStart() {
-
+			ChangeRound(new OneChamberWarmupRound());
 		}
 
 		public override void EnableEntity(GamemodeEntity ent) {

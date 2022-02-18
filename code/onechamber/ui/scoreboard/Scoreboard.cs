@@ -7,7 +7,7 @@ using Sandbox.UI.Construct;
 
 using SpeedDial.OneChamber.Player;
 
-namespace SpeedDial.Classic.UI {
+namespace SpeedDial.OneChamber.UI {
 	[UseTemplate]
 	public partial class OneChamberScoreboard : Panel {
 		
