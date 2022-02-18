@@ -17,6 +17,9 @@ namespace SpeedDial.OneChamber.Player {
 		[Net]
 		public int Lives { get; set; } = 3;
 
+		[Net]
+		public Entity StashedGun { get; set; }
+
 		public override void Respawn() {
 			Host.AssertServer();
 
@@ -45,7 +48,7 @@ namespace SpeedDial.OneChamber.Player {
 			Game.Current.ActiveGamemode?.ActiveRound?.OnPawnRespawned(this);
 
 			Frozen = false;
-			GiveWeapon("sd_pistol");
+			GiveWeapon("oc_pistol");
 
 			// just in case this was left open for some reason
 			WinScreen.SetState(To.Single(Client), false);
@@ -62,6 +65,14 @@ namespace SpeedDial.OneChamber.Player {
 
 		public override bool CanRespawn() {
 			return Lives > 0;
+		}
+
+		public void AwardKill() {
+			if(ActiveChild is Weapon weapon) {
+				weapon.AmmoClip++;
+			} else if (StashedGun is Weapon gun) {
+				gun.AmmoClip++;
+			}
 		}
 
 		public override void OnKilled() {
@@ -103,8 +114,23 @@ namespace SpeedDial.OneChamber.Player {
 			}
 		}
 
+		public override void HandleAttack2() {
+			// swap weapon to fists and vice versa
+			if(ActiveChild is not null) {
+				StashedGun = ActiveChild;
+				ActiveChild = null;
+			} else {
+				if(StashedGun is null) {
+					GiveWeapon("oc_pistol");
+				} else {
+					ActiveChild = StashedGun;
+					StashedGun = null;
+				}
+			}
+		}
+
 		public override void ThrowWeapon() {
-			// we don't allow for weapons to be thrown
+			// no gun throwing
 			return;
 		}
 	}

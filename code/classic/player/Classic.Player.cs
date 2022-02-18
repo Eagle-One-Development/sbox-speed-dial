@@ -79,8 +79,11 @@ namespace SpeedDial.Classic.Player {
 				TimeSinceWeaponCarried = 0;
 			}
 
-			if(Input.Pressed(InputButton.Attack2) && ActiveChild != null && !Frozen) {
-				ThrowWeapon();
+			if(Input.Pressed(InputButton.Attack2)) {
+				HandleAttack2();
+				if(ActiveChild != null && !Frozen) {
+					ThrowWeapon();
+				}
 			}
 
 			if(ActiveChild == null && Input.Down(InputButton.Attack1) && TimeSinceMeleeStarted >= 0.6f && !Frozen) {
@@ -146,6 +149,8 @@ namespace SpeedDial.Classic.Player {
 				return;
 			}
 		}
+
+		public virtual void HandleAttack2() { }
 
 		[Net, Predicted] public TimeSince TimeSinceMeleeStarted { get; set; }
 		[Net, Predicted] public bool ActiveMelee { get; set; }

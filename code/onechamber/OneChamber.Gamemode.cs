@@ -19,6 +19,11 @@ namespace SpeedDial.OneChamber {
 		protected override void OnClientReady(Client client) {
 			client.AssignPawn<OneChamberPlayer>(true);
 		}
+		protected override void OnPawnKilled(BasePlayer pawn) {
+			if(pawn.LastAttacker is OneChamberPlayer player) {
+				player.AwardKill();
+			}
+		}
 
 		public override void CreateGamemodeUI() {
 			Hud.SetGamemodeUI(new OneChamberHud());
