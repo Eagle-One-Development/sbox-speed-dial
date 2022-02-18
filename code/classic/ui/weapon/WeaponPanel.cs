@@ -15,7 +15,7 @@ namespace SpeedDial.Classic.UI {
 		public Label WeaponLabel { get; set; }
 		public Panel Panel { get; set; }
 
-		private float AmmoScale = 1;
+		protected float AmmoScale = 1;
 
 		public WeaponPanel() {
 			Current = this;
