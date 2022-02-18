@@ -126,6 +126,11 @@ namespace SpeedDial.OneChamber.Player {
 					ActiveChild = StashedGun;
 					StashedGun = null;
 				}
+				if((ActiveChild as Weapon).AmmoClip > 0) {
+					PlaySound("sd_pickup.loaded");
+				} else {
+					PlaySound("sd_pickup.empty");
+				}
 			}
 		}
 
