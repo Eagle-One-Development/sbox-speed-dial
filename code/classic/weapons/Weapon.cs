@@ -164,7 +164,6 @@ public partial class Weapon : BaseCarriable {
 
 	public virtual void ShootEffects() {
 		if(IsLocalPawn) {
-			_ = new Sandbox.ScreenShake.Perlin(Blueprint.ScreenshakeParameters.Length, Blueprint.ScreenshakeParameters.Speed, Blueprint.ScreenshakeParameters.Size, Blueprint.ScreenshakeParameters.Rotation);
 			WeaponPanel.Fire(Blueprint.UIEffectsScalar);
 			Crosshair.Fire();
 		}

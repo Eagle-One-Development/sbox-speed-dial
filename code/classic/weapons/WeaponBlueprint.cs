@@ -6,20 +6,6 @@ using Hammer;
 
 namespace SpeedDial.Classic.Weapons;
 
-public struct ScreenshakeParameters {
-	[Property] public float Length { get; set; } = 1;
-	[Property] public float Speed { get; set; } = 1;
-	[Property] public float Size { get; set; } = 1;
-	[Property] public float Rotation { get; set; } = 1;
-
-	public ScreenshakeParameters(float Length, float Speed, float Size, float Rotation) {
-		this.Length = Length;
-		this.Speed = Speed;
-		this.Size = Size;
-		this.Rotation = Rotation;
-	}
-}
-
 public enum WeaponHoldType {
 	Unarmed = 0,
 	Melee = 1,
@@ -79,7 +65,6 @@ public partial class WeaponBlueprint : Asset {
 	[Category("VFX")] public string MuzzleAttach { get; set; } = "muzzle";
 	[Category("VFX"), ResourceType("vpcf")] public string EjectParticle { get; set; } = "particles/pistol_ejectbrass.vpcf";
 	[Category("VFX")] public string EjectAttach { get; set; } = "ejection_point";
-	[Category("VFX")] public ScreenshakeParameters ScreenshakeParameters { get; set; }
 
 	//ui
 	[Category("UI")] public float UIEffectsScalar { get; set; } = 1; // used for ui panel bump strength
