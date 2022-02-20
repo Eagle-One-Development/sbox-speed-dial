@@ -19,6 +19,12 @@ namespace SpeedDial.Classic.UI {
 		private string Description { get; set; }
 		private string Votes { get; set; }
 
+		public VoteItemPanel() {
+			index = -2;
+			Title = "Abstain";
+			Description = "(Skip Vote)";
+		}
+
 		public VoteItemPanel(int index) {
 			this.index = index;
 			Title = Item.Title;
@@ -26,12 +32,13 @@ namespace SpeedDial.Classic.UI {
 		}
 
 		public override void Tick() {
-			SetClass("voted", VoteEntity.Current.GetClientVotedIndex(Local.Client.PlayerId) == index);
-			Votes = $"{VoteEntity.Current.GetVotes(index)}";
+			SetClass("skip", index == -2);
+			SetClass("voted", VoteEntity.Current?.GetClientVotedIndex(Local.Client.PlayerId) == index);
+			Votes = $"{VoteEntity.Current?.GetVotes(index)}";
 		}
 
 		protected override void OnMouseDown(MousePanelEvent e) {
-			ConsoleSystem.Run($"sd_vote {index}");
+			VoteEntity.Vote(index);
 		}
 	}
 }

@@ -13,25 +13,26 @@ votingscreen {
     align-items: center;
     //
     opacity: 0;
-    bottom: -100%;
-    transition: all 3s ease-in-out;
+    transform: scale(0);
+    transition: all 1.5s ease-in;
     background-color: rgba(black, 0.6);
     backdrop-filter: blur(20px);
 
     &.open {
         opacity: 1;
-        bottom: 0%;
+        transform: scale(1);
     }
 
     .canvas {
         width: 70%;
-        height: 50%;
+        height: 70%;
         justify-content: center;
         align-items: center;
         flex-direction: column;
 
         .header {
             bottom: 30px;
+
             .title {
                 font-size: 35px;
             }

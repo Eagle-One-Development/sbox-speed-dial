@@ -26,7 +26,6 @@ public partial class VoteEntity : Entity {
 	private TimeSince TimeSinceConcluded;
 
 	[Net] private IDictionary<long, int> _votes { get; set; }
-
 	[Net] public IList<VoteItem> VoteItems { get; set; }
 
 	public void AddVoteItem(string title, string description, string imagePath) {
@@ -66,13 +65,12 @@ public partial class VoteEntity : Entity {
 			return;
 		}
 		var id = ConsoleSystem.Caller.PlayerId;
-		Log.Debug($"client voted {id}");
 		Current.HandleVote(id, index);
 	}
 
 	public void HandleVote(long playerid, int index) {
-		// simple range check to see if the index exists
-		if(index >= 0 && index < VoteItems.Count) {
+		// simple range check to see if the index exists. -2 means skip vote
+		if((index >= 0 && index < VoteItems.Count) || index == -2) {
 			// player has already voted, change previous vote index
 			if(_votes.ContainsKey(playerid)) {
 				_votes[playerid] = index;
@@ -105,9 +103,17 @@ public partial class VoteEntity : Entity {
 	}
 
 	private void HandleVoteEnd() {
+		Host.AssertServer();
 		Concluded = true;
 		TimeSinceConcluded = 0;
-		OnVoteConcluded(VoteItems.ElementAt(GetWinnerIndex()));
+		var winner = GetWinnerIndex();
+
+		// -2 is our skip vote index
+		if(winner == -2) {
+			OnVoteSkipped();
+			return;
+		}
+		OnVoteConcluded(VoteItems[winner]);
 	}
 
 	/// <summary>
@@ -118,6 +124,7 @@ public partial class VoteEntity : Entity {
 		// there is probably a better way for this, but iterating gives more control
 		var winner = -1;
 		var votes = 0;
+		var skips = _votes.Count((kv) => kv.Value == -2);
 		var items = GetVoteCounts();
 		for(int i = 0; i < items.Length; i++) {
 			// has more votes
@@ -136,6 +143,8 @@ public partial class VoteEntity : Entity {
 			}
 		}
 
+		if(skips >= votes) return -2;
+
 		// if all items have 0 votes, pick random
 		return winner == -1 ? Rand.Int(0, items.Length - 1) : winner;
 	}
@@ -150,6 +159,13 @@ public partial class VoteEntity : Entity {
 			return votes;
 		}
 		return -1;
+	}
+
+	/// <summary>
+	/// Called if this vote was skipped by majority vote.
+	/// </summary>
+	public virtual void OnVoteSkipped() {
+		Log.Debug($"Vote skipped");
 	}
 
 	/// <summary>

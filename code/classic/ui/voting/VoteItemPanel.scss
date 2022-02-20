@@ -17,8 +17,13 @@ voteitempanel {
 
     .votes {
         position: absolute;
+        font-size: 17px;
         bottom: 4px;
         left: 6px;
+    }
+
+    .title {
+        font-size: 20px;
     }
 
     &:hover {
@@ -35,5 +40,11 @@ voteitempanel {
         text, label {
             color: $vhs_cyan;
         }
+    }
+
+    &.skip {
+        top: 25px;
+        height: 100px;
+        aspect-ratio: 3;
     }
 }
