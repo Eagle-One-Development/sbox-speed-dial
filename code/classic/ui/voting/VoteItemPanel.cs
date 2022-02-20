@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Sandbox;
+using Sandbox.UI;
+
+using SpeedDial.Classic.Voting;
+
+namespace SpeedDial.Classic.UI {
+	[UseTemplate]
+	public class VoteItemPanel : Panel {
+		private int index;
+		private VoteItem Item => VoteEntity.Current.VoteItems[index];
+
+		private string Title { get; set; }
+		private string Description { get; set; }
+		private string Votes { get; set; }
+
+		public VoteItemPanel(int index) {
+			this.index = index;
+			Title = Item.Title;
+			Description = Item.Description;
+		}
+
+		public override void Tick() {
+			SetClass("voted", VoteEntity.Current.GetClientVotedIndex(Local.Client.PlayerId) == index);
+			Votes = $"{VoteEntity.Current.GetVotes(index)}";
+		}
+
+		protected override void OnMouseDown(MousePanelEvent e) {
+			ConsoleSystem.Run($"sd_vote {index}");
+		}
+	}
+}

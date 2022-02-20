@@ -1,0 +1,39 @@
+﻿@import "/classic/ui/_vars/globals.scss";
+
+voteitempanel {
+    width: 170px;
+    aspect-ratio: 1;
+    background-color: white;
+    border: 4px solid black;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    text, label {
+        color: black;
+    }
+
+    .votes {
+        position: absolute;
+        bottom: 4px;
+        left: 6px;
+    }
+
+    &:hover {
+        background-color: gray;
+    }
+
+    &.voted {
+        &:hover {
+            background-color: white;
+        }
+
+        border: 4px solid $vhs_cyan;
+
+        text, label {
+            color: $vhs_cyan;
+        }
+    }
+}
