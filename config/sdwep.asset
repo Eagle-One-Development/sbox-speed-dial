@@ -1,15 +1,4 @@
 //
-// SpeedDial.Classic.Weapons.ScreenshakeParameters
-//
-@struct = SpeedDial_Classic_Weapons_ScreenshakeParameters
-[
-	length(float) : "Length" : 1 : ""
-	speed(float) : "Speed" : 1 : ""
-	size(float) : "Size" : 1 : ""
-	rotation(float) : "Rotation" : 1 : ""
-]
-
-//
 // SpeedDial.Classic.Weapons.WeaponBlueprint
 //
 @BaseClass = sdwep : ""
@@ -65,7 +54,6 @@
 	muzzleattach(string) { group = "VFX" } : "Muzzle Attach" : "muzzle" : ""
 	ejectparticle(resource:vpcf) { group = "VFX" } : "Eject Particle" : "particles/pistol_ejectbrass.vpcf" : ""
 	ejectattach(string) { group = "VFX" } : "Eject Attach" : "ejection_point" : ""
-	screenshakeparameters(struct:SpeedDial_Classic_Weapons_ScreenshakeParameters) { group = "VFX" } : "Screenshake Parameters" :  : ""
 	uieffectsscalar(float) { group = "UI" } : "Uieffects Scalar" : 1 : ""
 	icon(string) { group = "UI" editor = "AssetBrowse(png)" } : "Icon" : "materials/ui/weapons/pistol.png" : ""
 	shootsound(string) { group = "Sounds" editor = "AssetBrowse(sound)" } : "Shoot Sound" : "sounds/simpleguns/pistol/sd_pistol.shoot.sound" : ""
