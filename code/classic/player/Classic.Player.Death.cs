@@ -16,11 +16,17 @@ public partial class ClassicPlayer {
 		Suicide // kill command
 	}
 
+	protected override void OnDestroy() {
+		DrugParticles?.Destroy(true);
+	}
+
 	public override void OnKilled() {
 		Frozen = true;
 
 		EnableAllCollisions = false;
 		EnableDrawing = false;
+
+		DrugParticles?.Destroy(true);
 
 		// chuck weapon away in a random direction
 		DropWeapon(out var weapon);
