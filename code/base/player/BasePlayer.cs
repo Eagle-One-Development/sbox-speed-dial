@@ -7,8 +7,8 @@ public partial class BasePlayer : AnimEntity {
 	public virtual string ModelPath { get; set; } = "models/citizen/citizen.vmdl";
 	[Net] public float MaxHealth { get; set; } = 100;
 	[Net] public TimeSince TimeSinceDied { get; set; }
-	[Net,Predicted] public BaseCarriable LastActiveChild { get; set; }
-	[Net, Predicted] public BaseCarriable ActiveChild { get; set; }
+	[Net] public BaseCarriable LastActiveChild { get; set; }
+	[Net] public BaseCarriable ActiveChild { get; set; }
 
 	public override void Simulate(Client cl) {
 		if(LifeState == LifeState.Dead) {
