@@ -1,55 +1,49 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-
-using Sandbox;
-
 using SpeedDial.Classic.Player;
 using SpeedDial.Classic.UI;
 
-namespace SpeedDial.Classic.Rounds {
-	public partial class GameRound : TimedRound {
-		public override TimeSpan RoundDuration => TimeSpan.FromMinutes(5);
-		private ClassicGamemode classic => Game.Current.ActiveGamemode as ClassicGamemode;
-		public override string RoundText => "";
+namespace SpeedDial.Classic.Rounds;
 
-		protected override void OnStart() {
-			base.OnStart();
+public partial class GameRound : TimedRound {
+	public override TimeSpan RoundDuration => TimeSpan.FromMinutes(5);
+	private ClassicGamemode classic => Game.Current.ActiveGamemode as ClassicGamemode;
+	public override string RoundText => "";
 
-			classic.SetState(GamemodeState.Running);
+	protected override void OnStart() {
+		base.OnStart();
 
-			foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
-				var pawn = client.Pawn as ClassicPlayer;
+		classic.SetState(GamemodeState.Running);
 
-				pawn.Frozen = false;
-			}
+		foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
+			var pawn = client.Pawn as ClassicPlayer;
 
-			// start climax track 10 seconds before round ends
-			_ = PlayClimaxMusic((int)RoundDuration.TotalSeconds - 10);
+			pawn.Frozen = false;
 		}
 
-		protected override void OnFinish() {
-			base.OnFinish();
-			Game.Current.ActiveGamemode?.ChangeRound(new PostRound());
+		// start climax track 10 seconds before round ends
+		_ = PlayClimaxMusic((int)RoundDuration.TotalSeconds - 10);
+	}
 
-			foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
-				WinScreen.UpdatePanels(To.Single(client));
-			}
+	protected override void OnFinish() {
+		base.OnFinish();
+		Game.Current.ActiveGamemode?.ChangeRound(new PostRound());
+
+		foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
+			WinScreen.UpdatePanels(To.Single(client));
 		}
+	}
 
-		private async Task PlayClimaxMusic(int delay) {
-			await GameTask.DelaySeconds(delay);
-			foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
-				var pawn = client.Pawn as ClassicPlayer;
-				pawn.PlayRoundendClimax(To.Single(client));
-			}
+	private async Task PlayClimaxMusic(int delay) {
+		await GameTask.DelaySeconds(delay);
+		foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
+			var pawn = client.Pawn as ClassicPlayer;
+			pawn.PlayRoundendClimax(To.Single(client));
 		}
+	}
 
-		public override void OnPawnJoined(BasePlayer pawn) {
-			base.OnPawnJoined(pawn);
-			if(pawn is ClassicPlayer player) {
-				player.PlaySoundtrack(To.Single(player.Client));
-			}
+	public override void OnPawnJoined(BasePlayer pawn) {
+		base.OnPawnJoined(pawn);
+		if(pawn is ClassicPlayer player) {
+			player.PlaySoundtrack(To.Single(player.Client));
 		}
 	}
 }

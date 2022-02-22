@@ -1,101 +1,95 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+//CREDIT: Modified from Espionage.Engine by Jake Wooshito
+namespace SpeedDial;
 
-using Sandbox;
+/// <summary> Round </summary>
+public abstract partial class Round : BaseNetworkable {
+	/// <summary> how long are think ticks in seconds? </summary>
+	protected virtual float ThinkTime => 0.1f;
 
-//CREDIT: Taken from Espionage.Engine by Jake Wooshito
-namespace SpeedDial {
-	/// <summary> Round </summary>
-	public abstract partial class Round : BaseNetworkable {
-		/// <summary> how long are think ticks in seconds? </summary>
-		protected virtual float ThinkTime => 0.1f;
+	/// <summary>
+	/// Call Finish() to finish a round
+	/// </summary>
+	[Net] public bool Finished { get; private set; }
+	/// <summary>
+	/// Call Start() to finish a round
+	/// </summary>
+	[Net] public bool Started { get; private set; }
 
-		/// <summary>
-		/// Call Finish() to finish a round
-		/// </summary>
-		[Net] public bool Finished { get; private set; }
-		/// <summary>
-		/// Call Start() to finish a round
-		/// </summary>
-		[Net] public bool Started { get; private set; }
+	[Net] public float StartTime { get; private set; }
+	public virtual string RoundText => "Round";
 
-		[Net] public float StartTime { get; private set; }
-		public virtual string RoundText => "Round";
+	/// <summary>
+	/// Formatted version of the time elapsed in the round in seconds
+	/// </summary>
+	[Net]
+	public string TimeElapsedFormatted { get; set; } = "";
 
-		/// <summary>
-		/// Formatted version of the time elapsed in the round in seconds
-		/// </summary>
-		[Net]
-		public string TimeElapsedFormatted { get; set; } = "";
+	/// <summary> [Server Assert] Start the round </summary>
+	public virtual void Start() {
+		Host.AssertServer();
 
-		/// <summary> [Server Assert] Start the round </summary>
-		public virtual void Start() {
-			Host.AssertServer();
+		if(Started)
+			return;
 
-			if(Started)
-				return;
+		Log.Debug($"Round start {ClassInfo.Name}");
 
-			Log.Debug($"Round start {ClassInfo.Name}");
+		Started = true;
+		StartTime = Time.Now;
 
-			Started = true;
-			StartTime = Time.Now;
+		_ = ThinkTimer();
 
-			_ = ThinkTimer();
-
-			OnStart();
-		}
-
-		public TimeSpan GetElapsedTime() {
-			if(!Finished)
-				return TimeSpan.FromSeconds(Time.Now - StartTime);
-			else
-				return TimeSpan.Zero;
-		}
-
-		public virtual TimeSpan GetTime() {
-			return GetElapsedTime();
-		}
-
-		/// <summary> [Server Assert] Finish the round </summary>
-		public virtual void Finish() {
-			Host.AssertServer();
-
-			if(Finished || !Started)
-				return;
-
-			Log.Debug($"Round finish {ClassInfo.Name}");
-
-			Finished = true;
-			Started = false;
-			OnFinish();
-		}
-
-		public void Kill() {
-			Host.AssertServer();
-			Finished = true;
-		}
-
-		private async Task ThinkTimer() {
-			while(!Finished && Started) {
-				OnThink();
-				await GameTask.DelaySeconds(ThinkTime);
-			}
-		}
-
-		/// <summary> [Server] Will invoke when the round has started </summary>
-		protected virtual void OnStart() { Log.Debug($"Round on start {ClassInfo.Name}"); }
-
-		/// <summary> [Server] Will invoke every think tick, which can be defined by overriding "ThinkTime" </summary>
-		protected virtual void OnThink() {
-			TimeElapsedFormatted = GetElapsedTime().ToString(@"mm\:ss");
-		}
-
-		/// <summary> [Server] Will invoke when the round has finished </summary>
-		protected virtual void OnFinish() { Log.Debug($"Round on finish {ClassInfo.Name}"); }
-		/// <summary> A pawn joined for the first time during this round. </summary>
-		public virtual void OnPawnJoined(BasePlayer pawn) { }
-		/// <summary> A pawn respawned during this round. </summary>
-		public virtual void OnPawnRespawned(BasePlayer pawn) { }
+		OnStart();
 	}
+
+	public TimeSpan GetElapsedTime() {
+		if(!Finished)
+			return TimeSpan.FromSeconds(Time.Now - StartTime);
+		else
+			return TimeSpan.Zero;
+	}
+
+	public virtual TimeSpan GetTime() {
+		return GetElapsedTime();
+	}
+
+	/// <summary> [Server Assert] Finish the round </summary>
+	public virtual void Finish() {
+		Host.AssertServer();
+
+		if(Finished || !Started)
+			return;
+
+		Log.Debug($"Round finish {ClassInfo.Name}");
+
+		Finished = true;
+		Started = false;
+		OnFinish();
+	}
+
+	public void Kill() {
+		Host.AssertServer();
+		Finished = true;
+	}
+
+	private async Task ThinkTimer() {
+		while(!Finished && Started) {
+			OnThink();
+			await GameTask.DelaySeconds(ThinkTime);
+		}
+	}
+
+	/// <summary> [Server] Will invoke when the round has started </summary>
+	protected virtual void OnStart() { Log.Debug($"Round on start {ClassInfo.Name}"); }
+
+	/// <summary> [Server] Will invoke every think tick, which can be defined by overriding "ThinkTime" </summary>
+	protected virtual void OnThink() {
+		TimeElapsedFormatted = GetElapsedTime().ToString(@"mm\:ss");
+	}
+
+	/// <summary> [Server] Will invoke when the round has finished </summary>
+	protected virtual void OnFinish() { Log.Debug($"Round on finish {ClassInfo.Name}"); }
+	/// <summary> A pawn joined for the first time during this round. </summary>
+	public virtual void OnPawnJoined(BasePlayer pawn) { }
+	/// <summary> A pawn respawned during this round. </summary>
+	public virtual void OnPawnRespawned(BasePlayer pawn) { }
 }

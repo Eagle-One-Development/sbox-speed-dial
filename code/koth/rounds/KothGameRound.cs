@@ -1,94 +1,85 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-
-using Sandbox;
-
 using SpeedDial.Koth.Player;
-using SpeedDial.Koth.UI;
-using SpeedDial.Koth;
 using SpeedDial.Classic.UI;
 using SpeedDial.Koth.Entities;
-using SpeedDial;
 
-namespace SpeedDial.Koth.Rounds {
-	public partial class KothGameRound : TimedRound {
-		public override TimeSpan RoundDuration => TimeSpan.FromMinutes(5);
-		private KothGamemode koth => Game.Current.ActiveGamemode as KothGamemode;
-		public override string RoundText => "";
+namespace SpeedDial.Koth.Rounds;
 
-		[Net]
-		public int LastHillSpawnIdent { get; set; }
+public partial class KothGameRound : TimedRound {
+	public override TimeSpan RoundDuration => TimeSpan.FromMinutes(5);
+	private KothGamemode koth => Game.Current.ActiveGamemode as KothGamemode;
+	public override string RoundText => "";
 
-		protected override void OnStart() {
-			base.OnStart();
+	[Net]
+	public int LastHillSpawnIdent { get; set; }
 
-			koth.SetState(GamemodeState.Running);
+	protected override void OnStart() {
+		base.OnStart();
 
-			foreach(var client in Client.All.Where(x => x.Pawn is KothPlayer)) {
-				var pawn = client.Pawn as KothPlayer;
+		koth.SetState(GamemodeState.Running);
 
-				pawn.Frozen = false;
-			}
+		foreach(var client in Client.All.Where(x => x.Pawn is KothPlayer)) {
+			var pawn = client.Pawn as KothPlayer;
 
-
-
-			// start climax track 10 seconds before round ends
-			_ = PlayClimaxMusic((int)RoundDuration.TotalSeconds - 10);
+			pawn.Frozen = false;
 		}
 
-		public void CreateHill() {
-			if(Entity.All.OfType<HillSpotSpawn>().Any()) {
-				var targetHill = Entity.All.OfType<HillSpotSpawn>().Where(x => x.NetworkIdent != LastHillSpawnIdent).Random();
 
-				var hill = new HillSpot();
-				hill.Position = targetHill.Position;
-				hill.Rotation = targetHill.Rotation;
-				hill.Scale = targetHill.Scale;
-				LastHillSpawnIdent = targetHill.NetworkIdent;
 
-			}
+		// start climax track 10 seconds before round ends
+		_ = PlayClimaxMusic((int)RoundDuration.TotalSeconds - 10);
+	}
+
+	public void CreateHill() {
+		if(Entity.All.OfType<HillSpotSpawn>().Any()) {
+			var targetHill = Entity.All.OfType<HillSpotSpawn>().Where(x => x.NetworkIdent != LastHillSpawnIdent).Random();
+
+			var hill = new HillSpot();
+			hill.Position = targetHill.Position;
+			hill.Rotation = targetHill.Rotation;
+			hill.Scale = targetHill.Scale;
+			LastHillSpawnIdent = targetHill.NetworkIdent;
+
 		}
+	}
 
-		protected override void OnFinish() {
-			base.OnFinish();
+	protected override void OnFinish() {
+		base.OnFinish();
 
-			foreach(var client in Client.All.Where(x => x.Pawn is KothPlayer)) {
-				WinScreen.UpdatePanels(To.Single(client));
-			}
-			Game.Current.ActiveGamemode.ChangeRound(new KothPostRound());
+		foreach(var client in Client.All.Where(x => x.Pawn is KothPlayer)) {
+			WinScreen.UpdatePanels(To.Single(client));
 		}
+		Game.Current.ActiveGamemode.ChangeRound(new KothPostRound());
+	}
 
-		
-		protected override void OnThink() {
-			base.OnThink();
-				
-			if(!Entity.All.OfType<HillSpot>().Any()) {
 
-				CreateHill();
+	protected override void OnThink() {
+		base.OnThink();
 
-			}
+		if(!Entity.All.OfType<HillSpot>().Any()) {
+
+			CreateHill();
+
 		}
+	}
 
-		protected void ServerTick() {
+	protected void ServerTick() {
 
-			
-			
+
+
+	}
+
+	private async Task PlayClimaxMusic(int delay) {
+		await GameTask.DelaySeconds(delay);
+		foreach(var client in Client.All.Where(x => x.Pawn is KothPlayer)) {
+			var pawn = client.Pawn as KothPlayer;
+			pawn.PlayRoundendClimax(To.Single(client));
 		}
+	}
 
-		private async Task PlayClimaxMusic(int delay) {
-			await GameTask.DelaySeconds(delay);
-			foreach(var client in Client.All.Where(x => x.Pawn is KothPlayer)) {
-				var pawn = client.Pawn as KothPlayer;
-				pawn.PlayRoundendClimax(To.Single(client));
-			}
-		}
-
-		public override void OnPawnJoined(BasePlayer pawn) {
-			base.OnPawnJoined(pawn);
-			if(pawn is KothPlayer player) {
-				player.PlaySoundtrack(To.Single(player.Client));
-			}
+	public override void OnPawnJoined(BasePlayer pawn) {
+		base.OnPawnJoined(pawn);
+		if(pawn is KothPlayer player) {
+			player.PlaySoundtrack(To.Single(player.Client));
 		}
 	}
 }

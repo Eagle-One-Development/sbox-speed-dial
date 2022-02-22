@@ -1,6 +1,6 @@
 namespace SpeedDial.Classic.Player;
 
-public partial class ClassicNoclipController : PawnController {
+public partial class OneChamberSpectatorController : PawnController {
 	public override void Simulate() {
 		base.Simulate();
 		var vel = new Vector3(Input.Forward, Input.Left, 0);
@@ -9,6 +9,9 @@ public partial class ClassicNoclipController : PawnController {
 
 		if(Input.Down(InputButton.Duck))
 			vel *= 0.2f;
+
+		if(Input.Down(InputButton.Run))
+			vel *= 2.0f;
 
 		Velocity += vel * Time.Delta;
 

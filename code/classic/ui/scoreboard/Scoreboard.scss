@@ -15,7 +15,6 @@
 	transition: all 0.1s ease-out;
 	transform: scale(1.05);
 	transform-origin: 50% 50%;
-	text-shadow: 3px 3px 5px rgba(#000, 0.5);
 
 	&.open {
 		opacity: 1;
@@ -52,6 +51,16 @@
 			margin: 3px;
 			background-color: white;
 			overflow: hidden;
+
+			.inputmethod {
+				position: absolute;
+				left: 4px;
+				top: 3px;
+				align-self: center;
+				color: black;
+				font-size: 24px;
+				font-family: MaterialIcons;
+			}
 
 			.name {
 				margin-left: 30px;

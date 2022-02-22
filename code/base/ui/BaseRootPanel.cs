@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace SpeedDial;
 
-using Sandbox;
-using Sandbox.UI;
-using Sandbox.UI.Construct;
+public partial class BaseRootPanel : RootPanel {
 
-namespace SpeedDial {
-	public partial class BaseRootPanel : RootPanel {
+	public Panel GamemodePanel { get; set; }
 
-		public Panel GamemodePanel { get; set; }
+	public BaseRootPanel() {
+		if(!Host.IsClient) return;
 
-		public BaseRootPanel() {
-			if(!Host.IsClient) return;
-
-			StyleSheet.Load("/base/ui/root.scss");
-			AddChild<DevInfo>();
-			AddChild<DevMenu>();
-		}
+		StyleSheet.Load("/base/ui/root.scss");
+		AddChild<DevInfo>();
+		AddChild<DevMenu>();
 	}
 }

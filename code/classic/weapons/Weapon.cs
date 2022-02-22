@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-using SpeedDial.Classic.Entities;
+﻿using SpeedDial.Classic.Entities;
 using SpeedDial.Classic.Player;
 using SpeedDial.Classic.Drugs;
 using SpeedDial.Classic.UI;

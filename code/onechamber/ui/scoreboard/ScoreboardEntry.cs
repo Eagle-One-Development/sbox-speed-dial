@@ -1,50 +1,46 @@
-using Sandbox;
-using Sandbox.UI;
-using Sandbox.UI.Construct;
-
 using SpeedDial.OneChamber.Player;
 
-namespace SpeedDial.OneChamber.UI {
-	[UseTemplate]
-	public partial class OneChamberScoreboardEntry : Panel {
-		public Client Client;
+namespace SpeedDial.OneChamber.UI;
 
-		public Label PlayerName { get; set; }
-		public Label Lives { get; set; }
+[UseTemplate]
+public partial class OneChamberScoreboardEntry : Panel {
+	public Client Client;
 
-		RealTimeSince TimeSinceUpdate = 0;
+	public Label PlayerName { get; set; }
+	public Label Lives { get; set; }
 
-		public override void Tick() {
-			base.Tick();
+	RealTimeSince TimeSinceUpdate = 0;
 
-			if(!IsVisible)
-				return;
+	public override void Tick() {
+		base.Tick();
 
-			if(!Client.IsValid())
-				return;
+		if(!IsVisible)
+			return;
 
-			if(TimeSinceUpdate < 0.1f)
-				return;
+		if(!Client.IsValid())
+			return;
 
-			TimeSinceUpdate = 0;
-			UpdateData();
+		if(TimeSinceUpdate < 0.1f)
+			return;
+
+		TimeSinceUpdate = 0;
+		UpdateData();
+	}
+
+	public virtual void UpdateData() {
+		PlayerName.Text = Client.Name;
+		if(Client.Pawn is OneChamberPlayer player) {
+			Lives.Text = $"{player.Lives}";
+		} else {
+			Lives.Text = "-";
+			AddClass("dead");
 		}
-
-		public virtual void UpdateData() {
-			PlayerName.Text = Client.Name;
-			if(Client.Pawn is OneChamberPlayer player) {
-				Lives.Text = $"{player.Lives}";
-			} else {
-				Lives.Text = "-";
-				AddClass("dead");
-			}
 			
-			SetClass("me", Client == Local.Client && Client.All.Count > 1);
-		}
+		SetClass("me", Client == Local.Client && Client.All.Count > 1);
+	}
 
-		public virtual void UpdateFrom(Client client) {
-			Client = client;
-			UpdateData();
-		}
+	public virtual void UpdateFrom(Client client) {
+		Client = client;
+		UpdateData();
 	}
 }

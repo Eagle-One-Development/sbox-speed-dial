@@ -1,6 +1,4 @@
-﻿using Sandbox;
-using System;
-using System.Buffers;
+﻿namespace SpeedDial;
 
 public class NavSteer {
 	public NavPath Path { get; private set; }

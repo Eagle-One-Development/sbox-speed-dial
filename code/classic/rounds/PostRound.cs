@@ -1,45 +1,40 @@
-using System;
-using System.Linq;
-
-using Sandbox;
-
 using SpeedDial.Classic.Player;
 using SpeedDial.Classic.UI;
 
-namespace SpeedDial.Classic.Rounds {
-	public partial class PostRound: TimedRound {
-		public override TimeSpan RoundDuration => TimeSpan.FromSeconds(11);
-		private ClassicGamemode classic => Game.Current.ActiveGamemode as ClassicGamemode;
-		public override string RoundText => "";
+namespace SpeedDial.Classic.Rounds;
 
-		protected override void OnStart() {
-			base.OnStart();
+public partial class PostRound : TimedRound {
+	public override TimeSpan RoundDuration => TimeSpan.FromSeconds(11);
+	private ClassicGamemode classic => Game.Current.ActiveGamemode as ClassicGamemode;
+	public override string RoundText => "";
 
-			classic.SetState(GamemodeState.Ending);
+	protected override void OnStart() {
+		base.OnStart();
 
-			foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
-				var pawn = client.Pawn as ClassicPlayer;
+		classic.SetState(GamemodeState.Ending);
 
-				pawn.Frozen = true;
-				CharacterSelect.ForceState(To.Single(client), false);
-				WinScreen.SetState(To.Single(client), true);
-			}
+		foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
+			var pawn = client.Pawn as ClassicPlayer;
+
+			pawn.Frozen = true;
+			CharacterSelect.ForceState(To.Single(client), false);
+			WinScreen.SetState(To.Single(client), true);
 		}
+	}
 
-		protected override void OnFinish() {
-			base.OnFinish();
-			Game.Current.ActiveGamemode?.ChangeRound(new PreRound());
+	protected override void OnFinish() {
+		base.OnFinish();
+		Game.Current.ActiveGamemode?.ChangeRound(new PreRound());
 
-			foreach(var client in Client.All) {
-				WinScreen.SetState(To.Single(client), false);
-			}
+		foreach(var client in Client.All) {
+			WinScreen.SetState(To.Single(client), false);
 		}
+	}
 
-		public override void OnPawnJoined(BasePlayer pawn) {
-			base.OnPawnJoined(pawn);
-			if(pawn is ClassicPlayer player) {
-				player.Frozen = true;
-			}
+	public override void OnPawnJoined(BasePlayer pawn) {
+		base.OnPawnJoined(pawn);
+		if(pawn is ClassicPlayer player) {
+			player.Frozen = true;
 		}
 	}
 }

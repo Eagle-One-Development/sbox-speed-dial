@@ -1,47 +1,43 @@
-using Sandbox;
-using Sandbox.UI;
-using Sandbox.UI.Construct;
+namespace SpeedDial.Classic.UI;
 
-namespace SpeedDial.Classic.UI {
-	[UseTemplate]
-	public partial class ClassicScoreboardEntry : Panel {
-		public Client Client;
+[UseTemplate]
+public partial class ClassicScoreboardEntry : Panel {
+	public Client Client;
 
-		public Label PlayerName { get; set; }
-		public Label Score { get; set; }
-		public Label MaxCombo { get; set; }
+	public Label PlayerName { get; set; }
+	public Label Score { get; set; }
+	public Label MaxCombo { get; set; }
 
-		RealTimeSince TimeSinceUpdate = 0;
+	RealTimeSince TimeSinceUpdate = 0;
 
-		public override void Tick() {
-			base.Tick();
+	public override void Tick() {
+		base.Tick();
 
-			if(!IsVisible)
-				return;
+		if(!IsVisible)
+			return;
 
-			if(!Client.IsValid())
-				return;
+		if(!Client.IsValid())
+			return;
 
-			if(TimeSinceUpdate < 0.1f)
-				return;
+		if(TimeSinceUpdate < 0.1f)
+			return;
 
-			TimeSinceUpdate = 0;
-			UpdateData();
-		}
+		TimeSinceUpdate = 0;
+		UpdateData();
+	}
 
-		public virtual void UpdateData() {
-			PlayerName.Text = Client.Name;
-			// globalizing like this so it's dots instead of commas cause it looks better with the font
-			var scoreFormatted = string.Format(System.Globalization.CultureInfo.GetCultureInfo("de-DE"), "{0:#,##0}", Client.GetValue("score", 0));
-			Score.Text = $"{scoreFormatted}";
-			MaxCombo.Text = $"{Client.GetValue("maxcombo", 0)}";
+	public virtual void UpdateData() {
+		PlayerName.Text = Client.Name;
+		// globalizing like this so it's dots instead of commas cause it looks better with the font
+		var scoreFormatted = string.Format(System.Globalization.CultureInfo.GetCultureInfo("de-DE"), "{0:#,##0}", Client.GetValue("score", 0));
+		Score.Text = $"{scoreFormatted}";
+		MaxCombo.Text = $"{Client.GetValue("maxcombo", 0)}";
 
-			SetClass("me", Client == Local.Client && Client.All.Count > 1);
-		}
+		SetClass("me", Client == Local.Client && Client.All.Count > 1);
+	}
 
-		public virtual void UpdateFrom(Client client) {
-			Client = client;
-			UpdateData();
-		}
+	public virtual void UpdateFrom(Client client) {
+		Client = client;
+		UpdateData();
 	}
 }

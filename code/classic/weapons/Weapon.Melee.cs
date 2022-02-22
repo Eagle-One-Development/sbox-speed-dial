@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using SpeedDial.Classic.Player;
+﻿using SpeedDial.Classic.Player;
 
 namespace SpeedDial.Classic.Weapons;
 

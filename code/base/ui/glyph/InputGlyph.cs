@@ -1,39 +1,33 @@
-﻿using System;
+﻿namespace SpeedDial.Classic.UI;
 
-using Sandbox;
-using Sandbox.UI;
-using Sandbox.UI.Construct;
+[UseTemplate]
+public partial class InputGlyph : Panel {
+	public Image Glyph { get; set; }
+	public InputButton Button { get; set; }
 
-namespace SpeedDial.Classic.UI {
-	[UseTemplate]
-	public partial class InputGlyph : Panel {
-		public Image Glyph { get; set; }
-		public InputButton Button { get; set; }
+	protected bool IsSet = false;
 
-		protected bool IsSet = false;
+	public override void SetProperty(string name, string value) {
+		base.SetProperty(name, value);
 
-		public override void SetProperty(string name, string value) {
-			base.SetProperty(name, value);
-
-			if(name == "btn") {
-				SetButton(Enum.Parse<InputButton>(value, true));
-			}
+		if(name == "btn") {
+			SetButton(Enum.Parse<InputButton>(value, true));
 		}
+	}
 
-		public void SetButton(InputButton button) {
-			Button = button;
-			IsSet = true;
-		}
+	public void SetButton(InputButton button) {
+		Button = button;
+		IsSet = true;
+	}
 
-		public override void Tick() {
-			base.Tick();
+	public override void Tick() {
+		base.Tick();
 
-			if(IsSet) {
-				Texture glyphTexture = Input.GetGlyph(Button, InputGlyphSize.Medium, GlyphStyle.Knockout.WithNeutralColorABXY());
+		if(IsSet) {
+			Texture glyphTexture = Input.GetGlyph(Button, InputGlyphSize.Medium, GlyphStyle.Knockout.WithNeutralColorABXY());
 
-				Glyph.Texture = glyphTexture;
-				Glyph.Style.AspectRatio = (float) glyphTexture.Width / glyphTexture.Height;
-			}
+			Glyph.Texture = glyphTexture;
+			Glyph.Style.AspectRatio = (float)glyphTexture.Width / glyphTexture.Height;
 		}
 	}
 }

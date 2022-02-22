@@ -4,41 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Sandbox;
-using Sandbox.UI;
-
 using SpeedDial.Classic.Voting;
 
-namespace SpeedDial.Classic.UI {
-	[UseTemplate]
-	public class VoteItemPanel : Panel {
-		private int index;
-		private VoteItem Item => VoteEntity.Current.VoteItems[index];
+namespace SpeedDial.Classic.UI;
 
-		private string Title { get; set; }
-		private string Description { get; set; }
-		private string Votes { get; set; }
+[UseTemplate]
+public class VoteItemPanel : Panel {
+	private int index;
+	private VoteItem Item => VoteEntity.Current.VoteItems[index];
 
-		public VoteItemPanel() {
-			index = -2;
-			Title = "Abstain";
-			Description = "(Skip Vote)";
-		}
+	private string Title { get; set; }
+	private string Description { get; set; }
+	private string Votes { get; set; }
 
-		public VoteItemPanel(int index) {
-			this.index = index;
-			Title = Item.Title;
-			Description = Item.Description;
-		}
+	public VoteItemPanel() {
+		index = -2;
+		Title = "Abstain";
+		Description = "(Skip Vote)";
+	}
 
-		public override void Tick() {
-			SetClass("skip", index == -2);
-			SetClass("voted", VoteEntity.Current?.GetClientVotedIndex(Local.Client.PlayerId) == index);
-			Votes = $"{VoteEntity.Current?.GetVotes(index)}";
-		}
+	public VoteItemPanel(int index) {
+		this.index = index;
+		Title = Item.Title;
+		Description = Item.Description;
+	}
 
-		protected override void OnMouseDown(MousePanelEvent e) {
-			VoteEntity.Vote(index);
-		}
+	public override void Tick() {
+		SetClass("skip", index == -2);
+		SetClass("voted", VoteEntity.Current?.GetClientVotedIndex(Local.Client.PlayerId) == index);
+		Votes = $"{VoteEntity.Current?.GetVotes(index)}";
+	}
+
+	protected override void OnMouseDown(MousePanelEvent e) {
+		VoteEntity.Vote(index);
 	}
 }

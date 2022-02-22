@@ -1,60 +1,53 @@
-using System.Collections.Generic;
-using System.Linq;
+namespace SpeedDial.Classic.UI;
 
-using Sandbox;
-using Sandbox.UI;
-using Sandbox.UI.Construct;
+[UseTemplate]
+public partial class ClassicScoreboard : Panel {
 
-namespace SpeedDial.Classic.UI {
-	[UseTemplate]
-	public partial class ClassicScoreboard : Panel {
-		
-		Dictionary<Client, ClassicScoreboardEntry> Rows = new();
+	Dictionary<Client, ClassicScoreboardEntry> Rows = new();
 
-		public Panel Header { get; set; }
-		public Panel Canvas { get; set; }
-		public Panel Footer { get; set; }
-		public Label GamemodeInfo { get; set; }
-		public Label MapInfo { get; set; }
+	public Panel Header { get; set; }
+	public Panel Canvas { get; set; }
+	public Panel Footer { get; set; }
+	public Label GamemodeInfo { get; set; }
+	public Label MapInfo { get; set; }
 
-		public ClassicScoreboard() {
-			BindClass("open", () => Input.Down(InputButton.Score));
+	public ClassicScoreboard() {
+		BindClass("open", () => Input.Down(InputButton.Score));
+	}
+
+	public override void Tick() {
+		if(!IsVisible)
+			return;
+
+		GamemodeInfo.Text = $"Gamemode: {Game.Current.ActiveGamemode?.ClassInfo.Name}";
+		MapInfo.Text = $"Map: {Global.MapName}";
+		Footer.SetClass("visible", true);
+
+		// Clients that joined
+		foreach(var client in Client.All.Except(Rows.Keys)) {
+			var entry = AddClient(client);
+			Rows[client] = entry;
 		}
 
-		public override void Tick() {
-			if(!IsVisible)
-				return;
-
-			GamemodeInfo.Text = $"Gamemode: {Game.Current.ActiveGamemode?.ClassInfo.Name}";
-			MapInfo.Text = $"Map: {Global.MapName}";
-			Footer.SetClass("visible", true);
-
-			// Clients that joined
-			foreach(var client in Client.All.Except(Rows.Keys)) {
-				var entry = AddClient(client);
-				Rows[client] = entry;
-			}
-
-			// clients that left
-			foreach(var client in Rows.Keys.Except(Client.All)) {
-				if(Rows.TryGetValue(client, out var row)) {
-					row?.Delete();
-					Rows.Remove(client);
-				}
-			}
-
-			Canvas.SortChildren((x) => -(x as ClassicScoreboardEntry).Client.GetValue("score", 0));
-
-			for(int i = 0; i < Canvas.Children.Count(); i++) {
-				var child = Canvas.Children.ElementAt(i);
-				child.SetClass("first", i == 0 && (child as ClassicScoreboardEntry).Client.GetValue("score", 0) > 0);
+		// clients that left
+		foreach(var client in Rows.Keys.Except(Client.All)) {
+			if(Rows.TryGetValue(client, out var row)) {
+				row?.Delete();
+				Rows.Remove(client);
 			}
 		}
 
-		protected virtual ClassicScoreboardEntry AddClient(Client entry) {
-			var p = Canvas.AddChild<ClassicScoreboardEntry>();
-			p.Client = entry;
-			return p;
+		Canvas.SortChildren((x) => -(x as ClassicScoreboardEntry).Client.GetValue("score", 0));
+
+		for(int i = 0; i < Canvas.Children.Count(); i++) {
+			var child = Canvas.Children.ElementAt(i);
+			child.SetClass("first", i == 0 && (child as ClassicScoreboardEntry).Client.GetValue("score", 0) > 0);
 		}
+	}
+
+	protected virtual ClassicScoreboardEntry AddClient(Client entry) {
+		var p = Canvas.AddChild<ClassicScoreboardEntry>();
+		p.Client = entry;
+		return p;
 	}
 }

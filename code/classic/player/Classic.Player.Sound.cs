@@ -1,58 +1,53 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using SpeedDial.Classic.GameSound;
 
-using Sandbox;
+namespace SpeedDial.Classic.Player;
 
-using SpeedDial.Classic.GameSound;
+public partial class ClassicPlayer {
+	public SoundTrack SoundTrack { get; set; }
+	public bool SoundtrackPlaying { get; set; }
 
-namespace SpeedDial.Classic.Player {
-	public partial class ClassicPlayer {
-		public SoundTrack SoundTrack { get; set; }
-		public bool SoundtrackPlaying { get; set; }
+	[ClientRpc]
+	public void PlayRoundendClimax() {
+		if(!Settings.MusicEnabled) return;
+		SoundTrack.FromScreen("climax");
+		_ = StopSoundtrackAsync(3);
+	}
 
-		[ClientRpc]
-		public void PlayRoundendClimax() {
-			if(!Settings.MusicEnabled) return;
-			SoundTrack.FromScreen("climax");
-			_ = StopSoundtrackAsync(3);
+	private async Task StopSoundtrackAsync(int delay = 5) {
+		await GameTask.DelaySeconds(delay);
+		_ = SoundTrack.Stop(5, 500);
+		SoundtrackPlaying = false;
+	}
+
+
+	[ClientRpc]
+	public void PlaySoundtrack() {
+		if(!Settings.MusicEnabled) return;
+		_ = PlaySoundtrackAsync(ClassicGamemode.Current.CurrentSoundtrack, 2.5f);
+	}
+
+	private async Task PlaySoundtrackAsync(string track, float delay) {
+		if(!Settings.MusicEnabled) return;
+		await GameTask.DelaySeconds(delay);
+		if(!SoundtrackPlaying) {
+			SoundTrack = SoundTrack.FromScreen(track);
+			SoundtrackPlaying = true;
 		}
+	}
 
-		private async Task StopSoundtrackAsync(int delay = 5) {
-			await GameTask.DelaySeconds(delay);
-			_ = SoundTrack.Stop(5, 500);
+	[ClientRpc]
+	public void StopSoundtrack(bool instant = false) {
+		if(instant) {
+			SoundTrack?.Stop();
+			SoundtrackPlaying = false;
+		} else {
+			SoundTrack?.Stop(1);
 			SoundtrackPlaying = false;
 		}
+	}
 
-
-		[ClientRpc]
-		public void PlaySoundtrack() {
-			if(!Settings.MusicEnabled) return;
-			_ = PlaySoundtrackAsync(ClassicGamemode.Current.CurrentSoundtrack, 2.5f);
-		}
-
-		private async Task PlaySoundtrackAsync(string track, float delay) {
-			if(!Settings.MusicEnabled) return;
-			await GameTask.DelaySeconds(delay);
-			if(!SoundtrackPlaying) {
-				SoundTrack = SoundTrack.FromScreen(track);
-				SoundtrackPlaying = true;
-			}
-		}
-
-		[ClientRpc]
-		public void StopSoundtrack(bool instant = false) {
-			if(instant) {
-				SoundTrack?.Stop();
-				SoundtrackPlaying = false;
-			} else {
-				SoundTrack?.Stop(1);
-				SoundtrackPlaying = false;
-			}
-		}
-
-		[ClientRpc]
-		public void FadeSoundtrack(float volumeTo) {
-			SoundTrack?.FadeVolumeTo(volumeTo);
-		}
+	[ClientRpc]
+	public void FadeSoundtrack(float volumeTo) {
+		SoundTrack?.FadeVolumeTo(volumeTo);
 	}
 }

@@ -1,57 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sandbox;
-using SpeedDial.Classic.UI;
+﻿using SpeedDial.Classic.UI;
 
-namespace SpeedDial.Koth.Entities {
-	public partial class HillSpot : ModelEntity {
+namespace SpeedDial.Koth.Entities;
 
-		public List<BasePlayer> TouchingPlayers = new();
+public partial class HillSpot : ModelEntity {
 
-		[Net, Predicted]
-		public TimeSince TimeSinceAlive { get; set; }
+	public List<BasePlayer> TouchingPlayers = new();
 
-		[SpeedDialEvent.Gamemode.Reset]
-		public void HandleGamemodeReset(GamemodeIdentity ident) {
-			if(ident != GamemodeIdentity.Koth) {
+	[Net, Predicted]
+	public TimeSince TimeSinceAlive { get; set; }
+
+	[SpeedDialEvent.Gamemode.Reset]
+	public void HandleGamemodeReset(GamemodeIdentity ident) {
+		if(ident != GamemodeIdentity.Koth) {
+			Delete();
+		}
+	}
+
+	[Event.Tick]
+	public void Tick() {
+		if(TimeSinceAlive > 10f) {
+			foreach(Client client in Client.All) {
+				ScreenHints.FireEvent(To.Single(client), "HILL MOVED", "Good luck!");
+			}
+
+			if(IsValid) {
 				Delete();
 			}
+			return;
 		}
+	}
 
-		[Event.Tick]
-		public void Tick() {
-			if(TimeSinceAlive > 10f) {
-				foreach(Client client in Client.All) {
-					ScreenHints.FireEvent(To.Single(client), "HILL MOVED", "Good luck!");
-				}
+	public override void Spawn() {
+		base.Spawn();
+		SetModel("models/koth/ring.vmdl");
+		Transmit = TransmitType.Always;
+		CollisionGroup = CollisionGroup.Trigger;
+		SetupPhysicsFromModel(PhysicsMotionType.Static);
+		TimeSinceAlive = 0f;
+	}
 
-				if(IsValid) {
-					Delete();
-				}
-				return;
-			}
-		}
+	public override void StartTouch(Entity other) {
+		if(other is BasePlayer player)
+			TouchingPlayers.Add(player);
+	}
 
-		public override void Spawn() {
-			base.Spawn();
-			SetModel("models/koth/ring.vmdl");
-			Transmit = TransmitType.Always;
-			CollisionGroup = CollisionGroup.Trigger;
-			SetupPhysicsFromModel(PhysicsMotionType.Static);
-			TimeSinceAlive = 0f;
-		}
-
-		public override void StartTouch(Entity other) {
-			if(other is BasePlayer player)
-				TouchingPlayers.Add(player);
-		}
-
-		public override void EndTouch(Entity other) {
-			if(other is BasePlayer player)
-				TouchingPlayers.Remove(player);
-		}
+	public override void EndTouch(Entity other) {
+		if(other is BasePlayer player)
+			TouchingPlayers.Remove(player);
 	}
 }

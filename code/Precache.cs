@@ -1,5 +1,3 @@
-using Sandbox;
-
 namespace SpeedDial {
 	public partial class Game {
 		private static void PrecacheAssets() {

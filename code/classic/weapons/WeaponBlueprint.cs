@@ -1,10 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.ComponentModel;
-
-using Hammer;
-
-namespace SpeedDial.Classic.Weapons;
+﻿namespace SpeedDial.Classic.Weapons;
 
 public enum WeaponHoldType {
 	Unarmed = 0,

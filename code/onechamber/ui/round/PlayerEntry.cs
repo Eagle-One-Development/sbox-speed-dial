@@ -1,54 +1,48 @@
-using System;
-
-using Sandbox;
-using Sandbox.UI;
-using Sandbox.UI.Construct;
-
 using SpeedDial.OneChamber.Player;
 
-namespace SpeedDial.OneChamber.UI {
-	[UseTemplate]
-	public partial class OneChamberPlayerEntry : Panel {
-		public Client Client;
+namespace SpeedDial.OneChamber.UI;
 
-		public Image Avatar { get; set; }
-		public Label Score { get; set; }
+[UseTemplate]
+public partial class OneChamberPlayerEntry : Panel {
+	public Client Client;
 
-		RealTimeSince TimeSinceUpdate = 0;
+	public Image Avatar { get; set; }
+	public Label Score { get; set; }
 
-		public override void Tick() {
-			base.Tick();
+	RealTimeSince TimeSinceUpdate = 0;
 
-			if(!IsVisible)
-				return;
+	public override void Tick() {
+		base.Tick();
 
-			if(!Client.IsValid())
-				return;
+		if(!IsVisible)
+			return;
 
-			if(TimeSinceUpdate < 0.1f)
-				return;
+		if(!Client.IsValid())
+			return;
 
-			TimeSinceUpdate = 0;
-			UpdateData();
+		if(TimeSinceUpdate < 0.1f)
+			return;
+
+		TimeSinceUpdate = 0;
+		UpdateData();
+	}
+
+	public virtual void UpdateData() {
+		if(Client.Pawn is OneChamberPlayer player) {
+			Score.Text = $"{player.Lives}";
+		} else {
+			Score.Text = $"-";
 		}
 
-		public virtual void UpdateData() {
-			if(Client.Pawn is OneChamberPlayer player) {
-				Score.Text = $"{player.Lives}";
-			} else {
-				Score.Text = $"-";
-			}
-			
-			if(Avatar.Texture is null) {
-				Avatar.SetTexture($"avatar:{Client.PlayerId}");
-			}
-
-			Score.SetClass("me", Client == Local.Client);
+		if(Avatar.Texture is null) {
+			Avatar.SetTexture($"avatar:{Client.PlayerId}");
 		}
 
-		public virtual void UpdateFrom(Client client) {
-			Client = client;
-			UpdateData();
-		}
+		Score.SetClass("me", Client == Local.Client);
+	}
+
+	public virtual void UpdateFrom(Client client) {
+		Client = client;
+		UpdateData();
 	}
 }

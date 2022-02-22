@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace SpeedDial.Classic.Voting;
+﻿namespace SpeedDial.Classic.Voting;
 
 public partial class VoteEntity : Entity {
 	public override void Spawn() {
