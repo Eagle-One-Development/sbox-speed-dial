@@ -41,7 +41,7 @@ public partial class ClassicPlayer : BasePlayer {
 
 		Controller = new ClassicController();
 		Animator = new ClassicAnimator();
-		Camera = new ClassicCamera();
+		CameraMode = new ClassicCamera();
 
 		EnableAllCollisions = true;
 		EnableDrawing = true;
@@ -64,7 +64,7 @@ public partial class ClassicPlayer : BasePlayer {
 		WinScreen.SetState(To.Single(Client), false);
 
 		// we died, so there's no way anybody still has a highlight on us
-		UpdateGlow(To.Everyone, this, GlowStates.Off, Color.Black);
+		UpdateGlow(To.Everyone, this, false, Color.Black);
 	}
 
 	public override void Simulate(Client cl) {
@@ -103,7 +103,7 @@ public partial class ClassicPlayer : BasePlayer {
 			weapon.OnCarryStart(this);
 		}
 
-		SetAnimBool("b_polvo", ActiveDrug && DrugType is DrugType.Polvo);
+		SetAnimParameter("b_polvo", ActiveDrug && DrugType is DrugType.Polvo);
 
 		if(ActiveDrug) {
 			SimulateDrug();
@@ -131,10 +131,9 @@ public partial class ClassicPlayer : BasePlayer {
 	}
 
 	[ClientRpc]
-	public static void UpdateGlow(ModelEntity ent, GlowStates state, Color col) {
+	public static void UpdateGlow(ModelEntity ent, bool state, Color col) {
 		if(!ent.IsValid()) return;
-		ent.GlowState = state;
-		ent.GlowColor = col;
+		ent.SetGlowState(state, col);
 	}
 
 	public virtual void SimulateDrug() {
@@ -168,7 +167,7 @@ public partial class ClassicPlayer : BasePlayer {
 
 			PlaySound("woosh");
 
-			SetAnimBool("b_attack", true);
+			SetAnimParameter("b_attack", true);
 
 			if(!tr.Entity.IsValid() || !this.Alive()) return;
 

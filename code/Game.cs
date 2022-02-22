@@ -1,6 +1,7 @@
 global using Sandbox;
 global using Sandbox.UI;
 global using Sandbox.UI.Construct;
+global using Sandbox.Component;
 global using Hammer;
 
 global using System;
@@ -180,13 +181,15 @@ public partial class Game : GameBase {
 		if(!client.HasPermission("devcam"))
 			return;
 
-		client.DevCamera = client.DevCamera == null ? new DevCamera() : null;
+		var camera = client.Components.Get<DevCamera>(true);
 
-		// TODO: figure out a way to do this in a cool way that doesn't intrude on the normal Debug.Enabled use (prints etc)
-		// if(client.DevCamera is DevCamera)
-		// 	Debug.Enabled = true;
-		// else
-		// 	Debug.Enabled = false;
+		if(camera == null) {
+			camera = new DevCamera();
+			client.Components.Add(camera);
+			return;
+		}
+
+		camera.Enabled = !camera.Enabled;
 	}
 
 	[ServerCmd("kill")]
@@ -235,19 +238,28 @@ public partial class Game : GameBase {
 	// Camera & Input
 	//
 
-	public virtual ICamera FindActiveCamera() {
-		return Local.Client.DevCamera ?? Local.Client.Camera ?? Local.Pawn.Camera ?? null;
+	public virtual CameraMode FindActiveCamera() {
+		var devCam = Local.Client.Components.Get<DevCamera>();
+		if(devCam != null) return devCam;
+
+		var clientCam = Local.Client.Components.Get<CameraMode>();
+		if(clientCam != null) return clientCam;
+
+		var pawnCam = Local.Pawn?.Components.Get<CameraMode>();
+		if(pawnCam != null) return pawnCam;
+
+		return null;
 	}
 
 	[Predicted]
-	protected Camera LastCamera { get; set; }
+	protected CameraMode LastCamera { get; set; }
 
 	public override CameraSetup BuildCamera(CameraSetup camSetup) {
 		var cam = FindActiveCamera();
 
 		if(LastCamera != cam) {
 			LastCamera?.Deactivated();
-			LastCamera = cam as Camera;
+			LastCamera = cam;
 			LastCamera?.Activated();
 		}
 

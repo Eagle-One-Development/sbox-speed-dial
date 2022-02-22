@@ -71,7 +71,7 @@ public partial class ClassicController : BasePlayerController {
 	public override void FrameSimulate() {
 		if((Pawn as ClassicPlayer).Frozen) return;
 		base.FrameSimulate();
-		EyeRot = Input.Rotation;
+		EyeRotation = Input.Rotation;
 	}
 
 	public override void Simulate() {
@@ -80,7 +80,7 @@ public partial class ClassicController : BasePlayerController {
 		UpdateBBox();
 
 		EyePosLocal += TraceOffset;
-		EyeRot = Input.Rotation;
+		EyeRotation = Input.Rotation;
 
 		if((Pawn as ClassicPlayer).Frozen) { WishVelocity = Vector3.Zero; return; }
 

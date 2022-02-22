@@ -7,7 +7,7 @@ public partial class Weapon {
 		if(TimeSinceSpecial > Blueprint.FireDelay) {
 			TimeSinceSpecial = 0;
 			Firing = true;
-			(Owner as AnimEntity).SetAnimBool("b_attack", true);
+			(Owner as AnimEntity).SetAnimParameter("b_attack", true);
 			PlaySound("woosh");
 		}
 	}

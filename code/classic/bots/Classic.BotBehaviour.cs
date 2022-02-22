@@ -87,7 +87,7 @@ public partial class ClassicBotBehaviour {
 	/// Decide inputs
 	/// </summary>
 	public virtual void SetInputs() {
-		var pawn = Bot.Client.Pawn;
+		var pawn = Bot.Client.Pawn as BasePlayer;
 		var weapon = pawn.ActiveChild as Weapon;
 
 		Attack1 = CurrentTarget is ClassicPlayer;
@@ -108,7 +108,7 @@ public partial class ClassicBotBehaviour {
 	/// <param name="target"></param>
 	/// <returns></returns>
 	public virtual Vector3 EvaulatePositon(Entity target) {
-		var pawn = Bot.Client.Pawn;
+		var pawn = Bot.Client.Pawn as BasePlayer;
 
 		// Don't go right up to the player if we have a gun
 		if(target is ClassicPlayer player && pawn.ActiveChild != null) {
@@ -181,7 +181,7 @@ public partial class ClassicBotBehaviour {
 	/// <param name="radius">Radius of the sphere</param>
 	/// <param name="ignore">Entities to ignore in the search</param>
 	public static T GetClosestEntityInSphere<T>(Vector3 position, float radius, params Entity[] ignore) where T : Entity {
-		List<Entity> ents = Physics.GetEntitiesInSphere(position, radius).Where(x => x is T && !ignore.Contains(x)).ToList();
+		List<Entity> ents = Entity.FindInSphere(position, radius).Where(x => x is T && !ignore.Contains(x)).ToList();
 		Entity closestEnt = null;
 
 		float smallestDist = 999999;

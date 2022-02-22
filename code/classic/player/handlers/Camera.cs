@@ -3,7 +3,7 @@ using SpeedDial.Classic.Weapons;
 
 namespace SpeedDial.Classic.Player;
 
-public partial class ClassicCamera : Camera {
+public partial class ClassicCamera : CameraMode {
 
 	private bool shiftToggle = false;
 
@@ -100,7 +100,7 @@ public partial class ClassicCamera : Camera {
 	private Vector2 ControllerLookInput { get; set; } = Vector2.Zero;
 
 	public override void Update() {
-		var pawn = Local.Pawn;
+		var pawn = Local.Pawn as BasePlayer;
 
 		if(pawn == null)
 			return;

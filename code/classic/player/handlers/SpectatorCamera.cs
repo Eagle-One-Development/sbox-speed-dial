@@ -2,7 +2,7 @@ using SpeedDial.Classic.UI;
 
 namespace SpeedDial.Classic.Player;
 
-public partial class OneChamberSpectatorCamera : Camera {
+public partial class OneChamberSpectatorCamera : CameraMode {
 
 	public virtual float CameraHeight => 400;
 	public virtual float CameraAngle => 65;

@@ -11,7 +11,7 @@ public partial class OneChamberPlayer : ClassicPlayer {
 	public int Lives { get; set; } = 3;
 
 	[Net]
-	public Entity StashedGun { get; set; }
+	public BaseCarriable StashedGun { get; set; }
 
 	public override void Respawn() {
 		Host.AssertServer();
@@ -28,7 +28,7 @@ public partial class OneChamberPlayer : ClassicPlayer {
 
 		Controller = new ClassicController();
 		Animator = new ClassicAnimator();
-		Camera = new ClassicCamera();
+		CameraMode = new ClassicCamera();
 
 		EnableAllCollisions = true;
 		EnableDrawing = true;

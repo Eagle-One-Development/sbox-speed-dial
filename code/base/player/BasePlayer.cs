@@ -7,7 +7,8 @@ public partial class BasePlayer : AnimEntity {
 	public virtual string ModelPath { get; set; } = "models/citizen/citizen.vmdl";
 	[Net] public float MaxHealth { get; set; } = 100;
 	[Net] public TimeSince TimeSinceDied { get; set; }
-	[Predicted] Entity LastActiveChild { get; set; }
+	[Net,Predicted] public BaseCarriable LastActiveChild { get; set; }
+	[Net, Predicted] public BaseCarriable ActiveChild { get; set; }
 
 	public override void Simulate(Client cl) {
 		if(LifeState == LifeState.Dead) {
@@ -44,7 +45,7 @@ public partial class BasePlayer : AnimEntity {
 		Sound.FromWorld(name, position);
 	}
 
-	public virtual void SimulateActiveChild(Client client, Entity child) {
+	public virtual void SimulateActiveChild(Client client, BaseCarriable child) {
 		if(LastActiveChild != child) {
 			OnActiveChildChanged(LastActiveChild, child);
 			LastActiveChild = child;
@@ -58,7 +59,7 @@ public partial class BasePlayer : AnimEntity {
 		}
 	}
 
-	public virtual void OnActiveChildChanged(Entity previous, Entity next) {
+	public virtual void OnActiveChildChanged(BaseCarriable previous, BaseCarriable next) {
 		previous?.ActiveEnd(this, previous.Owner != this);
 		next?.ActiveStart(this);
 	}
@@ -162,4 +163,15 @@ public partial class BasePlayer : AnimEntity {
 	protected PawnAnimator Animator { get; set; }
 
 	public virtual PawnAnimator GetActiveAnimator() => Animator;
+
+	public CameraMode CameraMode {
+		get => Components.Get<CameraMode>();
+		set {
+			var current = CameraMode;
+			if(current == value) return;
+
+			Components.RemoveAny<CameraMode>();
+			Components.Add(value);
+		}
+	}
 }

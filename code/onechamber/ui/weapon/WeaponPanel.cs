@@ -10,7 +10,7 @@ namespace SpeedDial.OneChamber.UI;
 [UseTemplate]
 public partial class OneChamberWeaponPanel : WeaponPanel {
 	public override void Tick() {
-		var weapon = Local.Pawn.ActiveChild as Weapon;
+		var weapon = (Local.Pawn as BasePlayer).ActiveChild as Weapon;
 
 		// ammo
 		{

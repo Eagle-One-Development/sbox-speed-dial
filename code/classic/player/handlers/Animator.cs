@@ -14,11 +14,12 @@ public class ClassicAnimator : PawnAnimator {
 		SetLookAt("lookat_pos", lookPos);
 		SetLookAt("aimat_pos", aimPos);
 
-		if(Pawn.ActiveChild is BaseCarriable carry) {
+		var pawn = Pawn as BasePlayer;
+		if(pawn.ActiveChild is BaseCarriable carry) {
 			carry.SimulateAnimator(this);
 		} else {
-			SetParam("holdtype", 0);
-			SetParam("aimat_weight", 0.5f);
+			SetAnimParameter("holdtype", 0);
+			SetAnimParameter("aimat_weight", 0.5f);
 		}
 	}
 
@@ -37,9 +38,9 @@ public class ClassicAnimator : PawnAnimator {
 		// so the foot speed matches the floor speed. Your art should probably
 		// do this - but that ain't how we roll
 		//
-		SetParam("walkspeed_scale", 2.0f / 300.0f);
+		SetAnimParameter("walkspeed_scale", 2.0f / 300.0f);
 		var groundspeed = Velocity.WithZ(0).Length;
-		SetParam("move_groundspeed", groundspeed);
+		SetAnimParameter("move_groundspeed", groundspeed);
 
 		//
 		// Work out our movement relative to our body rotation
@@ -53,9 +54,9 @@ public class ClassicAnimator : PawnAnimator {
 		// Set our speeds on the animgraph
 		//
 		var speedScale = Pawn.Scale;
-		SetParam("velocity", dir);
-		SetParam("forward", forward);
-		SetParam("sideward", sideward);
-		SetParam("wishspeed", speedScale > 0.0f ? WishVelocity.Length / speedScale : 0.0f);
+		SetAnimParameter("velocity", dir.Length);
+		SetAnimParameter("forward", forward);
+		SetAnimParameter("sideward", sideward);
+		SetAnimParameter("wishspeed", speedScale > 0.0f ? WishVelocity.Length / speedScale : 0.0f);
 	}
 }

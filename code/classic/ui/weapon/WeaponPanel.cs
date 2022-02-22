@@ -29,7 +29,7 @@ public partial class WeaponPanel : Panel {
 	}
 
 	public override void Tick() {
-		var weapon = Local.Pawn.ActiveChild as Weapon;
+		var weapon = (Local.Pawn as BasePlayer).ActiveChild as Weapon;
 
 		// ammo
 		{

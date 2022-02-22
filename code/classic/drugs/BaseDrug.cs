@@ -27,8 +27,7 @@ public partial class ClassicBaseDrug : ModelEntity {
 
 		MoveType = MoveType.None;
 
-		GlowState = GlowStates.On;
-		GlowColor = HighlightColor;
+		this.SetGlowState(true, HighlightColor);
 
 		PickupTrigger = new();
 		PickupTrigger.Position = Position;

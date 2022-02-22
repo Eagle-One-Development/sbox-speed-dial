@@ -24,7 +24,7 @@ public partial class KothBotBehaviour : ClassicBotBehaviour {
 	}
 
 	public override Vector3 EvaulatePositon(Entity target) {
-		var pawn = Bot.Client.Pawn;
+		var pawn = Bot.Client.Pawn as BasePlayer;
 
 		// Don't go right up to the player if we have a gun
 		if(target is ClassicPlayer player && pawn.ActiveChild != null) {

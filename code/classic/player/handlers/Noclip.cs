@@ -16,7 +16,7 @@ public partial class ClassicNoclipController : PawnController {
 
 		Velocity = Velocity.Approach(0, Velocity.Length * Time.Delta * 10);
 
-		EyeRot = Input.Rotation;
+		EyeRotation = Input.Rotation;
 		WishVelocity = Velocity;
 		GroundEntity = null;
 		BaseVelocity = Vector3.Zero;

@@ -42,13 +42,7 @@ public partial class Weapon : BaseCarriable {
 		PickupTrigger.Position = Position;
 		PickupTrigger.EnableTouchPersists = true;
 
-		GlowDistanceStart = 0;
-		GlowDistanceEnd = 1000;
-
-		GlowColor = Color.White;
-
-		GlowState = GlowStates.On;
-		GlowActive = true;
+		this.SetGlowState(true, new Color(1, 1, 1, 1));
 	}
 
 	[SpeedDialEvent.Gamemode.Reset]
@@ -59,23 +53,18 @@ public partial class Weapon : BaseCarriable {
 		}
 	}
 
-	private void SetGlow(bool state) {
-		if(state) {
-			GlowState = GlowStates.On;
-			GlowActive = true;
-
-			if(AmmoClip > 0)
-				GlowColor = new Color(0.2f, 1, 0.2f, 1);
-			else {
-				if(AmmoClip == -1)
-					GlowColor = new Color(1, 1, 1, 1);
-				else
-					GlowColor = new Color(1, 0.2f, 0.2f, 1);
-			}
-		} else {
-			GlowState = GlowStates.Off;
-			GlowActive = false;
+	private void SetGlow(bool state = true) {
+		Color col;
+		if(AmmoClip > 0)
+			col = new Color(0.2f, 1, 0.2f, 1);
+		else {
+			if(AmmoClip == -1)
+				col = new Color(1, 1, 1, 1);
+			else
+				col = new Color(1, 0.2f, 0.2f, 1);
 		}
+
+		this.SetGlowState(state, col);
 	}
 
 	[Event.Tick]
@@ -97,8 +86,8 @@ public partial class Weapon : BaseCarriable {
 	}
 
 	public override void SimulateAnimator(PawnAnimator anim) {
-		anim.SetParam("holdtype", (int)Blueprint.HoldType);
-		anim.SetParam("aimat_weight", 1.0f);
+		anim.SetAnimParameter("holdtype", (int)Blueprint.HoldType);
+		anim.SetAnimParameter("aimat_weight", 1.0f);
 	}
 
 	public override void Simulate(Client owner) {
@@ -167,7 +156,7 @@ public partial class Weapon : BaseCarriable {
 		Particles.Create(Blueprint.MuzzleParticle, EffectEntity, Blueprint.MuzzleAttach);
 		Particles.Create(Blueprint.EjectParticle, EffectEntity, Blueprint.EjectAttach);
 		PlaySound(Blueprint.ShootSound);
-		(Owner as AnimEntity).SetAnimBool("b_attack", true); // shoot anim
+		(Owner as AnimEntity).SetAnimParameter("b_attack", true); // shoot anim
 	}
 
 	public virtual void ShootBullet(float spread, float force, float damage, float bulletSize, int seed) {
