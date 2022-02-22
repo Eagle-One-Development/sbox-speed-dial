@@ -173,7 +173,7 @@ public partial class ClassicPlayer : BasePlayer {
 
 			using(Prediction.Off()) {
 				if(IsServer) {
-					var damage = DamageInfo.FromBullet(tr.EndPos, EyeRotation.Forward * 100, 200)
+					var damage = DamageInfo.FromBullet(tr.EndPosition, EyeRotation.Forward * 100, 200)
 						.UsingTraceResult(tr)
 						.WithAttacker(this);
 

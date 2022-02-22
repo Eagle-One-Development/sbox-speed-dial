@@ -175,14 +175,14 @@ public partial class Weapon : BaseCarriable {
 
 			// blood plip where player was hit
 			if(tr.Entity is ClassicPlayer hitply) {
-				var ps = Particles.Create("particles/blood/blood_plip.vpcf", tr.EndPos);
+				var ps = Particles.Create("particles/blood/blood_plip.vpcf", tr.EndPosition);
 				ps?.SetForward(0, tr.Normal);
 			}
 
 			if(index == 0) {
-				BulletTracer(EffectEntity.GetAttachment("muzzle", true).Value.Position, tr.EndPos);
+				BulletTracer(EffectEntity.GetAttachment("muzzle", true).Value.Position, tr.EndPosition);
 			} else {
-				BulletTracer(tr.StartPos, tr.EndPos);
+				BulletTracer(tr.StartPosition, tr.EndPosition);
 			}
 
 			index++;
@@ -191,7 +191,7 @@ public partial class Weapon : BaseCarriable {
 			if(!tr.Entity.IsValid()) continue;
 
 			using(Prediction.Off()) {
-				var damageInfo = DamageInfo.FromBullet(tr.EndPos, forward * 100 * force, damage)
+				var damageInfo = DamageInfo.FromBullet(tr.EndPosition, forward * 100 * force, damage)
 					.UsingTraceResult(tr)
 					.WithAttacker(Owner)
 					.WithWeapon(this);
@@ -229,10 +229,10 @@ public partial class Weapon : BaseCarriable {
 		var player = Owner as ClassicPlayer;
 
 		if(Blueprint.Penetrate) {
-			var dir = (bullet.EndPos - bullet.StartPos).Normal;
+			var dir = (bullet.EndPosition - bullet.StartPosition).Normal;
 			if(bullet.Hit && wallBangedDistance < MaxWallbangDistance) {
 				var inNormal = bullet.Normal;
-				var inPoint = bullet.EndPos - inNormal * (size / 2);
+				var inPoint = bullet.EndPosition - inNormal * (size / 2);
 
 				// adding dir to not be inside the inPoint
 				var wallbangTest = Trace.Ray(inPoint + dir, inPoint + dir * (MaxWallbangDistance - 1))
@@ -248,7 +248,7 @@ public partial class Weapon : BaseCarriable {
 
 				if(wallbangTest.Hit) {
 					var outNormal = wallbangTest.Normal;
-					var outPoint = wallbangTest.EndPos - outNormal * 0.5f;
+					var outPoint = wallbangTest.EndPosition - outNormal * 0.5f;
 
 					if(outNormal != Vector3.Zero && inNormal.Dot(outNormal) >= 0) {
 
@@ -268,8 +268,8 @@ public partial class Weapon : BaseCarriable {
 		if(player.ActiveDrug && player.DrugType == DrugType.Ollie) {
 			// pierce through the first player hit
 			if(bullet.Entity is ClassicPlayer) {
-				var dir = bullet.EndPos - bullet.StartPos;
-				var penetrate = Trace.Ray(bullet.EndPos, bullet.EndPos + dir.Normal * 100f)
+				var dir = bullet.EndPosition - bullet.StartPosition;
+				var penetrate = Trace.Ray(bullet.EndPosition, bullet.EndPosition + dir.Normal * 100f)
 						.UseHitboxes()
 						.Ignore(this)
 						.Ignore(bullet.Entity)
@@ -283,12 +283,12 @@ public partial class Weapon : BaseCarriable {
 				yield return penetrate;
 			} else {
 				// ricochet off the wall
-				var inDir = bullet.EndPos - bullet.StartPos;
+				var inDir = bullet.EndPosition - bullet.StartPosition;
 				float dot = Vector3.Dot(inDir.Normal, bullet.Normal);
 
 				if(dot < 0) {
 					var dir = Vector3.Reflect(inDir, bullet.Normal).WithZ(0);
-					var ricochet = Trace.Ray(bullet.EndPos, end + dir * Blueprint.BulletRange)
+					var ricochet = Trace.Ray(bullet.EndPosition, end + dir * Blueprint.BulletRange)
 							.UseHitboxes()
 							.Ignore(Owner)
 							.Ignore(this)

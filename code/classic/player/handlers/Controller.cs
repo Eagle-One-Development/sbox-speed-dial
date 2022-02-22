@@ -76,10 +76,10 @@ public partial class ClassicController : BasePlayerController {
 
 	public override void Simulate() {
 		// do this stuff first so EyePosition is valid when frozen
-		EyePosLocal = Vector3.Up * (EyeHeight * Pawn.Scale);
+		EyeLocalPosition = Vector3.Up * (EyeHeight * Pawn.Scale);
 		UpdateBBox();
 
-		EyePosLocal += TraceOffset;
+		EyeLocalPosition += TraceOffset;
 		EyeRotation = Input.Rotation;
 
 		if((Pawn as ClassicPlayer).Frozen) { WishVelocity = Vector3.Zero; return; }
@@ -179,7 +179,7 @@ public partial class ClassicController : BasePlayerController {
 			var pm = TraceBBox(Position, dest);
 
 			if(pm.Fraction == 1) {
-				Position = pm.EndPos;
+				Position = pm.EndPosition;
 				StayOnGround();
 				return;
 			}
@@ -210,7 +210,7 @@ public partial class ClassicController : BasePlayerController {
 		Position = startPos;
 		Velocity = startVel;
 		var trace = TraceBBox(Position, Position + Vector3.Up * (StepSize + DistEpsilon));
-		if(!trace.StartedSolid) Position = trace.EndPos;
+		if(!trace.StartedSolid) Position = trace.EndPosition;
 		TryPlayerMove();
 
 		// If we move down from here, did we land on ground?
@@ -223,7 +223,7 @@ public partial class ClassicController : BasePlayerController {
 		}
 
 		if(!trace.StartedSolid)
-			Position = trace.EndPos;
+			Position = trace.EndPosition;
 
 		var withStepPos = Position;
 
@@ -376,7 +376,7 @@ public partial class ClassicController : BasePlayerController {
 		}
 
 		if(bMoveToEndPos && !pm.StartedSolid && pm.Fraction > 0.0f && pm.Fraction < 1.0f) {
-			Position = pm.EndPos;
+			Position = pm.EndPosition;
 		}
 
 	}
@@ -430,7 +430,7 @@ public partial class ClassicController : BasePlayerController {
 
 		// See how far up we can go without getting stuck
 		var trace = TraceBBox(Position, start);
-		start = trace.EndPos;
+		start = trace.EndPosition;
 
 		// Now trace down from a known safe position
 		trace = TraceBBox(start, end);
@@ -440,7 +440,7 @@ public partial class ClassicController : BasePlayerController {
 		if(trace.StartedSolid) return;
 		if(Vector3.GetAngle(Vector3.Up, trace.Normal) > GroundAngle) return;
 
-		Position = trace.EndPos;
+		Position = trace.EndPosition;
 	}
 
 	protected void RestoreGroundPos() {

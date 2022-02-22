@@ -17,14 +17,14 @@ public partial class Weapon {
 			if(TimeSinceSpecial <= 0.20f && Firing) {
 				foreach(var tr in TraceBullet(start.Position, end.Position, 4)) {
 					if(tr.Entity is ClassicPlayer hitPlayer && hitPlayer.IsValid()) {
-						var ps = Particles.Create("particles/blood/blood_plip.vpcf", tr.EndPos);
+						var ps = Particles.Create("particles/blood/blood_plip.vpcf", tr.EndPosition);
 						ps?.SetForward(0, tr.Normal);
 
 						PlaySound("sd_bat.hit");
 
 						if(IsServer) {
 							using(Prediction.Off()) {
-								var damageInfo = DamageInfo.FromBullet(tr.EndPos, 1000, 100)
+								var damageInfo = DamageInfo.FromBullet(tr.EndPosition, 1000, 100)
 									.UsingTraceResult(tr)
 									.WithAttacker(Owner)
 									.WithWeapon(this);
