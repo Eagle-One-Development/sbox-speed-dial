@@ -45,9 +45,5 @@ public partial class WinScreen : Panel {
 		FirstPanel?.SetClass("open", Open && FirstPanel.Client.IsValid());
 		SecondPanel?.SetClass("open", Open && SecondPanel.Client.IsValid());
 		ThirdPanel?.SetClass("open", Open && ThirdPanel.Client.IsValid());
-
-		if(Debug.UI && Input.Pressed(InputButton.Walk)) {
-			UpdatePanels();
-		}
 	}
 }
