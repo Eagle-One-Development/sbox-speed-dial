@@ -9,6 +9,7 @@ public partial class OneChamberScoreboardEntry : Panel {
 	public Label PlayerName { get; set; }
 	public Label Lives { get; set; }
 	public Image InputMethod { get; set; }
+	public Label Ping { get; set; }
 
 	RealTimeSince TimeSinceUpdate = 0;
 
@@ -36,7 +37,10 @@ public partial class OneChamberScoreboardEntry : Panel {
 			Lives.Text = "-";
 			AddClass("dead");
 		}
-			
+
+		Ping.Text = $"{Client.Ping}ms";
+		Ping.SetClass("hidden", !Input.Down(InputButton.Walk));
+
 		SetClass("me", Client == Local.Client && Client.All.Count > 1);
 		InputMethod.SetClass("hidden", !Input.UsingController);
 	}

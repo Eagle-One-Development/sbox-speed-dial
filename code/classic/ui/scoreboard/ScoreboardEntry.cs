@@ -8,6 +8,7 @@ public partial class ClassicScoreboardEntry : Panel {
 	public Label Score { get; set; }
 	public Label MaxCombo { get; set; }
 	public Image InputMethod { get; set; }
+	public Label Ping { get; set; }
 
 	RealTimeSince TimeSinceUpdate = 0;
 
@@ -33,6 +34,9 @@ public partial class ClassicScoreboardEntry : Panel {
 		var scoreFormatted = string.Format(System.Globalization.CultureInfo.GetCultureInfo("de-DE"), "{0:#,##0}", Client.GetValue("score", 0));
 		Score.Text = $"{scoreFormatted}";
 		MaxCombo.Text = $"{Client.GetValue("maxcombo", 0)}";
+
+		Ping.Text = $"{Client.Ping}ms";
+		Ping.SetClass("hidden", !Input.Down(InputButton.Walk));
 
 		SetClass("me", Client == Local.Client && Client.All.Count > 1);
 		InputMethod.SetClass("hidden", !Input.UsingController);

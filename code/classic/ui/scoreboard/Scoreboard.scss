@@ -81,6 +81,17 @@ classicscoreboard {
 				align-items: center;
 			}
 
+			.ping {
+				position: absolute;
+				right: 5px;
+				align-self: center;
+				font-size: 12px;
+
+				&.hidden {
+					display: none;
+				}
+			}
+
 			&.me {
 				background-color: $vhs_cyan;
 			}
