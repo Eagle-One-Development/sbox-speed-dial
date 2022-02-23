@@ -1,6 +1,6 @@
 @import "/classic/ui/_vars/globals.scss";
 
-.scoreboard {
+onechamberscoreboard {
 	position: absolute;
 	z-index: 100;
 	flex-direction: column;
@@ -50,6 +50,20 @@
 			margin: 3px;
 			background-color: white;
 			overflow: hidden;
+
+			.controller {
+				position: absolute;
+				left: 5px;
+				top: 4px;
+				align-self: center;
+				background-image-tint: black;
+				width: 22px;
+				aspect-ratio: 1;
+
+				&.hidden {
+					display: none;
+				}
+			}
 
 			.name {
 				margin-left: 30px;

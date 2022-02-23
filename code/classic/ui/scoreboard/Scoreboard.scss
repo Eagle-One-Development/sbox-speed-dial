@@ -1,6 +1,6 @@
 @import "/classic/ui/_vars/globals.scss";
 
-.scoreboard {
+classicscoreboard {
 	position: absolute;
 	z-index: 100;
 	flex-direction: column;
@@ -52,14 +52,18 @@
 			background-color: white;
 			overflow: hidden;
 
-			.inputmethod {
+			.controller {
 				position: absolute;
-				left: 4px;
-				top: 3px;
+				left: 5px;
+				top: 4px;
 				align-self: center;
-				color: black;
-				font-size: 24px;
-				font-family: MaterialIcons;
+				background-image-tint: black;
+				width: 22px;
+				aspect-ratio: 1;
+
+				&.hidden {
+					display: none;
+				}
 			}
 
 			.name {

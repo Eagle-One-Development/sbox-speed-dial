@@ -8,6 +8,7 @@ public partial class OneChamberScoreboardEntry : Panel {
 
 	public Label PlayerName { get; set; }
 	public Label Lives { get; set; }
+	public Image InputMethod { get; set; }
 
 	RealTimeSince TimeSinceUpdate = 0;
 
@@ -37,6 +38,7 @@ public partial class OneChamberScoreboardEntry : Panel {
 		}
 			
 		SetClass("me", Client == Local.Client && Client.All.Count > 1);
+		InputMethod.SetClass("hidden", !Input.UsingController);
 	}
 
 	public virtual void UpdateFrom(Client client) {

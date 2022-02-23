@@ -7,6 +7,7 @@ public partial class ClassicScoreboardEntry : Panel {
 	public Label PlayerName { get; set; }
 	public Label Score { get; set; }
 	public Label MaxCombo { get; set; }
+	public Image InputMethod { get; set; }
 
 	RealTimeSince TimeSinceUpdate = 0;
 
@@ -34,6 +35,7 @@ public partial class ClassicScoreboardEntry : Panel {
 		MaxCombo.Text = $"{Client.GetValue("maxcombo", 0)}";
 
 		SetClass("me", Client == Local.Client && Client.All.Count > 1);
+		InputMethod.SetClass("hidden", !Input.UsingController);
 	}
 
 	public virtual void UpdateFrom(Client client) {
