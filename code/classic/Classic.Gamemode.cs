@@ -68,7 +68,7 @@ public partial class ClassicGamemode : Gamemode {
 	protected override void OnFinish() {
 		foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
 			// lol
-			(client.Pawn as ClassicPlayer).StopSoundtrack(To.Single(client));
+			(client.Pawn as ClassicPlayer).StopSoundtrack(To.Single(client), true);
 		}
 	}
 
