@@ -119,10 +119,14 @@ public partial class OneChamberPlayer : ClassicPlayer {
 				ActiveChild = StashedGun;
 				StashedGun = null;
 			}
-			if((ActiveChild as Weapon).AmmoClip > 0) {
-				PlaySound("sd_pickup.loaded");
-			} else {
-				PlaySound("sd_pickup.empty");
+			using(Prediction.Off()) {
+				if(IsServer) {
+					if((ActiveChild as Weapon).AmmoClip > 0) {
+						PlaySound("sd_pickup.loaded");
+					} else {
+						PlaySound("sd_pickup.empty");
+					}
+				}
 			}
 		}
 	}
