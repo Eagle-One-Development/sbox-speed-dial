@@ -123,10 +123,10 @@ public partial class WeaponBlueprint : Asset {
 		Precache.Add(MuzzleParticle);
 		Precache.Add(EjectParticle);
 
-		Precache.Add($"{ShootSound}.sound");
-		Precache.Add($"{DryFireSound}.sound");
-		Precache.Add($"{EmptyPickupSound}.sound");
-		Precache.Add($"{LoadedPickupSound}.sound");
+		//Precache.Add($"{ShootSound}");
+		//Precache.Add($"{DryFireSound}");
+		//Precache.Add($"{EmptyPickupSound}");
+		//Precache.Add($"{LoadedPickupSound}");
 
 		WorldModel = Model.Load(WorldModelPath);
 
