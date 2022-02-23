@@ -115,7 +115,6 @@ public abstract partial class Gamemode : Entity {
 		CallEndEvent();
 
 		DestroyGamemodeUIClient();
-		Delete();
 	}
 
 	protected virtual void OnFinish() { }
