@@ -39,10 +39,10 @@ public partial class OneChamberScoreboardEntry : Panel {
 		}
 
 		Ping.Text = $"{Client.Ping}ms";
-		Ping.SetClass("hidden", !Input.Down(InputButton.Walk));
+		Ping.SetClass("hidden", !Input.Down(InputButton.Walk) || Client.IsBot);
 
 		SetClass("me", Client == Local.Client && Client.All.Count > 1);
-		InputMethod.SetClass("hidden", !Input.UsingController);
+		InputMethod.SetClass("hidden", !Input.UsingController || Client.IsBot);
 	}
 
 	public virtual void UpdateFrom(Client client) {
