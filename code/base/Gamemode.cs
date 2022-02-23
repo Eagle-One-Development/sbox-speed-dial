@@ -63,7 +63,9 @@ public abstract partial class Gamemode : Entity {
 	public static void BotReset() {
 		// apply gamemode behaviour to all bots
 		foreach(var bot in Bot.All) {
-			Instance.OnBotAdded(bot as ClassicBot);
+			if(bot is ClassicBot cbot) {
+				Instance.OnBotAdded(cbot);
+			}
 		}
 	}
 
