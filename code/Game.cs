@@ -330,7 +330,7 @@ public partial class Game : GameBase {
 		Current.SetGamemode(gamemode);
 	}
 
-	[ServerCmd("sd_bot")]
+	[AdminCmd("sd_bot")]
 	public static void SpawnBot() {
 		Current.ActiveGamemode?.OnBotAdded(new ClassicBot());
 	}
