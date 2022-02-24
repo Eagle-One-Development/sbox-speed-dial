@@ -10,6 +10,7 @@ public partial class ClassicScoreboard : Panel {
 	public Panel Footer { get; set; }
 	public Label GamemodeInfo { get; set; }
 	public Label MapInfo { get; set; }
+	public Label LoopInfo { get; set; }
 
 	public ClassicScoreboard() {
 		BindClass("open", () => Input.Down(InputButton.Score));
@@ -21,6 +22,7 @@ public partial class ClassicScoreboard : Panel {
 
 		GamemodeInfo.Text = $"Gamemode: {Game.Current.ActiveGamemode?.ClassInfo.Name}";
 		MapInfo.Text = $"Map: {Global.MapName}";
+		LoopInfo.Text = $"Games until vote: {Game.Current.ActiveGamemode.GameloopsUntilVote - Game.Current.CompletedGameloops}";
 		Footer.SetClass("visible", true);
 
 		// Clients that joined

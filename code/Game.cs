@@ -330,12 +330,17 @@ public partial class Game : GameBase {
 		Current.SetGamemode(gamemode);
 	}
 
-	[AdminCmd("sd_gamemode_destroy")]
-	public static void DestroyGamemode() {
+	[ServerCmd("sd_gamemode_end")]
+	public static void EndGamemode() {
+		Current.OnEndGamemode();
+	}
+
+	private void OnEndGamemode() {
 		Host.AssertServer();
 		Current.ActiveGamemode?.Finish();
 		Current.ActiveGamemode = null;
 		Map.Reset(CleanupFilter);
+		Log.Debug("gamemode ended");
 	}
 
 	[AdminCmd("sd_bot")]
@@ -352,6 +357,8 @@ public partial class Game : GameBase {
 
 		gamemode.Parent = this;
 
+		// we try to explicitly finish a gamemode before we start a new one to separate them by voting
+		// this is mostly for if a gamemode is being cut short for whatever reason (debug commands)
 		ActiveGamemode?.Finish();
 		ActiveGamemode = gamemode;
 
@@ -381,6 +388,22 @@ public partial class Game : GameBase {
 			}
 			// in case the gamemode wants to force some specific shit
 			ActiveGamemode?.HandleGamemodeEntity(entity);
+		}
+	}
+
+	[Net]
+	public int CompletedGameloops { get; set; } = 0;
+
+	/// <summary>
+	/// This is called when a gamemode's gameloop is finished. We use this to account for voting between gamemodes
+	/// </summary>
+	public void GameloopCompleted() {
+		Log.Debug("gameloop completed");
+		if(!ActiveGamemode.IsValid)
+			return;
+		CompletedGameloops++;
+		if(CompletedGameloops >= ActiveGamemode?.GameloopsUntilVote) {
+			EndGamemode();
 		}
 	}
 

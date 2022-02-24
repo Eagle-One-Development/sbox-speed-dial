@@ -37,6 +37,11 @@ public abstract partial class Gamemode : Entity {
 	public bool Paused => State == GamemodeState.Paused;
 	public bool Voting => State == GamemodeState.Voting;
 
+	/// <summary>
+	/// How many gameloops this gamemode will last before we end it
+	/// </summary>
+	public virtual int GameloopsUntilVote => 3;
+
 	public virtual GamemodeIdentity Identity => GamemodeIdentity.Base;
 
 	public Gamemode() {
