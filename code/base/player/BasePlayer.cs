@@ -132,7 +132,6 @@ public partial class BasePlayer : AnimEntity {
 		if(Game.Current.PawnDamaged(this, ref info)) {
 			LastRecievedDamage = info;
 			base.TakeDamage(info);
-			this.ProceduralHitReaction(info);
 		}
 	}
 

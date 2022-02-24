@@ -8,17 +8,14 @@ characterselect {
     background-color: rgba(black, 0.9);
     backdrop-filter: blur(25px);
     opacity: 0;
-    bottom: -100%;
-    transition: all 0.5s ease-in-out;
+    //bottom: -100%;
+    transition: all 0.3s ease-out;
+    transform: scale(1.1);
 
     &.open {
         opacity: 1;
-        bottom: 0%;
-    }
-
-    &:intro {
-        opacity: 0;
-        bottom: -100%;
+        // bottom: 0%;
+        transform: scale(1);
     }
 
     .gradient {
