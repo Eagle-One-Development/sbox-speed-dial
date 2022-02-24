@@ -163,6 +163,10 @@ public partial class BasePlayer : AnimEntity {
 
 	public virtual PawnAnimator GetActiveAnimator() => Animator;
 
+	//
+	// Camera
+	//
+
 	public CameraMode Camera {
 		get => Components.Get<CameraMode>();
 		set {
@@ -170,6 +174,21 @@ public partial class BasePlayer : AnimEntity {
 			if(current == value) return;
 
 			Components.RemoveAny<CameraMode>();
+			Components.Add(value);
+		}
+	}
+
+	//
+	// Team
+	//
+
+	public Team Team {
+		get => Components.Get<Team>();
+		set {
+			var current = Team;
+			if(current == value) return;
+
+			Components.RemoveAny<Team>();
 			Components.Add(value);
 		}
 	}

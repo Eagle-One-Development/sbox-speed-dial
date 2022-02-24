@@ -1,8 +1,8 @@
 namespace SpeedDial;
 
-public class Team : EntityComponent {
-	public virtual string Name => ClassInfo.Title;
-	public virtual string Description => ClassInfo.Description;
-	public virtual string Icon => ClassInfo.Icon;
-	public virtual Color Color => Color.White;
+public abstract class Team : EntityComponent {
+	public virtual string Name { get; }
+	public virtual string Description { get; }
+	public virtual string Icon { get; }
+	public virtual Color Color { get; }
 }
