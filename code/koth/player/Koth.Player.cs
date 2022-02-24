@@ -29,7 +29,7 @@ public partial class KothPlayer : ClassicPlayer {
 
 	public override void Touch(Entity other) {
 		base.Touch(other);
-		if(other is HillSpot) {
+		if(other is HillSpot && Gamemode.Instance.Running) {
 
 			if(TimeSinceCircleScore > 1f) {
 				//Every Second add 10 score multiplied by our current combo
