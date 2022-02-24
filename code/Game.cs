@@ -330,6 +330,14 @@ public partial class Game : GameBase {
 		Current.SetGamemode(gamemode);
 	}
 
+	[AdminCmd("sd_gamemode_destroy")]
+	public static void DestroyGamemode() {
+		Host.AssertServer();
+		Current.ActiveGamemode?.Finish();
+		Current.ActiveGamemode = null;
+		Map.Reset(CleanupFilter);
+	}
+
 	[AdminCmd("sd_bot")]
 	public static void SpawnBot() {
 		Current.ActiveGamemode?.OnBotAdded(new ClassicBot());
@@ -346,6 +354,10 @@ public partial class Game : GameBase {
 
 		ActiveGamemode?.Finish();
 		ActiveGamemode = gamemode;
+
+		// just to be sure, might save us some headaches
+		Map.Reset(CleanupFilter);
+
 		// call this before we start the gamemode so entities are valid and enabled when we start (or disabled)
 		UpdateGamemodeEntities(gamemode.Identity);
 		ActiveGamemode?.Start();
@@ -370,6 +382,23 @@ public partial class Game : GameBase {
 			// in case the gamemode wants to force some specific shit
 			ActiveGamemode?.HandleGamemodeEntity(entity);
 		}
+	}
+
+	private static bool CleanupFilter(string className, Entity ent) {
+		// Basic Source engine stuff
+		if(className == "player" || className == "worldent" || className == "worldspawn" || className == "soundent" || className == "player_manager") {
+			return false;
+		}
+
+		// When creating entities we only have classNames to work with..
+		if(ent == null || !ent.IsValid) return true;
+
+		// Gamemode related stuff, game entity, HUD, etc
+		if(ent is GameBase || ent.Parent is GameBase || ent is Hud) {
+			return false;
+		}
+
+		return true;
 	}
 }
 
