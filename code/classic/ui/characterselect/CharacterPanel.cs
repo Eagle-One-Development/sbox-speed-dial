@@ -25,6 +25,6 @@ public partial class CharacterPanel : Panel {
 		CharacterName.Text = $"{character.CharacterName.ToUpper()}";
 		Description.Text = $"\"{character.Description.ToUpper()}\"";
 		var wepblueprint = WeaponBlueprint.GetBlueprint(character.WeaponClass);
-		Weapon.Texture = wepblueprint.IconTexture;
+		Weapon.Texture = wepblueprint?.IconTexture;
 	}
 }
