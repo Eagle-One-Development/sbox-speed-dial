@@ -13,7 +13,7 @@ public partial class ClassicSpectator : ClassicPlayer {
 		EnableDrawing = false;
 
 		Controller = new OneChamberSpectatorController();
-		CameraMode = new OneChamberSpectatorCamera();
+		Camera = new OneChamberSpectatorCamera();
 		Animator = new ClassicAnimator();
 
 		LifeState = LifeState.Alive;

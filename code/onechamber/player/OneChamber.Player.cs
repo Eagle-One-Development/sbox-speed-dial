@@ -28,7 +28,7 @@ public partial class OneChamberPlayer : ClassicPlayer {
 
 		Controller = new ClassicController();
 		Animator = new ClassicAnimator();
-		CameraMode = new ClassicCamera();
+		Camera = new ClassicCamera();
 
 		EnableAllCollisions = true;
 		EnableDrawing = true;

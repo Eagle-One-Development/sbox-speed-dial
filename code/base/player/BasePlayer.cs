@@ -164,10 +164,10 @@ public partial class BasePlayer : AnimEntity {
 
 	public virtual PawnAnimator GetActiveAnimator() => Animator;
 
-	public CameraMode CameraMode {
+	public CameraMode Camera {
 		get => Components.Get<CameraMode>();
 		set {
-			var current = CameraMode;
+			var current = Camera;
 			if(current == value) return;
 
 			Components.RemoveAny<CameraMode>();

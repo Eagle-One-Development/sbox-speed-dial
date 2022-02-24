@@ -41,7 +41,7 @@ public partial class ClassicPlayer : BasePlayer {
 
 		Controller = new ClassicController();
 		Animator = new ClassicAnimator();
-		CameraMode = new ClassicCamera();
+		Camera = new ClassicCamera();
 
 		EnableAllCollisions = true;
 		EnableDrawing = true;
