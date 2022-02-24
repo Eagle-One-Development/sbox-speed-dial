@@ -23,7 +23,7 @@ public partial class HillSpot : ModelEntity {
 				ScreenHints.FireEvent(To.Single(client), "HILL MOVED", "Good luck!");
 			}
 
-			if(IsValid) {
+			if(IsValid && !IsClient) {
 				Delete();
 			}
 			return;

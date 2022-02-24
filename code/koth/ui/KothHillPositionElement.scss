@@ -1,0 +1,30 @@
+﻿KothHIllPositionElement {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    width: 100%;
+
+
+    .test{
+        position:absolute;
+        overflow:visible;
+        width:100%;
+        height:100%;
+
+
+        .icon {
+            position: absolute;
+
+            height: 5%;
+            aspect-ratio: 1;
+
+
+            opacity: 0;
+
+            &.active {
+                opacity: 1;
+            }
+        }
+    }
+}

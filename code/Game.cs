@@ -19,7 +19,7 @@ namespace SpeedDial;
 public partial class Game : GameBase {
 
 	public static Game Current { get; protected set; }
-	public static string DefaultGamemode { get; } = "classic";
+	public static string DefaultGamemode { get; } = "koth";
 
 	[ServerVar("sd_min_players", Help = "The minimum players required to start the game.")]
 	public static int MinPlayers { get; set; } = 2;
