@@ -1,7 +1,7 @@
 ﻿@import "/classic/ui/_vars/globals.scss";
 
 voteitempanel {
-    width: 170px;
+    width: 210px;
     aspect-ratio: 1;
     background-color: white;
     border: 4px solid black;
@@ -27,7 +27,13 @@ voteitempanel {
     }
 
     &:hover {
+        cursor: pointer;
         background-color: gray;
+        sound-in: ui.button.over;
+    }
+
+    &:active {
+        sound-in: ui.button.press;
     }
 
     &.voted {

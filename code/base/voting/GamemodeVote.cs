@@ -2,7 +2,7 @@
 
 public partial class GamemodeVote : VoteEntity {
 
-	[ServerCmd]
+	[AdminCmd("sd_vote_gamemode_start")]
 	public static void Start() {
 		new GamemodeVote().OnStart();
 	}
@@ -10,6 +10,9 @@ public partial class GamemodeVote : VoteEntity {
 	private void OnStart() {
 		PopulateVoteItems();
 	}
+
+	public override string VoteTitle => "Gamemode Voting";
+	public override string VoteDescription => "Vote for the next Gamemode.";
 
 	// TEMP TEMP TEMP TEMP // TEMP TEMP TEMP TEMP // TEMP TEMP TEMP TEMP
 	private string[] gamemodes = {

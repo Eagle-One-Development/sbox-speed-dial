@@ -6,8 +6,7 @@ votingscreen {
     position: absolute;
     left: 0px;
     //
-    pointer-events: all;
-    z-index: 999;
+    z-index: 997;
     //
     justify-content: center;
     align-items: center;
@@ -19,12 +18,18 @@ votingscreen {
 
     &.open {
         opacity: 1;
+
         .canvas {
             transform: scale(1);
         }
     }
 
+    &.active {
+        pointer-events: all;
+    }
+
     .canvas {
+        transition: all 0.5s ease-in;
         width: 70%;
         height: 70%;
         transform: scale(1.1);
@@ -34,9 +39,14 @@ votingscreen {
 
         .header {
             bottom: 30px;
+            flex-direction: column;
 
             .title {
                 font-size: 35px;
+            }
+
+            .description {
+                font-size: 22px;
             }
         }
 
@@ -49,6 +59,24 @@ votingscreen {
                 justify-content: center;
                 flex-wrap: wrap;
             }
+        }
+    }
+
+    .progressbar {
+        width: 100%;
+        height: 15px;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        overflow: hidden;
+
+        .gradient {
+            width: 100vw;
+            height: 15px;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            background-image: linear-gradient(to left, rgba($vhs_cyan, 1), rgba($vhs_magenta, 1));
         }
     }
 }

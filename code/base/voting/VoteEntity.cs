@@ -5,6 +5,7 @@ public partial class VoteEntity : Entity {
 		base.Spawn();
 
 		Transmit = TransmitType.Always;
+		TimeSinceStarted = 0;
 	}
 
 	public VoteEntity() {
@@ -13,12 +14,16 @@ public partial class VoteEntity : Entity {
 
 	public static VoteEntity Current;
 	[Net] public bool Concluded { get; set; }
-	[Net]
-	public TimeSince TimeSinceConcluded { get; set; }
+	[Net] public TimeSince TimeSinceConcluded { get; set; }
 	[Net] public int WinnerIndex { get; set; } = -3;
 
 	[Net] private IDictionary<long, int> _votes { get; set; }
 	[Net] public IList<VoteItem> VoteItems { get; set; }
+
+	[Net] public TimeSince TimeSinceStarted { get; set; }
+	public virtual float VoteDuration => 15.0f;
+	public virtual string VoteTitle => "Vote Title";
+	public virtual string VoteDescription => "Vote Description";
 
 	public void AddVoteItem(string title, string description, string imagePath) {
 		Log.Debug($"add vote item {title}");
@@ -77,7 +82,7 @@ public partial class VoteEntity : Entity {
 		Log.Error("Cannot vote for non-existant vote item!");
 	}
 
-	[ServerCmd("sd_test_vote_start")]
+	[AdminCmd("sd_test_vote_start")]
 	public static void StartVote() {
 		if(Current is not null && !Current.Concluded) {
 			Log.Warning("New vote started while previous vote hasn't concluded!");
@@ -94,16 +99,24 @@ public partial class VoteEntity : Entity {
 		}
 	}
 
-	[ServerCmd("sd_vote_end")]
+	[Event.Tick.Server]
+	public void Tick() {
+		if(!Concluded && TimeSinceStarted >= VoteDuration) {
+			HandleVoteEnd();
+		}
+	}
+
+	[AdminCmd("sd_vote_end")]
 	public static void ConcludeVote() {
 		Current.HandleVoteEnd();
 	}
 
 	private void HandleVoteEnd() {
 		Host.AssertServer();
-		Log.Debug($"vote concluded {Concluded}");
+		Log.Debug($"vote concluded {Concluded} {TimeSinceConcluded}");
 		Concluded = true;
 		TimeSinceConcluded = 0;
+		Log.Debug($"{Concluded} {TimeSinceConcluded}");
 		var winner = GetWinnerIndex();
 
 		// -2 is our skip vote index

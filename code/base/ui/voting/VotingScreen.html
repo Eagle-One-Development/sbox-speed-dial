@@ -3,12 +3,16 @@
 <div>
     <div class="canvas">
         <div class="header">
-            <text class="title" @text="Title" />
+            <text class="title" @ref="Title" />
+            <text class="description" @ref="Description" />
         </div>
         <div class="body">
             <div class="items" @ref="Items" />
         </div>
         <!--skip vote item-->
         <VoteItemPanel />
+    </div>
+    <div class="progressbar" @ref="ProgressBar">
+        <div class="gradient" />
     </div>
 </div>
