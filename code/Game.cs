@@ -41,11 +41,11 @@ public partial class Game : GameBase {
 	}
 
 	protected override void OnDestroy() {
-		if(IsServer && ActiveGamemode is not null) {
-			Log.Debug($"Exit with gamemode {ActiveGamemode?.ClassInfo?.Name}");
+		if(IsServer && !string.IsNullOrWhiteSpace(LastGamemode)) {
+			Log.Debug($"Exit with gamemode {LastGamemode}");
 			var data = new GamemodeLobbyCookie();
 			data.LobbyId = Global.Lobby.Id;
-			data.Gamemode = ActiveGamemode.ClassInfo.Name;
+			data.Gamemode = LastGamemode;
 			FileSystem.Data.WriteJson("sd_lobby_gamemode_cookie.json", data);
 		}
 	}
