@@ -30,6 +30,7 @@ public partial class ClassicPlayer {
 		if(!Settings.MusicEnabled) return;
 		await GameTask.DelaySeconds(delay);
 		if(!SoundtrackPlaying) {
+			SoundTrack?.Stop();
 			SoundTrack = SoundTrack.FromScreen(track);
 			SoundtrackPlaying = true;
 		}
