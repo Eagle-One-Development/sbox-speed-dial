@@ -13,7 +13,9 @@ public partial class VoteEntity : Entity {
 
 	public static VoteEntity Current;
 	[Net] public bool Concluded { get; set; }
-	private TimeSince TimeSinceConcluded;
+	[Net]
+	public TimeSince TimeSinceConcluded { get; set; }
+	[Net] public int WinnerIndex { get; set; } = -3;
 
 	[Net] private IDictionary<long, int> _votes { get; set; }
 	[Net] public IList<VoteItem> VoteItems { get; set; }
@@ -24,7 +26,9 @@ public partial class VoteEntity : Entity {
 	}
 
 	public VoteItem GetVoteItem(int index) {
-		return VoteItems[index];
+		if(VoteItems.Count - 1 >= index)
+			return VoteItems[index];
+		return null;
 	}
 
 	/// <summary>
@@ -107,6 +111,7 @@ public partial class VoteEntity : Entity {
 			OnVoteSkipped();
 			return;
 		}
+		WinnerIndex = winner;
 		OnVoteConcluded(VoteItems[winner]);
 	}
 

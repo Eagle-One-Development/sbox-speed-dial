@@ -3,7 +3,7 @@
 [UseTemplate]
 public class VoteItemPanel : Panel {
 	private int index;
-	private VoteItem Item => VoteEntity.Current.VoteItems[index];
+	private VoteItem Item => VoteEntity.Current?.GetVoteItem(index);
 
 	private string Title { get; set; }
 	private string Description { get; set; }
@@ -24,6 +24,7 @@ public class VoteItemPanel : Panel {
 	public override void Tick() {
 		SetClass("skip", index == -2);
 		SetClass("voted", VoteEntity.Current?.GetClientVotedIndex(Local.Client.PlayerId) == index);
+		SetClass("winner", VoteEntity.Current?.WinnerIndex == index);
 		Votes = $"{VoteEntity.Current?.GetVotes(index)}";
 	}
 

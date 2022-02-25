@@ -9,7 +9,7 @@ public partial class VotingScreen : Panel {
 	private TimeSince _updateDelta;
 	private VoteEntity Vote => VoteEntity.Current;
 	public override void Tick() {
-		SetClass("open", Vote.IsValid() && !Vote.Concluded);
+		SetClass("open", Vote.IsValid() && (!Vote.Concluded || (Vote.Concluded && Vote.TimeSinceConcluded < 1.0f)));
 		if(!Vote.IsValid()) {
 			return;
 		}

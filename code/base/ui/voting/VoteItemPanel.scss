@@ -42,6 +42,14 @@ voteitempanel {
         }
     }
 
+    &.winner {
+        border: 4px solid $gold;
+
+        text, label {
+            color: $gold;
+        }
+    }
+
     &.skip {
         top: 25px;
         height: 100px;
