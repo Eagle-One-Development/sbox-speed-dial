@@ -420,7 +420,7 @@ public partial class Game : GameBase {
 		if(ent == null || !ent.IsValid) return true;
 
 		// Gamemode related stuff, game entity, HUD, etc
-		if(ent is GameBase || ent.Parent is GameBase || ent is Hud) {
+		if(ent is GameBase || ent.Parent is GameBase || ent is Hud || ent is VoteEntity) {
 			return false;
 		}
 
