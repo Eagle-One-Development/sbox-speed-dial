@@ -8,8 +8,8 @@ public partial class BaseRootPanel : RootPanel {
 		if(!Host.IsClient) return;
 
 		StyleSheet.Load("/base/ui/root.scss");
+		AddChild<VotingScreen>();
 		AddChild<DevInfo>();
 		AddChild<DevMenu>();
-		AddChild<VotingScreen>();
 	}
 }
