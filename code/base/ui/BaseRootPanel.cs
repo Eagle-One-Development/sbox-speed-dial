@@ -10,5 +10,6 @@ public partial class BaseRootPanel : RootPanel {
 		StyleSheet.Load("/base/ui/root.scss");
 		AddChild<DevInfo>();
 		AddChild<DevMenu>();
+		AddChild<VotingScreen>();
 	}
 }

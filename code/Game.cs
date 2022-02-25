@@ -20,6 +20,7 @@ public partial class Game : GameBase {
 
 	public static Game Current { get; protected set; }
 	public static string DefaultGamemode { get; } = "koth";
+	public static string LastGamemode { get; private set; }
 
 	[ServerVar("sd_min_players", Help = "The minimum players required to start the game.")]
 	public static int MinPlayers { get; set; } = 2;
@@ -341,6 +342,7 @@ public partial class Game : GameBase {
 		Current.ActiveGamemode = null;
 		Map.Reset(CleanupFilter);
 		Log.Debug("gamemode ended");
+		GamemodeVote.Start();
 	}
 
 	[AdminCmd("sd_bot")]
@@ -361,6 +363,7 @@ public partial class Game : GameBase {
 		// this is mostly for if a gamemode is being cut short for whatever reason (debug commands)
 		ActiveGamemode?.Finish();
 		ActiveGamemode = gamemode;
+		LastGamemode = gamemode.ClassInfo.Name;
 
 		// just to be sure, might save us some headaches
 		Map.Reset(CleanupFilter);

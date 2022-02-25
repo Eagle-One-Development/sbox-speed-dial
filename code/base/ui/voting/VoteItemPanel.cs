@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using SpeedDial.Classic.Voting;
-
-namespace SpeedDial.Classic.UI;
+﻿namespace SpeedDial;
 
 [UseTemplate]
 public class VoteItemPanel : Panel {
@@ -25,7 +17,7 @@ public class VoteItemPanel : Panel {
 
 	public VoteItemPanel(int index) {
 		this.index = index;
-		Title = Item.Title;
+		Title = $"[{Item.Title}]";
 		Description = Item.Description;
 	}
 

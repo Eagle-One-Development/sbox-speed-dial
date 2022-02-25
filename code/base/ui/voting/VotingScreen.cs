@@ -1,6 +1,4 @@
-﻿using SpeedDial.Classic.Voting;
-
-namespace SpeedDial.Classic.UI;
+﻿namespace SpeedDial;
 
 [UseTemplate]
 public partial class VotingScreen : Panel {
@@ -11,8 +9,8 @@ public partial class VotingScreen : Panel {
 	private TimeSince _updateDelta;
 	private VoteEntity Vote => VoteEntity.Current;
 	public override void Tick() {
-		SetClass("open", Vote is not null && !Vote.Concluded);
-		if(Vote is null) {
+		SetClass("open", Vote.IsValid() && !Vote.Concluded);
+		if(!Vote.IsValid()) {
 			return;
 		}
 

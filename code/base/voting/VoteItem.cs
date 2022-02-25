@@ -1,4 +1,4 @@
-﻿namespace SpeedDial.Classic.Voting;
+﻿namespace SpeedDial;
 
 public partial class VoteItem : BaseNetworkable {
 	[Net] public string Title { get; set; }

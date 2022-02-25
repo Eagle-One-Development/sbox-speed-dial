@@ -1,4 +1,4 @@
-﻿namespace SpeedDial.Classic.Voting;
+﻿namespace SpeedDial;
 
 public partial class VoteEntity : Entity {
 	public override void Spawn() {
@@ -11,13 +11,6 @@ public partial class VoteEntity : Entity {
 		Current = this;
 	}
 
-	[Event.Tick.Server]
-	private void Tick() {
-		if(Concluded && TimeSinceConcluded > 3) {
-			Delete();
-		}
-	}
-
 	public static VoteEntity Current;
 	[Net] public bool Concluded { get; set; }
 	private TimeSince TimeSinceConcluded;
@@ -26,6 +19,7 @@ public partial class VoteEntity : Entity {
 	[Net] public IList<VoteItem> VoteItems { get; set; }
 
 	public void AddVoteItem(string title, string description, string imagePath) {
+		Log.Debug($"add vote item {title}");
 		VoteItems.Add(new VoteItem { Title = title, Description = description, ImagePath = imagePath });
 	}
 
@@ -88,6 +82,8 @@ public partial class VoteEntity : Entity {
 		PopulateTestItems();
 	}
 
+	protected virtual void PopulateVoteItems() { }
+
 	private static void PopulateTestItems() {
 		for(var i = 0; i < 10; i++) {
 			Current.AddVoteItem($"Item{i}", $"Description {i}", $"image\\path");
@@ -101,6 +97,7 @@ public partial class VoteEntity : Entity {
 
 	private void HandleVoteEnd() {
 		Host.AssertServer();
+		Log.Debug($"vote concluded {Concluded}");
 		Concluded = true;
 		TimeSinceConcluded = 0;
 		var winner = GetWinnerIndex();

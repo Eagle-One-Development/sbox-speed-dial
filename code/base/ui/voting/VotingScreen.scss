@@ -13,19 +13,21 @@ votingscreen {
     align-items: center;
     //
     opacity: 0;
-    transform: scale(0);
-    transition: all 1.5s ease-in;
+    transition: all 0.5s ease-in;
     background-color: rgba(black, 0.6);
     backdrop-filter: blur(20px);
 
     &.open {
         opacity: 1;
-        transform: scale(1);
+        .canvas {
+            transform: scale(1);
+        }
     }
 
     .canvas {
         width: 70%;
         height: 70%;
+        transform: scale(1.1);
         justify-content: center;
         align-items: center;
         flex-direction: column;
