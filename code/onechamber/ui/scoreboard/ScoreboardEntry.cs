@@ -33,9 +33,10 @@ public partial class OneChamberScoreboardEntry : Panel {
 		PlayerName.Text = Client.Name;
 		if(Client.Pawn is OneChamberPlayer player) {
 			Lives.Text = $"{player.Lives}";
+			SetClass("dead", false);
 		} else {
 			Lives.Text = "-";
-			AddClass("dead");
+			SetClass("dead", true);
 		}
 
 		Ping.Text = $"{Client.Ping}ms";

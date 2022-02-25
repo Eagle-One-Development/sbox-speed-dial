@@ -1,6 +1,6 @@
 ﻿using SpeedDial.Classic.Player;
 using SpeedDial.Classic.Weapons;
-using SpeedDial.Classic.UI;
+using SpeedDial.OneChamber.UI;
 using SpeedDial.Classic.Drugs;
 
 namespace SpeedDial.OneChamber.Player;
@@ -12,6 +12,9 @@ public partial class OneChamberPlayer : ClassicPlayer {
 
 	[Net]
 	public BaseCarriable StashedGun { get; set; }
+
+	[Net]
+	public TimeSince TimeSinceEliminated { get; set; }
 
 	public override void Respawn() {
 		Host.AssertServer();
@@ -44,7 +47,7 @@ public partial class OneChamberPlayer : ClassicPlayer {
 		GiveWeapon("oc_pistol");
 
 		// just in case this was left open for some reason
-		WinScreen.SetState(To.Single(Client), false);
+		OneChamberWinScreen.SetState(To.Single(Client), false);
 	}
 
 	public override void HandleDrugTaken(ClassicBaseDrug drug) {
@@ -102,6 +105,7 @@ public partial class OneChamberPlayer : ClassicPlayer {
 
 		// lost last live
 		if(!CanRespawn()) {
+			TimeSinceEliminated = 0;
 			Client.SwapPawn<ClassicSpectator>();
 			Delete();
 		}

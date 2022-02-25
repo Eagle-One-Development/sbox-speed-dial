@@ -34,16 +34,13 @@ public partial class GameRound : TimedRound {
 
 	private async Task PlayClimaxMusic(int delay) {
 		await GameTask.DelaySeconds(delay);
-		foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
-			var pawn = client.Pawn as ClassicPlayer;
-			pawn.PlayRoundendClimax(To.Single(client));
-		}
+		ClassicPlayer.PlayRoundendClimax(To.Everyone);
 	}
 
 	public override void OnPawnJoined(BasePlayer pawn) {
 		base.OnPawnJoined(pawn);
 		if(pawn is ClassicPlayer player) {
-			player.PlaySoundtrack(To.Single(player.Client));
+			ClassicPlayer.PlaySoundtrack(To.Single(player.Client));
 		}
 	}
 }

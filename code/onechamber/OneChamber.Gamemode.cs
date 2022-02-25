@@ -9,6 +9,7 @@ namespace SpeedDial.OneChamber;
 [Library("onechamber"), Hammer.Skip]
 public partial class OneChamberGamemode : ClassicGamemode {
 	public override GamemodeIdentity Identity => GamemodeIdentity.OneChamber;
+	public override int GameloopsUntilVote => 5;
 
 	protected override void OnClientReady(Client client) {
 		client.AssignPawn<OneChamberPlayer>(true);

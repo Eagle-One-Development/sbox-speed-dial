@@ -14,7 +14,7 @@ public partial class ClassicSpectator : ClassicPlayer {
 
 		Controller = new OneChamberSpectatorController();
 		Camera = new OneChamberSpectatorCamera();
-		Animator = new ClassicAnimator();
+		//Animator = new ClassicAnimator();
 
 		LifeState = LifeState.Alive;
 		Health = 100;

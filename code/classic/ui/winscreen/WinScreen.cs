@@ -2,9 +2,9 @@
 
 [UseTemplate]
 public partial class WinScreen : Panel {
-	private WinPanel FirstPanel { get; set; }
-	private WinPanel SecondPanel { get; set; }
-	private WinPanel ThirdPanel { get; set; }
+	protected WinPanel FirstPanel { get; set; }
+	protected WinPanel SecondPanel { get; set; }
+	protected WinPanel ThirdPanel { get; set; }
 	public static WinScreen Current { get; private set; }
 	private bool Open { get; set; }
 
@@ -14,23 +14,25 @@ public partial class WinScreen : Panel {
 
 	[ClientRpc]
 	public static void UpdatePanels() {
-		if(Current is null) return;
+		Current?.OnUpdate();
+	}
 
+	protected virtual void OnUpdate() {
 		var clients = Client.All.ToList();
 		clients.Sort((x, y) => x.GetValue("score", 0) < y.GetValue("score", 0) ? 1 : -1);
 		Log.Debug("Win Panel Update clients");
 
 		var client1 = clients.ElementAtOrDefault(0);
 		Log.Debug($"1st {client1?.Name} - {client1?.GetValue("score", 0)}");
-		Current.FirstPanel.UpdateFrom(client1, 1);
+		FirstPanel.UpdateFrom(client1, 1);
 
 		var client2 = clients.ElementAtOrDefault(1);
 		Log.Debug($"2nd {client2?.Name} - {client2?.GetValue("score", 0)}");
-		Current.SecondPanel.UpdateFrom(client2, 2);
+		SecondPanel.UpdateFrom(client2, 2);
 
 		var client3 = clients.ElementAtOrDefault(2);
 		Log.Debug($"3rd {client3?.Name} - {client3?.GetValue("score", 0)}");
-		Current.ThirdPanel.UpdateFrom(client3, 3);
+		ThirdPanel.UpdateFrom(client3, 3);
 	}
 
 	[ClientRpc]

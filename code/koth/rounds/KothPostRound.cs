@@ -24,6 +24,9 @@ public partial class KothPostRound : TimedRound {
 
 	protected override void OnFinish() {
 		base.OnFinish();
+		// tell the game that a gameloop has finished before we keep going
+		Game.Current.GameloopCompleted();
+
 		Game.Current.ActiveGamemode?.ChangeRound(new KothPreRound());
 
 		foreach(var client in Client.All) {

@@ -1,6 +1,7 @@
 using SpeedDial.Koth.Player;
 using SpeedDial.Classic.UI;
 using SpeedDial.Koth.Entities;
+using SpeedDial.Classic.Player;
 
 namespace SpeedDial.Koth.Rounds;
 
@@ -72,14 +73,14 @@ public partial class KothGameRound : TimedRound {
 		await GameTask.DelaySeconds(delay);
 		foreach(var client in Client.All.Where(x => x.Pawn is KothPlayer)) {
 			var pawn = client.Pawn as KothPlayer;
-			pawn.PlayRoundendClimax(To.Single(client));
+			ClassicPlayer.PlayRoundendClimax(To.Single(client));
 		}
 	}
 
 	public override void OnPawnJoined(BasePlayer pawn) {
 		base.OnPawnJoined(pawn);
 		if(pawn is KothPlayer player) {
-			player.PlaySoundtrack(To.Single(player.Client));
+			ClassicPlayer.PlaySoundtrack(To.Single(player.Client));
 		}
 	}
 }

@@ -1,5 +1,6 @@
 using SpeedDial.OneChamber.Player;
-using SpeedDial.Classic.UI;
+using SpeedDial.Classic.Player;
+using SpeedDial.OneChamber.UI;
 
 namespace SpeedDial.OneChamber.Rounds;
 public partial class OneChamberGameRound : TimedRound {
@@ -17,32 +18,35 @@ public partial class OneChamberGameRound : TimedRound {
 
 			pawn.Frozen = false;
 		}
+	}
 
-		// start climax track 10 seconds before round ends
-		_ = PlayClimaxMusic((int)RoundDuration.TotalSeconds - 10);
+	protected override void OnThink() {
+		base.OnThink();
+		
+		// only one player left
+		if(Entity.All.OfType<OneChamberPlayer>().Count(x => x.CanRespawn()) == 1) {
+			Finish();
+		}
 	}
 
 	protected override void OnFinish() {
 		base.OnFinish();
 		Game.Current.ActiveGamemode?.ChangeRound(new OneChamberPostRound());
 
-		foreach(var client in Client.All.Where(x => x.Pawn is OneChamberPlayer)) {
-			WinScreen.UpdatePanels(To.Single(client));
-		}
+		ClassicPlayer.StopSoundtrack(To.Everyone, true);
+
+		OneChamberWinScreen.UpdatePanels(To.Everyone);
 	}
 
 	private async Task PlayClimaxMusic(int delay) {
 		await GameTask.DelaySeconds(delay);
-		foreach(var client in Client.All.Where(x => x.Pawn is OneChamberPlayer)) {
-			var pawn = client.Pawn as OneChamberPlayer;
-			pawn.PlayRoundendClimax(To.Single(client));
-		}
+		ClassicPlayer.PlayRoundendClimax(To.Everyone);
 	}
 
 	public override void OnPawnJoined(BasePlayer pawn) {
 		base.OnPawnJoined(pawn);
 		if(pawn is OneChamberPlayer player) {
-			player.PlaySoundtrack(To.Single(player.Client));
+			ClassicPlayer.PlaySoundtrack(To.Single(player.Client));
 		}
 	}
 }

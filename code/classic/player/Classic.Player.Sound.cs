@@ -3,17 +3,17 @@
 namespace SpeedDial.Classic.Player;
 
 public partial class ClassicPlayer {
-	public SoundTrack SoundTrack { get; set; }
-	public bool SoundtrackPlaying { get; set; }
+	public static SoundTrack SoundTrack { get; set; }
+	public static bool SoundtrackPlaying { get; set; }
 
 	[ClientRpc]
-	public void PlayRoundendClimax() {
+	public static void PlayRoundendClimax() {
 		if(!Settings.MusicEnabled) return;
 		SoundTrack.FromScreen("climax");
 		_ = StopSoundtrackAsync(3);
 	}
 
-	private async Task StopSoundtrackAsync(int delay = 5) {
+	private static async Task StopSoundtrackAsync(int delay = 5) {
 		await GameTask.DelaySeconds(delay);
 		_ = SoundTrack.Stop(5, 500);
 		SoundtrackPlaying = false;
@@ -21,12 +21,12 @@ public partial class ClassicPlayer {
 
 
 	[ClientRpc]
-	public void PlaySoundtrack() {
+	public static void PlaySoundtrack() {
 		if(!Settings.MusicEnabled) return;
 		_ = PlaySoundtrackAsync(ClassicGamemode.Current.CurrentSoundtrack, 2.5f);
 	}
 
-	private async Task PlaySoundtrackAsync(string track, float delay) {
+	private static async Task PlaySoundtrackAsync(string track, float delay) {
 		if(!Settings.MusicEnabled) return;
 		await GameTask.DelaySeconds(delay);
 		if(!SoundtrackPlaying) {
@@ -36,7 +36,7 @@ public partial class ClassicPlayer {
 	}
 
 	[ClientRpc]
-	public void StopSoundtrack(bool instant = false) {
+	public static void StopSoundtrack(bool instant = false) {
 		if(instant) {
 			SoundTrack?.Stop();
 			SoundtrackPlaying = false;
@@ -47,7 +47,7 @@ public partial class ClassicPlayer {
 	}
 
 	[ClientRpc]
-	public void FadeSoundtrack(float volumeTo) {
+	public static void FadeSoundtrack(float volumeTo) {
 		SoundTrack?.FadeVolumeTo(volumeTo);
 	}
 }

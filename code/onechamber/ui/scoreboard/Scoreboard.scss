@@ -109,11 +109,11 @@ onechamberscoreboard {
 
 	.footer {
 		justify-content: space-around;
-		opacity: 0;
-		width: 720px;
+		width: 600px;
+		flex-wrap: wrap;
 
-		&.visible {
-			opacity: 1;
+		label, text {
+			font-size: 15px;
 		}
 	}
 }

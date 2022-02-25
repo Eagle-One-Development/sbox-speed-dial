@@ -12,8 +12,8 @@ public static partial class Settings {
 	private static bool _musicEnabled = true;
 
 	private static void OnMusicEnabledChanged(bool value) {
-		if(!value && Local.Pawn is ClassicPlayer player) {
-			player.StopSoundtrack(true);
+		if(!value) {
+			ClassicPlayer.StopSoundtrack(To.Single(Local.Client), true);
 		}
 	}
 }

@@ -52,14 +52,14 @@ public partial class CharacterSelect : Panel {
 			if(Open != state) {
 				Sound.FromScreen("select_confirm");
 				MenuSound.Stop();
-				(Local.Pawn as ClassicPlayer).FadeSoundtrack(1);
+				ClassicPlayer.FadeSoundtrack(To.Single(Local.Client), 1);
 			}
 			Open = state;
 		} else {
 			if(Open != state) {
 				Sound.FromScreen("tape_stop");
 				MenuSound = Sound.FromScreen("tape_noise");
-				(Local.Pawn as ClassicPlayer).FadeSoundtrack(0.3f);
+				ClassicPlayer.FadeSoundtrack(To.Single(Local.Client), 0.3f);
 			}
 
 			// make sure equipped character is the selected one
@@ -124,7 +124,7 @@ public partial class CharacterSelect : Panel {
 				Open = false;
 				MenuSound.Stop();
 				Sound.FromScreen("select_confirm");
-				(Local.Pawn as ClassicPlayer).FadeSoundtrack(1);
+				ClassicPlayer.FadeSoundtrack(To.Single(Local.Client), 1);
 				return;
 			}
 		}

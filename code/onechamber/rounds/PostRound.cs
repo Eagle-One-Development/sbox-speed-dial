@@ -1,5 +1,6 @@
 using SpeedDial.OneChamber.Player;
 using SpeedDial.Classic.UI;
+using SpeedDial.OneChamber.UI;
 
 namespace SpeedDial.OneChamber.Rounds;
 
@@ -17,17 +18,20 @@ public partial class OneChamberPostRound : TimedRound {
 			var pawn = client.Pawn as OneChamberPlayer;
 
 			pawn.Frozen = true;
-			CharacterSelect.ForceState(To.Single(client), false);
-			WinScreen.SetState(To.Single(client), true);
 		}
+		CharacterSelect.ForceState(To.Everyone, false);
+		OneChamberWinScreen.SetState(To.Everyone, true);
 	}
 
 	protected override void OnFinish() {
 		base.OnFinish();
+		// tell the game that a gameloop has finished before we keep going
+		Game.Current.GameloopCompleted();
+
 		Game.Current.ActiveGamemode?.ChangeRound(new OneChamberPreRound());
 
 		foreach(var client in Client.All) {
-			WinScreen.SetState(To.Single(client), false);
+			OneChamberWinScreen.SetState(To.Single(client), false);
 		}
 	}
 

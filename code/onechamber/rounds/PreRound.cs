@@ -1,4 +1,5 @@
 ﻿using SpeedDial.OneChamber.Player;
+using SpeedDial.Classic.Player;
 
 namespace SpeedDial.OneChamber.Rounds;
 
@@ -23,8 +24,8 @@ public partial class OneChamberPreRound : TimedRound {
 
 			var pawn = client.Pawn as OneChamberPlayer;
 
-			pawn.StopSoundtrack(To.Single(client), true);
-			pawn.PlaySoundtrack(To.Single(client));
+			ClassicPlayer.StopSoundtrack(To.Single(client), true);
+			ClassicPlayer.PlaySoundtrack(To.Single(client));
 
 			pawn.Frozen = true;
 
@@ -43,7 +44,7 @@ public partial class OneChamberPreRound : TimedRound {
 	public override void OnPawnJoined(BasePlayer pawn) {
 		base.OnPawnJoined(pawn);
 		if(pawn is OneChamberPlayer player) {
-			player.PlaySoundtrack(To.Single(player.Client));
+			ClassicPlayer.PlaySoundtrack(To.Single(player.Client));
 			player.Frozen = true;
 		}
 	}

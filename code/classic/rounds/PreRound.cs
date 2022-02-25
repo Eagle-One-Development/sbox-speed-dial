@@ -22,8 +22,8 @@ public partial class PreRound : TimedRound {
 			var pawn = client.Pawn as ClassicPlayer;
 			pawn.Respawn();
 
-			pawn.StopSoundtrack(To.Single(client), true);
-			pawn.PlaySoundtrack(To.Single(client));
+			ClassicPlayer.StopSoundtrack(To.Single(client), true);
+			ClassicPlayer.PlaySoundtrack(To.Single(client));
 
 			// reset scores etc from potential last round
 			client.SetValue("score", 0);
@@ -47,7 +47,7 @@ public partial class PreRound : TimedRound {
 	public override void OnPawnJoined(BasePlayer pawn) {
 		base.OnPawnJoined(pawn);
 		if(pawn is ClassicPlayer player) {
-			player.PlaySoundtrack(To.Single(player.Client));
+			ClassicPlayer.PlaySoundtrack(To.Single(player.Client));
 			player.Frozen = true;
 		}
 	}
