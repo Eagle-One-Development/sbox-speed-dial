@@ -21,6 +21,7 @@ public partial class Game : GameBase {
 	public static Game Current { get; protected set; }
 	public static string DefaultGamemode { get; } = "koth";
 	public static string LastGamemode { get; private set; }
+	public static GameLoop GameLoop { get; private set; }
 
 	[ServerVar("sd_min_players", Help = "The minimum players required to start the game.")]
 	public static int MinPlayers { get; set; } = 2;
@@ -28,6 +29,7 @@ public partial class Game : GameBase {
 	public Game() {
 		Transmit = TransmitType.Always;
 		Current = this;
+		GameLoop = new GameLoop();
 		PrecacheAssets();
 
 		if(IsServer) {
@@ -80,6 +82,7 @@ public partial class Game : GameBase {
 
 	public override void ClientJoined(Client cl) {
 		Log.Info($"\"{cl.Name}\" has joined the game");
+
 		ActiveGamemode?.ClientJoined(cl);
 
 		// TODO: Make a menu for this
