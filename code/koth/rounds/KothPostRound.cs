@@ -17,9 +17,9 @@ public partial class KothPostRound : TimedRound {
 			var pawn = client.Pawn as ClassicPlayer;
 
 			pawn.Frozen = true;
-			CharacterSelect.ForceState(To.Single(client), false);
-			WinScreen.SetState(To.Single(client), true);
 		}
+		CharacterSelect.ForceState(To.Everyone, false);
+		WinScreen.SetState(To.Everyone, true);
 	}
 
 	protected override void OnFinish() {
@@ -29,9 +29,7 @@ public partial class KothPostRound : TimedRound {
 
 		Game.Current.ActiveGamemode?.ChangeRound(new KothPreRound());
 
-		foreach(var client in Client.All) {
-			WinScreen.SetState(To.Single(client), false);
-		}
+		WinScreen.SetState(To.Everyone, false);
 	}
 
 	public override void OnPawnJoined(BasePlayer pawn) {

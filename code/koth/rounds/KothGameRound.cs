@@ -46,9 +46,7 @@ public partial class KothGameRound : TimedRound {
 	protected override void OnFinish() {
 		base.OnFinish();
 
-		foreach(var client in Client.All.Where(x => x.Pawn is KothPlayer)) {
-			WinScreen.UpdatePanels(To.Single(client));
-		}
+		WinScreen.UpdatePanels(To.Everyone);
 		Game.Current.ActiveGamemode.ChangeRound(new KothPostRound());
 	}
 

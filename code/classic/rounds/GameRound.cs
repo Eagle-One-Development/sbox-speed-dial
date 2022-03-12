@@ -27,9 +27,7 @@ public partial class GameRound : TimedRound {
 		base.OnFinish();
 		Game.Current.ActiveGamemode?.ChangeRound(new PostRound());
 
-		foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
-			WinScreen.UpdatePanels(To.Single(client));
-		}
+		WinScreen.UpdatePanels(To.Everyone);
 	}
 
 	private async Task PlayClimaxMusic(int delay) {

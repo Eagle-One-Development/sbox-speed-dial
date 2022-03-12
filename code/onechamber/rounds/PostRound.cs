@@ -30,9 +30,7 @@ public partial class OneChamberPostRound : TimedRound {
 
 		Game.Current.ActiveGamemode?.ChangeRound(new OneChamberPreRound());
 
-		foreach(var client in Client.All) {
-			OneChamberWinScreen.SetState(To.Single(client), false);
-		}
+		OneChamberWinScreen.SetState(To.Everyone, false);
 	}
 
 	public override void OnPawnJoined(BasePlayer pawn) {

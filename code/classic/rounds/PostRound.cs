@@ -18,8 +18,8 @@ public partial class PostRound : TimedRound {
 
 			pawn.Frozen = true;
 			CharacterSelect.ForceState(To.Single(client), false);
-			WinScreen.SetState(To.Single(client), true);
 		}
+		WinScreen.SetState(To.Everyone, true);
 	}
 
 	protected override void OnFinish() {
@@ -29,9 +29,7 @@ public partial class PostRound : TimedRound {
 
 		Game.Current.ActiveGamemode?.ChangeRound(new PreRound());
 
-		foreach(var client in Client.All) {
-			WinScreen.SetState(To.Single(client), false);
-		}
+		WinScreen.SetState(To.Everyone, false);
 	}
 
 	public override void OnPawnJoined(BasePlayer pawn) {

@@ -42,7 +42,7 @@ public partial class OneChamberScoreboard : Panel {
 		}
 
 		// sort by lives if pawn is still a player, otherwise push to the bottom (spectator)
-		Canvas.SortChildren((x) => ((x as OneChamberScoreboardEntry).Client.Pawn is OneChamberPlayer player) ? -player.Lives : 1);
+		Canvas.SortChildren((x) => ((x as OneChamberScoreboardEntry).Client?.Pawn is OneChamberPlayer player) ? -player.Lives : 1);
 
 		for(int i = 0; i < Canvas.Children.Count(); i++) {
 			var child = Canvas.Children.ElementAt(i);
