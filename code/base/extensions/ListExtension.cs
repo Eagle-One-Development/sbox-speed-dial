@@ -1,6 +1,7 @@
 namespace SpeedDial;
 
-public static class ListExtension {
+public static class ListExtension
+{
 	/// <summary>
 	/// Selects a random member contained within the given list.
 	/// </summary>
@@ -8,18 +9,23 @@ public static class ListExtension {
 	/// Throws InvalidOperationException if the provided list
 	/// is empty.
 	/// </remarks>
-	public static T Random<T>(this IEnumerable<T> list) {
-		if(!list.Any())
-			throw new InvalidOperationException("Cannot select a random member of an empty list!");
+	public static T Random<T>( this IEnumerable<T> list )
+	{
+		if ( !list.Any() )
+			throw new InvalidOperationException( "Cannot select a random member of an empty list!" );
 
-		return list.ElementAt(Rand.Int(0, list.Count() - 1));
+		return list.ElementAt( Rand.Int( 0, list.Count() - 1 ) );
 	}
 
-	public static bool Random<T>(this IEnumerable<T> list, out T item) {
-		try {
+	public static bool Random<T>( this IEnumerable<T> list, out T item )
+	{
+		try
+		{
 			item = list.Random();
 			return true;
-		} catch(InvalidOperationException) {
+		}
+		catch ( InvalidOperationException )
+		{
 			item = default;
 			return false;
 		}

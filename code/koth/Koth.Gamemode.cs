@@ -7,23 +7,28 @@ using SpeedDial.Classic.Bots;
 
 namespace SpeedDial.Koth;
 
-[Library("koth"), Hammer.Skip]
-public partial class KothGamemode : ClassicGamemode {
+[Library( "koth" ), Hammer.Skip]
+public partial class KothGamemode : ClassicGamemode
+{
 	public override GamemodeIdentity Identity => GamemodeIdentity.Koth;
 
-	public override void OnBotAdded(ClassicBot bot) {
+	public override void OnBotAdded( ClassicBot bot )
+	{
 		bot.ApplyBehaviour<KothBotBehaviour>();
 	}
 
-	protected override void OnClientReady(Client client) {
-		client.AssignPawn<KothPlayer>(true);
+	protected override void OnClientReady( Client client )
+	{
+		client.AssignPawn<KothPlayer>( true );
 	}
 
-	public override void CreateGamemodeUI() {
-		Hud.SetGamemodeUI(new KothHud());
+	public override void CreateGamemodeUI()
+	{
+		Hud.SetGamemodeUI( new KothHud() );
 	}
 
-	protected override void OnStart() {
-		ChangeRound(new KothWarmupRound());
+	protected override void OnStart()
+	{
+		ChangeRound( new KothWarmupRound() );
 	}
 }

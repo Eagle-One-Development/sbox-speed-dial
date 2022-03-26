@@ -1,8 +1,10 @@
 ﻿namespace SpeedDial;
 
 
-public partial class GameLoop : Entity {
-	public override void Spawn() {
+public partial class GameLoop : Entity
+{
+	public override void Spawn()
+	{
 		base.Spawn();
 
 		Transmit = TransmitType.Always;
@@ -10,29 +12,36 @@ public partial class GameLoop : Entity {
 
 	[Net] public IList<Client> Clients { get; set; }
 
-	public void SetFromCurrent() {
+	public void SetFromCurrent()
+	{
 		Host.AssertServer();
 		Clients.Clear();
-		foreach(var client in Client.All) {
-			Clients.Add(client);
+		foreach ( var client in Client.All )
+		{
+			Clients.Add( client );
 		}
 	}
 
-	public void AddClient(Client client) {
+	public void AddClient( Client client )
+	{
 		Host.AssertServer();
-		Clients.Add(client);
+		Clients.Add( client );
 	}
 
-	public void RemoveClient(Client client) {
+	public void RemoveClient( Client client )
+	{
 		Host.AssertServer();
-		Clients.Remove(client);
+		Clients.Remove( client );
 	}
 
-	public void ValidateClients(Func<Client, bool> predicate) {
+	public void ValidateClients( Func<Client, bool> predicate )
+	{
 		Host.AssertServer();
-		foreach(var client in Clients.Reverse()) {
-			if(!predicate(client)) {
-				RemoveClient(client);
+		foreach ( var client in Clients.Reverse() )
+		{
+			if ( !predicate( client ) )
+			{
+				RemoveClient( client );
 			}
 		}
 	}

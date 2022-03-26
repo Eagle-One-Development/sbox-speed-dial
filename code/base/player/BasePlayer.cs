@@ -1,7 +1,8 @@
 //CREDIT: Modified from Espionage.Engine by Jake Wooshito
 namespace SpeedDial;
 
-public partial class BasePlayer : AnimEntity {
+public partial class BasePlayer : AnimEntity
+{
 
 	public virtual float RespawnTime => 1;
 	public virtual string ModelPath { get; set; } = "models/citizen/citizen.vmdl";
@@ -10,103 +11,120 @@ public partial class BasePlayer : AnimEntity {
 	[Net] public BaseCarriable LastActiveChild { get; set; }
 	[Net] public BaseCarriable ActiveChild { get; set; }
 
-	public override void Simulate(Client cl) {
-		if(LifeState == LifeState.Dead) {
-			if(TimeSinceDied > RespawnTime && IsServer && CanRespawn()) {
+	public override void Simulate( Client cl )
+	{
+		if ( LifeState == LifeState.Dead )
+		{
+			if ( TimeSinceDied > RespawnTime && IsServer && CanRespawn() )
+			{
 				Respawn();
 			}
 		}
 
-		SimulateActiveChild(cl, ActiveChild);
-		GetActiveController()?.Simulate(cl, this, GetActiveAnimator());
+		SimulateActiveChild( cl, ActiveChild );
+		GetActiveController()?.Simulate( cl, this, GetActiveAnimator() );
 	}
 
-	public virtual bool CanRespawn() {
+	public virtual bool CanRespawn()
+	{
 		return true;
 	}
 
 	[ClientRpc]
-	public static void SoundFromEntity(string name, Entity entity) {
-		Sound.FromEntity(name, entity);
+	public static void SoundFromEntity( string name, Entity entity )
+	{
+		Sound.FromEntity( name, entity );
 	}
 
 	[ClientRpc]
-	public static void SoundFromScreen(string name) {
-		Sound.FromScreen(name);
+	public static void SoundFromScreen( string name )
+	{
+		Sound.FromScreen( name );
 	}
 
 	[ClientRpc]
-	public static void SoundFromScreen(string name, float x, float y) {
-		Sound.FromScreen(name, x, y);
+	public static void SoundFromScreen( string name, float x, float y )
+	{
+		Sound.FromScreen( name, x, y );
 	}
 
 	[ClientRpc]
-	public static void SoundFromWorld(string name, Vector3 position) {
-		Sound.FromWorld(name, position);
+	public static void SoundFromWorld( string name, Vector3 position )
+	{
+		Sound.FromWorld( name, position );
 	}
 
-	public virtual void SimulateActiveChild(Client client, BaseCarriable child) {
-		if(LastActiveChild != child) {
-			OnActiveChildChanged(LastActiveChild, child);
+	public virtual void SimulateActiveChild( Client client, BaseCarriable child )
+	{
+		if ( LastActiveChild != child )
+		{
+			OnActiveChildChanged( LastActiveChild, child );
 			LastActiveChild = child;
 		}
 
-		if(!LastActiveChild.IsValid())
+		if ( !LastActiveChild.IsValid() )
 			return;
 
-		if(LastActiveChild.IsAuthority) {
-			LastActiveChild.Simulate(client);
+		if ( LastActiveChild.IsAuthority )
+		{
+			LastActiveChild.Simulate( client );
 		}
 	}
 
-	public virtual void OnActiveChildChanged(BaseCarriable previous, BaseCarriable next) {
-		previous?.ActiveEnd(this, previous.Owner != this);
-		next?.ActiveStart(this);
+	public virtual void OnActiveChildChanged( BaseCarriable previous, BaseCarriable next )
+	{
+		previous?.ActiveEnd( this, previous.Owner != this );
+		next?.ActiveStart( this );
 	}
 
-	public override void FrameSimulate(Client cl) {
-		base.FrameSimulate(cl);
+	public override void FrameSimulate( Client cl )
+	{
+		base.FrameSimulate( cl );
 
-		GetActiveController()?.FrameSimulate(cl, this, GetActiveAnimator());
+		GetActiveController()?.FrameSimulate( cl, this, GetActiveAnimator() );
 	}
 
-	public virtual void CreateHull() {
+	public virtual void CreateHull()
+	{
 		CollisionGroup = CollisionGroup.Player;
-		AddCollisionLayer(CollisionLayer.Player);
-		SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
+		AddCollisionLayer( CollisionLayer.Player );
+		SetupPhysicsFromAABB( PhysicsMotionType.Keyframed, new Vector3( -16, -16, 0 ), new Vector3( 16, 16, 72 ) );
 
 		MoveType = MoveType.MOVETYPE_WALK;
 		EnableHitboxes = true;
 	}
 
-	public override void BuildInput(InputBuilder input) {
-		if(input.StopProcessing)
+	public override void BuildInput( InputBuilder input )
+	{
+		if ( input.StopProcessing )
 			return;
 
-		ActiveChild?.BuildInput(input);
+		ActiveChild?.BuildInput( input );
 
-		GetActiveController()?.BuildInput(input);
+		GetActiveController()?.BuildInput( input );
 
-		if(input.StopProcessing)
+		if ( input.StopProcessing )
 			return;
 
-		GetActiveAnimator()?.BuildInput(input);
+		GetActiveAnimator()?.BuildInput( input );
 	}
 
 	//
 	// Pawn States
 	//
 
-	public virtual void InitialRespawn() {
+	public virtual void InitialRespawn()
+	{
 		Respawn();
 		// call round stuff after respawn to potentially override stuff in it
-		Game.Current.ActiveGamemode?.ActiveRound?.OnPawnJoined(this);
+		Game.Current.ActiveGamemode?.ActiveRound?.OnPawnJoined( this );
 	}
 
-	public virtual void Respawn() {
+	public virtual void Respawn()
+	{
 		Host.AssertServer();
 
-		SetModel(ModelPath);
+		SetModel( ModelPath );
 
 		LifeState = LifeState.Alive;
 		Health = 100;
@@ -115,23 +133,26 @@ public partial class BasePlayer : AnimEntity {
 		CreateHull();
 		ResetInterpolation();
 
-		Game.Current.PawnRespawned(this);
-		Game.Current.MoveToSpawnpoint(this);
-		Game.Current.ActiveGamemode?.ActiveRound?.OnPawnRespawned(this);
+		Game.Current.PawnRespawned( this );
+		Game.Current.MoveToSpawnpoint( this );
+		Game.Current.ActiveGamemode?.ActiveRound?.OnPawnRespawned( this );
 	}
 
-	public override void OnKilled() {
+	public override void OnKilled()
+	{
 		LifeState = LifeState.Dead;
-		Game.Current.PawnKilled(this, LastRecievedDamage);
+		Game.Current.PawnKilled( this, LastRecievedDamage );
 	}
 
 	public DamageInfo LastRecievedDamage { get; set; }
 
-	public override void TakeDamage(DamageInfo info) {
+	public override void TakeDamage( DamageInfo info )
+	{
 		// If this pawn is allowed to take damage. Then take damage
-		if(Game.Current.PawnDamaged(this, ref info)) {
+		if ( Game.Current.PawnDamaged( this, ref info ) )
+		{
 			LastRecievedDamage = info;
-			base.TakeDamage(info);
+			base.TakeDamage( info );
 		}
 	}
 
@@ -150,7 +171,8 @@ public partial class BasePlayer : AnimEntity {
 	[Net]
 	public PawnController DevController { get; set; }
 
-	public virtual PawnController GetActiveController() {
+	public virtual PawnController GetActiveController()
+	{
 		return DevController ?? Controller;
 	}
 
@@ -167,14 +189,16 @@ public partial class BasePlayer : AnimEntity {
 	// Camera
 	//
 
-	public CameraMode Camera {
+	public CameraMode Camera
+	{
 		get => Components.Get<CameraMode>();
-		set {
+		set
+		{
 			var current = Camera;
-			if(current == value) return;
+			if ( current == value ) return;
 
 			Components.RemoveAny<CameraMode>();
-			Components.Add(value);
+			Components.Add( value );
 		}
 	}
 
@@ -182,14 +206,16 @@ public partial class BasePlayer : AnimEntity {
 	// Team
 	//
 
-	public Team Team {
+	public Team Team
+	{
 		get => Components.Get<Team>();
-		set {
+		set
+		{
 			var current = Team;
-			if(current == value) return;
+			if ( current == value ) return;
 
 			Components.RemoveAny<Team>();
-			Components.Add(value);
+			Components.Add( value );
 		}
 	}
 }

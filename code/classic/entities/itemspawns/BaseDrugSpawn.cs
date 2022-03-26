@@ -2,7 +2,8 @@ using SpeedDial.Classic.Drugs;
 
 namespace SpeedDial.Classic.Entities;
 
-public partial class ClassicDrugSpawn : GamemodeEntity {
+public partial class ClassicDrugSpawn : GamemodeEntity
+{
 	public virtual string DrugClass { get; }
 	[Property]
 	public virtual float RespawnTime { get; set; } = 10;
@@ -10,13 +11,15 @@ public partial class ClassicDrugSpawn : GamemodeEntity {
 	[Net] private TimeSince TimeSinceTaken { get; set; }
 	protected ClassicBaseDrug SpawnedDrug { get; set; }
 
-	public override void Spawn() {
+	public override void Spawn()
+	{
 		base.Spawn();
 		SpawnDrug();
 	}
 
 	[SpeedDialEvent.Gamemode.Reset]
-	public void GamemodeReset() {
+	public void GamemodeReset()
+	{
 		// respawn drug on gamemode reset
 		SpawnedDrug?.Delete();
 		SpawnedDrug = null;
@@ -24,24 +27,28 @@ public partial class ClassicDrugSpawn : GamemodeEntity {
 		SpawnDrug();
 	}
 
-	public virtual void DrugTaken() {
+	public virtual void DrugTaken()
+	{
 		TimeSinceTaken = 0;
 		Taken = true;
 		SpawnedDrug = null;
 	}
 
 	[Event.Tick.Server]
-	public void Tick() {
-		if(Taken && TimeSinceTaken > RespawnTime) {
+	public void Tick()
+	{
+		if ( Taken && TimeSinceTaken > RespawnTime )
+		{
 			SpawnDrug();
 		}
 	}
 
-	public virtual void SpawnDrug() {
+	public virtual void SpawnDrug()
+	{
 		Host.AssertServer();
-		if(!Enabled) return;
+		if ( !Enabled ) return;
 
-		var ent = Library.Create<ClassicBaseDrug>(DrugClass);
+		var ent = Library.Create<ClassicBaseDrug>( DrugClass );
 		ent.Transform = Transform;
 		ent.DrugSpawn = this;
 		ent.ResetInterpolation();

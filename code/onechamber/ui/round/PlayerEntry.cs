@@ -3,7 +3,8 @@ using SpeedDial.OneChamber.Player;
 namespace SpeedDial.OneChamber.UI;
 
 [UseTemplate]
-public partial class OneChamberPlayerEntry : Panel {
+public partial class OneChamberPlayerEntry : Panel
+{
 	public Client Client;
 
 	public Image Avatar { get; set; }
@@ -11,37 +12,44 @@ public partial class OneChamberPlayerEntry : Panel {
 
 	RealTimeSince TimeSinceUpdate = 0;
 
-	public override void Tick() {
+	public override void Tick()
+	{
 		base.Tick();
 
-		if(!IsVisible)
+		if ( !IsVisible )
 			return;
 
-		if(!Client.IsValid())
+		if ( !Client.IsValid() )
 			return;
 
-		if(TimeSinceUpdate < 0.1f)
+		if ( TimeSinceUpdate < 0.1f )
 			return;
 
 		TimeSinceUpdate = 0;
 		UpdateData();
 	}
 
-	public virtual void UpdateData() {
-		if(Client.Pawn is OneChamberPlayer player) {
+	public virtual void UpdateData()
+	{
+		if ( Client.Pawn is OneChamberPlayer player )
+		{
 			Score.Text = $"{player.Lives}";
-		} else {
+		}
+		else
+		{
 			Score.Text = $"-";
 		}
 
-		if(Avatar.Texture is null) {
-			Avatar.SetTexture($"avatar:{Client.PlayerId}");
+		if ( Avatar.Texture is null )
+		{
+			Avatar.SetTexture( $"avatar:{Client.PlayerId}" );
 		}
 
-		Score.SetClass("me", Client == Local.Client);
+		Score.SetClass( "me", Client == Local.Client );
 	}
 
-	public virtual void UpdateFrom(Client client) {
+	public virtual void UpdateFrom( Client client )
+	{
 		Client = client;
 		UpdateData();
 	}

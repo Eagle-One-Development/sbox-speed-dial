@@ -5,8 +5,9 @@ using SpeedDial.Classic.Bots;
 
 namespace SpeedDial.Classic;
 
-[Library("classic"), Hammer.Skip]
-public partial class ClassicGamemode : Gamemode {
+[Library( "classic" ), Hammer.Skip]
+public partial class ClassicGamemode : Gamemode
+{
 
 	public override GamemodeIdentity Identity => GamemodeIdentity.Classic;
 
@@ -28,25 +29,31 @@ public partial class ClassicGamemode : Gamemode {
 	/// <summary>
 	/// Set ClassicGamemode.CurrentSoundtrack to a random soundtrack from the Soundtracks array
 	/// </summary>
-	public void PickNewSoundtrack() {
-		int index = Rand.Int(0, Soundtracks.Length - 1);
+	public void PickNewSoundtrack()
+	{
+		int index = Rand.Int( 0, Soundtracks.Length - 1 );
 		CurrentSoundtrack = Soundtracks[index];
 	}
 
-	public override void MoveToSpawnpoint(BasePlayer pawn) {
+	public override void MoveToSpawnpoint( BasePlayer pawn )
+	{
 		Host.AssertServer();
-		var spawnpoints = All.Where((s) => s is SpawnPoint);
+		var spawnpoints = All.Where( ( s ) => s is SpawnPoint );
 		Entity optimalSpawn = spawnpoints.ToList()[0];
 		float optimalDistance = 0;
-		foreach(var spawn in spawnpoints) {
+		foreach ( var spawn in spawnpoints )
+		{
 			float smallestDistance = 999999;
-			foreach(var player in All.Where((p) => p is BasePlayer)) {
-				var distance = Vector3.DistanceBetween(spawn.Position, player.Position);
-				if(distance < smallestDistance) {
+			foreach ( var player in All.Where( ( p ) => p is BasePlayer ) )
+			{
+				var distance = Vector3.DistanceBetween( spawn.Position, player.Position );
+				if ( distance < smallestDistance )
+				{
 					smallestDistance = distance;
 				}
 			}
-			if(smallestDistance > optimalDistance) {
+			if ( smallestDistance > optimalDistance )
+			{
 				optimalSpawn = spawn;
 				optimalDistance = smallestDistance;
 			}
@@ -54,34 +61,42 @@ public partial class ClassicGamemode : Gamemode {
 		pawn.Transform = optimalSpawn.Transform;
 	}
 
-	public override void OnBotAdded(ClassicBot bot) {
+	public override void OnBotAdded( ClassicBot bot )
+	{
 		bot.ApplyBehaviour<ClassicBotBehaviour>();
 	}
 
 	public static ClassicGamemode Current => Instance as ClassicGamemode;
 
-	protected override void OnStart() {
-		ChangeRound(new WarmupRound());
+	protected override void OnStart()
+	{
+		ChangeRound( new WarmupRound() );
 		PickNewSoundtrack();
 	}
 
-	protected override void OnFinish() {
-		foreach(var client in Client.All.Where(x => x.Pawn is ClassicPlayer)) {
+	protected override void OnFinish()
+	{
+		foreach ( var client in Client.All.Where( x => x.Pawn is ClassicPlayer ) )
+		{
 			// lol
-			ClassicPlayer.StopSoundtrack(To.Single(client), true);
+			ClassicPlayer.StopSoundtrack( To.Single( client ), true );
 		}
 	}
 
-	protected override void OnClientReady(Client client) {
-		client.AssignPawn<ClassicPlayer>(true);
+	protected override void OnClientReady( Client client )
+	{
+		client.AssignPawn<ClassicPlayer>( true );
 	}
 
-	public override void CreateGamemodeUI() {
-		Hud.SetGamemodeUI(new ClassicHud());
+	public override void CreateGamemodeUI()
+	{
+		Hud.SetGamemodeUI( new ClassicHud() );
 	}
 
-	public override bool OnClientSuicide(Client client) {
-		if(client.Pawn is ClassicPlayer player) {
+	public override bool OnClientSuicide( Client client )
+	{
+		if ( client.Pawn is ClassicPlayer player )
+		{
 			player.DeathCause = ClassicPlayer.CauseOfDeath.Suicide;
 		}
 		return true;

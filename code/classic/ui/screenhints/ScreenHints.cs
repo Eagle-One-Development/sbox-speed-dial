@@ -1,7 +1,8 @@
 namespace SpeedDial.Classic.UI;
 
 [UseTemplate]
-public partial class ScreenHints : Panel {
+public partial class ScreenHints : Panel
+{
 	public static ScreenHints Current { get; private set; }
 	private bool Active;
 	private TimeSince TimeSinceActive;
@@ -20,25 +21,28 @@ public partial class ScreenHints : Panel {
 	private Client Killer;
 	private bool Domination;
 
-	public ScreenHints() {
+	public ScreenHints()
+	{
 		Current = this;
 
-		Banner.BindClass("visible", () => Active && FireBanner);
-		Title.BindClass("visible", () => Active && TimeSinceActive > 0.05f - (FireBanner ? 0 : 0.05f));
-		Extra.BindClass("visible", () => Active && FireExtra && TimeSinceActive > 0.5f - (FireBanner ? 0 : 0.05f));
+		Banner.BindClass( "visible", () => Active && FireBanner );
+		Title.BindClass( "visible", () => Active && TimeSinceActive > 0.05f - (FireBanner ? 0 : 0.05f) );
+		Extra.BindClass( "visible", () => Active && FireExtra && TimeSinceActive > 0.5f - (FireBanner ? 0 : 0.05f) );
 
-		KillerInfo.BindClass("visible", () => (Active && FireKiller && (TimeSinceActive > 0.05f)) || (FireKiller && TimeSinceActive < 1.2f));
-		KillerInfo.BindClass("dominating", () => Domination);
+		KillerInfo.BindClass( "visible", () => (Active && FireKiller && (TimeSinceActive > 0.05f)) || (FireKiller && TimeSinceActive < 1.2f) );
+		KillerInfo.BindClass( "dominating", () => Domination );
 	}
 
-	public override void Tick() {
+	public override void Tick()
+	{
 
-		if(TimeSinceActive > 1.5f) {
+		if ( TimeSinceActive > 1.5f )
+		{
 			Active = false;
 			FireExtra = false;
 		}
 
-		KillerAvatar.SetTexture($"avatar:{Killer?.PlayerId}");
+		KillerAvatar.SetTexture( $"avatar:{Killer?.PlayerId}" );
 		KillerName = $"{Killer?.Name}";
 
 		// if you're here to find a way to forcefully hide the current 
@@ -46,8 +50,9 @@ public partial class ScreenHints : Panel {
 	}
 
 	[ClientRpc]
-	public static void FireEvent(string title, string extra, bool banner) {
-		if(Current is null) return;
+	public static void FireEvent( string title, string extra, bool banner )
+	{
+		if ( Current is null ) return;
 		Current.Title.Text = title;
 		Current.Extra.Text = $"{extra}";
 		Current.FireBanner = banner;
@@ -60,8 +65,9 @@ public partial class ScreenHints : Panel {
 	}
 
 	[ClientRpc]
-	public static void FireEvent(string title, bool banner) {
-		if(Current is null) return;
+	public static void FireEvent( string title, bool banner )
+	{
+		if ( Current is null ) return;
 		Current.Title.Text = title;
 		Current.FireExtra = false;
 		Current.FireBanner = banner;
@@ -73,8 +79,9 @@ public partial class ScreenHints : Panel {
 	}
 
 	[ClientRpc]
-	public static void FireEvent(string title, string extra) {
-		if(Current is null) return;
+	public static void FireEvent( string title, string extra )
+	{
+		if ( Current is null ) return;
 		Current.Title.Text = title;
 		Current.Extra.Text = $"{extra}";
 		Current.FireExtra = true;
@@ -87,8 +94,9 @@ public partial class ScreenHints : Panel {
 	}
 
 	[ClientRpc]
-	public static void FireEvent(string title) {
-		if(Current is null) return;
+	public static void FireEvent( string title )
+	{
+		if ( Current is null ) return;
 		Current.Title.Text = title;
 		Current.FireExtra = false;
 		Current.FireBanner = true;
@@ -100,8 +108,9 @@ public partial class ScreenHints : Panel {
 	}
 
 	[ClientRpc]
-	public static void FireEvent(string title, string extra, bool banner, Client killer) {
-		if(Current is null) return;
+	public static void FireEvent( string title, string extra, bool banner, Client killer )
+	{
+		if ( Current is null ) return;
 		Current.Title.Text = title;
 		Current.Extra.Text = $"{extra}";
 		Current.FireBanner = banner;
@@ -115,8 +124,9 @@ public partial class ScreenHints : Panel {
 	}
 
 	[ClientRpc]
-	public static void FireEvent(string title, string extra, bool banner, Client killer, bool domination) {
-		if(Current is null) return;
+	public static void FireEvent( string title, string extra, bool banner, Client killer, bool domination )
+	{
+		if ( Current is null ) return;
 		Current.Title.Text = title;
 		Current.Extra.Text = $"{extra}";
 		Current.FireBanner = banner;

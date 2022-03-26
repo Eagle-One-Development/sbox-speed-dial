@@ -1,6 +1,7 @@
 namespace SpeedDial;
 
-public static class ClientExtensions {
+public static class ClientExtensions
+{
 	/// <summary>
 	/// Assigns a pawn to a client, deletes any existing previous Pawn.
 	/// </summary>
@@ -8,13 +9,14 @@ public static class ClientExtensions {
 	/// <param name="cl">Client extension</param>
 	/// <param name="respawn">Whether to call InitialSpawn on the new Pawn or not.</param>
 	/// <returns>A reference to the new Pawn.</returns>
-	public static T AssignPawn<T>(this Client cl, bool respawn = true) where T : BasePlayer, new() {
+	public static T AssignPawn<T>( this Client cl, bool respawn = true ) where T : BasePlayer, new()
+	{
 		cl.Pawn?.Delete();
 
 		var player = new T();
 		cl.Pawn = player;
 
-		if(respawn)
+		if ( respawn )
 			player.InitialRespawn();
 
 		return player;
@@ -27,10 +29,12 @@ public static class ClientExtensions {
 	/// <param name="cl">Client extension</param>
 	/// /// <param name="respawn">Whether to call InitialSpawn on the new Pawn or not.</param>
 	/// <returns>A reference to the new Pawn.</returns>
-	public static T SwapPawn<T>(this Client cl, bool respawn = true) where T : BasePlayer, new() {
+	public static T SwapPawn<T>( this Client cl, bool respawn = true ) where T : BasePlayer, new()
+	{
 		// null check to assign instead
-		if(cl.Pawn is null) {
-			return cl.AssignPawn<T>(respawn);
+		if ( cl.Pawn is null )
+		{
+			return cl.AssignPawn<T>( respawn );
 		}
 
 		// swap out pawn for spectator pawn
@@ -39,7 +43,7 @@ public static class ClientExtensions {
 		newpawn.Transform = oldpawn.Transform;
 		cl.Pawn = newpawn;
 
-		if(respawn)
+		if ( respawn )
 			newpawn.InitialRespawn();
 
 		// get rid of old pawn

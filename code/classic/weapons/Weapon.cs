@@ -5,11 +5,13 @@ using SpeedDial.Classic.UI;
 
 namespace SpeedDial.Classic.Weapons;
 
-public partial class Weapon : BaseCarriable {
+public partial class Weapon : BaseCarriable
+{
 	[Net] public WeaponBlueprint Blueprint { get; private set; }
 	public string WeaponClass => Blueprint.WeaponClass;
 
-	public void ApplyBlueprint(WeaponBlueprint blueprint) {
+	public void ApplyBlueprint( WeaponBlueprint blueprint )
+	{
 		Blueprint = blueprint;
 		Model = blueprint.WorldModel;
 		AmmoClip = Blueprint.ClipSize;
@@ -31,136 +33,166 @@ public partial class Weapon : BaseCarriable {
 	public BasePickupTrigger PickupTrigger { get; protected set; }
 	public ClassicWeaponSpawn WeaponSpawn { get; set; }
 
-	public override void Spawn() {
+	public override void Spawn()
+	{
 		base.Spawn();
 
 		CollisionGroup = CollisionGroup.Weapon;
-		SetInteractsAs(CollisionLayer.Debris);
+		SetInteractsAs( CollisionLayer.Debris );
 
 		PickupTrigger = new();
 		PickupTrigger.Parent = this;
 		PickupTrigger.Position = Position;
 		PickupTrigger.EnableTouchPersists = true;
 
-		this.SetGlowState(true, new Color(1, 1, 1, 1));
+		this.SetGlowState( true, new Color( 1, 1, 1, 1 ) );
 	}
 
 	[SpeedDialEvent.Gamemode.Reset]
-	public void GamemodeReset() {
+	public void GamemodeReset()
+	{
 		// despawn any guns laying around
-		if(WeaponSpawn is null && Owner is null) {
+		if ( WeaponSpawn is null && Owner is null )
+		{
 			Delete();
 		}
 	}
 
-	private void SetGlow(bool state = true) {
+	private void SetGlow( bool state = true )
+	{
 		Color col;
-		if(AmmoClip > 0)
-			col = new Color(0.2f, 1, 0.2f, 1);
-		else {
-			if(AmmoClip == -1)
-				col = new Color(1, 1, 1, 1);
+		if ( AmmoClip > 0 )
+			col = new Color( 0.2f, 1, 0.2f, 1 );
+		else
+		{
+			if ( AmmoClip == -1 )
+				col = new Color( 1, 1, 1, 1 );
 			else
-				col = new Color(1, 0.2f, 0.2f, 1);
+				col = new Color( 1, 0.2f, 0.2f, 1 );
 		}
 
-		this.SetGlowState(state, col);
+		this.SetGlowState( state, col );
 	}
 
 	[Event.Tick]
-	public void Tick() {
-		if(TimeSinceAlive > 10 && Owner == null && DespawnAfterTime && PickupTrigger.IsValid() && !PickupTrigger.TouchingPlayers.Any()) {
-			if(IsAuthority)
+	public void Tick()
+	{
+		if ( TimeSinceAlive > 10 && Owner == null && DespawnAfterTime && PickupTrigger.IsValid() && !PickupTrigger.TouchingPlayers.Any() )
+		{
+			if ( IsAuthority )
 				Delete();
 		}
-		var attach = GetAttachment("throw_pivot");
-		if(attach is not null) {
-			DebugOverlay.Line(attach.Value.Position, attach.Value.Position + attach.Value.Rotation.Forward * 10, Color.Red, Time.Delta, false);
-			DebugOverlay.Line(Position, Position + Rotation.Forward * 10, Color.Green, Time.Delta, false);
-			DebugOverlay.Line(Position, Position + Vector3.Up * 10, Color.Blue, Time.Delta, false);
+		var attach = GetAttachment( "throw_pivot" );
+		if ( attach is not null )
+		{
+			DebugOverlay.Line( attach.Value.Position, attach.Value.Position + attach.Value.Rotation.Forward * 10, Color.Red, Time.Delta, false );
+			DebugOverlay.Line( Position, Position + Rotation.Forward * 10, Color.Green, Time.Delta, false );
+			DebugOverlay.Line( Position, Position + Vector3.Up * 10, Color.Blue, Time.Delta, false );
 		}
-		if(Debug.Weapons) {
-			if(IsServer)
-				DebugOverlay.Text(Position, $"{GetType().Name}\nalive since: {TimeSinceAlive}\ndespawn: {DespawnAfterTime}", Owner is null ? Color.White : Color.Green, Time.Delta, 1000);
+		if ( Debug.Weapons )
+		{
+			if ( IsServer )
+				DebugOverlay.Text( Position, $"{GetType().Name}\nalive since: {TimeSinceAlive}\ndespawn: {DespawnAfterTime}", Owner is null ? Color.White : Color.Green, Time.Delta, 1000 );
 		}
 	}
 
-	public override void SimulateAnimator(PawnAnimator anim) {
-		anim.SetAnimParameter("holdtype", (int)Blueprint.HoldType);
-		anim.SetAnimParameter("aimat_weight", 1.0f);
+	public override void SimulateAnimator( PawnAnimator anim )
+	{
+		anim.SetAnimParameter( "holdtype", (int)Blueprint.HoldType );
+		anim.SetAnimParameter( "aimat_weight", 1.0f );
 	}
 
-	public override void Simulate(Client owner) {
+	public override void Simulate( Client owner )
+	{
 		TimeSinceAlive = 0;
 
-		if(!this.IsValid())
+		if ( !this.IsValid() )
 			return;
 
-		if(Owner != null) {
+		if ( Owner != null )
+		{
 			PreviousOwner = Owner;
 		}
 
-		if(CanPrimaryAttack()) {
-			using(LagCompensation()) {
+		if ( CanPrimaryAttack() )
+		{
+			using ( LagCompensation() )
+			{
 				TimeSincePrimaryAttack = 0;
 				AttackPrimary();
 			}
 		}
 
-		if(Blueprint.Special == WeaponSpecial.Burst) {
+		if ( Blueprint.Special == WeaponSpecial.Burst )
+		{
 			BurstSimulate();
-		} else if(Blueprint.Special == WeaponSpecial.Melee) {
+		}
+		else if ( Blueprint.Special == WeaponSpecial.Melee )
+		{
 			MeleeSimulate();
 		}
 	}
 
-	public virtual bool CanPrimaryAttack() {
-		if((Owner as ClassicPlayer).Frozen) return false;
-		if(Owner is ClassicPlayer) {
-			if(!Owner.IsValid() || (Blueprint.FireMode == WeaponFireMode.Automatic && !Input.Down(InputButton.Attack1)) || (!(Blueprint.FireMode == WeaponFireMode.Automatic) && !Input.Pressed(InputButton.Attack1))) return false;
+	public virtual bool CanPrimaryAttack()
+	{
+		if ( (Owner as ClassicPlayer).Frozen ) return false;
+		if ( Owner is ClassicPlayer )
+		{
+			if ( !Owner.IsValid() || (Blueprint.FireMode == WeaponFireMode.Automatic && !Input.Down( InputButton.Attack1 )) || (!(Blueprint.FireMode == WeaponFireMode.Automatic) && !Input.Pressed( InputButton.Attack1 )) ) return false;
 		}
 
 		var rate = Blueprint.FireRate;
-		if(rate <= 0) return true;
+		if ( rate <= 0 ) return true;
 
 		return TimeSincePrimaryAttack > (1 / rate);
 	}
 
-	public virtual void AttackPrimary() {
-		if(Blueprint.Special == WeaponSpecial.Burst) {
+	public virtual void AttackPrimary()
+	{
+		if ( Blueprint.Special == WeaponSpecial.Burst )
+		{
 			BurstPrimary();
-		} else if(Blueprint.Special == WeaponSpecial.Melee) {
+		}
+		else if ( Blueprint.Special == WeaponSpecial.Melee )
+		{
 			MeleePrimary();
-		} else {
+		}
+		else
+		{
 			TimeSincePrimaryAttack = 0;
 
-			if(!TakeAmmo(Blueprint.AmmoPerShot)) {
-				PlaySound("sd_dryfrire");
+			if ( !TakeAmmo( Blueprint.AmmoPerShot ) )
+			{
+				PlaySound( "sd_dryfrire" );
 				return;
 			}// no ammo, no shooty shoot
 
 			// shoot the bullets, bulletcount for something like a shotgun with multiple bullets
-			for(int i = 0; i < Blueprint.BulletCount; i++) {
-				ShootBullet(Blueprint.BulletSpread, Blueprint.BulletForce, Blueprint.BulletDamage, Blueprint.BulletSize, i);
+			for ( int i = 0; i < Blueprint.BulletCount; i++ )
+			{
+				ShootBullet( Blueprint.BulletSpread, Blueprint.BulletForce, Blueprint.BulletDamage, Blueprint.BulletSize, i );
 			}
 
 			ShootEffects();
 		}
 	}
 
-	public virtual void ShootEffects() {
-		if(IsLocalPawn) {
-			WeaponPanel.Fire(Blueprint.UIEffectsScalar);
+	public virtual void ShootEffects()
+	{
+		if ( IsLocalPawn )
+		{
+			WeaponPanel.Fire( Blueprint.UIEffectsScalar );
 			Crosshair.Fire();
 		}
-		Particles.Create(Blueprint.MuzzleParticle, EffectEntity, Blueprint.MuzzleAttach);
-		Particles.Create(Blueprint.EjectParticle, EffectEntity, Blueprint.EjectAttach);
-		PlaySound(Blueprint.ShootSound);
-		(Owner as AnimEntity).SetAnimParameter("b_attack", true); // shoot anim
+		Particles.Create( Blueprint.MuzzleParticle, EffectEntity, Blueprint.MuzzleAttach );
+		Particles.Create( Blueprint.EjectParticle, EffectEntity, Blueprint.EjectAttach );
+		PlaySound( Blueprint.ShootSound );
+		(Owner as AnimEntity).SetAnimParameter( "b_attack", true ); // shoot anim
 	}
 
-	public virtual void ShootBullet(float spread, float force, float damage, float bulletSize, int seed) {
-		Rand.SetSeed(Time.Tick + seed);
+	public virtual void ShootBullet( float spread, float force, float damage, float bulletSize, int seed )
+	{
+		Rand.SetSeed( Time.Tick + seed );
 
 		var player = Owner as ClassicPlayer;
 
@@ -170,93 +202,110 @@ public partial class Weapon : BaseCarriable {
 		forward.z *= Blueprint.VerticalSpreadMultiplier;
 
 		int index = 0;
-		foreach(var tr in TraceBullet(Owner.EyePosition, Owner.EyePosition + forward * Blueprint.BulletRange, bulletSize)) {
-			tr.Surface.DoBulletImpact(tr);
+		foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + forward * Blueprint.BulletRange, bulletSize ) )
+		{
+			tr.Surface.DoBulletImpact( tr );
 
 			// blood plip where player was hit
-			if(tr.Entity is ClassicPlayer hitply) {
-				var ps = Particles.Create("particles/blood/blood_plip.vpcf", tr.EndPosition);
-				ps?.SetForward(0, tr.Normal);
+			if ( tr.Entity is ClassicPlayer hitply )
+			{
+				var ps = Particles.Create( "particles/blood/blood_plip.vpcf", tr.EndPosition );
+				ps?.SetForward( 0, tr.Normal );
 			}
 
-			if(index == 0) {
-				BulletTracer(EffectEntity.GetAttachment("muzzle", true).Value.Position, tr.EndPosition);
-			} else {
-				BulletTracer(tr.StartPosition, tr.EndPosition);
+			if ( index == 0 )
+			{
+				BulletTracer( EffectEntity.GetAttachment( "muzzle", true ).Value.Position, tr.EndPosition );
+			}
+			else
+			{
+				BulletTracer( tr.StartPosition, tr.EndPosition );
 			}
 
 			index++;
 
-			if(!IsServer) continue;
-			if(!tr.Entity.IsValid()) continue;
+			if ( !IsServer ) continue;
+			if ( !tr.Entity.IsValid() ) continue;
 
-			using(Prediction.Off()) {
-				var damageInfo = DamageInfo.FromBullet(tr.EndPosition, forward * 100 * force, damage)
-					.UsingTraceResult(tr)
-					.WithAttacker(Owner)
-					.WithWeapon(this);
+			using ( Prediction.Off() )
+			{
+				var damageInfo = DamageInfo.FromBullet( tr.EndPosition, forward * 100 * force, damage )
+					.UsingTraceResult( tr )
+					.WithAttacker( Owner )
+					.WithWeapon( this );
 
-				tr.Entity.TakeDamage(damageInfo);
+				tr.Entity.TakeDamage( damageInfo );
 			}
 		}
 	}
 
-	public virtual void BulletTracer(Vector3 from, Vector3 to) {
-		var ps = Particles.Create("particles/weapon_fx/sd_bullet_trail/sd_bullet_trail.vpcf", to);
-		if(ps is not null) {
-			ps.SetPosition(0, from);
-			ps.SetPosition(1, to);
+	public virtual void BulletTracer( Vector3 from, Vector3 to )
+	{
+		var ps = Particles.Create( "particles/weapon_fx/sd_bullet_trail/sd_bullet_trail.vpcf", to );
+		if ( ps is not null )
+		{
+			ps.SetPosition( 0, from );
+			ps.SetPosition( 1, to );
 		}
 	}
 
 	public virtual float MaxWallbangDistance => 32;
 
-	public virtual IEnumerable<TraceResult> TraceBullet(Vector3 start, Vector3 end, float size = 2.0f, float wallBangedDistance = 0) {
+	public virtual IEnumerable<TraceResult> TraceBullet( Vector3 start, Vector3 end, float size = 2.0f, float wallBangedDistance = 0 )
+	{
 
-		var bullet = Trace.Ray(start, end)
+		var bullet = Trace.Ray( start, end )
 				.UseHitboxes()
-				.Ignore(Owner)
-				.Ignore(this)
-				.Size(size)
+				.Ignore( Owner )
+				.Ignore( this )
+				.Size( size )
 				.Run();
 
-		if(Debug.Weapons) {
-			DebugOverlay.TraceResult(bullet, 0.5f);
+		if ( Debug.Weapons )
+		{
+			DebugOverlay.TraceResult( bullet, 0.5f );
 		}
 
 		yield return bullet;
 
 		var player = Owner as ClassicPlayer;
 
-		if(Blueprint.Penetrate) {
+		if ( Blueprint.Penetrate )
+		{
 			var dir = (bullet.EndPosition - bullet.StartPosition).Normal;
-			if(bullet.Hit && wallBangedDistance < MaxWallbangDistance) {
+			if ( bullet.Hit && wallBangedDistance < MaxWallbangDistance )
+			{
 				var inNormal = bullet.Normal;
 				var inPoint = bullet.EndPosition - inNormal * (size / 2);
 
 				// adding dir to not be inside the inPoint
-				var wallbangTest = Trace.Ray(inPoint + dir, inPoint + dir * (MaxWallbangDistance - 1))
-								.HitLayer(CollisionLayer.WORLD_GEOMETRY)
-								.Ignore(Owner)
-								.Ignore(this)
-								.Size(1)
+				var wallbangTest = Trace.Ray( inPoint + dir, inPoint + dir * (MaxWallbangDistance - 1) )
+								.HitLayer( CollisionLayer.WORLD_GEOMETRY )
+								.Ignore( Owner )
+								.Ignore( this )
+								.Size( 1 )
 								.Run();
 
-				if(Debug.Weapons) {
-					DebugOverlay.TraceResult(wallbangTest, 0.5f);
+				if ( Debug.Weapons )
+				{
+					DebugOverlay.TraceResult( wallbangTest, 0.5f );
 				}
 
-				if(wallbangTest.Hit) {
+				if ( wallbangTest.Hit )
+				{
 					var outNormal = wallbangTest.Normal;
 					var outPoint = wallbangTest.EndPosition - outNormal * 0.5f;
 
-					if(outNormal != Vector3.Zero && inNormal.Dot(outNormal) >= 0) {
+					if ( outNormal != Vector3.Zero && inNormal.Dot( outNormal ) >= 0 )
+					{
 
 						var distance = (inPoint - outPoint).Length;
 						var totalDistance = wallBangedDistance + distance;
 
-						if(totalDistance < MaxWallbangDistance) {
-							foreach(var bullet2 in TraceBullet(outPoint + dir * 2, outPoint + dir * 1000, 1, totalDistance)) {
+						if ( totalDistance < MaxWallbangDistance )
+						{
+							foreach ( var bullet2 in TraceBullet( outPoint + dir * 2, outPoint + dir * 1000, 1, totalDistance ) )
+							{
 								yield return bullet2;
 							}
 						}
@@ -265,38 +314,45 @@ public partial class Weapon : BaseCarriable {
 			}
 		}
 
-		if(player.ActiveDrug && player.DrugType == DrugType.Ollie) {
+		if ( player.ActiveDrug && player.DrugType == DrugType.Ollie )
+		{
 			// pierce through the first player hit
-			if(bullet.Entity is ClassicPlayer) {
+			if ( bullet.Entity is ClassicPlayer )
+			{
 				var dir = bullet.EndPosition - bullet.StartPosition;
-				var penetrate = Trace.Ray(bullet.EndPosition, bullet.EndPosition + dir.Normal * 100f)
+				var penetrate = Trace.Ray( bullet.EndPosition, bullet.EndPosition + dir.Normal * 100f )
 						.UseHitboxes()
-						.Ignore(this)
-						.Ignore(bullet.Entity)
-						.Size(size)
+						.Ignore( this )
+						.Ignore( bullet.Entity )
+						.Size( size )
 						.Run();
 
-				if(Debug.Weapons) {
-					DebugOverlay.TraceResult(penetrate, 0.5f);
+				if ( Debug.Weapons )
+				{
+					DebugOverlay.TraceResult( penetrate, 0.5f );
 				}
 
 				yield return penetrate;
-			} else {
+			}
+			else
+			{
 				// ricochet off the wall
 				var inDir = bullet.EndPosition - bullet.StartPosition;
-				float dot = Vector3.Dot(inDir.Normal, bullet.Normal);
+				float dot = Vector3.Dot( inDir.Normal, bullet.Normal );
 
-				if(dot < 0) {
-					var dir = Vector3.Reflect(inDir, bullet.Normal).WithZ(0);
-					var ricochet = Trace.Ray(bullet.EndPosition, end + dir * Blueprint.BulletRange)
+				if ( dot < 0 )
+				{
+					var dir = Vector3.Reflect( inDir, bullet.Normal ).WithZ( 0 );
+					var ricochet = Trace.Ray( bullet.EndPosition, end + dir * Blueprint.BulletRange )
 							.UseHitboxes()
-							.Ignore(Owner)
-							.Ignore(this)
-							.Size(size)
+							.Ignore( Owner )
+							.Ignore( this )
+							.Size( size )
 							.Run();
 
-					if(Debug.Weapons) {
-						DebugOverlay.TraceResult(ricochet, 0.5f);
+					if ( Debug.Weapons )
+					{
+						DebugOverlay.TraceResult( ricochet, 0.5f );
 					}
 
 					yield return ricochet;
@@ -305,55 +361,64 @@ public partial class Weapon : BaseCarriable {
 		}
 	}
 
-	public bool TakeAmmo(int amount) {
-		if(Debug.InfiniteAmmo) return true;
-		if(AmmoClip < amount)
+	public bool TakeAmmo( int amount )
+	{
+		if ( Debug.InfiniteAmmo ) return true;
+		if ( AmmoClip < amount )
 			return false;
 
 		AmmoClip -= amount;
 		return true;
 	}
 
-	public override void OnCarryStart(Entity carrier) {
-		if(IsClient || !carrier.IsValid() || carrier is not BasePlayer player) return;
+	public override void OnCarryStart( Entity carrier )
+	{
+		if ( IsClient || !carrier.IsValid() || carrier is not BasePlayer player ) return;
 
 		CanImpactKill = true;
 
 		//spawned via a weaponspawn. Tell the spawn that it's cleared up and can start respawning the weapon
-		if(WeaponSpawn is not null) {
+		if ( WeaponSpawn is not null )
+		{
 			WeaponSpawn.WeaponTaken();
 			WeaponSpawn = null;
 		}
 
 		Parent = carrier;
-		SetParent(player, Blueprint.HoldAttach, Transform.Zero);
+		SetParent( player, Blueprint.HoldAttach, Transform.Zero );
 
 		Owner = player;
 		MoveType = MoveType.None;
 		EnableAllCollisions = false;
 
-		SetGlow(false);
+		SetGlow( false );
 
-		if(PickupTrigger.IsValid()) {
+		if ( PickupTrigger.IsValid() )
+		{
 			PickupTrigger.EnableTouch = false;
 		}
 
 		// TODO: get pickup sound for weapons without ammo (bat)
-		if(AmmoClip > 0) {
-			BasePlayer.SoundFromWorld(To.Single(player.Client), "sd_pickup.loaded", Position);
-		} else {
-			BasePlayer.SoundFromWorld(To.Single(player.Client), "sd_pickup.empty", Position);
+		if ( AmmoClip > 0 )
+		{
+			BasePlayer.SoundFromWorld( To.Single( player.Client ), "sd_pickup.loaded", Position );
+		}
+		else
+		{
+			BasePlayer.SoundFromWorld( To.Single( player.Client ), "sd_pickup.empty", Position );
 		}
 	}
 
-	public override void OnCarryDrop(Entity dropper) {
-		base.OnCarryDrop(dropper);
+	public override void OnCarryDrop( Entity dropper )
+	{
+		base.OnCarryDrop( dropper );
 
-		if(PickupTrigger.IsValid()) {
+		if ( PickupTrigger.IsValid() )
+		{
 			PickupTrigger.EnableTouch = true;
 		}
 
 		DespawnAfterTime = true;
-		SetGlow(true);
+		SetGlow( true );
 	}
 }

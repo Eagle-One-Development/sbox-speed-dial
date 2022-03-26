@@ -1,9 +1,10 @@
 namespace SpeedDial.Classic.Drugs;
 
-[Library("sd_polvo")]
-[EditorModel("models/drugs/polvo/polvo.vmdl")]
-[EntityTool("Polvo", "Speed-Dial Drugs", "Spawns one Polvo.")]
-public class Polvo : ClassicBaseDrug {
+[Library( "sd_polvo" )]
+[EditorModel( "models/drugs/polvo/polvo.vmdl" )]
+[EntityTool( "Polvo", "Speed-Dial Drugs", "Spawns one Polvo." )]
+public class Polvo : ClassicBaseDrug
+{
 	public override string WorldModel => "models/drugs/polvo/polvo.vmdl";
 	public override string DrugName => "POLVO";
 	public override string DrugDescription => "you are speed"; // legs so fast // gotta move // dashing!

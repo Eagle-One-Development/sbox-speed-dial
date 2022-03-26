@@ -1,8 +1,9 @@
 ﻿namespace Sandbox.Classic.Entities;
 
-[Library("func_dance_floor", Description = "Dance floor tile entity")]
+[Library( "func_dance_floor", Description = "Dance floor tile entity" )]
 [Solid]
-public partial class DanceFloor : BrushEntity {
+public partial class DanceFloor : BrushEntity
+{
 
 	public static readonly Color[] Colors = {
 			Color.Black,
@@ -17,13 +18,13 @@ public partial class DanceFloor : BrushEntity {
 			Color.White
 	};
 
-	[Property(Title = "Custom Color Code")]
+	[Property( Title = "Custom Color Code" )]
 	public string CustomColorCode { get; set; } = "";
 
-	[Property(Title = "Color Code")]
+	[Property( Title = "Color Code" )]
 	public int ColorCode { get; set; } = 0;
 
-	[Property(Title = "Color Code Change Interval in seconds")]
+	[Property( Title = "Color Code Change Interval in seconds" )]
 	public int Interval { get; set; } = 1;
 
 	private float NextInterval { get; set; }
@@ -31,8 +32,9 @@ public partial class DanceFloor : BrushEntity {
 	private int CurrentCustomIndex = 0;
 	private bool UseCustomCode = false;
 
-	public override void Spawn() {
-		if(CustomColorCode.Length > 0)
+	public override void Spawn()
+	{
+		if ( CustomColorCode.Length > 0 )
 			UseCustomCode = true;
 
 		Transmit = TransmitType.Always;
@@ -42,18 +44,25 @@ public partial class DanceFloor : BrushEntity {
 	}
 
 	[Event.Tick.Server]
-	public void Simulate() {
-		if(RealTime.Now >= NextInterval) {
+	public void Simulate()
+	{
+		if ( RealTime.Now >= NextInterval )
+		{
 
-			if(UseCustomCode) {
-				if(CurrentCustomIndex > CustomColorCode.Length - 1) {
+			if ( UseCustomCode )
+			{
+				if ( CurrentCustomIndex > CustomColorCode.Length - 1 )
+				{
 					CurrentCustomIndex = 0;
 				}
 				var color = CustomColorCode[CurrentCustomIndex];
-				RenderColor = Colors[int.Parse($"{color}")];
+				RenderColor = Colors[int.Parse( $"{color}" )];
 				CurrentCustomIndex++;
-			} else {
-				if(CurrentColor > Colors.Length - 1) {
+			}
+			else
+			{
+				if ( CurrentColor > Colors.Length - 1 )
+				{
 					CurrentColor = 0;
 				}
 				RenderColor = Colors[CurrentColor];

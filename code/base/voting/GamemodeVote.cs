@@ -1,13 +1,16 @@
 ﻿namespace SpeedDial;
 
-public partial class GamemodeVote : VoteEntity {
+public partial class GamemodeVote : VoteEntity
+{
 
-	[AdminCmd("sd_vote_gamemode_start")]
-	public static void Start() {
+	[AdminCmd( "sd_vote_gamemode_start" )]
+	public static void Start()
+	{
 		new GamemodeVote().OnStart();
 	}
 
-	private void OnStart() {
+	private void OnStart()
+	{
 		PopulateVoteItems();
 	}
 
@@ -22,14 +25,17 @@ public partial class GamemodeVote : VoteEntity {
 	};
 
 	// TEMP TEMP TEMP TEMP // TEMP TEMP TEMP TEMP // TEMP TEMP TEMP TEMP
-	protected override void PopulateVoteItems() {
-		foreach(var gm in gamemodes.Where(x => x != Game.LastGamemode)) {
-			Current.AddVoteItem($"{gm}", $"Vote now!", $"image\\path");
+	protected override void PopulateVoteItems()
+	{
+		foreach ( var gm in gamemodes.Where( x => x != Game.LastGamemode ) )
+		{
+			Current.AddVoteItem( $"{gm}", $"Vote now!", $"image\\path" );
 		}
 	}
 
-	public override void OnVoteConcluded(VoteItem item) {
-		base.OnVoteConcluded(item);
-		Game.ChangeGamemode(item.Title);
+	public override void OnVoteConcluded( VoteItem item )
+	{
+		base.OnVoteConcluded( item );
+		Game.ChangeGamemode( item.Title );
 	}
 }

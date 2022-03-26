@@ -1,10 +1,11 @@
 namespace SpeedDial;
 
 /// <summary> Timed Round </summary>
-public abstract partial class TimedRound : Round {
+public abstract partial class TimedRound : Round
+{
 
 	/// <summary> How long does this round go for? </summary>
-	public virtual TimeSpan RoundDuration { get => TimeSpan.FromSeconds(60); }
+	public virtual TimeSpan RoundDuration { get => TimeSpan.FromSeconds( 60 ); }
 
 	/// <summary>
 	/// Formatted version of the time left in the round in seconds
@@ -15,37 +16,45 @@ public abstract partial class TimedRound : Round {
 	[Net, Predicted]
 	public float RoundEndTime { get; private set; }
 
-	public TimeSpan GetTimeLeft() {
-		if(!Finished)
-			return TimeSpan.FromSeconds(RoundDuration.TotalSeconds - GetElapsedTime().TotalSeconds);
+	public TimeSpan GetTimeLeft()
+	{
+		if ( !Finished )
+			return TimeSpan.FromSeconds( RoundDuration.TotalSeconds - GetElapsedTime().TotalSeconds );
 		else
 			return TimeSpan.Zero;
 	}
 
-	public override TimeSpan GetTime() {
+	public override TimeSpan GetTime()
+	{
 		return GetTimeLeft();
 	}
 
-	public override void Start() {
-		if(RoundDuration.TotalSeconds > 0)
+	public override void Start()
+	{
+		if ( RoundDuration.TotalSeconds > 0 )
 			RoundEndTime = Time.Now + (float)RoundDuration.TotalSeconds;
 
 		base.Start();
 	}
 
-	public override void Finish() {
-		if(Host.IsServer)
+	public override void Finish()
+	{
+		if ( Host.IsServer )
 			RoundEndTime = 0f;
 
 		base.Finish();
 	}
 
-	protected override void OnThink() {
-		if(RoundEndTime > 0 && Time.Now >= RoundEndTime) {
+	protected override void OnThink()
+	{
+		if ( RoundEndTime > 0 && Time.Now >= RoundEndTime )
+		{
 			RoundEndTime = 0f;
 			OnTimeUp();
-		} else {
-			TimeLeftFormatted = GetTimeLeft().ToString(@"mm\:ss");
+		}
+		else
+		{
+			TimeLeftFormatted = GetTimeLeft().ToString( @"mm\:ss" );
 		}
 	}
 

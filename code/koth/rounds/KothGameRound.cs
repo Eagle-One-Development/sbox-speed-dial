@@ -5,20 +5,23 @@ using SpeedDial.Classic.Player;
 
 namespace SpeedDial.Koth.Rounds;
 
-public partial class KothGameRound : TimedRound {
-	public override TimeSpan RoundDuration => TimeSpan.FromMinutes(5);
+public partial class KothGameRound : TimedRound
+{
+	public override TimeSpan RoundDuration => TimeSpan.FromMinutes( 5 );
 	private KothGamemode koth => Game.Current.ActiveGamemode as KothGamemode;
 	public override string RoundText => "";
 
 	[Net]
 	public int LastHillSpawnIdent { get; set; }
 
-	protected override void OnStart() {
+	protected override void OnStart()
+	{
 		base.OnStart();
 
-		koth.SetState(GamemodeState.Running);
+		koth.SetState( GamemodeState.Running );
 
-		foreach(var client in Client.All.Where(x => x.Pawn is KothPlayer)) {
+		foreach ( var client in Client.All.Where( x => x.Pawn is KothPlayer ) )
+		{
 			var pawn = client.Pawn as KothPlayer;
 
 			pawn.Frozen = false;
@@ -27,12 +30,14 @@ public partial class KothGameRound : TimedRound {
 
 
 		// start climax track 10 seconds before round ends
-		_ = PlayClimaxMusic((int)RoundDuration.TotalSeconds - 10);
+		_ = PlayClimaxMusic( (int)RoundDuration.TotalSeconds - 10 );
 	}
 
-	public void CreateHill() {
-		if(Entity.All.OfType<HillSpotSpawn>().Any()) {
-			var targetHill = Entity.All.OfType<HillSpotSpawn>().Where(x => x.NetworkIdent != LastHillSpawnIdent).Random();
+	public void CreateHill()
+	{
+		if ( Entity.All.OfType<HillSpotSpawn>().Any() )
+		{
+			var targetHill = Entity.All.OfType<HillSpotSpawn>().Where( x => x.NetworkIdent != LastHillSpawnIdent ).Random();
 
 			var hill = new HillSpot();
 			hill.Position = targetHill.Position;
@@ -43,42 +48,50 @@ public partial class KothGameRound : TimedRound {
 		}
 	}
 
-	protected override void OnFinish() {
+	protected override void OnFinish()
+	{
 		base.OnFinish();
 
-		WinScreen.UpdatePanels(To.Everyone);
-		Game.Current.ActiveGamemode.ChangeRound(new KothPostRound());
+		WinScreen.UpdatePanels( To.Everyone );
+		Game.Current.ActiveGamemode.ChangeRound( new KothPostRound() );
 	}
 
 
-	protected override void OnThink() {
+	protected override void OnThink()
+	{
 		base.OnThink();
 
-		if(!Entity.All.OfType<HillSpot>().Any()) {
+		if ( !Entity.All.OfType<HillSpot>().Any() )
+		{
 
 			CreateHill();
 
 		}
 	}
 
-	protected void ServerTick() {
+	protected void ServerTick()
+	{
 
 
 
 	}
 
-	private async Task PlayClimaxMusic(int delay) {
-		await GameTask.DelaySeconds(delay);
-		foreach(var client in Client.All.Where(x => x.Pawn is KothPlayer)) {
+	private async Task PlayClimaxMusic( int delay )
+	{
+		await GameTask.DelaySeconds( delay );
+		foreach ( var client in Client.All.Where( x => x.Pawn is KothPlayer ) )
+		{
 			var pawn = client.Pawn as KothPlayer;
-			ClassicPlayer.PlayRoundendClimax(To.Single(client));
+			ClassicPlayer.PlayRoundendClimax( To.Single( client ) );
 		}
 	}
 
-	public override void OnPawnJoined(BasePlayer pawn) {
-		base.OnPawnJoined(pawn);
-		if(pawn is KothPlayer player) {
-			ClassicPlayer.PlaySoundtrack(To.Single(player.Client));
+	public override void OnPawnJoined( BasePlayer pawn )
+	{
+		base.OnPawnJoined( pawn );
+		if ( pawn is KothPlayer player )
+		{
+			ClassicPlayer.PlaySoundtrack( To.Single( player.Client ) );
 		}
 	}
 }

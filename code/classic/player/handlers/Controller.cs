@@ -2,7 +2,8 @@ using SpeedDial.Classic.Drugs;
 
 namespace SpeedDial.Classic.Player;
 
-public partial class ClassicController : BasePlayerController {
+public partial class ClassicController : BasePlayerController
+{
 	public float DefaultSpeed { get; set; } = 300.0f;
 	public float Acceleration { get; set; } = 10.0f;
 	public float AirAcceleration { get; set; } = 50.0f;
@@ -27,26 +28,29 @@ public partial class ClassicController : BasePlayerController {
 	public Unstuck Unstuck;
 
 
-	public ClassicController() {
-		Unstuck = new Unstuck(this);
+	public ClassicController()
+	{
+		Unstuck = new Unstuck( this );
 	}
 
 	/// <summary>
 	/// This is temporary, get the hull size for the player's collision
 	/// </summary>
-	public override BBox GetHull() {
+	public override BBox GetHull()
+	{
 		var girth = BodyGirth * 0.5f;
-		var mins = new Vector3(-girth, -girth, 0);
-		var maxs = new Vector3(+girth, +girth, BodyHeight);
+		var mins = new Vector3( -girth, -girth, 0 );
+		var maxs = new Vector3( +girth, +girth, BodyHeight );
 
-		return new BBox(mins, maxs);
+		return new BBox( mins, maxs );
 	}
 
 	protected Vector3 mins;
 	protected Vector3 maxs;
 
-	public virtual void SetBBox(Vector3 mins, Vector3 maxs) {
-		if(this.mins == mins && this.maxs == maxs)
+	public virtual void SetBBox( Vector3 mins, Vector3 maxs )
+	{
+		if ( this.mins == mins && this.maxs == maxs )
 			return;
 
 		this.mins = mins;
@@ -56,25 +60,28 @@ public partial class ClassicController : BasePlayerController {
 	/// <summary>
 	/// Update the size of the bbox. We should really trigger some shit if this changes.
 	/// </summary>
-	public virtual void UpdateBBox() {
+	public virtual void UpdateBBox()
+	{
 		var girth = BodyGirth * 0.5f;
 
-		var mins = new Vector3(-girth, -girth, 0) * Pawn.Scale;
-		var maxs = new Vector3(+girth, +girth, BodyHeight) * Pawn.Scale;
+		var mins = new Vector3( -girth, -girth, 0 ) * Pawn.Scale;
+		var maxs = new Vector3( +girth, +girth, BodyHeight ) * Pawn.Scale;
 
-		SetBBox(mins, maxs);
+		SetBBox( mins, maxs );
 	}
 
 	protected float SurfaceFriction;
 
 
-	public override void FrameSimulate() {
-		if((Pawn as ClassicPlayer).Frozen) return;
+	public override void FrameSimulate()
+	{
+		if ( (Pawn as ClassicPlayer).Frozen ) return;
 		base.FrameSimulate();
 		EyeRotation = Input.Rotation;
 	}
 
-	public override void Simulate() {
+	public override void Simulate()
+	{
 		// do this stuff first so EyePosition is valid when frozen
 		EyeLocalPosition = Vector3.Up * (EyeHeight * Pawn.Scale);
 		UpdateBBox();
@@ -82,35 +89,37 @@ public partial class ClassicController : BasePlayerController {
 		EyeLocalPosition += TraceOffset;
 		EyeRotation = Input.Rotation;
 
-		if((Pawn as ClassicPlayer).Frozen) { WishVelocity = Vector3.Zero; return; }
+		if ( (Pawn as ClassicPlayer).Frozen ) { WishVelocity = Vector3.Zero; return; }
 
 		RestoreGroundPos();
 
-		if(Unstuck.TestAndFix())
+		if ( Unstuck.TestAndFix() )
 			return;
 
 		// Start Gravity
-		Velocity -= new Vector3(0, 0, Gravity * 0.5f) * Time.Delta;
-		Velocity += new Vector3(0, 0, BaseVelocity.z) * Time.Delta;
-		BaseVelocity = BaseVelocity.WithZ(0);
+		Velocity -= new Vector3( 0, 0, Gravity * 0.5f ) * Time.Delta;
+		Velocity += new Vector3( 0, 0, BaseVelocity.z ) * Time.Delta;
+		BaseVelocity = BaseVelocity.WithZ( 0 );
 
 		// Fricion is handled before we add in any base velocity. That way, if we are on a conveyor, 
 		//  we don't slow when standing still, relative to the conveyor.
 		bool bStartOnGround = GroundEntity != null;
-		if(bStartOnGround) {
+		if ( bStartOnGround )
+		{
 
-			Velocity = Velocity.WithZ(0);
+			Velocity = Velocity.WithZ( 0 );
 
-			if(GroundEntity != null) {
-				ApplyFriction(GroundFriction * SurfaceFriction);
+			if ( GroundEntity != null )
+			{
+				ApplyFriction( GroundFriction * SurfaceFriction );
 			}
 		}
 
 		// Work out wish velocity.. just take input, rotate it to view, clamp to -1, 1
-		WishVelocity = new Vector3(Input.Forward, Input.Left, 0);
-		var inSpeed = WishVelocity.Length.Clamp(0, 1);
+		WishVelocity = new Vector3( Input.Forward, Input.Left, 0 );
+		var inSpeed = WishVelocity.Length.Clamp( 0, 1 );
 
-		WishVelocity = WishVelocity.WithZ(0);
+		WishVelocity = WishVelocity.WithZ( 0 );
 
 		var player = Pawn as ClassicPlayer;
 		WishVelocity = WishVelocity.Normal * inSpeed;
@@ -119,73 +128,84 @@ public partial class ClassicController : BasePlayerController {
 		WishVelocity *= DefaultSpeed * ((player.ActiveDrug && player.DrugType is DrugType.Polvo) ? 1.5f : 1f);
 
 		bool bStayOnGround = false;
-		if(GroundEntity != null) {
+		if ( GroundEntity != null )
+		{
 			bStayOnGround = true;
 			WalkMove();
-		} else {
+		}
+		else
+		{
 			AirMove();
 		}
 
-		CategorizePosition(bStayOnGround);
+		CategorizePosition( bStayOnGround );
 
 		// FinishGravity
-		Velocity -= new Vector3(0, 0, Gravity * 0.5f) * Time.Delta;
+		Velocity -= new Vector3( 0, 0, Gravity * 0.5f ) * Time.Delta;
 
-		if(GroundEntity != null) {
-			Velocity = Velocity.WithZ(0);
+		if ( GroundEntity != null )
+		{
+			Velocity = Velocity.WithZ( 0 );
 		}
 
 		SaveGroundPos();
 
-		if(Debug) {
-			DebugOverlay.Box(Position + TraceOffset, mins, maxs, Color.Red);
-			DebugOverlay.Box(Position, mins, maxs, Color.Blue);
+		if ( Debug )
+		{
+			DebugOverlay.Box( Position + TraceOffset, mins, maxs, Color.Red );
+			DebugOverlay.Box( Position, mins, maxs, Color.Blue );
 
 			var lineOffset = 0;
-			if(Host.IsServer) lineOffset = 10;
+			if ( Host.IsServer ) lineOffset = 10;
 
-			DebugOverlay.ScreenText(lineOffset + 0, $"        Position: {Position}");
-			DebugOverlay.ScreenText(lineOffset + 1, $"        Velocity: {Velocity}");
-			DebugOverlay.ScreenText(lineOffset + 2, $"    BaseVelocity: {BaseVelocity}");
-			DebugOverlay.ScreenText(lineOffset + 3, $"    GroundEntity: {GroundEntity} [{GroundEntity?.Velocity}]");
-			DebugOverlay.ScreenText(lineOffset + 4, $" SurfaceFriction: {SurfaceFriction}");
-			DebugOverlay.ScreenText(lineOffset + 5, $"    WishVelocity: {WishVelocity}");
+			DebugOverlay.ScreenText( lineOffset + 0, $"        Position: {Position}" );
+			DebugOverlay.ScreenText( lineOffset + 1, $"        Velocity: {Velocity}" );
+			DebugOverlay.ScreenText( lineOffset + 2, $"    BaseVelocity: {BaseVelocity}" );
+			DebugOverlay.ScreenText( lineOffset + 3, $"    GroundEntity: {GroundEntity} [{GroundEntity?.Velocity}]" );
+			DebugOverlay.ScreenText( lineOffset + 4, $" SurfaceFriction: {SurfaceFriction}" );
+			DebugOverlay.ScreenText( lineOffset + 5, $"    WishVelocity: {WishVelocity}" );
 		}
 	}
 
-	protected void WalkMove() {
+	protected void WalkMove()
+	{
 		var wishdir = WishVelocity.Normal;
 		var wishspeed = WishVelocity.Length;
 
-		WishVelocity = WishVelocity.WithZ(0);
+		WishVelocity = WishVelocity.WithZ( 0 );
 		WishVelocity = WishVelocity.Normal * wishspeed;
 
-		Velocity = Velocity.WithZ(0);
-		Accelerate(wishdir, wishspeed, 0, Acceleration);
-		Velocity = Velocity.WithZ(0);
+		Velocity = Velocity.WithZ( 0 );
+		Accelerate( wishdir, wishspeed, 0, Acceleration );
+		Velocity = Velocity.WithZ( 0 );
 
 
 		Velocity += BaseVelocity;
 
-		try {
-			if(Velocity.Length < 1.0f) {
+		try
+		{
+			if ( Velocity.Length < 1.0f )
+			{
 				Velocity = Vector3.Zero;
 				return;
 			}
 
 			// first try just moving to the destination	
-			var dest = (Position + Velocity * Time.Delta).WithZ(Position.z);
+			var dest = (Position + Velocity * Time.Delta).WithZ( Position.z );
 
-			var pm = TraceBBox(Position, dest);
+			var pm = TraceBBox( Position, dest );
 
-			if(pm.Fraction == 1) {
+			if ( pm.Fraction == 1 )
+			{
 				Position = pm.EndPosition;
 				StayOnGround();
 				return;
 			}
 
 			StepMove();
-		} finally {
+		}
+		finally
+		{
 
 			// Now pull the base velocity back out.   Base velocity is set if you are on a moving object, like a conveyor (or maybe another monster?)
 			Velocity -= BaseVelocity;
@@ -194,7 +214,8 @@ public partial class ClassicController : BasePlayerController {
 		StayOnGround();
 	}
 
-	private void StepMove() {
+	private void StepMove()
+	{
 		var startPos = Position;
 		var startVel = Velocity;
 
@@ -209,29 +230,31 @@ public partial class ClassicController : BasePlayerController {
 		// Try again, this time step up and move across
 		Position = startPos;
 		Velocity = startVel;
-		var trace = TraceBBox(Position, Position + Vector3.Up * (StepSize + DistEpsilon));
-		if(!trace.StartedSolid) Position = trace.EndPosition;
+		var trace = TraceBBox( Position, Position + Vector3.Up * (StepSize + DistEpsilon) );
+		if ( !trace.StartedSolid ) Position = trace.EndPosition;
 		TryPlayerMove();
 
 		// If we move down from here, did we land on ground?
-		trace = TraceBBox(Position, Position + Vector3.Down * (StepSize + DistEpsilon * 2));
-		if(!trace.Hit || Vector3.GetAngle(Vector3.Up, trace.Normal) > GroundAngle) {
+		trace = TraceBBox( Position, Position + Vector3.Down * (StepSize + DistEpsilon * 2) );
+		if ( !trace.Hit || Vector3.GetAngle( Vector3.Up, trace.Normal ) > GroundAngle )
+		{
 			// didn't step on ground, so just use the original attempt without stepping
 			Position = withoutStepPos;
 			Velocity = withoutStepVel;
 			return;
 		}
 
-		if(!trace.StartedSolid)
+		if ( !trace.StartedSolid )
 			Position = trace.EndPosition;
 
 		var withStepPos = Position;
 
-		float withoutStep = (withoutStepPos - startPos).WithZ(0).Length;
-		float withStep = (withStepPos - startPos).WithZ(0).Length;
+		float withoutStep = (withoutStepPos - startPos).WithZ( 0 ).Length;
+		float withStep = (withStepPos - startPos).WithZ( 0 ).Length;
 
 		// We went further without the step, so lets use that
-		if(withoutStep > withStep) {
+		if ( withoutStep > withStep )
+		{
 			Position = withoutStepPos;
 			Velocity = withoutStepVel;
 			return;
@@ -241,26 +264,27 @@ public partial class ClassicController : BasePlayerController {
 	/// <summary>
 	/// Add our wish direction and speed onto our velocity
 	/// </summary>
-	public virtual void Accelerate(Vector3 wishdir, float wishspeed, float speedLimit, float acceleration) {
+	public virtual void Accelerate( Vector3 wishdir, float wishspeed, float speedLimit, float acceleration )
+	{
 
-		if(speedLimit > 0 && wishspeed > speedLimit)
+		if ( speedLimit > 0 && wishspeed > speedLimit )
 			wishspeed = speedLimit;
 
 		// See if we are changing direction a bit
-		var currentspeed = Velocity.Dot(wishdir);
+		var currentspeed = Velocity.Dot( wishdir );
 
 		// Reduce wishspeed by the amount of veer.
 		var addspeed = wishspeed - currentspeed;
 
 		// If not going to add any speed, done.
-		if(addspeed <= 0)
+		if ( addspeed <= 0 )
 			return;
 
 		// Determine amount of acceleration.
 		var accelspeed = acceleration * Time.Delta * wishspeed * SurfaceFriction;
 
 		// Cap at addspeed
-		if(accelspeed > addspeed)
+		if ( accelspeed > addspeed )
 			accelspeed = addspeed;
 
 		Velocity += wishdir * accelspeed;
@@ -269,11 +293,12 @@ public partial class ClassicController : BasePlayerController {
 	/// <summary>
 	/// Remove ground friction from velocity
 	/// </summary>
-	public virtual void ApplyFriction(float frictionAmount = 1.0f) {
+	public virtual void ApplyFriction( float frictionAmount = 1.0f )
+	{
 
 		// Calculate speed
 		var speed = Velocity.Length;
-		if(speed < 0.1f) return;
+		if ( speed < 0.1f ) return;
 
 		// Bleed off some speed, but if we have less than the bleed
 		//  threshold, bleed the threshold amount.
@@ -284,19 +309,21 @@ public partial class ClassicController : BasePlayerController {
 
 		// scale the velocity
 		float newspeed = speed - drop;
-		if(newspeed < 0) newspeed = 0;
+		if ( newspeed < 0 ) newspeed = 0;
 
-		if(newspeed != speed) {
+		if ( newspeed != speed )
+		{
 			newspeed /= speed;
 			Velocity *= newspeed;
 		}
 	}
 
-	public virtual void AirMove() {
+	public virtual void AirMove()
+	{
 		var wishdir = WishVelocity.Normal;
 		var wishspeed = WishVelocity.Length;
 
-		Accelerate(wishdir, wishspeed, AirControl, AirAcceleration);
+		Accelerate( wishdir, wishspeed, AirControl, AirAcceleration );
 
 		Velocity += BaseVelocity;
 
@@ -305,18 +332,20 @@ public partial class ClassicController : BasePlayerController {
 		Velocity -= BaseVelocity;
 	}
 
-	public virtual void TryPlayerMove() {
-		MoveHelper mover = new MoveHelper(Position, Velocity);
-		mover.Trace = mover.Trace.Size(mins, maxs).Ignore(Pawn);
+	public virtual void TryPlayerMove()
+	{
+		MoveHelper mover = new MoveHelper( Position, Velocity );
+		mover.Trace = mover.Trace.Size( mins, maxs ).Ignore( Pawn );
 		mover.MaxStandableAngle = GroundAngle;
 
-		mover.TryMove(Time.Delta);
+		mover.TryMove( Time.Delta );
 
 		Position = mover.Position;
 		Velocity = mover.Velocity;
 	}
 
-	protected void CategorizePosition(bool bStayOnGround) {
+	protected void CategorizePosition( bool bStayOnGround )
+	{
 		SurfaceFriction = 1.0f;
 
 		var point = Position - Vector3.Up * 2;
@@ -330,52 +359,62 @@ public partial class ClassicController : BasePlayerController {
 		bool bMoveToEndPos = false;
 
 		// and not underwater
-		if(GroundEntity != null) {
+		if ( GroundEntity != null )
+		{
 			bMoveToEndPos = true;
 			point.z -= StepSize;
-		} else if(bStayOnGround) {
+		}
+		else if ( bStayOnGround )
+		{
 			bMoveToEndPos = true;
 			point.z -= StepSize;
 		}
 
 		// or ladder and moving up
-		if(bMovingUpRapidly || Swimming) {
+		if ( bMovingUpRapidly || Swimming )
+		{
 			ClearGroundEntity();
 			return;
 		}
 
 		// falling
 		bool bMovingDownRapidly = Velocity.z < -Gravity;
-		if(bMovingDownRapidly) {
-			var downTrace = Trace.Ray(Position, Position + Vector3.Down * 10000)
+		if ( bMovingDownRapidly )
+		{
+			var downTrace = Trace.Ray( Position, Position + Vector3.Down * 10000 )
 						.WorldAndEntities()
-						.HitLayer(CollisionLayer.All, false)
-						.HitLayer(CollisionLayer.Solid, true)
-						.HitLayer(CollisionLayer.GRATE, true)
-						.HitLayer(CollisionLayer.PLAYER_CLIP, true)
+						.HitLayer( CollisionLayer.All, false )
+						.HitLayer( CollisionLayer.Solid, true )
+						.HitLayer( CollisionLayer.GRATE, true )
+						.HitLayer( CollisionLayer.PLAYER_CLIP, true )
 						.Run();
 
 			// falling in the void, kill the player
-			if(!downTrace.Hit) {
-				if(Host.IsServer)
+			if ( !downTrace.Hit )
+			{
+				if ( Host.IsServer )
 					Pawn.Kill();
 				return;
 			}
 		}
 
-		var pm = TraceBBox(vBumpOrigin, point, 4.0f);
+		var pm = TraceBBox( vBumpOrigin, point, 4.0f );
 
-		if(pm.Entity == null || Vector3.GetAngle(Vector3.Up, pm.Normal) > GroundAngle) {
+		if ( pm.Entity == null || Vector3.GetAngle( Vector3.Up, pm.Normal ) > GroundAngle )
+		{
 			ClearGroundEntity();
 			bMoveToEndPos = false;
 
-			if(Velocity.z > 0)
+			if ( Velocity.z > 0 )
 				SurfaceFriction = 0.25f;
-		} else {
-			UpdateGroundEntity(pm);
+		}
+		else
+		{
+			UpdateGroundEntity( pm );
 		}
 
-		if(bMoveToEndPos && !pm.StartedSolid && pm.Fraction > 0.0f && pm.Fraction < 1.0f) {
+		if ( bMoveToEndPos && !pm.StartedSolid && pm.Fraction > 0.0f && pm.Fraction < 1.0f )
+		{
 			Position = pm.EndPosition;
 		}
 
@@ -384,18 +423,20 @@ public partial class ClassicController : BasePlayerController {
 	/// <summary>
 	/// We have a new ground entity
 	/// </summary>
-	public virtual void UpdateGroundEntity(TraceResult tr) {
+	public virtual void UpdateGroundEntity( TraceResult tr )
+	{
 		GroundNormal = tr.Normal;
 
 		// VALVE HACKHACK: Scale this to fudge the relationship between vphysics friction values and player friction values.
 		// A value of 0.8f feels pretty normal for vphysics, whereas 1.0f is normal for players.
 		// This scaling trivially makes them equivalent.  REVISIT if this affects low friction surfaces too much.
 		SurfaceFriction = tr.Surface.Friction * 1.25f;
-		if(SurfaceFriction > 1) SurfaceFriction = 1;
+		if ( SurfaceFriction > 1 ) SurfaceFriction = 1;
 
 		GroundEntity = tr.Entity;
 
-		if(GroundEntity != null) {
+		if ( GroundEntity != null )
+		{
 			BaseVelocity = GroundEntity.Velocity;
 		}
 
@@ -404,8 +445,9 @@ public partial class ClassicController : BasePlayerController {
 	/// <summary>
 	/// We're no longer on the ground, remove it
 	/// </summary>
-	public virtual void ClearGroundEntity() {
-		if(GroundEntity == null) return;
+	public virtual void ClearGroundEntity()
+	{
+		if ( GroundEntity == null ) return;
 
 		GroundEntity = null;
 		GroundNormal = Vector3.Up;
@@ -417,39 +459,43 @@ public partial class ClassicController : BasePlayerController {
 	/// liftFeet will move the start position up by this amount, while keeping the top of the bbox at the same 
 	/// position. This is good when tracing down because you won't be tracing through the ceiling above.
 	/// </summary>
-	public override TraceResult TraceBBox(Vector3 start, Vector3 end, float liftFeet = 0.0f) {
-		return TraceBBox(start, end, mins, maxs, liftFeet);
+	public override TraceResult TraceBBox( Vector3 start, Vector3 end, float liftFeet = 0.0f )
+	{
+		return TraceBBox( start, end, mins, maxs, liftFeet );
 	}
 
 	/// <summary>
 	/// Try to keep a walking player on the ground when running down slopes etc
 	/// </summary>
-	public virtual void StayOnGround() {
+	public virtual void StayOnGround()
+	{
 		var start = Position + Vector3.Up * 2;
 		var end = Position + Vector3.Down * StepSize;
 
 		// See how far up we can go without getting stuck
-		var trace = TraceBBox(Position, start);
+		var trace = TraceBBox( Position, start );
 		start = trace.EndPosition;
 
 		// Now trace down from a known safe position
-		trace = TraceBBox(start, end);
+		trace = TraceBBox( start, end );
 
-		if(trace.Fraction <= 0) return;
-		if(trace.Fraction >= 1) return;
-		if(trace.StartedSolid) return;
-		if(Vector3.GetAngle(Vector3.Up, trace.Normal) > GroundAngle) return;
+		if ( trace.Fraction <= 0 ) return;
+		if ( trace.Fraction >= 1 ) return;
+		if ( trace.StartedSolid ) return;
+		if ( Vector3.GetAngle( Vector3.Up, trace.Normal ) > GroundAngle ) return;
 
 		Position = trace.EndPosition;
 	}
 
-	protected void RestoreGroundPos() {
-		if(GroundEntity == null || GroundEntity.IsWorld)
+	protected void RestoreGroundPos()
+	{
+		if ( GroundEntity == null || GroundEntity.IsWorld )
 			return;
 	}
 
-	protected void SaveGroundPos() {
-		if(GroundEntity == null || GroundEntity.IsWorld)
+	protected void SaveGroundPos()
+	{
+		if ( GroundEntity == null || GroundEntity.IsWorld )
 			return;
 	}
 }

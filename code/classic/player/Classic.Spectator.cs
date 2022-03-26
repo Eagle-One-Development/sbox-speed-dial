@@ -1,15 +1,18 @@
 ﻿namespace SpeedDial.Classic.Player;
 
-public partial class ClassicSpectator : ClassicPlayer {
+public partial class ClassicSpectator : ClassicPlayer
+{
 
-	public override void InitialRespawn() {
+	public override void InitialRespawn()
+	{
 		Respawn();
 	}
 
-	public override void Respawn() {
+	public override void Respawn()
+	{
 		Host.AssertServer();
 
-		SetModel(ModelPath);
+		SetModel( ModelPath );
 		EnableDrawing = false;
 
 		Controller = new OneChamberSpectatorController();
@@ -24,16 +27,19 @@ public partial class ClassicSpectator : ClassicPlayer {
 		ResetInterpolation();
 	}
 
-	public override void CreateHull() {
+	public override void CreateHull()
+	{
 		MoveType = MoveType.MOVETYPE_WALK;
 	}
 
-	public override void TakeDamage(DamageInfo info) {
+	public override void TakeDamage( DamageInfo info )
+	{
 		return;
 	}
 
-	public override void Simulate(Client cl) {
-		SimulateActiveChild(cl, ActiveChild);
-		GetActiveController()?.Simulate(cl, this, GetActiveAnimator());
+	public override void Simulate( Client cl )
+	{
+		SimulateActiveChild( cl, ActiveChild );
+		GetActiveController()?.Simulate( cl, this, GetActiveAnimator() );
 	}
 }

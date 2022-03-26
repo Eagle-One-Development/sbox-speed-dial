@@ -2,39 +2,51 @@
 
 namespace SpeedDial.Classic.Weapons;
 
-public partial class Weapon {
-	private void MeleePrimary() {
-		if(TimeSinceSpecial > Blueprint.FireDelay) {
+public partial class Weapon
+{
+	private void MeleePrimary()
+	{
+		if ( TimeSinceSpecial > Blueprint.FireDelay )
+		{
 			TimeSinceSpecial = 0;
 			Firing = true;
-			(Owner as AnimEntity).SetAnimParameter("b_attack", true);
-			PlaySound("woosh");
+			(Owner as AnimEntity).SetAnimParameter( "b_attack", true );
+			PlaySound( "woosh" );
 		}
 	}
 
-	private void MeleeSimulate() {
-		if(EffectEntity.GetAttachment("melee_start") is Transform start && EffectEntity.GetAttachment("melee_end") is Transform end) {
-			if(TimeSinceSpecial <= 0.20f && Firing) {
-				foreach(var tr in TraceBullet(start.Position, end.Position, 4)) {
-					if(tr.Entity is ClassicPlayer hitPlayer && hitPlayer.IsValid()) {
-						var ps = Particles.Create("particles/blood/blood_plip.vpcf", tr.EndPosition);
-						ps?.SetForward(0, tr.Normal);
+	private void MeleeSimulate()
+	{
+		if ( EffectEntity.GetAttachment( "melee_start" ) is Transform start && EffectEntity.GetAttachment( "melee_end" ) is Transform end )
+		{
+			if ( TimeSinceSpecial <= 0.20f && Firing )
+			{
+				foreach ( var tr in TraceBullet( start.Position, end.Position, 4 ) )
+				{
+					if ( tr.Entity is ClassicPlayer hitPlayer && hitPlayer.IsValid() )
+					{
+						var ps = Particles.Create( "particles/blood/blood_plip.vpcf", tr.EndPosition );
+						ps?.SetForward( 0, tr.Normal );
 
-						PlaySound("sd_bat.hit");
+						PlaySound( "sd_bat.hit" );
 
-						if(IsServer) {
-							using(Prediction.Off()) {
-								var damageInfo = DamageInfo.FromBullet(tr.EndPosition, 1000, 100)
-									.UsingTraceResult(tr)
-									.WithAttacker(Owner)
-									.WithWeapon(this);
+						if ( IsServer )
+						{
+							using ( Prediction.Off() )
+							{
+								var damageInfo = DamageInfo.FromBullet( tr.EndPosition, 1000, 100 )
+									.UsingTraceResult( tr )
+									.WithAttacker( Owner )
+									.WithWeapon( this );
 
-								tr.Entity.TakeDamage(damageInfo);
+								tr.Entity.TakeDamage( damageInfo );
 							}
 						}
 					}
 				}
-			} else {
+			}
+			else
+			{
 				Firing = false;
 			}
 		}

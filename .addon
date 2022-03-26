@@ -8,9 +8,17 @@
   "AssetsPath": "",
   "ResourcePaths": [
     "materials/ui/*",
-    "fonts/*"
+    "fonts/*",
+    "*.sd_char",
+    "*.sd_wep"
   ],
   "HasCode": true,
   "CodePath": "code",
-  "RootNamespace": "Sandbox"
+  "RootNamespace": "Sandbox",
+  "Metadata": {
+    "MapList": [
+      "eagleone.sd_bank"
+    ],
+    "MapSelect": 3
+  }
 }
