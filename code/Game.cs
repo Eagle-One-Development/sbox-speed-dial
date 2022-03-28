@@ -48,14 +48,15 @@ public partial class Game : GameBase
 
 	protected override void OnDestroy()
 	{
-		if ( IsServer && !string.IsNullOrWhiteSpace( LastGamemode ) )
-		{
-			Log.Debug( $"Exit with gamemode {LastGamemode}" );
-			var data = new GamemodeLobbyCookie();
-			data.LobbyId = Global.Lobby.Id;
-			data.Gamemode = LastGamemode;
-			FileSystem.Data.WriteJson( "sd_lobby_gamemode_cookie.json", data );
-		}
+		// FIXME, Global.Lobby is deprecated, need new way to do per-lobby cookies
+		//if ( IsServer && !string.IsNullOrWhiteSpace( LastGamemode ) )
+		//{
+		//	Log.Debug( $"Exit with gamemode {LastGamemode}" );
+		//	var data = new GamemodeLobbyCookie();
+		//	data.LobbyId = Global.Lobby.Id;
+		//	data.Gamemode = LastGamemode;
+		//	FileSystem.Data.WriteJson( "sd_lobby_gamemode_cookie.json", data );
+		//}
 	}
 
 	public override void PostLevelLoaded()
@@ -71,19 +72,22 @@ public partial class Game : GameBase
 		Host.AssertServer();
 		Log.Debug( "gamemode init" );
 		// do we have a cookie stored?
-		if ( FileSystem.Data.FileExists( "sd_lobby_gamemode_cookie.json" ) )
-		{
-			Log.Debug( "gamemode cookie found" );
-			// read cookie
-			var data = FileSystem.Data.ReadJson<GamemodeLobbyCookie>( "sd_lobby_gamemode_cookie.json" );
-			// we have a cookie from this lobby, load the gamemode that's stored there
-			if ( data.LobbyId == Global.Lobby.Id )
-			{
-				Log.Debug( $"gamemode cookie from current lobby: {data.Gamemode}" );
-				ChangeGamemode( data.Gamemode );
-				return;
-			}
-		}
+
+		// FIXME, Global.Lobby is deprecated, need new way to do per-lobby cookies
+		//if ( FileSystem.Data.FileExists( "sd_lobby_gamemode_cookie.json" ) )
+		//{
+		//	Log.Debug( "gamemode cookie found" );
+		//	// read cookie
+		//	var data = FileSystem.Data.ReadJson<GamemodeLobbyCookie>( "sd_lobby_gamemode_cookie.json" );
+		//	// we have a cookie from this lobby, load the gamemode that's stored there
+		//	if ( data.LobbyId == Global.Lobby.Id )
+		//	{
+		//		Log.Debug( $"gamemode cookie from current lobby: {data.Gamemode}" );
+		//		ChangeGamemode( data.Gamemode );
+		//		return;
+		//	}
+		//}
+
 		ChangeGamemode( DefaultGamemode );
 	}
 
