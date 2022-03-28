@@ -101,6 +101,20 @@ namespace SpeedDial
 			Precache.Add( "sounds/simpleguns/room-clearer/roomclearer.shoot03.vsnd" );
 			// dry fire
 			Precache.Add( "sounds/simpleguns/misc/dryfire.vsnd" );
+
+			// player models
+			Precache.Add( "models/playermodels/character_dialup.vmdl" );
+			Precache.Add( "models/playermodels/character_highway.vmdl" );
+			Precache.Add( "models/playermodels/character_jack.vmdl" );
+			Precache.Add( "models/playermodels/character_maria.vmdl" );
+
+			// weapons
+			Precache.Add( "models/weapons/melee/melee.vmdl" );
+			Precache.Add( "models/weapons/pistol/prop_pistol.vmdl" );
+			Precache.Add( "models/weapons/rifle/prop_rifle.vmdl" );
+			Precache.Add( "models/weapons/shotgun/prop_roomclearer.vmdl" );
+			Precache.Add( "models/weapons/shotgun/prop_shotgun.vmdl" );
+			Precache.Add( "models/weapons/smg/prop_smg.vmdl" );
 		}
 	}
 }
