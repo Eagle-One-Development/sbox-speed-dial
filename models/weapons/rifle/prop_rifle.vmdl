@@ -11,13 +11,7 @@
 				[
 					{
 						_class = "DefaultMaterialGroup"
-						remaps = 
-						[
-							{
-								from = "materials/error.vmat"
-								to = "materials/dev/reflectivity_10b.vmat"
-							},
-						]
+						remaps = [  ]
 						use_global_default = false
 						global_default_material = ""
 					},
@@ -29,7 +23,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/weapons/rifle/prop_rifle.dmx"
+						filename = "models/weapons/rifle/rifle.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -51,39 +45,51 @@
 				[
 					{
 						_class = "PhysicsShapeCapsule"
-						parent_bone = "weapon_hand_r"
+						parent_bone = ""
 						surface_prop = "default"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 1.482771
-						point0 = [ -0.000001, 1.833586, -3.399029 ]
-						point1 = [ -0.094614, 2.378283, 24.737885 ]
+						point0 = [ -11.16012, -0.091577, 0.885731 ]
+						point1 = [ 12.422892, 0.45312, 3.752591 ]
 					},
 					{
 						_class = "PhysicsShapeCapsule"
-						parent_bone = "weapon_hand_r"
+						parent_bone = ""
 						surface_prop = "default"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 1.482771
-						point0 = [ -0.0, -1.584287, -14.12755 ]
-						point1 = [ -0.094615, 1.432701, -2.821757 ]
+						point0 = [ -1.804234, -0.284719, -5.197267 ]
+						point1 = [ -0.661908, -0.187193, 0.308253 ]
 					},
 					{
 						_class = "PhysicsShapeCapsule"
-						parent_bone = "weapon_hand_r"
+						parent_bone = ""
 						surface_prop = "default"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 1.482771
-						point0 = [ 0.000003, -6.403611, 7.70006 ]
-						point1 = [ -0.094614, 0.432024, 3.591104 ]
+						point0 = [ 6.60716, -0.137867, 0.331182 ]
+						point1 = [ 9.943093, -0.448587, -5.119812 ]
 					},
 					{
 						_class = "PhysicsShapeCapsule"
-						parent_bone = "weapon_hand_r"
+						parent_bone = ""
 						surface_prop = "default"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 1.482771
-						point0 = [ 0.000001, -4.027738, -3.209903 ]
-						point1 = [ -0.094615, 1.587936, 0.197164 ]
+						point0 = [ 14.447899, -0.091577, 3.527986 ]
+						point1 = [ 27.888674, 0.45312, 3.548722 ]
 					},
 				]
 			},
@@ -94,18 +100,18 @@
 					{
 						_class = "Attachment"
 						name = "muzzle"
-						parent_bone = "weapon_hand_r"
-						relative_origin = [ 0.0, 1.958346, 26.31325 ]
-						relative_angles = [ -89.853157, -0.026222, 0.02621 ]
+						parent_bone = ""
+						relative_origin = [ 28.928774, 0.153346, 2.961345 ]
+						relative_angles = [ -0.599241, -0.000067, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
 					{
 						_class = "Attachment"
 						name = "ejection_point"
-						parent_bone = "weapon_hand_r"
-						relative_origin = [ -0.77312, 1.958355, 4.827168 ]
-						relative_angles = [ 2.515069, -179.999954, 179.999939 ]
+						parent_bone = ""
+						relative_origin = [ 13.098974, -0.772567, 3.500992 ]
+						relative_angles = [ 2.515069, -89.502586, 179.999924 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
