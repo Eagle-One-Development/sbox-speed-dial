@@ -984,8 +984,8 @@
 						_class = "Attachment"
 						name = "pistol_attach"
 						parent_bone = "hand_r"
-						relative_origin = [ -3.893547, -2.058931, 1.475361 ]
-						relative_angles = [ 1.251167, -161.96637, 21.70899 ]
+						relative_origin = [ -3.887951, -2.885828, -0.347008 ]
+						relative_angles = [ 1.251168, -161.96637, 21.708994 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -1320,7 +1320,6 @@
 					},
 					{
 						_class = "ConfigAttachedModel"
-						disabled = true
 						model_name = "models/weapons/pistol/prop_pistol.vmdl"
 						entity_class = ""
 						attachment_type = "attach"

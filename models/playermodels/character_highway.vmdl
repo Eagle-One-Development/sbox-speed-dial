@@ -715,7 +715,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "pelvis"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 6.537728
 						point0 = [ 0.988315, 0.022924, -0.999669 ]
 						point1 = [ 1.011685, -0.022924, 0.999669 ]
@@ -724,7 +727,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "spine_01"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 6.941284
 						point0 = [ 5.038108, 2.268176, 0.217871 ]
 						point1 = [ 4.026224, 2.043244, 0.217871 ]
@@ -733,7 +739,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "spine_03"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 5.827178
 						point0 = [ 0.403256, 1.040526, -2.226808 ]
 						point1 = [ 0.398963, 1.059348, 2.190054 ]
@@ -742,7 +751,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "neck_01"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 2.0
 						point0 = [ 1.08087, 0.581718, 0.590812 ]
 						point1 = [ -2.161314, 0.581718, 0.590812 ]
@@ -751,7 +763,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "head"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 4.125793
 						point0 = [ 1.978779, -0.384581, 0.302005 ]
 						point1 = [ -0.243847, 0.030181, 0.231402 ]
@@ -760,7 +775,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "clavicle_l"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 2.839769
 						point0 = [ 6.872641, -0.000039, -2.021615 ]
 						point1 = [ 3.218186, 0.0, 0.0 ]
@@ -769,7 +787,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "upperarm_l"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 2.986206
 						point0 = [ 11.944822, 0.0, 0.0 ]
 						point1 = [ 1.794681, -0.088019, -1.528 ]
@@ -778,7 +799,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "lowerarm_l"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 2.655031
 						point0 = [ 10.256035, 0.753748, 0.138477 ]
 						point1 = [ 1.32938, 0.753748, 0.138477 ]
@@ -787,7 +811,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "hand_l"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 2.986558
 						point0 = [ 4.820568, 1.337843, 0.0 ]
 						point1 = [ 2.847641, 1.337843, 0.0 ]
@@ -796,7 +823,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "clavicle_r"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 2.932868
 						point0 = [ -3.656258, 0.0, 0.0 ]
 						point1 = [ -6.454788, 0.000023, 1.399866 ]
@@ -805,7 +835,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "upperarm_r"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 2.986204
 						point0 = [ -1.53449, 0.075258, 1.306512 ]
 						point1 = [ -11.944817, 0.0, 0.0 ]
@@ -814,7 +847,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "lowerarm_r"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 2.655025
 						point0 = [ -1.500671, -0.887072, -0.162984 ]
 						point1 = [ -10.191618, -0.887072, -0.162984 ]
@@ -823,7 +859,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "hand_r"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 2.531266
 						point0 = [ 0.0, 0.0, -0.901395 ]
 						point1 = [ -5.250029, 0.0, -0.901395 ]
@@ -832,7 +871,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "thigh_l"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 4.190147
 						point0 = [ 0.0, 0.0, 0.0 ]
 						point1 = [ -11.410913, 0.0, 0.0 ]
@@ -841,7 +883,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "calf_l"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 3.956357
 						point0 = [ 0.0, 0.0, 0.0 ]
 						point1 = [ -15.825429, 0.0, 0.0 ]
@@ -850,7 +895,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "foot_l"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 3.119381
 						point0 = [ -2.055053, 0.154218, -0.038307 ]
 						point1 = [ -4.3396, -6.675243, 1.68489 ]
@@ -859,7 +907,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "thigh_r"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 4.190175
 						point0 = [ 12.199323, 0.0, 0.0 ]
 						point1 = [ 0.0, 0.0, 0.0 ]
@@ -868,7 +919,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "calf_r"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 3.956363
 						point0 = [ 15.825454, 0.0, 0.0 ]
 						point1 = [ 0.0, 0.0, 0.0 ]
@@ -877,7 +931,10 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "foot_r"
 						surface_prop = "flesh"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						radius = 4.27938
 						point0 = [ 2.356655, 1.535968, 0.0 ]
 						point1 = [ 3.38325, 6.134298, -0.002012 ]
@@ -919,8 +976,8 @@
 						_class = "Attachment"
 						name = "pistol_attach"
 						parent_bone = "hand_r"
-						relative_origin = [ -3.893547, -2.058931, 1.475361 ]
-						relative_angles = [ 1.251167, -161.96637, 21.70899 ]
+						relative_origin = [ -3.439194, -2.602266, -0.048321 ]
+						relative_angles = [ 1.251168, -161.96637, 21.708994 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -1218,7 +1275,6 @@
 				[
 					{
 						_class = "ConfigAttachedModel"
-						disabled = true
 						model_name = "models/weapons/pistol/prop_pistol.vmdl"
 						entity_class = ""
 						attachment_type = "attach"
