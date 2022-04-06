@@ -29,7 +29,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/weapons/shotgun/Shotgun.dmx"
+						filename = "models/weapons/shotgun/roomclearer.dmx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -53,8 +53,11 @@
 						_class = "PhysicsShapeBox"
 						parent_bone = ""
 						surface_prop = "metal.weapon"
-						collision_prop = "default"
-						origin = [ 0.763158, -0.094094, 2.197079 ]
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
+						origin = [ 1.179821, -0.094094, 1.20919 ]
 						angles = [ 0.0, 0.0, 0.0 ]
 						dimensions = [ 28.763044, 3.2819, 4.338032 ]
 					},
@@ -62,17 +65,23 @@
 						_class = "PhysicsShapeBox"
 						parent_bone = ""
 						surface_prop = "metal.weapon"
-						collision_prop = "default"
-						origin = [ -0.054844, -0.094094, -0.798114 ]
-						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 4.965534, 3.2819, 4.338032 ]
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
+						origin = [ -0.350315, -0.094094, -2.230573 ]
+						angles = [ 11.199203, 0.0, 0.0 ]
+						dimensions = [ 2.28838, 3.2819, 5.078134 ]
 					},
 					{
 						_class = "PhysicsShapeBox"
 						parent_bone = ""
 						surface_prop = "metal.weapon"
-						collision_prop = "default"
-						origin = [ 11.727776, -0.006859, -0.798114 ]
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
+						origin = [ 12.191628, -0.006859, -2.112206 ]
 						angles = [ 0.0, 0.0, 0.0 ]
 						dimensions = [ 1.88602, 1.703068, 4.338032 ]
 					},
@@ -86,8 +95,8 @@
 						_class = "Attachment"
 						name = "muzzle"
 						parent_bone = ""
-						relative_origin = [ 15.290132, -0.043675, 3.155342 ]
-						relative_angles = [ -0.55488, 0.0, -0.000036 ]
+						relative_origin = [ 15.167611, -0.043675, 1.239865 ]
+						relative_angles = [ -0.554885, 0.0, -0.000036 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -95,8 +104,8 @@
 						_class = "Attachment"
 						name = "ejection_point"
 						parent_bone = ""
-						relative_origin = [ -9.024284, 0.405595, 1.148812 ]
-						relative_angles = [ 88.296524, 31.228971, -58.808563 ]
+						relative_origin = [ -5.75367, 0.405595, 0.382792 ]
+						relative_angles = [ 88.296394, 31.918102, -58.800213 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
