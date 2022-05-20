@@ -12,7 +12,7 @@ public static class ListExtension
 	public static T Random<T>( this IEnumerable<T> list )
 	{
 		if ( !list.Any() )
-			throw new InvalidOperationException( "Cannot select a random member of an empty list!" );
+			throw new ArgumentException( "Cannot select a random member of an empty list!", nameof( list ) );
 
 		return list.ElementAt( Rand.Int( 0, list.Count() - 1 ) );
 	}

@@ -1,7 +1,7 @@
 namespace SpeedDial.Classic.Player;
 
-[Library( "sdchar" ), AutoGenerate]
-public partial class Character : Asset
+[GameResource( "Speed-Dial Character", "sdchar", "Speed-Dial Character Definition", Icon = "person" )]
+public partial class Character : GameResource
 {
 	public string CharacterName { get; set; } = "name";
 	public string Description { get; set; } = "desc";
@@ -9,12 +9,13 @@ public partial class Character : Asset
 	[ResourceType( "png" )] public string Portrait { get; set; } = "materials/ui/portraits/jack_hd.png";
 	[ResourceType( "vmdl" )] public string Model { get; set; } = "models/playermodels/character_jack.vmdl";
 
-	[Skip]
+	[EditorBrowsable( EditorBrowsableState.Never )]
 	public static List<Character> All = new();
 
-	[Skip]
+	[EditorBrowsable( EditorBrowsableState.Never )]
 	public Texture PortraitTexture { get; private set; }
-	[Skip]
+
+	[EditorBrowsable( EditorBrowsableState.Never )]
 	public Model CharacterModel { get; private set; }
 
 	protected override void PostLoad()

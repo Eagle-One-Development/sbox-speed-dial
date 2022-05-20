@@ -2,7 +2,7 @@ namespace SpeedDial.Classic.Drugs;
 
 [Library( "sd_ritindi" )]
 [EditorModel( "models/drugs/ritindi/ritindi.vmdl" )]
-[EntityTool( "Polvo", "Speed-Dial Drugs", "Spawns one Ritindi." )]
+[Category( "Speed-Dial Drugs" )]
 public class Ritindi : ClassicBaseDrug
 {
 	public override string WorldModel => "models/drugs/ritindi/ritindi.vmdl";

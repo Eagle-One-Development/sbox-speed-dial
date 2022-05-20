@@ -2,7 +2,7 @@ namespace SpeedDial.Classic.Drugs;
 
 [Library( "sd_leaf" )]
 [EditorModel( "models/drugs/leaf/leaf.vmdl" )]
-[EntityTool( "Leaf", "Speed-Dial Drugs", "Spawns one Leaf." )]
+[Category( "Speed-Dial Drugs" )]
 public class Leaf : ClassicBaseDrug
 {
 	public override string WorldModel => "models/drugs/leaf/leaf.vmdl";

@@ -177,16 +177,16 @@ public partial class ClassicCamera : CameraMode
 			var direction = Screen.GetDirection( new Vector2( Mouse.Position.x, Mouse.Position.y ), 70, Rotation, Screen.Size );
 			var HitPosition = LinePlaneIntersectionWithHeight( Position, direction, pawn.EyePosition.z );
 			// 
-			DebugOverlay.ScreenText( new Vector2( 300, 300 ), 2, Color.Green, $"Pos {Position}" );
-			DebugOverlay.ScreenText( new Vector2( 300, 300 ), 3, Color.Green, $"Dir {direction}" );
-			DebugOverlay.ScreenText( new Vector2( 300, 300 ), 4, Color.Green, $"HitPos {HitPosition}" );
+			DebugOverlay.ScreenText( $"Pos {Position}", new Vector2( 300, 300 ), 2, Color.Green );
+			DebugOverlay.ScreenText( $"Dir {direction}", new Vector2( 300, 300 ), 3, Color.Green );
+			DebugOverlay.ScreenText( $"HitPos {HitPosition}", new Vector2( 300, 300 ), 4, Color.Green );
 			// 
 			var Distance = HitPosition - pawn.EyePosition;
 			// 
 			DebugOverlay.Line( pawn.EyePosition, pawn.EyePosition + Distance, Color.Green, 0, false );
 
 			// TEMP CROSSHAIR
-			DebugOverlay.Sphere( HitPosition, 5, Color.Green, false );
+			DebugOverlay.Sphere( HitPosition, 5, Color.Green, Time.Delta, false );
 		}
 
 		FieldOfView = 70;

@@ -1,6 +1,6 @@
-﻿using SpeedDial.Classic.Entities;
+﻿using SpeedDial.Classic.Drugs;
+using SpeedDial.Classic.Entities;
 using SpeedDial.Classic.Player;
-using SpeedDial.Classic.Drugs;
 using SpeedDial.Classic.UI;
 
 namespace SpeedDial.Classic.Weapons;
@@ -92,7 +92,7 @@ public partial class Weapon : BaseCarriable
 		if ( Debug.Weapons )
 		{
 			if ( IsServer )
-				DebugOverlay.Text( Position, $"{GetType().Name}\nalive since: {TimeSinceAlive}\ndespawn: {DespawnAfterTime}", Owner is null ? Color.White : Color.Green, Time.Delta, 1000 );
+				DebugOverlay.Text( $"{GetType().Name}\nalive since: {TimeSinceAlive}\ndespawn: {DespawnAfterTime}", Position, Owner is null ? Color.White : Color.Green, Time.Delta, 1000 );
 		}
 	}
 
@@ -138,7 +138,7 @@ public partial class Weapon : BaseCarriable
 		if ( (Owner as ClassicPlayer).Frozen ) return false;
 		if ( Owner is ClassicPlayer )
 		{
-			if ( !Owner.IsValid() || (Blueprint.FireMode == WeaponFireMode.Automatic && !Input.Down( InputButton.Attack1 )) || (!(Blueprint.FireMode == WeaponFireMode.Automatic) && !Input.Pressed( InputButton.Attack1 )) ) return false;
+			if ( !Owner.IsValid() || (Blueprint.FireMode == WeaponFireMode.Automatic && !Input.Down( InputButton.PrimaryAttack )) || (!(Blueprint.FireMode == WeaponFireMode.Automatic) && !Input.Pressed( InputButton.PrimaryAttack )) ) return false;
 		}
 
 		var rate = Blueprint.FireRate;
@@ -187,7 +187,7 @@ public partial class Weapon : BaseCarriable
 		Particles.Create( Blueprint.MuzzleParticle, EffectEntity, Blueprint.MuzzleAttach );
 		Particles.Create( Blueprint.EjectParticle, EffectEntity, Blueprint.EjectAttach );
 		PlaySound( Blueprint.ShootSound );
-		(Owner as AnimEntity).SetAnimParameter( "b_attack", true ); // shoot anim
+		(Owner as AnimatedEntity).SetAnimParameter( "b_attack", true ); // shoot anim
 	}
 
 	public virtual void ShootBullet( float spread, float force, float damage, float bulletSize, int seed )

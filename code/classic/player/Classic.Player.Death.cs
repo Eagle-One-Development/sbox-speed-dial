@@ -199,9 +199,9 @@ public partial class ClassicPlayer
 		var decalPath = decalname;
 		if ( decalPath != null )
 		{
-			if ( DecalDefinition.ByPath.TryGetValue( decalPath, out var decal ) )
+			if ( ResourceLibrary.TryGet<DecalDefinition>( decalPath, out var decal ) )
 			{
-				decal.PlaceUsingTrace( tr );
+				DecalSystem.PlaceUsingTrace( decal, tr );
 			}
 		}
 	}

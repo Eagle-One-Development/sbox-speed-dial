@@ -2,7 +2,7 @@ namespace SpeedDial.Classic.Drugs;
 
 [Library( "sd_ollie" )]
 [EditorModel( "models/drugs/ollie/ollie.vmdl" )]
-[EntityTool( "Ollie", "Speed-Dial Drugs", "Spawns one Ollie." )]
+[Category( "Speed-Dial Drugs" )]
 public class Ollie : ClassicBaseDrug
 {
 	public override string WorldModel => "models/drugs/ollie/ollie.vmdl";

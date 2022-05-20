@@ -1,6 +1,6 @@
-﻿using SpeedDial.Classic.Player;
+﻿using SpeedDial.Classic.Drugs;
+using SpeedDial.Classic.Player;
 using SpeedDial.Classic.Weapons;
-using SpeedDial.Classic.Drugs;
 
 namespace SpeedDial.Classic.Bots;
 
@@ -46,10 +46,10 @@ public partial class ClassicBotBehaviour
 		if ( Debug.Bots )
 		{
 			DebugOverlay.Sphere( Bot.Client.Pawn.Position, SearchRadius, Color.Magenta );
-			DebugOverlay.Text( Bot.Client.Pawn.Position, $"{Bot.GetType().Name}\nFake Client Name: {Bot.Client.Name}\nCurrent Target: {(CurrentTarget != null ? CurrentTarget : "null")}", CurrentTarget != null ? Color.Yellow : Color.White, 0, 1000 );
+			DebugOverlay.Text( $"{Bot.GetType().Name}\nFake Client Name: {Bot.Client.Name}\nCurrent Target: {(CurrentTarget != null ? CurrentTarget : "null")}", Bot.Client.Pawn.Position, CurrentTarget != null ? Color.Yellow : Color.White, 0, 1000 );
 		}
 
-		if ( Bot.Client.Pawn.LifeState == LifeState.Dead || (Bot.Client.Pawn as ClassicPlayer).Frozen ) return;
+		if ( Bot.Client.Pawn is null || Bot.Client.Pawn.LifeState == LifeState.Dead || (Bot.Client.Pawn as ClassicPlayer).Frozen ) return;
 
 		SetInputs();
 
@@ -67,7 +67,7 @@ public partial class ClassicBotBehaviour
 				if ( Debug.Bots ) DebugOverlay.Sphere( EvaulatePositon( CurrentTarget ), 30f, Color.Green );
 				Steer.Target = EvaulatePositon( CurrentTarget );
 			}
-			else if ( Steer.Path.IsEmpty || Bot.Client.Pawn.Position.IsNearlyEqual( lastPos, 0.1f ) )
+			else if ( Steer.Path.IsEmpty || Bot.Client.Pawn.Position.AlmostEqual( lastPos, 0.1f ) )
 			{
 				// Wander
 				var t = NavMesh.GetPointWithinRadius( Bot.Client.Pawn.Position, MinWanderRadius, MaxWanderRadius );

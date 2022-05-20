@@ -1,13 +1,13 @@
 ﻿using SpeedDial.Classic;
-using SpeedDial.Koth.Player;
-using SpeedDial.Koth.UI;
-using SpeedDial.Koth.Rounds;
-using SpeedDial.Koth.Bots;
 using SpeedDial.Classic.Bots;
+using SpeedDial.Koth.Bots;
+using SpeedDial.Koth.Player;
+using SpeedDial.Koth.Rounds;
+using SpeedDial.Koth.UI;
 
 namespace SpeedDial.Koth;
 
-[Library( "koth" ), Hammer.Skip]
+[Library( "koth" )]
 public partial class KothGamemode : ClassicGamemode
 {
 	public override GamemodeIdentity Identity => GamemodeIdentity.Koth;

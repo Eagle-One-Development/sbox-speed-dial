@@ -25,7 +25,6 @@ public enum GamemodeState
 }
 
 /// <summary> [Server, Client] Gamemode base </summary>
-[Library( Spawnable = false ), Skip]
 public abstract partial class Gamemode : Entity
 {
 
@@ -56,7 +55,7 @@ public abstract partial class Gamemode : Entity
 
 	public override void Spawn()
 	{
-		Name = ClassInfo.Name;
+		Name = ClassName;
 	}
 
 	public virtual void SetState( GamemodeState state )

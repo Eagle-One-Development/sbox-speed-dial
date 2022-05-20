@@ -23,7 +23,7 @@ public partial class ClassicScoreboard : Panel
 		if ( !IsVisible )
 			return;
 
-		GamemodeInfo.Text = $"Gamemode: {Game.Current.ActiveGamemode?.ClassInfo.Name}";
+		GamemodeInfo.Text = $"Gamemode: {Game.Current.ActiveGamemode.ClassName}";
 		MapInfo.Text = $"Map: {Global.MapName}";
 		LoopInfo.Text = $"Games until vote: {Game.Current.ActiveGamemode.GameloopsUntilVote - Game.Current.CompletedGameloops}";
 		Footer.SetClass( "visible", true );

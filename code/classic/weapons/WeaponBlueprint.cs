@@ -23,8 +23,8 @@ public enum WeaponSpecial
 	Melee
 }
 
-[Library( "sdwep" ), AutoGenerate]
-public partial class WeaponBlueprint : Asset
+[GameResource( "Speed-Dial Weapon", "sdwep", "Speed-Dial Weapon Blueprint Definition", Icon = "🔫" )]
+public partial class WeaponBlueprint : GameResource
 {
 	//important
 	[Category( "Info" )] public string WeaponClass { get; set; } = "sd_wep";
@@ -75,11 +75,11 @@ public partial class WeaponBlueprint : Asset
 	[Category( "Sounds" ), ResourceType( "sound" )] public string LoadedPickupSound { get; set; } = "sounds/weapon_fx/sd_pickup.loaded.sound";
 
 
-	[Skip] public Model WorldModel { get; private set; }
-	[Skip] public Texture IconTexture { get; private set; }
+	[EditorBrowsable( EditorBrowsableState.Never )] public Model WorldModel { get; private set; }
+	[EditorBrowsable( EditorBrowsableState.Never )] public Texture IconTexture { get; private set; }
 
 
-	[Skip] public static List<WeaponBlueprint> All = new();
+	[EditorBrowsable( EditorBrowsableState.Never )] public static List<WeaponBlueprint> All = new();
 
 	public static WeaponBlueprint GetBlueprint( string weaponclass )
 	{

@@ -32,6 +32,8 @@ public partial class WorldHints : Panel
 			// workaround to not have the hint blip in when picking up a gun or throwing your held gun
 			if ( _lastPickup.IsValid() && (_lastPickup.TimeSinceAlive < 0.5f || _lastPickup == pawn.ActiveChild) ) _pickupScale = 0;
 			transform.AddScale( _pickupScale );
+
+			if ( PickupPanel is null ) return;
 			PickupPanel.Style.Transform = transform;
 
 			if ( _lastPickup.IsValid() )

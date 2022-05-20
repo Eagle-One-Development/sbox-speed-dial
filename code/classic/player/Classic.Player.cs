@@ -1,6 +1,6 @@
 using SpeedDial.Classic.Drugs;
-using SpeedDial.Classic.Weapons;
 using SpeedDial.Classic.UI;
+using SpeedDial.Classic.Weapons;
 
 namespace SpeedDial.Classic.Player;
 
@@ -79,7 +79,7 @@ public partial class ClassicPlayer : BasePlayer
 			TimeSinceWeaponCarried = 0;
 		}
 
-		if ( Input.Pressed( InputButton.Attack2 ) )
+		if ( Input.Pressed( InputButton.SecondaryAttack ) )
 		{
 			HandleAttack2();
 			if ( ActiveChild != null && !Frozen )
@@ -88,7 +88,7 @@ public partial class ClassicPlayer : BasePlayer
 			}
 		}
 
-		if ( ActiveChild == null && Input.Down( InputButton.Attack1 ) && TimeSinceMeleeStarted >= 0.6f && !Frozen )
+		if ( ActiveChild == null && Input.Down( InputButton.PrimaryAttack ) && TimeSinceMeleeStarted >= 0.6f && !Frozen )
 		{
 			StartMelee();
 		}
@@ -101,7 +101,7 @@ public partial class ClassicPlayer : BasePlayer
 		// handle weapon pickup after throwing so you can swap
 		// TODO: hold input for pickup when activechild is null?
 		// last bit is to prevent the player from immediately grabbing it out of the air again after throwing if spamming rightclick
-		if ( ActiveChild is null && Pickup && PickupWeapon is not null && PickupWeapon.IsValid() && Input.Pressed( InputButton.Attack2 ) && (TimeSincePickup > (PickupWeapon.PreviousOwner == this ? 0.3f : 0)) )
+		if ( ActiveChild is null && Pickup && PickupWeapon is not null && PickupWeapon.IsValid() && Input.Pressed( InputButton.SecondaryAttack ) && (TimeSincePickup > (PickupWeapon.PreviousOwner == this ? 0.3f : 0)) )
 		{
 			var weapon = PickupWeapon;
 			Pickup = false;
@@ -308,7 +308,7 @@ public partial class ClassicPlayer : BasePlayer
 		}
 	}
 
-	[ServerCmd( "set_score" )]
+	[ConCmd.Server( "set_score" )]
 	public static void SetScore( int score )
 	{
 		if ( ConsoleSystem.Caller.Pawn is ClassicPlayer player )
@@ -322,7 +322,7 @@ public partial class ClassicPlayer : BasePlayer
 		}
 	}
 
-	[ServerCmd( "set_char" )]
+	[ConCmd.Server( "set_char" )]
 	public static void SetCharacter( int index )
 	{
 		if ( ConsoleSystem.Caller.Pawn is ClassicPlayer player )

@@ -1,12 +1,11 @@
 ﻿using SpeedDial.Classic;
-
 using SpeedDial.OneChamber.Player;
-using SpeedDial.OneChamber.UI;
 using SpeedDial.OneChamber.Rounds;
+using SpeedDial.OneChamber.UI;
 
 namespace SpeedDial.OneChamber;
 
-[Library( "onechamber" ), Hammer.Skip]
+[Library( "onechamber" )]
 public partial class OneChamberGamemode : ClassicGamemode
 {
 	public override GamemodeIdentity Identity => GamemodeIdentity.OneChamber;

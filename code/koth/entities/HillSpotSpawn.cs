@@ -1,7 +1,7 @@
 ﻿namespace SpeedDial.Koth.Entities;
 
 [Library( "sd_koth_hill_spawn", Title = "Random Hill Site Spawn" )]
-[Hammer.EditorModel( "models/koth/ring.vmdl" )]
+[EditorModel( "models/koth/ring.vmdl" )]
 public partial class HillSpotSpawn : GamemodeEntity
 {
 	public override void Spawn()

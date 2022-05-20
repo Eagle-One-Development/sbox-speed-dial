@@ -12,8 +12,8 @@ public partial class ClassicBot : Bot
 		{
 			builder.InputDirection = behaviour.InputDirection;
 			builder.ViewAngles = behaviour.ViewAngles;
-			builder.SetButton( InputButton.Attack1, behaviour.Attack1 );
-			builder.SetButton( InputButton.Attack2, behaviour.Attack2 );
+			builder.SetButton( InputButton.PrimaryAttack, behaviour.Attack1 );
+			builder.SetButton( InputButton.SecondaryAttack, behaviour.Attack2 );
 		}
 	}
 

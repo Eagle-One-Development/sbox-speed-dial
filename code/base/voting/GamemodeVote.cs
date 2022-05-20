@@ -3,7 +3,7 @@
 public partial class GamemodeVote : VoteEntity
 {
 
-	[AdminCmd( "sd_vote_gamemode_start" )]
+	[ConCmd.Admin( "sd_vote_gamemode_start" )]
 	public static void Start()
 	{
 		new GamemodeVote().OnStart();

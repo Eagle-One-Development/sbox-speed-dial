@@ -10,7 +10,7 @@ public partial class Weapon
 		{
 			TimeSinceSpecial = 0;
 			Firing = true;
-			(Owner as AnimEntity).SetAnimParameter( "b_attack", true );
+			(Owner as AnimatedEntity).SetAnimParameter( "b_attack", true );
 			PlaySound( "woosh" );
 		}
 	}

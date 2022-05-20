@@ -11,7 +11,7 @@ public class NavPath
 	{
 		bool needsBuild = false;
 
-		if ( !TargetPosition.IsNearlyEqual( to, 5 ) )
+		if ( !TargetPosition.AlmostEqual( to, 5 ) )
 		{
 			//TargetPosition = to;
 			needsBuild = true;

@@ -33,7 +33,7 @@ public abstract partial class Round : BaseNetworkable
 		if ( Started )
 			return;
 
-		Log.Debug( $"Round start {ClassInfo.Name}" );
+		Log.Debug( $"Round start {ClassName}" );
 
 		Started = true;
 		StartTime = Time.Now;
@@ -64,7 +64,7 @@ public abstract partial class Round : BaseNetworkable
 		if ( Finished || !Started )
 			return;
 
-		Log.Debug( $"Round finish {ClassInfo.Name}" );
+		Log.Debug( $"Round finish {ClassName}" );
 
 		Finished = true;
 		Started = false;
@@ -87,7 +87,7 @@ public abstract partial class Round : BaseNetworkable
 	}
 
 	/// <summary> [Server] Will invoke when the round has started </summary>
-	protected virtual void OnStart() { Log.Debug( $"Round on start {ClassInfo.Name}" ); }
+	protected virtual void OnStart() { Log.Debug( $"Round on start {ClassName}" ); }
 
 	/// <summary> [Server] Will invoke every think tick, which can be defined by overriding "ThinkTime" </summary>
 	protected virtual void OnThink()
@@ -96,7 +96,7 @@ public abstract partial class Round : BaseNetworkable
 	}
 
 	/// <summary> [Server] Will invoke when the round has finished </summary>
-	protected virtual void OnFinish() { Log.Debug( $"Round on finish {ClassInfo.Name}" ); }
+	protected virtual void OnFinish() { Log.Debug( $"Round on finish {ClassName}" ); }
 	/// <summary> A pawn joined for the first time during this round. </summary>
 	public virtual void OnPawnJoined( BasePlayer pawn ) { }
 	/// <summary> A pawn respawned during this round. </summary>

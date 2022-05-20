@@ -66,7 +66,7 @@ public partial class VoteEntity : Entity
 		return _votes.Count( ( kv ) => kv.Value == index );
 	}
 
-	[ServerCmd( "sd_vote" )]
+	[ConCmd.Server( "sd_vote" )]
 	public static void Vote( int index )
 	{
 		if ( ConsoleSystem.Caller is null )
@@ -97,7 +97,7 @@ public partial class VoteEntity : Entity
 		Log.Error( "Cannot vote for non-existant vote item!" );
 	}
 
-	[AdminCmd( "sd_test_vote_start" )]
+	[ConCmd.Admin( "sd_test_vote_start" )]
 	public static void StartVote()
 	{
 		if ( Current is not null && !Current.Concluded )
@@ -127,7 +127,7 @@ public partial class VoteEntity : Entity
 		}
 	}
 
-	[AdminCmd( "sd_vote_end" )]
+	[ConCmd.Admin( "sd_vote_end" )]
 	public static void ConcludeVote()
 	{
 		Current.HandleVoteEnd();

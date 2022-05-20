@@ -1,11 +1,11 @@
-using SpeedDial.Classic.UI;
+using SpeedDial.Classic.Bots;
 using SpeedDial.Classic.Player;
 using SpeedDial.Classic.Rounds;
-using SpeedDial.Classic.Bots;
+using SpeedDial.Classic.UI;
 
 namespace SpeedDial.Classic;
 
-[Library( "classic" ), Hammer.Skip]
+[Library( "classic" )]
 public partial class ClassicGamemode : Gamemode
 {
 

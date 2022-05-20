@@ -48,7 +48,7 @@ public partial class ClassicDrugSpawn : GamemodeEntity
 		Host.AssertServer();
 		if ( !Enabled ) return;
 
-		var ent = Library.Create<ClassicBaseDrug>( DrugClass );
+		var ent = TypeLibrary.Create<ClassicBaseDrug>( DrugClass );
 		ent.Transform = Transform;
 		ent.DrugSpawn = this;
 		ent.ResetInterpolation();

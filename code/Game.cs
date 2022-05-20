@@ -1,17 +1,18 @@
+// sandbox
 global using Sandbox;
+global using Sandbox.Component;
 global using Sandbox.UI;
 global using Sandbox.UI.Construct;
-global using Sandbox.Component;
-global using Hammer;
-
+global using SandboxEditor;
+// system
 global using System;
 global using System.Collections.Generic;
-global using System.Linq;
 global using System.ComponentModel;
+global using System.Linq;
 global using System.Threading.Tasks;
-
-using SpeedDial.Classic.Player;
+// internal
 using SpeedDial.Classic.Bots;
+using SpeedDial.Classic.Player;
 
 //CREDIT: Modified from Espionage.Engine by Jake Wooshito
 namespace SpeedDial;
@@ -24,7 +25,7 @@ public partial class Game : GameBase
 	public static string LastGamemode { get; private set; }
 	public static GameLoop GameLoop { get; private set; }
 
-	[ServerVar( "sd_min_players", Help = "The minimum players required to start the game." )]
+	[ConVar.Server( "sd_min_players", Help = "The minimum players required to start the game." )]
 	public static int MinPlayers { get; set; } = 2;
 
 	public Game()
@@ -175,7 +176,7 @@ public partial class Game : GameBase
 	// Developer Commands
 	//
 
-	[ServerCmd( "noclip" )]
+	[ConCmd.Server( "noclip" )]
 	public static void NoClipCommand()
 	{
 		var client = ConsoleSystem.Caller;
@@ -205,7 +206,7 @@ public partial class Game : GameBase
 		}
 	}
 
-	[ServerCmd( "devcam" )]
+	[ConCmd.Server( "devcam" )]
 	public static void DevModeCommand()
 	{
 		var client = ConsoleSystem.Caller;
@@ -233,7 +234,7 @@ public partial class Game : GameBase
 		camera.Enabled = !camera.Enabled;
 	}
 
-	[ServerCmd( "kill" )]
+	[ConCmd.Server( "kill" )]
 	public static void KillCommand()
 	{
 		var client = ConsoleSystem.Caller;
@@ -373,11 +374,11 @@ public partial class Game : GameBase
 	/// </summary>
 	[Net] public Gamemode ActiveGamemode { get; private set; }
 
-	[ServerCmd( "sd_change_gamemode" )]
+	[ConCmd.Server( "sd_change_gamemode" )]
 	public static void ChangeGamemode( string name )
 	{
 		Log.Debug( $"change gamemode {name}" );
-		var gamemode = Library.Create<Gamemode>( name );
+		var gamemode = TypeLibrary.Create<Gamemode>( name );
 		if ( gamemode is null )
 		{
 			Log.Error( $"COULDN'T INITIALIZE GAMEMODE {name}" );
@@ -387,7 +388,7 @@ public partial class Game : GameBase
 		Current.SetGamemode( gamemode );
 	}
 
-	[ServerCmd( "sd_gamemode_end" )]
+	[ConCmd.Server( "sd_gamemode_end" )]
 	public static void EndGamemode()
 	{
 		Current.OnEndGamemode();
@@ -403,7 +404,7 @@ public partial class Game : GameBase
 		GamemodeVote.Start();
 	}
 
-	[AdminCmd( "sd_bot" )]
+	[ConCmd.Admin( "sd_bot" )]
 	public static void SpawnBot()
 	{
 		Current.ActiveGamemode?.OnBotAdded( new ClassicBot() );
@@ -423,7 +424,7 @@ public partial class Game : GameBase
 		// this is mostly for if a gamemode is being cut short for whatever reason (debug commands)
 		ActiveGamemode?.Finish();
 		ActiveGamemode = gamemode;
-		LastGamemode = gamemode.ClassInfo.Name;
+		LastGamemode = gamemode.ClassName;
 
 		// just to be sure, might save us some headaches
 		Map.Reset( CleanupFilter );

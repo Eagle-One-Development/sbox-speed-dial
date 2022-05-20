@@ -1,7 +1,6 @@
 ﻿namespace SpeedDial;
 
 [Library]
-[Skip]
 public partial class GamemodeEntity : Entity
 {
 

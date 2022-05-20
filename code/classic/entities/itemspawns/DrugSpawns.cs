@@ -4,7 +4,7 @@ namespace SpeedDial.Classic.Entities;
 
 [Library( "sd_drugspawn_random", Title = "Random Drug Spawn" )]
 [EditorModel( "models/drugs/leaf/leaf.vmdl" )]
-[EntityTool( "Random Drug", "Speed-Dial Drugspawns", "Spawns random Drugs." )]
+[Category( "Speed-Dial Drugspawns" )]
 public partial class ClassicRandomDrugSpawn : ClassicDrugSpawn
 {
 	public override void SpawnDrug()
@@ -12,7 +12,7 @@ public partial class ClassicRandomDrugSpawn : ClassicDrugSpawn
 		Host.AssertServer();
 		if ( !Enabled ) return;
 
-		var ent = Library.Create<ClassicBaseDrug>( ClassicBaseDrug.GetRandomSpawnableType() );
+		var ent = TypeLibrary.Create<ClassicBaseDrug>( ClassicBaseDrug.GetRandomSpawnableType() );
 		ent.Transform = Transform;
 		ent.DrugSpawn = this;
 		ent.ResetInterpolation();
@@ -24,7 +24,7 @@ public partial class ClassicRandomDrugSpawn : ClassicDrugSpawn
 
 [Library( "sd_drugspawn_leaf" )]
 [EditorModel( "models/drugs/leaf/leaf.vmdl" )]
-[EntityTool( "Leaf", "Speed-Dial Drugspawns", "Spawns Leaf." )]
+[Category( "Speed-Dial Drugspawns" )]
 public class LeafDrugSpawn : ClassicDrugSpawn
 {
 	public override string DrugClass => "sd_leaf";
@@ -32,7 +32,7 @@ public class LeafDrugSpawn : ClassicDrugSpawn
 
 [Library( "sd_drugspawn_ollie" )]
 [EditorModel( "models/drugs/ollie/ollie.vmdl" )]
-[EntityTool( "Ollie", "Speed-Dial Drugspawns", "Spawns Ollie." )]
+[Category( "Speed-Dial Drugspawns" )]
 public class OllieDrugSpawn : ClassicDrugSpawn
 {
 	public override string DrugClass => "sd_ollie";
@@ -40,7 +40,7 @@ public class OllieDrugSpawn : ClassicDrugSpawn
 
 [Library( "sd_drugspawn_polvo" )]
 [EditorModel( "models/drugs/polvo/polvo.vmdl" )]
-[EntityTool( "Polvo", "Speed-Dial Drugspawns", "Spawns Polvo." )]
+[Category( "Speed-Dial Drugspawns" )]
 public class PolvoDrugSpawn : ClassicDrugSpawn
 {
 	public override string DrugClass => "sd_polvo";
@@ -48,7 +48,7 @@ public class PolvoDrugSpawn : ClassicDrugSpawn
 
 [Library( "sd_drugspawn_ritindi" )]
 [EditorModel( "models/drugs/ritindi/ritindi.vmdl" )]
-[EntityTool( "Ritindi", "Speed-Dial Drugspawns", "Spawns Ritindi." )]
+[Category( "Speed-Dial Drugspawns" )]
 public class RitindiDrugSpawn : ClassicDrugSpawn
 {
 	public override string DrugClass => "sd_ritindi";

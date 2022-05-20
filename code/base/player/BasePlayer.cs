@@ -1,7 +1,7 @@
 //CREDIT: Modified from Espionage.Engine by Jake Wooshito
 namespace SpeedDial;
 
-public partial class BasePlayer : AnimEntity
+public partial class BasePlayer : AnimatedEntity
 {
 
 	public virtual float RespawnTime => 1;

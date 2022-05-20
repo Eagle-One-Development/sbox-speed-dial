@@ -1,6 +1,6 @@
+using SpeedDial.Classic.Entities;
 using SpeedDial.Classic.Player;
 using SpeedDial.Classic.UI;
-using SpeedDial.Classic.Entities;
 
 namespace SpeedDial.Classic.Drugs;
 
@@ -98,14 +98,17 @@ public partial class ClassicBaseDrug : ModelEntity
 	public void Tick()
 	{
 		if ( PickupTrigger is null ) return;
-		Debug.Sphere( Position, 5, Color.Green, 0.01f, false );
-		Debug.Sphere( PickupTrigger.Position, 10, Color.Red, 0.01f, false );
-		Debug.Line( Position, PickupTrigger.Position, Color.Yellow, 0.01f, false );
+		if ( Debug.Enabled )
+		{
+			DebugOverlay.Sphere( Position, 5, Color.Green, Time.Delta, false );
+			DebugOverlay.Sphere( PickupTrigger.Position, 10, Color.Red, Time.Delta, false );
+			DebugOverlay.Line( Position, PickupTrigger.Position, Color.Yellow, Time.Delta, false );
+		}
 	}
 
 	public static Type GetRandomSpawnableType()
 	{
-		var types = Library.GetAll<ClassicBaseDrug>();
+		var types = TypeLibrary.GetTypes<ClassicBaseDrug>();
 		return types.Random();
 	}
 }
