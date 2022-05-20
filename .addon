@@ -19,6 +19,12 @@
     "MapList": [
       "eagleone.sd_bank"
     ],
-    "MapSelect": 3
+    "MapSelect": 3,
+    "PerMapRanking": false,
+    "LeaderboardType": 0,
+    "RankType": 0,
+    "GameNetworkType": 0,
+    "MaxPlayers": 64,
+    "MinPlayers": 1
   }
 }
