@@ -9,8 +9,8 @@
   "ResourcePaths": [
     "materials/ui/*",
     "fonts/*",
-    "*.sd_char",
-    "*.sd_wep"
+    "*.sdchar",
+    "*.sdwep"
   ],
   "HasCode": true,
   "CodePath": "code",
