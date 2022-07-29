@@ -49,6 +49,7 @@ public partial class Game : GameBase
 
 	protected override void OnDestroy()
 	{
+		base.OnDestroy();
 		// FIXME, Global.Lobby is deprecated, need new way to do per-lobby cookies
 		//if ( IsServer && !string.IsNullOrWhiteSpace( LastGamemode ) )
 		//{

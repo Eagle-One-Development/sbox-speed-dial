@@ -20,6 +20,7 @@ public partial class ClassicPlayer
 
 	protected override void OnDestroy()
 	{
+		base.OnDestroy();
 		DrugParticles?.Destroy( true );
 	}
 

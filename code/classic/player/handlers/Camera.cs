@@ -170,6 +170,12 @@ public partial class ClassicCamera : CameraMode
 
 		Rotation = Rotation.FromAxis( Vector3.Left, CameraAngle );
 
+		Sound.Listener = new()
+		{
+			Position = pawn.IsValid() ? pawn.EyePosition : Position,
+			Rotation = Rotation
+		};
+
 
 		// debug stuff for aim location
 		if ( Debug.Camera )
