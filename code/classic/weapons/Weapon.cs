@@ -37,8 +37,7 @@ public partial class Weapon : BaseCarriable
 	{
 		base.Spawn();
 
-		CollisionGroup = CollisionGroup.Weapon;
-		SetInteractsAs( CollisionLayer.Debris );
+		Tags.Add( "weapon" );
 
 		PickupTrigger = new();
 		PickupTrigger.Parent = this;
@@ -135,7 +134,7 @@ public partial class Weapon : BaseCarriable
 
 	public virtual bool CanPrimaryAttack()
 	{
-		if ( (Owner as ClassicPlayer).Frozen ) return false;
+		if ( (Owner as ClassicPlayer) != null && ( Owner as ClassicPlayer).Frozen ) return false;
 		if ( Owner is ClassicPlayer )
 		{
 			if ( !Owner.IsValid() || (Blueprint.FireMode == WeaponFireMode.Automatic && !Input.Down( InputButton.PrimaryAttack )) || (!(Blueprint.FireMode == WeaponFireMode.Automatic) && !Input.Pressed( InputButton.PrimaryAttack )) ) return false;
@@ -256,6 +255,7 @@ public partial class Weapon : BaseCarriable
 
 		var bullet = Trace.Ray( start, end )
 				.UseHitboxes()
+				.WithAnyTags( "solid", "player" )
 				.Ignore( Owner )
 				.Ignore( this )
 				.Size( size )
@@ -280,7 +280,7 @@ public partial class Weapon : BaseCarriable
 
 				// adding dir to not be inside the inPoint
 				var wallbangTest = Trace.Ray( inPoint + dir, inPoint + dir * (MaxWallbangDistance - 1) )
-								.HitLayer( CollisionLayer.WORLD_GEOMETRY )
+								.WithTag( "solid" )
 								.Ignore( Owner )
 								.Ignore( this )
 								.Size( 1 )
@@ -314,7 +314,7 @@ public partial class Weapon : BaseCarriable
 			}
 		}
 
-		if ( player.ActiveDrug && player.DrugType == DrugType.Ollie )
+		if ( player != null && player.ActiveDrug && player.DrugType == DrugType.Ollie )
 		{
 			// pierce through the first player hit
 			if ( bullet.Entity is ClassicPlayer )
@@ -388,7 +388,6 @@ public partial class Weapon : BaseCarriable
 		SetParent( player, Blueprint.HoldAttach, Transform.Zero );
 
 		Owner = player;
-		MoveType = MoveType.None;
 		EnableAllCollisions = false;
 
 		SetGlow( false );

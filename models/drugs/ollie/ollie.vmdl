@@ -14,7 +14,7 @@
 						remaps = 
 						[
 							{
-								from = "cylinder.vmat"
+								from = "cylinder.001.vmat"
 								to = "models/drugs/ollie/ollie.vmat"
 							},
 						]
@@ -77,5 +77,6 @@
 		model_archetype = ""
 		primary_associated_entity = ""
 		anim_graph_name = ""
+		base_model_name = ""
 	}
 }

@@ -383,10 +383,7 @@ public partial class ClassicController : BasePlayerController
 		{
 			var downTrace = Trace.Ray( Position, Position + Vector3.Down * 10000 )
 						.WorldAndEntities()
-						.HitLayer( CollisionLayer.All, false )
-						.HitLayer( CollisionLayer.Solid, true )
-						.HitLayer( CollisionLayer.GRATE, true )
-						.HitLayer( CollisionLayer.PLAYER_CLIP, true )
+						.WithTag( "solid" )
 						.Run();
 
 			// falling in the void, kill the player

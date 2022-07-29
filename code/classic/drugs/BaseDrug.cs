@@ -22,12 +22,9 @@ public partial class ClassicBaseDrug : ModelEntity
 	{
 		base.Spawn();
 
-		CollisionGroup = CollisionGroup.Weapon; // so players touch it as a trigger but not as a solid
-		SetInteractsAs( CollisionLayer.Debris ); // so player movement doesn't walk into it
+		Tags.Add( "drug" ); // so players touch it as a trigger but not as a solid
 
 		SetModel( WorldModel );
-
-		MoveType = MoveType.None;
 
 		this.SetGlowState( true, HighlightColor );
 

@@ -15,7 +15,7 @@ public partial class BasePickupTrigger : ModelEntity
 	public void SetTriggerSize( float radius )
 	{
 		SetupPhysicsFromSphere( PhysicsMotionType.Keyframed, Vector3.Zero, radius );
-		CollisionGroup = CollisionGroup.Trigger;
+		Tags.Add( "trigger" );
 	}
 
 	public override void StartTouch( Entity other )

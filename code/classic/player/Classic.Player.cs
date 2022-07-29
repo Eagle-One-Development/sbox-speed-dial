@@ -183,6 +183,7 @@ public partial class ClassicPlayer : BasePlayer
 			Vector3 pos = EyePosition + Vector3.Down * 20f;
 			var tr = Trace.Ray( pos, pos + forward * 40f )
 			.UseHitboxes()
+			.WithAnyTags( "solid", "player" )
 			.Ignore( this )
 			.Size( 20f )
 			.Run();
@@ -247,8 +248,11 @@ public partial class ClassicPlayer : BasePlayer
 					ImpactKill( wep.PreviousOwner, wep );
 
 					// bounce off the body
-					wep.Velocity *= -0.3f;
-					wep.CanImpactKill = false;
+					if ( IsServer )
+					{
+						wep.Velocity *= -0.3f;
+						wep.CanImpactKill = false;
+					}
 				}
 			}
 		}

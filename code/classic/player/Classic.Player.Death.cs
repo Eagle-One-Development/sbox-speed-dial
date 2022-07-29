@@ -99,11 +99,10 @@ public partial class ClassicPlayer
 		ModelEntity ent = new();
 		ent.Position = Position;
 		ent.Rotation = Rotation;
-		ent.MoveType = MoveType.Physics;
+
+		ent.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 		ent.UsePhysicsCollision = true;
-		ent.SetInteractsAs( CollisionLayer.Debris );
-		ent.SetInteractsWith( CollisionLayer.WORLD_GEOMETRY );
-		ent.SetInteractsExclude( CollisionLayer.Player | CollisionLayer.Debris );
+		Tags.Add( "debris" );
 
 		ent.Model = Model;
 

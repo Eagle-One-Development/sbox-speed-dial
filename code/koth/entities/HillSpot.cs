@@ -42,7 +42,7 @@ public partial class HillSpot : ModelEntity
 		base.Spawn();
 		SetModel( "models/koth/ring.vmdl" );
 		Transmit = TransmitType.Always;
-		CollisionGroup = CollisionGroup.Trigger;
+		Tags.Add( "trigger" );
 		SetupPhysicsFromModel( PhysicsMotionType.Static );
 		TimeSinceAlive = 0f;
 	}

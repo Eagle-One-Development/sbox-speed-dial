@@ -86,11 +86,10 @@ public partial class BasePlayer : AnimatedEntity
 
 	public virtual void CreateHull()
 	{
-		CollisionGroup = CollisionGroup.Player;
-		AddCollisionLayer( CollisionLayer.Player );
+		Tags.Add( "player" );
 		SetupPhysicsFromAABB( PhysicsMotionType.Keyframed, new Vector3( -16, -16, 0 ), new Vector3( 16, 16, 72 ) );
 
-		MoveType = MoveType.MOVETYPE_WALK;
+
 		EnableHitboxes = true;
 	}
 
@@ -149,7 +148,7 @@ public partial class BasePlayer : AnimatedEntity
 	public override void TakeDamage( DamageInfo info )
 	{
 		// If this pawn is allowed to take damage. Then take damage
-		if ( Game.Current.PawnDamaged( this, ref info ) )
+		if ( IsServer && Game.Current.PawnDamaged( this, ref info ) )
 		{
 			LastRecievedDamage = info;
 			base.TakeDamage( info );

@@ -19,12 +19,66 @@
     "MapList": [
       "eagleone.sd_bank"
     ],
-    "MapSelect": 3,
+    "MapSelect": "Official",
     "PerMapRanking": false,
-    "LeaderboardType": 0,
-    "RankType": 0,
-    "GameNetworkType": 0,
+    "LeaderboardType": "None",
+    "RankType": "None",
+    "GameNetworkType": "Multiplayer",
     "MaxPlayers": 64,
-    "MinPlayers": 1
+    "MinPlayers": 1,
+    "GameCategory": "None",
+    "Collision": {
+      "Defaults": {
+        "solid": "Collide",
+        "trigger": "Trigger",
+        "ladder": "Ignore",
+        "water": "Trigger",
+        "player": "Unset",
+        "weapon": "Unset",
+        "drug": "Unset",
+        "debris": "Ignore"
+      },
+      "Pairs": [
+        {
+          "a": "solid",
+          "b": "solid",
+          "r": "Collide"
+        },
+        {
+          "a": "trigger",
+          "b": "playerclip",
+          "r": "Ignore"
+        },
+        {
+          "a": "trigger",
+          "b": "trigger"
+        },
+        {
+          "a": "solid",
+          "b": "trigger",
+          "r": "Trigger"
+        },
+        {
+          "a": "playerclip",
+          "b": "solid",
+          "r": "Collide"
+        },
+        {
+          "a": "player",
+          "b": "weapon",
+          "r": "Trigger"
+        },
+        {
+          "a": "player",
+          "b": "drug",
+          "r": "Trigger"
+        },
+        {
+          "a": "solid",
+          "b": "debris",
+          "r": "Collide"
+        }
+      ]
+    }
   }
 }
