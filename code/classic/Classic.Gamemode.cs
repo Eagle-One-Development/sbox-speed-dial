@@ -5,7 +5,7 @@ using SpeedDial.Classic.UI;
 
 namespace SpeedDial.Classic;
 
-[Library( "classic" )]
+[Library( "Classic" )]
 public partial class ClassicGamemode : Gamemode
 {
 

@@ -21,7 +21,8 @@ public partial class Game : GameBase
 {
 
 	public static Game Current { get; protected set; }
-	public static string DefaultGamemode { get; } = "koth";
+	[ConVar.Server( "sd_default_gamemode", Help = "Sets the default gamemode. Uses the library name of the gamemode type." )]
+	public static string DefaultGamemode { get; set; } = "Classic";
 	public static string LastGamemode { get; private set; }
 	public static GameLoop GameLoop { get; private set; }
 
@@ -297,9 +298,7 @@ public partial class Game : GameBase
 		if ( clientCam != null ) return clientCam;
 
 		var pawnCam = Local.Pawn?.Components.Get<CameraMode>();
-		if ( pawnCam != null ) return pawnCam;
-
-		return null;
+		return pawnCam ?? null;
 	}
 
 	[Predicted]
@@ -354,13 +353,7 @@ public partial class Game : GameBase
 		var sp = source.Pawn;
 		var dp = dest.Pawn;
 
-		if ( sp == null || dp == null )
-			return false;
-
-		if ( sp.Position.Distance( dp.Position ) > 1000 )
-			return false;
-
-		return true;
+		return sp != null && dp != null && sp.Position.Distance( dp.Position ) <= 1000;
 	}
 
 	// maybe pass this to the gamemode?
@@ -483,7 +476,7 @@ public partial class Game : GameBase
 	private static bool CleanupFilter( string className, Entity ent )
 	{
 		// Basic Source engine stuff
-		if ( className == "player" || className == "worldent" || className == "worldspawn" || className == "soundent" || className == "player_manager" )
+		if ( className is "player" or "worldent" or "worldspawn" or "soundent" or "player_manager" )
 		{
 			return false;
 		}
@@ -492,12 +485,7 @@ public partial class Game : GameBase
 		if ( ent == null || !ent.IsValid ) return true;
 
 		// Gamemode related stuff, game entity, HUD, etc
-		if ( ent is GameBase || ent.Parent is GameBase || ent is Hud || ent is VoteEntity )
-		{
-			return false;
-		}
-
-		return true;
+		return ent is not GameBase && ent.Parent is not GameBase && ent is not Hud && ent is not VoteEntity;
 	}
 }
 

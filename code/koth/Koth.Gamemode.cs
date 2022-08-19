@@ -7,7 +7,7 @@ using SpeedDial.Koth.UI;
 
 namespace SpeedDial.Koth;
 
-[Library( "koth" )]
+[Library( "King of the Hill" )]
 public partial class KothGamemode : ClassicGamemode
 {
 	public override GamemodeIdentity Identity => GamemodeIdentity.Koth;

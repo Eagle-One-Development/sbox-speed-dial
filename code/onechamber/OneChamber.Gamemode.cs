@@ -5,7 +5,7 @@ using SpeedDial.OneChamber.UI;
 
 namespace SpeedDial.OneChamber;
 
-[Library( "onechamber" )]
+[Library( "One in the Chamber" )]
 public partial class OneChamberGamemode : ClassicGamemode
 {
 	public override GamemodeIdentity Identity => GamemodeIdentity.OneChamber;

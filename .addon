@@ -1,5 +1,5 @@
 {
-  "Title": "Speed Dial",
+  "Title": "Speed-Dial",
   "Type": "game",
   "Org": "eagleone",
   "Ident": "speed_dial",
@@ -26,7 +26,7 @@
     "GameNetworkType": "Multiplayer",
     "MaxPlayers": 64,
     "MinPlayers": 1,
-    "GameCategory": "None",
+    "GameCategory": "Shooter",
     "Collision": {
       "Defaults": {
         "solid": "Collide",
@@ -79,6 +79,23 @@
           "r": "Collide"
         }
       ]
+    },
+    "ControlModes": {
+      "Keyboard": true,
+      "Gamepad": true
+    },
+    "GameSettings": {
+      "sd_default_gamemode": {
+        "DisplayType": "Choice",
+        "Choices": [
+          "Classic",
+          "King of the Hill",
+          "One in the Chamber"
+        ],
+        "ConVarName": "sd_default_gamemode",
+        "DisplayName": "Gamemode",
+        "DefaultValue": "Classic"
+      }
     }
   }
 }
