@@ -46,7 +46,7 @@ public partial class ClassicGamemode
 			}
 			else
 			{
-				ScreenHints.FireEvent( To.Single( player.Client ), killtext, killtextextra, true, player.LastAttacker.Client, killevent == KillEvent.Domination || killevent == KillEvent.Revenge );
+				ScreenHints.FireEvent( To.Single( player.Client ), killtext, killtextextra, true, player.LastAttacker.Client, killevent is KillEvent.Domination or KillEvent.Revenge );
 			}
 		}
 	}

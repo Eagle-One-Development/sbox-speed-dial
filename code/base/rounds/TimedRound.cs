@@ -5,7 +5,7 @@ public abstract partial class TimedRound : Round
 {
 
 	/// <summary> How long does this round go for? </summary>
-	public virtual TimeSpan RoundDuration { get => TimeSpan.FromSeconds( 60 ); }
+	public virtual TimeSpan RoundDuration => TimeSpan.FromSeconds( 60 );
 
 	/// <summary>
 	/// Formatted version of the time left in the round in seconds
@@ -18,10 +18,7 @@ public abstract partial class TimedRound : Round
 
 	public TimeSpan GetTimeLeft()
 	{
-		if ( !Finished )
-			return TimeSpan.FromSeconds( RoundDuration.TotalSeconds - GetElapsedTime().TotalSeconds );
-		else
-			return TimeSpan.Zero;
+		return !Finished ? TimeSpan.FromSeconds( RoundDuration.TotalSeconds - GetElapsedTime().TotalSeconds ) : TimeSpan.Zero;
 	}
 
 	public override TimeSpan GetTime()

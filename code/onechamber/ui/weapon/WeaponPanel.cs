@@ -32,29 +32,13 @@ public partial class OneChamberWeaponPanel : WeaponPanel
 					var gun = player.StashedGun as Weapon;
 					if ( gun is not null )
 					{
-						if ( gun.Blueprint?.ClipSize < 0 )
-							AmmoLabel.Text = $"";
-						else
-						{
-							if ( Debug.InfiniteAmmo )
-								AmmoLabel.Text = $"∞";
-							else
-								AmmoLabel.Text = $"{gun.AmmoClip}";
-						}
+						AmmoLabel.Text = gun.Blueprint?.ClipSize < 0 ? $"" : Debug.InfiniteAmmo ? $"∞" : $"{gun.AmmoClip}";
 					}
 				}
 			}
 			else
 			{
-				if ( weapon.Blueprint?.ClipSize < 0 )
-					AmmoLabel.Text = $"";
-				else
-				{
-					if ( Debug.InfiniteAmmo )
-						AmmoLabel.Text = $"∞";
-					else
-						AmmoLabel.Text = $"{weapon.AmmoClip}";
-				}
+				AmmoLabel.Text = weapon.Blueprint?.ClipSize < 0 ? $"" : Debug.InfiniteAmmo ? $"∞" : $"{weapon.AmmoClip}";
 
 				// lerp to normal scale
 				AmmoScale = AmmoScale.LerpTo( 1, Time.Delta * 7f );
@@ -63,14 +47,7 @@ public partial class OneChamberWeaponPanel : WeaponPanel
 
 		// weapon name
 		{
-			if ( weapon is null )
-			{
-				WeaponLabel.Text = $"FISTS";
-			}
-			else
-			{
-				WeaponLabel.Text = $"{weapon.Blueprint.WeaponTitle}";
-			}
+			WeaponLabel.Text = weapon is null ? $"FISTS" : $"{weapon.Blueprint.WeaponTitle}";
 		}
 	}
 }

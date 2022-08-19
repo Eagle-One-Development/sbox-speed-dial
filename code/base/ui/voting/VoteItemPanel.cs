@@ -3,7 +3,7 @@
 [UseTemplate]
 public class VoteItemPanel : Panel
 {
-	private int index;
+	private readonly int index;
 	private VoteItem Item => VoteEntity.Current?.GetVoteItem( index );
 
 	private string Title { get; set; }

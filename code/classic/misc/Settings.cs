@@ -9,7 +9,7 @@ public static partial class Settings
 
 	// Music enable/disable
 	[ConVar.Client( "sd_music" )]
-	public static bool MusicEnabled { get { return _musicEnabled; } set { OnMusicEnabledChanged( value ); _musicEnabled = value; } }
+	public static bool MusicEnabled { get => _musicEnabled; set { OnMusicEnabledChanged( value ); _musicEnabled = value; } }
 	private static bool _musicEnabled = true;
 
 	private static void OnMusicEnabledChanged( bool value )

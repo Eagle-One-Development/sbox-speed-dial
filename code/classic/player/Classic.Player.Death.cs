@@ -4,7 +4,7 @@ namespace SpeedDial.Classic.Player;
 
 public partial class ClassicPlayer
 {
-	static EntityLimit RagdollLimit = new EntityLimit { MaxTotal = 20 };
+	private static readonly EntityLimit RagdollLimit = new() { MaxTotal = 20 };
 	public ModelEntity Corpse { get; set; }
 	[Net] public CauseOfDeath DeathCause { get; set; } = CauseOfDeath.Generic;
 
@@ -37,7 +37,7 @@ public partial class ClassicPlayer
 		DropWeapon( out var weapon );
 		if ( weapon.IsValid() )
 		{
-			weapon.Velocity += Vector3.Random.WithZ( 0 ).Normal * 150 + Vector3.Up * 150;
+			weapon.Velocity += (Vector3.Random.WithZ( 0 ).Normal * 150) + (Vector3.Up * 150);
 			weapon.PhysicsBody.AngularVelocity = new Vector3( 0, 0, 60f );
 			weapon.CanImpactKill = false;
 		}
@@ -59,14 +59,7 @@ public partial class ClassicPlayer
 		if ( LastRecievedDamage.Weapon is Weapon wep )
 		{
 			// HACK. this could be done better... too bad!
-			if ( wep.Blueprint.Special == WeaponSpecial.Melee )
-			{
-				DeathCause = CauseOfDeath.Melee;
-			}
-			else
-			{
-				DeathCause = CauseOfDeath.Bullet;
-			}
+			DeathCause = wep.Blueprint.Special == WeaponSpecial.Melee ? CauseOfDeath.Melee : CauseOfDeath.Bullet;
 		}
 
 		// reset combo
@@ -81,7 +74,7 @@ public partial class ClassicPlayer
 		DropWeapon( out var weapon );
 		if ( weapon.IsValid() )
 		{
-			weapon.Velocity += Vector3.Random.WithZ( 0 ).Normal * 150 + Vector3.Up * 150;
+			weapon.Velocity += (Vector3.Random.WithZ( 0 ).Normal * 150) + (Vector3.Up * 150);
 			weapon.PhysicsBody.AngularVelocity = new Vector3( 0, 0, 60f );
 			weapon.CanImpactKill = false;
 		}
@@ -94,7 +87,7 @@ public partial class ClassicPlayer
 	}
 
 	[ClientRpc]
-	void BecomeRagdollOnClient( Vector3 force, int forceBone )
+	private void BecomeRagdollOnClient( Vector3 force, int forceBone )
 	{
 
 		ModelEntity ent = new();
@@ -143,12 +136,12 @@ public partial class ClassicPlayer
 	public void BloodSplatter( Vector3 dir )
 	{
 		Host.AssertClient();
-		Vector3 pos = EyePosition + Vector3.Down * 20;
+		Vector3 pos = EyePosition + (Vector3.Down * 20);
 
 		// splatters around and behind the target, mostly from impact
 		for ( int i = 0; i < 10; i++ )
 		{
-			var trDir = pos + (dir.Normal + (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 0.85f * 0.25f) * 100 + Vector3.Down * i;
+			var trDir = pos + ((dir.Normal + ((Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 0.85f * 0.25f)) * 100) + (Vector3.Down * i);
 			var tr = Trace.Ray( pos, trDir )
 					.UseHitboxes()
 					.Ignore( this )
@@ -161,7 +154,7 @@ public partial class ClassicPlayer
 		//For blood splatter on the ground, pool of blood essentially
 		for ( int i = 0; i < 5; i++ )
 		{
-			var trDir = pos + (Vector3.Down + (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 3 * 0.25f) * 100;
+			var trDir = pos + ((Vector3.Down + ((Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 3 * 0.25f)) * 100);
 			var tr = Trace.Ray( pos, trDir )
 					.WorldOnly()
 					.Ignore( this )
@@ -174,7 +167,7 @@ public partial class ClassicPlayer
 		//For blood detail splatters on the ground
 		for ( int i = 0; i < 5; i++ )
 		{
-			var trDir = pos + (Vector3.Down + (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 3 * 0.25f) * 100;
+			var trDir = pos + ((Vector3.Down + ((Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 3 * 0.25f)) * 100);
 			var tr = Trace.Ray( pos, trDir )
 					.WorldOnly()
 					.Ignore( this )
@@ -192,7 +185,7 @@ public partial class ClassicPlayer
 		_ = CreateParticleAsync( "particles/blood/blood_plip.vpcf", Corpse, Vector3.Down, 0, "head", true );
 	}
 
-	async Task CreateDecalAsync( string decalname, TraceResult tr, float delay = 0 )
+	private async Task CreateDecalAsync( string decalname, TraceResult tr, float delay = 0 )
 	{
 		await GameTask.DelaySeconds( delay );
 
@@ -206,7 +199,7 @@ public partial class ClassicPlayer
 		}
 	}
 
-	async Task CreateParticleAsync( string particle, Entity entity, Vector3 forward, float delay = 0, string bone = "root", bool attach = false, bool bloodpool = false, int pools = 1 )
+	private async Task CreateParticleAsync( string particle, Entity entity, Vector3 forward, float delay = 0, string bone = "root", bool attach = false, bool bloodpool = false, int pools = 1 )
 	{
 		await GameTask.DelaySeconds( delay );
 		if ( entity is ModelEntity ent )
@@ -221,7 +214,7 @@ public partial class ClassicPlayer
 				for ( int i = 0; i < pools; i++ )
 				{
 					await GameTask.DelaySeconds( i * 0.1f );
-					var trDir = boneBody.Position + Vector3.Down * 1000;
+					var trDir = boneBody.Position + (Vector3.Down * 1000);
 					var tr = Trace.Ray( boneBody.Position, trDir )
 							.WorldAndEntities()
 							.UseHitboxes()

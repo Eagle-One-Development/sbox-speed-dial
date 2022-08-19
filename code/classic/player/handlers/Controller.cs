@@ -191,7 +191,7 @@ public partial class ClassicController : BasePlayerController
 			}
 
 			// first try just moving to the destination	
-			var dest = (Position + Velocity * Time.Delta).WithZ( Position.z );
+			var dest = (Position + (Velocity * Time.Delta)).WithZ( Position.z );
 
 			var pm = TraceBBox( Position, dest );
 
@@ -230,12 +230,12 @@ public partial class ClassicController : BasePlayerController
 		// Try again, this time step up and move across
 		Position = startPos;
 		Velocity = startVel;
-		var trace = TraceBBox( Position, Position + Vector3.Up * (StepSize + DistEpsilon) );
+		var trace = TraceBBox( Position, Position + (Vector3.Up * (StepSize + DistEpsilon)) );
 		if ( !trace.StartedSolid ) Position = trace.EndPosition;
 		TryPlayerMove();
 
 		// If we move down from here, did we land on ground?
-		trace = TraceBBox( Position, Position + Vector3.Down * (StepSize + DistEpsilon * 2) );
+		trace = TraceBBox( Position, Position + (Vector3.Down * (StepSize + (DistEpsilon * 2))) );
 		if ( !trace.Hit || Vector3.GetAngle( Vector3.Up, trace.Normal ) > GroundAngle )
 		{
 			// didn't step on ground, so just use the original attempt without stepping
@@ -334,7 +334,7 @@ public partial class ClassicController : BasePlayerController
 
 	public virtual void TryPlayerMove()
 	{
-		MoveHelper mover = new MoveHelper( Position, Velocity );
+		MoveHelper mover = new( Position, Velocity );
 		mover.Trace = mover.Trace.Size( mins, maxs ).Ignore( Pawn );
 		mover.MaxStandableAngle = GroundAngle;
 
@@ -348,7 +348,7 @@ public partial class ClassicController : BasePlayerController
 	{
 		SurfaceFriction = 1.0f;
 
-		var point = Position - Vector3.Up * 2;
+		var point = Position - (Vector3.Up * 2);
 		var vBumpOrigin = Position;
 
 		//  Shooting up really fast.  Definitely not on ground trimed until ladder shit
@@ -381,7 +381,7 @@ public partial class ClassicController : BasePlayerController
 		bool bMovingDownRapidly = Velocity.z < -Gravity;
 		if ( bMovingDownRapidly )
 		{
-			var downTrace = Trace.Ray( Position, Position + Vector3.Down * 10000 )
+			var downTrace = Trace.Ray( Position, Position + (Vector3.Down * 10000) )
 						.WorldAndEntities()
 						.WithTag( "solid" )
 						.Run();
@@ -466,8 +466,8 @@ public partial class ClassicController : BasePlayerController
 	/// </summary>
 	public virtual void StayOnGround()
 	{
-		var start = Position + Vector3.Up * 2;
-		var end = Position + Vector3.Down * StepSize;
+		var start = Position + (Vector3.Up * 2);
+		var end = Position + (Vector3.Down * StepSize);
 
 		// See how far up we can go without getting stuck
 		var trace = TraceBBox( Position, start );

@@ -8,7 +8,7 @@ public partial class PlayerEntry : Panel
 	public Image Avatar { get; set; }
 	public Label Score { get; set; }
 
-	RealTimeSince TimeSinceUpdate = 0;
+	private RealTimeSince TimeSinceUpdate = 0;
 
 	public override void Tick()
 	{

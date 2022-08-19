@@ -97,8 +97,8 @@ public partial class CharacterSelect : Panel
 			return;
 
 		// progress bar at the bottom
-		Progress.Style.Width = Length.Fraction( (1 / (float)Character.All.Count) * 4 );
-		Progress.Style.Left = Length.Fraction( (1 / (float)Character.All.Count) * startIndex );
+		Progress.Style.Width = Length.Fraction( 1 / (float)Character.All.Count * 4 );
+		Progress.Style.Left = Length.Fraction( 1 / (float)Character.All.Count * startIndex );
 		ProgressBar.SetClass( "hidden", Character.All.Count <= 4 );
 
 		if ( TimeSinceToggled > 0.1f )

@@ -3,8 +3,7 @@ namespace SpeedDial.Classic.UI;
 [UseTemplate]
 public partial class ClassicScoreboard : Panel
 {
-
-	Dictionary<Client, ClassicScoreboardEntry> Rows = new();
+	private readonly Dictionary<Client, ClassicScoreboardEntry> Rows = new();
 
 	public Panel Header { get; set; }
 	public Panel Canvas { get; set; }

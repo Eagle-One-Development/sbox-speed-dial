@@ -9,7 +9,7 @@ public class ClassicAnimator : PawnAnimator
 		DoRotation( idealRotation );
 		DoWalk( idealRotation );
 
-		Vector3 aimPos = Pawn.EyePosition + Input.Rotation.Forward * 200;
+		Vector3 aimPos = Pawn.EyePosition + (Input.Rotation.Forward * 200);
 		Vector3 lookPos = aimPos;
 
 		// Look in the direction what the player's input is facing
@@ -38,7 +38,7 @@ public class ClassicAnimator : PawnAnimator
 		Rotation = Rotation.Clamp( idealRotation, 0, out var change );
 	}
 
-	void DoWalk( Rotation idealRotation )
+	private void DoWalk( Rotation idealRotation )
 	{
 		//
 		// These tweak the animation speeds to something we feel is right,

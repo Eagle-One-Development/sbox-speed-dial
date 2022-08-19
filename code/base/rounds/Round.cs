@@ -45,10 +45,7 @@ public abstract partial class Round : BaseNetworkable
 
 	public TimeSpan GetElapsedTime()
 	{
-		if ( !Finished )
-			return TimeSpan.FromSeconds( Time.Now - StartTime );
-		else
-			return TimeSpan.Zero;
+		return !Finished ? TimeSpan.FromSeconds( Time.Now - StartTime ) : TimeSpan.Zero;
 	}
 
 	public virtual TimeSpan GetTime()

@@ -7,7 +7,7 @@ namespace SpeedDial.Classic.Player;
 public partial class ClassicPlayer : BasePlayer
 {
 	[Net] public bool Frozen { get; set; }
-	public Character Character { get { return Character.All.ElementAtOrDefault( CharacterIndex ); } }
+	public Character Character => Character.All.ElementAtOrDefault( CharacterIndex );
 	[Net] public int CharacterIndex { get; set; }
 	[Net] public bool ActiveDrug { get; set; }
 	[Net] public DrugType DrugType { get; set; }
@@ -180,8 +180,8 @@ public partial class ClassicPlayer : BasePlayer
 		{
 			ActiveMelee = false;
 			var forward = EyeRotation.Forward;
-			Vector3 pos = EyePosition + Vector3.Down * 20f;
-			var tr = Trace.Ray( pos, pos + forward * 40f )
+			Vector3 pos = EyePosition + (Vector3.Down * 20f);
+			var tr = Trace.Ray( pos, pos + (forward * 40f) )
 			.UseHitboxes()
 			.WithAnyTags( "solid", "player" )
 			.Ignore( this )

@@ -64,7 +64,7 @@ public partial class ClassicCamera : CameraMode
 			Crosshair.UpdateMouse( new Vector2( mouse.x * Screen.Width, mouse.y * Screen.Height ) );
 
 			//trace from camera into mouse direction, essentially gets the world location of the mouse
-			var targetTrace = Trace.Ray( Position, Position + direction * 1000 )
+			var targetTrace = Trace.Ray( Position, Position + (direction * 1000) )
 				.UseHitboxes()
 				.EntitiesOnly()
 				.Size( 1 )
@@ -75,12 +75,12 @@ public partial class ClassicCamera : CameraMode
 			if ( targetTrace.Hit && targetTrace.Entity is ClassicPlayer )
 			{
 				if ( Debug.Camera )
-					DebugOverlay.Line( pawn.EyePosition, targetTrace.Entity.EyePosition + Vector3.Down * 20, Color.Red, 0, true );
-				angles = (targetTrace.Entity.EyePosition + Vector3.Down * 20 - (pawn.EyePosition - Vector3.Up * 20)).EulerAngles;
+					DebugOverlay.Line( pawn.EyePosition, targetTrace.Entity.EyePosition + (Vector3.Down * 20), Color.Red, 0, true );
+				angles = (targetTrace.Entity.EyePosition + (Vector3.Down * 20) - (pawn.EyePosition - (Vector3.Up * 20))).EulerAngles;
 			}
 			else
 			{
-				angles = (HitPosition - (pawn.EyePosition - Vector3.Up * 20)).EulerAngles;
+				angles = (HitPosition - (pawn.EyePosition - (Vector3.Up * 20))).EulerAngles;
 			}
 
 		}
@@ -126,12 +126,10 @@ public partial class ClassicCamera : CameraMode
 
 	public override void Update()
 	{
-		var pawn = Local.Pawn as BasePlayer;
-
-		if ( pawn == null )
+		if ( Local.Pawn is not BasePlayer pawn )
 			return;
 
-		var _pos = pawn.EyePosition + Vector3.Down * 20; // relative to pawn EyePosition
+		var _pos = pawn.EyePosition + (Vector3.Down * 20); // relative to pawn EyePosition
 		_pos += Vector3.Up * CameraHeight; // add camera height
 										   // why didn't we just do this with Rotation.LookAt????
 										   // [DOC] answer: cause we (I) wanted a fixed/clearly defined angle
@@ -147,21 +145,11 @@ public partial class ClassicCamera : CameraMode
 		float MouseX = Mouse.Position.x.Clamp( 0, Screen.Size.x );
 		float MouseY = Mouse.Position.y.Clamp( 0, Screen.Size.y );
 
-		if ( CameraShift || Settings.ViewshiftToggle && shiftToggle )
-		{
-			if ( Input.UsingController )
-			{
-				camOffsetTarget = Vector3.Left * (ControllerLookInput.x * Screen.Size.x / 2) * mouseShiftFactor + Vector3.Forward * (ControllerLookInput.y * Screen.Size.y / 2) * mouseShiftFactor;
-			}
-			else
-			{
-				camOffsetTarget = Vector3.Left * -((MouseX - Screen.Size.x / 2) * mouseShiftFactor) + Vector3.Forward * -((MouseY - Screen.Size.y / 2) * mouseShiftFactor);
-			}
-		}
-		else
-		{
-			camOffsetTarget = Vector3.Zero;
-		}
+		camOffsetTarget = CameraShift || (Settings.ViewshiftToggle && shiftToggle)
+			? Input.UsingController
+				? (Vector3.Left * (ControllerLookInput.x * Screen.Size.x / 2) * mouseShiftFactor) + (Vector3.Forward * (ControllerLookInput.y * Screen.Size.y / 2) * mouseShiftFactor)
+				: (Vector3.Left * -((MouseX - (Screen.Size.x / 2)) * mouseShiftFactor)) + (Vector3.Forward * -((MouseY - (Screen.Size.y / 2)) * mouseShiftFactor))
+			: Vector3.Zero;
 		camOffset = Vector3.Lerp( camOffset, camOffsetTarget, Time.Delta * 8f );
 
 		_pos += camOffset;
@@ -208,8 +196,8 @@ public partial class ClassicCamera : CameraMode
 		float temp = (z - pos.z) / dir.z;
 
 		//plug in and solve for Px and Py
-		px = dir.x * temp + pos.x;
-		py = dir.y * temp + pos.y;
+		px = (dir.x * temp) + pos.x;
+		py = (dir.y * temp) + pos.y;
 		pz = z;
 		return new Vector3( px, py, pz );
 	}

@@ -18,7 +18,7 @@ public partial class GamemodeVote : VoteEntity
 	public override string VoteDescription => "Vote for the next Gamemode.";
 
 	// TEMP TEMP TEMP TEMP // TEMP TEMP TEMP TEMP // TEMP TEMP TEMP TEMP
-	private string[] gamemodes = {
+	private readonly string[] gamemodes = {
 		"classic",
 		"onechamber",
 		"koth"

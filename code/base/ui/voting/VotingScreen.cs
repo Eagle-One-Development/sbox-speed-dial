@@ -37,7 +37,7 @@ public partial class VotingScreen : Panel
 
 		if ( !Vote.Concluded )
 		{
-			var progress = 1 - Vote.TimeSinceStarted / Vote.VoteDuration;
+			var progress = 1 - (Vote.TimeSinceStarted / Vote.VoteDuration);
 			ProgressBar.Style.Width = Length.Percent( progress * 100 );
 		}
 		else

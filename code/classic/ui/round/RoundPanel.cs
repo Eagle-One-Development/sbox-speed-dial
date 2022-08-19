@@ -9,7 +9,7 @@ public partial class RoundPanel : Panel
 	public Panel TopPlayers { get; set; }
 	public Label RoundText { get; set; }
 
-	Dictionary<Client, PlayerEntry> Players = new();
+	private readonly Dictionary<Client, PlayerEntry> Players = new();
 
 	public override void Tick()
 	{

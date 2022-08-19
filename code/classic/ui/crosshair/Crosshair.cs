@@ -9,7 +9,7 @@ public partial class Crosshair : Panel
 
 	public static Crosshair Current { get; private set; }
 
-	Vector2 Mouse;
+	private Vector2 Mouse;
 
 	private float BumpScale;
 
@@ -56,7 +56,7 @@ public partial class Crosshair : Panel
 
 			transform.AddRotation( 0, 0, hair * 90f );
 
-			float pixel = 18f + 20f * BumpScale;
+			float pixel = 18f + (20f * BumpScale);
 			switch ( hair )
 			{
 				case 0:

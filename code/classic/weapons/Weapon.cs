@@ -59,17 +59,7 @@ public partial class Weapon : BaseCarriable
 
 	private void SetGlow( bool state = true )
 	{
-		Color col;
-		if ( AmmoClip > 0 )
-			col = new Color( 0.2f, 1, 0.2f, 1 );
-		else
-		{
-			if ( AmmoClip == -1 )
-				col = new Color( 1, 1, 1, 1 );
-			else
-				col = new Color( 1, 0.2f, 0.2f, 1 );
-		}
-
+		Color col = AmmoClip > 0 ? new Color( 0.2f, 1, 0.2f, 1 ) : AmmoClip == -1 ? new Color( 1, 1, 1, 1 ) : new Color( 1, 0.2f, 0.2f, 1 );
 		this.SetGlowState( state, col );
 	}
 
@@ -84,9 +74,9 @@ public partial class Weapon : BaseCarriable
 		var attach = GetAttachment( "throw_pivot" );
 		if ( attach is not null )
 		{
-			DebugOverlay.Line( attach.Value.Position, attach.Value.Position + attach.Value.Rotation.Forward * 10, Color.Red, Time.Delta, false );
-			DebugOverlay.Line( Position, Position + Rotation.Forward * 10, Color.Green, Time.Delta, false );
-			DebugOverlay.Line( Position, Position + Vector3.Up * 10, Color.Blue, Time.Delta, false );
+			DebugOverlay.Line( attach.Value.Position, attach.Value.Position + (attach.Value.Rotation.Forward * 10), Color.Red, Time.Delta, false );
+			DebugOverlay.Line( Position, Position + (Rotation.Forward * 10), Color.Green, Time.Delta, false );
+			DebugOverlay.Line( Position, Position + (Vector3.Up * 10), Color.Blue, Time.Delta, false );
 		}
 		if ( Debug.Weapons )
 		{
@@ -134,16 +124,14 @@ public partial class Weapon : BaseCarriable
 
 	public virtual bool CanPrimaryAttack()
 	{
-		if ( (Owner as ClassicPlayer) != null && ( Owner as ClassicPlayer).Frozen ) return false;
+		if ( (Owner as ClassicPlayer) != null && (Owner as ClassicPlayer).Frozen ) return false;
 		if ( Owner is ClassicPlayer )
 		{
 			if ( !Owner.IsValid() || (Blueprint.FireMode == WeaponFireMode.Automatic && !Input.Down( InputButton.PrimaryAttack )) || (!(Blueprint.FireMode == WeaponFireMode.Automatic) && !Input.Pressed( InputButton.PrimaryAttack )) ) return false;
 		}
 
 		var rate = Blueprint.FireRate;
-		if ( rate <= 0 ) return true;
-
-		return TimeSincePrimaryAttack > (1 / rate);
+		return rate <= 0 || TimeSincePrimaryAttack > (1 / rate);
 	}
 
 	public virtual void AttackPrimary()
@@ -201,7 +189,7 @@ public partial class Weapon : BaseCarriable
 		forward.z *= Blueprint.VerticalSpreadMultiplier;
 
 		int index = 0;
-		foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + forward * Blueprint.BulletRange, bulletSize ) )
+		foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + (forward * Blueprint.BulletRange), bulletSize ) )
 		{
 			tr.Surface.DoBulletImpact( tr );
 
@@ -252,7 +240,6 @@ public partial class Weapon : BaseCarriable
 
 	public virtual IEnumerable<TraceResult> TraceBullet( Vector3 start, Vector3 end, float size = 2.0f, float wallBangedDistance = 0 )
 	{
-
 		var bullet = Trace.Ray( start, end )
 				.UseHitboxes()
 				.WithAnyTags( "solid", "player" )
@@ -268,7 +255,6 @@ public partial class Weapon : BaseCarriable
 
 		yield return bullet;
 
-		var player = Owner as ClassicPlayer;
 
 		if ( Blueprint.Penetrate )
 		{
@@ -276,10 +262,10 @@ public partial class Weapon : BaseCarriable
 			if ( bullet.Hit && wallBangedDistance < MaxWallbangDistance )
 			{
 				var inNormal = bullet.Normal;
-				var inPoint = bullet.EndPosition - inNormal * (size / 2);
+				var inPoint = bullet.EndPosition - (inNormal * (size / 2));
 
 				// adding dir to not be inside the inPoint
-				var wallbangTest = Trace.Ray( inPoint + dir, inPoint + dir * (MaxWallbangDistance - 1) )
+				var wallbangTest = Trace.Ray( inPoint + dir, inPoint + (dir * (MaxWallbangDistance - 1)) )
 								.WithTag( "solid" )
 								.Ignore( Owner )
 								.Ignore( this )
@@ -294,7 +280,7 @@ public partial class Weapon : BaseCarriable
 				if ( wallbangTest.Hit )
 				{
 					var outNormal = wallbangTest.Normal;
-					var outPoint = wallbangTest.EndPosition - outNormal * 0.5f;
+					var outPoint = wallbangTest.EndPosition - (outNormal * 0.5f);
 
 					if ( outNormal != Vector3.Zero && inNormal.Dot( outNormal ) >= 0 )
 					{
@@ -304,7 +290,7 @@ public partial class Weapon : BaseCarriable
 
 						if ( totalDistance < MaxWallbangDistance )
 						{
-							foreach ( var bullet2 in TraceBullet( outPoint + dir * 2, outPoint + dir * 1000, 1, totalDistance ) )
+							foreach ( var bullet2 in TraceBullet( outPoint + (dir * 2), outPoint + (dir * 1000), 1, totalDistance ) )
 							{
 								yield return bullet2;
 							}
@@ -314,13 +300,13 @@ public partial class Weapon : BaseCarriable
 			}
 		}
 
-		if ( player != null && player.ActiveDrug && player.DrugType == DrugType.Ollie )
+		if ( Owner is ClassicPlayer player && player.ActiveDrug && player.DrugType == DrugType.Ollie )
 		{
 			// pierce through the first player hit
 			if ( bullet.Entity is ClassicPlayer )
 			{
 				var dir = bullet.EndPosition - bullet.StartPosition;
-				var penetrate = Trace.Ray( bullet.EndPosition, bullet.EndPosition + dir.Normal * 100f )
+				var penetrate = Trace.Ray( bullet.EndPosition, bullet.EndPosition + (dir.Normal * 100f) )
 						.UseHitboxes()
 						.Ignore( this )
 						.Ignore( bullet.Entity )
@@ -343,7 +329,7 @@ public partial class Weapon : BaseCarriable
 				if ( dot < 0 )
 				{
 					var dir = Vector3.Reflect( inDir, bullet.Normal ).WithZ( 0 );
-					var ricochet = Trace.Ray( bullet.EndPosition, end + dir * Blueprint.BulletRange )
+					var ricochet = Trace.Ray( bullet.EndPosition, end + (dir * Blueprint.BulletRange) )
 							.UseHitboxes()
 							.Ignore( Owner )
 							.Ignore( this )

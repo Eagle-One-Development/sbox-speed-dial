@@ -32,12 +32,9 @@ public partial class KothBotBehaviour : ClassicBotBehaviour
 		var pawn = Bot.Client.Pawn as BasePlayer;
 
 		// Don't go right up to the player if we have a gun
-		if ( target is ClassicPlayer player && pawn.ActiveChild != null )
-		{
-			return target.Position + (pawn.Position - target.Position).Normal * PlayerOrbitDistance;
-		}
-
-		return target.Position;
+		return target is ClassicPlayer player && pawn.ActiveChild != null
+			? target.Position + ((pawn.Position - target.Position).Normal * PlayerOrbitDistance)
+			: target.Position;
 	}
 
 	public override Entity EvaulateTarget()
@@ -84,18 +81,9 @@ public partial class KothBotBehaviour : ClassicBotBehaviour
 			target = closestWeapon;
 		}
 		// choose drug if no drug
-		else if ( closestDrug != null && (!drug) )
-		{
-			target = closestDrug;
-		}
-		else if ( hill != null )
-		{
-			target = hill;
-		}
-		// if target is null the bot will patrol/wander
 		else
 		{
-			target = null;
+			target = closestDrug != null && (!drug) ? closestDrug : hill ?? null;
 		}
 
 		return target;

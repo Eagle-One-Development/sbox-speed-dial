@@ -2,8 +2,11 @@
 
 public struct Draw
 {
-	public static Draw Once => new Draw( Time.Delta * 1.5f, Host.Color, true );
-	public static Draw ForSeconds( float seconds ) => Once.WithDuration( seconds );
+	public static Draw Once => new( Time.Delta * 1.5f, Host.Color, true );
+	public static Draw ForSeconds( float seconds )
+	{
+		return Once.WithDuration( seconds );
+	}
 
 	public float Duration;
 	public Color Color;
@@ -62,13 +65,13 @@ public struct Draw
 		var sideDir = lineDir.Cross( up );
 		var radius = width * 0.5f;
 
-		var p1 = startPos - sideDir * radius;
-		var p2 = endPos - lineDir * width - sideDir * radius;
-		var p3 = endPos - lineDir * width - sideDir * width;
+		var p1 = startPos - (sideDir * radius);
+		var p2 = endPos - (lineDir * width) - (sideDir * radius);
+		var p3 = endPos - (lineDir * width) - (sideDir * width);
 		var p4 = endPos;
-		var p5 = endPos - lineDir * width + sideDir * width;
-		var p6 = endPos - lineDir * width + sideDir * radius;
-		var p7 = startPos + sideDir * radius;
+		var p5 = endPos - (lineDir * width) + (sideDir * width);
+		var p6 = endPos - (lineDir * width) + (sideDir * radius);
+		var p7 = startPos + (sideDir * radius);
 
 		Line( p1, p2 );
 		Line( p2, p3 );
@@ -83,7 +86,7 @@ public struct Draw
 		var up = rot.Up;
 		var right = rot.Right;
 
-		float fsegPi = (degrees.DegreeToRadian()) / segments;
+		float fsegPi = degrees.DegreeToRadian() / segments;
 
 		Vector3 lp = default;
 
@@ -92,7 +95,7 @@ public struct Draw
 			var x = MathF.Sin( i * fsegPi ) * radius;
 			var y = MathF.Cos( i * fsegPi ) * radius;
 
-			var p = startPos + up * x + right * y;
+			var p = startPos + (up * x) + (right * y);
 
 			if ( i > 0 ) Line( p, lp );
 

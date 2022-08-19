@@ -12,9 +12,9 @@ public partial class ClassicBotBehaviour
 	public Draw Draw => Draw.Once;
 
 	#region Randomized Variables
-	private float turnSpeed = Rand.Float( 10f, 25f ); // lower is slower
-	private float sinAimSpeed = Rand.Float( 10.0f, 15.0f );
-	private float accuracy = Rand.Float( 0.0f, 10.0f ); // lower is more accurate
+	private readonly float turnSpeed = Rand.Float( 10f, 25f ); // lower is slower
+	private readonly float sinAimSpeed = Rand.Float( 10.0f, 15.0f );
+	private readonly float accuracy = Rand.Float( 0.0f, 10.0f ); // lower is more accurate
 
 	#endregion
 
@@ -71,8 +71,7 @@ public partial class ClassicBotBehaviour
 			{
 				// Wander
 				var t = NavMesh.GetPointWithinRadius( Bot.Client.Pawn.Position, MinWanderRadius, MaxWanderRadius );
-				if ( t.HasValue ) Steer.Target = t.Value;
-				else Steer.Target = Bot.Client.Pawn.Position;
+				Steer.Target = t.HasValue ? t.Value : Bot.Client.Pawn.Position;
 			}
 
 			Steer.Tick( Bot.Client.Pawn.Position );
@@ -101,12 +100,11 @@ public partial class ClassicBotBehaviour
 	public virtual void SetInputs()
 	{
 		var pawn = Bot.Client.Pawn as BasePlayer;
-		var weapon = pawn.ActiveChild as Weapon;
 
 		Attack1 = CurrentTarget is ClassicPlayer;
 
-		Attack2 = (weapon == null) ||
-			(weapon != null) && (weapon.AmmoClip <= 0);
+		Attack2 = (pawn.ActiveChild is not Weapon weapon) ||
+			((weapon != null) && (weapon.AmmoClip <= 0));
 
 		var targetView = CurrentPlayer != null && CurrentPlayer.IsValid ? Rotation.LookAt( (CurrentPlayer.Position - Bot.Client.Pawn.Position).Normal, Vector3.Up ).Angles() :
 				Rotation.LookAt( InputVelocity, Vector3.Up ).Angles();
@@ -125,12 +123,9 @@ public partial class ClassicBotBehaviour
 		var pawn = Bot.Client.Pawn as BasePlayer;
 
 		// Don't go right up to the player if we have a gun
-		if ( target is ClassicPlayer player && pawn.ActiveChild != null )
-		{
-			return target.Position + (pawn.Position - target.Position).Normal * PlayerOrbitDistance;
-		}
-
-		return target.Position;
+		return target is ClassicPlayer player && pawn.ActiveChild != null
+			? target.Position + ((pawn.Position - target.Position).Normal * PlayerOrbitDistance)
+			: target.Position;
 	}
 
 	/// <summary>
@@ -176,19 +171,9 @@ public partial class ClassicBotBehaviour
 			target = closestPlayer;
 		}
 		// choose weapon if no weapon or no ammo
-		else if ( closestWeapon != null && (!weapon || ammo <= 0) )
-		{
-			target = closestWeapon;
-		}
-		// choose drug if no drug
-		else if ( closestDrug != null && (!drug) )
-		{
-			target = closestDrug;
-		}
-		// if target is null the bot will patrol/wander
 		else
 		{
-			target = null;
+			target = closestWeapon != null && (!weapon || ammo <= 0) ? closestWeapon : closestDrug != null && (!drug) ? closestDrug : (Entity)null;
 		}
 
 		return target;

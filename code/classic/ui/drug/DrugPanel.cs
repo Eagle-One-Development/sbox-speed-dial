@@ -21,7 +21,7 @@ public partial class DrugPanel : Panel
 			DrugName.Text = $"{player.DrugType.ToString().ToUpper()}";
 			if ( player.ActiveDrug )
 			{
-				var progress = 1 - player.TimeSinceDrugTaken / player.DrugDuration;
+				var progress = 1 - (player.TimeSinceDrugTaken / player.DrugDuration);
 				ProgressBar.Style.Width = Length.Percent( progress * 100 );
 			}
 			else

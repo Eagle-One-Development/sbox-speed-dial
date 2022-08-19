@@ -105,14 +105,7 @@ public partial class OneChamberPlayer : ClassicPlayer
 		if ( LastRecievedDamage.Weapon is Weapon wep )
 		{
 			// HACK. this could be done better... too bad!
-			if ( wep.Blueprint.Special == WeaponSpecial.Melee )
-			{
-				DeathCause = CauseOfDeath.Melee;
-			}
-			else
-			{
-				DeathCause = CauseOfDeath.Bullet;
-			}
+			DeathCause = wep.Blueprint.Special == WeaponSpecial.Melee ? CauseOfDeath.Melee : CauseOfDeath.Bullet;
 		}
 
 		LifeState = LifeState.Dead;

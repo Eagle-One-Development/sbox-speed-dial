@@ -67,8 +67,7 @@ public partial class ClassicPlayer
 	public bool DropWeapon( out Weapon weapon )
 	{
 		weapon = DropWeapon();
-		if ( weapon is null || !weapon.IsValid() ) return false;
-		return true;
+		return weapon is not null && weapon.IsValid();
 	}
 
 	/// <summary>

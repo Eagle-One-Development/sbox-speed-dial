@@ -11,10 +11,9 @@ public static class ListExtension
 	/// </remarks>
 	public static T Random<T>( this IEnumerable<T> list )
 	{
-		if ( !list.Any() )
-			throw new ArgumentException( "Cannot select a random member of an empty list!", nameof( list ) );
-
-		return list.ElementAt( Rand.Int( 0, list.Count() - 1 ) );
+		return !list.Any()
+			? throw new ArgumentException( "Cannot select a random member of an empty list!", nameof( list ) )
+			: list.ElementAt( Rand.Int( 0, list.Count() - 1 ) );
 	}
 
 	public static bool Random<T>( this IEnumerable<T> list, out T item )

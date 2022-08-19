@@ -10,7 +10,7 @@ public partial class OneChamberPlayerEntry : Panel
 	public Image Avatar { get; set; }
 	public Label Score { get; set; }
 
-	RealTimeSince TimeSinceUpdate = 0;
+	private RealTimeSince TimeSinceUpdate = 0;
 
 	public override void Tick()
 	{
@@ -31,14 +31,7 @@ public partial class OneChamberPlayerEntry : Panel
 
 	public virtual void UpdateData()
 	{
-		if ( Client.Pawn is OneChamberPlayer player )
-		{
-			Score.Text = $"{player.Lives}";
-		}
-		else
-		{
-			Score.Text = $"-";
-		}
+		Score.Text = Client.Pawn is OneChamberPlayer player ? $"{player.Lives}" : $"-";
 
 		if ( Avatar.Texture is null )
 		{

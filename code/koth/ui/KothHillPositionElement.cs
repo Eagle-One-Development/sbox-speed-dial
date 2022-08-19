@@ -27,9 +27,9 @@ namespace SpeedDial.Koth.UI
 
 				//All of this is so incredibly cursed, for the record, it's caused by issues with sciscorring on panels 
 				//where translate(-50%) has been applied. 
-				var screenPos = (ent.Position + Vector3.Forward * 16f - Vector3.Right * 8f).ToScreen();
+				var screenPos = (ent.Position + (Vector3.Forward * 16f) - (Vector3.Right * 8f)).ToScreen();
 
-				HillIcon.Style.Left = Length.Fraction( screenPos.x.Clamp( 0f, 1f - ((Screen.Height * 0.05f) / Screen.Width) ) );
+				HillIcon.Style.Left = Length.Fraction( screenPos.x.Clamp( 0f, 1f - (Screen.Height * 0.05f / Screen.Width) ) );
 				HillIcon.Style.Top = Length.Fraction( screenPos.y.Clamp( 0f, 0.95f ) );
 			}
 		}

@@ -11,7 +11,7 @@ public partial class OneChamberRoundPanel : Panel
 	public Panel TopPlayers { get; set; }
 	public Label RoundText { get; set; }
 
-	Dictionary<Client, OneChamberPlayerEntry> Players = new();
+	private readonly Dictionary<Client, OneChamberPlayerEntry> Players = new();
 
 	public override void Tick()
 	{

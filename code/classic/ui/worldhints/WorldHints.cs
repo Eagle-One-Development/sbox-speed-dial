@@ -23,8 +23,7 @@ public partial class WorldHints : Panel
 
 	public override void Tick()
 	{
-		var pawn = Local.Client.Pawn as ClassicPlayer;
-		if ( pawn is null ) return;
+		if ( Local.Client.Pawn is not ClassicPlayer pawn ) return;
 
 		// pickup panel
 		{

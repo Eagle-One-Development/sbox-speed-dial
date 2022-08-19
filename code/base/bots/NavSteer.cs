@@ -30,9 +30,9 @@ public class NavSteer
 		}
 	}
 
-	Vector3 GetAvoidance( Vector3 position, float radius )
+	private Vector3 GetAvoidance( Vector3 position, float radius )
 	{
-		var center = position + Output.Direction * radius * 0.5f;
+		var center = position + (Output.Direction * radius * 0.5f);
 
 		var objectRadius = 200.0f;
 		Vector3 avoidance = default;

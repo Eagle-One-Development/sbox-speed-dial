@@ -3,7 +3,7 @@
 public class NavPath
 {
 	public Vector3 TargetPosition;
-	public List<Vector3> Points = new List<Vector3>();
+	public List<Vector3> Points = new();
 
 	public bool IsEmpty => Points.Count <= 1;
 
@@ -55,19 +55,12 @@ public class NavPath
 
 	public float Distance( int point, Vector3 from )
 	{
-		if ( Points.Count <= point ) return float.MaxValue;
-
-		return Points[point].WithZ( from.z ).Distance( from );
+		return Points.Count <= point ? float.MaxValue : Points[point].WithZ( from.z ).Distance( from );
 	}
 
 	public Vector3 GetDirection( Vector3 position )
 	{
-		if ( Points.Count == 1 )
-		{
-			return (Points[0] - position).WithZ( 0 ).Normal;
-		}
-
-		return (Points[1] - position).WithZ( 0 ).Normal;
+		return Points.Count == 1 ? (Points[0] - position).WithZ( 0 ).Normal : (Points[1] - position).WithZ( 0 ).Normal;
 	}
 
 	public void DebugDraw( float time, float opacity = 1.0f )

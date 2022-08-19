@@ -53,15 +53,7 @@ public partial class WeaponPanel : Panel
 			}
 			else
 			{
-				if ( weapon.Blueprint?.ClipSize < 0 )
-					AmmoLabel.Text = $"";
-				else
-				{
-					if ( Debug.InfiniteAmmo )
-						AmmoLabel.Text = $"∞";
-					else
-						AmmoLabel.Text = $"{weapon.AmmoClip}";
-				}
+				AmmoLabel.Text = weapon.Blueprint?.ClipSize < 0 ? $"" : Debug.InfiniteAmmo ? $"∞" : $"{weapon.AmmoClip}";
 
 				// lerp to normal scale
 				AmmoScale = AmmoScale.LerpTo( 1, Time.Delta * 7f );
@@ -70,14 +62,7 @@ public partial class WeaponPanel : Panel
 
 		// weapon name
 		{
-			if ( weapon is null )
-			{
-				WeaponLabel.Text = $"FISTS";
-			}
-			else
-			{
-				WeaponLabel.Text = $"{weapon.Blueprint.WeaponTitle}";
-			}
+			WeaponLabel.Text = weapon is null ? $"FISTS" : $"{weapon.Blueprint.WeaponTitle}";
 		}
 	}
 }

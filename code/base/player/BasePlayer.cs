@@ -182,7 +182,10 @@ public partial class BasePlayer : AnimatedEntity
 	[Net, Predicted]
 	protected PawnAnimator Animator { get; set; }
 
-	public virtual PawnAnimator GetActiveAnimator() => Animator;
+	public virtual PawnAnimator GetActiveAnimator()
+	{
+		return Animator;
+	}
 
 	//
 	// Camera

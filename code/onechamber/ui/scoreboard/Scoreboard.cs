@@ -5,8 +5,7 @@ namespace SpeedDial.OneChamber.UI;
 [UseTemplate]
 public partial class OneChamberScoreboard : Panel
 {
-
-	Dictionary<Client, OneChamberScoreboardEntry> Rows = new();
+	private readonly Dictionary<Client, OneChamberScoreboardEntry> Rows = new();
 
 	public Panel Header { get; set; }
 	public Panel Canvas { get; set; }

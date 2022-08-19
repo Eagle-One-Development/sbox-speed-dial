@@ -11,7 +11,7 @@ public partial class ClassicScoreboardEntry : Panel
 	public Image InputMethod { get; set; }
 	public Label Ping { get; set; }
 
-	RealTimeSince TimeSinceUpdate = 0;
+	private RealTimeSince TimeSinceUpdate = 0;
 
 	public override void Tick()
 	{

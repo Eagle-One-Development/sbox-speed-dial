@@ -36,9 +36,7 @@ public partial class VoteEntity : Entity
 
 	public VoteItem GetVoteItem( int index )
 	{
-		if ( VoteItems.Count - 1 >= index )
-			return VoteItems[index];
-		return null;
+		return VoteItems.Count - 1 >= index ? VoteItems[index] : null;
 	}
 
 	/// <summary>
@@ -197,11 +195,7 @@ public partial class VoteEntity : Entity
 	/// <returns>The index of the voted item. -1 if the client has not voted.</returns>
 	public int GetClientVotedIndex( long playerid )
 	{
-		if ( _votes.TryGetValue( playerid, out var votes ) )
-		{
-			return votes;
-		}
-		return -1;
+		return _votes.TryGetValue( playerid, out var votes ) ? votes : -1;
 	}
 
 	/// <summary>
