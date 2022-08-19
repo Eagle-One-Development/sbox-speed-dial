@@ -1,30 +1,24 @@
+# auto-generated
+*.csproj
 _bakeresourcecache/
 code/Properties/
 code/obj/
 .codegen/
 .intermediate
-materials/default/*
-accesslist.txt
 tools_asset_info.bin
 tools_thumbnail_cache.bin
 omnisharp.json
 
 *_bakeresourcecache.vpk
-*.csproj
-*.bat
 *.los
-*.py
-*.rar
-*.vanmgrph_c
-*.vmat_c
-*.vmdl_c
-*.vp
-*.vsnd_c
-*.vtex_c
-*.zip
-*.vpk
-*.vpcf_c
-*.vpost_c
 
+*.rar
+*.zip
+
+# compiled valve resource formats
+*.*_c
+*.vpk
+
+# main maps for the gamemode
 !sd_test.vpk
 !sd_bank.vpk
