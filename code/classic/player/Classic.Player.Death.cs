@@ -87,7 +87,7 @@ public partial class ClassicPlayer
 	}
 
 	[ClientRpc]
-	private void BecomeRagdollOnClient( Vector3 force, int forceBone )
+	protected void BecomeRagdollOnClient( Vector3 force, int forceBone )
 	{
 
 		ModelEntity ent = new();
