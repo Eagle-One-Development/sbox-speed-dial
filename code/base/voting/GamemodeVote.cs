@@ -3,7 +3,7 @@
 public partial class GamemodeVote : VoteEntity
 {
 
-	[ConCmd.Admin( "sd_vote_gamemode_start" )]
+	[ConCmd.Admin("sd_vote_gamemode_start")]
 	public static void Start()
 	{
 		new GamemodeVote().OnStart();
@@ -19,23 +19,23 @@ public partial class GamemodeVote : VoteEntity
 
 	// TEMP TEMP TEMP TEMP // TEMP TEMP TEMP TEMP // TEMP TEMP TEMP TEMP
 	private readonly string[] gamemodes = {
-		"classic",
-		"onechamber",
-		"koth"
+		"ClassicGamemode",
+		"OneChamberGamemode",
+		"KothGamemode"
 	};
 
 	// TEMP TEMP TEMP TEMP // TEMP TEMP TEMP TEMP // TEMP TEMP TEMP TEMP
 	protected override void PopulateVoteItems()
 	{
-		foreach ( var gm in gamemodes.Where( x => x != Game.LastGamemode ) )
+		foreach (var gm in gamemodes.Where(x => x != Game.LastGamemode))
 		{
-			Current.AddVoteItem( $"{gm}", $"Vote now!", $"image\\path" );
+			Current.AddVoteItem($"{gm}", $"Vote now!", $"image\\path");
 		}
 	}
 
-	public override void OnVoteConcluded( VoteItem item )
+	public override void OnVoteConcluded(VoteItem item)
 	{
-		base.OnVoteConcluded( item );
-		Game.ChangeGamemode( item.Title );
+		base.OnVoteConcluded(item);
+		Game.ChangeGamemode(item.Title);
 	}
 }
