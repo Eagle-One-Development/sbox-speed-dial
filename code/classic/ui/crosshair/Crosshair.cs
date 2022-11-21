@@ -57,21 +57,8 @@ public partial class Crosshair : Panel
 			transform.AddRotation(0, 0, hair * 90f);
 
 			float pixel = 18f + (20f * BumpScale);
-			switch (hair)
-			{
-				case 0:
-					transform.AddTranslateY(Length.Pixels(pixel));
-					break;
-				case 1:
-					transform.AddTranslateY(Length.Pixels(pixel));
-					break;
-				case 2:
-					transform.AddTranslateY(Length.Pixels(pixel));
-					break;
-				case 3:
-					transform.AddTranslateY(Length.Pixels(pixel));
-					break;
-			}
+			transform.AddTranslateY(Length.Pixels(pixel));
+
 			var h = Hairs[hair];
 			h.Style.Transform = transform;
 			h.Style.Dirty();
