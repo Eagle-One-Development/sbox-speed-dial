@@ -3,6 +3,7 @@
   "Type": "game",
   "Org": "eagleone",
   "Ident": "speed_dial",
+  "Tags": null,
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
