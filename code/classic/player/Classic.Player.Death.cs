@@ -176,6 +176,7 @@ public partial class ClassicPlayer
 
 	private async Task CreateDecalAsync( string decalname, TraceResult tr, float delay = 0 )
 	{
+		return;
 		await GameTask.DelaySeconds( delay );
 
 		var decalPath = decalname;
