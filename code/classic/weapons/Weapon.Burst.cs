@@ -24,7 +24,7 @@ public partial class Weapon
 					TimeSinceSpecial = 0;
 					Burst = 0;
 					Firing = false;
-					PlaySound( "sd_dryfrire" );
+					Owner.PlaySound( "sd_dryfrire" );
 					return;
 				}
 

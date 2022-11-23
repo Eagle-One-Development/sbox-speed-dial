@@ -32,10 +32,10 @@
 		EjectAttach = "ejection_point"
 		UIEffectsScalar = 1
 		Icon = resource:"materials/ui/weapons/pistol.png"
-		ShootSound = "sd_pistol.shoot"
-		DryFireSound = "sd_dryfrire"
-		EmptyPickupSound = "sd_pickup.empty"
-		LoadedPickupSound = "sd_pickup.loaded"
+		ShootSound = resource:"sounds/simpleguns/pistol/sd_pistol.shoot.sound"
+		DryFireSound = resource:"sounds/simpleguns/misc/sd_dryfrire.sound"
+		EmptyPickupSound = resource:"sounds/weapon_fx/sd_pickup.empty.sound"
+		LoadedPickupSound = resource:"sounds/weapon_fx/sd_pickup.loaded.sound"
 		WorldModel = resource:"models/weapons/melee/melee.vmdl"
 		IconTexture = null
 	}

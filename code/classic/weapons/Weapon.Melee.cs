@@ -11,7 +11,7 @@ public partial class Weapon
 			TimeSinceSpecial = 0;
 			Firing = true;
 			(Owner as AnimatedEntity).SetAnimParameter( "b_attack", true );
-			PlaySound( "woosh" );
+			Owner.PlaySound( "woosh" );
 		}
 	}
 
@@ -28,7 +28,7 @@ public partial class Weapon
 						var ps = Particles.Create( "particles/blood/blood_plip.vpcf", tr.EndPosition );
 						ps?.SetForward( 0, tr.Normal );
 
-						PlaySound( "sd_bat.hit" );
+						Owner.PlaySound( "sd_bat.hit" );
 
 						if ( IsServer )
 						{

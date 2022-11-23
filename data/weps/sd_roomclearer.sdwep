@@ -32,10 +32,10 @@
 		EjectAttach = "ejection_point"
 		UIEffectsScalar = 5
 		Icon = resource:"materials/ui/weapons/shotgun.png"
-		ShootSound = "sd_roomclearer.shoot"
-		DryFireSound = "sd_dryfrire"
-		EmptyPickupSound = "sd_pickup.empty"
-		LoadedPickupSound = "sd_pickup.loaded"
+		ShootSound = resource:"sounds/simpleguns/room-clearer/sd_roomclearer.shoot.sound"
+		DryFireSound = resource:"sounds/simpleguns/misc/sd_dryfrire.sound"
+		EmptyPickupSound = resource:"sounds/weapon_fx/sd_pickup.empty.sound"
+		LoadedPickupSound = resource:"sounds/weapon_fx/sd_pickup.loaded.sound"
 		WorldModel = resource:"models/weapons/shotgun/prop_roomclearer.vmdl"
 		IconTexture = null
 	}

@@ -21,12 +21,12 @@ public partial class Game : GameBase
 {
 
 	public static Game Current { get; protected set; }
-	[ConVar.Server("sd_default_gamemode", Help = "Sets the default gamemode. Uses the library name of the gamemode type.")]
+	[ConVar.Server( "sd_default_gamemode", Help = "Sets the default gamemode. Uses the library name of the gamemode type." )]
 	public static string DefaultGamemode { get; set; } = "Classic";
 	public static string LastGamemode { get; private set; }
 	public static GameLoop GameLoop { get; private set; }
 
-	[ConVar.Server("sd_min_players", Help = "The minimum players required to start the game.")]
+	[ConVar.Server( "sd_min_players", Help = "The minimum players required to start the game." )]
 	public static int MinPlayers { get; set; } = 2;
 
 	public Game()
@@ -43,7 +43,7 @@ public partial class Game : GameBase
 
 	public override void Shutdown()
 	{
-		if (Current == this)
+		if ( Current == this )
 			Current = null;
 	}
 
@@ -63,7 +63,7 @@ public partial class Game : GameBase
 
 	public override void PostLevelLoaded()
 	{
-		if (IsServer)
+		if ( IsServer )
 		{
 			InitGamemode();
 		}
@@ -72,7 +72,7 @@ public partial class Game : GameBase
 	private void InitGamemode()
 	{
 		Host.AssertServer();
-		Log.Debug("gamemode init");
+		Log.Debug( "gamemode init" );
 		// do we have a cookie stored?
 
 		// FIXME, Global.Lobby is deprecated, need new way to do per-lobby cookies
@@ -90,70 +90,70 @@ public partial class Game : GameBase
 		//	}
 		//}
 
-		ChangeGamemode(DefaultGamemode);
+		ChangeGamemode( DefaultGamemode );
 	}
 
 	//
 	// Client States
 	//
 
-	public override void ClientJoined(Client cl)
+	public override void ClientJoined( Client cl )
 	{
-		Log.Info($"\"{cl.Name}\" has joined the game");
+		Log.Info( $"\"{cl.Name}\" has joined the game" );
 
-		ActiveGamemode?.ClientJoined(cl);
+		ActiveGamemode?.ClientJoined( cl );
 
 		// TODO: Make a menu for this
-		ClientReady(cl);
+		ClientReady( cl );
 	}
 
-	public override void ClientDisconnect(Client cl, NetworkDisconnectionReason reason)
+	public override void ClientDisconnect( Client cl, NetworkDisconnectionReason reason )
 	{
-		Log.Info($"\"{cl.Name}\" has left the game ({reason})");
-		ActiveGamemode?.ClientDisconnected(cl, reason);
+		Log.Info( $"\"{cl.Name}\" has left the game ({reason})" );
+		ActiveGamemode?.ClientDisconnected( cl, reason );
 
-		if (cl.Pawn.IsValid() && cl.Pawn is BasePlayer player)
+		if ( cl.Pawn.IsValid() && cl.Pawn is BasePlayer player )
 		{
 			player.OnClientDisconnected();
 			player.Delete();
 		}
 	}
 
-	public virtual void ClientReady(Client cl)
+	public virtual void ClientReady( Client cl )
 	{
-		ActiveGamemode?.ClientReady(cl);
+		ActiveGamemode?.ClientReady( cl );
 	}
 
 	//
 	// Pawn States
 	//
 
-	public virtual void MoveToSpawnpoint(BasePlayer pawn)
+	public virtual void MoveToSpawnpoint( BasePlayer pawn )
 	{
 		Host.AssertServer();
 
-		ActiveGamemode?.MoveToSpawnpoint(pawn);
+		ActiveGamemode?.MoveToSpawnpoint( pawn );
 
-		if (ActiveGamemode is null)
+		if ( ActiveGamemode is null )
 		{
 			pawn.Transform = Transform.Zero;
 		}
 	}
 
-	public virtual void PawnRespawned(BasePlayer pawn)
+	public virtual void PawnRespawned( BasePlayer pawn )
 	{
 		Host.AssertServer();
 
-		ActiveGamemode?.PawnRespawned(pawn);
+		ActiveGamemode?.PawnRespawned( pawn );
 	}
 
-	public virtual bool PawnDamaged(BasePlayer pawn, ref DamageInfo info)
+	public virtual bool PawnDamaged( BasePlayer pawn, ref DamageInfo info )
 	{
 		Host.AssertServer();
 
-		if (ActiveGamemode is not null)
+		if ( ActiveGamemode is not null )
 		{
-			var should = ActiveGamemode.PawnDamaged(pawn, ref info);
+			var should = ActiveGamemode.PawnDamaged( pawn, ref info );
 
 			return should;
 		}
@@ -163,13 +163,13 @@ public partial class Game : GameBase
 		}
 	}
 
-	public virtual void PawnKilled(BasePlayer pawn, DamageInfo lastDamage)
+	public virtual void PawnKilled( BasePlayer pawn, DamageInfo lastDamage )
 	{
 		Host.AssertServer();
 
-		if (ActiveGamemode is not null)
+		if ( ActiveGamemode is not null )
 		{
-			ActiveGamemode.PawnKilled(pawn);
+			ActiveGamemode.PawnKilled( pawn );
 		}
 	}
 
@@ -177,78 +177,78 @@ public partial class Game : GameBase
 	// Developer Commands
 	//
 
-	[ConCmd.Server("noclip")]
+	[ConCmd.Server( "noclip" )]
 	public static void NoClipCommand()
 	{
 		var client = ConsoleSystem.Caller;
-		if (client == null) return;
+		if ( client == null ) return;
 
-		Current?.PawnNoClip(client);
+		Current?.PawnNoClip( client );
 	}
 
 
-	public virtual void PawnNoClip(Client client)
+	public virtual void PawnNoClip( Client client )
 	{
-		if (!client.HasPermission("noclip"))
+		if ( !client.HasPermission( "noclip" ) )
 			return;
 
-		if (client.Pawn is BasePlayer pawn)
+		if ( client.Pawn is BasePlayer pawn )
 		{
-			if (pawn.DevController is ClassicNoclipController)
+			if ( pawn.DevController is ClassicNoclipController )
 			{
-				Log.Info("Noclip - Off");
+				Log.Info( "Noclip - Off" );
 				pawn.DevController = null;
 			}
 			else
 			{
-				Log.Info("Noclip - On");
+				Log.Info( "Noclip - On" );
 				pawn.DevController = new ClassicNoclipController();
 			}
 		}
 	}
 
-	[ConCmd.Server("devcam")]
+	[ConCmd.Server( "devcam" )]
 	public static void DevModeCommand()
 	{
 		var client = ConsoleSystem.Caller;
-		if (client == null) return;
+		if ( client == null ) return;
 
-		Current?.PawnDevCam(client);
+		Current?.PawnDevCam( client );
 	}
 
-	public virtual void PawnDevCam(Client client)
+	public virtual void PawnDevCam( Client client )
 	{
 		Host.AssertServer();
 
-		if (!client.HasPermission("devcam"))
+		if ( !client.HasPermission( "devcam" ) )
 			return;
 
-		var camera = client.Components.Get<DevCamera>(true);
+		var camera = client.Components.Get<DevCamera>( true );
 
-		if (camera == null)
+		if ( camera == null )
 		{
 			camera = new DevCamera();
-			client.Components.Add(camera);
+			client.Components.Add( camera );
 			return;
 		}
 
 		camera.Enabled = !camera.Enabled;
 	}
 
-	[ConCmd.Server("kill")]
+	[ConCmd.Server( "kill" )]
 	public static void KillCommand()
 	{
 		var client = ConsoleSystem.Caller;
-		if (client == null) return;
+		if ( client == null ) return;
 
-		Current?.PawnSuicide(client);
+		Current?.PawnSuicide( client );
 	}
 
-	public virtual void PawnSuicide(Client client)
+	public virtual void PawnSuicide( Client client )
 	{
-		if (ActiveGamemode is not null)
+		if ( ActiveGamemode is not null )
 		{
-			if (ActiveGamemode.OnClientSuicide(client))
+			if ( ActiveGamemode.OnClientSuicide( client ) )
 				client.Pawn.Kill();
 		}
 		else
@@ -261,27 +261,27 @@ public partial class Game : GameBase
 	// Simulate
 	//
 
-	public override void Simulate(Client cl)
+	public override void Simulate( Client cl )
 	{
-		if (!cl.Pawn.IsValid())
+		if ( !cl.Pawn.IsValid() )
 			return;
 
 		// Block Simulate from running clientside
 		// if we're not predictable.
-		if (!cl.Pawn.IsAuthority)
+		if ( !cl.Pawn.IsAuthority )
 			return;
 
-		cl.Pawn.Simulate(cl);
+		cl.Pawn.Simulate( cl );
 	}
 
-	public override void FrameSimulate(Client cl)
+	public override void FrameSimulate( Client cl )
 	{
 		Host.AssertClient();
 
-		if (!cl.Pawn.IsValid())
+		if ( !cl.Pawn.IsValid() )
 			return;
 
-		cl.Pawn?.FrameSimulate(cl);
+		cl.Pawn?.FrameSimulate( cl );
 	}
 
 	//
@@ -291,10 +291,10 @@ public partial class Game : GameBase
 	public virtual CameraMode FindActiveCamera()
 	{
 		var devCam = Local.Client.Components.Get<DevCamera>();
-		if (devCam != null) return devCam;
+		if ( devCam != null ) return devCam;
 
 		var clientCam = Local.Client.Components.Get<CameraMode>();
-		if (clientCam != null) return clientCam;
+		if ( clientCam != null ) return clientCam;
 
 		var pawnCam = Local.Pawn?.Components.Get<CameraMode>();
 		return pawnCam ?? null;
@@ -303,41 +303,41 @@ public partial class Game : GameBase
 	[Predicted]
 	protected CameraMode LastCamera { get; set; }
 
-	public override CameraSetup BuildCamera(CameraSetup camSetup)
+	public override CameraSetup BuildCamera( CameraSetup camSetup )
 	{
 		var cam = FindActiveCamera();
 
-		if (LastCamera != cam)
+		if ( LastCamera != cam )
 		{
 			LastCamera?.Deactivated();
 			LastCamera = cam;
 			LastCamera?.Activated();
 		}
 
-		cam?.Build(ref camSetup);
+		cam?.Build( ref camSetup );
 
-		PostCameraSetup(ref camSetup);
+		PostCameraSetup( ref camSetup );
 
 		return camSetup;
 	}
 
-	public override void BuildInput(InputBuilder input)
+	public override void BuildInput( InputBuilder input )
 	{
-		Event.Run("buildinput", input);
+		Event.Run( "buildinput", input );
 
 		// the camera is the primary method here
-		LastCamera?.BuildInput(input);
-		Local.Pawn?.BuildInput(input);
+		LastCamera?.BuildInput( input );
+		Local.Pawn?.BuildInput( input );
 	}
 
-	public override void PostCameraSetup(ref CameraSetup camSetup)
+	public override void PostCameraSetup( ref CameraSetup camSetup )
 	{
 
-		if (Local.Pawn != null)
+		if ( Local.Pawn != null )
 		{
 			// VR anchor default is at the pawn's location
 			VR.Anchor = Local.Pawn.Transform;
-			Local.Pawn.PostCameraSetup(ref camSetup);
+			Local.Pawn.PostCameraSetup( ref camSetup );
 		}
 	}
 
@@ -345,18 +345,18 @@ public partial class Game : GameBase
 	// Voice
 	//
 
-	public override bool CanHearPlayerVoice(Client source, Client dest)
+	public override bool CanHearPlayerVoice( Client source, Client dest )
 	{
 		Host.AssertServer();
 
 		var sp = source.Pawn;
 		var dp = dest.Pawn;
 
-		return sp != null && dp != null && sp.Position.Distance(dp.Position) <= 1000;
+		return sp != null && dp != null && sp.Position.Distance( dp.Position ) <= 1000;
 	}
 
 	// maybe pass this to the gamemode?
-	public override void OnVoicePlayed(long steamId, float level) { }
+	public override void OnVoicePlayed( long steamId, float level ) { }
 
 	//
 	// Gamemode
@@ -367,21 +367,21 @@ public partial class Game : GameBase
 	/// </summary>
 	[Net] public Gamemode ActiveGamemode { get; private set; }
 
-	[ConCmd.Server("sd_change_gamemode")]
-	public static void ChangeGamemode(string name)
+	[ConCmd.Server( "sd_change_gamemode" )]
+	public static void ChangeGamemode( string name )
 	{
-		Log.Debug($"change gamemode {name}");
-		var gamemode = TypeLibrary.Create<Gamemode>(name);
-		if (gamemode is null)
+		Log.Debug( $"change gamemode {name}" );
+		var gamemode = TypeLibrary.Create<Gamemode>( name );
+		if ( gamemode is null )
 		{
-			Log.Error($"COULDN'T INITIALIZE GAMEMODE {name}");
-			Log.Info($"COULDN'T INITIALIZE GAMEMODE {name}");
+			Log.Error( $"COULDN'T INITIALIZE GAMEMODE {name}" );
+			Log.Info( $"COULDN'T INITIALIZE GAMEMODE {name}" );
 			return;
 		}
-		Current.SetGamemode(gamemode);
+		Current.SetGamemode( gamemode );
 	}
 
-	[ConCmd.Server("sd_gamemode_end")]
+	[ConCmd.Server( "sd_gamemode_end" )]
 	public static void EndGamemode()
 	{
 		Current.OnEndGamemode();
@@ -392,20 +392,20 @@ public partial class Game : GameBase
 		Host.AssertServer();
 		Current.ActiveGamemode?.Finish();
 		Current.ActiveGamemode = null;
-		Map.Reset(CleanupFilter);
-		Log.Debug("gamemode ended");
+		Map.Reset( CleanupFilter );
+		Log.Debug( "gamemode ended" );
 		GamemodeVote.Start();
 	}
 
-	[ConCmd.Admin("sd_bot")]
+	[ConCmd.Admin( "sd_bot" )]
 	public static void SpawnBot()
 	{
-		Current.ActiveGamemode?.OnBotAdded(new ClassicBot());
+		Current.ActiveGamemode?.OnBotAdded( new ClassicBot() );
 	}
 
 	/// <summary> [Server Assert] Change the gamemode </summary>
 	/// <param name="gamemode">Gamemode name to change to </param>
-	public void SetGamemode(Gamemode gamemode)
+	public void SetGamemode( Gamemode gamemode )
 	{
 		Host.AssertServer();
 
@@ -420,16 +420,16 @@ public partial class Game : GameBase
 		LastGamemode = gamemode.ClassName;
 
 		// just to be sure, might save us some headaches
-		Map.Reset(CleanupFilter);
+		Map.Reset( CleanupFilter );
 
 		// call this before we start the gamemode so entities are valid and enabled when we start (or disabled)
-		UpdateGamemodeEntities(gamemode.Identity);
+		UpdateGamemodeEntities( gamemode.Identity );
 		ActiveGamemode?.Start();
 
 		// ready all previously playing clients
-		foreach (var client in clients)
+		foreach ( var client in clients )
 		{
-			ActiveGamemode.ClientReady(client);
+			ActiveGamemode.ClientReady( client );
 		}
 	}
 
@@ -437,20 +437,20 @@ public partial class Game : GameBase
 	/// Enable, Disable and Handle all GamemodeEntities according to their set flag and the gamemode identity, assuming the gamemode allows it.
 	/// </summary>
 	/// <param name="identity">The Identity enum of the gamemode</param>
-	protected void UpdateGamemodeEntities(GamemodeIdentity identity)
+	protected void UpdateGamemodeEntities( GamemodeIdentity identity )
 	{
-		foreach (var entity in All.OfType<GamemodeEntity>())
+		foreach ( var entity in All.OfType<GamemodeEntity>() )
 		{
-			if (entity.ExcludedGamemodes.HasFlag((GamemodeEntity.Gamemodes)(int)identity))
+			if ( entity.ExcludedGamemodes.HasFlag( (GamemodeEntity.Gamemodes)(int)identity ) )
 			{
-				ActiveGamemode?.DisableEntity(entity);
+				ActiveGamemode?.DisableEntity( entity );
 			}
 			else
 			{
-				ActiveGamemode?.EnableEntity(entity);
+				ActiveGamemode?.EnableEntity( entity );
 			}
 			// in case the gamemode wants to force some specific shit
-			ActiveGamemode?.HandleGamemodeEntity(entity);
+			ActiveGamemode?.HandleGamemodeEntity( entity );
 		}
 	}
 
@@ -462,26 +462,26 @@ public partial class Game : GameBase
 	/// </summary>
 	public void GameloopCompleted()
 	{
-		Log.Debug("gameloop completed");
-		if (!ActiveGamemode.IsValid)
+		Log.Debug( "gameloop completed" );
+		if ( !ActiveGamemode.IsValid )
 			return;
 		CompletedGameloops++;
-		if (CompletedGameloops >= ActiveGamemode?.GameloopsUntilVote)
+		if ( CompletedGameloops >= ActiveGamemode?.GameloopsUntilVote )
 		{
 			EndGamemode();
 		}
 	}
 
-	private static bool CleanupFilter(string className, Entity ent)
+	private static bool CleanupFilter( string className, Entity ent )
 	{
 		// Basic Source engine stuff
-		if (className is "player" or "worldent" or "worldspawn" or "soundent" or "player_manager")
+		if ( className is "player" or "worldent" or "worldspawn" or "soundent" or "player_manager" )
 		{
 			return false;
 		}
 
 		// When creating entities we only have classNames to work with..
-		if (ent == null || !ent.IsValid) return true;
+		if ( ent == null || !ent.IsValid ) return true;
 
 		// Gamemode related stuff, game entity, HUD, etc
 		return ent is not GameBase && ent.Parent is not GameBase && ent is not Hud && ent is not VoteEntity;
