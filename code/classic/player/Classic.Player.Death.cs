@@ -31,6 +31,8 @@ public partial class ClassicPlayer
 		EnableAllCollisions = false;
 		EnableDrawing = false;
 
+		ActiveDrug = false;
+
 		DrugParticles?.Destroy( true );
 
 		// chuck weapon away in a random direction
