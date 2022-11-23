@@ -67,7 +67,7 @@ public partial class ClassicPlayer : BasePlayer
 		WinScreen.SetState( To.Single( Client ), false );
 
 		// we died, so there's no way anybody still has a highlight on us
-		UpdateGlow( To.Everyone, this, false, Color.Black );
+		GlowUtil.SetGlow( To.Everyone, this, false, Color.Black );
 	}
 
 	public override void Simulate( Client cl )
@@ -144,13 +144,6 @@ public partial class ClassicPlayer : BasePlayer
 	{
 		Model = Character.CharacterModel;
 		GiveWeapon( Character.WeaponClass );
-	}
-
-	[ClientRpc]
-	public static void UpdateGlow( ModelEntity ent, bool state, Color col )
-	{
-		if ( !ent.IsValid() ) return;
-		ent.SetGlowState( state, col );
 	}
 
 	public virtual void SimulateDrug()

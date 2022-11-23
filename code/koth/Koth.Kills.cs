@@ -22,13 +22,13 @@ public partial class KothGamemode : ClassicGamemode
 			if ( killevent == KillEvent.Domination )
 			{
 				// last attacker dominates pawn, highlight them for pawn
-				ClassicPlayer.UpdateGlow( To.Single( player.Client ), player.LastAttacker as ModelEntity, true, Color.Red );
+				GlowUtil.SetGlow( To.Single( player.Client ), player.LastAttacker as ModelEntity, true, Color.Red );
 				killtextextra = "+DOMINATION";
 			}
 			else if ( killevent == KillEvent.Revenge )
 			{
 				// last attacker has taken revenge against pawn; pawn no longer dominates last attacker
-				ClassicPlayer.UpdateGlow( To.Single( player.LastAttacker.Client ), player, false, Color.Black );
+				GlowUtil.SetGlow( To.Single( player.LastAttacker.Client ), player, false, Color.Black );
 				killtextextra = "+REVENGE";
 			}
 			else

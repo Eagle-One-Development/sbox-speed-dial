@@ -44,7 +44,14 @@ public partial class Weapon : BaseCarriable
 		PickupTrigger.Position = Position;
 		PickupTrigger.EnableTouchPersists = true;
 
-		this.SetGlowState( true, new Color( 1, 1, 1, 1 ) );
+		this.SetGlowState( true, Color.White );
+	}
+
+	public override void ClientSpawn()
+	{
+		base.ClientSpawn();
+
+		GlowUtil.SetGlow( this, true, Color.White );
 	}
 
 	[SpeedDialEvent.Gamemode.Reset]
@@ -59,7 +66,7 @@ public partial class Weapon : BaseCarriable
 
 	private void SetGlow( bool state = true )
 	{
-		Color col = AmmoClip > 0 ? new Color( 0.2f, 1, 0.2f, 1 ) : AmmoClip == -1 ? new Color( 1, 1, 1, 1 ) : new Color( 1, 0.2f, 0.2f, 1 );
+		Color col = AmmoClip > 0 ? new Color( 0.2f, 1, 0.2f, 1 ) : AmmoClip == -1 ? Color.White : new Color( 1, 0.2f, 0.2f, 1 );
 		this.SetGlowState( state, col );
 	}
 

@@ -42,6 +42,13 @@ public partial class ClassicBaseDrug : ModelEntity
 		TimeSinceSpawned = 0;
 	}
 
+	public override void ClientSpawn()
+	{
+		base.ClientSpawn();
+
+		GlowUtil.SetGlow( this, true, HighlightColor );
+	}
+
 	public void Taken( ClassicPlayer player )
 	{
 		if ( DrugSpawn is not null )
