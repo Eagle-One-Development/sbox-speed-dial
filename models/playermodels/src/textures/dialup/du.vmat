@@ -2,20 +2,24 @@
 
 Layer0
 {
-	shader "speed-dial_character.vfx"
+	shader "complex.vfx"
 
 	//---- Animation ----
 	F_MORPH_SUPPORTED 1
 
-	//---- Fresnel ----
-	F_FRESNEL 1
+	//---- PBR ----
+	F_METALNESS_TEXTURE 1
+	F_SPECULAR 1
 
-	//---- Iridescence ----
-	F_IRIDESCENCE 1
+	//---- Ambient Occlusion ----
+	g_flAmbientOcclusionDirectDiffuse "0.000"
+	g_flAmbientOcclusionDirectSpecular "0.000"
+	TextureAmbientOcclusion "models/playermodels/src/textures/dialup/dialup_ao.png"
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	TextureColor "models/playermodels/src/textures/dialup/dialup_color.png"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -23,32 +27,18 @@ Layer0
 	//---- Fog ----
 	g_bFogEnabled "1"
 
-	//---- Fresnel ----
-	g_flFresnelExponent "2.000"
-	g_flFresnelReflectance "0.200"
-	g_flFresnelThreshold "0.500"
-
-	//---- Iridescence ----
-	g_flIridescenceAlbedoFactor "1.000"
-	g_flIridescenceFresnelExponent "2.000"
-	g_flIridescenceFresnelReflectance "0.000"
-	IridescenceMetal "[1.000000 1.000000 1.000000 0.000000]"
-	IridescenceTextureGradient "models/playermodels/src/textures/dialup/dialup_iridescence_gradient_color.png"
-	IridescenceTextureMask "models/playermodels/src/textures/dialup/dialup_metal.png"
-
 	//---- Lighting ----
 	g_flDirectionalLightmapMinZ "0.050"
 	g_flDirectionalLightmapStrength "1.000"
 
-	//---- Material ----
-	g_flTintColor "[1.000000 1.000000 1.000000 0.000000]"
-	TextureAmbientOcclusion "models/playermodels/src/textures/dialup/dialup_ao.png"
-	TextureBlendMask "materials/default/default_blend.tga"
-	TextureColor "models/playermodels/src/textures/dialup/dialup_color.png"
+	//---- Metalness ----
 	TextureMetalness "models/playermodels/src/textures/dialup/dialup_metal.png"
+
+	//---- Normal ----
 	TextureNormal "models/playermodels/src/textures/dialup/dialup_normal.png"
+
+	//---- Roughness ----
 	TextureRoughness "models/playermodels/src/textures/dialup/dialup_rough.png"
-	TextureTintMask "materials/default/default.tga"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"
