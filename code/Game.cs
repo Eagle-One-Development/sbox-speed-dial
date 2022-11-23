@@ -355,9 +355,6 @@ public partial class Game : GameBase
 		return sp != null && dp != null && sp.Position.Distance( dp.Position ) <= 1000;
 	}
 
-	// maybe pass this to the gamemode?
-	public override void OnVoicePlayed( long steamId, float level ) { }
-
 	//
 	// Gamemode
 	//

@@ -90,7 +90,7 @@ public partial class OneChamberPlayer : ClassicPlayer
 		EnableDrawing = false;
 
 		// death effects, body + particles/decals
-		BecomeRagdollOnClient( To.Everyone, new Vector3( Velocity.x / 2, Velocity.y / 2, 300 ), GetHitboxBone( 0 ) );
+		BecomeRagdollOnClient( To.Everyone, new Vector3( Velocity.x / 2, Velocity.y / 2, 300 ) );
 		BloodSplatter( To.Everyone );
 		SoundFromScreen( To.Single( Client ), "player_death" );
 

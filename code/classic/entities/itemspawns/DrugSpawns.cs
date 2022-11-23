@@ -12,7 +12,7 @@ public partial class ClassicRandomDrugSpawn : ClassicDrugSpawn
 		Host.AssertServer();
 		if ( !Enabled ) return;
 
-		var ent = TypeLibrary.Create<ClassicBaseDrug>( ClassicBaseDrug.GetRandomSpawnableType() );
+		var ent = TypeLibrary.Create<ClassicBaseDrug>( ClassicBaseDrug.GetRandomSpawnableType().Name );
 		ent.Transform = Transform;
 		ent.DrugSpawn = this;
 		ent.ResetInterpolation();

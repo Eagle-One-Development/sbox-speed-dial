@@ -29,7 +29,7 @@ public partial class ClassicSpectator : ClassicPlayer
 
 	public override void CreateHull()
 	{
-		MoveType = MoveType.MOVETYPE_WALK;
+		// no physics
 	}
 
 	public override void TakeDamage( DamageInfo info )

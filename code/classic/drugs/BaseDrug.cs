@@ -103,9 +103,9 @@ public partial class ClassicBaseDrug : ModelEntity
 		}
 	}
 
-	public static Type GetRandomSpawnableType()
+	public static TypeDescription GetRandomSpawnableType()
 	{
-		var types = TypeLibrary.GetTypes<ClassicBaseDrug>();
+		var types = TypeLibrary.GetDescriptions<ClassicBaseDrug>();
 		return types.Random();
 	}
 }

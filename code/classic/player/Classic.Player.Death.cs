@@ -45,7 +45,7 @@ public partial class ClassicPlayer
 		}
 
 		// death effects, body + particles/decals
-		BecomeRagdollOnClient( To.Everyone, new Vector3( Velocity.x / 2, Velocity.y / 2, 300 ), GetHitboxBone( 0 ) );
+		BecomeRagdollOnClient( To.Everyone, new Vector3( Velocity.x / 2, Velocity.y / 2, 300 ) );
 		BloodSplatter( To.Everyone );
 		SoundFromScreen( To.Single( Client ), "player_death" );
 
@@ -82,14 +82,14 @@ public partial class ClassicPlayer
 		}
 
 		// death effects, body + particles/decals
-		BecomeRagdollOnClient( To.Everyone, new Vector3( Velocity.x / 2, Velocity.y / 2, 300 ), GetHitboxBone( 0 ) );
+		BecomeRagdollOnClient( To.Everyone, new Vector3( Velocity.x / 2, Velocity.y / 2, 300 ) );
 		BloodSplatter( To.Everyone );
 
 		DrugParticles?.Destroy( true );
 	}
 
 	[ClientRpc]
-	protected void BecomeRagdollOnClient( Vector3 force, int forceBone )
+	protected void BecomeRagdollOnClient( Vector3 force )
 	{
 
 		ModelEntity ent = new();
@@ -107,20 +107,7 @@ public partial class ClassicPlayer
 		ent.SetRagdollVelocityFrom( this );
 		ent.DeleteAsync( 20.0f );
 
-		ent.PhysicsGroup.AddVelocity( force );
-
-		if ( forceBone >= 0 )
-		{
-			var body = ent.GetBonePhysicsBody( forceBone );
-			if ( body != null )
-			{
-				body.ApplyForce( force * 1000 );
-			}
-			else
-			{
-				ent.PhysicsGroup.AddVelocity( force );
-			}
-		}
+		ent.PhysicsGroup.ApplyImpulse( force * 10 );
 
 		Corpse = ent;
 
@@ -196,7 +183,7 @@ public partial class ClassicPlayer
 		{
 			if ( ResourceLibrary.TryGet<DecalDefinition>( decalPath, out var decal ) )
 			{
-				DecalSystem.PlaceUsingTrace( decal, tr );
+				Decal.Place( decal, tr );
 			}
 		}
 	}
