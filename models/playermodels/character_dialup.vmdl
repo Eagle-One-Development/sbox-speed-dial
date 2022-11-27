@@ -723,10 +723,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "pelvis"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 4.99557
 						point0 = [ 0.988315, 0.550476, -0.999669 ]
 						point1 = [ 1.011685, 0.504628, 0.999669 ]
@@ -735,10 +732,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "spine_01"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 6.873011
 						point0 = [ 5.038108, 2.268176, -0.183323 ]
 						point1 = [ 2.650355, 1.737401, -0.183323 ]
@@ -747,10 +741,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "spine_03"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 5.900383
 						point0 = [ 0.403256, 1.040526, -2.226808 ]
 						point1 = [ 0.398963, 1.059348, 2.190054 ]
@@ -759,10 +750,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "neck_01"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 2.824577
 						point0 = [ 1.08087, 0.581718, -0.351183 ]
 						point1 = [ -2.161314, 0.581718, -0.351183 ]
@@ -771,10 +759,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "head"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 4.125793
 						point0 = [ 2.996302, 0.408316, 0.236398 ]
 						point1 = [ 0.788128, -0.078891, 0.297009 ]
@@ -783,10 +768,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "clavicle_l"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 2.839769
 						point0 = [ 6.872641, -0.000039, -2.021615 ]
 						point1 = [ 3.218186, -0.0, -1.142983 ]
@@ -795,10 +777,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "upperarm_l"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 2.311099
 						point0 = [ 10.821937, -0.002042, 0.669093 ]
 						point1 = [ 4.182316, -0.070986, -0.527771 ]
@@ -807,10 +786,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "lowerarm_l"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 1.307591
 						point0 = [ 10.236848, 0.340349, 0.560439 ]
 						point1 = [ 2.59208, 0.966317, 0.560439 ]
@@ -819,10 +795,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "hand_l"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 1.854322
 						point0 = [ 4.820568, 1.337843, 0.0 ]
 						point1 = [ 1.526203, 0.502559, 0.0 ]
@@ -831,10 +804,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "clavicle_r"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 2.932868
 						point0 = [ -3.842695, 0.000018, 1.08588 ]
 						point1 = [ -6.454788, 0.000023, 1.399866 ]
@@ -843,10 +813,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "upperarm_r"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 2.41221
 						point0 = [ -5.487104, 0.075258, 0.607856 ]
 						point1 = [ -10.659955, 0.081321, -0.536058 ]
@@ -855,10 +822,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "lowerarm_r"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 1.994246
 						point0 = [ -2.572723, -0.541802, -0.849958 ]
 						point1 = [ -8.146171, -0.541802, -0.099547 ]
@@ -867,10 +831,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "hand_r"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 1.622947
 						point0 = [ 0.0, -0.674517, -0.258912 ]
 						point1 = [ -3.923982, -0.674517, -0.258912 ]
@@ -879,10 +840,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "thigh_l"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 3.644299
 						point0 = [ 0.0, 0.571552, -0.0 ]
 						point1 = [ -11.410913, 0.571552, -0.0 ]
@@ -891,10 +849,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "calf_l"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 2.132339
 						point0 = [ -1.898031, 1.090812, 0.0 ]
 						point1 = [ -15.783163, -0.350118, 0.0 ]
@@ -903,10 +858,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "foot_l"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 2.603138
 						point0 = [ -2.055053, -0.875027, -0.038307 ]
 						point1 = [ -3.614031, -5.535463, -0.645704 ]
@@ -915,10 +867,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "thigh_r"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 4.190175
 						point0 = [ 12.199323, 0.0, 0.0 ]
 						point1 = [ 0.0, 0.0, 0.0 ]
@@ -927,10 +876,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "calf_r"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 2.229313
 						point0 = [ 15.825454, 0.0, 0.0 ]
 						point1 = [ 1.335978, -0.944528, -0.0 ]
@@ -939,10 +885,7 @@
 						_class = "PhysicsShapeCapsule"
 						parent_bone = "foot_r"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 1.881084
 						point0 = [ 2.480501, -0.944777, -0.000243 ]
 						point1 = [ 4.248395, 6.673758, -0.001593 ]
@@ -1078,7 +1021,7 @@
 								parent_bone = "pelvis"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -9.735192, -4.848153, -8.455885 ]
 								hitbox_maxs = [ 4.255459, 5.179291, 8.455879 ]
 							},
@@ -1088,7 +1031,7 @@
 								parent_bone = "spine_01"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -4.561958, -4.878212, -6.540155 ]
 								hitbox_maxs = [ 7.431221, 5.147192, 6.540135 ]
 							},
@@ -1098,7 +1041,7 @@
 								parent_bone = "spine_02"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -9.402112, -3.746232, -6.981263 ]
 								hitbox_maxs = [ 14.254874, 6.425011, 7.03468 ]
 							},
@@ -1108,7 +1051,7 @@
 								parent_bone = "spine_03"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -0.5, -2.723645, -3.311396 ]
 								hitbox_maxs = [ 11.141526, 3.380358, 3.311423 ]
 							},
@@ -1118,7 +1061,7 @@
 								parent_bone = "clavicle_l"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -2.840411, -1.167004, -1.464236 ]
 								hitbox_maxs = [ 6.214491, 5.229228, 1.982976 ]
 							},
@@ -1128,7 +1071,7 @@
 								parent_bone = "upperarm_l"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -1.333088, -2.104991, -1.460163 ]
 								hitbox_maxs = [ 11.587278, 1.733938, 2.482166 ]
 							},
@@ -1138,7 +1081,7 @@
 								parent_bone = "lowerarm_l"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -5.289092, -2.255386, -1.188097 ]
 								hitbox_maxs = [ 12.123621, 2.646874, 2.699146 ]
 							},
@@ -1148,7 +1091,7 @@
 								parent_bone = "hand_l"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -0.5, -1.323102, -2.873097 ]
 								hitbox_maxs = [ 5.60118, 2.571623, 2.742524 ]
 							},
@@ -1158,7 +1101,7 @@
 								parent_bone = "clavicle_r"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -9.762604, -5.229218, -3.949471 ]
 								hitbox_maxs = [ 3.613098, 1.167015, 1.464284 ]
 							},
@@ -1168,7 +1111,7 @@
 								parent_bone = "upperarm_r"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -13.979404, -2.008388, -2.487686 ]
 								hitbox_maxs = [ 2.29068, 1.265958, 0.58197 ]
 							},
@@ -1178,7 +1121,7 @@
 								parent_bone = "lowerarm_r"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -13.166355, -1.187577, -3.595371 ]
 								hitbox_maxs = [ 0.912943, 2.584404, 2.368464 ]
 							},
@@ -1188,7 +1131,7 @@
 								parent_bone = "hand_r"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -4.82048, -0.935062, -1.828048 ]
 								hitbox_maxs = [ 0.5, 0.5, 0.999062 ]
 							},
@@ -1198,7 +1141,7 @@
 								parent_bone = "neck_01"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -1.966933, -4.169708, -3.311389 ]
 								hitbox_maxs = [ 9.893145, 4.807557, 3.31143 ]
 							},
@@ -1208,7 +1151,7 @@
 								parent_bone = "thigh_l"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -25.234251, -4.238742, -4.367587 ]
 								hitbox_maxs = [ 4.370314, 5.611876, 5.451716 ]
 							},
@@ -1218,7 +1161,7 @@
 								parent_bone = "calf_l"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -19.695076, -5.855942, -3.322603 ]
 								hitbox_maxs = [ 6.863595, 4.233788, 4.134234 ]
 							},
@@ -1228,7 +1171,7 @@
 								parent_bone = "foot_l"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -5.649068, -9.68335, -2.849932 ]
 								hitbox_maxs = [ 3.822172, 2.8468, 3.554361 ]
 							},
@@ -1238,7 +1181,7 @@
 								parent_bone = "thigh_r"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -4.370234, -5.611873, -5.311981 ]
 								hitbox_maxs = [ 22.642679, 4.238739, 4.367569 ]
 							},
@@ -1248,7 +1191,7 @@
 								parent_bone = "calf_r"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -4.582476, -3.910362, -3.82079 ]
 								hitbox_maxs = [ 19.14794, 5.067885, 3.235627 ]
 							},
@@ -1258,7 +1201,7 @@
 								parent_bone = "foot_r"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -2.089417, -2.736543, -2.800483 ]
 								hitbox_maxs = [ 5.649014, 9.683338, 2.850003 ]
 							},
@@ -1287,33 +1230,21 @@
 						[
 							{
 								_class = "ConfigSetBodygroup"
-								group_name = "Model"
-								choice = 0
 							},
 							{
 								_class = "ConfigSetBodygroup"
-								group_name = "Model"
-								choice = 1
 							},
 							{
 								_class = "ConfigSetBodygroup"
-								group_name = "Model"
-								choice = 2
 							},
 							{
 								_class = "ConfigSetBodygroup"
-								group_name = "Model"
-								choice = 3
 							},
 							{
 								_class = "ConfigSetBodygroup"
-								group_name = "Model"
-								choice = 4
 							},
 							{
 								_class = "ConfigSetBodygroup"
-								group_name = "Model"
-								choice = 5
 							},
 						]
 						disabled = true
@@ -1321,103 +1252,38 @@
 					{
 						_class = "ConfigAttachedModel"
 						model_name = "models/weapons/pistol/prop_pistol.vmdl"
-						entity_class = ""
-						attachment_type = "attach"
-						attach_point = "pistol_attach"
-						use_additional_offset = false
-						relative_origin = [ 0.0, 0.0, 0.0 ]
-						relative_angles = [ 0.0, 0.0, 0.0 ]
-						user_specified_color = false
-						user_specified_materialgroup = false
-						accept_parent_materialdriven_decals = false
 					},
 					{
 						_class = "ConfigAttachedModel"
 						disabled = true
 						model_name = "models/weapons/smg/prop_smg.vmdl"
-						entity_class = ""
-						attachment_type = "attach"
-						attach_point = "smg_attach"
-						use_additional_offset = false
-						relative_origin = [ 0.0, 0.0, 0.0 ]
-						relative_angles = [ 0.0, 0.0, 0.0 ]
-						user_specified_color = false
-						user_specified_materialgroup = false
-						accept_parent_materialdriven_decals = false
 					},
 					{
 						_class = "ConfigAttachedModel"
 						disabled = true
 						model_name = "models/weapons/rifle/prop_rifle.vmdl"
-						entity_class = ""
-						attachment_type = "attach"
-						attach_point = "rifle_attach"
-						use_additional_offset = false
-						relative_origin = [ 0.0, 0.0, 0.0 ]
-						relative_angles = [ 0.0, 0.0, 0.0 ]
-						user_specified_color = false
-						user_specified_materialgroup = false
-						accept_parent_materialdriven_decals = false
 					},
 					{
 						_class = "ConfigAttachedModel"
 						disabled = true
 						model_name = "models/weapons/shotgun/prop_shotgun.vmdl"
-						entity_class = ""
-						attachment_type = "attach"
-						attach_point = "shotgun_attach"
-						use_additional_offset = false
-						relative_origin = [ 0.0, 0.0, 0.0 ]
-						relative_angles = [ 0.0, 0.0, 0.0 ]
-						user_specified_color = false
-						user_specified_materialgroup = false
-						accept_parent_materialdriven_decals = false
 					},
 					{
 						_class = "ConfigAttachedModel"
 						disabled = true
 						model_name = "models/weapons/bat/bat.vmdl"
-						entity_class = ""
-						attachment_type = "attach"
-						attach_point = "melee_bat_attach"
-						use_additional_offset = false
-						relative_origin = [ 0.0, 0.0, 0.0 ]
-						relative_angles = [ 0.0, 0.0, 0.0 ]
-						user_specified_color = false
-						user_specified_materialgroup = false
-						accept_parent_materialdriven_decals = false
 					},
 					{
 						_class = "ConfigAttachedModel"
 						disabled = true
 						model_name = "models/weapons/pan/pan.vmdl"
-						entity_class = ""
-						attachment_type = "attach"
-						attach_point = "melee_pan_attach"
-						use_additional_offset = false
-						relative_origin = [ 0.0, 0.0, 0.0 ]
-						relative_angles = [ 0.0, 0.0, 0.0 ]
-						user_specified_color = false
-						user_specified_materialgroup = false
-						accept_parent_materialdriven_decals = false
 					},
 					{
 						_class = "ConfigAttachedModel"
 						disabled = true
 						model_name = "models/weapons/melee/melee.vmdl"
-						entity_class = ""
-						attachment_type = "attach"
-						attach_point = "melee_bat_attach"
-						use_additional_offset = false
-						relative_origin = [ 0.0, 0.0, 0.0 ]
-						relative_angles = [ 0.0, 0.0, 0.0 ]
-						user_specified_color = false
-						user_specified_materialgroup = false
-						accept_parent_materialdriven_decals = false
 					},
 				]
-				hide_materialgroup_in_tools = false
-				hide_rendercolor_in_tools = false
 			},
 			{
 				_class = "PrefabList"
@@ -1433,5 +1299,6 @@
 		model_archetype = ""
 		primary_associated_entity = ""
 		anim_graph_name = "animgraphs/sd_playermodel.vanmgrph"
+		base_model_name = ""
 	}
 }

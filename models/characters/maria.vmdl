@@ -1,0 +1,2172 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "maria_skin.vmat"
+								to = "models/characters/maria.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						filename = "models/characters/src/maria.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "throw_weapon"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/characters/src/anims/maria/uniques.fbx"
+						start_frame = 495
+						end_frame = 505
+						framerate = -1.0
+						take = 1
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "ref"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/characters/src/anims/maria/uniques.fbx"
+						start_frame = -1
+						end_frame = 1
+						framerate = -1.0
+						take = 1
+						reverse = false
+					},
+					{
+						_class = "Folder"
+						name = "running"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "run_w"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = false
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Uniform"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/left strafe.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "run_e"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = false
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Single"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/right strafe.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "run_n"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = false
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Single"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/running.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "run_s"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = false
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Single"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/running back.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "walking"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "walk_w"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = false
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Single"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/left strafe walking.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_e"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = false
+										extract_ty = true
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Single"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/right strafe walking.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_n"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = false
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Single"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/walking.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "walk_s"
+								children = 
+								[
+									{
+										_class = "ExtractMotion"
+										extract_tx = true
+										extract_ty = false
+										extract_tz = false
+										extract_rz = false
+										linear = false
+										quadratic = false
+										root_bone_name = ""
+										motion_type = "Single"
+									},
+								]
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/walking back.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "idle"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "idle_standing"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 5
+								end_frame = 50
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "idle_melee"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 55
+								end_frame = 100
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "idle_firearm"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 105
+								end_frame = 150
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "idle_impatient"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 155
+								end_frame = 200
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "idle_bloodlust"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 205
+								end_frame = 250
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "idle_mixamo"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = true
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/idle.fbx"
+								start_frame = -1
+								end_frame = -1
+								framerate = -1.0
+								take = 0
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "recoil"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "pistol_recoil"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 330
+								end_frame = 340
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "shotgun_recoil"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 345
+								end_frame = 355
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "smg_recoil"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 360
+								end_frame = 370
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_recoil"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 375
+								end_frame = 385
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "melee"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "punch_left"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 255
+								end_frame = 265
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "punch_right"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 270
+								end_frame = 280
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "kick_left"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 285
+								end_frame = 295
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "kick_right"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 300
+								end_frame = 310
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "swing_left"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 315
+								end_frame = 325
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "reload"
+						children = 
+						[
+							{
+								_class = "AnimFile"
+								name = "pistol_reload"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 390
+								end_frame = 410
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "shotgun_reload_start"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 415
+								end_frame = 420
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "shotgun_reload_loop"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 420
+								end_frame = 430
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "shotgun_reload_end"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 430
+								end_frame = 435
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "smg_reload"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 440
+								end_frame = 460
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+							{
+								_class = "AnimFile"
+								name = "rifle_reload"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = false
+								disable_compression = false
+								source_filename = "models/characters/src/anims/maria/uniques.fbx"
+								start_frame = 465
+								end_frame = 485
+								framerate = -1.0
+								take = 1
+								reverse = false
+							},
+						]
+					},
+					{
+						_class = "Folder"
+						name = "poses"
+						children = 
+						[
+							{
+								_class = "AnimFrame"
+								name = "pistol_pose"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = true
+								disable_compression = false
+								src_anim_name = "pistol_reload"
+								frame_type = "FirstFrame"
+								frame = 0
+							},
+							{
+								_class = "AnimFrame"
+								name = "smg_pose"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = true
+								disable_compression = false
+								src_anim_name = "smg_reload"
+								frame_type = "FirstFrame"
+								frame = 0
+							},
+							{
+								_class = "AnimFrame"
+								name = "shotgun_pose"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = true
+								disable_compression = false
+								src_anim_name = "shotgun_reload_start"
+								frame_type = "FirstFrame"
+								frame = 0
+							},
+							{
+								_class = "AnimFrame"
+								name = "rifle_pose"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = true
+								disable_compression = false
+								src_anim_name = "rifle_reload"
+								frame_type = "FirstFrame"
+								frame = 0
+							},
+							{
+								_class = "AnimFrame"
+								name = "bat_pose"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = true
+								disable_compression = false
+								src_anim_name = "swing_left"
+								frame_type = "FirstFrame"
+								frame = 0
+							},
+							{
+								_class = "AnimFrame"
+								name = "fists_pose"
+								activity_name = ""
+								activity_weight = 1
+								weight_list_name = ""
+								fade_in_time = 0.2
+								fade_out_time = 0.2
+								looping = false
+								delta = false
+								worldSpace = false
+								hidden = false
+								anim_markup_ordered = true
+								disable_compression = false
+								src_anim_name = "punch_left"
+								frame_type = "FirstFrame"
+								frame = 0
+							},
+						]
+					},
+				]
+				default_root_bone_name = ""
+			},
+			{
+				_class = "WeightListList"
+				children = 
+				[
+					{
+						_class = "WeightList"
+						name = "feet"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "foot_l"
+								weight = 1.0
+							},
+							{
+								bone = "foot_r"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "weapons"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "clavicle_l"
+								weight = 0.409091
+							},
+							{
+								bone = "clavicle_r"
+								weight = 0.284091
+							},
+							{
+								bone = "head"
+								weight = 0.253788
+							},
+							{
+								bone = "lowerarm_r"
+								weight = 0.596591
+							},
+							{
+								bone = "neck_01"
+								weight = 0.274621
+							},
+							{
+								bone = "spine_02"
+								weight = 0.111742
+							},
+							{
+								bone = "spine_03"
+								weight = 0.223485
+							},
+							{
+								bone = "upperarm_l"
+								weight = 0.607955
+							},
+							{
+								bone = "upperarm_r"
+								weight = 0.426136
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "Arms"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "clavicle_l"
+								weight = 1.0
+							},
+							{
+								bone = "clavicle_r"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "legs"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "pelvis"
+								weight = 0.474734
+							},
+							{
+								bone = "spine_01"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_l"
+								weight = 1.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "punching"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "pelvis"
+								weight = 0.681055
+							},
+							{
+								bone = "spine_01"
+								weight = 1.0
+							},
+							{
+								bone = "spine_02"
+								weight = 1.0
+							},
+							{
+								bone = "spine_03"
+								weight = 1.0
+							},
+							{
+								bone = "thigh_l"
+								weight = 0.0
+							},
+							{
+								bone = "thigh_r"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+				]
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "LookAtChain"
+						name = "AimAt"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "spine_03"
+									weight = 1.0
+								},
+								{
+									name = "spine_02"
+									weight = 0.75
+								},
+								{
+									name = "spine_01"
+									weight = 0.5
+								},
+								{
+									name = "pelvis"
+									weight = 0.25
+								},
+							]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "AimChain"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "spine_03"
+									weight = 0.821
+								},
+								{
+									name = "spine_02"
+									weight = 0.446
+								},
+								{
+									name = "spine_01"
+									weight = 0.196
+								},
+							]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "HeadAim"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "head"
+									weight = 0.696
+								},
+								{
+									name = "neck_0"
+									weight = 0.339
+								},
+								{
+									name = "clavicle_l"
+									weight = 0.071
+								},
+								{
+									name = "clavicle_r"
+									weight = 0.07
+								},
+							]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "aim_at_weapon"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "spine_03"
+									weight = 1.0
+								},
+							]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "Head_LookAt_Chain"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "head"
+									weight = 1.0
+								},
+								{
+									name = "neck_0"
+									weight = 0.785
+								},
+							]
+						}
+					},
+					{
+						_class = "MovementSettings"
+						movementsettings = 
+						{
+							name = ""
+							speeds = [  ]
+							runspeed = 320.0
+							walkspeed = 190.0
+							maxSpringTension = 100.0
+							springConstant = 10.0
+							useSmoothPaths = true
+							useMotionDamping = false
+							sharpStartAngle = 180.0
+							m_vTraceScale = [ 1.0, 1.0, 1.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "pelvis"
+							radius = 3.0
+							point0 = [ 0.297063, 3.43355, 3.866129 ]
+							point1 = [ 0.358608, 3.433551, -3.908034 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "spine_01"
+							radius = 4.0
+							point0 = [ -0.0, 6.399364, -0.477018 ]
+							point1 = [ -0.0, 6.399364, 0.588604 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "spine_03"
+							radius = 3.0
+							point0 = [ -0.0, 1.041165, 3.099965 ]
+							point1 = [ 0.0, 1.041165, -3.924843 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "neck_01"
+							radius = 2.0
+							point0 = [ -0.710525, 1.137141, -0.0 ]
+							point1 = [ -0.710525, 2.137141, -0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "head"
+							radius = 3.0
+							point0 = [ 0.698449, 1.856326, 0.0 ]
+							point1 = [ 0.698449, 3.856325, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "head"
+							radius = 6.0
+							point0 = [ -6.273981, 9.182975, 3.057256 ]
+							point1 = [ -6.273981, 9.140192, -2.723835 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "clavicle_l"
+							radius = 1.0
+							point0 = [ -1.513873, 0.221067, -0.683908 ]
+							point1 = [ -1.513873, 6.221067, -0.683908 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "upperarm_l"
+							radius = 2.0
+							point0 = [ 0.49815, 5.706636, 0.748628 ]
+							point1 = [ 0.49815, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "lowerarm_l"
+							radius = 2.0
+							point0 = [ -0.0, 0.69294, 1.398633 ]
+							point1 = [ 0.0, 8.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "hand_l"
+							radius = 1.0
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 0.0, 2.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "clavicle_r"
+							radius = 1.0
+							point0 = [ 1.906111, 6.0, 0.103979 ]
+							point1 = [ 1.906111, 0.0, 0.103979 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "upperarm_r"
+							radius = 2.0
+							point0 = [ -0.692464, -0.0, -0.0 ]
+							point1 = [ -0.512429, 5.96417, 1.091058 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "lowerarm_r"
+							radius = 2.0
+							point0 = [ -0.0, 6.0, 0.623483 ]
+							point1 = [ -0.0, 1.100002, 1.424426 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "hand_r"
+							radius = 1.0
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 0.0, 2.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "thigh_l"
+							radius = 3.0
+							point0 = [ 0.0, 10.0, 0.0 ]
+							point1 = [ 0.0, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "calf_l"
+							radius = 2.0
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 0.0, 13.599192, -0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "foot_l"
+							radius = 2.0
+							point0 = [ 0.0, 4.0, 0.0 ]
+							point1 = [ 0.0, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "thigh_r"
+							radius = 3.0
+							point0 = [ 0.0, 10.0, 0.0 ]
+							point1 = [ 0.0, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "calf_r"
+							radius = 2.0
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 0.0, 13.125554, -0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "foot_r"
+							radius = 2.0
+							point0 = [ 0.0, 4.0, 0.0 ]
+							point1 = [ 0.0, 0.0, 0.0 ]
+						}
+					},
+				]
+			},
+			{
+				_class = "PhysicsJointList"
+				children = 
+				[
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "pelvis"
+						child_body = "spine_01"
+						anchor_origin = [ 0.000002, 4.664669, -0.000016 ]
+						anchor_angles = [ 0.134749, -102.764, 0.0 ]
+						collision_enabled = false
+						friction = 0.2
+						enable_swing_limit = true
+						swing_limit = 25.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -25.719999
+						max_twist_angle = 30.450001
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "spine_01"
+						child_body = "spine_03"
+						anchor_origin = [ -1.052777, 12.372952, 0.165856 ]
+						anchor_angles = [ -1.76954, 101.303001, 0.0 ]
+						collision_enabled = false
+						friction = 0.2
+						enable_swing_limit = true
+						swing_limit = 8.79
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "spine_03"
+						child_body = "neck_01"
+						anchor_origin = [ 0.788165, 6.79372, 0.156456 ]
+						anchor_angles = [ 3.27541, -106.750999, 0.0 ]
+						collision_enabled = false
+						friction = 0.2
+						enable_swing_limit = true
+						swing_limit = 8.79
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "neck_01"
+						child_body = "head"
+						anchor_origin = [ -0.00001, 2.751842, -0.000114 ]
+						anchor_angles = [ -3.06989, 103.502998, 0.0 ]
+						collision_enabled = false
+						friction = 0.2
+						enable_swing_limit = true
+						swing_limit = 4.06
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -30.0
+						max_twist_angle = 30.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "spine_03"
+						child_body = "clavicle_l"
+						anchor_origin = [ 2.365476, 5.400673, -1.048355 ]
+						anchor_angles = [ -72.107292, 19.874258, 153.005615 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 10.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "clavicle_l"
+						child_body = "upperarm_l"
+						anchor_origin = [ -0.000001, 6.183181, -0.000069 ]
+						anchor_angles = [ 49.136665, 66.253304, -97.418755 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -30.0
+						max_twist_angle = 30.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "upperarm_l"
+						child_body = "lowerarm_l"
+						anchor_origin = [ 0.236328, 9.700378, 0.246662 ]
+						anchor_angles = [ 22.257837, -123.897232, -105.679962 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "lowerarm_l"
+						child_body = "hand_l"
+						anchor_origin = [ 0.000011, 9.429934, -0.000042 ]
+						anchor_angles = [ -11.854388, -85.097885, -98.554634 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -30.0
+						max_twist_angle = 30.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "spine_03"
+						child_body = "clavicle_r"
+						anchor_origin = [ 1.785451, 5.400661, 1.872589 ]
+						anchor_angles = [ -50.267502, -170.595642, -15.269846 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 10.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "clavicle_r"
+						child_body = "upperarm_r"
+						anchor_origin = [ -0.000006, 6.183207, -0.000099 ]
+						anchor_angles = [ 49.137077, 113.746864, -82.581306 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -30.0
+						max_twist_angle = 30.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "upperarm_r"
+						child_body = "lowerarm_r"
+						anchor_origin = [ -0.190608, 9.591663, 0.215664 ]
+						anchor_angles = [ -22.167423, 123.749916, -105.664711 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "lowerarm_r"
+						child_body = "hand_r"
+						anchor_origin = [ 0.000002, 9.548909, -0.000065 ]
+						anchor_angles = [ -11.734015, -94.784706, -81.497009 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -30.0
+						max_twist_angle = 30.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "pelvis"
+						child_body = "thigh_l"
+						anchor_origin = [ 0.723805, -0.321308, -3.538021 ]
+						anchor_angles = [ 7.641612, -93.032043, 90.138092 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "thigh_l"
+						child_body = "calf_l"
+						anchor_origin = [ -0.106731, 14.578117, -0.019922 ]
+						anchor_angles = [ 1.329995, 97.159302, -96.493149 ]
+						collision_enabled = false
+						friction = 0.15
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "calf_l"
+						child_body = "foot_l"
+						anchor_origin = [ 0.0, 17.259457, 0.000026 ]
+						anchor_angles = [ -9.286448, -142.011398, -92.36274 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 15.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "pelvis"
+						child_body = "thigh_r"
+						anchor_origin = [ 0.648218, -0.321331, 3.55264 ]
+						anchor_angles = [ 7.575071, 86.805481, -91.084587 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "thigh_r"
+						child_body = "calf_r"
+						anchor_origin = [ 0.106748, 14.578112, -0.019922 ]
+						anchor_angles = [ -1.330917, -97.159752, -96.484802 ]
+						collision_enabled = false
+						friction = 0.15
+						enable_swing_limit = true
+						swing_limit = 30.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "calf_r"
+						child_body = "foot_r"
+						anchor_origin = [ 0.000002, 17.259483, -0.000101 ]
+						anchor_angles = [ -9.274236, -37.986584, -87.645317 ]
+						collision_enabled = false
+						friction = 0.1
+						enable_swing_limit = true
+						swing_limit = 15.0
+						swing_offset_angle = [ 0.0, 0.0, 0.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -15.0
+						max_twist_angle = 15.0
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "pelvis"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 3.0
+						point0 = [ 0.297063, 3.43355, 3.866129 ]
+						point1 = [ 0.358608, 3.433551, -3.908034 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "spine_01"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 4.0
+						point0 = [ -0.0, 6.399364, -0.477018 ]
+						point1 = [ -0.0, 6.399364, 0.588604 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "spine_03"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 3.0
+						point0 = [ -0.0, 1.041165, 3.099965 ]
+						point1 = [ 0.0, 1.041165, -3.924843 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "neck_01"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 2.0
+						point0 = [ -0.710525, 1.137141, -0.0 ]
+						point1 = [ -0.710525, 2.137141, -0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "head"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 3.0
+						point0 = [ 0.698449, 1.856326, 0.0 ]
+						point1 = [ 0.698449, 3.856325, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "head"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 6.0
+						point0 = [ -6.273981, 9.182975, 3.057256 ]
+						point1 = [ -6.273981, 9.140192, -2.723835 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "clavicle_l"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 1.0
+						point0 = [ -1.513873, 0.221067, -0.683908 ]
+						point1 = [ -1.513873, 6.221067, -0.683908 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "upperarm_l"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 2.0
+						point0 = [ 0.49815, 5.706636, 0.748628 ]
+						point1 = [ 0.49815, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "lowerarm_l"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 2.0
+						point0 = [ -0.0, 0.69294, 1.398633 ]
+						point1 = [ 0.0, 8.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "hand_l"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 1.0
+						point0 = [ 0.0, 0.0, 0.0 ]
+						point1 = [ 0.0, 2.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "clavicle_r"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 1.0
+						point0 = [ 1.906111, 6.0, 0.103979 ]
+						point1 = [ 1.906111, 0.0, 0.103979 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "upperarm_r"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 2.0
+						point0 = [ -0.692464, -0.0, -0.0 ]
+						point1 = [ -0.512429, 5.96417, 1.091058 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "lowerarm_r"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 2.0
+						point0 = [ -0.0, 6.0, 0.623483 ]
+						point1 = [ -0.0, 1.100002, 1.424426 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "hand_r"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 1.0
+						point0 = [ 0.0, 0.0, 0.0 ]
+						point1 = [ 0.0, 2.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "thigh_l"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 3.0
+						point0 = [ 0.0, 10.0, 0.0 ]
+						point1 = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "calf_l"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 2.0
+						point0 = [ 0.0, 0.0, 0.0 ]
+						point1 = [ 0.0, 13.599192, -0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "foot_l"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 2.0
+						point0 = [ 0.0, 4.0, 0.0 ]
+						point1 = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "thigh_r"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 3.0
+						point0 = [ 0.0, 10.0, 0.0 ]
+						point1 = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "calf_r"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 2.0
+						point0 = [ 0.0, 0.0, 0.0 ]
+						point1 = [ 0.0, 13.125554, -0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "foot_r"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 2.0
+						point0 = [ 0.0, 4.0, 0.0 ]
+						point1 = [ 0.0, 0.0, 0.0 ]
+					},
+				]
+			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "Head_LookAt_Attachment"
+						parent_bone = "head"
+						relative_origin = [ 0.924911, -4.267622, -0.268209 ]
+						relative_angles = [ 0.0, -89.703018, -0.000051 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "forward"
+						parent_bone = ""
+						relative_origin = [ 52.240799, 0.0, 58.811604 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "aim_R"
+						parent_bone = "hand_R"
+						relative_origin = [ -8.003757, 0.804641, 0.194546 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "pistol_attach"
+						parent_bone = "hand_r"
+						relative_origin = [ -3.460403, -2.736427, -0.328003 ]
+						relative_angles = [ 1.251168, -161.96637, 21.708994 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "smg_attach"
+						parent_bone = "hand_r"
+						relative_origin = [ -4.0756, -1.838148, 0.67173 ]
+						relative_angles = [ 5.955971, -156.901871, 1.629869 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "rifle_attach"
+						parent_bone = "hand_r"
+						relative_origin = [ -2.291302, -1.1572, 0.998192 ]
+						relative_angles = [ 13.363872, -169.675278, -2.20414 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "melee_bat_attach"
+						parent_bone = "hand_l"
+						relative_origin = [ 2.334858, 1.16357, 1.60859 ]
+						relative_angles = [ -4.407339, -96.651741, -156.617065 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "melee_pan_attach"
+						parent_bone = "hand_l"
+						relative_origin = [ 2.33486, 1.16357, 1.60859 ]
+						relative_angles = [ -4.40734, -96.651703, -156.617004 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "melee_pipe_attach"
+						parent_bone = "hand_l"
+						relative_origin = [ 2.33486, 1.16357, 1.60859 ]
+						relative_angles = [ -4.40734, -96.651703, -156.617004 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "head_blood"
+						parent_bone = "head"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "shotgun_attach"
+						parent_bone = "hand_r"
+						relative_origin = [ -1.842541, -1.511246, 0.598351 ]
+						relative_angles = [ 5.841206, -171.030411, 29.867294 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "roomclearer_attachment"
+						parent_bone = "hand_r"
+						relative_origin = [ -4.92599, -0.701643, 1.570538 ]
+						relative_angles = [ 2.36239, -170.263, 14.741102 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "foot_l_target"
+						parent_bone = "foot_l"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "foot_r_target"
+						parent_bone = "foot_r"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+				]
+			},
+			{
+				_class = "IKData"
+				children = 
+				[
+					{
+						_class = "IKChain"
+						name = "HandIK_L"
+						children = 
+						[
+							{
+								_class = "IKChainJoint"
+								name = "upperarm_l"
+								children = 
+								[
+									{
+										_class = "IKChainJoint"
+										name = "lowerarm_l"
+										children = 
+										[
+											{
+												_class = "IKChainJoint"
+												name = "hand_l"
+												bone = "hand_l"
+											},
+										]
+										bone = "lowerarm_l"
+									},
+								]
+								bone = "upperarm_l"
+							},
+						]
+						m_bDoBonesOrientAlongPositiveX = true
+						"m_DefaultSolverSettings.m_nNumIterations" = 6
+						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
+						"m_DefaultTargetSettings.m_Bone" = 
+						{
+							m_Name = "hand_l"
+						}
+						"m_DefaultTargetSettings.m_TargetSource" = "Bone"
+						"m_Data.m_DefaultTargetSettings.m_AnimgraphParameterNamePosition" = 
+						{
+							m_id = 4294967295
+						}
+						"m_Data.m_EndEffectorFixedOffsetAttachment" = 
+						{
+							m_Name = ""
+						}
+						"m_Data.m_bParentJointRequiresAlignment" = true
+					},
+					{
+						_class = "IKChain"
+						name = "HandIK_R"
+						children = 
+						[
+							{
+								_class = "IKChainJoint"
+								name = "upperarm_r"
+								children = 
+								[
+									{
+										_class = "IKChainJoint"
+										name = "lowerarm_r"
+										children = 
+										[
+											{
+												_class = "IKChainJoint"
+												name = "hand_r"
+												bone = "hand_r"
+											},
+										]
+										bone = "lowerarm_r"
+									},
+								]
+								bone = "upperarm_r"
+							},
+						]
+						m_bDoBonesOrientAlongPositiveX = true
+						"m_DefaultSolverSettings.m_nNumIterations" = 6
+						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
+						"m_DefaultTargetSettings.m_Bone" = 
+						{
+							m_Name = "hand_r"
+						}
+						"m_DefaultTargetSettings.m_TargetSource" = "Bone"
+						"m_Data.m_DefaultTargetSettings.m_AnimgraphParameterNamePosition" = 
+						{
+							m_id = 4294967295
+						}
+						"m_Data.m_EndEffectorFixedOffsetAttachment" = 
+						{
+							m_Name = ""
+						}
+						"m_Data.m_bParentJointRequiresAlignment" = true
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = "animgraphs/sd_playermodel_2022.vanmgrph"
+		base_model_name = ""
+	}
+}
