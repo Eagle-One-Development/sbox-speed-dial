@@ -58,26 +58,26 @@ public abstract partial class Gamemode : Entity
 		Name = ClassName;
 	}
 
-	public virtual void SetState(GamemodeState state)
+	public virtual void SetState( GamemodeState state )
 	{
-		Log.Debug($"Gamemode state set to {state}");
+		Log.Debug( $"Gamemode state set to {state}" );
 		State = state;
 	}
 
 	/// <summary>
 	/// Called from the sd_bot server command. Use this to apply your bot behaviour per gamemode
 	/// </summary>
-	public virtual void OnBotAdded(ClassicBot bot) { }
+	public virtual void OnBotAdded( ClassicBot bot ) { }
 
 	[SpeedDialEvent.Gamemode.Start]
 	public static void BotReset()
 	{
 		// apply gamemode behaviour to all bots
-		foreach (var bot in Bot.All)
+		foreach ( var bot in Bot.All )
 		{
-			if (bot is ClassicBot cbot)
+			if ( bot is ClassicBot cbot )
 			{
-				Instance.OnBotAdded(cbot);
+				Instance.OnBotAdded( cbot );
 			}
 		}
 	}
@@ -87,7 +87,7 @@ public abstract partial class Gamemode : Entity
 
 	public void Start()
 	{
-		Log.Debug("gamemode started");
+		Log.Debug( "gamemode started" );
 		OnStart();
 		// the gamemode has technically also reset when it starts
 		CallStartEvent();
@@ -96,42 +96,42 @@ public abstract partial class Gamemode : Entity
 
 	public void CallResetEvent()
 	{
-		Event.Run("sd.gamemode.reset", Identity);
-		Event.Run("sd.gamemode.reset");
+		Event.Run( "sd.gamemode.reset", Identity );
+		Event.Run( "sd.gamemode.reset" );
 	}
 
 	public void CallStartEvent()
 	{
-		Event.Run("sd.gamemode.start", Identity);
-		Event.Run("sd.gamemode.start");
+		Event.Run( "sd.gamemode.start", Identity );
+		Event.Run( "sd.gamemode.start" );
 	}
 
 	public void CallEndEvent()
 	{
-		Event.Run("sd.gamemode.end", Identity);
-		Event.Run("sd.gamemode.end");
+		Event.Run( "sd.gamemode.end", Identity );
+		Event.Run( "sd.gamemode.end" );
 	}
 
 	// override for gamemode specific rules for ents
-	public virtual void EnableEntity(GamemodeEntity ent)
+	public virtual void EnableEntity( GamemodeEntity ent )
 	{
 		ent.Enable();
 	}
 
 	// override for gamemode specific rules for ents
-	public virtual void DisableEntity(GamemodeEntity ent)
+	public virtual void DisableEntity( GamemodeEntity ent )
 	{
 		ent.Disable();
 	}
 
 	// override for gamemode specific rules for ents
-	public virtual void HandleGamemodeEntity(GamemodeEntity ent) { }
+	public virtual void HandleGamemodeEntity( GamemodeEntity ent ) { }
 
 	protected virtual void OnStart() { }
 
 	public void Finish()
 	{
-		Log.Debug("gamemode finished");
+		Log.Debug( "gamemode finished" );
 		OnFinish();
 		KillRound();
 		CallEndEvent();
@@ -148,11 +148,11 @@ public abstract partial class Gamemode : Entity
 	[Net] public Round ActiveRound { get; private set; }
 
 	/// <summary> [Assert Server] Forcefully change the active round </summary>
-	public void ChangeRound(Round round)
+	public void ChangeRound( Round round )
 	{
 		Host.AssertServer();
-		Log.Debug("round changed");
-		Assert.NotNull(round);
+		Log.Debug( "round changed" );
+		Assert.NotNull( round );
 
 		ActiveRound?.Finish();
 
@@ -164,7 +164,7 @@ public abstract partial class Gamemode : Entity
 	public void KillRound()
 	{
 		Host.AssertServer();
-		Log.Debug("round killed");
+		Log.Debug( "round killed" );
 		ActiveRound?.Kill();
 		ActiveRound = null;
 	}
@@ -173,7 +173,7 @@ public abstract partial class Gamemode : Entity
 	protected virtual void RoundDebug()
 	{
 		// Do this for now. To lazy to implement UI
-		if (ActiveRound is null)
+		if ( ActiveRound is null )
 			return;
 
 		//var r = ActiveRound;
@@ -203,7 +203,7 @@ public abstract partial class Gamemode : Entity
 	{
 		base.OnDestroy();
 
-		Log.Debug("gamemode destroyed");
+		Log.Debug( "gamemode destroyed" );
 
 		DestroyGamemodeUIClient();
 	}
@@ -213,7 +213,7 @@ public abstract partial class Gamemode : Entity
 	//
 
 	/// <summary> [Assert Server] Use this to move pawn to position when it has respawned </summary>
-	public virtual void MoveToSpawnpoint(BasePlayer pawn) { }
+	public virtual void MoveToSpawnpoint( BasePlayer pawn ) { }
 
 	/// <summary> [Assert Server] Use this to validate the gamemode for the active map </summary>
 	public virtual bool ValidGamemode() { return true; }
@@ -223,37 +223,37 @@ public abstract partial class Gamemode : Entity
 	//
 
 	/// <summary> [Assert Server] </summary>
-	public void PawnKilled(BasePlayer pawn)
+	public void PawnKilled( BasePlayer pawn )
 	{
 		Host.AssertServer();
 
-		OnPawnKilled(pawn);
+		OnPawnKilled( pawn );
 		pawn.TimeSinceDied = 0;
 	}
 
 	/// <summary> [Server Assert] Should this pawn be damaged ? </summary>
 	/// <returns> True if damage should be taken </returns>
-	public bool PawnDamaged(BasePlayer pawn, ref DamageInfo info)
+	public bool PawnDamaged( BasePlayer pawn, ref DamageInfo info )
 	{
 		Host.AssertServer();
 
-		return OnPawnDamaged(pawn, ref info);
+		return OnPawnDamaged( pawn, ref info );
 	}
 
 	/// <summary> [Assert Server] </summary>
-	public void PawnRespawned(BasePlayer pawn)
+	public void PawnRespawned( BasePlayer pawn )
 	{
 		Host.AssertServer();
 
-		OnPawnRespawned(pawn);
+		OnPawnRespawned( pawn );
 	}
 
 	/// <summary> [Server] </summary>
-	protected virtual void OnPawnKilled(BasePlayer pawn) { }
+	protected virtual void OnPawnKilled( BasePlayer pawn ) { }
 
 	/// <summary> [Server] Should this pawn be damaged ? Default just checks if the teams are the same </summary>
 	/// <returns> True if damage should be taken </returns>
-	protected virtual bool OnPawnDamaged(BasePlayer pawn, ref DamageInfo info)
+	protected virtual bool OnPawnDamaged( BasePlayer pawn, ref DamageInfo info )
 	{
 		// if(pawn is null || info.Attacker is null)
 		// 	return true;
@@ -266,9 +266,9 @@ public abstract partial class Gamemode : Entity
 	}
 
 	/// <summary> [Server] </summary>
-	protected virtual void OnPawnRespawned(BasePlayer newPawn) { }
+	protected virtual void OnPawnRespawned( BasePlayer newPawn ) { }
 
-	public virtual bool OnClientSuicide(Client client)
+	public virtual bool OnClientSuicide( Client client )
 	{
 		return true;
 	}
@@ -278,38 +278,38 @@ public abstract partial class Gamemode : Entity
 	//
 
 	/// <summary> [Assert Server] </summary>
-	public void ClientJoined(Client client)
+	public void ClientJoined( Client client )
 	{
 		Host.AssertServer();
-		OnClientJoined(client);
+		OnClientJoined( client );
 	}
 
 	/// <summary> [Assert Server] </summary>
-	public void ClientReady(Client client)
+	public void ClientReady( Client client )
 	{
 		Host.AssertServer();
 		// create ui for this client
-		CreateGamemodeUIClient(To.Single(client));
-		OnClientReady(client);
+		CreateGamemodeUIClient( To.Single( client ) );
+		OnClientReady( client );
 	}
 
 	/// <summary> [Assert Server] </summary>
-	public void ClientDisconnected(Client client, NetworkDisconnectionReason reason)
+	public void ClientDisconnected( Client client, NetworkDisconnectionReason reason )
 	{
 		Host.AssertServer();
-		OnClientDisconnect(client, reason);
+		OnClientDisconnect( client, reason );
 	}
 
 	/// <summary> [Server] Is called when a client joins the server </summary>
-	protected virtual void OnClientJoined(Client client) { }
+	protected virtual void OnClientJoined( Client client ) { }
 
 	/// <summary> [Server] Is called when a client has chosen a team and wants to spawn
 	/// we should assign a pawn in this callback too </summary>
-	protected virtual void OnClientReady(Client client)
+	protected virtual void OnClientReady( Client client )
 	{
 		//client.AssignPawn<Specialist>();
 	}
 
 	/// <summary> [Server] Is called when a client has disconnected. Possibly use this for cleanup? </summary>
-	protected virtual void OnClientDisconnect(Client client, NetworkDisconnectionReason reason) { }
+	protected virtual void OnClientDisconnect( Client client, NetworkDisconnectionReason reason ) { }
 }

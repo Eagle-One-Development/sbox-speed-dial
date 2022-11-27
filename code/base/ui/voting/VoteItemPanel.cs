@@ -4,7 +4,7 @@
 public class VoteItemPanel : Panel
 {
 	private readonly int index;
-	private VoteItem Item => VoteEntity.Current?.GetVoteItem(index);
+	private VoteItem Item => VoteEntity.Current?.GetVoteItem( index );
 
 	public string Title { get; set; }
 	public string Description { get; set; }
@@ -17,7 +17,7 @@ public class VoteItemPanel : Panel
 		Description = "(Skip Vote)";
 	}
 
-	public VoteItemPanel(int index)
+	public VoteItemPanel( int index )
 	{
 		this.index = index;
 		Title = $"[{Item.Title}]";
@@ -26,14 +26,14 @@ public class VoteItemPanel : Panel
 
 	public override void Tick()
 	{
-		SetClass("skip", index == -2);
-		SetClass("voted", VoteEntity.Current?.GetClientVotedIndex(Local.Client.PlayerId) == index);
-		SetClass("winner", VoteEntity.Current?.WinnerIndex == index);
-		Votes = $"{VoteEntity.Current?.GetVotes(index)}";
+		SetClass( "skip", index == -2 );
+		SetClass( "voted", VoteEntity.Current?.GetClientVotedIndex( Local.Client.PlayerId ) == index );
+		SetClass( "winner", VoteEntity.Current?.WinnerIndex == index );
+		Votes = $"{VoteEntity.Current?.GetVotes( index )}";
 	}
 
-	protected override void OnMouseDown(MousePanelEvent e)
+	protected override void OnMouseDown( MousePanelEvent e )
 	{
-		VoteEntity.Vote(index);
+		VoteEntity.Vote( index );
 	}
 }
