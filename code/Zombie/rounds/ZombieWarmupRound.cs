@@ -34,7 +34,7 @@ namespace SpeedDial.Zombie.Rounds
 		protected override void OnFinish()
 		{
 			base.OnFinish();
-			Game.Current.ActiveGamemode.ChangeRound( new PreRound() );
+			Game.Current.ActiveGamemode.ChangeRound( new ZombiePreRound() );
 		}
 	}
 }
