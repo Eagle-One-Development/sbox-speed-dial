@@ -11,7 +11,8 @@ public enum GamemodeIdentity
 	Classic = 1,
 	Koth = 2,
 	Dodgeball = 4,
-	OneChamber = 8
+	OneChamber = 8,
+	Zombie = 16,
 }
 
 public enum GamemodeState

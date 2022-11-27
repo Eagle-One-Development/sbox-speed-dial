@@ -3,7 +3,7 @@
   "Type": "game",
   "Org": "eagleone",
   "Ident": "speed_dial",
-  "Tags": null,
+  "Tags": "",
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
@@ -97,6 +97,12 @@
         "DisplayName": "Gamemode",
         "DefaultValue": "Classic"
       }
+    },
+    "DefaultLeaderboards": null,
+    "Compiler": {
+      "RootNamespace": "SpeedDial",
+      "DefineConstants": "SANDBOX;ADDON;DEBUG",
+      "NoWarn": "1701;1702;1591;"
     }
   }
 }
