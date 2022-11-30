@@ -2370,7 +2370,7 @@
 								{
 									_class = "CSequenceAnimNode"
 									m_sName = "Unnamed"
-									m_vecPosition = [ -200.0, -32.0 ]
+									m_vecPosition = [ -208.0, -32.0 ]
 									m_nNodeID = 
 									{
 										m_id = 74545010
@@ -2392,7 +2392,7 @@
 								{
 									_class = "CSequenceAnimNode"
 									m_sName = "Unnamed"
-									m_vecPosition = [ -200.0, 160.0 ]
+									m_vecPosition = [ -208.0, 160.0 ]
 									m_nNodeID = 
 									{
 										m_id = 310874784
@@ -2453,12 +2453,12 @@
 								{
 									_class = "CStateMachineAnimNode"
 									m_sName = "Unnamed"
-									m_vecPosition = [ 192.0, -96.0 ]
+									m_vecPosition = [ 208.0, -112.0 ]
 									m_nNodeID = 
 									{
 										m_id = 688601058
 									}
-									m_networkMode = "ServerAuthoritative"
+									m_networkMode = "ClientPredicted"
 									m_sNote = ""
 									m_states = 
 									[
@@ -2916,7 +2916,7 @@
 								{
 									_class = "CSequenceAnimNode"
 									m_sName = "Unnamed"
-									m_vecPosition = [ -200.0, -80.0 ]
+									m_vecPosition = [ -208.0, -80.0 ]
 									m_nNodeID = 
 									{
 										m_id = 705085692
@@ -2938,7 +2938,7 @@
 								{
 									_class = "CSequenceAnimNode"
 									m_sName = "Unnamed"
-									m_vecPosition = [ -200.0, 64.0 ]
+									m_vecPosition = [ -208.0, 64.0 ]
 									m_nNodeID = 
 									{
 										m_id = 1055914959
@@ -3074,82 +3074,13 @@
 							{
 								key = 
 								{
-									m_id = 1382193426
-								}
-								value = 
-								{
-									_class = "CBlendAnimNode"
-									m_sName = "Unnamed"
-									m_vecPosition = [ 200.0, -160.0 ]
-									m_nNodeID = 
-									{
-										m_id = 1382193426
-									}
-									m_networkMode = "ClientPredicted"
-									m_sNote = ""
-									m_children = 
-									[
-										{
-											m_inputConnection = 
-											{
-												m_nodeID = 
-												{
-													m_id = 1523070790
-												}
-												m_outputID = 
-												{
-													m_id = 4294967295
-												}
-											}
-											m_name = ""
-											m_blendValue = 30.0
-										},
-										{
-											m_inputConnection = 
-											{
-												m_nodeID = 
-												{
-													m_id = 1055914959
-												}
-												m_outputID = 
-												{
-													m_id = 4294967295
-												}
-											}
-											m_name = ""
-											m_blendValue = 0.0
-										},
-									]
-									m_blendValueSource = "Parameter"
-									m_param = 
-									{
-										m_id = 1652014548
-									}
-									m_blendKeyType = "BlendKey_UserValue"
-									m_bLockBlendOnReset = false
-									m_bSyncCycles = true
-									m_bLoop = true
-									m_bLockWhenWaning = true
-									m_damping = 
-									{
-										_class = "CAnimInputDamping"
-										m_speedFunction = "NoDamping"
-										m_fSpeedScale = 1.0
-										m_fMinSpeed = 10.0
-										m_fMaxTension = 1000.0
-									}
-								}
-							},
-							{
-								key = 
-								{
 									m_id = 1523070790
 								}
 								value = 
 								{
 									_class = "CBlend2DAnimNode"
 									m_sName = "Move"
-									m_vecPosition = [ -200.0, -160.0 ]
+									m_vecPosition = [ -208.0, -128.0 ]
 									m_nNodeID = 
 									{
 										m_id = 1523070790
@@ -3246,7 +3177,7 @@
 								{
 									_class = "CSequenceAnimNode"
 									m_sName = "Unnamed"
-									m_vecPosition = [ -192.0, 16.0 ]
+									m_vecPosition = [ -208.0, 16.0 ]
 									m_nNodeID = 
 									{
 										m_id = 1632453415
@@ -3268,7 +3199,7 @@
 								{
 									_class = "CSequenceAnimNode"
 									m_sName = "Unnamed"
-									m_vecPosition = [ -200.0, 112.0 ]
+									m_vecPosition = [ -208.0, 112.0 ]
 									m_nNodeID = 
 									{
 										m_id = 2026732894
@@ -3290,7 +3221,7 @@
 								{
 									_class = "CGroupOutputAnimNode"
 									m_sName = "Unnamed"
-									m_vecPosition = [ 560.0, -160.0 ]
+									m_vecPosition = [ 400.0, -112.0 ]
 									m_nNodeID = 
 									{
 										m_id = 2094079351

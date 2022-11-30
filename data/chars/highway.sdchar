@@ -2,10 +2,12 @@
 {
 	data = 
 	{
-		charactername = "Highway"
-		description = "Smooth Operator"
-		weaponclass = "sd_shotgun"
-		portrait = "materials/ui/portraits/portrait_highway.png"
-		model = resource:"models/playermodels/character_highway.vmdl"
+		CharacterName = "Highway"
+		Description = "Diet Vigilante"
+		WeaponClass = "sd_shotgun"
+		Portrait = resource:"materials/ui/portraits/portrait_highway.png"
+		Model = resource:"models/playermodels/character_highway.vmdl"
+		PortraitTexture = null
+		CharacterModel = resource:"models/playermodels/character_highway.vmdl"
 	}
 }

@@ -2,10 +2,12 @@
 {
 	data = 
 	{
-		weaponclass = "sd_smg"
-		charactername = "Dial-Up"
-		description = "The Busboy"
-		portrait = "materials/ui/portraits/portrait_dialup.png"
-		model = resource:"models/playermodels/character_dialup.vmdl"
+		CharacterName = "Dial-Up"
+		Description = "The Busboy"
+		WeaponClass = "sd_smg"
+		Portrait = resource:"materials/ui/portraits/portrait_dialup.png"
+		Model = resource:"models/characters/dial-up.vmdl"
+		PortraitTexture = null
+		CharacterModel = resource:"models/playermodels/character_dialup.vmdl"
 	}
 }
