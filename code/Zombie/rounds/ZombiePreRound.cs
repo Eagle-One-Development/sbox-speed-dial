@@ -1,63 +1,58 @@
 using System;
 using SpeedDial.Zombie.Player;
 
-namespace SpeedDial.Zombie.Rounds
+namespace SpeedDial.Zombie.Rounds;
+
+public partial class ZombiePreRound : TimedRound
 {
-	public partial class ZombiePreRound : TimedRound
+	public override TimeSpan RoundDuration => TimeSpan.FromSeconds( 11 );
+	private ZombieGamemode classic => Game.Current.ActiveGamemode as ZombieGamemode;
+	public override string RoundText => "Round starting...";
+
+	protected override void OnStart()
 	{
-		public override TimeSpan RoundDuration => TimeSpan.FromSeconds( 11 );
-		private ZombieGamemode classic => Game.Current.ActiveGamemode as ZombieGamemode;
-		public override string RoundText => "Round starting...";
+		base.OnStart();
 
-		protected override void OnStart()
+		classic.SetState( GamemodeState.Preparing );
+
+		if ( Host.IsServer )
 		{
-			base.OnStart();
-
-			classic.SetState( GamemodeState.Preparing );
-
-			if ( Host.IsServer )
-			{
-				//classic.PickNewSoundtrack();
-				// clear kills list to clear domination info
-				//classic.Kills.Clear();
-			}
-
-			foreach ( var client in Client.All.Where( x => x.Pawn is ZombiePlayer ) )
-			{
-				var pawn = client.Pawn as ZombiePlayer;
-				pawn.Respawn();
-
-				Classic.Player.ClassicPlayer.StopSoundtrack( To.Single( client ), true );
-				Classic.Player.ClassicPlayer.PlaySoundtrack( To.Single( client ) );
-
-				// reset scores etc from potential last round
-				client.SetValue( "score", 0 );
-				client.SetValue( "maxcombo", 0 );
-				client.SetValue( "combo", 0 );
-
-				pawn.Frozen = true;
-
-				Log.Debug( "pre round" );
-			}
-
-			// reset stuff from warmup etc
-			Game.Current.ActiveGamemode?.CallResetEvent();
+			//classic.PickNewSoundtrack();
+			// clear kills list to clear domination info
+			//classic.Kills.Clear();
 		}
 
-		protected override void OnFinish()
+		foreach ( var client in Client.All.Where( x => x.Pawn is ZombiePlayer ) )
 		{
-			base.OnFinish();
-			//Game.Current.ActiveGamemode?.ChangeRound( new Classic.Rounds.GameRound() );
+			var pawn = client.Pawn as ZombiePlayer;
+			pawn.Respawn();
+
+			//Classic.Player.ClassicPlayer.StopSoundtrack( To.Single( client ), true );
+			//Classic.Player.ClassicPlayer.PlaySoundtrack( To.Single( client ) );
+
+
+			pawn.Frozen = true;
+
+			Log.Debug( "pre round" );
 		}
 
-		public override void OnPawnJoined( BasePlayer pawn )
+		// reset stuff from warmup etc
+		Game.Current.ActiveGamemode?.CallResetEvent();
+	}
+
+	protected override void OnFinish()
+	{
+		base.OnFinish();
+		Game.Current.ActiveGamemode?.ChangeRound( new ZombieGameRound() );
+	}
+
+	public override void OnPawnJoined( BasePlayer pawn )
+	{
+		base.OnPawnJoined( pawn );
+		if ( pawn is ZombiePlayer player )
 		{
-			base.OnPawnJoined( pawn );
-			if ( pawn is ZombiePlayer player )
-			{
-				ZombiePlayer.PlaySoundtrack( To.Single( player.Client ) );
-				player.Frozen = true;
-			}
+			ZombiePlayer.PlaySoundtrack( To.Single( player.Client ) );
+			player.Frozen = true;
 		}
 	}
 }
