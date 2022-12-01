@@ -1970,8 +1970,8 @@
 						_class = "Attachment"
 						name = "pistol_attach"
 						parent_bone = "hand_r"
-						relative_origin = [ -3.460403, -2.736427, -0.328003 ]
-						relative_angles = [ 1.251168, -161.96637, 21.708994 ]
+						relative_origin = [ 1.36167, 2.128819, -0.684942 ]
+						relative_angles = [ 4.628259, 94.136269, -113.049667 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -1979,44 +1979,17 @@
 						_class = "Attachment"
 						name = "smg_attach"
 						parent_bone = "hand_r"
-						relative_origin = [ -4.0756, -1.838148, 0.67173 ]
-						relative_angles = [ 5.955971, -156.901871, 1.629869 ]
-						weight = 1.0
-						ignore_rotation = false
-					},
-					{
-						_class = "Attachment"
-						name = "rifle_attach"
-						parent_bone = "hand_r"
-						relative_origin = [ -2.291302, -1.1572, 0.998192 ]
-						relative_angles = [ 13.363872, -169.675278, -2.20414 ]
+						relative_origin = [ 1.36167, 2.12882, -0.684942 ]
+						relative_angles = [ 4.62826, 94.136299, -113.050003 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
 					{
 						_class = "Attachment"
 						name = "melee_bat_attach"
-						parent_bone = "hand_l"
-						relative_origin = [ 2.334858, 1.16357, 1.60859 ]
-						relative_angles = [ -4.407339, -96.651741, -156.617065 ]
-						weight = 1.0
-						ignore_rotation = false
-					},
-					{
-						_class = "Attachment"
-						name = "melee_pan_attach"
-						parent_bone = "hand_l"
-						relative_origin = [ 2.33486, 1.16357, 1.60859 ]
-						relative_angles = [ -4.40734, -96.651703, -156.617004 ]
-						weight = 1.0
-						ignore_rotation = false
-					},
-					{
-						_class = "Attachment"
-						name = "melee_pipe_attach"
-						parent_bone = "hand_l"
-						relative_origin = [ 2.33486, 1.16357, 1.60859 ]
-						relative_angles = [ -4.40734, -96.651703, -156.617004 ]
+						parent_bone = "hand_r"
+						relative_origin = [ 5.10144, 1.996616, -0.623686 ]
+						relative_angles = [ -7.499665, -92.944893, 92.915527 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -2026,24 +1999,6 @@
 						parent_bone = "head"
 						relative_origin = [ 0.0, 0.0, 0.0 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
-						weight = 1.0
-						ignore_rotation = false
-					},
-					{
-						_class = "Attachment"
-						name = "shotgun_attach"
-						parent_bone = "hand_r"
-						relative_origin = [ -1.842541, -1.511246, 0.598351 ]
-						relative_angles = [ 5.841206, -171.030411, 29.867294 ]
-						weight = 1.0
-						ignore_rotation = false
-					},
-					{
-						_class = "Attachment"
-						name = "roomclearer_attachment"
-						parent_bone = "hand_r"
-						relative_origin = [ -4.92599, -0.701643, 1.570538 ]
-						relative_angles = [ 2.36239, -170.263, 14.741102 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -2062,6 +2017,33 @@
 						parent_bone = "foot_r"
 						relative_origin = [ 0.0, 0.0, 0.0 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "rifle_attach"
+						parent_bone = "hand_r"
+						relative_origin = [ 1.36167, 2.128815, -0.684937 ]
+						relative_angles = [ 5.738011, 96.769798, -112.811676 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "roomclearer_attachment"
+						parent_bone = "hand_r"
+						relative_origin = [ 1.36167, 2.128815, -0.684933 ]
+						relative_angles = [ 16.732578, 127.180008, -106.721176 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "shotgun_attach"
+						parent_bone = "hand_r"
+						relative_origin = [ 1.361669, 2.128796, -0.684914 ]
+						relative_angles = [ 7.595217, 129.932953, -106.13916 ]
 						weight = 1.0
 						ignore_rotation = false
 					},

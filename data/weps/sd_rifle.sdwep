@@ -23,7 +23,7 @@
 		Scoped = false
 		RandomSpawnable = true
 		ExcludedGamemodes = 0
-		WorldModelPath = resource:"models/weapons/rifle/prop_rifle.vmdl"
+		WorldModelPath = resource:"models/weapons/ak47/ak47.vmdl"
 		HoldType = "Rifle"
 		HoldAttach = "rifle_attach"
 		MuzzleParticle = resource:"particles/pistol_muzzleflash.vpcf"
@@ -32,10 +32,10 @@
 		EjectAttach = "ejection_point"
 		UIEffectsScalar = 1
 		Icon = resource:"materials/ui/weapons/rifle.png"
-		ShootSound = resource:"sounds/simpleguns/rifle/sd_rifle.shoot.sound"
-		DryFireSound = resource:"sounds/simpleguns/misc/sd_dryfrire.sound"
-		EmptyPickupSound = resource:"sounds/weapon_fx/sd_pickup.empty.sound"
-		LoadedPickupSound = resource:"sounds/weapon_fx/sd_pickup.loaded.sound"
+		ShootSound = "sd_rifle.shoot"
+		DryFireSound = "sd_dryfrire"
+		EmptyPickupSound = "sd_pickup.empty"
+		LoadedPickupSound = "sd_pickup.loaded"
 		WorldModel = resource:"models/weapons/rifle/prop_rifle.vmdl"
 		IconTexture = null
 	}
