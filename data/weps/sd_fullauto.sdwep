@@ -23,7 +23,7 @@
 		Scoped = false
 		RandomSpawnable = false
 		ExcludedGamemodes = 0
-		WorldModelPath = resource:"models/weapons/smg/prop_smg.vmdl"
+		WorldModelPath = resource:"models/weapons/mac10/mac10.vmdl"
 		HoldType = "Smg"
 		HoldAttach = "smg_attach"
 		MuzzleParticle = resource:"particles/pistol_muzzleflash.vpcf"
@@ -32,10 +32,10 @@
 		EjectAttach = "ejection_point"
 		UIEffectsScalar = 0.2
 		Icon = resource:"materials/ui/weapons/smg.png"
-		ShootSound = resource:"sounds/simpleguns/smg/sd_smg.shoot.sound"
-		DryFireSound = resource:"sounds/simpleguns/misc/sd_dryfrire.sound"
-		EmptyPickupSound = resource:"sounds/weapon_fx/sd_pickup.empty.sound"
-		LoadedPickupSound = resource:"sounds/weapon_fx/sd_pickup.loaded.sound"
+		ShootSound = "sd_smg.shoot"
+		DryFireSound = "sd_dryfrire"
+		EmptyPickupSound = "sd_pickup.empty"
+		LoadedPickupSound = "sd_pickup.loaded"
 		WorldModel = resource:"models/weapons/smg/prop_smg.vmdl"
 		IconTexture = null
 	}
