@@ -4096,6 +4096,7 @@
 	m_previewModels = 
 	[
 		"models/characters/maria.vmdl",
+		"models/characters/dial-up.vmdl",
 	]
 	m_boneMergeModels = [  ]
 }

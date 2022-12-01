@@ -3,11 +3,11 @@
 	data = 
 	{
 		CharacterName = "Dial-Up"
-		Description = "The Busboy"
+		Description = "Dot Com Guy"
 		WeaponClass = "sd_smg"
 		Portrait = resource:"materials/ui/portraits/portrait_dialup.png"
 		Model = resource:"models/characters/dial-up.vmdl"
 		PortraitTexture = null
-		CharacterModel = resource:"models/playermodels/character_dialup.vmdl"
+		CharacterModel = resource:"models/characters/dial-up.vmdl"
 	}
 }
