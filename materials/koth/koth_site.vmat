@@ -2,7 +2,7 @@
 
 Layer0
 {
-	shader "speed-dial_koth_site.vfx"
+	shader "speed-dial_koth_site.shader"
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"
