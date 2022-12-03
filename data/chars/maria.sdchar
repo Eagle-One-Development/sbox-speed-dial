@@ -2,10 +2,12 @@
 {
 	data = 
 	{
-		charactername = "Maria"
-		description = "Luchador Lady"
-		weaponclass = "sd_rifle"
-		portrait = "materials/ui/portraits/portrait_maria.png"
-		model = resource:"models/playermodels/character_maria.vmdl"
+		CharacterName = "Maria"
+		Description = "Luchador Lady"
+		WeaponClass = "sd_rifle"
+		Portrait = resource:"materials/ui/portraits/portrait_maria.png"
+		Model = resource:"models/characters/maria.vmdl"
+		PortraitTexture = null
+		CharacterModel = resource:"models/characters/maria.vmdl"
 	}
 }

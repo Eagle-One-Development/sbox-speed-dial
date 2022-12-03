@@ -53,10 +53,7 @@
 						_class = "PhysicsShapeSphere"
 						parent_bone = ""
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
+						collision_tags = "solid"
 						radius = 195.0
 						center = [ 0.0, 0.0, 0.0 ]
 					},
@@ -66,5 +63,6 @@
 		model_archetype = ""
 		primary_associated_entity = ""
 		anim_graph_name = ""
+		base_model_name = ""
 	}
 }
