@@ -2,10 +2,12 @@
 {
 	data = 
 	{
-		charactername = "Jack"
-		description = "Homeless Vet"
-		weaponclass = "sd_pistol"
-		portrait = "materials/ui/portraits/portrait_jack.png"
-		model = resource:"models/playermodels/character_jack.vmdl"
+		CharacterName = "Jack"
+		Description = "Homeless Vet"
+		WeaponClass = "sd_pistol"
+		Portrait = resource:"materials/ui/portraits/portrait_jack.png"
+		Model = resource:"models/characters/jack.vmdl"
+		PortraitTexture = null
+		CharacterModel = resource:"models/playermodels/character_jack.vmdl"
 	}
 }
