@@ -77,7 +77,9 @@ public partial class ZombiePlayerController : BasePlayerController
 	{
 		if ( (Pawn as ZombiePlayer).Frozen ) return;
 		base.FrameSimulate();
-		EyeRotation = Input.Rotation;
+		var p = Pawn as BasePlayer;
+
+		EyeRotation = p.InputRotation;
 	}
 
 	public override void Simulate()
@@ -85,9 +87,9 @@ public partial class ZombiePlayerController : BasePlayerController
 		// do this stuff first so EyePosition is valid when frozen
 		EyeLocalPosition = Vector3.Up * (EyeHeight * Pawn.Scale);
 		UpdateBBox();
-
+		var p = Pawn as BasePlayer;
 		EyeLocalPosition += TraceOffset;
-		EyeRotation = Input.Rotation;
+		EyeRotation = p.InputRotation;
 
 		if ( (Pawn as ZombiePlayer).Frozen ) { WishVelocity = Vector3.Zero; return; }
 
@@ -116,7 +118,7 @@ public partial class ZombiePlayerController : BasePlayerController
 		}
 
 		// Work out wish velocity.. just take input, rotate it to view, clamp to -1, 1
-		WishVelocity = new Vector3( Input.Forward, Input.Left, 0 );
+		WishVelocity = new Vector3( p.InputForward, p.InputLeft, 0 );
 		var inSpeed = WishVelocity.Length.Clamp( 0, 1 );
 
 		WishVelocity = WishVelocity.WithZ( 0 );

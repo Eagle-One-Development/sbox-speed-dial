@@ -93,19 +93,38 @@ public partial class BasePlayer : AnimatedEntity
 		EnableHitboxes = true;
 	}
 
-	public override void BuildInput( InputBuilder input )
+	[ClientInput]
+	public Rotation InputRotation { get; set; }
+
+	[ClientInput]
+	public Angles InputViewAngles { get; set; }
+
+	[ClientInput]
+	public float InputForward { get; set; }
+
+	[ClientInput]
+	public float InputLeft { get; set; }
+
+	public override void BuildInput()
 	{
-		if ( input.StopProcessing )
+		if ( Input.StopProcessing )
 			return;
 
-		ActiveChild?.BuildInput( input );
+		// rotation
+		InputRotation = InputViewAngles.ToRotation();
 
-		GetActiveController()?.BuildInput( input );
+		// forward and left input from wasd
+		InputForward = Input.AnalogMove.x;
+		InputLeft = Input.AnalogMove.y;
 
-		if ( input.StopProcessing )
+		ActiveChild?.BuildInput();
+
+		GetActiveController()?.BuildInput();
+
+		if ( Input.StopProcessing )
 			return;
 
-		GetActiveAnimator()?.BuildInput( input );
+		GetActiveAnimator()?.BuildInput();
 	}
 
 	//

@@ -18,7 +18,7 @@ public partial class ClassicCamera : CameraMode
 
 	public bool CameraShift { get; set; }
 
-	public override void BuildInput( InputBuilder input )
+	public override void BuildInput()
 	{
 		var pawn = Local.Pawn;
 
@@ -29,20 +29,17 @@ public partial class ClassicCamera : CameraMode
 
 		Angles angles;
 
-		// always set movement input
-		input.InputDirection = input.AnalogMove;
-
 		// handle look input
-		if ( !input.UsingController )
+		if ( !Input.UsingController )
 		{
 
 			if ( pawn.Alive() )
 			{
-				if ( !Settings.ViewshiftToggle && input.Down( InputButton.Run ) )
+				if ( !Settings.ViewshiftToggle && Input.Down( InputButton.Run ) )
 				{
 					CameraShift = true;
 				}
-				else if ( Settings.ViewshiftToggle && input.Pressed( InputButton.Run ) )
+				else if ( Settings.ViewshiftToggle && Input.Pressed( InputButton.Run ) )
 				{
 					shiftToggle = !shiftToggle;
 				}
@@ -87,11 +84,11 @@ public partial class ClassicCamera : CameraMode
 		else
 		{
 			// shift on clicking in joystick
-			if ( !Settings.ViewshiftToggle && input.Down( InputButton.View ) )
+			if ( !Settings.ViewshiftToggle && Input.Down( InputButton.View ) )
 			{
 				CameraShift = true;
 			}
-			else if ( Settings.ViewshiftToggle && input.Pressed( InputButton.View ) )
+			else if ( Settings.ViewshiftToggle && Input.Pressed( InputButton.View ) )
 			{
 				shiftToggle = !shiftToggle;
 			}
@@ -100,11 +97,11 @@ public partial class ClassicCamera : CameraMode
 				CameraShift = false;
 			}
 
-			if ( MathF.Abs( input.AnalogLook.pitch ) + MathF.Abs( input.AnalogLook.yaw ) > 0 )
+			if ( MathF.Abs( Input.AnalogLook.pitch ) + MathF.Abs( Input.AnalogLook.yaw ) > 0 )
 			{
 				//var angle = MathF.Atan2(input.AnalogLook.pitch, input.AnalogLook.yaw).RadianToDegree();
-				Angles newDir = new Vector3( input.AnalogLook.pitch / 1.5f * -1.0f, input.AnalogLook.yaw / 1.5f, 0 ).EulerAngles;
-				ControllerLookInput = new Vector2( input.AnalogLook.yaw, -input.AnalogLook.pitch ).Normal;
+				Angles newDir = new Vector3( Input.AnalogLook.pitch / 1.5f * -1.0f, Input.AnalogLook.yaw / 1.5f, 0 ).EulerAngles;
+				ControllerLookInput = new Vector2( Input.AnalogLook.yaw, -Input.AnalogLook.pitch ).Normal;
 				angles = newDir;
 			}
 			else
@@ -118,8 +115,8 @@ public partial class ClassicCamera : CameraMode
 		tarAng = angles;
 		ang = Angles.Lerp( ang, tarAng, 24 * Time.Delta );
 
-		input.ViewAngles = ang;
-
+		var p = Local.Pawn as BasePlayer;
+		p.InputViewAngles = ang;
 	}
 
 	private Vector2 ControllerLookInput { get; set; } = Vector2.Zero;

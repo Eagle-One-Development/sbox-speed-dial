@@ -4,16 +4,16 @@ public partial class ClassicBot : Bot
 {
 	protected ClassicBotBehaviour behaviour;
 
-	public override void BuildInput( InputBuilder builder )
+	public override void BuildInput()
 	{
-		builder.Clear();
+		Input.ClearButtons();
 
 		if ( behaviour != null )
 		{
-			builder.InputDirection = behaviour.InputDirection;
-			builder.ViewAngles = behaviour.ViewAngles;
-			builder.SetButton( InputButton.PrimaryAttack, behaviour.Attack1 );
-			builder.SetButton( InputButton.SecondaryAttack, behaviour.Attack2 );
+			//Input.InputDirection = behaviour.InputDirection;
+			//Input.ViewAngles = behaviour.ViewAngles;
+			Input.SetButton( InputButton.PrimaryAttack, behaviour.Attack1 );
+			Input.SetButton( InputButton.SecondaryAttack, behaviour.Attack2 );
 		}
 	}
 

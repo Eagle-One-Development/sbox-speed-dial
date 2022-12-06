@@ -4,12 +4,14 @@ public class ClassicAnimator : PawnAnimator
 {
 	public override void Simulate()
 	{
-		var idealRotation = Rotation.LookAt( Input.Rotation.Forward.WithZ( 0 ), Vector3.Up );
+		var p = Pawn as BasePlayer;
+
+		var idealRotation = Rotation.LookAt( p.InputRotation.Forward.WithZ( 0 ), Vector3.Up );
 
 		DoRotation( idealRotation );
 		DoWalk( idealRotation );
 
-		Vector3 aimPos = Pawn.EyePosition + (Input.Rotation.Forward * 200);
+		Vector3 aimPos = Pawn.EyePosition + (p.InputRotation.Forward * 200);
 		Vector3 lookPos = aimPos;
 
 		// Look in the direction what the player's input is facing

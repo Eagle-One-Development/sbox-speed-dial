@@ -182,11 +182,11 @@ public partial class CharacterSelect : Panel
 
 
 	[Event.BuildInput]
-	public void BuildInput( InputBuilder input )
+	public void BuildInput()
 	{
-		Left = input.UsingController ? input.Pressed( InputButton.SlotPrev ) || input.Pressed( InputButton.Slot1 ) : input.Pressed( InputButton.Menu );
-		Right = input.UsingController ? input.Pressed( InputButton.SlotNext ) || input.Pressed( InputButton.Slot2 ) : input.Pressed( InputButton.Use );
-		Select = input.Pressed( InputButton.Jump );
-		Toggle = input.Pressed( InputButton.Duck );
+		Left = Input.UsingController ? Input.Pressed( InputButton.SlotPrev ) || Input.Pressed( InputButton.Slot1 ) : Input.Pressed( InputButton.Menu );
+		Right = Input.UsingController ? Input.Pressed( InputButton.SlotNext ) || Input.Pressed( InputButton.Slot2 ) : Input.Pressed( InputButton.Use );
+		Select = Input.Pressed( InputButton.Jump );
+		Toggle = Input.Pressed( InputButton.Duck );
 	}
 }
