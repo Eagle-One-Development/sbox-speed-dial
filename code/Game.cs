@@ -321,13 +321,13 @@ public partial class Game : GameBase
 		return camSetup;
 	}
 
-	public override void BuildInput( InputBuilder input )
+	public override void BuildInput()
 	{
-		Event.Run( "buildinput", input );
+		Event.Run( "buildinput" );
 
 		// the camera is the primary method here
-		LastCamera?.BuildInput( input );
-		Local.Pawn?.BuildInput( input );
+		LastCamera?.BuildInput();
+		Local.Pawn?.BuildInput();
 	}
 
 	public override void PostCameraSetup( ref CameraSetup camSetup )

@@ -5,7 +5,9 @@ public partial class OneChamberSpectatorController : PawnController
 	public override void Simulate()
 	{
 		base.Simulate();
-		var vel = new Vector3( Input.Forward, Input.Left, 0 );
+		var p = Pawn as BasePlayer;
+
+		var vel = new Vector3( p.InputForward, p.InputLeft, 0 );
 
 		vel = vel.Normal * 4000;
 
@@ -21,7 +23,7 @@ public partial class OneChamberSpectatorController : PawnController
 
 		Velocity = Velocity.Approach( 0, Velocity.Length * Time.Delta * 10 );
 
-		EyeRotation = Input.Rotation;
+		EyeRotation = p.InputRotation;
 		WishVelocity = Velocity;
 		GroundEntity = null;
 		BaseVelocity = Vector3.Zero;

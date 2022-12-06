@@ -11,7 +11,7 @@ public partial class OneChamberSpectatorCamera : CameraMode
 	private Angles ang;
 	private Angles tarAng;
 
-	public override void BuildInput( InputBuilder input )
+	public override void BuildInput()
 	{
 		var pawn = Local.Pawn;
 
@@ -22,11 +22,8 @@ public partial class OneChamberSpectatorCamera : CameraMode
 
 		Angles angles;
 
-		// always set movement input
-		input.InputDirection = input.AnalogMove;
-
 		// handle look input
-		if ( !input.UsingController )
+		if ( !Input.UsingController )
 		{
 			var direction = Screen.GetDirection( new Vector2( Mouse.Position.x, Mouse.Position.y ), 70, Rotation, Screen.Size );
 			var HitPosition = LinePlaneIntersectionWithHeight( Position, direction, pawn.EyePosition.z - 20 );
@@ -58,10 +55,10 @@ public partial class OneChamberSpectatorCamera : CameraMode
 		}
 		else
 		{
-			if ( MathF.Abs( input.AnalogLook.pitch ) + MathF.Abs( input.AnalogLook.yaw ) > 0 )
+			if ( MathF.Abs( Input.AnalogLook.pitch ) + MathF.Abs( Input.AnalogLook.yaw ) > 0 )
 			{
 				//var angle = MathF.Atan2(input.AnalogLook.pitch, input.AnalogLook.yaw).RadianToDegree();
-				Angles newDir = new Vector3( input.AnalogLook.pitch / 1.5f * -1.0f, input.AnalogLook.yaw / 1.5f, 0 ).EulerAngles;
+				Angles newDir = new Vector3( Input.AnalogLook.pitch / 1.5f * -1.0f, Input.AnalogLook.yaw / 1.5f, 0 ).EulerAngles;
 				angles = newDir;
 			}
 			else
@@ -74,7 +71,8 @@ public partial class OneChamberSpectatorCamera : CameraMode
 		tarAng = angles;
 		ang = Angles.Lerp( ang, tarAng, 24 * Time.Delta );
 
-		input.ViewAngles = ang;
+		var p = Local.Pawn as BasePlayer;
+		p.InputViewAngles = ang;
 	}
 
 	public override void Update()
