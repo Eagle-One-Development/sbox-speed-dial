@@ -15,7 +15,7 @@ public partial class ClassicKillFeed : Panel
 		var e = Current.AddChild<KillFeedEntry>();
 
 		e.Left.Text = left;
-		e.Left.SetClass( "me", lsteamid == (Local.Client?.PlayerId) );
+		e.Left.SetClass( "me", lsteamid == (Local.Client?.SteamId) );
 
 		// set kill icon based on Cause Of Death
 		e.Method.SetClass( "domination", domination );
@@ -26,12 +26,12 @@ public partial class ClassicKillFeed : Panel
 		}
 
 		e.Right.Text = right;
-		e.Right.SetClass( "me", rsteamid == (Local.Client?.PlayerId) );
+		e.Right.SetClass( "me", rsteamid == (Local.Client?.SteamId) );
 
-		e.Important = lsteamid == (Local.Client?.PlayerId) || rsteamid == (Local.Client?.PlayerId);
+		e.Important = lsteamid == (Local.Client?.SteamId) || rsteamid == (Local.Client?.SteamId);
 
-		e.SetClass( "kill", lsteamid == (Local.Client?.PlayerId) );
-		e.SetClass( "death", rsteamid == (Local.Client?.PlayerId) );
+		e.SetClass( "kill", lsteamid == (Local.Client?.SteamId) );
+		e.SetClass( "death", rsteamid == (Local.Client?.SteamId) );
 
 		// suicide hack
 		if ( method.ToLower() == "suicide" )

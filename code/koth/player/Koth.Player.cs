@@ -42,7 +42,7 @@ public partial class KothPlayer : ClassicPlayer
 				//Every Second add 10 score multiplied by our current combo
 				int score = 10 * Math.Max( Client.GetValue( "combo", 1 ), 1 );
 				Client.AddInt( "score", score );
-				WorldHints.AddHint( To.Single( Client ), $"+{score} pts", EyePosition, 1.5f );
+				WorldHints.AddHint( To.Single( Client ), $"+{score} pts", AimRay.Position, 1.5f );
 				TimeSinceCircleScore = 0f;
 			}
 		}

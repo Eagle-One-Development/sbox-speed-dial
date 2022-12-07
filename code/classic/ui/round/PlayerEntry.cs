@@ -34,7 +34,7 @@ public partial class PlayerEntry : Panel
 		Score.Text = $"{scoreFormatted}";
 		if ( Avatar.Texture is null )
 		{
-			Avatar.SetTexture( $"avatar:{Client.PlayerId}" );
+			Avatar.SetTexture( $"avatar:{Client.SteamId}" );
 		}
 
 		Score.SetClass( "me", Client == Local.Client );

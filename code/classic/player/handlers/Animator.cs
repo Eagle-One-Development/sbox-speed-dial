@@ -11,7 +11,7 @@ public class ClassicAnimator : PawnAnimator
 		DoRotation( idealRotation );
 		DoWalk( idealRotation );
 
-		Vector3 aimPos = Pawn.EyePosition + (p.InputRotation.Forward * 200);
+		Vector3 aimPos = p.AimRay.Position + (p.InputRotation.Forward * 200);
 		Vector3 lookPos = aimPos;
 
 		// Look in the direction what the player's input is facing

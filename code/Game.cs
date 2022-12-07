@@ -17,7 +17,7 @@ using SpeedDial.Classic.Player;
 //CREDIT: Modified from Espionage.Engine by Jake Wooshito
 namespace SpeedDial;
 
-public partial class Game : GameBase
+public partial class Game : GameManager
 {
 
 	public static Game Current { get; protected set; }
@@ -246,14 +246,16 @@ public partial class Game : GameBase
 
 	public virtual void PawnSuicide( Client client )
 	{
+		if ( client.Pawn is not BasePlayer player )
+			return;
 		if ( ActiveGamemode is not null )
 		{
 			if ( ActiveGamemode.OnClientSuicide( client ) )
-				client.Pawn.Kill();
+				player.Kill();
 		}
 		else
 		{
-			client.Pawn.Kill();
+			player.Kill();
 		}
 	}
 
@@ -271,7 +273,7 @@ public partial class Game : GameBase
 		if ( !cl.Pawn.IsAuthority )
 			return;
 
-		cl.Pawn.Simulate( cl );
+		(cl.Pawn as Entity)?.Simulate( cl );
 	}
 
 	public override void FrameSimulate( Client cl )
@@ -281,7 +283,7 @@ public partial class Game : GameBase
 		if ( !cl.Pawn.IsValid() )
 			return;
 
-		cl.Pawn?.FrameSimulate( cl );
+		(cl.Pawn as Entity)?.FrameSimulate( cl );
 	}
 
 	//
@@ -291,7 +293,7 @@ public partial class Game : GameBase
 	public virtual CameraMode FindActiveCamera()
 	{
 		var devCam = Local.Client.Components.Get<DevCamera>();
-		if ( devCam != null ) return devCam;
+		if ( devCam != null ) return null;
 
 		var clientCam = Local.Client.Components.Get<CameraMode>();
 		if ( clientCam != null ) return clientCam;
@@ -303,7 +305,8 @@ public partial class Game : GameBase
 	[Predicted]
 	protected CameraMode LastCamera { get; set; }
 
-	public override CameraSetup BuildCamera( CameraSetup camSetup )
+	[Event.Client.PostCamera]
+	public void BuildCamera()
 	{
 		var cam = FindActiveCamera();
 
@@ -314,11 +317,10 @@ public partial class Game : GameBase
 			LastCamera?.Activated();
 		}
 
-		cam?.Build( ref camSetup );
+		cam?.Build();
 
-		PostCameraSetup( ref camSetup );
+		PostCameraSetup();
 
-		return camSetup;
 	}
 
 	public override void BuildInput()
@@ -330,14 +332,13 @@ public partial class Game : GameBase
 		Local.Pawn?.BuildInput();
 	}
 
-	public override void PostCameraSetup( ref CameraSetup camSetup )
+	public void PostCameraSetup()
 	{
 
 		if ( Local.Pawn != null )
 		{
 			// VR anchor default is at the pawn's location
 			VR.Anchor = Local.Pawn.Transform;
-			Local.Pawn.PostCameraSetup( ref camSetup );
 		}
 	}
 
@@ -481,7 +482,7 @@ public partial class Game : GameBase
 		if ( ent == null || !ent.IsValid ) return true;
 
 		// Gamemode related stuff, game entity, HUD, etc
-		return ent is not GameBase && ent.Parent is not GameBase && ent is not Hud && ent is not VoteEntity;
+		return ent is not GameManager && ent.Parent is not GameManager && ent is not Hud && ent is not VoteEntity;
 	}
 }
 

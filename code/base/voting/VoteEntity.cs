@@ -72,23 +72,23 @@ public partial class VoteEntity : Entity
 			Log.Error( "invalid client" );
 			return;
 		}
-		var id = ConsoleSystem.Caller.PlayerId;
+		var id = ConsoleSystem.Caller.SteamId;
 		Current.HandleVote( id, index );
 	}
 
-	public void HandleVote( long playerid, int index )
+	public void HandleVote( long SteamId, int index )
 	{
 		// simple range check to see if the index exists. -2 means skip vote
 		if ( (index >= 0 && index < VoteItems.Count) || index == -2 )
 		{
 			// player has already voted, change previous vote index
-			if ( _votes.ContainsKey( playerid ) )
+			if ( _votes.ContainsKey( SteamId ) )
 			{
-				_votes[playerid] = index;
+				_votes[SteamId] = index;
 			}
 			else
 			{
-				_votes.Add( playerid, index );
+				_votes.Add( SteamId, index );
 			}
 			return;
 		}
@@ -191,11 +191,11 @@ public partial class VoteEntity : Entity
 	/// <summary>
 	/// Returns the index of the item the given client has voted for.
 	/// </summary>
-	/// <param name="playerid">PlayerID of the client.</param>
+	/// <param name="SteamId">SteamId of the client.</param>
 	/// <returns>The index of the voted item. -1 if the client has not voted.</returns>
-	public int GetClientVotedIndex( long playerid )
+	public int GetClientVotedIndex( long SteamId )
 	{
-		return _votes.TryGetValue( playerid, out var votes ) ? votes : -1;
+		return _votes.TryGetValue( SteamId, out var votes ) ? votes : -1;
 	}
 
 	/// <summary>

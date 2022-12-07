@@ -22,7 +22,7 @@ public partial class ClassicCamera : CameraMode
 	{
 		var pawn = Local.Pawn;
 
-		if ( pawn == null )
+		if ( pawn == null || pawn is not BasePlayer player )
 		{
 			return;
 		}
@@ -54,7 +54,7 @@ public partial class ClassicCamera : CameraMode
 			}
 
 			var direction = Screen.GetDirection( new Vector2( Mouse.Position.x, Mouse.Position.y ), 70, Rotation, Screen.Size );
-			var HitPosition = LinePlaneIntersectionWithHeight( Position, direction, pawn.EyePosition.z - 20 );
+			var HitPosition = LinePlaneIntersectionWithHeight( Position, direction, player.EyePosition.z - 20 );
 
 			// since we got our cursor in world space because of the plane intersect above, we need to set it for the crosshair
 			var mouse = HitPosition.ToScreen();
@@ -65,19 +65,19 @@ public partial class ClassicCamera : CameraMode
 				.UseHitboxes()
 				.EntitiesOnly()
 				.Size( 1 )
-				.Ignore( pawn )
+				.Ignore( player )
 				.Run();
 
 			// aim assist when pointing on a player
 			if ( targetTrace.Hit && targetTrace.Entity is ClassicPlayer )
 			{
 				if ( Debug.Camera )
-					DebugOverlay.Line( pawn.EyePosition, targetTrace.Entity.EyePosition + (Vector3.Down * 20), Color.Red, 0, true );
-				angles = (targetTrace.Entity.EyePosition + (Vector3.Down * 20) - (pawn.EyePosition - (Vector3.Up * 20))).EulerAngles;
+					DebugOverlay.Line( player.EyePosition, targetTrace.Entity.AimRay.Position + (Vector3.Down * 20), Color.Red, 0, true );
+				angles = (targetTrace.Entity.AimRay.Position + (Vector3.Down * 20) - (player.EyePosition - (Vector3.Up * 20))).EulerAngles;
 			}
 			else
 			{
-				angles = (HitPosition - (pawn.EyePosition - (Vector3.Up * 20))).EulerAngles;
+				angles = (HitPosition - (player.EyePosition - (Vector3.Up * 20))).EulerAngles;
 			}
 
 		}
@@ -115,8 +115,7 @@ public partial class ClassicCamera : CameraMode
 		tarAng = angles;
 		ang = Angles.Lerp( ang, tarAng, 24 * Time.Delta );
 
-		var p = Local.Pawn as BasePlayer;
-		p.InputViewAngles = ang;
+		player.InputViewAngles = ang;
 	}
 
 	private Vector2 ControllerLookInput { get; set; } = Vector2.Zero;
@@ -180,7 +179,7 @@ public partial class ClassicCamera : CameraMode
 			DebugOverlay.Sphere( HitPosition, 5, Color.Green, Time.Delta, false );
 		}
 
-		FieldOfView = 70;
+		FieldOfView = Screen.CreateVerticalFieldOfView( 70 );
 		Viewer = null;
 	}
 

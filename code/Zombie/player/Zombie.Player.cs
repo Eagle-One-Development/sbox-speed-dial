@@ -113,7 +113,7 @@ public partial class ZombiePlayer : ClassicPlayer
 				if ( IsServer )
 				{
 					var ent = WeaponBlueprint.Create( WeaponBlueprint.GetRandomSpawnable() );
-					ent.Position = EyePosition;
+					ent.Position = AimRay.Position;
 				}
 			}
 		}
@@ -155,7 +155,7 @@ public partial class ZombiePlayer : ClassicPlayer
 		{
 			ActiveMelee = false;
 			var forward = EyeRotation.Forward;
-			Vector3 pos = EyePosition + (Vector3.Down * 20f);
+			Vector3 pos = AimRay.Position + (Vector3.Down * 20f);
 			var tr = Trace.Ray( pos, pos + (forward * 40f) )
 			.UseHitboxes()
 			.WithAnyTags( "solid", "player" )

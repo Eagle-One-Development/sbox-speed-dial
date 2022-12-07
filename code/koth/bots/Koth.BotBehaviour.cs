@@ -42,7 +42,7 @@ public partial class KothBotBehaviour : ClassicBotBehaviour
 		Entity target = null;
 
 		// get those entities
-		var closestPlayer = GetClosestEntityInSphere<ClassicPlayer>( Bot.Client.Pawn.Position, SearchRadius, Bot.Client.Pawn );
+		var closestPlayer = GetClosestEntityInSphere<ClassicPlayer>( Bot.Client.Pawn.Position, SearchRadius, Bot.Client.Pawn as Entity );
 		var closestWeapon = GetClosestEntityInSphere<Weapon>( Bot.Client.Pawn.Position, SearchRadius );
 		var closestDrug = GetClosestEntityInSphere<ClassicBaseDrug>( Bot.Client.Pawn.Position, SearchRadius );
 
