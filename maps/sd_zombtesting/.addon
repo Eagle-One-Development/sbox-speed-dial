@@ -1,0 +1,17 @@
+{
+  "Title": "SD_ZombTesting",
+  "Type": "map",
+  "Org": "eagleone",
+  "Ident": "sd_zombtesting",
+  "Tags": "",
+  "Schema": 1,
+  "HasAssets": true,
+  "AssetsPath": "",
+  "ResourcePaths": null,
+  "HasCode": false,
+  "CodePath": null,
+  "RootNamespace": null,
+  "Metadata": {
+    "ProjectTemplate": null
+  }
+}
