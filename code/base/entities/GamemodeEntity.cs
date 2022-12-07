@@ -4,7 +4,7 @@
 public partial class GamemodeEntity : Entity
 {
 
-	[Property( "excludedgamemodes", Title = "Excluded Gamemodes" ), FGDType( "flags" )]
+	[Property( "excludedgamemodes", Title = "Excluded Gamemodes" )]
 	public Gamemodes ExcludedGamemodes { get; set; }
 
 	public bool Enabled { get; private set; } = true;

@@ -1,5 +1,46 @@
+@using SpeedDial.Classic.UI;
 @namespace SpeedDial.Zombie
 @attribute [StyleSheet("/zombie/ui/Hud.Zombie.scss")]
 @inherits Panel
 
-<div> Hello World </div>
+<root class="root">
+
+	<ChatBox />
+	<voicelist />
+
+	<div class="override-state-game">
+		<WorldHints />
+
+		<WeaponPanel />
+		<ScorePanel />
+		<DrugPanel />
+		@* <RoundPanel /> *@
+
+		<ScreenHints />
+
+		<ClassicKillFeed />
+
+		<CharacterSelect />
+	</div>
+
+	<WinScreen />
+
+	<ClassicScoreboard />
+
+	<div class="override-state-cursor">
+		<Crosshair />
+	</div>
+
+</root>
+
+@code {
+
+	public override void Tick()
+	{
+		base.Tick();
+		// game panels hide in post round
+		SetClass("state-visible-game", !Gamemode.Instance.Ending && !Debug.UI);
+		// cursor only shows when using mouse input
+		SetClass("state-visible-cursor", !Input.UsingController && !Debug.UI); //&& Local.Pawn is not ClassicSpectator);
+	}
+}
