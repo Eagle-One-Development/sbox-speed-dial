@@ -60,18 +60,18 @@ public partial class KothGamemode : ClassicGamemode
 			if ( victim.LastAttacker.Client != null )
 			{
 				// tell everyone but the two clients involved about the kill like usual
-				ClassicKillFeed.AddDeath( To.Multiple( Client.All.Except( new Client[] { victim.Client, victim.LastAttacker.Client } ) ), victim.LastAttacker.Client.PlayerId, victim.LastAttacker.Client.Name, victim.Client.PlayerId, victim.Client.Name, victim.DeathCause.ToString() );
+				ClassicKillFeed.AddDeath( To.Multiple( Client.All.Except( new Client[] { victim.Client, victim.LastAttacker.Client } ) ), victim.LastAttacker.Client.SteamId, victim.LastAttacker.Client.Name, victim.Client.SteamId, victim.Client.Name, victim.DeathCause.ToString() );
 				// only tell the people involved about domination
-				ClassicKillFeed.AddDeath( To.Multiple( new Client[] { victim.Client, victim.LastAttacker.Client } ), victim.LastAttacker.Client.PlayerId, victim.LastAttacker.Client.Name, victim.Client.PlayerId, victim.Client.Name, victim.DeathCause.ToString(), highlight );
+				ClassicKillFeed.AddDeath( To.Multiple( new Client[] { victim.Client, victim.LastAttacker.Client } ), victim.LastAttacker.Client.SteamId, victim.LastAttacker.Client.Name, victim.Client.SteamId, victim.Client.Name, victim.DeathCause.ToString(), highlight );
 			}
 			else
 			{
-				ClassicKillFeed.AddDeath( victim.LastAttacker.NetworkIdent, victim.LastAttacker.ToString(), victim.Client.PlayerId, victim.Client.Name, victim.DeathCause.ToString() );
+				ClassicKillFeed.AddDeath( victim.LastAttacker.NetworkIdent, victim.LastAttacker.ToString(), victim.Client.SteamId, victim.Client.Name, victim.DeathCause.ToString() );
 			}
 		}
 		else
 		{
-			ClassicKillFeed.AddDeath( victim.Client.PlayerId, victim.Client.Name, 0, "", victim.DeathCause.ToString() );
+			ClassicKillFeed.AddDeath( victim.Client.SteamId, victim.Client.Name, 0, "", victim.DeathCause.ToString() );
 		}
 	}
 

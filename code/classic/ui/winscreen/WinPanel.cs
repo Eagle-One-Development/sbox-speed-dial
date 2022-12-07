@@ -25,7 +25,7 @@ public partial class WinPanel : Panel
 		var pawn = client.Pawn as ClassicPlayer;
 		Portrait.Texture = pawn.Character.PortraitTexture;
 		Score.Text = $"{client.GetValue( "score", 0 )} PTS";
-		Avatar.SetTexture( $"avatar:{client.PlayerId}" );
+		Avatar.SetTexture( $"avatar:{client.SteamId}" );
 		Icon.SetTexture( position == 1 ? "materials/ui/misc/crown.png" : position == 2 ? "materials/ui/misc/dice.png" : "materials/ui/misc/crosshair.png" );
 		Position.Text = $"{(position == 1 ? "WINNER" : position == 2 ? "2ND" : "3RD")}";
 		Name.Text = $"{client.Name.ToUpper()}";

@@ -11,6 +11,12 @@ public partial class BasePlayer : AnimatedEntity
 	[Net] public BaseCarriable LastActiveChild { get; set; }
 	[Net] public BaseCarriable ActiveChild { get; set; }
 
+	[Net, Predicted] public Rotation EyeRotation { get; set; }
+	[Net, Predicted] public Vector3 EyeLocalPosition { get; set; }
+	public Vector3 EyePosition => AimRay.Position;
+
+	public override Ray AimRay => new( EyeLocalPosition + Position, EyeRotation.Forward );
+
 	public override void Simulate( Client cl )
 	{
 		if ( LifeState == LifeState.Dead )

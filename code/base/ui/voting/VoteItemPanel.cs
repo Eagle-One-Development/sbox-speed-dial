@@ -26,10 +26,10 @@ public class VoteItemPanel : Panel
 
 	public override void Tick()
 	{
-		SetClass("skip", index == -2);
-		SetClass("voted", VoteEntity.Current?.GetClientVotedIndex(Local.Client.PlayerId) == index);
-		SetClass("winner", VoteEntity.Current?.WinnerIndex == index);
-		Votes = $"{VoteEntity.Current?.GetVotes(index)}";
+		SetClass( "skip", index == -2 );
+		SetClass( "voted", VoteEntity.Current?.GetClientVotedIndex( Local.Client.SteamId ) == index );
+		SetClass( "winner", VoteEntity.Current?.WinnerIndex == index );
+		Votes = $"{VoteEntity.Current?.GetVotes( index )}";
 	}
 
 	protected override void OnMouseDown(MousePanelEvent e)

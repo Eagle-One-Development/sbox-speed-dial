@@ -190,13 +190,13 @@ public partial class Weapon : BaseCarriable
 
 		var player = Owner as ClassicPlayer;
 
-		var forward = Owner.EyeRotation.Forward;
+		var forward = player.EyeRotation.Forward;
 		forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f * ((player.ActiveDrug && player.DrugType is DrugType.Ritindi) ? 0.25f : 1f);
 		forward = forward.Normal;
 		forward.z *= Blueprint.VerticalSpreadMultiplier;
 
 		int index = 0;
-		foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + (forward * Blueprint.BulletRange), bulletSize ) )
+		foreach ( var tr in TraceBullet( player.EyePosition, player.EyePosition + (forward * Blueprint.BulletRange), bulletSize ) )
 		{
 			tr.Surface.DoBulletImpact( tr );
 

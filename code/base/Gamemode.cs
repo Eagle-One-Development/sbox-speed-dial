@@ -168,7 +168,7 @@ public abstract partial class Gamemode : Entity
 		ActiveRound = null;
 	}
 
-	[Event.Frame]
+	[Event.Client.Frame]
 	protected virtual void RoundDebug()
 	{
 		// Do this for now. To lazy to implement UI

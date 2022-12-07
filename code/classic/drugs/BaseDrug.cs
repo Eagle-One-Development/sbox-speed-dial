@@ -90,7 +90,7 @@ public partial class ClassicBaseDrug : ModelEntity
 		}
 	}
 
-	[Event.Frame]
+	[Event.Client.Frame]
 	public void Frame()
 	{
 		if ( SceneObject is null ) return;

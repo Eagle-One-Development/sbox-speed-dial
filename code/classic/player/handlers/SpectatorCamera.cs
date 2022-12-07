@@ -15,7 +15,7 @@ public partial class OneChamberSpectatorCamera : CameraMode
 	{
 		var pawn = Local.Pawn;
 
-		if ( pawn == null )
+		if ( pawn == null || pawn is not BasePlayer player )
 		{
 			return;
 		}
@@ -26,7 +26,7 @@ public partial class OneChamberSpectatorCamera : CameraMode
 		if ( !Input.UsingController )
 		{
 			var direction = Screen.GetDirection( new Vector2( Mouse.Position.x, Mouse.Position.y ), 70, Rotation, Screen.Size );
-			var HitPosition = LinePlaneIntersectionWithHeight( Position, direction, pawn.EyePosition.z - 20 );
+			var HitPosition = LinePlaneIntersectionWithHeight( Position, direction, player.EyePosition.z - 20 );
 
 			// since we got our cursor in world space because of the plane intersect above, we need to set it for the crosshair
 			var mouse = HitPosition.ToScreen();
@@ -37,19 +37,19 @@ public partial class OneChamberSpectatorCamera : CameraMode
 				.UseHitboxes()
 				.EntitiesOnly()
 				.Size( 1 )
-				.Ignore( pawn )
+				.Ignore( player )
 				.Run();
 
 			// aim assist when pointing on a player
 			if ( targetTrace.Hit && targetTrace.Entity is ClassicPlayer )
 			{
 				if ( Debug.Camera )
-					DebugOverlay.Line( pawn.EyePosition, targetTrace.Entity.EyePosition + (Vector3.Down * 20), Color.Red, 0, true );
-				angles = (targetTrace.Entity.EyePosition + (Vector3.Down * 20) - (pawn.EyePosition - (Vector3.Up * 20))).EulerAngles;
+					DebugOverlay.Line( player.EyePosition, targetTrace.Entity.AimRay.Position + (Vector3.Down * 20), Color.Red, 0, true );
+				angles = (targetTrace.Entity.AimRay.Position + (Vector3.Down * 20) - (player.EyePosition - (Vector3.Up * 20))).EulerAngles;
 			}
 			else
 			{
-				angles = (HitPosition - (pawn.EyePosition - (Vector3.Up * 20))).EulerAngles;
+				angles = (HitPosition - (player.EyePosition - (Vector3.Up * 20))).EulerAngles;
 			}
 
 		}
@@ -71,18 +71,17 @@ public partial class OneChamberSpectatorCamera : CameraMode
 		tarAng = angles;
 		ang = Angles.Lerp( ang, tarAng, 24 * Time.Delta );
 
-		var p = Local.Pawn as BasePlayer;
-		p.InputViewAngles = ang;
+		player.InputViewAngles = ang;
 	}
 
 	public override void Update()
 	{
 		var pawn = Local.Pawn;
 
-		if ( pawn == null )
+		if ( pawn == null || pawn is not BasePlayer player )
 			return;
 
-		var _pos = pawn.EyePosition + (Vector3.Down * 20); // relative to pawn EyePosition
+		var _pos = player.EyePosition + (Vector3.Down * 20); // relative to pawn EyePosition
 		_pos += Vector3.Up * CameraHeight; // add camera height
 										   // why didn't we just do this with Rotation.LookAt????
 										   // [DOC] answer: cause we (I) wanted a fixed/clearly defined angle
@@ -97,21 +96,21 @@ public partial class OneChamberSpectatorCamera : CameraMode
 		if ( Debug.Camera )
 		{
 			var direction = Screen.GetDirection( new Vector2( Mouse.Position.x, Mouse.Position.y ), 70, Rotation, Screen.Size );
-			var HitPosition = LinePlaneIntersectionWithHeight( Position, direction, pawn.EyePosition.z );
+			var HitPosition = LinePlaneIntersectionWithHeight( Position, direction, player.EyePosition.z );
 			// 
 			DebugOverlay.ScreenText( $"Pos {Position}", new Vector2( 300, 300 ), 2, Color.Green );
 			DebugOverlay.ScreenText( $"Dir {direction}", new Vector2( 300, 300 ), 3, Color.Green );
 			DebugOverlay.ScreenText( $"HitPos {HitPosition}", new Vector2( 300, 300 ), 4, Color.Green );
 			// 
-			var Distance = HitPosition - pawn.EyePosition;
+			var Distance = HitPosition - player.EyePosition;
 			// 
-			DebugOverlay.Line( pawn.EyePosition, pawn.EyePosition + Distance, Color.Green, 0, false );
+			DebugOverlay.Line( player.EyePosition, player.EyePosition + Distance, Color.Green, 0, false );
 
 			// TEMP CROSSHAIR
 			DebugOverlay.Sphere( HitPosition, 5, Color.Green, Time.Delta, false );
 		}
 
-		FieldOfView = 70;
+		FieldOfView = Screen.CreateVerticalFieldOfView( 70 );
 		Viewer = null;
 	}
 

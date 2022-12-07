@@ -42,7 +42,7 @@ public partial class ScreenHints : Panel
 			FireExtra = false;
 		}
 
-		KillerAvatar.SetTexture( $"avatar:{Killer?.PlayerId}" );
+		KillerAvatar.SetTexture( $"avatar:{Killer?.SteamId}" );
 		KillerName = $"{Killer?.Name}";
 
 		// if you're here to find a way to forcefully hide the current 

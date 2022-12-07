@@ -48,8 +48,9 @@ public partial class ClassicBotBehaviour
 			DebugOverlay.Sphere( Bot.Client.Pawn.Position, SearchRadius, Color.Magenta );
 			DebugOverlay.Text( $"{Bot.GetType().Name}\nFake Client Name: {Bot.Client.Name}\nCurrent Target: {(CurrentTarget != null ? CurrentTarget : "null")}", Bot.Client.Pawn.Position, CurrentTarget != null ? Color.Yellow : Color.White, 0, 1000 );
 		}
+		if ( Bot.Client.Pawn is not BasePlayer player ) return;
 
-		if ( Bot.Client.Pawn is null || Bot.Client.Pawn.LifeState == LifeState.Dead || (Bot.Client.Pawn as ClassicPlayer).Frozen ) return;
+		if ( Bot.Client.Pawn is null || player.LifeState == LifeState.Dead || (player as ClassicPlayer).Frozen ) return;
 
 		SetInputs();
 
@@ -137,7 +138,7 @@ public partial class ClassicBotBehaviour
 		Entity target = null;
 
 		// get those entities
-		var closestPlayer = GetClosestEntityInSphere<ClassicPlayer>( Bot.Client.Pawn.Position, SearchRadius, Bot.Client.Pawn );
+		var closestPlayer = GetClosestEntityInSphere<ClassicPlayer>( Bot.Client.Pawn.Position, SearchRadius, Bot.Client.Pawn as Entity );
 		var closestWeapon = GetClosestEntityInSphere<Weapon>( Bot.Client.Pawn.Position, SearchRadius );
 		var closestDrug = GetClosestEntityInSphere<ClassicBaseDrug>( Bot.Client.Pawn.Position, SearchRadius );
 

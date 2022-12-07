@@ -181,7 +181,7 @@ public partial class CharacterSelect : Panel
 	private bool Toggle;
 
 
-	[Event.BuildInput]
+	[Event.Client.BuildInput]
 	public void BuildInput()
 	{
 		Left = Input.UsingController ? Input.Pressed( InputButton.SlotPrev ) || Input.Pressed( InputButton.Slot1 ) : Input.Pressed( InputButton.Menu );

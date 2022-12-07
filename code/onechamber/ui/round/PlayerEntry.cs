@@ -35,7 +35,7 @@ public partial class OneChamberPlayerEntry : Panel
 
 		if ( Avatar.Texture is null )
 		{
-			Avatar.SetTexture( $"avatar:{Client.PlayerId}" );
+			Avatar.SetTexture( $"avatar:{Client.SteamId}" );
 		}
 
 		Score.SetClass( "me", Client == Local.Client );
