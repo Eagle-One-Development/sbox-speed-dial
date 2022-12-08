@@ -1,6 +1,6 @@
 ﻿namespace SpeedDial.Koth.Entities;
 
-[Library( "sd_koth_hill_spawn", Title = "Random Hill Site Spawn" )]
+[Library( "sd_koth_hill_spawn" ), Title( "Random Hill Site Spawn" ), Category( "Gameplay" ), HammerEntity]
 [EditorModel( "models/koth/ring.vmdl" )]
 public partial class HillSpotSpawn : GamemodeEntity
 {

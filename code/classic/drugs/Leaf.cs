@@ -1,6 +1,6 @@
 namespace SpeedDial.Classic.Drugs;
 
-[Library( "sd_leaf" )]
+[Library( "sd_leaf" ), HammerEntity]
 [EditorModel( "models/drugs/leaf/leaf.vmdl" )]
 [Category( "Speed-Dial Drugs" )]
 public class Leaf : ClassicBaseDrug

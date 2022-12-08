@@ -1,6 +1,6 @@
 namespace SpeedDial.Zombie.Entities;
 
-[HammerEntity, Category( "Speed-Dial Zombie" )]
+[HammerEntity, Category( "Speed-Dial Zombie" ), Library( "sd_zombie_buyzone" ), Title( "Buy Zone" )]
 [BoundsHelper( nameof( BuyZoneMins ), nameof( BuyZoneMaxs ) )]
 public partial class ZombieBuyZone : GamemodeEntity
 {

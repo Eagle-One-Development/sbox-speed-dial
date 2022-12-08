@@ -1,6 +1,6 @@
 namespace SpeedDial.Classic.Drugs;
 
-[Library( "sd_polvo" )]
+[Library( "sd_polvo" ), HammerEntity]
 [EditorModel( "models/drugs/polvo/polvo.vmdl" )]
 [Category( "Speed-Dial Drugs" )]
 public class Polvo : ClassicBaseDrug

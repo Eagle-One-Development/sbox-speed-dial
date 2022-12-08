@@ -1,6 +1,6 @@
 namespace SpeedDial.Classic.Drugs;
 
-[Library( "sd_ritindi" )]
+[Library( "sd_ritindi" ), HammerEntity]
 [EditorModel( "models/drugs/ritindi/ritindi.vmdl" )]
 [Category( "Speed-Dial Drugs" )]
 public class Ritindi : ClassicBaseDrug

@@ -1,6 +1,6 @@
 namespace SpeedDial.Zombie.Entities;
 
-[HammerEntity]
+[HammerEntity, Library( "sd_zombie_doorbuyzone" ), Title( "Door Buy Zone" )]
 public class ZombieDoorBuyZone : ZombieBuyZone
 {
 

@@ -1,6 +1,9 @@
 ﻿namespace Sandbox.Classic.Entities;
 
-[Library( "func_dance_floor", Description = "Dance floor tile entity" )]
+/// <summary>
+/// Dance floor tile entity
+/// </summary>
+[Library( "func_dance_floor" ), HammerEntity]
 [Solid]
 public partial class DanceFloor : BrushEntity
 {

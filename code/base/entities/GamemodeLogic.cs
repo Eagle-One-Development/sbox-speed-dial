@@ -8,7 +8,10 @@ using Sandbox;
 
 namespace SpeedDial;
 
-[Library( "sd_gamemode_logic", Description = "Used to handle Gamemode logic. Will fire gamemode start, end and reset event outputs on its Active Gamemodes." )]
+/// <summary>
+///  Used to handle Gamemode logic. Will fire gamemode start, end and reset event outputs on its Active Gamemodes.
+/// </summary>
+[Library( "sd_gamemode_logic" ), Category( "Gameplay" ), HammerEntity]
 public partial class GamemodeLogic : GamemodeEntity
 {
 	protected Output OnGamemodeReset { get; set; }

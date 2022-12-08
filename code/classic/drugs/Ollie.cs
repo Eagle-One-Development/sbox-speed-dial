@@ -1,6 +1,6 @@
 namespace SpeedDial.Classic.Drugs;
 
-[Library( "sd_ollie" )]
+[Library( "sd_ollie" ), HammerEntity]
 [EditorModel( "models/drugs/ollie/ollie.vmdl" )]
 [Category( "Speed-Dial Drugs" )]
 public class Ollie : ClassicBaseDrug
