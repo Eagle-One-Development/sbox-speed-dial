@@ -123,6 +123,8 @@ public partial class ZombiePlayer : ClassicPlayer
 		{
 			Client.SetValue( "combo", 0 );
 		}
+
+		SimulateUse();
 	}
 
 	public new void RefreshCharacter()

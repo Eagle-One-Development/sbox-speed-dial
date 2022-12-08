@@ -1,0 +1,16 @@
+@using SpeedDial.Classic;
+@using SpeedDial.Zombie.Player;
+@using SpeedDial.Zombie.Entities;
+@namespace SpeedDial.Zombie
+@attribute [StyleSheet("/Zombie/ui/buyhints/BuyHint.scss")]
+@inherits Panel
+
+<root>
+     <div class="hintcontainer" @ref=HintContainer>
+        <div class="hint">
+            <label class="hinttextlabel" text="@Type"> </label>
+            <label class="hinttextlabel" text="@BuyText"> </label>
+            <label class="hintcostlabel" text="@Cost" > </label>
+        </div> 
+    </div>
+</root>

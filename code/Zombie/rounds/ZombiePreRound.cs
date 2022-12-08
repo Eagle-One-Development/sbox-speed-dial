@@ -5,7 +5,7 @@ namespace SpeedDial.Zombie.Rounds;
 
 public partial class ZombiePreRound : TimedRound
 {
-	public override TimeSpan RoundDuration => TimeSpan.FromSeconds( 11 );
+	public override TimeSpan RoundDuration => TimeSpan.FromSeconds( 2 );
 	private ZombieGamemode classic => Game.Current.ActiveGamemode as ZombieGamemode;
 	public override string RoundText => "Round starting...";
 
