@@ -1,3 +1,5 @@
+using Sandbox.Diagnostics;
+
 namespace SpeedDial;
 
 // debug convars

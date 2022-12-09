@@ -15,7 +15,6 @@
   ],
   "HasCode": true,
   "CodePath": "code",
-  "RootNamespace": "SpeedDial",
   "Metadata": {
     "MapList": [
       "eagleone.sd_bank"
