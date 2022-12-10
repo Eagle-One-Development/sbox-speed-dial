@@ -5,7 +5,7 @@ namespace SpeedDial.Classic.Rounds;
 public partial class PreRound : TimedRound
 {
 	public override TimeSpan RoundDuration => TimeSpan.FromSeconds( 11 );
-	private ClassicGamemode classic => Game.Current.ActiveGamemode as ClassicGamemode;
+	private ClassicGamemode classic => SDGame.Current.ActiveGamemode as ClassicGamemode;
 	public override string RoundText => "Round starting...";
 
 	protected override void OnStart()
@@ -14,14 +14,14 @@ public partial class PreRound : TimedRound
 
 		classic.SetState( GamemodeState.Preparing );
 
-		if ( Host.IsServer )
+		if ( Game.IsServer )
 		{
 			classic.PickNewSoundtrack();
 			// clear kills list to clear domination info
 			classic.Kills.Clear();
 		}
 
-		foreach ( var client in Client.All.Where( x => x.Pawn is ClassicPlayer ) )
+		foreach ( var client in Game.Clients.Where( x => x.Pawn is ClassicPlayer ) )
 		{
 			var pawn = client.Pawn as ClassicPlayer;
 			pawn.Respawn();
@@ -40,13 +40,13 @@ public partial class PreRound : TimedRound
 		}
 
 		// reset stuff from warmup etc
-		Game.Current.ActiveGamemode?.CallResetEvent();
+		SDGame.Current.ActiveGamemode?.CallResetEvent();
 	}
 
 	protected override void OnFinish()
 	{
 		base.OnFinish();
-		Game.Current.ActiveGamemode?.ChangeRound( new GameRound() );
+		SDGame.Current.ActiveGamemode?.ChangeRound( new GameRound() );
 	}
 
 	public override void OnPawnJoined( BasePlayer pawn )

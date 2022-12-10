@@ -6,7 +6,7 @@ namespace SpeedDial.Koth.Rounds;
 public partial class KothPreRound : TimedRound
 {
 	public override TimeSpan RoundDuration => TimeSpan.FromSeconds( 11 );
-	private KothGamemode classic => Game.Current.ActiveGamemode as KothGamemode;
+	private KothGamemode classic => SDGame.Current.ActiveGamemode as KothGamemode;
 	public override string RoundText => "Round starting...";
 
 	protected override void OnStart()
@@ -15,14 +15,14 @@ public partial class KothPreRound : TimedRound
 
 		classic.SetState( GamemodeState.Preparing );
 
-		if ( Host.IsServer )
+		if ( Game.IsServer )
 		{
 			classic.PickNewSoundtrack();
 			// clear kills list to clear domination info
 			classic.Kills.Clear();
 		}
 
-		foreach ( var client in Client.All.Where( x => x.Pawn is KothPlayer ) )
+		foreach ( var client in Game.Clients.Where( x => x.Pawn is KothPlayer ) )
 		{
 			var pawn = client.Pawn as KothPlayer;
 			pawn.Respawn();
@@ -41,13 +41,13 @@ public partial class KothPreRound : TimedRound
 		}
 
 		// reset stuff from warmup etc
-		Game.Current.ActiveGamemode?.CallResetEvent();
+		SDGame.Current.ActiveGamemode?.CallResetEvent();
 	}
 
 	protected override void OnFinish()
 	{
 		base.OnFinish();
-		Game.Current.ActiveGamemode.ChangeRound( new KothGameRound() );
+		SDGame.Current.ActiveGamemode.ChangeRound( new KothGameRound() );
 	}
 
 	public override void OnPawnJoined( BasePlayer pawn )

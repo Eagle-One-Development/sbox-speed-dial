@@ -3,7 +3,7 @@ namespace SpeedDial.Classic.UI;
 [UseTemplate]
 public partial class ClassicScoreboardEntry : Panel
 {
-	public Client Client;
+	public IClient Client;
 
 	public Label PlayerName { get; set; }
 	public Label Score { get; set; }
@@ -41,11 +41,11 @@ public partial class ClassicScoreboardEntry : Panel
 		Ping.Text = $"{Client.Ping}ms";
 		Ping.SetClass( "hidden", !Input.Down( InputButton.Walk ) || Client.IsBot );
 
-		SetClass( "me", Client == Local.Client && Client.All.Count > 1 );
+		SetClass( "me", Client == Game.LocalClient && Game.Clients.Count > 1 );
 		InputMethod.SetClass( "hidden", !Input.UsingController || Client.IsBot );
 	}
 
-	public virtual void UpdateFrom( Client client )
+	public virtual void UpdateFrom( IClient client )
 	{
 		Client = client;
 		UpdateData();

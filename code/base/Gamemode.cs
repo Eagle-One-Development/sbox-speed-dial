@@ -1,3 +1,4 @@
+using Sandbox.Diagnostics;
 using SpeedDial.Classic.Bots;
 
 //CREDIT: Modified from Espionage.Engine by Jake Wooshito
@@ -149,9 +150,9 @@ public abstract partial class Gamemode : Entity
 	/// <summary> [Assert Server] Forcefully change the active round </summary>
 	public void ChangeRound(Round round)
 	{
-		Host.AssertServer();
-		Log.Debug("round changed");
-		Assert.NotNull(round);
+		Game.AssertServer();
+		Log.Debug( "round changed" );
+		Assert.NotNull( round );
 
 		ActiveRound?.Finish();
 
@@ -162,8 +163,8 @@ public abstract partial class Gamemode : Entity
 
 	public void KillRound()
 	{
-		Host.AssertServer();
-		Log.Debug("round killed");
+		Game.AssertServer();
+		Log.Debug( "round killed" );
 		ActiveRound?.Kill();
 		ActiveRound = null;
 	}
@@ -224,7 +225,7 @@ public abstract partial class Gamemode : Entity
 	/// <summary> [Assert Server] </summary>
 	public void PawnKilled(BasePlayer pawn)
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
 		OnPawnKilled(pawn);
 		pawn.TimeSinceDied = 0;
@@ -234,7 +235,7 @@ public abstract partial class Gamemode : Entity
 	/// <returns> True if damage should be taken </returns>
 	public bool PawnDamaged(BasePlayer pawn, ref DamageInfo info)
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
 		return OnPawnDamaged(pawn, ref info);
 	}
@@ -242,7 +243,7 @@ public abstract partial class Gamemode : Entity
 	/// <summary> [Assert Server] </summary>
 	public void PawnRespawned(BasePlayer pawn)
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
 		OnPawnRespawned(pawn);
 	}
@@ -267,48 +268,48 @@ public abstract partial class Gamemode : Entity
 	/// <summary> [Server] </summary>
 	protected virtual void OnPawnRespawned(BasePlayer newPawn) { }
 
-	public virtual bool OnClientSuicide(Client client)
+	public virtual bool OnClientSuicide( IClient client )
 	{
 		return true;
 	}
 
 	//
-	// Client States
+	// IClient States
 	//
 
 	/// <summary> [Assert Server] </summary>
-	public void ClientJoined(Client client)
+	public void ClientJoined( IClient client )
 	{
-		Host.AssertServer();
-		OnClientJoined(client);
+		Game.AssertServer();
+		OnClientJoined( client );
 	}
 
 	/// <summary> [Assert Server] </summary>
-	public void ClientReady(Client client)
+	public void ClientReady( IClient client )
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 		// create ui for this client
 		CreateGamemodeUIClient(To.Single(client));
 		OnClientReady(client);
 	}
 
 	/// <summary> [Assert Server] </summary>
-	public void ClientDisconnected(Client client, NetworkDisconnectionReason reason)
+	public void ClientDisconnected( IClient client, NetworkDisconnectionReason reason )
 	{
-		Host.AssertServer();
-		OnClientDisconnect(client, reason);
+		Game.AssertServer();
+		OnClientDisconnect( client, reason );
 	}
 
 	/// <summary> [Server] Is called when a client joins the server </summary>
-	protected virtual void OnClientJoined(Client client) { }
+	protected virtual void OnClientJoined( IClient client ) { }
 
 	/// <summary> [Server] Is called when a client has chosen a team and wants to spawn
 	/// we should assign a pawn in this callback too </summary>
-	protected virtual void OnClientReady(Client client)
+	protected virtual void OnClientReady( IClient client )
 	{
 		//client.AssignPawn<Specialist>();
 	}
 
 	/// <summary> [Server] Is called when a client has disconnected. Possibly use this for cleanup? </summary>
-	protected virtual void OnClientDisconnect(Client client, NetworkDisconnectionReason reason) { }
+	protected virtual void OnClientDisconnect( IClient client, NetworkDisconnectionReason reason ) { }
 }

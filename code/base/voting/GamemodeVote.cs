@@ -27,7 +27,7 @@ public partial class GamemodeVote : VoteEntity
 	// TEMP TEMP TEMP TEMP // TEMP TEMP TEMP TEMP // TEMP TEMP TEMP TEMP
 	protected override void PopulateVoteItems()
 	{
-		foreach (var gm in gamemodes.Where(x => x != Game.LastGamemode))
+		foreach ( var gm in gamemodes.Where( x => x != SDGame.LastGamemode ) )
 		{
 			Current.AddVoteItem($"{gm}", $"Vote now!", $"image\\path");
 		}
@@ -35,7 +35,7 @@ public partial class GamemodeVote : VoteEntity
 
 	public override void OnVoteConcluded(VoteItem item)
 	{
-		base.OnVoteConcluded(item);
-		Game.ChangeGamemode(item.Title);
+		base.OnVoteConcluded( item );
+		SDGame.ChangeGamemode( item.Title );
 	}
 }

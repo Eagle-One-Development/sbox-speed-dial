@@ -10,12 +10,12 @@ public partial class DrugPanel : Panel
 
 	public DrugPanel()
 	{
-		DrugName.BindClass( "show", () => (Local.Pawn as ClassicPlayer).ActiveDrug && (Local.Pawn as ClassicPlayer).TimeSinceDrugTaken >= 1.5f );
+		DrugName.BindClass( "show", () => (Game.LocalPawn as ClassicPlayer).ActiveDrug && (Game.LocalPawn as ClassicPlayer).TimeSinceDrugTaken >= 1.5f );
 	}
 
 	public override void Tick()
 	{
-		if ( Local.Pawn is ClassicPlayer player )
+		if ( Game.LocalPawn is ClassicPlayer player )
 		{
 
 			DrugName.Text = $"{player.DrugType.ToString().ToUpper()}";

@@ -4,8 +4,8 @@ namespace SpeedDial.Classic.Rounds;
 
 public partial class WarmupRound : Round
 {
-	private ClassicGamemode classic => Game.Current.ActiveGamemode as ClassicGamemode;
-	public override string RoundText => $"Waiting for players... [{Client.All.Count}/{Game.MinPlayers}]";
+	private ClassicGamemode classic => SDGame.Current.ActiveGamemode as ClassicGamemode;
+	public override string RoundText => $"Waiting for players... [{Game.Clients.Count}/{SDGame.MinPlayers}]";
 
 	protected override void OnStart()
 	{
@@ -13,7 +13,7 @@ public partial class WarmupRound : Round
 
 		classic.SetState( GamemodeState.Waiting );
 
-		foreach ( var client in Client.All.Where( x => x.Pawn is ClassicPlayer ) )
+		foreach ( var client in Game.Clients.Where( x => x.Pawn is ClassicPlayer ) )
 		{
 			var pawn = client.Pawn as ClassicPlayer;
 
@@ -24,7 +24,7 @@ public partial class WarmupRound : Round
 	protected override void OnThink()
 	{
 		base.OnThink();
-		if ( Client.All.Count >= Game.MinPlayers )
+		if ( Game.Clients.Count >= SDGame.MinPlayers )
 		{
 			Finish();
 		}
@@ -33,6 +33,6 @@ public partial class WarmupRound : Round
 	protected override void OnFinish()
 	{
 		base.OnFinish();
-		Game.Current.ActiveGamemode.ChangeRound( new PreRound() );
+		SDGame.Current.ActiveGamemode.ChangeRound( new PreRound() );
 	}
 }

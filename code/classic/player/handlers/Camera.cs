@@ -20,7 +20,7 @@ public partial class ClassicCamera : CameraMode
 
 	public override void BuildInput()
 	{
-		var pawn = Local.Pawn;
+		var pawn = Game.LocalPawn;
 
 		if ( pawn == null || pawn is not BasePlayer player )
 		{
@@ -122,7 +122,7 @@ public partial class ClassicCamera : CameraMode
 
 	public override void Update()
 	{
-		if ( Local.Pawn is not BasePlayer pawn )
+		if ( Game.LocalPawn is not BasePlayer pawn )
 			return;
 
 		var _pos = pawn.EyePosition + (Vector3.Down * 20); // relative to pawn EyePosition

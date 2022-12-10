@@ -16,7 +16,7 @@ public static partial class Settings
 	{
 		if ( !value )
 		{
-			ClassicPlayer.StopSoundtrack( To.Single( Local.Client ), true );
+			ClassicPlayer.StopSoundtrack( To.Single( Game.LocalClient ), true );
 		}
 	}
 }

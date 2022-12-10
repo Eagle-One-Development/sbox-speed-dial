@@ -11,7 +11,7 @@ public partial class ClassicPlayer
 
 	public virtual void ThrowWeapon()
 	{
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			if ( !DropWeapon( out Weapon dropped ) ) return;
 
@@ -83,7 +83,7 @@ public partial class ClassicPlayer
 		weapon.Parent = null;
 		weapon.OnCarryDrop( this );
 
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			weapon.Position = EyePosition;
 			weapon.Velocity = Velocity * 0.75f;

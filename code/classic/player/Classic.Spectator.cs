@@ -10,7 +10,7 @@ public partial class ClassicSpectator : ClassicPlayer
 
 	public override void Respawn()
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
 		SetModel( ModelPath );
 		EnableDrawing = false;
@@ -37,7 +37,7 @@ public partial class ClassicSpectator : ClassicPlayer
 		return;
 	}
 
-	public override void Simulate( Client cl )
+	public override void Simulate( IClient cl )
 	{
 		SimulateActiveChild( cl, ActiveChild );
 		GetActiveController()?.Simulate( cl, this, GetActiveAnimator() );

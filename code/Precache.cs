@@ -1,6 +1,6 @@
 namespace SpeedDial
 {
-	public partial class Game
+	public partial class SDGame
 	{
 		private static void PrecacheAssets()
 		{

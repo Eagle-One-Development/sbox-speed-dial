@@ -2,7 +2,7 @@
 
 public struct Draw
 {
-	public static Draw Once => new( Time.Delta * 1.5f, Host.Color, true );
+	public static Draw Once => new( Time.Delta * 1.5f, Game.Color, true );
 	public static Draw ForSeconds( float seconds )
 	{
 		return Once.WithDuration( seconds );
@@ -22,7 +22,7 @@ public struct Draw
 	public Draw( float duration )
 	{
 		Duration = duration;
-		Color = Host.Color;
+		Color = Game.Color;
 		DepthTest = true;
 	}
 

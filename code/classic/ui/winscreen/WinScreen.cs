@@ -22,7 +22,7 @@ public partial class WinScreen : Panel
 
 	protected virtual void OnUpdate()
 	{
-		var clients = Client.All.ToList();
+		var clients = Game.Clients.ToList();
 		clients.Sort( ( x, y ) => x.GetValue( "score", 0 ) < y.GetValue( "score", 0 ) ? 1 : -1 );
 		Log.Debug( "Win Panel Update clients" );
 

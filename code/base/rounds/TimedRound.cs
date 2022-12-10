@@ -36,7 +36,7 @@ public abstract partial class TimedRound : Round
 
 	public override void Finish()
 	{
-		if ( Host.IsServer )
+		if ( Game.IsServer )
 			RoundEndTime = 0f;
 
 		base.Finish();

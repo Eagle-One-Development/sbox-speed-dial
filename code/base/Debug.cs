@@ -35,6 +35,6 @@ public static class LoggerExtension
 	{
 		if ( !SpeedDial.Debug.Enabled ) return;
 
-		log.Info( $"[{(Host.IsClient ? "CL" : "SV")}] {obj}" );
+		log.Info( $"[{(Game.IsClient ? "CL" : "SV")}] {obj}" );
 	}
 }

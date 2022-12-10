@@ -13,7 +13,7 @@ public static class ListExtension
 	{
 		return !list.Any()
 			? throw new ArgumentException( "Cannot select a random member of an empty list!", nameof( list ) )
-			: list.ElementAt( Rand.Int( 0, list.Count() - 1 ) );
+			: list.ElementAt( Game.Random.Int( 0, list.Count() - 1 ) );
 	}
 
 	public static bool Random<T>( this IEnumerable<T> list, out T item )

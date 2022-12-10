@@ -45,7 +45,7 @@ public partial class ClassicDrugSpawn : GamemodeEntity
 
 	public virtual void SpawnDrug()
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 		if ( !Enabled ) return;
 
 		var ent = TypeLibrary.Create<ClassicBaseDrug>( DrugClass );

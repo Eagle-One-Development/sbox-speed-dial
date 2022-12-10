@@ -13,7 +13,7 @@ public partial class OneChamberSpectatorCamera : CameraMode
 
 	public override void BuildInput()
 	{
-		var pawn = Local.Pawn;
+		var pawn = Game.LocalPawn;
 
 		if ( pawn == null || pawn is not BasePlayer player )
 		{
@@ -76,7 +76,7 @@ public partial class OneChamberSpectatorCamera : CameraMode
 
 	public override void Update()
 	{
-		var pawn = Local.Pawn;
+		var pawn = Game.LocalPawn;
 
 		if ( pawn == null || pawn is not BasePlayer player )
 			return;

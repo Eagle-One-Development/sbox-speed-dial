@@ -7,13 +7,13 @@ public partial class Hud : HudEntity<BaseRootPanel>
 
 	public Hud()
 	{
-		if ( !IsClient ) return;
+		if ( !Game.IsClient ) return;
 		Instance = this;
 	}
 
 	public static void SetGamemodeUI( Panel panel )
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 		if ( Instance is null || Instance.RootPanel is null ) return;
 
 		ClearGamemodeUI();
@@ -23,7 +23,7 @@ public partial class Hud : HudEntity<BaseRootPanel>
 
 	public static void ClearGamemodeUI()
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 		if ( Instance is null || Instance.RootPanel is null ) return;
 
 		Instance.RootPanel.GamemodePanel?.Delete();

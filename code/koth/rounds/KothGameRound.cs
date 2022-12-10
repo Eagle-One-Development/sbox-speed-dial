@@ -8,7 +8,7 @@ namespace SpeedDial.Koth.Rounds;
 public partial class KothGameRound : TimedRound
 {
 	public override TimeSpan RoundDuration => TimeSpan.FromMinutes( 5 );
-	private KothGamemode koth => Game.Current.ActiveGamemode as KothGamemode;
+	private KothGamemode koth => SDGame.Current.ActiveGamemode as KothGamemode;
 	public override string RoundText => "";
 
 	[Net]
@@ -20,7 +20,7 @@ public partial class KothGameRound : TimedRound
 
 		koth.SetState( GamemodeState.Running );
 
-		foreach ( var client in Client.All.Where( x => x.Pawn is KothPlayer ) )
+		foreach ( var client in Game.Clients.Where( x => x.Pawn is KothPlayer ) )
 		{
 			var pawn = client.Pawn as KothPlayer;
 
@@ -53,7 +53,7 @@ public partial class KothGameRound : TimedRound
 		base.OnFinish();
 
 		WinScreen.UpdatePanels( To.Everyone );
-		Game.Current.ActiveGamemode.ChangeRound( new KothPostRound() );
+		SDGame.Current.ActiveGamemode.ChangeRound( new KothPostRound() );
 	}
 
 
@@ -79,7 +79,7 @@ public partial class KothGameRound : TimedRound
 	private async Task PlayClimaxMusic( int delay )
 	{
 		await GameTask.DelaySeconds( delay );
-		foreach ( var client in Client.All.Where( x => x.Pawn is KothPlayer ) )
+		foreach ( var client in Game.Clients.Where( x => x.Pawn is KothPlayer ) )
 		{
 			var pawn = client.Pawn as KothPlayer;
 			ClassicPlayer.PlayRoundendClimax( To.Single( client ) );

@@ -6,7 +6,7 @@ namespace SpeedDial.OneChamber.Rounds;
 public partial class OneChamberGameRound : TimedRound
 {
 	public override TimeSpan RoundDuration => TimeSpan.FromMinutes( 5 );
-	private OneChamberGamemode onechamber => Game.Current.ActiveGamemode as OneChamberGamemode;
+	private OneChamberGamemode onechamber => SDGame.Current.ActiveGamemode as OneChamberGamemode;
 	public override string RoundText => "";
 
 	protected override void OnStart()
@@ -15,7 +15,7 @@ public partial class OneChamberGameRound : TimedRound
 
 		onechamber.SetState( GamemodeState.Running );
 
-		foreach ( var client in Client.All.Where( x => x.Pawn is OneChamberPlayer ) )
+		foreach ( var client in Game.Clients.Where( x => x.Pawn is OneChamberPlayer ) )
 		{
 			var pawn = client.Pawn as OneChamberPlayer;
 
@@ -37,7 +37,7 @@ public partial class OneChamberGameRound : TimedRound
 	protected override void OnFinish()
 	{
 		base.OnFinish();
-		Game.Current.ActiveGamemode?.ChangeRound( new OneChamberPostRound() );
+		SDGame.Current.ActiveGamemode?.ChangeRound( new OneChamberPostRound() );
 
 		ClassicPlayer.StopSoundtrack( To.Everyone, true );
 

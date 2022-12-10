@@ -5,7 +5,7 @@ namespace SpeedDial.OneChamber.UI;
 [UseTemplate]
 public partial class OneChamberWinPanel : Panel
 {
-	public Client Client { get; set; }
+	public IClient Client { get; set; }
 	public Image Portrait { get; set; }
 	public Image Avatar { get; set; }
 	public Image Icon { get; set; }
@@ -13,7 +13,7 @@ public partial class OneChamberWinPanel : Panel
 	public Label Name { get; set; }
 
 
-	public void UpdateFrom( Client client, int position )
+	public void UpdateFrom( IClient client, int position )
 	{
 		if ( !client.IsValid() )
 		{

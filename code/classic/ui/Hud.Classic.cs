@@ -10,7 +10,7 @@ public class ClassicHud : Panel
 
 	public ClassicHud()
 	{
-		if ( !Host.IsClient ) return;
+		if ( !Game.IsClient ) return;
 		AddClass( "root" );
 	}
 
@@ -20,6 +20,6 @@ public class ClassicHud : Panel
 		// game panels hide in post round
 		SetClass( "state-visible-game", !Gamemode.Instance.Ending && !Debug.UI );
 		// cursor only shows when using mouse input
-		SetClass( "state-visible-cursor", !Input.UsingController && !Debug.UI && Local.Pawn is not ClassicSpectator );
+		SetClass( "state-visible-cursor", !Input.UsingController && !Debug.UI && Game.LocalPawn is not ClassicSpectator );
 	}
 }

@@ -3,7 +3,7 @@ namespace SpeedDial.Classic.UI;
 [UseTemplate]
 public partial class PlayerEntry : Panel
 {
-	public Client Client;
+	public IClient Client;
 
 	public Image Avatar { get; set; }
 	public Label Score { get; set; }
@@ -37,10 +37,10 @@ public partial class PlayerEntry : Panel
 			Avatar.SetTexture( $"avatar:{Client.SteamId}" );
 		}
 
-		Score.SetClass( "me", Client == Local.Client );
+		Score.SetClass( "me", Client == Game.LocalClient );
 	}
 
-	public virtual void UpdateFrom( Client client )
+	public virtual void UpdateFrom( IClient client )
 	{
 		Client = client;
 		UpdateData();

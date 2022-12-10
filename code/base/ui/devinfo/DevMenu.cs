@@ -10,6 +10,6 @@ public partial class DevMenu : Panel
 	{
 		base.Tick();
 
-		SetClass( "open", Local.Client.IsListenServerHost && Input.Down( InputButton.View ) );
+		SetClass( "open", Game.LocalClient.IsListenServerHost && Input.Down( InputButton.View ) );
 	}
 }

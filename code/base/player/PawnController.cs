@@ -8,7 +8,7 @@ public class PawnController : BaseNetworkable
 	internal HashSet<string> Tags;
 
 	public Entity Pawn { get; protected set; }
-	public Client Client { get; protected set; }
+	public IClient Client { get; protected set; }
 	public Vector3 Position { get; set; }
 	public Rotation Rotation { get; set; }
 	public Vector3 Velocity { get; set; }
@@ -76,7 +76,7 @@ public class PawnController : BaseNetworkable
 	/// </summary>
 	public virtual void FrameSimulate()
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 	}
 
 	/// <summary>
@@ -161,7 +161,7 @@ public class PawnController : BaseNetworkable
 
 	}
 
-	public void Simulate( Client client, Entity pawn, PawnController additional )
+	public void Simulate( IClient client, Entity pawn, PawnController additional )
 	{
 		Events?.Clear();
 		Tags?.Clear();
@@ -190,7 +190,7 @@ public class PawnController : BaseNetworkable
 		}
 	}
 
-	public void FrameSimulate( Client client, Entity pawn, PawnController additional )
+	public void FrameSimulate( IClient client, Entity pawn, PawnController additional )
 	{
 		Pawn = pawn;
 		Client = client;

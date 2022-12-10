@@ -4,8 +4,8 @@ namespace SpeedDial.Koth.Rounds;
 
 public partial class KothWarmupRound : Round
 {
-	private KothGamemode koth => Game.Current.ActiveGamemode as KothGamemode;
-	public override string RoundText => $"Waiting for players... [{Client.All.Count}/{Game.MinPlayers}]";
+	private KothGamemode koth => SDGame.Current.ActiveGamemode as KothGamemode;
+	public override string RoundText => $"Waiting for players... [{Game.Clients.Count}/{SDGame.MinPlayers}]";
 
 	protected override void OnStart()
 	{
@@ -13,7 +13,7 @@ public partial class KothWarmupRound : Round
 
 		koth.SetState( GamemodeState.Waiting );
 
-		foreach ( var client in Client.All.Where( x => x.Pawn is KothPlayer ) )
+		foreach ( var client in Game.Clients.Where( x => x.Pawn is KothPlayer ) )
 		{
 			var pawn = client.Pawn as KothPlayer;
 
@@ -24,7 +24,7 @@ public partial class KothWarmupRound : Round
 	protected override void OnThink()
 	{
 		base.OnThink();
-		if ( Client.All.Count >= Game.MinPlayers )
+		if ( Game.Clients.Count >= SDGame.MinPlayers )
 		{
 			Finish();
 		}
@@ -33,6 +33,6 @@ public partial class KothWarmupRound : Round
 	protected override void OnFinish()
 	{
 		base.OnFinish();
-		Game.Current.ActiveGamemode.ChangeRound( new KothPreRound() );
+		SDGame.Current.ActiveGamemode.ChangeRound( new KothPreRound() );
 	}
 }

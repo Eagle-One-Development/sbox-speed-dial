@@ -9,7 +9,7 @@ public static class ClientExtensions
 	/// <param name="cl">Client extension</param>
 	/// <param name="respawn">Whether to call InitialSpawn on the new Pawn or not.</param>
 	/// <returns>A reference to the new Pawn.</returns>
-	public static T AssignPawn<T>( this Client cl, bool respawn = true ) where T : BasePlayer, new()
+	public static T AssignPawn<T>( this IClient cl, bool respawn = true ) where T : BasePlayer, new()
 	{
 		cl.Pawn?.Delete();
 
@@ -29,7 +29,7 @@ public static class ClientExtensions
 	/// <param name="cl">Client extension</param>
 	/// /// <param name="respawn">Whether to call InitialSpawn on the new Pawn or not.</param>
 	/// <returns>A reference to the new Pawn.</returns>
-	public static T SwapPawn<T>( this Client cl, bool respawn = true ) where T : BasePlayer, new()
+	public static T SwapPawn<T>( this IClient cl, bool respawn = true ) where T : BasePlayer, new()
 	{
 		// null check to assign instead
 		if ( cl.Pawn is null )

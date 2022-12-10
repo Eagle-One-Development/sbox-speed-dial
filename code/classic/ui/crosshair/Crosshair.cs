@@ -23,8 +23,8 @@ public partial class Crosshair : Panel
 
 		for (int i = 0; i < 4; i++)
 		{
-			Hairs[i] = Cross.Add.Panel("hair");
-			Hairs[i].BindClass("inactive", () => (Local.Pawn as BasePlayer).ActiveChild == null);
+			Hairs[i] = Cross.Add.Panel( "hair" );
+			Hairs[i].BindClass( "inactive", () => (Game.LocalPawn as BasePlayer).ActiveChild == null );
 		}
 
 		Current = this;

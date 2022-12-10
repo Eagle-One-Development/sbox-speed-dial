@@ -18,7 +18,7 @@ public partial class ScreenHints : Panel
 	public Panel KillerInfo { get; set; }
 	public Image KillerAvatar { get; set; }
 	private bool FireKiller;
-	private Client Killer;
+	private IClient Killer;
 	private bool Domination;
 
 	public ScreenHints()
@@ -108,7 +108,7 @@ public partial class ScreenHints : Panel
 	}
 
 	[ClientRpc]
-	public static void FireEvent( string title, string extra, bool banner, Client killer )
+	public static void FireEvent( string title, string extra, bool banner, IClient killer )
 	{
 		if ( Current is null ) return;
 		Current.Title.Text = title;
@@ -124,7 +124,7 @@ public partial class ScreenHints : Panel
 	}
 
 	[ClientRpc]
-	public static void FireEvent( string title, string extra, bool banner, Client killer, bool domination )
+	public static void FireEvent( string title, string extra, bool banner, IClient killer, bool domination )
 	{
 		if ( Current is null ) return;
 		Current.Title.Text = title;

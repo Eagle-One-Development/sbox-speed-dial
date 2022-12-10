@@ -6,7 +6,7 @@ namespace SpeedDial.OneChamber.Rounds;
 public partial class OneChamberPreRound : TimedRound
 {
 	public override TimeSpan RoundDuration => TimeSpan.FromSeconds( 11 );
-	private OneChamberGamemode onechamber => Game.Current.ActiveGamemode as OneChamberGamemode;
+	private OneChamberGamemode onechamber => SDGame.Current.ActiveGamemode as OneChamberGamemode;
 	public override string RoundText => "Round starting...";
 
 	protected override void OnStart()
@@ -15,14 +15,14 @@ public partial class OneChamberPreRound : TimedRound
 
 		onechamber.SetState( GamemodeState.Preparing );
 
-		if ( Host.IsServer )
+		if ( Game.IsServer )
 		{
 			onechamber.PickNewSoundtrack();
 			// clear kills list to clear domination info
 			onechamber.Kills.Clear();
 		}
 
-		foreach ( var client in Client.All )
+		foreach ( var client in Game.Clients )
 		{
 			client.AssignPawn<OneChamberPlayer>();
 
@@ -37,13 +37,13 @@ public partial class OneChamberPreRound : TimedRound
 		}
 
 		// reset stuff from warmup etc
-		Game.Current.ActiveGamemode?.CallResetEvent();
+		SDGame.Current.ActiveGamemode?.CallResetEvent();
 	}
 
 	protected override void OnFinish()
 	{
 		base.OnFinish();
-		Game.Current.ActiveGamemode?.ChangeRound( new OneChamberGameRound() );
+		SDGame.Current.ActiveGamemode?.ChangeRound( new OneChamberGameRound() );
 	}
 
 	public override void OnPawnJoined( BasePlayer pawn )

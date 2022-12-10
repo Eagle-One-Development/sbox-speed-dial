@@ -12,7 +12,7 @@ public partial class OneChamberWeaponPanel : WeaponPanel
 {
 	public override void Tick()
 	{
-		var weapon = (Local.Pawn as BasePlayer).ActiveChild as Weapon;
+		var weapon = (Game.LocalPawn as BasePlayer).ActiveChild as Weapon;
 
 		// ammo
 		{
@@ -27,7 +27,7 @@ public partial class OneChamberWeaponPanel : WeaponPanel
 			// update ammo label number or scale down if no weapon
 			if ( weapon is null )
 			{
-				if ( Local.Pawn is OneChamberPlayer player )
+				if ( Game.LocalPawn is OneChamberPlayer player )
 				{
 					var gun = player.StashedGun as Weapon;
 					if ( gun is not null )
