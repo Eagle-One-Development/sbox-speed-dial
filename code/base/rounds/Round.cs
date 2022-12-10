@@ -28,7 +28,7 @@ public abstract partial class Round : BaseNetworkable
 	/// <summary> [Server Assert] Start the round </summary>
 	public virtual void Start()
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
 		if ( Started )
 			return;
@@ -56,7 +56,7 @@ public abstract partial class Round : BaseNetworkable
 	/// <summary> [Server Assert] Finish the round </summary>
 	public virtual void Finish()
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
 		if ( Finished || !Started )
 			return;
@@ -70,7 +70,7 @@ public abstract partial class Round : BaseNetworkable
 
 	public void Kill()
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 		Finished = true;
 	}
 

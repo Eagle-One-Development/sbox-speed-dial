@@ -59,7 +59,7 @@ public partial class CharacterSelect : Panel
 			{
 				Sound.FromScreen( "select_confirm" );
 				MenuSound.Stop();
-				ClassicPlayer.FadeSoundtrack( To.Single( Local.Client ), 1 );
+				ClassicPlayer.FadeSoundtrack( To.Single( Game.LocalClient ), 1 );
 			}
 			Open = state;
 		}
@@ -69,11 +69,11 @@ public partial class CharacterSelect : Panel
 			{
 				Sound.FromScreen( "tape_stop" );
 				MenuSound = Sound.FromScreen( "tape_noise" );
-				ClassicPlayer.FadeSoundtrack( To.Single( Local.Client ), 0.3f );
+				ClassicPlayer.FadeSoundtrack( To.Single( Game.LocalClient ), 0.3f );
 			}
 
 			// make sure equipped character is the selected one
-			SelectedIndex = (Local.Pawn as ClassicPlayer).CharacterIndex;
+			SelectedIndex = (Game.LocalPawn as ClassicPlayer).CharacterIndex;
 			// character is outside of the first 4 characters
 			if ( SelectedIndex > 3 )
 			{
@@ -145,7 +145,7 @@ public partial class CharacterSelect : Panel
 				Open = false;
 				MenuSound.Stop();
 				Sound.FromScreen( "select_confirm" );
-				ClassicPlayer.FadeSoundtrack( To.Single( Local.Client ), 1 );
+				ClassicPlayer.FadeSoundtrack( To.Single( Game.LocalClient ), 1 );
 				return;
 			}
 		}

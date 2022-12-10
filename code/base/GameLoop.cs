@@ -10,33 +10,33 @@ public partial class GameLoop : Entity
 		Transmit = TransmitType.Always;
 	}
 
-	[Net] public IList<Client> Clients { get; set; }
+	[Net] public IList<IClient> Clients { get; set; }
 
 	public void SetFromCurrent()
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 		Clients.Clear();
-		foreach ( var client in Client.All )
+		foreach ( var client in Game.Clients )
 		{
 			Clients.Add( client );
 		}
 	}
 
-	public void AddClient( Client client )
+	public void AddClient( IClient client )
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 		Clients.Add( client );
 	}
 
-	public void RemoveClient( Client client )
+	public void RemoveClient( IClient client )
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 		Clients.Remove( client );
 	}
 
-	public void ValidateClients( Func<Client, bool> predicate )
+	public void ValidateClients( Func<IClient, bool> predicate )
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 		foreach ( var client in Clients.Reverse() )
 		{
 			if ( !predicate( client ) )

@@ -9,7 +9,7 @@ public partial class ZombiePlayer : ClassicPlayer
 {
 	public override void InitialRespawn()
 	{
-		CharacterIndex = Rand.Int( 0, Character.All.Count - 1 );
+		CharacterIndex = Game.Random.Int( 0, Character.All.Count - 1 );
 
 		Client.SetValue( "score", 0 );
 		Client.SetValue( "maxcombo", 0 );
@@ -20,7 +20,7 @@ public partial class ZombiePlayer : ClassicPlayer
 
 	public override void Respawn()
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
 		Model = Character.CharacterModel;
 
@@ -42,9 +42,9 @@ public partial class ZombiePlayer : ClassicPlayer
 		EnableShadowInFirstPerson = true;
 		EnableLagCompensation = true;
 
-		Game.Current.PawnRespawned( this );
-		Game.Current.MoveToSpawnpoint( this );
-		Game.Current.ActiveGamemode?.ActiveRound?.OnPawnRespawned( this );
+		SDGame.Current.PawnRespawned( this );
+		SDGame.Current.MoveToSpawnpoint( this );
+		SDGame.Current.ActiveGamemode?.ActiveRound?.OnPawnRespawned( this );
 
 		// reset drug
 		ActiveDrug = false;
@@ -57,7 +57,7 @@ public partial class ZombiePlayer : ClassicPlayer
 		GlowUtil.SetGlow( To.Everyone, this, false, Color.Black );
 	}
 
-	public override void Simulate( Client cl )
+	public override void Simulate( IClient cl )
 	{
 		base.Simulate( cl );
 
@@ -110,7 +110,7 @@ public partial class ZombiePlayer : ClassicPlayer
 		{
 			using ( Prediction.Off() )
 			{
-				if ( IsServer )
+				if ( Game.IsServer )
 				{
 					var ent = WeaponBlueprint.Create( WeaponBlueprint.GetRandomSpawnable() );
 					ent.Position = AimRay.Position;
@@ -173,7 +173,7 @@ public partial class ZombiePlayer : ClassicPlayer
 
 			using ( Prediction.Off() )
 			{
-				if ( IsServer )
+				if ( Game.IsServer )
 				{
 					var damage = DamageInfo.FromBullet( tr.EndPosition, EyeRotation.Forward * 100, 200 )
 						.UsingTraceResult( tr )
@@ -225,7 +225,7 @@ public partial class ZombiePlayer : ClassicPlayer
 					ImpactKill( wep.PreviousOwner, wep );
 
 					// bounce off the body
-					if ( IsServer )
+					if ( Game.IsServer )
 					{
 						wep.Velocity *= -0.3f;
 						wep.CanImpactKill = false;

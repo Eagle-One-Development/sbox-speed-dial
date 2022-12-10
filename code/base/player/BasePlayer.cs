@@ -17,11 +17,11 @@ public partial class BasePlayer : AnimatedEntity
 
 	public override Ray AimRay => new( EyeLocalPosition + Position, EyeRotation.Forward );
 
-	public override void Simulate( Client cl )
+	public override void Simulate( IClient cl )
 	{
 		if ( LifeState == LifeState.Dead )
 		{
-			if ( TimeSinceDied > RespawnTime && IsServer && CanRespawn() )
+			if ( TimeSinceDied > RespawnTime && Game.IsServer && CanRespawn() )
 			{
 				Respawn();
 			}
@@ -60,7 +60,7 @@ public partial class BasePlayer : AnimatedEntity
 		Sound.FromWorld( name, position );
 	}
 
-	public virtual void SimulateActiveChild( Client client, BaseCarriable child )
+	public virtual void SimulateActiveChild( IClient client, BaseCarriable child )
 	{
 		if ( LastActiveChild != child )
 		{
@@ -83,7 +83,7 @@ public partial class BasePlayer : AnimatedEntity
 		next?.ActiveStart( this );
 	}
 
-	public override void FrameSimulate( Client cl )
+	public override void FrameSimulate( IClient cl )
 	{
 		base.FrameSimulate( cl );
 
@@ -141,12 +141,12 @@ public partial class BasePlayer : AnimatedEntity
 	{
 		Respawn();
 		// call round stuff after respawn to potentially override stuff in it
-		Game.Current.ActiveGamemode?.ActiveRound?.OnPawnJoined( this );
+		SDGame.Current.ActiveGamemode?.ActiveRound?.OnPawnJoined( this );
 	}
 
 	public virtual void Respawn()
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
 		SetModel( ModelPath );
 
@@ -157,15 +157,15 @@ public partial class BasePlayer : AnimatedEntity
 		CreateHull();
 		ResetInterpolation();
 
-		Game.Current.PawnRespawned( this );
-		Game.Current.MoveToSpawnpoint( this );
-		Game.Current.ActiveGamemode?.ActiveRound?.OnPawnRespawned( this );
+		SDGame.Current.PawnRespawned( this );
+		SDGame.Current.MoveToSpawnpoint( this );
+		SDGame.Current.ActiveGamemode?.ActiveRound?.OnPawnRespawned( this );
 	}
 
 	public override void OnKilled()
 	{
 		LifeState = LifeState.Dead;
-		Game.Current.PawnKilled( this, LastRecievedDamage );
+		SDGame.Current.PawnKilled( this, LastRecievedDamage );
 	}
 
 	public DamageInfo LastRecievedDamage { get; set; }
@@ -173,7 +173,7 @@ public partial class BasePlayer : AnimatedEntity
 	public override void TakeDamage( DamageInfo info )
 	{
 		// If this pawn is allowed to take damage. Then take damage
-		if ( IsServer && Game.Current.PawnDamaged( this, ref info ) )
+		if ( Game.IsServer && SDGame.Current.PawnDamaged( this, ref info ) )
 		{
 			LastRecievedDamage = info;
 			base.TakeDamage( info );

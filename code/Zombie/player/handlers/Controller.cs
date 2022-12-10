@@ -158,7 +158,7 @@ public partial class ZombiePlayerController : BasePlayerController
 			DebugOverlay.Box( Position, mins, maxs, Color.Blue );
 
 			var lineOffset = 0;
-			if ( Host.IsServer ) lineOffset = 10;
+			if ( Game.IsServer ) lineOffset = 10;
 
 			DebugOverlay.ScreenText( $"        Position: {Position}", lineOffset + 0 );
 			DebugOverlay.ScreenText( $"        Velocity: {Velocity}", lineOffset + 1 );
@@ -391,7 +391,7 @@ public partial class ZombiePlayerController : BasePlayerController
 			// falling in the void, kill the player
 			if ( !downTrace.Hit )
 			{
-				if ( Host.IsServer )
+				if ( Game.IsServer )
 					Pawn.Kill();
 				return;
 			}

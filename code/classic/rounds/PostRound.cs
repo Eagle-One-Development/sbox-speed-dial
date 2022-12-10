@@ -6,7 +6,7 @@ namespace SpeedDial.Classic.Rounds;
 public partial class PostRound : TimedRound
 {
 	public override TimeSpan RoundDuration => TimeSpan.FromSeconds( 11 );
-	private ClassicGamemode classic => Game.Current.ActiveGamemode as ClassicGamemode;
+	private ClassicGamemode classic => SDGame.Current.ActiveGamemode as ClassicGamemode;
 	public override string RoundText => "";
 
 	protected override void OnStart()
@@ -15,7 +15,7 @@ public partial class PostRound : TimedRound
 
 		classic.SetState( GamemodeState.Ending );
 
-		foreach ( var client in Client.All.Where( x => x.Pawn is ClassicPlayer ) )
+		foreach ( var client in Game.Clients.Where( x => x.Pawn is ClassicPlayer ) )
 		{
 			var pawn = client.Pawn as ClassicPlayer;
 
@@ -29,9 +29,9 @@ public partial class PostRound : TimedRound
 	{
 		base.OnFinish();
 		// tell the game that a gameloop has finished before we keep going
-		Game.Current.GameloopCompleted();
+		SDGame.Current.GameloopCompleted();
 
-		Game.Current.ActiveGamemode?.ChangeRound( new PreRound() );
+		SDGame.Current.ActiveGamemode?.ChangeRound( new PreRound() );
 
 		WinScreen.SetState( To.Everyone, false );
 	}

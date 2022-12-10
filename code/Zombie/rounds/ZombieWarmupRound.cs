@@ -6,7 +6,7 @@ namespace SpeedDial.Zombie.Rounds;
 public class ZombieWarmupRound : ZombieRound
 {
 
-	public override string RoundText => $"Waiting for players... [{Client.All.Count}/{Game.MinPlayers}]";
+	public override string RoundText => $"Waiting for players... [{Game.Clients.Count}/{SDGame.MinPlayers}]";
 
 	protected override void OnStart()
 	{
@@ -14,7 +14,7 @@ public class ZombieWarmupRound : ZombieRound
 
 		GameMode.SetState( GamemodeState.Waiting );
 
-		foreach ( var client in Client.All.Where( x => x.Pawn is ZombiePlayer ) )
+		foreach ( var client in Game.Clients.Where( x => x.Pawn is ZombiePlayer ) )
 		{
 			var pawn = client.Pawn as ZombiePlayer;
 
@@ -25,7 +25,7 @@ public class ZombieWarmupRound : ZombieRound
 	protected override void OnThink()
 	{
 		base.OnThink();
-		if ( Client.All.Count >= Game.MinPlayers )
+		if ( Game.Clients.Count >= SDGame.MinPlayers )
 		{
 			Finish();
 		}
@@ -34,6 +34,6 @@ public class ZombieWarmupRound : ZombieRound
 	protected override void OnFinish()
 	{
 		base.OnFinish();
-		Game.Current.ActiveGamemode.ChangeRound( new ZombiePreRound() );
+		SDGame.Current.ActiveGamemode.ChangeRound( new ZombiePreRound() );
 	}
 }

@@ -31,7 +31,7 @@ public partial class ScorePanel : Panel
 	{
 		// score
 		{
-			var score = Local.Client.GetValue( "score", 0 );
+			var score = Game.LocalClient.GetValue( "score", 0 );
 			//_score = _score.LerpTo(score, Time.Delta * 7f);
 			//ScoreLabel.Text = $"{(int)(_score + 0.5f)} PTS";
 
@@ -42,7 +42,7 @@ public partial class ScorePanel : Panel
 
 		// combo
 		{
-			var combo = Local.Client.GetValue( "combo", 0 );
+			var combo = Game.LocalClient.GetValue( "combo", 0 );
 			_combo = _combo.LerpTo( combo, Time.Delta * 10f );
 			ComboLabel.Text = $"x{(int)(_combo + 0.5f)}";
 

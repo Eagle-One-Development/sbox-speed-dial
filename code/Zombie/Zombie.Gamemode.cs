@@ -16,7 +16,7 @@ namespace SpeedDial.Zombie
 
 		public override void MoveToSpawnpoint( BasePlayer pawn )
 		{
-			Host.AssertServer();
+			Game.AssertServer();
 			var spawnpoints = All.Where( ( s ) => s is SpawnPoint );
 			Entity optimalSpawn = spawnpoints.ToList()[0];
 			float optimalDistance = 0;
@@ -45,7 +45,7 @@ namespace SpeedDial.Zombie
 			ChangeRound( new ZombiePreRound() );
 		}
 
-		protected override void OnClientReady( Client client )
+		protected override void OnClientReady( IClient client )
 		{
 			client.AssignPawn<ZombiePlayer>( true );
 		}

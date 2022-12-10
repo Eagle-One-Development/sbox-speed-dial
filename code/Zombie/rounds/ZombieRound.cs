@@ -4,6 +4,6 @@ namespace SpeedDial.Zombie.Rounds;
 
 public class ZombieRound : Round
 {
-	protected ZombieGamemode GameMode => Game.Current.ActiveGamemode as ZombieGamemode;
+	protected ZombieGamemode GameMode => SDGame.Current.ActiveGamemode as ZombieGamemode;
 
 }

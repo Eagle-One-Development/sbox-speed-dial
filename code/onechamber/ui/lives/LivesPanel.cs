@@ -11,9 +11,9 @@ public partial class LivesPanel : Panel
 
 	public override void Tick()
 	{
-		SetClass( "visible", Local.Client.Pawn is not ClassicSpectator );
+		SetClass( "visible", Game.LocalClient.Pawn is not ClassicSpectator );
 
-		if ( Local.Client.Pawn is OneChamberPlayer player )
+		if ( Game.LocalClient.Pawn is OneChamberPlayer player )
 		{
 			LivesLabel.Text = $"{player.Lives}";
 		}

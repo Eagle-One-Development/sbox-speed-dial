@@ -3,8 +3,8 @@
 namespace SpeedDial.OneChamber.Rounds;
 public partial class OneChamberWarmupRound : Round
 {
-	private OneChamberGamemode onechamber => Game.Current.ActiveGamemode as OneChamberGamemode;
-	public override string RoundText => $"Waiting for players... [{Client.All.Count}/{Game.MinPlayers}]";
+	private OneChamberGamemode onechamber => SDGame.Current.ActiveGamemode as OneChamberGamemode;
+	public override string RoundText => $"Waiting for players... [{Game.Clients.Count}/{SDGame.MinPlayers}]";
 
 	protected override void OnStart()
 	{
@@ -12,7 +12,7 @@ public partial class OneChamberWarmupRound : Round
 
 		onechamber.SetState( GamemodeState.Waiting );
 
-		foreach ( var client in Client.All.Where( x => x.Pawn is OneChamberPlayer ) )
+		foreach ( var client in Game.Clients.Where( x => x.Pawn is OneChamberPlayer ) )
 		{
 			var pawn = client.Pawn as OneChamberPlayer;
 
@@ -23,7 +23,7 @@ public partial class OneChamberWarmupRound : Round
 	protected override void OnThink()
 	{
 		base.OnThink();
-		if ( Client.All.Count >= Game.MinPlayers )
+		if ( Game.Clients.Count >= SDGame.MinPlayers )
 		{
 			Finish();
 		}
@@ -32,6 +32,6 @@ public partial class OneChamberWarmupRound : Round
 	protected override void OnFinish()
 	{
 		base.OnFinish();
-		Game.Current.ActiveGamemode.ChangeRound( new OneChamberPreRound() );
+		SDGame.Current.ActiveGamemode.ChangeRound( new OneChamberPreRound() );
 	}
 }

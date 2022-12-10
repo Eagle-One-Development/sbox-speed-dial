@@ -17,10 +17,10 @@ using SpeedDial.Classic.Player;
 //CREDIT: Modified from Espionage.Engine by Jake Wooshito
 namespace SpeedDial;
 
-public partial class Game : GameManager
+public partial class SDGame : GameManager
 {
 
-	public static Game Current { get; protected set; }
+	public static new SDGame Current { get; protected set; }
 	[ConVar.Server( "sd_default_gamemode", Help = "Sets the default gamemode. Uses the library name of the gamemode type." )]
 	public static string DefaultGamemode { get; set; } = "Classic";
 	public static string LastGamemode { get; private set; }
@@ -29,7 +29,7 @@ public partial class Game : GameManager
 	[ConVar.Server( "sd_min_players", Help = "The minimum players required to start the game." )]
 	public static int MinPlayers { get; set; } = 2;
 
-	public Game()
+	public SDGame()
 	{
 		Current = this;
 	}
@@ -51,7 +51,7 @@ public partial class Game : GameManager
 	{
 		base.OnDestroy();
 		// FIXME, Global.Lobby is deprecated, need new way to do per-lobby cookies
-		//if ( IsServer && !string.IsNullOrWhiteSpace( LastGamemode ) )
+		//if ( Game.IsServer && !string.IsNullOrWhiteSpace( LastGamemode ) )
 		//{
 		//	Log.Debug( $"Exit with gamemode {LastGamemode}" );
 		//	var data = new GamemodeLobbyCookie();
@@ -61,9 +61,11 @@ public partial class Game : GameManager
 		//}
 	}
 
+
 	public override void PostLevelLoaded()
 	{
-		if ( IsServer )
+		Log.Debug( "PostLevelLoaded" );
+		if ( Game.IsServer )
 		{
 			InitGamemode();
 		}
@@ -71,7 +73,7 @@ public partial class Game : GameManager
 
 	private void InitGamemode()
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 		Log.Debug( "gamemode init" );
 		// do we have a cookie stored?
 
@@ -94,20 +96,20 @@ public partial class Game : GameManager
 	}
 
 	//
-	// Client States
+	// IClient States
 	//
 
-	public override void ClientJoined( Client cl )
+	public override void ClientJoined( IClient cl )
 	{
 		Log.Info( $"\"{cl.Name}\" has joined the game" );
 
-		ActiveGamemode?.ClientJoined( cl );
+		ActiveGamemode.ClientJoined( cl );
 
 		// TODO: Make a menu for this
 		ClientReady( cl );
 	}
 
-	public override void ClientDisconnect( Client cl, NetworkDisconnectionReason reason )
+	public override void ClientDisconnect( IClient cl, NetworkDisconnectionReason reason )
 	{
 		Log.Info( $"\"{cl.Name}\" has left the game ({reason})" );
 		ActiveGamemode?.ClientDisconnected( cl, reason );
@@ -119,7 +121,7 @@ public partial class Game : GameManager
 		}
 	}
 
-	public virtual void ClientReady( Client cl )
+	public virtual void ClientReady( IClient cl )
 	{
 		ActiveGamemode?.ClientReady( cl );
 	}
@@ -130,7 +132,7 @@ public partial class Game : GameManager
 
 	public virtual void MoveToSpawnpoint( BasePlayer pawn )
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
 		ActiveGamemode?.MoveToSpawnpoint( pawn );
 
@@ -142,14 +144,14 @@ public partial class Game : GameManager
 
 	public virtual void PawnRespawned( BasePlayer pawn )
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
 		ActiveGamemode?.PawnRespawned( pawn );
 	}
 
 	public virtual bool PawnDamaged( BasePlayer pawn, ref DamageInfo info )
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
 		if ( ActiveGamemode is not null )
 		{
@@ -165,7 +167,7 @@ public partial class Game : GameManager
 
 	public virtual void PawnKilled( BasePlayer pawn, DamageInfo lastDamage )
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
 		if ( ActiveGamemode is not null )
 		{
@@ -187,10 +189,10 @@ public partial class Game : GameManager
 	}
 
 
-	public virtual void PawnNoClip( Client client )
+	public virtual void PawnNoClip( IClient client )
 	{
-		if ( !client.HasPermission( "noclip" ) )
-			return;
+		//if ( !client.HasPermission( "noclip" ) ) // TODO: HasPermission does not have a new implementation to be replaced with.
+		//	return;
 
 		if ( client.Pawn is BasePlayer pawn )
 		{
@@ -216,12 +218,12 @@ public partial class Game : GameManager
 		Current?.PawnDevCam( client );
 	}
 
-	public virtual void PawnDevCam( Client client )
+	public virtual void PawnDevCam( IClient client )
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
-		if ( !client.HasPermission( "devcam" ) )
-			return;
+		//if ( !client.HasPermission( "devcam" ) ) // TODO: HasPermission does not have a new implementation to be replaced with.
+		//	return;
 
 		var camera = client.Components.Get<DevCamera>( true );
 
@@ -244,7 +246,7 @@ public partial class Game : GameManager
 		Current?.PawnSuicide( client );
 	}
 
-	public virtual void PawnSuicide( Client client )
+	public virtual void PawnSuicide( IClient client )
 	{
 		if ( client.Pawn is not BasePlayer player )
 			return;
@@ -263,7 +265,7 @@ public partial class Game : GameManager
 	// Simulate
 	//
 
-	public override void Simulate( Client cl )
+	public override void Simulate( IClient cl )
 	{
 		if ( !cl.Pawn.IsValid() )
 			return;
@@ -276,9 +278,9 @@ public partial class Game : GameManager
 		(cl.Pawn as Entity)?.Simulate( cl );
 	}
 
-	public override void FrameSimulate( Client cl )
+	public override void FrameSimulate( IClient cl )
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 
 		if ( !cl.Pawn.IsValid() )
 			return;
@@ -292,13 +294,13 @@ public partial class Game : GameManager
 
 	public virtual CameraMode FindActiveCamera()
 	{
-		var devCam = Local.Client.Components.Get<DevCamera>();
+		var devCam = Game.LocalClient.Components.Get<DevCamera>();
 		if ( devCam != null ) return null;
 
-		var clientCam = Local.Client.Components.Get<CameraMode>();
+		var clientCam = Game.LocalClient.Components.Get<CameraMode>();
 		if ( clientCam != null ) return clientCam;
 
-		var pawnCam = Local.Pawn?.Components.Get<CameraMode>();
+		var pawnCam = Game.LocalPawn?.Components.Get<CameraMode>();
 		return pawnCam ?? null;
 	}
 
@@ -329,16 +331,16 @@ public partial class Game : GameManager
 
 		// the camera is the primary method here
 		LastCamera?.BuildInput();
-		Local.Pawn?.BuildInput();
+		Game.LocalPawn?.BuildInput();
 	}
 
 	public void PostCameraSetup()
 	{
 
-		if ( Local.Pawn != null )
+		if ( Game.LocalPawn != null )
 		{
 			// VR anchor default is at the pawn's location
-			VR.Anchor = Local.Pawn.Transform;
+			VR.Anchor = Game.LocalPawn.Transform;
 		}
 	}
 
@@ -346,9 +348,9 @@ public partial class Game : GameManager
 	// Voice
 	//
 
-	public override bool CanHearPlayerVoice( Client source, Client dest )
+	public override bool CanHearPlayerVoice( IClient source, IClient dest )
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
 		var sp = source.Pawn;
 		var dp = dest.Pawn;
@@ -387,10 +389,10 @@ public partial class Game : GameManager
 
 	private void OnEndGamemode()
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 		Current.ActiveGamemode?.Finish();
 		Current.ActiveGamemode = null;
-		Map.Reset( CleanupFilter );
+		Game.ResetMap( CleanupFilter() );
 		Log.Debug( "gamemode ended" );
 		GamemodeVote.Start();
 	}
@@ -405,9 +407,9 @@ public partial class Game : GameManager
 	/// <param name="gamemode">Gamemode name to change to </param>
 	public void SetGamemode( Gamemode gamemode )
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
-		var clients = Client.All;
+		var clients = Game.Clients;
 
 		gamemode.Parent = this;
 
@@ -418,7 +420,7 @@ public partial class Game : GameManager
 		LastGamemode = gamemode.ClassName;
 
 		// just to be sure, might save us some headaches
-		Map.Reset( CleanupFilter );
+		Game.ResetMap( CleanupFilter() );
 
 		// call this before we start the gamemode so entities are valid and enabled when we start (or disabled)
 		UpdateGamemodeEntities( gamemode.Identity );
@@ -470,19 +472,10 @@ public partial class Game : GameManager
 		}
 	}
 
-	private static bool CleanupFilter( string className, Entity ent )
+	private static Entity[] CleanupFilter()
 	{
-		// Basic Source engine stuff
-		if ( className is "player" or "worldent" or "worldspawn" or "soundent" or "player_manager" )
-		{
-			return false;
-		}
-
-		// When creating entities we only have classNames to work with..
-		if ( ent == null || !ent.IsValid ) return true;
-
 		// Gamemode related stuff, game entity, HUD, etc
-		return ent is not GameManager && ent.Parent is not GameManager && ent is not Hud && ent is not VoteEntity;
+		return Entity.All.Where( ent => (ent.ClassName is "player" or "worldent" or "worldspawn" or "soundent" or "player_manager") || (ent is GameManager || ent.Parent is GameManager || ent is Hud || ent is VoteEntity || ent is Gamemode) ).ToArray();
 	}
 }
 

@@ -13,7 +13,7 @@ public partial class BuyHint : Panel
 	public override void Tick()
 	{
 		base.Tick();
-		if ( Local.Pawn is not ZombiePlayer player || !player.CurrentBuyZone.IsValid() )
+		if ( Game.LocalPawn is not ZombiePlayer player || !player.CurrentBuyZone.IsValid() )
 		{
 			HintContainer.SetClass( "active", false );
 			return;

@@ -133,7 +133,7 @@ public partial class VoteEntity : Entity
 
 	private void HandleVoteEnd()
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 		Log.Debug( $"vote concluded {Concluded} {TimeSinceConcluded}" );
 		Concluded = true;
 		TimeSinceConcluded = 0;
@@ -173,7 +173,7 @@ public partial class VoteEntity : Entity
 			// has the same amount of votes, throw in some random
 			if ( items[i] == votes && votes != 0 )
 			{
-				if ( Rand.Int( 0, 1 ) == 1 )
+				if ( Game.Random.Int( 0, 1 ) == 1 )
 				{
 					winner = i;
 					votes = items[i];
@@ -185,7 +185,7 @@ public partial class VoteEntity : Entity
 		if ( skips >= votes ) return -2;
 
 		// if all items have 0 votes, pick random
-		return winner == -1 ? Rand.Int( 0, items.Length - 1 ) : winner;
+		return winner == -1 ? Game.Random.Int( 0, items.Length - 1 ) : winner;
 	}
 
 	/// <summary>

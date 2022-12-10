@@ -37,7 +37,7 @@ public partial class KothGamemode : ClassicGamemode
 			}
 
 			// get random awesome kill message
-			int index = Rand.Int( 0, KillMessages.Length - 1 );
+			int index = Game.Random.Int( 0, KillMessages.Length - 1 );
 			string killtext = KillMessages[index];
 
 			// only show killer if we got killed by a player
@@ -60,9 +60,9 @@ public partial class KothGamemode : ClassicGamemode
 			if ( victim.LastAttacker.Client != null )
 			{
 				// tell everyone but the two clients involved about the kill like usual
-				ClassicKillFeed.AddDeath( To.Multiple( Client.All.Except( new Client[] { victim.Client, victim.LastAttacker.Client } ) ), victim.LastAttacker.Client.SteamId, victim.LastAttacker.Client.Name, victim.Client.SteamId, victim.Client.Name, victim.DeathCause.ToString() );
+				ClassicKillFeed.AddDeath( To.Multiple( Game.Clients.Except( new IClient[] { victim.Client, victim.LastAttacker.Client } ) ), victim.LastAttacker.Client.SteamId, victim.LastAttacker.Client.Name, victim.Client.SteamId, victim.Client.Name, victim.DeathCause.ToString() );
 				// only tell the people involved about domination
-				ClassicKillFeed.AddDeath( To.Multiple( new Client[] { victim.Client, victim.LastAttacker.Client } ), victim.LastAttacker.Client.SteamId, victim.LastAttacker.Client.Name, victim.Client.SteamId, victim.Client.Name, victim.DeathCause.ToString(), highlight );
+				ClassicKillFeed.AddDeath( To.Multiple( new IClient[] { victim.Client, victim.LastAttacker.Client } ), victim.LastAttacker.Client.SteamId, victim.LastAttacker.Client.Name, victim.Client.SteamId, victim.Client.Name, victim.DeathCause.ToString(), highlight );
 			}
 			else
 			{

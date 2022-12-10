@@ -87,7 +87,7 @@ public partial class Weapon : BaseCarriable
 		}
 		if ( Debug.Weapons )
 		{
-			if ( IsServer )
+			if ( Game.IsServer )
 				DebugOverlay.Text( $"{GetType().Name}\nalive since: {TimeSinceAlive}\ndespawn: {DespawnAfterTime}", Position, Owner is null ? Color.White : Color.Green, Time.Delta, 1000 );
 		}
 	}
@@ -98,7 +98,7 @@ public partial class Weapon : BaseCarriable
 		anim.SetAnimParameter( "aimat_weight", 1.0f );
 	}
 
-	public override void Simulate( Client owner )
+	public override void Simulate( IClient owner )
 	{
 		TimeSinceAlive = 0;
 
@@ -186,7 +186,7 @@ public partial class Weapon : BaseCarriable
 
 	public virtual void ShootBullet( float spread, float force, float damage, float bulletSize, int seed )
 	{
-		Rand.SetSeed( Time.Tick + seed );
+		Game.SetRandomSeed( Time.Tick + seed );
 
 		var player = Owner as ClassicPlayer;
 
@@ -218,7 +218,7 @@ public partial class Weapon : BaseCarriable
 
 			index++;
 
-			if ( !IsServer ) continue;
+			if ( !Game.IsServer ) continue;
 			if ( !tr.Entity.IsValid() ) continue;
 
 			using ( Prediction.Off() )
@@ -366,7 +366,7 @@ public partial class Weapon : BaseCarriable
 
 	public override void OnCarryStart( Entity carrier )
 	{
-		if ( IsClient || !carrier.IsValid() || carrier is not BasePlayer player ) return;
+		if ( Game.IsClient || !carrier.IsValid() || carrier is not BasePlayer player ) return;
 
 		CanImpactKill = true;
 

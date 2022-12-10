@@ -117,14 +117,14 @@ public partial class ClassicPlayer
 	[ClientRpc]
 	public void BloodSplatter()
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 		BloodSplatter( Vector3.Down );
 	}
 
 	[ClientRpc]
 	public void BloodSplatter( Vector3 dir )
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 		Vector3 pos = EyePosition + (Vector3.Down * 20);
 
 		// splatters around and behind the target, mostly from impact

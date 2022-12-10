@@ -13,7 +13,7 @@ public class ZombieGameRound : ZombieRound
 		RoundTime = 0;
 
 
-		foreach ( var client in Client.All.Where( x => x.Pawn is ZombiePlayer ) )
+		foreach ( var client in Game.Clients.Where( x => x.Pawn is ZombiePlayer ) )
 		{
 			var pawn = client.Pawn as ZombiePlayer;
 
@@ -34,6 +34,6 @@ public class ZombieGameRound : ZombieRound
 	protected override void OnFinish()
 	{
 		base.OnFinish();
-		Game.Current.ActiveGamemode?.ChangeRound( new ZombiePreRound() );
+		SDGame.Current.ActiveGamemode?.ChangeRound( new ZombiePreRound() );
 	}
 }

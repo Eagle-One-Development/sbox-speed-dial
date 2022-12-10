@@ -5,7 +5,7 @@ namespace SpeedDial.Classic.UI;
 [UseTemplate]
 public partial class WinPanel : Panel
 {
-	public Client Client { get; set; }
+	public IClient Client { get; set; }
 	public Image Portrait { get; set; }
 	public Label Score { get; set; }
 	public Image Avatar { get; set; }
@@ -14,7 +14,7 @@ public partial class WinPanel : Panel
 	public Label Name { get; set; }
 
 
-	public void UpdateFrom( Client client, int position )
+	public void UpdateFrom( IClient client, int position )
 	{
 		if ( !client.IsValid() )
 		{

@@ -17,7 +17,7 @@ public partial class KothGamemode : ClassicGamemode
 		bot.ApplyBehaviour<KothBotBehaviour>();
 	}
 
-	protected override void OnClientReady( Client client )
+	protected override void OnClientReady( IClient client )
 	{
 		client.AssignPawn<KothPlayer>( true );
 	}

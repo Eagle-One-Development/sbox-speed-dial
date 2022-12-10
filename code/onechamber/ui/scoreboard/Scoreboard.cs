@@ -5,7 +5,7 @@ namespace SpeedDial.OneChamber.UI;
 [UseTemplate]
 public partial class OneChamberScoreboard : Panel
 {
-	private readonly Dictionary<Client, OneChamberScoreboardEntry> Rows = new();
+	private readonly Dictionary<IClient, OneChamberScoreboardEntry> Rows = new();
 
 	public Panel Header { get; set; }
 	public Panel Canvas { get; set; }
@@ -24,20 +24,20 @@ public partial class OneChamberScoreboard : Panel
 		if ( !IsVisible )
 			return;
 
-		GamemodeInfo.Text = $"Gamemode: {Game.Current.ActiveGamemode?.ClassName}";
-		MapInfo.Text = $"Map: {Global.MapName}";
-		LoopInfo.Text = $"Games until vote: {Game.Current.ActiveGamemode.GameloopsUntilVote - Game.Current.CompletedGameloops}";
+		GamemodeInfo.Text = $"Gamemode: {SDGame.Current.ActiveGamemode?.ClassName}";
+		MapInfo.Text = $"Map: {Game.Server.MapIdent}"; //TODO: Figure out if this is what we want. was Map.MapName before
+		LoopInfo.Text = $"Games until vote: {SDGame.Current.ActiveGamemode.GameloopsUntilVote - SDGame.Current.CompletedGameloops}";
 		Footer.SetClass( "visible", true );
 
 		// Clients that joined
-		foreach ( var client in Client.All.Except( Rows.Keys ) )
+		foreach ( var client in Game.Clients.Except( Rows.Keys ) )
 		{
 			var entry = AddClient( client );
 			Rows[client] = entry;
 		}
 
 		// clients that left
-		foreach ( var client in Rows.Keys.Except( Client.All ) )
+		foreach ( var client in Rows.Keys.Except( Game.Clients ) )
 		{
 			if ( Rows.TryGetValue( client, out var row ) )
 			{
@@ -56,7 +56,7 @@ public partial class OneChamberScoreboard : Panel
 		}
 	}
 
-	protected virtual OneChamberScoreboardEntry AddClient( Client entry )
+	protected virtual OneChamberScoreboardEntry AddClient( IClient entry )
 	{
 		var p = Canvas.AddChild<OneChamberScoreboardEntry>();
 		p.Client = entry;

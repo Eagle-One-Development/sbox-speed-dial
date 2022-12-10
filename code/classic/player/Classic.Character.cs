@@ -20,7 +20,7 @@ public partial class Character : GameResource
 
 	protected override void PostLoad()
 	{
-		if ( Host.IsClient )
+		if ( Game.IsClient )
 		{
 			PortraitTexture = Texture.Load( FileSystem.Mounted, Portrait );
 		}

@@ -11,7 +11,7 @@ public partial class OneChamberGamemode : ClassicGamemode
 	public override GamemodeIdentity Identity => GamemodeIdentity.OneChamber;
 	public override int GameloopsUntilVote => 5;
 
-	protected override void OnClientReady( Client client )
+	protected override void OnClientReady( IClient client )
 	{
 		client.AssignPawn<OneChamberPlayer>( true );
 	}

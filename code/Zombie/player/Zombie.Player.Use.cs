@@ -14,7 +14,7 @@ public partial class ZombiePlayer
 		{
 			CurrentBuyZone = buyZone.BuyZoneEntity;
 
-			if ( Input.Down( InputButton.Use ) && Host.IsServer && !WaitForRelease )
+			if ( Input.Down( InputButton.Use ) && Game.IsServer && !WaitForRelease )
 			{
 				if ( !buyZone.TryBuyZone( this ) )
 				{
@@ -26,7 +26,7 @@ public partial class ZombiePlayer
 		{
 			CurrentBuyZone = null;
 		}
-		if ( Input.Released( InputButton.Use ) && Host.IsServer )
+		if ( Input.Released( InputButton.Use ) && Game.IsServer )
 		{
 			WaitForRelease = false;
 		}

@@ -30,7 +30,7 @@ public partial class Weapon
 
 						Owner.PlaySound( "sd_bat.hit" );
 
-						if ( IsServer )
+						if ( Game.IsServer )
 						{
 							using ( Prediction.Off() )
 							{

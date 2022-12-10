@@ -12,9 +12,9 @@ public partial class ClassicBotBehaviour
 	public Draw Draw => Draw.Once;
 
 	#region Randomized Variables
-	private readonly float turnSpeed = Rand.Float( 10f, 25f ); // lower is slower
-	private readonly float sinAimSpeed = Rand.Float( 10.0f, 15.0f );
-	private readonly float accuracy = Rand.Float( 0.0f, 10.0f ); // lower is more accurate
+	private readonly float turnSpeed = Game.Random.Float( 10f, 25f ); // lower is slower
+	private readonly float sinAimSpeed = Game.Random.Float( 10.0f, 15.0f );
+	private readonly float accuracy = Game.Random.Float( 0.0f, 10.0f ); // lower is more accurate
 
 	#endregion
 
@@ -46,7 +46,7 @@ public partial class ClassicBotBehaviour
 		if ( Debug.Bots )
 		{
 			DebugOverlay.Sphere( Bot.Client.Pawn.Position, SearchRadius, Color.Magenta );
-			DebugOverlay.Text( $"{Bot.GetType().Name}\nFake Client Name: {Bot.Client.Name}\nCurrent Target: {(CurrentTarget != null ? CurrentTarget : "null")}", Bot.Client.Pawn.Position, CurrentTarget != null ? Color.Yellow : Color.White, 0, 1000 );
+			DebugOverlay.Text( $"{Bot.GetType().Name}\nFake IClient Name: {Bot.Client.Name}\nCurrent Target: {(CurrentTarget != null ? CurrentTarget : "null")}", Bot.Client.Pawn.Position, CurrentTarget != null ? Color.Yellow : Color.White, 0, 1000 );
 		}
 		if ( Bot.Client.Pawn is not BasePlayer player ) return;
 

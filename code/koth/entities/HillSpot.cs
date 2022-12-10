@@ -24,12 +24,12 @@ public partial class HillSpot : ModelEntity
 	{
 		if ( TimeSinceAlive > 10f )
 		{
-			foreach ( Client client in Client.All )
+			foreach ( IClient client in Game.Clients )
 			{
 				ScreenHints.FireEvent( To.Single( client ), "HILL MOVED", "Good luck!" );
 			}
 
-			if ( IsValid && !IsClient )
+			if ( IsValid && !Game.IsClient )
 			{
 				Delete();
 			}

@@ -6,7 +6,7 @@ namespace SpeedDial.Zombie.Rounds;
 public partial class ZombiePreRound : TimedRound
 {
 	public override TimeSpan RoundDuration => TimeSpan.FromSeconds( 2 );
-	private ZombieGamemode classic => Game.Current.ActiveGamemode as ZombieGamemode;
+	private ZombieGamemode classic => SDGame.Current.ActiveGamemode as ZombieGamemode;
 	public override string RoundText => "Round starting...";
 
 	protected override void OnStart()
@@ -15,14 +15,14 @@ public partial class ZombiePreRound : TimedRound
 
 		classic.SetState( GamemodeState.Preparing );
 
-		if ( Host.IsServer )
+		if ( Game.IsServer )
 		{
 			//classic.PickNewSoundtrack();
 			// clear kills list to clear domination info
 			//classic.Kills.Clear();
 		}
 
-		foreach ( var client in Client.All.Where( x => x.Pawn is ZombiePlayer ) )
+		foreach ( var client in Game.Clients.Where( x => x.Pawn is ZombiePlayer ) )
 		{
 			var pawn = client.Pawn as ZombiePlayer;
 			pawn.Respawn();
@@ -37,13 +37,13 @@ public partial class ZombiePreRound : TimedRound
 		}
 
 		// reset stuff from warmup etc
-		Game.Current.ActiveGamemode?.CallResetEvent();
+		SDGame.Current.ActiveGamemode?.CallResetEvent();
 	}
 
 	protected override void OnFinish()
 	{
 		base.OnFinish();
-		Game.Current.ActiveGamemode?.ChangeRound( new ZombieGameRound() );
+		SDGame.Current.ActiveGamemode?.ChangeRound( new ZombieGameRound() );
 	}
 
 	public override void OnPawnJoined( BasePlayer pawn )

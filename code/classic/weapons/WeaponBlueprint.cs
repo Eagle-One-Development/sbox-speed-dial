@@ -142,7 +142,7 @@ public partial class WeaponBlueprint : GameResource
 
 		WorldModel = Model.Load( WorldModelPath );
 
-		if ( Host.IsClient )
+		if ( Game.IsClient )
 		{
 			IconTexture = Texture.Load( FileSystem.Mounted, Icon );
 		}

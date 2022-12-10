@@ -12,7 +12,7 @@ public partial class ZombiePlayer
 
 	public virtual void ThrowWeapon()
 	{
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			if ( !DropWeapon( out Weapon dropped ) ) return;
 
@@ -84,7 +84,7 @@ public partial class ZombiePlayer
 		weapon.Parent = null;
 		weapon.OnCarryDrop( this );
 
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			weapon.Position = EyePosition;
 			weapon.Velocity = Velocity * 0.75f;

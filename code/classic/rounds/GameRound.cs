@@ -6,7 +6,7 @@ namespace SpeedDial.Classic.Rounds;
 public partial class GameRound : TimedRound
 {
 	public override TimeSpan RoundDuration => TimeSpan.FromMinutes( 5 );
-	private ClassicGamemode classic => Game.Current.ActiveGamemode as ClassicGamemode;
+	private ClassicGamemode classic => SDGame.Current.ActiveGamemode as ClassicGamemode;
 	public override string RoundText => "";
 
 	protected override void OnStart()
@@ -15,7 +15,7 @@ public partial class GameRound : TimedRound
 
 		classic.SetState( GamemodeState.Running );
 
-		foreach ( var client in Client.All.Where( x => x.Pawn is ClassicPlayer ) )
+		foreach ( var client in Game.Clients.Where( x => x.Pawn is ClassicPlayer ) )
 		{
 			var pawn = client.Pawn as ClassicPlayer;
 
@@ -29,7 +29,7 @@ public partial class GameRound : TimedRound
 	protected override void OnFinish()
 	{
 		base.OnFinish();
-		Game.Current.ActiveGamemode?.ChangeRound( new PostRound() );
+		SDGame.Current.ActiveGamemode?.ChangeRound( new PostRound() );
 
 		WinScreen.UpdatePanels( To.Everyone );
 	}

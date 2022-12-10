@@ -7,7 +7,7 @@ public partial class BaseRootPanel : RootPanel
 
 	public BaseRootPanel()
 	{
-		if ( !Host.IsClient ) return;
+		if ( !Game.IsClient ) return;
 
 		StyleSheet.Load( "/base/ui/root.scss" );
 		AddChild<VotingScreen>();

@@ -31,13 +31,13 @@ public partial class ClassicGamemode : Gamemode
 	/// </summary>
 	public void PickNewSoundtrack()
 	{
-		int index = Rand.Int( 0, Soundtracks.Length - 1 );
+		int index = Game.Random.Int( 0, Soundtracks.Length - 1 );
 		CurrentSoundtrack = Soundtracks[index];
 	}
 
 	public override void MoveToSpawnpoint( BasePlayer pawn )
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 		var spawnpoints = All.Where( ( s ) => s is SpawnPoint );
 		Entity optimalSpawn = spawnpoints.ToList()[0];
 		float optimalDistance = 0;
@@ -76,14 +76,14 @@ public partial class ClassicGamemode : Gamemode
 
 	protected override void OnFinish()
 	{
-		foreach ( var client in Client.All.Where( x => x.Pawn is ClassicPlayer ) )
+		foreach ( var client in Game.Clients.Where( x => x.Pawn is ClassicPlayer ) )
 		{
 			// lol
 			ClassicPlayer.StopSoundtrack( To.Single( client ), true );
 		}
 	}
 
-	protected override void OnClientReady( Client client )
+	protected override void OnClientReady( IClient client )
 	{
 		client.AssignPawn<ClassicPlayer>( true );
 	}
@@ -93,7 +93,7 @@ public partial class ClassicGamemode : Gamemode
 		Hud.SetGamemodeUI( new ClassicHud() );
 	}
 
-	public override bool OnClientSuicide( Client client )
+	public override bool OnClientSuicide( IClient client )
 	{
 		if ( client.Pawn is ClassicPlayer player )
 		{

@@ -9,7 +9,7 @@ public partial class ClassicRandomDrugSpawn : ClassicDrugSpawn
 {
 	public override void SpawnDrug()
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 		if ( !Enabled ) return;
 
 		var ent = TypeLibrary.Create<ClassicBaseDrug>( ClassicBaseDrug.GetRandomSpawnableType().Name );

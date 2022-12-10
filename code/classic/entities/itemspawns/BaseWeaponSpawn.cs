@@ -45,7 +45,7 @@ public partial class ClassicWeaponSpawn : GamemodeEntity
 
 	public virtual void SpawnWeapon()
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 		if ( !Enabled ) return;
 
 		var ent = WeaponBlueprint.Create( WeaponClass );

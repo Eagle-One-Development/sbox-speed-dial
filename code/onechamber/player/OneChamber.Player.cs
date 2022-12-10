@@ -19,7 +19,7 @@ public partial class OneChamberPlayer : ClassicPlayer
 
 	public override void Respawn()
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
 		Model = Character.CharacterModel;
 
@@ -41,9 +41,9 @@ public partial class OneChamberPlayer : ClassicPlayer
 		EnableShadowInFirstPerson = true;
 		EnableLagCompensation = true;
 
-		Game.Current.PawnRespawned( this );
-		Game.Current.MoveToSpawnpoint( this );
-		Game.Current.ActiveGamemode?.ActiveRound?.OnPawnRespawned( this );
+		SDGame.Current.PawnRespawned( this );
+		SDGame.Current.MoveToSpawnpoint( this );
+		SDGame.Current.ActiveGamemode?.ActiveRound?.OnPawnRespawned( this );
 
 		Frozen = false;
 		GiveWeapon( "oc_pistol" );
@@ -58,7 +58,7 @@ public partial class OneChamberPlayer : ClassicPlayer
 		return;
 	}
 
-	public override void Simulate( Client cl )
+	public override void Simulate( IClient cl )
 	{
 		base.Simulate( cl );
 	}
@@ -109,7 +109,7 @@ public partial class OneChamberPlayer : ClassicPlayer
 		}
 
 		LifeState = LifeState.Dead;
-		Game.Current.PawnKilled( this, LastRecievedDamage );
+		SDGame.Current.PawnKilled( this, LastRecievedDamage );
 
 		// lost last live
 		if ( !CanRespawn() )
@@ -141,7 +141,7 @@ public partial class OneChamberPlayer : ClassicPlayer
 			}
 			using ( Prediction.Off() )
 			{
-				if ( IsServer )
+				if ( Game.IsServer )
 				{
 					if ( (ActiveChild as Weapon).AmmoClip > 0 )
 					{
