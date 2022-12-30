@@ -1,0 +1,62 @@
+﻿@namespace SpeedDial
+@attribute [StyleSheet("/base/ui/voting/VotingScreen.scss")]
+@inherits Panel
+
+<root>
+	<div class="canvas">
+		<div class="header">
+			<text class="title" text=@Vote?.VoteTitle />
+			<text class="description" text=@Vote?.VoteDescription />
+		</div>
+		<div class="body">
+			<div class="items">
+				<!--vote items-->
+				@if (Vote.IsValid())
+					@for (var i = 0; i < Vote.VoteItems.Count; i++)
+					{
+						<VoteItemPanel Index=@i />
+					}
+			</div>
+		</div>
+		<!--skip vote item-->
+		<VoteItemPanel />
+	</div>
+	<div class="progressbar" @ref=ProgressBar>
+		<div class="gradient" />
+	</div>
+</root>
+
+@code {
+	public Panel ProgressBar { get; set; }
+	private VoteEntity Vote => VoteEntity.Current;
+	public override void Tick()
+	{
+		SetClass("open", (Vote.IsValid() && !Vote.Concluded) || (Vote.IsValid() && Vote.Concluded && Vote.TimeSinceConcluded <
+		1.0f));
+		SetClass("active", Vote.IsValid() && !Vote.Concluded);
+		if (!Vote.IsValid())
+		{
+			return;
+		}
+
+		if (!ProgressBar.IsValid()) return;
+
+		if (!Vote.Concluded)
+		{
+			var progress = 1 - (Vote.TimeSinceStarted / Vote.VoteDuration);
+			ProgressBar.Style.Width = Length.Percent(progress * 100);
+		}
+		else
+		{
+			ProgressBar.Style.Width = Length.Percent(0);
+		}
+	}
+
+	protected override int BuildHash()
+	{
+		if (Vote.IsValid())
+			return base.BuildHash() ^ Vote.VoteItems.Count.GetHashCode();
+		else
+			return base.BuildHash();
+	}
+}

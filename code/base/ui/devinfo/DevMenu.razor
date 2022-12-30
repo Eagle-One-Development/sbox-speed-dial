@@ -1,0 +1,44 @@
+﻿@namespace SpeedDial
+@attribute [StyleSheet("/base/ui/devinfo/DevMenu.scss")]
+@inherits Panel
+
+<div>
+	<div class="menu">
+		<text text="Debug Toggles" />
+		<ConvarToggleButton text="Toggle debug mode" on="True" off="False" convar="debug" />
+		<ConvarToggleButton text="Toggle playtest mode" on="True" off="False" convar="sd_playtest" />
+		<ConvarToggleButton text="Toggle ui debug" on="True" off="False" convar="sd_debug_ui" />
+		<ConvarToggleButton text="Toggle inf ammo" on="True" off="False" convar="sd_debug_infinite_ammo" />
+		<ConvarToggleButton text="Toggle camera debug" on="True" off="False" convar="sd_debug_camera" />
+		<ConvarToggleButton text="Toggle weapons debug" on="True" off="False" convar="sd_debug_weapons" />
+		<ConvarToggleButton text="Toggle bots debug" on="True" off="False" convar="sd_debug_bots" />
+		<text text="Gamemodes" />
+		<button text="Start classic" @onclick=@(()=>ConsoleCommand("sd_change_gamemode ClassicGamemode" )) />
+		<button text="Start koth" @onclick=@(()=>ConsoleCommand("sd_change_gamemode KothGamemode")) />
+		<button text="Start onechamber" @onclick=@(()=>ConsoleCommand("sd_change_gamemode OneChamberGamemode")) />
+		<button text="End Current Gamemode" @onclick=@(()=>ConsoleCommand("sd_gamemode_destroy")) />
+		<text text="Bots" />
+		<button text="Add Speed-Dial Bot" @onclick=@(()=>ConsoleCommand("sd_bot")) />
+		<button text="Add Dummy Bot" @onclick=@(()=>ConsoleCommand("bot_add -1")) />
+		<button text="Add Mimic Bot" @onclick=@(()=>ConsoleCommand("bot_add 0 1")) />
+		<text text="Voting" />
+		<button text="End Current Vote" @onclick=@(()=>ConsoleCommand("sd_vote_end")) />
+		<button text="Start Gamemode Vote" @onclick=@(()=>ConsoleCommand("sd_vote_gamemode_start")) />
+	</div>
+</div>
+
+@code {
+	public override void Tick()
+	{
+		base.Tick();
+
+		SetClass("open", Game.LocalClient.IsListenServerHost && Input.Down(InputButton.View));
+	}
+
+	public void ConsoleCommand(string command)
+	{
+		if (!Game.LocalClient.IsListenServerHost) return;
+		RunCommandServer(command);
+		Log.Info($"Console command {command} executed");
+	}
+}

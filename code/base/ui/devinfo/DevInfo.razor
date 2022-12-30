@@ -1,0 +1,20 @@
+﻿@namespace SpeedDial
+@attribute [StyleSheet("/base/ui/devinfo/DevInfo.scss")]
+@inherits Panel
+
+<root>
+	<div class="group">
+		<image class="eagle" src="materials/ui/logo_text_white.png" />
+		<text class="site" text="https://eagleone.dev/" />
+	</div>
+	<text class="info" text=@Info />
+</root>
+
+@code {
+	private string Info { get; set; }
+	public override void Tick()
+	{
+		SetClass("visible", Debug.Playtest || Debug.Enabled);
+		Info = $"{(Debug.Playtest ? "PLAYTEST" : "IN-DEV")} {DateTime.Now:dd.MM.yyyy}";
+	}
+}

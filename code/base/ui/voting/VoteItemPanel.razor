@@ -1,0 +1,35 @@
+﻿@namespace SpeedDial
+@attribute [StyleSheet("/base/ui/voting/VoteItemPanel.scss")]
+@inherits Panel
+<root>
+	<text class="title" text=@(Index==-2 ? "Abstain" : ("["+@Item.Title+"]") ) />
+	<text class="description" text=@(Index==-2 ? "(Skip Vote)" : @Item.Description ) />
+	<text class="votes" text=@VoteEntity.Current?.GetVotes(@Index) />
+	<!--image-->
+</root>
+
+@code {
+	public int Index { get; set; } = -2;
+	private VoteItem Item => VoteEntity.Current?.GetVoteItem(Index);
+
+	public string Title { get; set; } = "Abstain";
+	public string Description { get; set; } = "(Skip Vote)";
+
+	public override void Tick()
+	{
+		SetClass("skip", Index == -2);
+		SetClass("voted", VoteEntity.Current?.GetClientVotedIndex(Game.LocalClient.SteamId) == Index);
+		SetClass("winner", VoteEntity.Current?.WinnerIndex == Index);
+	}
+
+	protected override void OnMouseDown(MousePanelEvent e)
+	{
+		VoteEntity.Vote(Index);
+	}
+
+	protected override int BuildHash()
+	{
+		return base.BuildHash() ^ Index ^ Title.GetHashCode() ^ Description.GetHashCode() ^
+		VoteEntity.Current?.GetVotes(Index).GetHashCode() ?? 0;
+	}
+}
