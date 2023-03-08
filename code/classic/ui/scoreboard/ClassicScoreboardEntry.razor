@@ -1,9 +1,11 @@
-<link rel="stylesheet" href="/classic/ui/scoreboard/Scoreboard.scss"/>
+﻿@attribute [StyleSheet("code/classic/ui/scoreboard/ClassicScoreboard.scss")]
 
-<div class="entry">
+@namespace SpeedDial.Classic.UI
+
+<root class="entry">
     <image class="controller" src="materials/ui/misc/controller.png" @ref="InputMethod"/>
     <text class="name" @ref="PlayerName" />
     <text class="score" @ref="Score" />
     <text class="maxcombo" @ref="MaxCombo" />
     <text class="ping" @ref="Ping" />
-</div>
+</root>

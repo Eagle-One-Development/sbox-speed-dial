@@ -1,7 +1,6 @@
 namespace SpeedDial.Classic.UI;
 
-[UseTemplate]
-public partial class ClassicScoreboardEntry : Panel
+public partial class ClassicScoreboardEntry
 {
 	public IClient Client;
 
@@ -39,10 +38,11 @@ public partial class ClassicScoreboardEntry : Panel
 		MaxCombo.Text = $"{Client.GetValue( "maxcombo", 0 )}";
 
 		Ping.Text = $"{Client.Ping}ms";
-		Ping.SetClass( "hidden", !Input.Down( InputButton.Walk ) || Client.IsBot );
+		Ping.SetClass( "hidden", Client.IsBot || Client.IsListenServerHost );
 
 		SetClass( "me", Client == Game.LocalClient && Game.Clients.Count > 1 );
 		InputMethod.SetClass( "hidden", !Input.UsingController || Client.IsBot );
+		StateHasChanged();
 	}
 
 	public virtual void UpdateFrom( IClient client )

@@ -1,8 +1,8 @@
 namespace SpeedDial.Classic.UI;
 
-[UseTemplate]
-public partial class ClassicScoreboard : Panel
+public partial class ClassicScoreboard
 {
+	[SkipHotload]
 	private readonly Dictionary<IClient, ClassicScoreboardEntry> Rows = new();
 
 	public Panel Header { get; set; }
@@ -12,18 +12,15 @@ public partial class ClassicScoreboard : Panel
 	public Label MapInfo { get; set; }
 	public Label LoopInfo { get; set; }
 
-	public ClassicScoreboard()
-	{
-		BindClass( "open", () => Input.Down( InputButton.Score ) );
-	}
-
 	public override void Tick()
 	{
+		SetClass( "open", Input.Down( InputButton.Score ) );
+
 		if ( !IsVisible )
 			return;
 
 		GamemodeInfo.Text = $"Gamemode: {SDGame.Current.ActiveGamemode.ClassName}";
-		MapInfo.Text = $"Map: {Game.Server.MapIdent}"; //TODO: Figure out if this is what we want. was Map.MapName before
+		MapInfo.Text = $"Map: {Game.Server.MapIdent}";
 		LoopInfo.Text = $"Games until vote: {SDGame.Current.ActiveGamemode.GameloopsUntilVote - SDGame.Current.CompletedGameloops}";
 		Footer.SetClass( "visible", true );
 

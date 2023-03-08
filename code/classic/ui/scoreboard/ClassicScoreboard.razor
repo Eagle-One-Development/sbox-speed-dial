@@ -1,6 +1,8 @@
-<link rel="stylesheet" href="/classic/ui/scoreboard/Scoreboard.scss"/>
+﻿@attribute [StyleSheet("code/classic/ui/scoreboard/ClassicScoreboard.scss")]
 
-<div>
+@namespace SpeedDial.Classic.UI
+
+<root>
     <div class="header" @ref="Header">
         <text class="name">Name</text>
         <text class="score">Score</text>
@@ -12,4 +14,4 @@
         <text class="map" @ref="MapInfo" />
         <text class="loop" @ref="LoopInfo" />
     </div>
-</div>
+</root>
