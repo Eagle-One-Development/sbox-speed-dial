@@ -2,8 +2,7 @@
 
 namespace SpeedDial.Classic.UI;
 
-[UseTemplate]
-public partial class WeaponPanel : Panel
+public partial class WeaponPanel
 {
 	public static WeaponPanel Current { get; private set; }
 
