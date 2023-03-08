@@ -1,13 +1,7 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
 {
-	data = 
-	{
-		CharacterName = "Maria"
-		Description = "Luchador Lady"
-		WeaponClass = "sd_rifle"
-		Portrait = resource:"materials/ui/portraits/portrait_maria.png"
-		Model = resource:"models/characters/maria.vmdl"
-		PortraitTexture = null
-		CharacterModel = resource:"models/characters/maria.vmdl"
-	}
+  "CharacterName": "Maria",
+  "Description": "Luchador Lady",
+  "WeaponClass": "sd_rifle",
+  "Portrait": "materials/ui/portraits/portrait_maria.png",
+  "Model": "models/playermodels/character_maria.vmdl"
 }

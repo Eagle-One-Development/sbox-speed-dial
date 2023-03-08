@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace SpeedDial.Classic.Player;
 
 [GameResource( "Speed-Dial Character", "sdchar", "Speed-Dial Character Definition", Icon = "person" )]
@@ -9,13 +11,13 @@ public partial class Character : GameResource
 	[ResourceType( "png" )] public string Portrait { get; set; } = "materials/ui/portraits/jack_hd.png";
 	[ResourceType( "vmdl" )] public string Model { get; set; } = "models/playermodels/character_jack.vmdl";
 
-	[EditorBrowsable( EditorBrowsableState.Never )]
+	[HideInEditor, JsonIgnore]
 	public static List<Character> All = new();
 
-	[EditorBrowsable( EditorBrowsableState.Never )]
+	[HideInEditor, JsonIgnore]
 	public Texture PortraitTexture { get; private set; }
 
-	[EditorBrowsable( EditorBrowsableState.Never )]
+	[HideInEditor, JsonIgnore]
 	public Model CharacterModel { get; private set; }
 
 	protected override void PostLoad()
