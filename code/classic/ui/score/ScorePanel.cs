@@ -1,7 +1,6 @@
 namespace SpeedDial.Classic.UI;
 
-[UseTemplate]
-public partial class ScorePanel : Panel
+public partial class ScorePanel
 {
 	public static ScorePanel Current { get; private set; }
 
