@@ -1,6 +1,8 @@
-﻿<link rel="stylesheet" href="/base/ui/voting/VotingScreen.scss"/>
+﻿@namespace SpeedDial
 
-<div>
+@attribute [StyleSheet("code/base/ui/voting/VotingScreen.scss")]
+
+<root>
     <div class="canvas">
         <div class="header">
             <text class="title" @ref="Title" />
@@ -15,4 +17,4 @@
     <div class="progressbar" @ref="ProgressBar">
         <div class="gradient" />
     </div>
-</div>
+</root>

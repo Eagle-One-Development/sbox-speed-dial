@@ -1,7 +1,6 @@
 ﻿namespace SpeedDial;
 
-[UseTemplate]
-public partial class VotingScreen : Panel
+public partial class VotingScreen
 {
 	private Label Title { get; set; }
 	private Label Description { get; set; }

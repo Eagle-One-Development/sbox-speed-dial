@@ -5,7 +5,7 @@
 
 @attribute [StyleSheet("code/base/ui/devinfo/DevMenu.scss")]
 
-<div>
+<root>
     <div class="menu">
         <text text="Debug Toggles" />
         <ConvarToggleButton text="Toggle debug mode" on="True" off="False" convar="sd_debug" />
@@ -28,4 +28,4 @@
         <button text="End Current Vote" @onclick=@( () => ConsoleSystem.Run( "sd_vote_end" )) />
         <button text="Start Gamemode Vote" @onclick=@( () => ConsoleSystem.Run( "sd_vote_gamemode_start" )) />
     </div>
-</div>
+</root>
