@@ -3,8 +3,7 @@ using SpeedDial.Classic.Weapons;
 
 namespace SpeedDial.Classic.UI;
 
-[UseTemplate]
-public partial class WorldHints : Panel
+public partial class WorldHints
 {
 	public static WorldHints Current { get; private set; }
 
