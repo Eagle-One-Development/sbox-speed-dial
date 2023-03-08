@@ -2,27 +2,27 @@ using SpeedDial.Classic.Player;
 
 namespace SpeedDial.Classic.UI;
 
-[UseTemplate]
-public partial class DrugPanel : Panel
+public partial class DrugPanel
 {
 	public Panel ProgressBar { get; set; }
 	public Label DrugName { get; set; }
-
-	public DrugPanel()
-	{
-		DrugName.BindClass( "show", () => (Game.LocalPawn as ClassicPlayer).ActiveDrug && (Game.LocalPawn as ClassicPlayer).TimeSinceDrugTaken >= 1.5f );
-	}
 
 	public override void Tick()
 	{
 		if ( Game.LocalPawn is ClassicPlayer player )
 		{
-
+			var old = DrugName.Text;
 			DrugName.Text = $"{player.DrugType.ToString().ToUpper()}";
+			DrugName.SetClass( "show", (Game.LocalPawn as ClassicPlayer).ActiveDrug && (Game.LocalPawn as ClassicPlayer).TimeSinceDrugTaken >= 1.5f );
+
+			if ( DrugName.Text != old )
+				StateHasChanged();
+
 			if ( player.ActiveDrug )
 			{
 				var progress = 1 - (player.TimeSinceDrugTaken / player.DrugDuration);
-				ProgressBar.Style.Width = Length.Percent( progress * 100 );
+				ProgressBar.Style.Width = Length.Fraction( progress );
+				ProgressBar.Style.Dirty();
 			}
 			else
 			{

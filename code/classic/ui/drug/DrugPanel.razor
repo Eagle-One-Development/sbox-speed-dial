@@ -1,8 +1,10 @@
-﻿<link rel="stylesheet" href="/classic/ui/drug/DrugPanel.scss" />
+﻿@attribute [StyleSheet("code/classic/ui/drug/DrugPanel.scss")]
 
-<div>
+@namespace SpeedDial.Classic.UI
+
+<root>
     <div class="progressbar" @ref="ProgressBar">
         <div class="gradient"/>
     </div>
     <text @ref="DrugName" class="druglabel"/>
-</div>
+</root>
