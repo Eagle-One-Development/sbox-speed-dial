@@ -1,7 +1,6 @@
 ﻿namespace SpeedDial.Classic.UI;
 
-[UseTemplate]
-public partial class WinScreen : Panel
+public partial class WinScreen
 {
 	protected WinPanel FirstPanel { get; set; }
 	protected WinPanel SecondPanel { get; set; }
@@ -37,6 +36,8 @@ public partial class WinScreen : Panel
 		var client3 = clients.ElementAtOrDefault( 2 );
 		Log.Debug( $"3rd {client3?.Name} - {client3?.GetValue( "score", 0 )}" );
 		ThirdPanel.UpdateFrom( client3, 3 );
+
+		StateHasChanged();
 	}
 
 	[ClientRpc]
