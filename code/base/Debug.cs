@@ -6,7 +6,7 @@ namespace SpeedDial;
 public static partial class Debug
 {
 
-	[ConVar.Replicated( "debug" )]
+	[ConVar.Replicated( "sd_debug" )]
 	public static bool Enabled { get; set; }
 
 	[ConVar.Replicated( "sd_debug_ui" )]
