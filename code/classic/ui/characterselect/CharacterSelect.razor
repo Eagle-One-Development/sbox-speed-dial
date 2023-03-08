@@ -1,23 +1,25 @@
-<link rel="stylesheet" href="/classic/ui/characterselect/CharacterSelect.scss" />
+﻿@namespace SpeedDial.Classic.UI
 
-<div>
+@attribute [StyleSheet("code/classic/ui/characterselect/CharacterSelect.scss")]
+
+<root>
     <div class="gradient">
         <div class="right" />
         <div class="left" />
     </div>
     <div class="header">
         <div>
-            <text class="headertitle" @text="HeaderTitle" />
+            <text class="headertitle" text=@HeaderTitle />
         </div>
         <div>
             <inputglyph btn="Jump" class="glyph"/>
-            <text class="selectheader" @text="SelectHeader" />
+            <text class="selectheader" text=@SelectHeader />
         </div>
     </div>
 
     <div class="body">
         <div class="prompt left">
-            <text class="promptlabel" @ref="PromptLeftLabel" @text="PromptLeft" />
+            <text class="promptlabel" @ref="PromptLeftLabel" text=@PromptLeft />
         </div>
         <div class="characters">
             <CharacterPanel @ref="Character1" />
@@ -26,10 +28,10 @@
             <CharacterPanel @ref="Character4" />
         </div>
         <div class="prompt right">
-            <text class="promptlabel" @ref="PromptRightLabel" @text="PromptRight" />
+            <text class="promptlabel" @ref="PromptRightLabel" text=@PromptRight />
         </div>
     </div>
     <div class="progresslimit" @ref="ProgressBar">
         <div class="progress" @ref="Progress"/>
     </div>
-</div>
+</root>

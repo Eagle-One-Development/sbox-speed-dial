@@ -18,6 +18,7 @@ characterpanel {
 
     text, label {
         margin: 5px;
+        text-align: center;
     }
 
     image {
@@ -52,7 +53,7 @@ characterpanel {
     }
 
     .description {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     .weapon {

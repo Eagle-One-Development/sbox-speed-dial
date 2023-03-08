@@ -1,6 +1,8 @@
-<link rel="stylesheet" href="/classic/ui/characterselect/CharacterPanel.scss" />
+﻿@namespace SpeedDial.Classic.UI
 
-<div>
+@attribute [StyleSheet("code/classic/ui/characterselect/CharacterPanel.scss")]
+
+<root>
     <div class="portraitcontainer">
         <div class="portraitback"/>
         <image @ref="Portrait" class="portrait"/>
@@ -8,4 +10,4 @@
     <text @ref="CharacterName" class="name"/>
     <text @ref="Description" class="description"/>
     <image @ref="Weapon" class="weapon"/>
-</div>
+</root>

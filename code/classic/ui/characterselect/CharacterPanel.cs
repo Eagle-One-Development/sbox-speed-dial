@@ -3,8 +3,7 @@ using SpeedDial.Classic.Player;
 
 namespace SpeedDial.Classic.UI;
 
-[UseTemplate]
-public partial class CharacterPanel : Panel
+public partial class CharacterPanel
 {
 	public Image Portrait { get; set; }
 	public Label CharacterName { get; set; }
@@ -25,7 +24,7 @@ public partial class CharacterPanel : Panel
 		var character = Character.All.ElementAtOrDefault( Index );
 		Portrait.Texture = character.PortraitTexture;
 		CharacterName.Text = $"{character.CharacterName.ToUpper()}";
-		Description.Text = $"\"{character.Description.ToUpper()}\"";
+		Description.Text = $"{character.Description.ToUpper()}";
 		var wepblueprint = WeaponBlueprint.GetBlueprint( character.WeaponClass );
 		Weapon.Texture = wepblueprint?.IconTexture;
 	}

@@ -2,8 +2,7 @@ using SpeedDial.Classic.Player;
 
 namespace SpeedDial.Classic.UI;
 
-[UseTemplate]
-public partial class CharacterSelect : Panel
+public partial class CharacterSelect
 {
 	public static CharacterSelect Current { get; private set; }
 	// bindings for HTML
@@ -188,5 +187,10 @@ public partial class CharacterSelect : Panel
 		Right = Input.UsingController ? Input.Pressed( InputButton.SlotNext ) || Input.Pressed( InputButton.Slot2 ) : Input.Pressed( InputButton.Use );
 		Select = Input.Pressed( InputButton.Jump );
 		Toggle = Input.Pressed( InputButton.Duck );
+	}
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine( PromptLeft, PromptRight );
 	}
 }
