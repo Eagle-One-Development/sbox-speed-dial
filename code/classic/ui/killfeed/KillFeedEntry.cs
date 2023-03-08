@@ -1,7 +1,6 @@
 ﻿namespace SpeedDial.Classic.UI;
 
-[UseTemplate]
-public partial class KillFeedEntry : Panel
+public partial class KillFeedEntry
 {
 	public Label Left { get; set; }
 	public Label Right { get; set; }
@@ -9,6 +8,14 @@ public partial class KillFeedEntry : Panel
 	public bool Important { get; set; }
 
 	public RealTimeSince TimeSinceCreated = 0;
+
+	public KillFeedEntry()
+	{
+		Left = AddChild<Label>( "left" );
+		Method = AddChild<Image>( "method" );
+		Method.SetTexture( "materials/ui/killicons/generic.png" );
+		Right = AddChild<Label>( "right" );
+	}
 
 	public override void Tick()
 	{

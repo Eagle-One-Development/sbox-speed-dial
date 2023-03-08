@@ -1,7 +1,6 @@
 ﻿namespace SpeedDial.Classic.UI;
 
-[UseTemplate]
-public partial class ClassicKillFeed : Panel
+public partial class ClassicKillFeed
 {
 	public static ClassicKillFeed Current { get; private set; }
 

@@ -1,6 +1,5 @@
 namespace SpeedDial.Classic.UI;
 
-[UseTemplate]
 public partial class RoundPanel : Panel
 {
 

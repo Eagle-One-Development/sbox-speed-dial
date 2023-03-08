@@ -11,7 +11,6 @@ public partial class ClassicGamemode
 		// killfeed population
 		if ( pawn is ClassicPlayer player )
 		{
-
 			// handle domination/revenge stuff
 			var killevent = HandleDomination( player );
 
@@ -65,12 +64,12 @@ public partial class ClassicGamemode
 			}
 			else
 			{
-				ClassicKillFeed.AddDeath( victim.LastAttacker.NetworkIdent, victim.LastAttacker.ToString(), victim.Client.SteamId, victim.Client.Name, victim.DeathCause.ToString() );
+				ClassicKillFeed.AddDeath( To.Everyone, victim.LastAttacker.NetworkIdent, victim.LastAttacker.ToString(), victim.Client.SteamId, victim.Client.Name, victim.DeathCause.ToString() );
 			}
 		}
 		else
 		{
-			ClassicKillFeed.AddDeath( victim.Client.SteamId, victim.Client.Name, 0, "", victim.DeathCause.ToString() );
+			ClassicKillFeed.AddDeath( To.Everyone, victim.Client.SteamId, victim.Client.Name, 0, "", victim.DeathCause.ToString() );
 		}
 	}
 
@@ -126,6 +125,8 @@ public partial class ClassicGamemode
 	}
 
 	public virtual string[] KillMessages { get; } = {
+			"UPGRADED",
+			"UPDATED",
 			"BYPASSED",
 			"WHACKED",
 			"DESTROYED",
