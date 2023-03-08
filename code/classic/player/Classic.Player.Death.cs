@@ -176,6 +176,7 @@ public partial class ClassicPlayer
 
 	private async Task CreateDecalAsync( string decalname, TraceResult tr, float delay = 0 )
 	{
+		// SAM PLS FIX
 		return;
 		await GameTask.DelaySeconds( delay );
 
