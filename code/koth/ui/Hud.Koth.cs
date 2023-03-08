@@ -1,9 +1,6 @@
-using SpeedDial.Classic.UI;
-
 namespace SpeedDial.Koth.UI;
 
-[UseTemplate]
-public class KothHud : ClassicHud
+public partial class KothHud
 {
 	public override void Tick()
 	{

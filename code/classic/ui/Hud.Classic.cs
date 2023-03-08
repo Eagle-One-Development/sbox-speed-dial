@@ -2,8 +2,7 @@ using SpeedDial.Classic.Player;
 
 namespace SpeedDial.Classic.UI;
 
-[UseTemplate]
-public class ClassicHud : Panel
+public partial class ClassicHud
 {
 	public static Color VHS_MAGENTA = new( 255f / 255f, 43f / 255f, 112f / 255f, 1.0f );
 	public static Color VHS_CYAN = new( 0f / 255f, 210f / 255f, 255f / 255f, 1.0f );

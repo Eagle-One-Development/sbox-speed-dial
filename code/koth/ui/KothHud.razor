@@ -1,6 +1,10 @@
-<link rel="stylesheet" href="/classic/ui/root.scss" />
+﻿@namespace SpeedDial.Koth.UI
 
-<div>
+@inherits SpeedDial.Classic.UI.ClassicHud
+
+@attribute [StyleSheet("code/classic/ui/root.scss")]
+
+<root>
     <ChatBox />
     <voicelist />
 
@@ -28,4 +32,4 @@
     <div class="override-state-cursor">
         <Crosshair />
     </div>
-</div>
+</root>
