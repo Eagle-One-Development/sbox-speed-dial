@@ -1,7 +1,6 @@
 namespace SpeedDial.Classic.UI;
 
-[UseTemplate]
-public partial class PlayerEntry : Panel
+public partial class PlayerEntry
 {
 	public IClient Client;
 
