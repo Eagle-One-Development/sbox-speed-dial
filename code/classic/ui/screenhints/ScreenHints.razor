@@ -1,0 +1,21 @@
+﻿@attribute [StyleSheet("code/classic/ui/screenhints/ScreenHints.scss")]
+
+@namespace SpeedDial.Classic.UI
+
+<root>
+    <div @ref="Banner" class="banner">
+        <div class="right"/>
+        <div class="left"/>
+    </div>
+
+    <text @ref="Title" class="title"/>
+    <text @ref="Extra" class="extra"/>
+
+    <div class="killercontainer" @ref="KillerInfo">
+        <image class="avatar" @ref="KillerAvatar"/>
+        <div class="infocontainer">
+            <text class="killedby" text=@KilledBy/>
+            <text class="killername" text=@KillerName/>
+        </div>
+    </div>
+</root>

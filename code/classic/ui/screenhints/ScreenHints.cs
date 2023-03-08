@@ -1,7 +1,6 @@
 namespace SpeedDial.Classic.UI;
 
-[UseTemplate]
-public partial class ScreenHints : Panel
+public partial class ScreenHints
 {
 	public static ScreenHints Current { get; private set; }
 	private bool Active;
@@ -24,17 +23,21 @@ public partial class ScreenHints : Panel
 	public ScreenHints()
 	{
 		Current = this;
+	}
 
-		Banner.BindClass( "visible", () => Active && FireBanner );
-		Title.BindClass( "visible", () => Active && TimeSinceActive > 0.05f - (FireBanner ? 0 : 0.05f) );
-		Extra.BindClass( "visible", () => Active && FireExtra && TimeSinceActive > 0.5f - (FireBanner ? 0 : 0.05f) );
+	private void SetClasses()
+	{
+		Banner.SetClass( "visible", Active && FireBanner );
+		Title.SetClass( "visible", Active && TimeSinceActive > 0.05f - (FireBanner ? 0 : 0.05f) );
+		Extra.SetClass( "visible", Active && FireExtra && TimeSinceActive > 0.5f - (FireBanner ? 0 : 0.05f) );
 
-		KillerInfo.BindClass( "visible", () => (Active && FireKiller && (TimeSinceActive > 0.05f)) || (FireKiller && TimeSinceActive < 1.2f) );
-		KillerInfo.BindClass( "dominating", () => Domination );
+		KillerInfo.SetClass( "visible", (Active && FireKiller && (TimeSinceActive > 0.05f)) || (FireKiller && TimeSinceActive < 1.2f) );
+		KillerInfo.SetClass( "dominating", Domination );
 	}
 
 	public override void Tick()
 	{
+		SetClasses();
 
 		if ( TimeSinceActive > 1.5f )
 		{
@@ -44,6 +47,7 @@ public partial class ScreenHints : Panel
 
 		KillerAvatar.SetTexture( $"avatar:{Killer?.SteamId}" );
 		KillerName = $"{Killer?.Name}";
+		StateHasChanged();
 
 		// if you're here to find a way to forcefully hide the current 
 		// animation if a new one is played while it's still running... good luck
