@@ -1,14 +1,15 @@
-<link rel="stylesheet" href="/onechamber/ui/scoreboard/Scoreboard.scss"/>
+﻿@namespace SpeedDial.OneChamber.UI
+@attribute [StyleSheet("code/onechamber/ui/scoreboard/OneChamberScoreboard.scss")]
 
-<div>
+<root>
     <div class="header" @ref="Header">
         <text class="name">Name</text>
         <text class="lives">Lives</text>
     </div>
-    <div class="canvas" @ref="Canvas"/>
+    <div class="canvas" @ref="Canvas" />
     <div class="footer" @ref="Footer">
         <text class="gamemode" @ref="GamemodeInfo" />
         <text class="map" @ref="MapInfo" />
         <text class="loop" @ref="LoopInfo" />
     </div>
-</div>
+</root>

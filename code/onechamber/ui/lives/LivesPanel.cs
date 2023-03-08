@@ -4,8 +4,7 @@ using SpeedDial.OneChamber.Player;
 
 namespace SpeedDial.OneChamber.UI;
 
-[UseTemplate]
-public partial class LivesPanel : Panel
+public partial class LivesPanel
 {
 	private Label LivesLabel { get; set; }
 

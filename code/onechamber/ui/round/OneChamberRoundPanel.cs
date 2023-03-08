@@ -2,10 +2,8 @@ using SpeedDial.OneChamber.Player;
 
 namespace SpeedDial.OneChamber.UI;
 
-[UseTemplate]
-public partial class OneChamberRoundPanel : Panel
+public partial class OneChamberRoundPanel
 {
-
 	public Panel Timer { get; set; }
 	public Label TimeLabel { get; set; }
 	public Panel TopPlayers { get; set; }

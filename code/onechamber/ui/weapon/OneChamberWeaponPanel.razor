@@ -1,0 +1,12 @@
+﻿@namespace SpeedDial.OneChamber.UI
+
+@inherits SpeedDial.Classic.UI.WeaponPanel
+
+@attribute [StyleSheet("code/onechamber/ui/weapon/OneChamberWeaponPanel.scss")]
+
+<root>
+    <div class="weapon" @ref="Panel">
+        <text class="clip" @ref="AmmoLabel"></text>
+        <text class="weaponname" @ref="WeaponLabel"></text>
+    </div>
+</root>

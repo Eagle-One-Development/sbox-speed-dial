@@ -2,8 +2,7 @@ using SpeedDial.OneChamber.Player;
 
 namespace SpeedDial.OneChamber.UI;
 
-[UseTemplate]
-public partial class OneChamberPlayerEntry : Panel
+public partial class OneChamberPlayerEntry
 {
 	public IClient Client;
 

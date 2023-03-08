@@ -2,8 +2,7 @@
 
 namespace SpeedDial.OneChamber.UI;
 
-[UseTemplate]
-public partial class OneChamberWinPanel : Panel
+public partial class OneChamberWinPanel
 {
 	public IClient Client { get; set; }
 	public Image Portrait { get; set; }

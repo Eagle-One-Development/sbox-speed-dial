@@ -2,9 +2,9 @@ using SpeedDial.OneChamber.Player;
 
 namespace SpeedDial.OneChamber.UI;
 
-[UseTemplate]
-public partial class OneChamberScoreboard : Panel
+public partial class OneChamberScoreboard
 {
+	[SkipHotload]
 	private readonly Dictionary<IClient, OneChamberScoreboardEntry> Rows = new();
 
 	public Panel Header { get; set; }
@@ -25,7 +25,7 @@ public partial class OneChamberScoreboard : Panel
 			return;
 
 		GamemodeInfo.Text = $"Gamemode: {SDGame.Current.ActiveGamemode?.ClassName}";
-		MapInfo.Text = $"Map: {Game.Server.MapIdent}"; //TODO: Figure out if this is what we want. was Map.MapName before
+		MapInfo.Text = $"Map: {Game.Server.MapIdent}";
 		LoopInfo.Text = $"Games until vote: {SDGame.Current.ActiveGamemode.GameloopsUntilVote - SDGame.Current.CompletedGameloops}";
 		Footer.SetClass( "visible", true );
 

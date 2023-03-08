@@ -2,8 +2,7 @@
 
 namespace SpeedDial.OneChamber.UI;
 
-[UseTemplate]
-public partial class OneChamberWinScreen : Panel
+public partial class OneChamberWinScreen
 {
 	protected OneChamberWinPanel FirstPanel { get; set; }
 	public static OneChamberWinScreen Current { get; private set; }

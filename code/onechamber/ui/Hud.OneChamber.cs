@@ -1,10 +1,8 @@
-using SpeedDial.Classic.UI;
 using SpeedDial.Classic.Player;
 
 namespace SpeedDial.OneChamber.UI;
 
-[UseTemplate]
-public class OneChamberHud : ClassicHud
+public partial class OneChamberHud
 {
 	public override void Tick()
 	{

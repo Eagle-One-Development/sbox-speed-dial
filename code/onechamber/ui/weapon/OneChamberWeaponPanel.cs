@@ -1,14 +1,9 @@
-﻿using SpeedDial.Classic.UI;
-using SpeedDial.Classic.Weapons;
+﻿using SpeedDial.Classic.Weapons;
 using SpeedDial.OneChamber.Player;
-
-using Sandbox.UI;
-using Sandbox.UI.Construct;
 
 namespace SpeedDial.OneChamber.UI;
 
-[UseTemplate]
-public partial class OneChamberWeaponPanel : WeaponPanel
+public partial class OneChamberWeaponPanel
 {
 	public override void Tick()
 	{
