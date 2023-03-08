@@ -1,7 +1,6 @@
-﻿namespace SpeedDial.Classic.UI;
+﻿namespace SpeedDial;
 
-[UseTemplate]
-public partial class InputGlyph : Panel
+public partial class InputGlyph
 {
 	public Image Glyph { get; set; }
 	public InputButton Button { get; set; }
