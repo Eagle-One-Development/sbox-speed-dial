@@ -17,7 +17,9 @@
   "CodePath": "code",
   "Metadata": {
     "MapList": [
-      "eagleone.sd_bank"
+      "eagleone.sd_bank",
+      "eagleone.sd_lair",
+      "eagleone.sd_club"
     ],
     "MapSelect": "Official",
     "PerMapRanking": false,

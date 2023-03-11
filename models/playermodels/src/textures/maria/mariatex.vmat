@@ -2,13 +2,14 @@
 
 Layer0
 {
-	shader "complex.vfx"
+	shader "complex.shader"
 
 	//---- Animation ----
 	F_MORPH_SUPPORTED 1
 
 	//---- PBR ----
 	F_METALNESS_TEXTURE 1
+	F_SELF_ILLUM 1
 	F_SPECULAR 1
 
 	//---- Ambient Occlusion ----
@@ -27,10 +28,6 @@ Layer0
 	//---- Fog ----
 	g_bFogEnabled "1"
 
-	//---- Lighting ----
-	g_flDirectionalLightmapMinZ "0.050"
-	g_flDirectionalLightmapStrength "1.000"
-
 	//---- Metalness ----
 	TextureMetalness "models/playermodels/src/textures/maria/maria_metal.png"
 
@@ -39,6 +36,14 @@ Layer0
 
 	//---- Roughness ----
 	TextureRoughness "models/playermodels/src/textures/maria/maria_rough.png"
+
+	//---- Self Illum ----
+	g_flSelfIllumAlbedoFactor "1.000"
+	g_flSelfIllumBrightness "0.000"
+	g_flSelfIllumScale "1.000"
+	g_vSelfIllumScrollSpeed "[0.000 0.000]"
+	g_vSelfIllumTint "[1.000000 1.000000 1.000000 0.000000]"
+	TextureSelfIllumMask "[0.502000 0.502000 0.502000 0.000000]"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"

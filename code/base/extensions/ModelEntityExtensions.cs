@@ -17,10 +17,10 @@ public static partial class GlowUtil
 	{
 		Game.AssertClient();
 
-		//var glow = ent.Components.GetOrCreate<Glow>();
-		//glow.Enabled = state;
-		//glow.Color = color;
-		//glow.Width = 0.3f;
-		//glow.ObscuredColor = Color.White.WithAlpha( 0 ); // ugh
+		var glow = ent.Components.GetOrCreate<Glow>();
+		glow.Enabled = state;
+		glow.Color = color;
+		glow.Width = 0.3f;
+		glow.ObscuredColor = Color.White.WithAlpha( 0 ); // ugh
 	}
 }
