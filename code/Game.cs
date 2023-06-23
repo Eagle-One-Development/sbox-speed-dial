@@ -307,7 +307,7 @@ public partial class SDGame : GameManager
 	[Predicted]
 	protected CameraMode LastCamera { get; set; }
 
-	[Event.Client.PostCamera]
+	[GameEvent.Client.PostCamera]
 	public void BuildCamera()
 	{
 		var cam = FindActiveCamera();

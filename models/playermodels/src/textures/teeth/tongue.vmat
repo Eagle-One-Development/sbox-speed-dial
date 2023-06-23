@@ -2,22 +2,18 @@
 
 Layer0
 {
-	shader "vr_simple.vfx"
+	shader "shaders/simple.shader_c"
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"
-	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "[1.000000 0.764706 0.909804 0.000000]"
+	g_vColorTint "[1.000000 0.631373 0.788235 1.000000]"
+	TextureColor "materials/default/default_color.tga"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
 
 	//---- Fog ----
 	g_bFogEnabled "1"
-
-	//---- Lighting ----
-	g_flDirectionalLightmapMinZ "0.050"
-	g_flDirectionalLightmapStrength "1.000"
 
 	//---- Metalness ----
 	g_flMetalness "0.000"
@@ -26,7 +22,8 @@ Layer0
 	TextureNormal "materials/default/default_normal.tga"
 
 	//---- Roughness ----
-	TextureRoughness "[0.290196 0.290196 0.290196 0.000000]"
+	g_flRoughnessScaleFactor "1.000"
+	TextureRoughness "materials/default/default_rough.tga"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"

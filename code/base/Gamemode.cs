@@ -82,7 +82,7 @@ public abstract partial class Gamemode : Entity
 		}
 	}
 
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	protected virtual void Tick() { }
 
 	public void Start()
@@ -169,7 +169,7 @@ public abstract partial class Gamemode : Entity
 		ActiveRound = null;
 	}
 
-	[Event.Client.Frame]
+	[GameEvent.Client.Frame]
 	protected virtual void RoundDebug()
 	{
 		// Do this for now. To lazy to implement UI
