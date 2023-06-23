@@ -10,7 +10,7 @@ public partial class ClassicPlayer
 	[ClientRpc]
 	public static void PlayRoundendClimax()
 	{
-		if ( !Settings.MusicEnabled ) return;
+		if ( !Settings.MusicToggled ) return;
 		SoundTrack.FromScreen( "climax" );
 		_ = StopSoundtrackAsync( 3 );
 	}
@@ -26,13 +26,13 @@ public partial class ClassicPlayer
 	[ClientRpc]
 	public static void PlaySoundtrack()
 	{
-		if ( !Settings.MusicEnabled ) return;
+		if ( !Settings.MusicToggled ) return;
 		_ = PlaySoundtrackAsync( ClassicGamemode.Current.CurrentSoundtrack, 2.5f );
 	}
 
 	private static async Task PlaySoundtrackAsync( string track, float delay )
 	{
-		if ( !Settings.MusicEnabled ) return;
+		if ( !Settings.MusicToggled ) return;
 		await GameTask.DelaySeconds( delay );
 		if ( !SoundtrackPlaying )
 		{

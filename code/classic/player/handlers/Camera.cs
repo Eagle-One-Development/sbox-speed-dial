@@ -35,11 +35,11 @@ public partial class ClassicCamera : CameraMode
 
 			if ( pawn.Alive() )
 			{
-				if ( !Settings.ViewshiftToggle && Input.Down( InputButton.Run ) )
+				if ( !Settings.ViewshiftToggle && Input.Down( "Run" ) )
 				{
 					CameraShift = true;
 				}
-				else if ( Settings.ViewshiftToggle && Input.Pressed( InputButton.Run ) )
+				else if ( Settings.ViewshiftToggle && Input.Pressed( "Run" ) )
 				{
 					shiftToggle = !shiftToggle;
 				}
@@ -84,11 +84,11 @@ public partial class ClassicCamera : CameraMode
 		else
 		{
 			// shift on clicking in joystick
-			if ( !Settings.ViewshiftToggle && Input.Down( InputButton.View ) )
+			if ( !Settings.ViewshiftToggle && Input.Down( "View" ) )
 			{
 				CameraShift = true;
 			}
-			else if ( Settings.ViewshiftToggle && Input.Pressed( InputButton.View ) )
+			else if ( Settings.ViewshiftToggle && Input.Pressed( "View" ) )
 			{
 				shiftToggle = !shiftToggle;
 			}

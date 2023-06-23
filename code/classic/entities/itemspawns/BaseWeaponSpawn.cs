@@ -34,7 +34,7 @@ public partial class ClassicWeaponSpawn : GamemodeEntity
 		SpawnedWeapon = null;
 	}
 
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	public void Tick()
 	{
 		if ( Taken && TimeSinceTaken > RespawnTime )

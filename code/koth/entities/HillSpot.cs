@@ -19,7 +19,7 @@ public partial class HillSpot : ModelEntity
 		}
 	}
 
-	[Event.Tick]
+	[GameEvent.Tick]
 	public void Tick()
 	{
 		if ( TimeSinceAlive > 10f )

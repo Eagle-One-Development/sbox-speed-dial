@@ -8,15 +8,14 @@ public static partial class Settings
 	public static bool ViewshiftToggle { get; set; } = false;
 
 	// Music enable/disable
-	[ConVar.Client( "sd_music" )]
-	public static bool MusicEnabled { get => _musicEnabled; set { OnMusicEnabledChanged( value ); _musicEnabled = value; } }
-	private static bool _musicEnabled = true;
+	[ConVar.Client( "sd_music" ), Change(nameof( OnMusicEnabledChanged ) )]
+	public static bool MusicToggled { get; set; } = false;
 
-	private static void OnMusicEnabledChanged( bool value )
+	//public static bool MusicEnabled { get => _musicEnabled; set { OnMusicEnabledChanged( value ); _musicEnabled = value; } }
+	//private static bool _musicEnabled = true;
+
+	private static void OnMusicEnabledChanged( bool oldValue, bool newValue )
 	{
-		if ( !value )
-		{
-			ClassicPlayer.StopSoundtrack( To.Single( Game.LocalClient ), true );
-		}
+		ClassicPlayer.StopSoundtrack( To.Single( Game.LocalClient ), newValue );
 	}
 }

@@ -16,7 +16,7 @@ public partial class OneChamberScoreboard
 
 	public OneChamberScoreboard()
 	{
-		BindClass( "open", () => Input.Down( InputButton.Score ) );
+		BindClass( "open", () => Input.Down( "Score" ) );
 	}
 
 	public override void Tick()

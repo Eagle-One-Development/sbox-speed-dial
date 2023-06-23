@@ -1,33 +1,37 @@
-// THIS FILE IS AUTO-GENERATED
-
-Layer0
+"Layer0"
 {
-	shader "speed-dial_koth_site.shader"
+	shader "shaders/complex.shader_c"
+
+	//---- Ambient Occlusion ----
+	g_flAmbientOcclusionDirectDiffuse "0.000"
+	g_flAmbientOcclusionDirectSpecular "0.000"
+	TextureAmbientOcclusion "materials/default/default_ao.tga"
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	TextureColor "materials/default/default_color.tga"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
 
-	//---- Material ----
-	DecoreTexture "materials/koth/grid.png"
-	g_flAnimTime "0.083"
-	g_flHighlightIntensity "10.000"
-	g_flHighOpacity "1.000"
-	g_flLowOpacity "0.289"
-	g_flSmallGridScaling "2.000"
-	g_flSmallHighlightIntensity "10.000"
-	g_tBaseColor "[0.000000 0.701961 0.643137 1.000000]"
-	g_tHilightColor "[0.000000 0.898039 1.000000 1.000000]"
-	TextureColor "materials/default/default_color.tga"
-	TextureTranslucency "materials/default/default_trans.tga"
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Metalness ----
+	g_flMetalness "0.000"
+
+	//---- Normal ----
+	TextureNormal "materials/default/default_normal.tga"
+
+	//---- Roughness ----
+	g_flRoughnessScaleFactor "1.000"
+	TextureRoughness "materials/default/default_rough.tga"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"
 	g_nScaleTexCoordVByModelScaleAxis "0"
 	g_vTexCoordOffset "[0.000 0.000]"
-	g_vTexCoordScale "[10.000 2.000]"
+	g_vTexCoordScale "[1.000 1.000]"
 	g_vTexCoordScrollSpeed "[0.000 0.000]"
 }

@@ -34,7 +34,7 @@ public partial class ClassicDrugSpawn : GamemodeEntity
 		SpawnedDrug = null;
 	}
 
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	public void Tick()
 	{
 		if ( Taken && TimeSinceTaken > RespawnTime )

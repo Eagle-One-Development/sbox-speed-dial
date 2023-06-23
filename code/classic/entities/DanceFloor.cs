@@ -46,7 +46,7 @@ public partial class DanceFloor : BrushEntity
 		base.Spawn();
 	}
 
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	public void Simulate()
 	{
 		if ( RealTime.Now >= NextInterval )

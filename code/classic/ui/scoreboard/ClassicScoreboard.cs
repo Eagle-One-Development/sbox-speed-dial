@@ -14,7 +14,7 @@ public partial class ClassicScoreboard
 
 	public override void Tick()
 	{
-		SetClass( "open", Input.Down( InputButton.Score ) );
+		SetClass( "open", Input.Down( "Score" ) );
 
 		if ( !IsVisible )
 			return;
