@@ -1,6 +1,4 @@
-// THIS FILE IS AUTO-GENERATED
-
-Layer0
+"Layer0"
 {
 	shader "shaders/simple.shader_c"
 
