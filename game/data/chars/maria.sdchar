@@ -1,0 +1,7 @@
+{
+  "CharacterName": "Maria",
+  "Description": "Luchador Lady",
+  "WeaponClass": "sd_rifle",
+  "Portrait": "materials/ui/portraits/portrait_maria.png",
+  "Model": "models/playermodels/character_maria.vmdl"
+}

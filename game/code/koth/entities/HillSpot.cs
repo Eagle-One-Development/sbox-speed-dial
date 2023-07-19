@@ -1,0 +1,61 @@
+﻿using SpeedDial.Classic.UI;
+
+namespace SpeedDial.Koth.Entities;
+
+public partial class HillSpot : ModelEntity
+{
+
+	public List<BasePlayer> TouchingPlayers = new();
+
+	[Net, Predicted]
+	public TimeSince TimeSinceAlive { get; set; }
+
+	[SpeedDialEvent.Gamemode.Reset]
+	public void HandleGamemodeReset( GamemodeIdentity ident )
+	{
+		if ( ident != GamemodeIdentity.Koth )
+		{
+			Delete();
+		}
+	}
+
+	[GameEvent.Tick]
+	public void Tick()
+	{
+		if ( TimeSinceAlive > 10f )
+		{
+			foreach ( IClient client in Game.Clients )
+			{
+				ScreenHints.FireEvent( To.Single( client ), "HILL MOVED", "Good luck!" );
+			}
+
+			if ( IsValid && !Game.IsClient )
+			{
+				Delete();
+			}
+			return;
+		}
+	}
+
+	public override void Spawn()
+	{
+		base.Spawn();
+		SetModel( "models/koth/ring.vmdl" );
+		Transmit = TransmitType.Always;
+		Tags.Add( "trigger" );
+		SetupPhysicsFromModel( PhysicsMotionType.Static );
+		TimeSinceAlive = 0f;
+	}
+
+	public override void StartTouch( Entity other )
+	{
+		if ( other is BasePlayer player )
+			TouchingPlayers.Add( player );
+	}
+
+	public override void EndTouch( Entity other )
+	{
+		if ( other is BasePlayer player )
+			TouchingPlayers.Remove( player );
+	}
+}

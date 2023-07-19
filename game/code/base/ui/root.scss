@@ -1,0 +1,12 @@
+﻿@import "/classic/ui/_vars/globals.scss";
+
+text, label {
+    font-family: $font;
+    color: white;
+}
+
+image {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

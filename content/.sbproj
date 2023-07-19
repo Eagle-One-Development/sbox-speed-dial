@@ -1,0 +1,17 @@
+{
+  "Title": "Speed-Dial Content",
+  "Type": "content",
+  "Org": "eagleone",
+  "Ident": "speed_dial_content",
+  "Tags": null,
+  "Schema": 1,
+  "HasAssets": true,
+  "AssetsPath": "",
+  "Resources": null,
+  "MenuResources": null,
+  "HasCode": true,
+  "CodePath": "code",
+  "PackageReferences": [],
+  "EditorReferences": null,
+  "Metadata": {}
+}

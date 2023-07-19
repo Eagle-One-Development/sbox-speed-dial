@@ -1,0 +1,46 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "sd_bank",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "sd_bank",
+      "Tags": null,
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "facepunch.metal_painted_b_hs#18370",
+        "facepunch.cctv#19182",
+        "facepunch.cctv_mount#19187",
+        "facepunch.concrete_glossy_used#18630",
+        "facepunch.door_lock_a#19197",
+        "facepunch.carpet_b#18623",
+        "facepunch.wall_cinderblock_a#18715",
+        "facepunch.glass_a#19946",
+        "facepunch.security_light#19232",
+        "facepunch.office_ceiling_b#18746",
+        "facepunch.wall_panel_c_metal_galvanized#18699",
+        "facepunch.wall_panel_b#18702",
+        "facepunch.rubber_a_hs#18388",
+        "facepunch.wall_cinderblock_painted#18713",
+        "facepunch.metal_brushed_a_hs#18368",
+        "facepunch.wall_panel_d_granite#18697",
+        "facepunch.floor_tile_basalt#18682",
+        "facepunch.floor_tile_ceramic#18683",
+        "facepunch.fire_alarm_a#19244",
+        "eagleone.speed_dial"
+      ],
+      "Metadata": {
+        "SingleAssetSource": "maps/sd_bank.vmap"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+﻿@namespace SpeedDial.OneChamber.UI
+
+@attribute [StyleSheet("onechamber/ui/winscreen/OneChamberWinPanel.scss")]
+
+<root>
+    <div class="container">
+        <div class="portraitcontainer">
+            <div class="portraitback" />
+            <image class="portrait" @ref="Portrait" src="materials/ui/portraits/portrait_jack.png"/>
+        </div>
+    </div>
+    <div class="player">
+        <div class="imagecontainer">
+            <image class="avatar" @ref="Avatar" />
+            <image class="icon" @ref="Icon" src="materials/ui/misc/crown.png" />
+        </div>
+        <div class="textcontainer">
+            <text class="position" @ref="Position" />
+            <text class="name" @ref="Name" />
+        </div>
+    </div>
+</root>

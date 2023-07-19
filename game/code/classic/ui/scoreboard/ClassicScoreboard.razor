@@ -1,0 +1,17 @@
+﻿@attribute [StyleSheet("classic/ui/scoreboard/ClassicScoreboard.scss")]
+
+@namespace SpeedDial.Classic.UI
+
+<root>
+    <div class="header" @ref="Header">
+        <text class="name">Name</text>
+        <text class="score">Score</text>
+        <text class="maxcombo">Max Combo</text>
+    </div>
+    <div class="canvas" @ref="Canvas"/>
+    <div class="footer" @ref="Footer">
+        <text class="gamemode" @ref="GamemodeInfo" />
+        <text class="map" @ref="MapInfo" />
+        <text class="loop" @ref="LoopInfo" />
+    </div>
+</root>

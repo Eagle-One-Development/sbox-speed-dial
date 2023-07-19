@@ -1,0 +1,42 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	data = 
+	{
+		WeaponClass = "oc_pistol"
+		WeaponTitle = "PISTOL"
+		WeaponDescription = "This is a Speed-Dial Weapon"
+		FireMode = "SemiAutomatic"
+		FireRate = 12
+		BulletDamage = 105
+		BulletSize = 4
+		BulletForce = 1.5
+		BulletRange = 4096
+		BulletCount = 1
+		BulletSpread = 0.1
+		VerticalSpreadMultiplier = 0.25
+		AmmoPerShot = 1
+		ClipSize = 1
+		Special = "None"
+		BurstLength = 3
+		FireDelay = 0.3
+		Penetrate = false
+		Scoped = false
+		RandomSpawnable = false
+		ExcludedGamemodes = 0
+		WorldModelPath = resource:"models/weapons/pistol/prop_pistol.vmdl"
+		HoldType = "Pistol"
+		HoldAttach = "pistol_attach"
+		MuzzleParticle = resource:"particles/pistol_muzzleflash.vpcf"
+		MuzzleAttach = "muzzle"
+		EjectParticle = resource:"particles/pistol_ejectbrass.vpcf"
+		EjectAttach = "ejection_point"
+		UIEffectsScalar = 1
+		Icon = resource:"materials/ui/weapons/pistol.png"
+		ShootSound = resource:"sounds/simpleguns/pistol/sd_pistol.shoot.sound"
+		DryFireSound = resource:"sounds/simpleguns/misc/sd_dryfrire.sound"
+		EmptyPickupSound = resource:"sounds/weapon_fx/sd_pickup.empty.sound"
+		LoadedPickupSound = resource:"sounds/weapon_fx/sd_pickup.loaded.sound"
+		WorldModel = resource:"models/weapons/pistol/prop_pistol.vmdl"
+		IconTexture = null
+	}
+}

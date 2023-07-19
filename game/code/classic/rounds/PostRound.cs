@@ -1,0 +1,47 @@
+using SpeedDial.Classic.Player;
+using SpeedDial.Classic.UI;
+
+namespace SpeedDial.Classic.Rounds;
+
+public partial class PostRound : TimedRound
+{
+	public override TimeSpan RoundDuration => TimeSpan.FromSeconds( 11 );
+	private ClassicGamemode classic => SDGame.Current.ActiveGamemode as ClassicGamemode;
+	public override string RoundText => "";
+
+	protected override void OnStart()
+	{
+		base.OnStart();
+
+		classic.SetState( GamemodeState.Ending );
+
+		foreach ( var client in Game.Clients.Where( x => x.Pawn is ClassicPlayer ) )
+		{
+			var pawn = client.Pawn as ClassicPlayer;
+
+			pawn.Frozen = true;
+			CharacterSelect.ForceState( To.Single( client ), false );
+		}
+		WinScreen.SetState( To.Everyone, true );
+	}
+
+	protected override void OnFinish()
+	{
+		base.OnFinish();
+		// tell the game that a gameloop has finished before we keep going
+		SDGame.Current.GameloopCompleted();
+
+		SDGame.Current.ActiveGamemode?.ChangeRound( new PreRound() );
+
+		WinScreen.SetState( To.Everyone, false );
+	}
+
+	public override void OnPawnJoined( BasePlayer pawn )
+	{
+		base.OnPawnJoined( pawn );
+		if ( pawn is ClassicPlayer player )
+		{
+			player.Frozen = true;
+		}
+	}
+}

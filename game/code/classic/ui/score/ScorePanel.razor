@@ -1,0 +1,18 @@
+﻿@attribute [StyleSheet("classic/ui/score/ScorePanel.scss")]
+
+@namespace SpeedDial.Classic.UI
+
+<root>
+    <div class="intensity" @ref="IntensityPanel">
+        <div class="right"/>
+        <div class="left"/>
+    </div>
+    <div class="scoreCombo">
+        <div class="score" @ref="Score">
+            <text class="scorelabel" @ref="ScoreLabel"/>
+        </div>
+        <div class="combo" @ref="Combo">
+            <text class="combolabel" @ref="ComboLabel"/>
+        </div>
+    </div>
+</root>

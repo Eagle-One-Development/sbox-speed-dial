@@ -1,0 +1,54 @@
+﻿using SpeedDial.Classic.Player;
+
+namespace SpeedDial.Classic.Weapons;
+
+public partial class Weapon
+{
+	private void MeleePrimary()
+	{
+		if ( TimeSinceSpecial > Blueprint.FireDelay )
+		{
+			TimeSinceSpecial = 0;
+			Firing = true;
+			(Owner as AnimatedEntity).SetAnimParameter( "b_attack", true );
+			Owner.PlaySound( "woosh" );
+		}
+	}
+
+	private void MeleeSimulate()
+	{
+		if ( EffectEntity.GetAttachment( "melee_start" ) is Transform start && EffectEntity.GetAttachment( "melee_end" ) is Transform end )
+		{
+			if ( TimeSinceSpecial <= 0.20f && Firing )
+			{
+				foreach ( var tr in TraceBullet( start.Position, end.Position, 4 ) )
+				{
+					if ( tr.Entity is ClassicPlayer hitPlayer && hitPlayer.IsValid() )
+					{
+						var ps = Particles.Create( "particles/blood/blood_plip.vpcf", tr.EndPosition );
+						ps?.SetForward( 0, tr.Normal );
+
+						Owner.PlaySound( "sd_bat.hit" );
+
+						if ( Game.IsServer )
+						{
+							using ( Prediction.Off() )
+							{
+								var damageInfo = DamageInfo.FromBullet( tr.EndPosition, 1000, 100 )
+									.UsingTraceResult( tr )
+									.WithAttacker( Owner )
+									.WithWeapon( this );
+
+								tr.Entity.TakeDamage( damageInfo );
+							}
+						}
+					}
+				}
+			}
+			else
+			{
+				Firing = false;
+			}
+		}
+	}
+}

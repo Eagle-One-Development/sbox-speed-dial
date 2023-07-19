@@ -1,0 +1,29 @@
+@import "/classic/ui/_vars/globals.scss";
+
+worldhints {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    text, label {
+        text-shadow: -1px -1px 1px $vhs_cyan, 2px 2px 1px $vhs_magenta;
+    }
+
+    .pickup {
+        width: 200px;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+
+        .pickuplabel {
+            font-size: 13px;
+        }
+
+        .glyph {
+            top: 1px;
+            right: 1px;
+            height: 25px;
+        }
+    }
+}

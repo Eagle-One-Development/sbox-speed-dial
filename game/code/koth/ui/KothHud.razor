@@ -1,0 +1,37 @@
+﻿@namespace SpeedDial.Koth.UI
+
+@using SpeedDial.Classic.UI
+
+@inherits SpeedDial.Classic.UI.ClassicHud
+
+@attribute [StyleSheet("classic/ui/root.scss")]
+
+<root>
+    <ChatBox />
+    <voicelist />
+
+    <div class="override-state-game">
+        <WorldHints />
+
+        <WeaponPanel />
+        <ScorePanel />
+        <DrugPanel />
+        <RoundPanel />
+
+        <ScreenHints />
+
+        <ClassicKillFeed />
+
+        <CharacterSelect />
+    </div>
+
+    <WinScreen />
+
+    <ClassicScoreboard />
+
+    <KothHillPositionElement />
+
+    <div class="override-state-cursor">
+        <Crosshair />
+    </div>
+</root>

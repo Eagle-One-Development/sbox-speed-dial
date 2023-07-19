@@ -1,0 +1,63 @@
+@import "/classic/ui/_vars/globals.scss";
+
+characterpanel {
+    width: 100%;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    align-items: center;
+    transition: all 0.1s ease-in-out;
+
+    &.selected {
+        transform: scale(1.05);
+
+        .portraitcontainer {
+            box-shadow: 0px 0px 35px 3px rgba($vhs_cyan, 0.1);
+        }
+    }
+
+    text, label {
+        margin: 5px;
+        text-align: center;
+    }
+
+    image {
+        background-size: 100%;
+    }
+
+    .portraitcontainer {
+        width: 90%;
+        aspect-ratio: 0.5;
+        margin-bottom: 30px;
+        border: 3px white;
+        box-shadow: 0px 0px 25px 3px rgba(white, 0.1);
+        overflow: hidden;
+
+        .portrait {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .portraitback {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to top, rgba($vhs_cyan, 1), black 50%);
+        }
+    }
+
+    .name {
+        font-size: 30px;
+        text-shadow: -2px -2px 1px $vhs_cyan, 4px 2px 1px $vhs_magenta;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+
+    .weapon {
+        height: 85px;
+        aspect-ratio: 2;
+    }
+}

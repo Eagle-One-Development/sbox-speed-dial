@@ -1,0 +1,67 @@
+﻿@import "/classic/ui/_vars/globals.scss";
+
+voteitempanel {
+    width: 240px;
+    height: 240px;
+    aspect-ratio: 1;
+    background-color: white;
+    border: 4px solid black;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    text-align: center;
+
+    text, label {
+        color: black;
+    }
+
+    .votes {
+        position: absolute;
+        font-size: 17px;
+        bottom: 4px;
+        left: 6px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: gray;
+        sound-in: ui.button.over;
+    }
+
+    &:active {
+        sound-in: ui.button.press;
+    }
+
+    &.voted {
+        &:hover {
+            background-color: white;
+        }
+
+        border: 4px solid $vhs_cyan;
+
+        text, label {
+            color: $vhs_cyan;
+        }
+    }
+
+    &.winner {
+        border: 4px solid $gold;
+
+        text, label {
+            color: $gold;
+        }
+    }
+
+    &.skip {
+        top: 25px;
+        height: 100px;
+        aspect-ratio: 3;
+    }
+}

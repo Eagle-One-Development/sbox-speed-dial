@@ -1,0 +1,23 @@
+﻿livespanel {
+    position: absolute;
+    top: 50px;
+    left: 75px;
+
+    opacity: 0;
+
+    &.visible {
+        opacity: 1;
+    }
+
+    text, label {
+        font-size: 45px;
+    }
+
+    .score {
+
+    }
+
+    .heart {
+        top: 7px;
+    }
+}
