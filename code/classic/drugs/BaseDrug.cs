@@ -81,7 +81,7 @@ public partial class ClassicBaseDrug : ModelEntity
 		ScreenHints.FireEvent( To.Single( player.Client ), $"{DrugName}", $"{DrugDescription}", false );
 	}
 
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	public void ServerTick()
 	{
 		if ( TimeSinceSpawned >= 0.5f )
@@ -90,7 +90,7 @@ public partial class ClassicBaseDrug : ModelEntity
 		}
 	}
 
-	[Event.Client.Frame]
+	[GameEvent.Client.Frame]
 	public void Frame()
 	{
 		if ( SceneObject is null ) return;
@@ -98,7 +98,7 @@ public partial class ClassicBaseDrug : ModelEntity
 		SceneObject.Position += Vector3.Up * MathF.Sin( Time.Now ) * 7 * Time.Delta;
 	}
 
-	[Event.Tick]
+	[GameEvent.Tick]
 	public void Tick()
 	{
 		if ( PickupTrigger is null ) return;

@@ -79,7 +79,7 @@ public partial class ClassicPlayer : BasePlayer
 			TimeSinceWeaponCarried = 0;
 		}
 
-		if ( Input.Pressed( InputButton.SecondaryAttack ) )
+		if ( Input.Pressed( "Attack2" ) )
 		{
 			HandleAttack2();
 			if ( ActiveChild != null && !Frozen )
@@ -88,7 +88,7 @@ public partial class ClassicPlayer : BasePlayer
 			}
 		}
 
-		if ( ActiveChild == null && Input.Down( InputButton.PrimaryAttack ) && TimeSinceMeleeStarted >= 0.6f && !Frozen )
+		if ( ActiveChild == null && Input.Down( "Attack1" ) && TimeSinceMeleeStarted >= 0.6f && !Frozen )
 		{
 			StartMelee();
 		}
@@ -101,7 +101,7 @@ public partial class ClassicPlayer : BasePlayer
 		// handle weapon pickup after throwing so you can swap
 		// TODO: hold input for pickup when activechild is null?
 		// last bit is to prevent the player from immediately grabbing it out of the air again after throwing if spamming rightclick
-		if ( ActiveChild is null && Pickup && PickupWeapon is not null && PickupWeapon.IsValid() && Input.Pressed( InputButton.SecondaryAttack ) && (TimeSincePickup > (PickupWeapon.PreviousOwner == this ? 0.3f : 0)) )
+		if ( ActiveChild is null && Pickup && PickupWeapon is not null && PickupWeapon.IsValid() && Input.Pressed( "Attack2" ) && (TimeSincePickup > (PickupWeapon.PreviousOwner == this ? 0.3f : 0)) )
 		{
 			var weapon = PickupWeapon;
 			Pickup = false;
@@ -121,7 +121,7 @@ public partial class ClassicPlayer : BasePlayer
 		}
 
 		// DEBUG: spawn a random gun
-		if ( Debug.Enabled && Input.Pressed( InputButton.Zoom ) )
+		if ( Debug.Enabled && Input.Pressed( "Zoom" ) )
 		{
 			using ( Prediction.Off() )
 			{

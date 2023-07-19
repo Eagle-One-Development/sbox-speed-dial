@@ -177,9 +177,9 @@ public partial class ClassicPlayer
 	private async Task CreateDecalAsync( string decalname, TraceResult tr, float delay = 0 )
 	{
 		// SAM PLS FIX
-		return;
 		await GameTask.DelaySeconds( delay );
 
+		/*
 		var decalPath = decalname;
 		if ( decalPath != null )
 		{
@@ -187,7 +187,7 @@ public partial class ClassicPlayer
 			{
 				Decal.Place( decal, tr );
 			}
-		}
+		}*/
 	}
 
 	private async Task CreateParticleAsync( string particle, Entity entity, Vector3 forward, float delay = 0, string bone = "root", bool attach = false, bool bloodpool = false, int pools = 1 )

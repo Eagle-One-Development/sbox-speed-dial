@@ -116,7 +116,7 @@ public partial class VoteEntity : Entity
 		}
 	}
 
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	public void Tick()
 	{
 		if ( !Concluded && TimeSinceStarted >= VoteDuration )

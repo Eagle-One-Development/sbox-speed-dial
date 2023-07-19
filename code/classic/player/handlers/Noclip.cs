@@ -11,7 +11,7 @@ public partial class ClassicNoclipController : PawnController
 
 		vel = vel.Normal * 4000;
 
-		if ( Input.Down( InputButton.Duck ) )
+		if ( Input.Down( "Duck" ) )
 			vel *= 0.2f;
 
 		Velocity += vel * Time.Delta;

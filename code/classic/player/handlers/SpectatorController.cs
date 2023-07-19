@@ -11,10 +11,10 @@ public partial class OneChamberSpectatorController : PawnController
 
 		vel = vel.Normal * 4000;
 
-		if ( Input.Down( InputButton.Duck ) )
+		if ( Input.Down( "Duck" ) )
 			vel *= 0.2f;
 
-		if ( Input.Down( InputButton.Run ) )
+		if ( Input.Down( "Run" ) )
 			vel *= 2.0f;
 
 		Velocity += vel * Time.Delta;

@@ -45,7 +45,7 @@ public partial class OneChamberScoreboardEntry
 		}
 
 		Ping.Text = $"{Client.Ping}ms";
-		Ping.SetClass( "hidden", !Input.Down( InputButton.Walk ) || Client.IsBot );
+		Ping.SetClass( "hidden", !Input.Down( "Walk" ) || Client.IsBot );
 
 		SetClass( "me", Client == Game.LocalClient && Game.Clients.Count > 1 );
 		InputMethod.SetClass( "hidden", !Input.UsingController || Client.IsBot );

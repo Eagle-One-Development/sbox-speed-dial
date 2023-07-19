@@ -8,8 +8,8 @@ public partial class CharacterSelect
 	// bindings for HTML
 	public string HeaderTitle => "SELECT A CRIMINAL";
 	public string SelectHeader => $" TO SELECT";
-	public string PromptLeft => $"< {(Input.UsingController ? "" : Input.GetButtonOrigin( InputButton.Menu ).ToUpper())}";
-	public string PromptRight => $"{(Input.UsingController ? "" : Input.GetButtonOrigin( InputButton.Use ).ToUpper())} >";
+	public string PromptLeft => $"< {(Input.UsingController ? "" : Input.GetButtonOrigin( "Menu" ).ToUpper())}";
+	public string PromptRight => $"{(Input.UsingController ? "" : Input.GetButtonOrigin( "Use" ).ToUpper())} >";
 
 	public bool Open = false;
 	private TimeSince TimeSinceToggled;
@@ -180,13 +180,13 @@ public partial class CharacterSelect
 	private bool Toggle;
 
 
-	[Event.Client.BuildInput]
+	[GameEvent.Client.BuildInput]
 	public void BuildInput()
 	{
-		Left = Input.UsingController ? Input.Pressed( InputButton.SlotPrev ) || Input.Pressed( InputButton.Slot1 ) : Input.Pressed( InputButton.Menu );
-		Right = Input.UsingController ? Input.Pressed( InputButton.SlotNext ) || Input.Pressed( InputButton.Slot2 ) : Input.Pressed( InputButton.Use );
-		Select = Input.Pressed( InputButton.Jump );
-		Toggle = Input.Pressed( InputButton.Duck );
+		Left = Input.UsingController ? Input.Pressed( "SlotPrev" ) || Input.Pressed( "Slot1" ) : Input.Pressed( "Menu" );
+		Right = Input.UsingController ? Input.Pressed( "SlotNext" ) || Input.Pressed( "Slot2" ) : Input.Pressed( "Use" );
+		Select = Input.Pressed( "Jump" );
+		Toggle = Input.Pressed( "Duck" );
 	}
 
 	protected override int BuildHash()

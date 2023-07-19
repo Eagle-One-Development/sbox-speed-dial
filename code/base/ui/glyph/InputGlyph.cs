@@ -3,7 +3,7 @@
 public partial class InputGlyph
 {
 	public Image Glyph { get; set; }
-	public InputButton Button { get; set; }
+	public InputAction Button { get; set; }
 
 	protected bool IsSet = false;
 
@@ -13,11 +13,11 @@ public partial class InputGlyph
 
 		if ( name == "btn" )
 		{
-			SetButton( Enum.Parse<InputButton>( value, true ) );
+			//SetButton( Enum.Parse<InputButton>( value, true ) );
 		}
 	}
 
-	public void SetButton( InputButton button )
+	public void SetButton( InputAction button )
 	{
 		Button = button;
 		IsSet = true;
@@ -29,7 +29,7 @@ public partial class InputGlyph
 
 		if ( IsSet )
 		{
-			Texture glyphTexture = Input.GetGlyph( Button, InputGlyphSize.Medium, GlyphStyle.Knockout.WithNeutralColorABXY() );
+			Texture glyphTexture = Input.GetGlyph( Button.Name, InputGlyphSize.Medium, GlyphStyle.Knockout.WithNeutralColorABXY() );
 
 			Glyph.Texture = glyphTexture;
 			Glyph.Style.AspectRatio = (float)glyphTexture.Width / glyphTexture.Height;

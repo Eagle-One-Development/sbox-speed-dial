@@ -70,7 +70,7 @@ public partial class Weapon : BaseCarriable
 		this.SetGlowState( state, col );
 	}
 
-	[Event.Tick]
+	[GameEvent.Tick]
 	public void Tick()
 	{
 		if ( TimeSinceAlive > 10 && Owner == null && DespawnAfterTime && PickupTrigger.IsValid() && !PickupTrigger.TouchingPlayers.Any() )
@@ -134,7 +134,9 @@ public partial class Weapon : BaseCarriable
 		if ( (Owner as ClassicPlayer) != null && (Owner as ClassicPlayer).Frozen ) return false;
 		if ( Owner is ClassicPlayer )
 		{
-			if ( !Owner.IsValid() || (Blueprint.FireMode == WeaponFireMode.Automatic && !Input.Down( InputButton.PrimaryAttack )) || (!(Blueprint.FireMode == WeaponFireMode.Automatic) && !Input.Pressed( InputButton.PrimaryAttack )) ) return false;
+			if ( !Owner.IsValid() || 
+				(Blueprint.FireMode == WeaponFireMode.Automatic && !Input.Down( "Attack1" )) 
+				|| (!(Blueprint.FireMode == WeaponFireMode.Automatic) && !Input.Pressed( "Attack1" )) ) return false;
 		}
 
 		var rate = Blueprint.FireRate;
