@@ -7,14 +7,12 @@
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
-  "ResourcePaths": [
-    "materials/ui/*",
-    "fonts/*",
-    "*.sdchar",
-    "*.sdwep"
-  ],
+  "Resources": null,
+  "MenuResources": null,
   "HasCode": true,
   "CodePath": "code",
+  "PackageReferences": [],
+  "EditorReferences": null,
   "Metadata": {
     "MapList": [
       "eagleone.sd_bank",
