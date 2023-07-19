@@ -1,8 +1,8 @@
 # auto-generated
 *.csproj
 _bakeresourcecache/
-code/Properties/
-code/obj/
+*/code/Properties/*
+*/code/obj/*
 .codegen/
 .intermediate
 tools_asset_info.bin
