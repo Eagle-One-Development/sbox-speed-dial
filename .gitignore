@@ -1,23 +1,34 @@
-# auto-generated
-*.csproj
-_bakeresourcecache/
-*/code/Properties/*
-*/code/obj/*
-.codegen/
+# Sandbox
+code/accesslist.txt
+Properties
 .intermediate
-tools_asset_info.bin
-tools_thumbnail_cache.bin
-omnisharp.json
+*.csproj
+*.bat
 
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Oo]bj/
+.vs/
+.vscode/
+
+# VRAD artifacts
+_bakeresourcecache/
 *_bakeresourcecache.vpk
-*.los
 
-*.rar
-*.zip
-
-# compiled valve resource formats
+# Compiled files
 *.*_c
 *.vpk
+*.zip
+*.los
+
+# Allowlist
+!*_dev.vpk
 
 # main maps for the gamemode
 !sd_test.vpk
