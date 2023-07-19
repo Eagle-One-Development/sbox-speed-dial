@@ -1,7 +1,31 @@
 {
-  "cloud_packages": [],
-  "game_packages": [
-    "eagleone.speed_dial"
-  ],
-  "addon_packages": []
+  "publish": {
+    "Allowed": true,
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "sd_club",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "sd_club",
+      "Tags": null,
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "rust.beer_bottle#25295",
+        "facepunch.wall_panel_c_granite#18700",
+        "facepunch.concrete_glossy#18629",
+        "facepunch.metal_brushed#18749",
+        "eagleone.speed_dial"
+      ],
+      "Metadata": {
+        "SingleAssetSource": "maps/sd_club.vmap"
+      }
+    }
+  }
 }
